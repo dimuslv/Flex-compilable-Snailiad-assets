@@ -1,0 +1,3930 @@
+package org.flixel
+{
+   import flash.net.URLRequest;
+   import flash.net.navigateToURL;
+   import flash.utils.getDefinitionByName;
+   import flash.utils.getQualifiedClassName;
+   import flash.utils.getTimer;
+   
+   public class FlxU
+   {
+      public static var quadTree:FlxQuadTree;
+      
+      internal static var roundingError:Number = 1e-7;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 3
+      maxscopedepth 4
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PackageInternalNs("org.flixel"),"roundingError")
+      pushdouble 1e-7
+      setproperty QName(PackageInternalNs("org.flixel"),"roundingError")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public function FlxU()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function openURL(param1:String) : void
+      {
+         trait method QName(PackageNamespace(""),"openURL")
+         flag FINAL
+         dispid 3
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace("flash.net"),"navigateToURL")
+         findpropstrict QName(PackageNamespace("flash.net"),"URLRequest")
+         getlocal1
+         constructprop QName(PackageNamespace("flash.net"),"URLRequest"), 1
+         pushstring "_blank"
+         callpropvoid QName(PackageNamespace("flash.net"),"navigateToURL"), 2
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function abs(param1:Number) : Number
+      {
+         trait method QName(PackageNamespace(""),"abs")
+         flag FINAL
+         dispid 4
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         pushbyte 0
+         greaterthan
+         iffalse ofs0010
+         getlocal1
+         convert_d
+         jump ofs0013
+         ofs0010:
+         getlocal1
+         negate
+         convert_d
+         ofs0013:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function floor(param1:Number) : Number
+      {
+         trait method QName(PackageNamespace(""),"floor")
+         flag FINAL
+         dispid 5
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 2
+         localcount 3
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         callproperty QName(PackageNamespace(""),"int"), 1
+         convert_d
+         setlocal2
+         getlocal1
+         pushbyte 0
+         greaterthan
+         iffalse ofs0018
+         getlocal2
+         convert_d
+         jump ofs0027
+         ofs0018:
+         getlocal2
+         getlocal1
+         ifeq ofs0025
+         getlocal2
+         decrement
+         convert_d
+         jump ofs0027
+         ofs0025:
+         getlocal2
+         convert_d
+         ofs0027:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function ceil(param1:Number) : Number
+      {
+         trait method QName(PackageNamespace(""),"ceil")
+         flag FINAL
+         dispid 6
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 2
+         localcount 3
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         callproperty QName(PackageNamespace(""),"int"), 1
+         convert_d
+         setlocal2
+         getlocal1
+         pushbyte 0
+         greaterthan
+         iffalse ofs0027
+         getlocal2
+         getlocal1
+         ifeq ofs0021
+         getlocal2
+         pushbyte 1
+         add
+         convert_d
+         jump ofs0023
+         ofs0021:
+         getlocal2
+         convert_d
+         ofs0023:
+         jump ofs0029
+         ofs0027:
+         getlocal2
+         convert_d
+         ofs0029:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function min(param1:Number, param2:Number) : Number
+      {
+         trait method QName(PackageNamespace(""),"min")
+         flag FINAL
+         dispid 7
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 2
+         localcount 3
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getlocal2
+         lessequals
+         iffalse ofs000f
+         getlocal1
+         convert_d
+         jump ofs0011
+         ofs000f:
+         getlocal2
+         convert_d
+         ofs0011:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function max(param1:Number, param2:Number) : Number
+      {
+         trait method QName(PackageNamespace(""),"max")
+         flag FINAL
+         dispid 8
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 2
+         localcount 3
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getlocal2
+         greaterequals
+         iffalse ofs000f
+         getlocal1
+         convert_d
+         jump ofs0011
+         ofs000f:
+         getlocal2
+         convert_d
+         ofs0011:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function random(param1:Number = NaN) : Number
+      {
+         trait method QName(PackageNamespace(""),"random")
+         flag FINAL
+         dispid 9
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Number")
+         optional Double(NaN)
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 4
+         localcount 2
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"isNaN")
+         getlocal1
+         callproperty QName(PackageNamespace(""),"isNaN"), 1
+         iffalse ofs0016
+         getlex QName(PackageNamespace(""),"Math")
+         callproperty QName(PackageNamespace(""),"random"), 0
+         returnvalue
+         ofs0016:
+         getlocal1
+         pushbyte 0
+         ifne ofs0024
+         getlex QName(PackageNamespace(""),"Number")
+         getproperty QName(PackageNamespace(""),"MIN_VALUE")
+         convert_d
+         setlocal1
+         ofs0024:
+         getlocal1
+         pushbyte 1
+         ifnge ofs0049
+         getlocal1
+         pushbyte 1
+         modulo
+         pushbyte 0
+         ifne ofs003f
+         getlocal1
+         getlex QName(PackageNamespace(""),"Math")
+         getproperty QName(PackageNamespace(""),"PI")
+         divide
+         convert_d
+         setlocal1
+         ofs003f:
+         getlocal1
+         pushbyte 1
+         modulo
+         convert_d
+         setlocal1
+         jump ofs0059
+         ofs0049:
+         getlocal1
+         pushbyte 0
+         ifnlt ofs0059
+         getlocal1
+         pushbyte 1
+         modulo
+         pushbyte 1
+         add
+         convert_d
+         setlocal1
+         ofs0059:
+         pushint 69621
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         pushint 2147483647
+         multiply
+         callproperty QName(PackageNamespace(""),"int"), 1
+         multiply
+         pushint 2147483647
+         modulo
+         pushint 2147483647
+         divide
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function startProfile() : uint
+      {
+         trait method QName(PackageNamespace(""),"startProfile")
+         flag FINAL
+         dispid 10
+         method
+         name null
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace("flash.utils"),"getTimer")
+         callproperty QName(PackageNamespace("flash.utils"),"getTimer"), 0
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function endProfile(param1:uint, param2:String = "Profiler", param3:Boolean = true) : uint
+      {
+         trait method QName(PackageNamespace(""),"endProfile")
+         flag FINAL
+         dispid 11
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"Boolean")
+         optional Utf8("Profiler")
+         optional True()
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 4
+         localcount 5
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"uint")
+         findpropstrict QName(PackageNamespace("flash.utils"),"getTimer")
+         callproperty QName(PackageNamespace("flash.utils"),"getTimer"), 0
+         callproperty QName(PackageNamespace(""),"uint"), 1
+         convert_u
+         setlocal 4
+         getlocal3
+         iffalse ofs002f
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getlocal2
+         pushstring ": "
+         add
+         getlocal 4
+         getlocal1
+         subtract
+         pushshort 1000
+         divide
+         add
+         pushstring "s"
+         add
+         callpropvoid QName(PackageNamespace(""),"log"), 1
+         ofs002f:
+         getlocal 4
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function rotatePoint(param1:Number, param2:Number, param3:Number, param4:Number, param5:Number, param6:FlxPoint = null) : FlxPoint
+      {
+         trait method QName(PackageNamespace(""),"rotatePoint")
+         flag FINAL
+         dispid 12
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace("org.flixel"),"FlxPoint")
+         optional Null()
+         returns QName(PackageNamespace("org.flixel"),"FlxPoint")
+         
+         body
+         maxstack 4
+         localcount 12
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushnan
+         setlocal 10
+         pushnan
+         setlocal 11
+         pushbyte 0
+         convert_d
+         setlocal 7
+         pushbyte 0
+         convert_d
+         setlocal 8
+         getlocal 5
+         pushdouble -0.017453293
+         multiply
+         convert_d
+         setlocal 9
+         jump ofs0027
+         ofs001e:
+         label
+         getlocal 9
+         pushdouble 6.28318531
+         add
+         convert_d
+         setlocal 9
+         ofs0027:
+         getlocal 9
+         pushdouble -3.14159265
+         iflt ofs001e
+         jump ofs003c
+         ofs0033:
+         label
+         getlocal 9
+         pushdouble 6.28318531
+         subtract
+         convert_d
+         setlocal 9
+         ofs003c:
+         getlocal 9
+         pushdouble 3.14159265
+         ifgt ofs0033
+         getlocal 9
+         pushbyte 0
+         ifnlt ofs008f
+         pushdouble 1.27323954
+         getlocal 9
+         multiply
+         pushdouble 0.405284735
+         getlocal 9
+         multiply
+         getlocal 9
+         multiply
+         add
+         convert_d
+         dup
+         setlocal 7
+         pushbyte 0
+         ifnlt ofs007a
+         pushdouble 0.225
+         getlocal 7
+         getlocal 7
+         negate
+         multiply
+         getlocal 7
+         subtract
+         multiply
+         getlocal 7
+         add
+         convert_d
+         setlocal 7
+         jump ofs008b
+         ofs007a:
+         pushdouble 0.225
+         getlocal 7
+         getlocal 7
+         multiply
+         getlocal 7
+         subtract
+         multiply
+         getlocal 7
+         add
+         convert_d
+         setlocal 7
+         ofs008b:
+         jump ofs00ce
+         ofs008f:
+         pushdouble 1.27323954
+         getlocal 9
+         multiply
+         pushdouble 0.405284735
+         getlocal 9
+         multiply
+         getlocal 9
+         multiply
+         subtract
+         convert_d
+         dup
+         setlocal 7
+         pushbyte 0
+         ifnlt ofs00bd
+         pushdouble 0.225
+         getlocal 7
+         getlocal 7
+         negate
+         multiply
+         getlocal 7
+         subtract
+         multiply
+         getlocal 7
+         add
+         convert_d
+         setlocal 7
+         jump ofs00ce
+         ofs00bd:
+         pushdouble 0.225
+         getlocal 7
+         getlocal 7
+         multiply
+         getlocal 7
+         subtract
+         multiply
+         getlocal 7
+         add
+         convert_d
+         setlocal 7
+         ofs00ce:
+         getlocal 9
+         pushdouble 1.57079632
+         add
+         convert_d
+         dup
+         setlocal 9
+         pushdouble 3.14159265
+         ifngt ofs00e5
+         getlocal 9
+         pushdouble 6.28318531
+         subtract
+         convert_d
+         setlocal 9
+         ofs00e5:
+         getlocal 9
+         pushbyte 0
+         ifnlt ofs0130
+         pushdouble 1.27323954
+         getlocal 9
+         multiply
+         pushdouble 0.405284735
+         getlocal 9
+         multiply
+         getlocal 9
+         multiply
+         add
+         convert_d
+         dup
+         setlocal 8
+         pushbyte 0
+         ifnlt ofs011b
+         pushdouble 0.225
+         getlocal 8
+         getlocal 8
+         negate
+         multiply
+         getlocal 8
+         subtract
+         multiply
+         getlocal 8
+         add
+         convert_d
+         setlocal 8
+         jump ofs012c
+         ofs011b:
+         pushdouble 0.225
+         getlocal 8
+         getlocal 8
+         multiply
+         getlocal 8
+         subtract
+         multiply
+         getlocal 8
+         add
+         convert_d
+         setlocal 8
+         ofs012c:
+         jump ofs016f
+         ofs0130:
+         pushdouble 1.27323954
+         getlocal 9
+         multiply
+         pushdouble 0.405284735
+         getlocal 9
+         multiply
+         getlocal 9
+         multiply
+         subtract
+         convert_d
+         dup
+         setlocal 8
+         pushbyte 0
+         ifnlt ofs015e
+         pushdouble 0.225
+         getlocal 8
+         getlocal 8
+         negate
+         multiply
+         getlocal 8
+         subtract
+         multiply
+         getlocal 8
+         add
+         convert_d
+         setlocal 8
+         jump ofs016f
+         ofs015e:
+         pushdouble 0.225
+         getlocal 8
+         getlocal 8
+         multiply
+         getlocal 8
+         subtract
+         multiply
+         getlocal 8
+         add
+         convert_d
+         setlocal 8
+         ofs016f:
+         getlocal1
+         getlocal3
+         subtract
+         convert_d
+         setlocal 10
+         getlocal 4
+         getlocal2
+         subtract
+         convert_d
+         setlocal 11
+         getlocal 6
+         pushnull
+         ifne ofs018c
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxPoint")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxPoint"), 0
+         coerce QName(PackageNamespace("org.flixel"),"FlxPoint")
+         setlocal 6
+         ofs018c:
+         getlocal 6
+         getlocal3
+         getlocal 8
+         getlocal 10
+         multiply
+         add
+         getlocal 7
+         getlocal 11
+         multiply
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 6
+         getlocal 4
+         getlocal 7
+         getlocal 10
+         multiply
+         subtract
+         getlocal 8
+         getlocal 11
+         multiply
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 6
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function getAngle(param1:Number, param2:Number) : Number
+      {
+         trait method QName(PackageNamespace(""),"getAngle")
+         flag FINAL
+         dispid 13
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 5
+         localcount 7
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushdouble 3.14159265
+         pushbyte 4
+         divide
+         convert_d
+         setlocal3
+         pushbyte 3
+         getlocal3
+         multiply
+         convert_d
+         setlocal 4
+         getlocal2
+         pushbyte 0
+         lessthan
+         iffalse ofs001f
+         getlocal2
+         negate
+         convert_d
+         jump ofs0021
+         ofs001f:
+         getlocal2
+         convert_d
+         ofs0021:
+         convert_d
+         setlocal 5
+         pushbyte 0
+         convert_d
+         setlocal 6
+         getlocal1
+         pushbyte 0
+         ifnge ofs0044
+         getlocal3
+         getlocal3
+         getlocal1
+         getlocal 5
+         subtract
+         getlocal1
+         getlocal 5
+         add
+         divide
+         multiply
+         subtract
+         convert_d
+         setlocal 6
+         jump ofs0055
+         ofs0044:
+         getlocal 4
+         getlocal3
+         getlocal1
+         getlocal 5
+         add
+         getlocal 5
+         getlocal1
+         subtract
+         divide
+         multiply
+         subtract
+         convert_d
+         setlocal 6
+         ofs0055:
+         getlocal2
+         pushbyte 0
+         lessthan
+         iffalse ofs0065
+         getlocal 6
+         negate
+         coerce_a
+         jump ofs0068
+         ofs0065:
+         getlocal 6
+         coerce_a
+         ofs0068:
+         pushdouble 57.2957796
+         multiply
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function getColor(param1:uint, param2:uint, param3:uint, param4:Number = 1) : uint
+      {
+         trait method QName(PackageNamespace(""),"getColor")
+         flag FINAL
+         dispid 14
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"Number")
+         optional Integer(1)
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 3
+         localcount 5
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlocal 4
+         pushbyte 1
+         greaterthan
+         iffalse ofs0012
+         getlocal 4
+         coerce_a
+         jump ofs0019
+         ofs0012:
+         getlocal 4
+         pushshort 255
+         multiply
+         coerce_a
+         ofs0019:
+         pushshort 255
+         bitand
+         pushbyte 24
+         lshift
+         getlocal1
+         pushshort 255
+         bitand
+         pushbyte 16
+         lshift
+         bitor
+         getlocal2
+         pushshort 255
+         bitand
+         pushbyte 8
+         lshift
+         bitor
+         getlocal3
+         pushshort 255
+         bitand
+         bitor
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function getColorHSB(param1:Number, param2:Number, param3:Number, param4:Number = 1) : uint
+      {
+         trait method QName(PackageNamespace(""),"getColorHSB")
+         flag FINAL
+         dispid 15
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         optional Integer(1)
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 5
+         localcount 14
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 5
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 6
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 7
+         pushbyte 0
+         setlocal 8
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 9
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 10
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 11
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 12
+         getlocal2
+         pushbyte 0
+         ifne ofs0047
+         getlocal3
+         convert_d
+         setlocal 5
+         getlocal3
+         convert_d
+         setlocal 6
+         getlocal3
+         convert_d
+         setlocal 7
+         jump ofs0192
+         ofs0047:
+         getlocal1
+         pushshort 360
+         ifne ofs0053
+         pushbyte 0
+         convert_d
+         setlocal1
+         ofs0053:
+         getlocal1
+         pushbyte 60
+         divide
+         convert_i
+         setlocal 8
+         getlocal1
+         pushbyte 60
+         divide
+         getlocal 8
+         subtract
+         convert_d
+         setlocal 9
+         getlocal3
+         pushbyte 1
+         getlocal2
+         subtract
+         multiply
+         convert_d
+         setlocal 10
+         getlocal3
+         pushbyte 1
+         getlocal2
+         getlocal 9
+         multiply
+         subtract
+         multiply
+         convert_d
+         setlocal 11
+         getlocal3
+         pushbyte 1
+         getlocal2
+         pushbyte 1
+         getlocal 9
+         subtract
+         multiply
+         subtract
+         multiply
+         convert_d
+         setlocal 12
+         jump ofs0112
+         ofs008c:
+         label
+         getlocal3
+         convert_d
+         setlocal 5
+         getlocal 12
+         convert_d
+         setlocal 6
+         getlocal 10
+         convert_d
+         setlocal 7
+         jump ofs0192
+         ofs009f:
+         label
+         getlocal 11
+         convert_d
+         setlocal 5
+         getlocal3
+         convert_d
+         setlocal 6
+         getlocal 10
+         convert_d
+         setlocal 7
+         jump ofs0192
+         ofs00b2:
+         label
+         getlocal 10
+         convert_d
+         setlocal 5
+         getlocal3
+         convert_d
+         setlocal 6
+         getlocal 12
+         convert_d
+         setlocal 7
+         jump ofs0192
+         ofs00c5:
+         label
+         getlocal 10
+         convert_d
+         setlocal 5
+         getlocal 11
+         convert_d
+         setlocal 6
+         getlocal3
+         convert_d
+         setlocal 7
+         jump ofs0192
+         ofs00d8:
+         label
+         getlocal 12
+         convert_d
+         setlocal 5
+         getlocal 10
+         convert_d
+         setlocal 6
+         getlocal3
+         convert_d
+         setlocal 7
+         jump ofs0192
+         ofs00eb:
+         label
+         getlocal3
+         convert_d
+         setlocal 5
+         getlocal 10
+         convert_d
+         setlocal 6
+         getlocal 11
+         convert_d
+         setlocal 7
+         jump ofs0192
+         ofs00fe:
+         label
+         pushbyte 0
+         convert_d
+         setlocal 5
+         pushbyte 0
+         convert_d
+         setlocal 6
+         pushbyte 0
+         convert_d
+         setlocal 7
+         jump ofs0192
+         ofs0112:
+         getlocal 8
+         setlocal 13
+         pushbyte 0
+         getlocal 13
+         ifstrictne ofs0124
+         pushbyte 0
+         jump ofs0176
+         ofs0124:
+         pushbyte 1
+         getlocal 13
+         ifstrictne ofs0132
+         pushbyte 1
+         jump ofs0176
+         ofs0132:
+         pushbyte 2
+         getlocal 13
+         ifstrictne ofs0140
+         pushbyte 2
+         jump ofs0176
+         ofs0140:
+         pushbyte 3
+         getlocal 13
+         ifstrictne ofs014e
+         pushbyte 3
+         jump ofs0176
+         ofs014e:
+         pushbyte 4
+         getlocal 13
+         ifstrictne ofs015c
+         pushbyte 4
+         jump ofs0176
+         ofs015c:
+         pushbyte 5
+         getlocal 13
+         ifstrictne ofs016a
+         pushbyte 5
+         jump ofs0176
+         ofs016a:
+         jump ofs0174
+         pushbyte 6
+         jump ofs0174
+         ofs0174:
+         pushbyte 6
+         ofs0176:
+         kill 13
+         lookupswitch ofs00fe, [ofs008c, ofs009f, ofs00b2, ofs00c5, ofs00d8, ofs00eb, ofs00fe]
+         ofs0192:
+         getlocal 4
+         pushbyte 1
+         greaterthan
+         iffalse ofs01a2
+         getlocal 4
+         coerce_a
+         jump ofs01a9
+         ofs01a2:
+         getlocal 4
+         pushshort 255
+         multiply
+         coerce_a
+         ofs01a9:
+         pushshort 255
+         bitand
+         pushbyte 24
+         lshift
+         findpropstrict QName(PackageNamespace(""),"uint")
+         getlocal 5
+         pushshort 255
+         multiply
+         callproperty QName(PackageNamespace(""),"uint"), 1
+         pushbyte 16
+         lshift
+         bitor
+         findpropstrict QName(PackageNamespace(""),"uint")
+         getlocal 6
+         pushshort 255
+         multiply
+         callproperty QName(PackageNamespace(""),"uint"), 1
+         pushbyte 8
+         lshift
+         bitor
+         findpropstrict QName(PackageNamespace(""),"uint")
+         getlocal 7
+         pushshort 255
+         multiply
+         callproperty QName(PackageNamespace(""),"uint"), 1
+         bitor
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function getRGBA(param1:uint, param2:Array = null) : Array
+      {
+         trait method QName(PackageNamespace(""),"getRGBA")
+         flag FINAL
+         dispid 16
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"Array")
+         optional Null()
+         returns QName(PackageNamespace(""),"Array")
+         
+         body
+         maxstack 5
+         localcount 3
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlocal2
+         pushnull
+         ifne ofs0010
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         coerce QName(PackageNamespace(""),"Array")
+         setlocal2
+         ofs0010:
+         getlocal2
+         pushbyte 0
+         getlocal1
+         pushbyte 16
+         rshift
+         pushshort 255
+         bitand
+         setproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getlocal2
+         pushbyte 1
+         getlocal1
+         pushbyte 8
+         rshift
+         pushshort 255
+         bitand
+         setproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getlocal2
+         pushbyte 2
+         getlocal1
+         pushshort 255
+         bitand
+         setproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getlocal2
+         pushbyte 3
+         findpropstrict QName(PackageNamespace(""),"Number")
+         getlocal1
+         pushbyte 24
+         rshift
+         pushshort 255
+         bitand
+         callproperty QName(PackageNamespace(""),"Number"), 1
+         pushshort 255
+         divide
+         setproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getlocal2
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function getHSB(param1:uint, param2:Array = null) : Array
+      {
+         trait method QName(PackageNamespace(""),"getHSB")
+         flag FINAL
+         dispid 17
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"Array")
+         optional Null()
+         returns QName(PackageNamespace(""),"Array")
+         
+         body
+         maxstack 5
+         localcount 10
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlocal2
+         pushnull
+         ifne ofs0010
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         coerce QName(PackageNamespace(""),"Array")
+         setlocal2
+         ofs0010:
+         findpropstrict QName(PackageNamespace(""),"Number")
+         getlocal1
+         pushbyte 16
+         rshift
+         pushshort 255
+         bitand
+         callproperty QName(PackageNamespace(""),"Number"), 1
+         pushshort 255
+         divide
+         convert_d
+         setlocal3
+         findpropstrict QName(PackageNamespace(""),"Number")
+         getlocal1
+         pushbyte 8
+         rshift
+         pushshort 255
+         bitand
+         callproperty QName(PackageNamespace(""),"Number"), 1
+         pushshort 255
+         divide
+         convert_d
+         setlocal 4
+         findpropstrict QName(PackageNamespace(""),"Number")
+         getlocal1
+         pushshort 255
+         bitand
+         callproperty QName(PackageNamespace(""),"Number"), 1
+         pushshort 255
+         divide
+         convert_d
+         setlocal 5
+         getlocal3
+         getlocal 4
+         greaterthan
+         iffalse ofs0056
+         getlocal3
+         convert_d
+         jump ofs0059
+         ofs0056:
+         getlocal 4
+         convert_d
+         ofs0059:
+         convert_d
+         dup
+         setlocal 6
+         getlocal 5
+         greaterthan
+         iffalse ofs006b
+         getlocal 6
+         convert_d
+         jump ofs006e
+         ofs006b:
+         getlocal 5
+         convert_d
+         ofs006e:
+         convert_d
+         setlocal 7
+         getlocal3
+         getlocal 4
+         greaterthan
+         iffalse ofs0080
+         getlocal 4
+         convert_d
+         jump ofs0082
+         ofs0080:
+         getlocal3
+         convert_d
+         ofs0082:
+         convert_d
+         dup
+         setlocal 6
+         getlocal 5
+         greaterthan
+         iffalse ofs0094
+         getlocal 5
+         convert_d
+         jump ofs0097
+         ofs0094:
+         getlocal 6
+         convert_d
+         ofs0097:
+         convert_d
+         setlocal 8
+         getlocal 7
+         getlocal 8
+         subtract
+         convert_d
+         setlocal 9
+         getlocal2
+         pushbyte 2
+         getlocal 7
+         setproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getlocal2
+         pushbyte 1
+         pushbyte 0
+         setproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getlocal2
+         pushbyte 0
+         dup
+         setproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getlocal 7
+         pushbyte 0
+         ifeq ofs00cc
+         getlocal2
+         pushbyte 1
+         getlocal 9
+         getlocal 7
+         divide
+         setproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         ofs00cc:
+         getlocal2
+         pushbyte 1
+         getproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         pushbyte 0
+         ifeq ofs0150
+         getlocal3
+         getlocal 7
+         ifne ofs00f1
+         getlocal2
+         pushbyte 0
+         getlocal 4
+         getlocal 5
+         subtract
+         getlocal 9
+         divide
+         setproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         jump ofs0125
+         ofs00f1:
+         getlocal 4
+         getlocal 7
+         ifne ofs010d
+         getlocal2
+         pushbyte 0
+         pushbyte 2
+         getlocal 5
+         getlocal3
+         subtract
+         getlocal 9
+         divide
+         add
+         setproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         jump ofs0125
+         ofs010d:
+         getlocal 5
+         getlocal 7
+         ifne ofs0125
+         getlocal2
+         pushbyte 0
+         pushbyte 4
+         getlocal3
+         getlocal 4
+         subtract
+         getlocal 9
+         divide
+         add
+         setproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         ofs0125:
+         getlocal2
+         pushbyte 0
+         getlocal2
+         pushbyte 0
+         getproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         pushbyte 60
+         multiply
+         setproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getlocal2
+         pushbyte 0
+         getproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         pushbyte 0
+         ifnlt ofs0150
+         getlocal2
+         pushbyte 0
+         getlocal2
+         pushbyte 0
+         getproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         pushshort 360
+         add
+         setproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         ofs0150:
+         getlocal2
+         pushbyte 3
+         findpropstrict QName(PackageNamespace(""),"Number")
+         getlocal1
+         pushbyte 24
+         rshift
+         pushshort 255
+         bitand
+         callproperty QName(PackageNamespace(""),"Number"), 1
+         pushshort 255
+         divide
+         setproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getlocal2
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function getClassName(param1:Object, param2:Boolean = false) : String
+      {
+         trait method QName(PackageNamespace(""),"getClassName")
+         flag FINAL
+         dispid 18
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Object")
+         param QName(PackageNamespace(""),"Boolean")
+         optional False()
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 3
+         localcount 4
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace("flash.utils"),"getQualifiedClassName")
+         getlocal1
+         callproperty QName(PackageNamespace("flash.utils"),"getQualifiedClassName"), 1
+         coerce_s
+         setlocal3
+         getlocal3
+         pushstring "::"
+         pushstring "."
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"replace"), 2
+         coerce_s
+         setlocal3
+         getlocal2
+         iffalse ofs0030
+         getlocal3
+         getlocal3
+         pushstring "."
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"lastIndexOf"), 1
+         pushbyte 1
+         add
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"substr"), 1
+         coerce_s
+         setlocal3
+         ofs0030:
+         getlocal3
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function getClass(param1:String) : Class
+      {
+         trait method QName(PackageNamespace(""),"getClass")
+         flag FINAL
+         dispid 19
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"Class")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace("flash.utils"),"getDefinitionByName")
+         getlocal1
+         callproperty QName(PackageNamespace("flash.utils"),"getDefinitionByName"), 1
+         getlex QName(PackageNamespace(""),"Class")
+         astypelate
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function computeVelocity(param1:Number, param2:Number = 0, param3:Number = 0, param4:Number = 10000) : Number
+      {
+         trait method QName(PackageNamespace(""),"computeVelocity")
+         flag FINAL
+         dispid 20
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         optional Integer(0)
+         optional Integer(0)
+         optional Integer(10000)
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 3
+         localcount 6
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 5
+         getlocal2
+         pushbyte 0
+         ifeq ofs001f
+         getlocal1
+         getlocal2
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         multiply
+         add
+         convert_d
+         setlocal1
+         jump ofs005d
+         ofs001f:
+         getlocal3
+         pushbyte 0
+         ifeq ofs005d
+         getlocal3
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         multiply
+         convert_d
+         setlocal 5
+         getlocal1
+         getlocal 5
+         subtract
+         pushbyte 0
+         ifngt ofs0045
+         getlocal1
+         getlocal 5
+         subtract
+         convert_d
+         setlocal1
+         jump ofs005d
+         ofs0045:
+         getlocal1
+         getlocal 5
+         add
+         pushbyte 0
+         ifnlt ofs0059
+         getlocal1
+         getlocal 5
+         add
+         convert_d
+         setlocal1
+         jump ofs005d
+         ofs0059:
+         pushbyte 0
+         convert_d
+         setlocal1
+         ofs005d:
+         getlocal1
+         pushbyte 0
+         equals
+         not
+         dup
+         iffalse ofs006f
+         pop
+         getlocal 4
+         pushshort 10000
+         equals
+         not
+         ofs006f:
+         iffalse ofs008f
+         getlocal1
+         getlocal 4
+         ifngt ofs0082
+         getlocal 4
+         convert_d
+         setlocal1
+         jump ofs008f
+         ofs0082:
+         getlocal1
+         getlocal 4
+         negate
+         ifnlt ofs008f
+         getlocal 4
+         negate
+         convert_d
+         setlocal1
+         ofs008f:
+         getlocal1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function setWorldBounds(param1:Number = 0, param2:Number = 0, param3:Number = 0, param4:Number = 0, param5:uint = 3) : void
+      {
+         trait method QName(PackageNamespace(""),"setWorldBounds")
+         flag FINAL
+         dispid 21
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"uint")
+         optional Integer(0)
+         optional Integer(0)
+         optional Integer(0)
+         optional Integer(0)
+         optional Integer(3)
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 6
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getproperty QName(PackageNamespace(""),"bounds")
+         pushnull
+         ifne ofs0016
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxRect")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxRect"), 0
+         setproperty QName(PackageNamespace(""),"bounds")
+         ofs0016:
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getproperty QName(PackageNamespace(""),"bounds")
+         getlocal1
+         setproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getproperty QName(PackageNamespace(""),"bounds")
+         getlocal2
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal3
+         pushbyte 0
+         ifngt ofs0035
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getproperty QName(PackageNamespace(""),"bounds")
+         getlocal3
+         setproperty QName(PackageNamespace(""),"width")
+         ofs0035:
+         getlocal 4
+         pushbyte 0
+         ifngt ofs0046
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getproperty QName(PackageNamespace(""),"bounds")
+         getlocal 4
+         setproperty QName(PackageNamespace(""),"height")
+         ofs0046:
+         getlocal 5
+         pushbyte 0
+         ifngt ofs0055
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getlocal 5
+         setproperty QName(PackageNamespace(""),"divisions")
+         ofs0055:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function overlap(param1:FlxObject, param2:FlxObject, param3:Function = null) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"overlap")
+         flag FINAL
+         dispid 22
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace("org.flixel"),"FlxObject")
+         param QName(PackageNamespace("org.flixel"),"FlxObject")
+         param QName(PackageNamespace(""),"Function")
+         optional Null()
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 6
+         localcount 4
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         pushnull
+         equals
+         dup
+         iftrue ofs000f
+         pop
+         getlocal1
+         getproperty QName(PackageNamespace(""),"exists")
+         not
+         ofs000f:
+         dup
+         iftrue ofs0018
+         pop
+         getlocal2
+         pushnull
+         equals
+         ofs0018:
+         dup
+         iftrue ofs0022
+         pop
+         getlocal2
+         getproperty QName(PackageNamespace(""),"exists")
+         not
+         ofs0022:
+         iffalse ofs0028
+         pushfalse
+         returnvalue
+         ofs0028:
+         findproperty QName(PackageNamespace(""),"quadTree")
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getproperty QName(PackageNamespace(""),"bounds")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getproperty QName(PackageNamespace(""),"bounds")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getproperty QName(PackageNamespace(""),"bounds")
+         getproperty QName(PackageNamespace(""),"width")
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getproperty QName(PackageNamespace(""),"bounds")
+         getproperty QName(PackageNamespace(""),"height")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxQuadTree"), 4
+         setproperty QName(PackageNamespace(""),"quadTree")
+         getlex QName(PackageNamespace(""),"quadTree")
+         getlocal1
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getproperty QName(PackageNamespace(""),"A_LIST")
+         callpropvoid QName(PackageNamespace(""),"add"), 2
+         getlocal1
+         getlocal2
+         ifstrictne ofs006b
+         getlex QName(PackageNamespace(""),"quadTree")
+         pushfalse
+         getlocal3
+         callproperty QName(PackageNamespace(""),"overlap"), 2
+         returnvalue
+         ofs006b:
+         getlex QName(PackageNamespace(""),"quadTree")
+         getlocal2
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getproperty QName(PackageNamespace(""),"B_LIST")
+         callpropvoid QName(PackageNamespace(""),"add"), 2
+         getlex QName(PackageNamespace(""),"quadTree")
+         pushtrue
+         getlocal3
+         callproperty QName(PackageNamespace(""),"overlap"), 2
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function collide(param1:FlxObject, param2:FlxObject) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"collide")
+         flag FINAL
+         dispid 23
+         method
+         name null
+         param QName(PackageNamespace("org.flixel"),"FlxObject")
+         param QName(PackageNamespace("org.flixel"),"FlxObject")
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 6
+         localcount 6
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         pushnull
+         equals
+         dup
+         iftrue ofs000f
+         pop
+         getlocal1
+         getproperty QName(PackageNamespace(""),"exists")
+         not
+         ofs000f:
+         dup
+         iftrue ofs0018
+         pop
+         getlocal2
+         pushnull
+         equals
+         ofs0018:
+         dup
+         iftrue ofs0022
+         pop
+         getlocal2
+         getproperty QName(PackageNamespace(""),"exists")
+         not
+         ofs0022:
+         iffalse ofs0028
+         pushfalse
+         returnvalue
+         ofs0028:
+         findproperty QName(PackageNamespace(""),"quadTree")
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getproperty QName(PackageNamespace(""),"bounds")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getproperty QName(PackageNamespace(""),"bounds")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getproperty QName(PackageNamespace(""),"bounds")
+         getproperty QName(PackageNamespace(""),"width")
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getproperty QName(PackageNamespace(""),"bounds")
+         getproperty QName(PackageNamespace(""),"height")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxQuadTree"), 4
+         setproperty QName(PackageNamespace(""),"quadTree")
+         getlex QName(PackageNamespace(""),"quadTree")
+         getlocal1
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getproperty QName(PackageNamespace(""),"A_LIST")
+         callpropvoid QName(PackageNamespace(""),"add"), 2
+         getlocal1
+         getlocal2
+         strictequals
+         coerce_a
+         setlocal3
+         getlocal3
+         iftrue ofs0071
+         getlex QName(PackageNamespace(""),"quadTree")
+         getlocal2
+         getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getproperty QName(PackageNamespace(""),"B_LIST")
+         callpropvoid QName(PackageNamespace(""),"add"), 2
+         ofs0071:
+         getlex QName(PackageNamespace(""),"quadTree")
+         getlocal3
+         not
+         getlex QName(PackageNamespace(""),"solveXCollision")
+         callproperty QName(PackageNamespace(""),"overlap"), 2
+         convert_b
+         setlocal 4
+         getlex QName(PackageNamespace(""),"quadTree")
+         getlocal3
+         not
+         getlex QName(PackageNamespace(""),"solveYCollision")
+         callproperty QName(PackageNamespace(""),"overlap"), 2
+         convert_b
+         setlocal 5
+         getlocal 4
+         convert_b
+         dup
+         iftrue ofs009b
+         pop
+         getlocal 5
+         convert_b
+         ofs009b:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function solveXCollision(param1:FlxObject, param2:FlxObject) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"solveXCollision")
+         flag FINAL
+         dispid 24
+         method
+         name null
+         param QName(PackageNamespace("org.flixel"),"FlxObject")
+         param QName(PackageNamespace("org.flixel"),"FlxObject")
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 3
+         localcount 32
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushfalse
+         setlocal3
+         pushfalse
+         setlocal 4
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 5
+         pushfalse
+         setlocal 6
+         pushbyte 0
+         convert_u
+         setlocal 7
+         pushbyte 0
+         convert_u
+         setlocal 8
+         pushnull
+         coerce QName(PackageNamespace("org.flixel"),"FlxRect")
+         setlocal 9
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 10
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 11
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 12
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 13
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 14
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 15
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 16
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 17
+         getlocal1
+         getproperty QName(PackageNamespace(""),"colVector")
+         getproperty QName(PackageNamespace(""),"x")
+         convert_d
+         setlocal 18
+         getlocal2
+         getproperty QName(PackageNamespace(""),"colVector")
+         getproperty QName(PackageNamespace(""),"x")
+         convert_d
+         setlocal 19
+         getlocal 18
+         getlocal 19
+         ifne ofs006b
+         pushfalse
+         returnvalue
+         ofs006b:
+         getlocal1
+         getlocal2
+         callpropvoid QName(PackageNamespace(""),"preCollide"), 1
+         getlocal2
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"preCollide"), 1
+         pushfalse
+         setlocal 20
+         getlocal 18
+         pushbyte 0
+         equals
+         coerce_a
+         setlocal 21
+         getlocal 18
+         pushbyte 0
+         lessthan
+         coerce_a
+         setlocal 22
+         getlocal 18
+         pushbyte 0
+         greaterthan
+         coerce_a
+         setlocal 23
+         getlocal 19
+         pushbyte 0
+         equals
+         coerce_a
+         setlocal 24
+         getlocal 19
+         pushbyte 0
+         lessthan
+         coerce_a
+         setlocal 25
+         getlocal 19
+         pushbyte 0
+         greaterthan
+         coerce_a
+         setlocal 26
+         getlocal1
+         getproperty QName(PackageNamespace(""),"colHullX")
+         coerce QName(PackageNamespace("org.flixel"),"FlxRect")
+         setlocal 9
+         getlocal2
+         getproperty QName(PackageNamespace(""),"colHullX")
+         coerce QName(PackageNamespace("org.flixel"),"FlxRect")
+         setlocal 27
+         getlocal1
+         getproperty QName(PackageNamespace(""),"colOffsets")
+         coerce QName(PackageNamespace(""),"Array")
+         setlocal 28
+         getlocal2
+         getproperty QName(PackageNamespace(""),"colOffsets")
+         coerce QName(PackageNamespace(""),"Array")
+         setlocal 29
+         getlocal 28
+         getproperty QName(PackageNamespace(""),"length")
+         convert_u
+         setlocal 30
+         getlocal 29
+         getproperty QName(PackageNamespace(""),"length")
+         convert_u
+         setlocal 31
+         getlocal 21
+         convert_b
+         dup
+         iffalse ofs00e6
+         pop
+         getlocal 25
+         convert_b
+         ofs00e6:
+         dup
+         iftrue ofs00f8
+         pop
+         getlocal 23
+         convert_b
+         dup
+         iffalse ofs00f8
+         pop
+         getlocal 24
+         convert_b
+         ofs00f8:
+         dup
+         iftrue ofs010a
+         pop
+         getlocal 23
+         convert_b
+         dup
+         iffalse ofs010a
+         pop
+         getlocal 25
+         convert_b
+         ofs010a:
+         dup
+         iftrue ofs014a
+         pop
+         getlocal 22
+         dup
+         iffalse ofs011a
+         pop
+         getlocal 25
+         ofs011a:
+         convert_b
+         dup
+         iffalse ofs014a
+         pop
+         getlocal 18
+         pushbyte 0
+         greaterthan
+         iffalse ofs0131
+         getlocal 18
+         coerce_a
+         jump ofs0135
+         ofs0131:
+         getlocal 18
+         negate
+         coerce_a
+         ofs0135:
+         getlocal 19
+         pushbyte 0
+         greaterthan
+         iffalse ofs0145
+         getlocal 19
+         coerce_a
+         jump ofs0149
+         ofs0145:
+         getlocal 19
+         negate
+         coerce_a
+         ofs0149:
+         lessthan
+         ofs014a:
+         dup
+         iftrue ofs018a
+         pop
+         getlocal 23
+         dup
+         iffalse ofs015a
+         pop
+         getlocal 26
+         ofs015a:
+         convert_b
+         dup
+         iffalse ofs018a
+         pop
+         getlocal 18
+         pushbyte 0
+         greaterthan
+         iffalse ofs0171
+         getlocal 18
+         coerce_a
+         jump ofs0175
+         ofs0171:
+         getlocal 18
+         negate
+         coerce_a
+         ofs0175:
+         getlocal 19
+         pushbyte 0
+         greaterthan
+         iffalse ofs0185
+         getlocal 19
+         coerce_a
+         jump ofs0189
+         ofs0185:
+         getlocal 19
+         negate
+         coerce_a
+         ofs0189:
+         greaterthan
+         ofs018a:
+         convert_b
+         dup
+         setlocal 6
+         iffalse ofs01a6
+         getlocal1
+         getproperty QName(PackageNamespace(""),"collideRight")
+         not
+         dup
+         iftrue ofs01a2
+         pop
+         getlocal2
+         getproperty QName(PackageNamespace(""),"collideLeft")
+         not
+         ofs01a2:
+         jump ofs01b6
+         ofs01a6:
+         getlocal1
+         getproperty QName(PackageNamespace(""),"collideLeft")
+         not
+         dup
+         iftrue ofs01b6
+         pop
+         getlocal2
+         getproperty QName(PackageNamespace(""),"collideRight")
+         not
+         ofs01b6:
+         iffalse ofs01bc
+         pushfalse
+         returnvalue
+         ofs01bc:
+         pushbyte 0
+         convert_u
+         setlocal 7
+         jump ofs0631
+         ofs01c5:
+         label
+         findpropstrict QName(PackageNamespace(""),"Number")
+         getlocal 28
+         getlocal 7
+         getproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty Multiname("x",[PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace(""),"Number"), 1
+         convert_d
+         setlocal 10
+         findpropstrict QName(PackageNamespace(""),"Number")
+         getlocal 28
+         getlocal 7
+         getproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty Multiname("y",[PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace(""),"Number"), 1
+         convert_d
+         setlocal 11
+         getlocal 9
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 10
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 9
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 11
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         pushbyte 0
+         convert_u
+         setlocal 8
+         jump ofs060d
+         ofs0209:
+         label
+         findpropstrict QName(PackageNamespace(""),"Number")
+         getlocal 29
+         getlocal 8
+         getproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty Multiname("x",[PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace(""),"Number"), 1
+         convert_d
+         setlocal 12
+         findpropstrict QName(PackageNamespace(""),"Number")
+         getlocal 29
+         getlocal 8
+         getproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty Multiname("y",[PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace(""),"Number"), 1
+         convert_d
+         setlocal 13
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 12
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 13
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"width")
+         add
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageInternalNs("org.flixel"),"roundingError")
+         add
+         lessthan
+         dup
+         iftrue ofs026e
+         pop
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageInternalNs("org.flixel"),"roundingError")
+         add
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"width")
+         add
+         greaterthan
+         ofs026e:
+         dup
+         iftrue ofs0286
+         pop
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"height")
+         add
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageInternalNs("org.flixel"),"roundingError")
+         add
+         lessthan
+         ofs0286:
+         dup
+         iftrue ofs029e
+         pop
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageInternalNs("org.flixel"),"roundingError")
+         add
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"height")
+         add
+         greaterthan
+         ofs029e:
+         iffalse ofs02c2
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 12
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 13
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 8
+         increment
+         convert_u
+         setlocal 8
+         jump ofs060d
+         ofs02c2:
+         getlocal 6
+         iffalse ofs0314
+         getlocal 22
+         iffalse ofs02e0
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"colHullY")
+         getproperty QName(PackageNamespace(""),"width")
+         add
+         convert_d
+         setlocal 14
+         jump ofs02ec
+         ofs02e0:
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"width")
+         add
+         convert_d
+         setlocal 14
+         ofs02ec:
+         getlocal 25
+         iffalse ofs02fd
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         convert_d
+         setlocal 15
+         jump ofs0310
+         ofs02fd:
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"width")
+         add
+         getlocal2
+         getproperty QName(PackageNamespace(""),"colHullY")
+         getproperty QName(PackageNamespace(""),"width")
+         subtract
+         convert_d
+         setlocal 15
+         ofs0310:
+         jump ofs0360
+         ofs0314:
+         getlocal 25
+         iffalse ofs032d
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         negate
+         getlocal2
+         getproperty QName(PackageNamespace(""),"colHullY")
+         getproperty QName(PackageNamespace(""),"width")
+         subtract
+         convert_d
+         setlocal 14
+         jump ofs033a
+         ofs032d:
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         negate
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"width")
+         subtract
+         convert_d
+         setlocal 14
+         ofs033a:
+         getlocal 22
+         iffalse ofs034c
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"x")
+         negate
+         convert_d
+         setlocal 15
+         jump ofs0360
+         ofs034c:
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"x")
+         negate
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"width")
+         subtract
+         getlocal1
+         getproperty QName(PackageNamespace(""),"colHullY")
+         getproperty QName(PackageNamespace(""),"width")
+         add
+         convert_d
+         setlocal 15
+         ofs0360:
+         getlocal 14
+         getlocal 15
+         subtract
+         convert_d
+         setlocal 5
+         getlocal1
+         getproperty QName(PackageNamespace(""),"fixed")
+         convert_b
+         setlocal3
+         getlocal2
+         getproperty QName(PackageNamespace(""),"fixed")
+         convert_b
+         setlocal 4
+         getlocal3
+         convert_b
+         dup
+         iffalse ofs0380
+         pop
+         getlocal 4
+         convert_b
+         ofs0380:
+         iffalse ofs03c2
+         getlocal3
+         convert_b
+         dup
+         iffalse ofs03a0
+         pop
+         getlocal1
+         getproperty QName(PackageNamespace(""),"colVector")
+         getproperty QName(PackageNamespace(""),"x")
+         pushbyte 0
+         equals
+         dup
+         iffalse ofs03a0
+         pop
+         getlocal 18
+         pushbyte 0
+         equals
+         ofs03a0:
+         convert_b
+         setlocal3
+         getlocal 4
+         convert_b
+         dup
+         iffalse ofs03bf
+         pop
+         getlocal2
+         getproperty QName(PackageNamespace(""),"colVector")
+         getproperty QName(PackageNamespace(""),"x")
+         pushbyte 0
+         equals
+         dup
+         iffalse ofs03bf
+         pop
+         getlocal 19
+         pushbyte 0
+         equals
+         ofs03bf:
+         convert_b
+         setlocal 4
+         ofs03c2:
+         getlocal 5
+         pushbyte 0
+         equals
+         dup
+         iftrue ofs03f1
+         pop
+         getlocal3
+         not
+         dup
+         iffalse ofs03f1
+         pop
+         getlocal 5
+         pushbyte 0
+         greaterthan
+         iffalse ofs03e5
+         getlocal 5
+         coerce_a
+         jump ofs03e9
+         ofs03e5:
+         getlocal 5
+         negate
+         coerce_a
+         ofs03e9:
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"width")
+         pushdouble 0.8
+         multiply
+         greaterthan
+         ofs03f1:
+         dup
+         iftrue ofs041c
+         pop
+         getlocal 4
+         not
+         dup
+         iffalse ofs041c
+         pop
+         getlocal 5
+         pushbyte 0
+         greaterthan
+         iffalse ofs0410
+         getlocal 5
+         coerce_a
+         jump ofs0414
+         ofs0410:
+         getlocal 5
+         negate
+         coerce_a
+         ofs0414:
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"width")
+         pushdouble 0.8
+         multiply
+         greaterthan
+         ofs041c:
+         iffalse ofs0440
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 12
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 13
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 8
+         increment
+         convert_u
+         setlocal 8
+         jump ofs060d
+         ofs0440:
+         pushtrue
+         setlocal 20
+         getlocal2
+         getproperty QName(PackageNamespace(""),"velocity")
+         getproperty QName(PackageNamespace(""),"x")
+         convert_d
+         setlocal 16
+         getlocal1
+         getproperty QName(PackageNamespace(""),"velocity")
+         getproperty QName(PackageNamespace(""),"x")
+         convert_d
+         setlocal 17
+         getlocal3
+         not
+         dup
+         iffalse ofs0460
+         pop
+         getlocal 4
+         convert_b
+         ofs0460:
+         iffalse ofs048b
+         getlocal1
+         getproperty QName(PackageInternalNs("org.flixel"),"_group")
+         iffalse ofs047e
+         getlocal1
+         getlocal1
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 5
+         subtract
+         getlocal1
+         getproperty QName(PackageNamespace(""),"y")
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         jump ofs0487
+         ofs047e:
+         getlocal1
+         getlocal1
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 5
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         ofs0487:
+         jump ofs052e
+         ofs048b:
+         getlocal3
+         convert_b
+         dup
+         iffalse ofs0496
+         pop
+         getlocal 4
+         not
+         ofs0496:
+         iffalse ofs04c1
+         getlocal2
+         getproperty QName(PackageInternalNs("org.flixel"),"_group")
+         iffalse ofs04b4
+         getlocal2
+         getlocal2
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 5
+         add
+         getlocal2
+         getproperty QName(PackageNamespace(""),"y")
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         jump ofs04bd
+         ofs04b4:
+         getlocal2
+         getlocal2
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 5
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         ofs04bd:
+         jump ofs052e
+         ofs04c1:
+         getlocal3
+         not
+         dup
+         iffalse ofs04cc
+         pop
+         getlocal 4
+         not
+         ofs04cc:
+         iffalse ofs052e
+         getlocal 5
+         pushbyte 2
+         divide
+         convert_d
+         setlocal 5
+         getlocal1
+         getproperty QName(PackageInternalNs("org.flixel"),"_group")
+         iffalse ofs04f2
+         getlocal1
+         getlocal1
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 5
+         subtract
+         getlocal1
+         getproperty QName(PackageNamespace(""),"y")
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         jump ofs04fb
+         ofs04f2:
+         getlocal1
+         getlocal1
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 5
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         ofs04fb:
+         getlocal2
+         getproperty QName(PackageInternalNs("org.flixel"),"_group")
+         iffalse ofs0515
+         getlocal2
+         getlocal2
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 5
+         add
+         getlocal2
+         getproperty QName(PackageNamespace(""),"y")
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         jump ofs051e
+         ofs0515:
+         getlocal2
+         getlocal2
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 5
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         ofs051e:
+         getlocal 16
+         pushdouble 0.5
+         multiply
+         convert_d
+         setlocal 16
+         getlocal 17
+         pushdouble 0.5
+         multiply
+         convert_d
+         setlocal 17
+         ofs052e:
+         getlocal 6
+         iffalse ofs0548
+         getlocal1
+         getlocal2
+         getlocal 16
+         callpropvoid QName(PackageNamespace(""),"hitRight"), 2
+         getlocal2
+         getlocal1
+         getlocal 17
+         callpropvoid QName(PackageNamespace(""),"hitLeft"), 2
+         jump ofs0558
+         ofs0548:
+         getlocal1
+         getlocal2
+         getlocal 16
+         callpropvoid QName(PackageNamespace(""),"hitLeft"), 2
+         getlocal2
+         getlocal1
+         getlocal 17
+         callpropvoid QName(PackageNamespace(""),"hitRight"), 2
+         ofs0558:
+         getlocal3
+         not
+         dup
+         iffalse ofs0566
+         pop
+         getlocal 5
+         pushbyte 0
+         equals
+         not
+         ofs0566:
+         iffalse ofs05a4
+         getlocal 6
+         iffalse ofs057f
+         getlocal 9
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"width")
+         getlocal 5
+         subtract
+         setproperty QName(PackageNamespace(""),"width")
+         jump ofs0595
+         ofs057f:
+         getlocal 9
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 5
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 9
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"width")
+         getlocal 5
+         add
+         setproperty QName(PackageNamespace(""),"width")
+         ofs0595:
+         getlocal1
+         getproperty QName(PackageNamespace(""),"colHullY")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"colHullY")
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 5
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         ofs05a4:
+         getlocal 4
+         not
+         dup
+         iffalse ofs05b3
+         pop
+         getlocal 5
+         pushbyte 0
+         equals
+         not
+         ofs05b3:
+         iffalse ofs05f1
+         getlocal 6
+         iffalse ofs05d7
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 5
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"width")
+         getlocal 5
+         subtract
+         setproperty QName(PackageNamespace(""),"width")
+         jump ofs05e2
+         ofs05d7:
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"width")
+         getlocal 5
+         add
+         setproperty QName(PackageNamespace(""),"width")
+         ofs05e2:
+         getlocal2
+         getproperty QName(PackageNamespace(""),"colHullY")
+         getlocal2
+         getproperty QName(PackageNamespace(""),"colHullY")
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 5
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         ofs05f1:
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 12
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 13
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 8
+         increment
+         convert_u
+         setlocal 8
+         ofs060d:
+         getlocal 8
+         getlocal 31
+         iflt ofs0209
+         getlocal 9
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 10
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 9
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 11
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 7
+         increment
+         convert_u
+         setlocal 7
+         ofs0631:
+         getlocal 7
+         getlocal 30
+         iflt ofs01c5
+         getlocal 20
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function solveYCollision(param1:FlxObject, param2:FlxObject) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"solveYCollision")
+         flag FINAL
+         dispid 25
+         method
+         name null
+         param QName(PackageNamespace("org.flixel"),"FlxObject")
+         param QName(PackageNamespace("org.flixel"),"FlxObject")
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 4
+         localcount 32
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushfalse
+         setlocal3
+         pushfalse
+         setlocal 4
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 5
+         pushfalse
+         setlocal 6
+         pushbyte 0
+         convert_u
+         setlocal 7
+         pushbyte 0
+         convert_u
+         setlocal 8
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 9
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 10
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 11
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 12
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 13
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 14
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 15
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal 16
+         getlocal1
+         getproperty QName(PackageNamespace(""),"colVector")
+         getproperty QName(PackageNamespace(""),"y")
+         convert_d
+         setlocal 17
+         getlocal2
+         getproperty QName(PackageNamespace(""),"colVector")
+         getproperty QName(PackageNamespace(""),"y")
+         convert_d
+         setlocal 18
+         getlocal 17
+         getlocal 18
+         ifne ofs0066
+         pushfalse
+         returnvalue
+         ofs0066:
+         getlocal1
+         getlocal2
+         callpropvoid QName(PackageNamespace(""),"preCollide"), 1
+         getlocal2
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"preCollide"), 1
+         pushfalse
+         setlocal 19
+         getlocal 17
+         pushbyte 0
+         equals
+         coerce_a
+         setlocal 20
+         getlocal 17
+         pushbyte 0
+         lessthan
+         coerce_a
+         setlocal 21
+         getlocal 17
+         pushbyte 0
+         greaterthan
+         coerce_a
+         setlocal 22
+         getlocal 18
+         pushbyte 0
+         equals
+         coerce_a
+         setlocal 23
+         getlocal 18
+         pushbyte 0
+         lessthan
+         coerce_a
+         setlocal 24
+         getlocal 18
+         pushbyte 0
+         greaterthan
+         coerce_a
+         setlocal 25
+         getlocal1
+         getproperty QName(PackageNamespace(""),"colHullY")
+         coerce QName(PackageNamespace("org.flixel"),"FlxRect")
+         setlocal 26
+         getlocal2
+         getproperty QName(PackageNamespace(""),"colHullY")
+         coerce QName(PackageNamespace("org.flixel"),"FlxRect")
+         setlocal 27
+         getlocal1
+         getproperty QName(PackageNamespace(""),"colOffsets")
+         coerce QName(PackageNamespace(""),"Array")
+         setlocal 28
+         getlocal2
+         getproperty QName(PackageNamespace(""),"colOffsets")
+         coerce QName(PackageNamespace(""),"Array")
+         setlocal 29
+         getlocal 28
+         getproperty QName(PackageNamespace(""),"length")
+         convert_u
+         setlocal 30
+         getlocal 29
+         getproperty QName(PackageNamespace(""),"length")
+         convert_u
+         setlocal 31
+         getlocal 20
+         convert_b
+         dup
+         iffalse ofs00e1
+         pop
+         getlocal 24
+         convert_b
+         ofs00e1:
+         dup
+         iftrue ofs00f3
+         pop
+         getlocal 22
+         convert_b
+         dup
+         iffalse ofs00f3
+         pop
+         getlocal 23
+         convert_b
+         ofs00f3:
+         dup
+         iftrue ofs0105
+         pop
+         getlocal 22
+         convert_b
+         dup
+         iffalse ofs0105
+         pop
+         getlocal 24
+         convert_b
+         ofs0105:
+         dup
+         iftrue ofs0145
+         pop
+         getlocal 21
+         dup
+         iffalse ofs0115
+         pop
+         getlocal 24
+         ofs0115:
+         convert_b
+         dup
+         iffalse ofs0145
+         pop
+         getlocal 17
+         pushbyte 0
+         greaterthan
+         iffalse ofs012c
+         getlocal 17
+         coerce_a
+         jump ofs0130
+         ofs012c:
+         getlocal 17
+         negate
+         coerce_a
+         ofs0130:
+         getlocal 18
+         pushbyte 0
+         greaterthan
+         iffalse ofs0140
+         getlocal 18
+         coerce_a
+         jump ofs0144
+         ofs0140:
+         getlocal 18
+         negate
+         coerce_a
+         ofs0144:
+         lessthan
+         ofs0145:
+         dup
+         iftrue ofs0185
+         pop
+         getlocal 22
+         dup
+         iffalse ofs0155
+         pop
+         getlocal 25
+         ofs0155:
+         convert_b
+         dup
+         iffalse ofs0185
+         pop
+         getlocal 17
+         pushbyte 0
+         greaterthan
+         iffalse ofs016c
+         getlocal 17
+         coerce_a
+         jump ofs0170
+         ofs016c:
+         getlocal 17
+         negate
+         coerce_a
+         ofs0170:
+         getlocal 18
+         pushbyte 0
+         greaterthan
+         iffalse ofs0180
+         getlocal 18
+         coerce_a
+         jump ofs0184
+         ofs0180:
+         getlocal 18
+         negate
+         coerce_a
+         ofs0184:
+         greaterthan
+         ofs0185:
+         convert_b
+         dup
+         setlocal 6
+         iffalse ofs01a1
+         getlocal1
+         getproperty QName(PackageNamespace(""),"collideBottom")
+         not
+         dup
+         iftrue ofs019d
+         pop
+         getlocal2
+         getproperty QName(PackageNamespace(""),"collideTop")
+         not
+         ofs019d:
+         jump ofs01b1
+         ofs01a1:
+         getlocal1
+         getproperty QName(PackageNamespace(""),"collideTop")
+         not
+         dup
+         iftrue ofs01b1
+         pop
+         getlocal2
+         getproperty QName(PackageNamespace(""),"collideBottom")
+         not
+         ofs01b1:
+         iffalse ofs01b7
+         pushfalse
+         returnvalue
+         ofs01b7:
+         pushbyte 0
+         convert_u
+         setlocal 7
+         jump ofs0689
+         ofs01c0:
+         label
+         findpropstrict QName(PackageNamespace(""),"Number")
+         getlocal 28
+         getlocal 7
+         getproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty Multiname("x",[PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace(""),"Number"), 1
+         convert_d
+         setlocal 9
+         findpropstrict QName(PackageNamespace(""),"Number")
+         getlocal 28
+         getlocal 7
+         getproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty Multiname("y",[PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace(""),"Number"), 1
+         convert_d
+         setlocal 10
+         getlocal 26
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 9
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 26
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 10
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         pushbyte 0
+         convert_u
+         setlocal 8
+         jump ofs0665
+         ofs0204:
+         label
+         findpropstrict QName(PackageNamespace(""),"Number")
+         getlocal 29
+         getlocal 8
+         getproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty Multiname("x",[PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace(""),"Number"), 1
+         convert_d
+         setlocal 11
+         findpropstrict QName(PackageNamespace(""),"Number")
+         getlocal 29
+         getlocal 8
+         getproperty MultinameL([PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty Multiname("y",[PrivateNamespace(null,"252"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"253"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace(""),"Number"), 1
+         convert_d
+         setlocal 12
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 11
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 12
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"width")
+         add
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageInternalNs("org.flixel"),"roundingError")
+         add
+         lessthan
+         dup
+         iftrue ofs0269
+         pop
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageInternalNs("org.flixel"),"roundingError")
+         add
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"width")
+         add
+         greaterthan
+         ofs0269:
+         dup
+         iftrue ofs0281
+         pop
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"height")
+         add
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageInternalNs("org.flixel"),"roundingError")
+         add
+         lessthan
+         ofs0281:
+         dup
+         iftrue ofs0299
+         pop
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageInternalNs("org.flixel"),"roundingError")
+         add
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"height")
+         add
+         greaterthan
+         ofs0299:
+         iffalse ofs02bd
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 11
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 12
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 8
+         increment
+         convert_u
+         setlocal 8
+         jump ofs0665
+         ofs02bd:
+         getlocal 6
+         iffalse ofs030f
+         getlocal 21
+         iffalse ofs02db
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"colHullX")
+         getproperty QName(PackageNamespace(""),"height")
+         add
+         convert_d
+         setlocal 13
+         jump ofs02e7
+         ofs02db:
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"height")
+         add
+         convert_d
+         setlocal 13
+         ofs02e7:
+         getlocal 24
+         iffalse ofs02f8
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"y")
+         convert_d
+         setlocal 14
+         jump ofs030b
+         ofs02f8:
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"height")
+         add
+         getlocal2
+         getproperty QName(PackageNamespace(""),"colHullX")
+         getproperty QName(PackageNamespace(""),"height")
+         subtract
+         convert_d
+         setlocal 14
+         ofs030b:
+         jump ofs035b
+         ofs030f:
+         getlocal 24
+         iffalse ofs0328
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"y")
+         negate
+         getlocal2
+         getproperty QName(PackageNamespace(""),"colHullX")
+         getproperty QName(PackageNamespace(""),"height")
+         subtract
+         convert_d
+         setlocal 13
+         jump ofs0335
+         ofs0328:
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"y")
+         negate
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"height")
+         subtract
+         convert_d
+         setlocal 13
+         ofs0335:
+         getlocal 21
+         iffalse ofs0347
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"y")
+         negate
+         convert_d
+         setlocal 14
+         jump ofs035b
+         ofs0347:
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"y")
+         negate
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"height")
+         subtract
+         getlocal1
+         getproperty QName(PackageNamespace(""),"colHullX")
+         getproperty QName(PackageNamespace(""),"height")
+         add
+         convert_d
+         setlocal 14
+         ofs035b:
+         getlocal 13
+         getlocal 14
+         subtract
+         convert_d
+         setlocal 5
+         getlocal1
+         getproperty QName(PackageNamespace(""),"fixed")
+         convert_b
+         setlocal3
+         getlocal2
+         getproperty QName(PackageNamespace(""),"fixed")
+         convert_b
+         setlocal 4
+         getlocal3
+         convert_b
+         dup
+         iffalse ofs037b
+         pop
+         getlocal 4
+         convert_b
+         ofs037b:
+         iffalse ofs03bd
+         getlocal3
+         convert_b
+         dup
+         iffalse ofs039b
+         pop
+         getlocal1
+         getproperty QName(PackageNamespace(""),"colVector")
+         getproperty QName(PackageNamespace(""),"x")
+         pushbyte 0
+         equals
+         dup
+         iffalse ofs039b
+         pop
+         getlocal 17
+         pushbyte 0
+         equals
+         ofs039b:
+         convert_b
+         setlocal3
+         getlocal 4
+         convert_b
+         dup
+         iffalse ofs03ba
+         pop
+         getlocal2
+         getproperty QName(PackageNamespace(""),"colVector")
+         getproperty QName(PackageNamespace(""),"x")
+         pushbyte 0
+         equals
+         dup
+         iffalse ofs03ba
+         pop
+         getlocal 18
+         pushbyte 0
+         equals
+         ofs03ba:
+         convert_b
+         setlocal 4
+         ofs03bd:
+         getlocal 5
+         pushbyte 0
+         equals
+         dup
+         iftrue ofs03ec
+         pop
+         getlocal3
+         not
+         dup
+         iffalse ofs03ec
+         pop
+         getlocal 5
+         pushbyte 0
+         greaterthan
+         iffalse ofs03e0
+         getlocal 5
+         coerce_a
+         jump ofs03e4
+         ofs03e0:
+         getlocal 5
+         negate
+         coerce_a
+         ofs03e4:
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"height")
+         pushdouble 0.8
+         multiply
+         greaterthan
+         ofs03ec:
+         dup
+         iftrue ofs0417
+         pop
+         getlocal 4
+         not
+         dup
+         iffalse ofs0417
+         pop
+         getlocal 5
+         pushbyte 0
+         greaterthan
+         iffalse ofs040b
+         getlocal 5
+         coerce_a
+         jump ofs040f
+         ofs040b:
+         getlocal 5
+         negate
+         coerce_a
+         ofs040f:
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"height")
+         pushdouble 0.8
+         multiply
+         greaterthan
+         ofs0417:
+         iffalse ofs043b
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 11
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 12
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 8
+         increment
+         convert_u
+         setlocal 8
+         jump ofs0665
+         ofs043b:
+         pushtrue
+         setlocal 19
+         getlocal2
+         getproperty QName(PackageNamespace(""),"velocity")
+         getproperty QName(PackageNamespace(""),"y")
+         convert_d
+         setlocal 15
+         getlocal1
+         getproperty QName(PackageNamespace(""),"velocity")
+         getproperty QName(PackageNamespace(""),"y")
+         convert_d
+         setlocal 16
+         getlocal3
+         not
+         dup
+         iffalse ofs045b
+         pop
+         getlocal 4
+         convert_b
+         ofs045b:
+         iffalse ofs0486
+         getlocal1
+         getproperty QName(PackageInternalNs("org.flixel"),"_group")
+         iffalse ofs0479
+         getlocal1
+         getlocal1
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 5
+         subtract
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         jump ofs0482
+         ofs0479:
+         getlocal1
+         getlocal1
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 5
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         ofs0482:
+         jump ofs0529
+         ofs0486:
+         getlocal3
+         convert_b
+         dup
+         iffalse ofs0491
+         pop
+         getlocal 4
+         not
+         ofs0491:
+         iffalse ofs04bc
+         getlocal2
+         getproperty QName(PackageInternalNs("org.flixel"),"_group")
+         iffalse ofs04af
+         getlocal2
+         getlocal2
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal2
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 5
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         jump ofs04b8
+         ofs04af:
+         getlocal2
+         getlocal2
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 5
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         ofs04b8:
+         jump ofs0529
+         ofs04bc:
+         getlocal3
+         not
+         dup
+         iffalse ofs04c7
+         pop
+         getlocal 4
+         not
+         ofs04c7:
+         iffalse ofs0529
+         getlocal 5
+         pushbyte 2
+         divide
+         convert_d
+         setlocal 5
+         getlocal1
+         getproperty QName(PackageInternalNs("org.flixel"),"_group")
+         iffalse ofs04ed
+         getlocal1
+         getlocal1
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 5
+         subtract
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         jump ofs04f6
+         ofs04ed:
+         getlocal1
+         getlocal1
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 5
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         ofs04f6:
+         getlocal2
+         getproperty QName(PackageInternalNs("org.flixel"),"_group")
+         iffalse ofs0510
+         getlocal2
+         getlocal2
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal2
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 5
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         jump ofs0519
+         ofs0510:
+         getlocal2
+         getlocal2
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 5
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         ofs0519:
+         getlocal 15
+         pushdouble 0.5
+         multiply
+         convert_d
+         setlocal 15
+         getlocal 16
+         pushdouble 0.5
+         multiply
+         convert_d
+         setlocal 16
+         ofs0529:
+         getlocal 6
+         iffalse ofs0543
+         getlocal1
+         getlocal2
+         getlocal 15
+         callpropvoid QName(PackageNamespace(""),"hitBottom"), 2
+         getlocal2
+         getlocal1
+         getlocal 16
+         callpropvoid QName(PackageNamespace(""),"hitTop"), 2
+         jump ofs0553
+         ofs0543:
+         getlocal1
+         getlocal2
+         getlocal 15
+         callpropvoid QName(PackageNamespace(""),"hitTop"), 2
+         getlocal2
+         getlocal1
+         getlocal 16
+         callpropvoid QName(PackageNamespace(""),"hitBottom"), 2
+         ofs0553:
+         getlocal3
+         not
+         dup
+         iffalse ofs0561
+         pop
+         getlocal 5
+         pushbyte 0
+         equals
+         not
+         ofs0561:
+         iffalse ofs05ce
+         getlocal 6
+         iffalse ofs05b8
+         getlocal 26
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 5
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 4
+         convert_b
+         dup
+         iffalse ofs0584
+         pop
+         getlocal2
+         getproperty QName(PackageNamespace(""),"moves")
+         convert_b
+         ofs0584:
+         iffalse ofs05b4
+         getlocal2
+         getproperty QName(PackageNamespace(""),"colVector")
+         getproperty QName(PackageNamespace(""),"x")
+         convert_d
+         setlocal 15
+         getlocal1
+         getlocal1
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 15
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 26
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 15
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"colHullX")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"colHullX")
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 15
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         ofs05b4:
+         jump ofs05ce
+         ofs05b8:
+         getlocal 26
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 5
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 26
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"height")
+         getlocal 5
+         add
+         setproperty QName(PackageNamespace(""),"height")
+         ofs05ce:
+         getlocal 4
+         not
+         dup
+         iffalse ofs05dd
+         pop
+         getlocal 5
+         pushbyte 0
+         equals
+         not
+         ofs05dd:
+         iffalse ofs0649
+         getlocal 6
+         iffalse ofs0601
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 5
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"height")
+         getlocal 5
+         subtract
+         setproperty QName(PackageNamespace(""),"height")
+         jump ofs0649
+         ofs0601:
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"height")
+         getlocal 5
+         add
+         setproperty QName(PackageNamespace(""),"height")
+         getlocal3
+         convert_b
+         dup
+         iffalse ofs0619
+         pop
+         getlocal1
+         getproperty QName(PackageNamespace(""),"moves")
+         convert_b
+         ofs0619:
+         iffalse ofs0649
+         getlocal1
+         getproperty QName(PackageNamespace(""),"colVector")
+         getproperty QName(PackageNamespace(""),"x")
+         convert_d
+         setlocal 16
+         getlocal2
+         getlocal2
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 16
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 16
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal2
+         getproperty QName(PackageNamespace(""),"colHullX")
+         getlocal2
+         getproperty QName(PackageNamespace(""),"colHullX")
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 16
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         ofs0649:
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 11
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 27
+         getlocal 27
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 12
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 8
+         increment
+         convert_u
+         setlocal 8
+         ofs0665:
+         getlocal 8
+         getlocal 31
+         iflt ofs0204
+         getlocal 26
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 9
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 26
+         getlocal 26
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 10
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 7
+         increment
+         convert_u
+         setlocal 7
+         ofs0689:
+         getlocal 7
+         getlocal 30
+         iflt ofs01c0
+         getlocal 19
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 3
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("FlxU",[PackageNamespace("org.flixel")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace(""),"Object")
+newclass 13
+popscope
+initproperty QName(PackageNamespace("org.flixel"),"FlxU")
+returnvoid
+end ; code
+end ; body
+end ; method
+

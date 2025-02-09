@@ -1,0 +1,945 @@
+package com.newgrounds
+{
+   import flash.display.Bitmap;
+   import flash.display.BitmapData;
+   import flash.display.Loader;
+   import flash.events.Event;
+   import flash.events.IOErrorEvent;
+   import flash.events.SecurityErrorEvent;
+   import flash.net.URLRequest;
+   import flash.system.LoaderContext;
+   
+   public class Medal
+   {
+      private static const DEFAULT_ICON:BitmapData;
+      
+      private static const DIFFICULT_NAMES:Array;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 7
+      localcount 1
+      initscopedepth 3
+      maxscopedepth 4
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"15"),"DEFAULT_ICON")
+      findpropstrict QName(PackageNamespace("flash.display"),"BitmapData")
+      pushbyte 50
+      dup
+      pushfalse
+      pushbyte 0
+      constructprop QName(PackageNamespace("flash.display"),"BitmapData"), 4
+      initproperty QName(PrivateNamespace(null,"15"),"DEFAULT_ICON")
+      findproperty QName(PrivateNamespace(null,"15"),"DIFFICULT_NAMES")
+      pushnull
+      pushstring "Easy"
+      pushstring "Moderate"
+      pushstring "Challenging"
+      pushstring "Difficult"
+      pushstring "Brutal"
+      newarray 6
+      initproperty QName(PrivateNamespace(null,"15"),"DIFFICULT_NAMES")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var _id:uint;
+      
+      private var _name:String;
+      
+      private var _value:uint;
+      
+      private var _difficultyId:uint;
+      
+      private var _unlocked:Boolean = false;
+      
+      private var _iconUrl:URLRequest;
+      
+      private var _iconLoader:Loader;
+      
+      private var _icon:BitmapData;
+      
+      public function Medal(param1:uint, param2:String, param3:uint, param4:uint, param5:Boolean, param6:String)
+      {
+         method
+         name null
+         flag NEED_ACTIVATION
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"Boolean")
+         param QName(PackageNamespace(""),"String")
+         returns null
+         
+         body
+         maxstack 4
+         localcount 9
+         initscopedepth 5
+         maxscopedepth 10
+         trait slot QName(PackageInternalNs("com.newgrounds"),"param1")
+         slotid 1
+         type QName(PackageNamespace(""),"uint")
+         end ; trait
+         trait slot QName(PackageInternalNs("com.newgrounds"),"param2")
+         slotid 2
+         type QName(PackageNamespace(""),"String")
+         end ; trait
+         trait slot QName(PackageInternalNs("com.newgrounds"),"param3")
+         slotid 3
+         type QName(PackageNamespace(""),"uint")
+         end ; trait
+         trait slot QName(PackageInternalNs("com.newgrounds"),"param4")
+         slotid 4
+         type QName(PackageNamespace(""),"uint")
+         end ; trait
+         trait slot QName(PackageInternalNs("com.newgrounds"),"param5")
+         slotid 5
+         type QName(PackageNamespace(""),"Boolean")
+         end ; trait
+         trait slot QName(PackageInternalNs("com.newgrounds"),"param6")
+         slotid 6
+         type QName(PackageNamespace(""),"String")
+         end ; trait
+         trait slot QName(PackageInternalNs("com.newgrounds"),"id")
+         slotid 7
+         type QName(PackageNamespace(""),"uint")
+         end ; trait
+         trait slot QName(PackageInternalNs("com.newgrounds"),"name")
+         slotid 8
+         type QName(PackageNamespace(""),"String")
+         end ; trait
+         trait slot QName(PackageInternalNs("com.newgrounds"),"value")
+         slotid 9
+         type QName(PackageNamespace(""),"uint")
+         end ; trait
+         trait slot QName(PackageInternalNs("com.newgrounds"),"difficulty")
+         slotid 10
+         type QName(PackageNamespace(""),"uint")
+         end ; trait
+         trait slot QName(PackageInternalNs("com.newgrounds"),"unlocked")
+         slotid 11
+         type QName(PackageNamespace(""),"Boolean")
+         end ; trait
+         trait slot QName(PackageInternalNs("com.newgrounds"),"iconUrl")
+         slotid 12
+         type QName(PackageNamespace(""),"String")
+         end ; trait
+         
+         code
+         getlocal0
+         pushscope
+         newactivation
+         dup
+         setlocal 7
+         pushscope
+         getscopeobject 1
+         getlocal1
+         setslot 1
+         getscopeobject 1
+         getlocal2
+         setslot 2
+         getscopeobject 1
+         getlocal3
+         setslot 3
+         getscopeobject 1
+         getlocal 4
+         setslot 4
+         getscopeobject 1
+         getlocal 5
+         setslot 5
+         getscopeobject 1
+         getlocal 6
+         setslot 6
+         getscopeobject 1
+         getscopeobject 1
+         getslot 1
+         convert_u
+         setslot 7
+         getscopeobject 1
+         getscopeobject 1
+         getslot 2
+         coerce_s
+         setslot 8
+         getscopeobject 1
+         getscopeobject 1
+         getslot 3
+         convert_u
+         setslot 9
+         getscopeobject 1
+         getscopeobject 1
+         getslot 4
+         convert_u
+         setslot 10
+         getscopeobject 1
+         getscopeobject 1
+         getslot 5
+         convert_b
+         setslot 11
+         getscopeobject 1
+         getscopeobject 1
+         getslot 6
+         coerce_s
+         setslot 12
+         getlocal0
+         getlex QName(PrivateNamespace(null,"15"),"DEFAULT_ICON")
+         initproperty QName(PrivateNamespace(null,"15"),"_icon")
+         getlocal0
+         constructsuper 0
+         getlocal0
+         getscopeobject 1
+         getslot 7
+         initproperty QName(PrivateNamespace(null,"15"),"_id")
+         getlocal0
+         getscopeobject 1
+         getslot 8
+         initproperty QName(PrivateNamespace(null,"15"),"_name")
+         getlocal0
+         getscopeobject 1
+         getslot 9
+         initproperty QName(PrivateNamespace(null,"15"),"_value")
+         getlocal0
+         getscopeobject 1
+         getslot 10
+         initproperty QName(PrivateNamespace(null,"15"),"_difficultyId")
+         getlocal0
+         getscopeobject 1
+         getslot 11
+         initproperty QName(PrivateNamespace(null,"15"),"_unlocked")
+         getscopeobject 1
+         getslot 12
+         iffalse ofs0132
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.net"),"URLRequest")
+         getscopeobject 1
+         getslot 12
+         constructprop QName(PackageNamespace("flash.net"),"URLRequest"), 1
+         initproperty QName(PrivateNamespace(null,"15"),"_iconUrl")
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.display"),"Loader")
+         constructprop QName(PackageNamespace("flash.display"),"Loader"), 0
+         initproperty QName(PrivateNamespace(null,"15"),"_iconLoader")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_iconLoader")
+         getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+         getlex QName(PackageNamespace("flash.events"),"Event")
+         getproperty QName(PackageNamespace(""),"INIT")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"onIconLoaderInit")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_iconLoader")
+         getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+         getlex QName(PackageNamespace("flash.events"),"IOErrorEvent")
+         getproperty QName(PackageNamespace(""),"IO_ERROR")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"onIconLoaderError")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_iconLoader")
+         getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+         getlex QName(PackageNamespace("flash.events"),"SecurityErrorEvent")
+         getproperty QName(PackageNamespace(""),"SECURITY_ERROR")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"onIconLoaderError")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_iconLoader")
+         getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+         getlex QName(PackageNamespace("flash.events"),"Event")
+         getproperty QName(PackageNamespace(""),"COMPLETE")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"onIconLoaderComplete")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         ofs0100:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_iconLoader")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_iconUrl")
+         findpropstrict QName(PackageNamespace("flash.system"),"LoaderContext")
+         pushtrue
+         constructprop QName(PackageNamespace("flash.system"),"LoaderContext"), 1
+         callpropvoid QName(PackageNamespace(""),"load"), 2
+         ofs0114:
+         jump ofs0132
+         ofs0118:
+         getlocal0
+         pushscope
+         getlocal 7
+         pushscope
+         newcatch 0
+         dup
+         setlocal 8
+         dup
+         pushscope
+         swap
+         setslot 1
+         findpropstrict QName(PrivateNamespace(null,"15"),"onIconLoaderError")
+         pushnull
+         callpropvoid QName(PrivateNamespace(null,"15"),"onIconLoaderError"), 1
+         popscope
+         kill 8
+         ofs0132:
+         returnvoid
+         end ; code
+         try from ofs0100 to ofs0114 target ofs0118 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
+         end ; body
+         end ; method
+      }
+      
+      public static function createFromObject(param1:Object) : Medal
+      {
+         trait method QName(PackageNamespace(""),"createFromObject")
+         flag FINAL
+         dispid 3
+         method
+         name null
+         param QName(PackageNamespace(""),"Object")
+         returns QName(PackageNamespace("com.newgrounds"),"Medal")
+         
+         body
+         maxstack 7
+         localcount 2
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         getproperty Multiname("medal_id",[PrivateNamespace(null,"15"),PrivateNamespace(null,"44"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:Medal"),StaticProtectedNs("com.newgrounds:Medal"),StaticProtectedNs("Object")])
+         getlocal1
+         getproperty Multiname("medal_name",[PrivateNamespace(null,"15"),PrivateNamespace(null,"44"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:Medal"),StaticProtectedNs("com.newgrounds:Medal"),StaticProtectedNs("Object")])
+         getlocal1
+         getproperty Multiname("medal_value",[PrivateNamespace(null,"15"),PrivateNamespace(null,"44"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:Medal"),StaticProtectedNs("com.newgrounds:Medal"),StaticProtectedNs("Object")])
+         getlocal1
+         getproperty Multiname("medal_difficulty",[PrivateNamespace(null,"15"),PrivateNamespace(null,"44"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:Medal"),StaticProtectedNs("com.newgrounds:Medal"),StaticProtectedNs("Object")])
+         getlocal1
+         getproperty Multiname("medal_unlocked",[PrivateNamespace(null,"15"),PrivateNamespace(null,"44"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:Medal"),StaticProtectedNs("com.newgrounds:Medal"),StaticProtectedNs("Object")])
+         getlocal1
+         getproperty Multiname("medal_icon",[PrivateNamespace(null,"15"),PrivateNamespace(null,"44"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:Medal"),StaticProtectedNs("com.newgrounds:Medal"),StaticProtectedNs("Object")])
+         construct 6
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get difficulty() : String
+      {
+         trait getter QName(PackageNamespace(""),"difficulty")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PrivateNamespace(null,"15"),"DIFFICULT_NAMES")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_difficultyId")
+         getproperty MultinameL([PrivateNamespace(null,"15"),PrivateNamespace(null,"44"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:Medal"),StaticProtectedNs("com.newgrounds:Medal"),StaticProtectedNs("Object")])
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get difficultyId() : uint
+      {
+         trait getter QName(PackageNamespace(""),"difficultyId")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_difficultyId")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get icon() : BitmapData
+      {
+         trait getter QName(PackageNamespace(""),"icon")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("flash.display"),"BitmapData")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_icon")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get id() : uint
+      {
+         trait getter QName(PackageNamespace(""),"id")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_id")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get name() : String
+      {
+         trait getter QName(PackageNamespace(""),"name")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_name")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get unlocked() : Boolean
+      {
+         trait getter QName(PackageNamespace(""),"unlocked")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_unlocked")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function isUnlocked() : Boolean
+      {
+         trait method QName(PackageNamespace(""),"isUnlocked")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_unlocked")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set unlocked(param1:Boolean) : void
+      {
+         trait setter QName(PackageNamespace(""),"unlocked")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         setproperty QName(PrivateNamespace(null,"15"),"_unlocked")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get value() : uint
+      {
+         trait getter QName(PackageNamespace(""),"value")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_value")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get bytesLoaded() : uint
+      {
+         trait getter QName(PackageNamespace(""),"bytesLoaded")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_iconLoader")
+         not
+         iftrue ofs001a
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_iconLoader")
+         getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+         getproperty QName(PackageNamespace(""),"bytesLoaded")
+         convert_u
+         jump ofs001d
+         ofs001a:
+         pushbyte 0
+         convert_u
+         ofs001d:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get bytesTotal() : uint
+      {
+         trait getter QName(PackageNamespace(""),"bytesTotal")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_iconLoader")
+         not
+         iftrue ofs001a
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_iconLoader")
+         getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+         getproperty QName(PackageNamespace(""),"bytesTotal")
+         convert_u
+         jump ofs001d
+         ofs001a:
+         pushbyte 0
+         convert_u
+         ofs001d:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getID() : uint
+      {
+         trait method QName(PackageNamespace(""),"getID")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_id")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getName() : String
+      {
+         trait method QName(PackageNamespace(""),"getName")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_name")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getValue() : uint
+      {
+         trait method QName(PackageNamespace(""),"getValue")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_value")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getDifficulty() : String
+      {
+         trait method QName(PackageNamespace(""),"getDifficulty")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PrivateNamespace(null,"15"),"DIFFICULT_NAMES")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_difficultyId")
+         getproperty MultinameL([PrivateNamespace(null,"15"),PrivateNamespace(null,"44"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:Medal"),StaticProtectedNs("com.newgrounds:Medal"),StaticProtectedNs("Object")])
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function onIconLoaderInit(param1:Event) : void
+      {
+         trait method QName(PrivateNamespace(null,"15"),"onIconLoaderInit")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"Event")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function onIconLoaderError(param1:IOErrorEvent) : void
+      {
+         trait method QName(PrivateNamespace(null,"15"),"onIconLoaderError")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"IOErrorEvent")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_iconLoader")
+         callpropvoid QName(PackageNamespace(""),"unload"), 0
+         getlocal0
+         pushnull
+         setproperty QName(PrivateNamespace(null,"15"),"_iconLoader")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function onIconLoaderComplete(param1:Event) : void
+      {
+         trait method QName(PrivateNamespace(null,"15"),"onIconLoaderComplete")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"Event")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 3
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_iconLoader")
+         getproperty QName(PackageNamespace(""),"content")
+         getlex QName(PackageNamespace("flash.display"),"Bitmap")
+         astypelate
+         coerce QName(PackageNamespace("flash.display"),"Bitmap")
+         setlocal2
+         getlocal0
+         getlocal2
+         getproperty QName(PackageNamespace(""),"bitmapData")
+         setproperty QName(PrivateNamespace(null,"15"),"_icon")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_iconLoader")
+         callpropvoid QName(PackageNamespace(""),"unload"), 0
+         getlocal0
+         pushnull
+         setproperty QName(PrivateNamespace(null,"15"),"_iconLoader")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function unlock() : void
+      {
+         trait method QName(PackageNamespace(""),"unlock")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_unlocked")
+         iftrue ofs0014
+         getlex QName(PackageNamespace("com.newgrounds"),"API")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_name")
+         callpropvoid QName(PackageNamespace(""),"unlockMedal"), 1
+         ofs0014:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function createIconBitmap() : Bitmap
+      {
+         trait method QName(PackageNamespace(""),"createIconBitmap")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("flash.display"),"Bitmap")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace("flash.display"),"Bitmap")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"icon")
+         constructprop QName(PackageNamespace("flash.display"),"Bitmap"), 1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function toString() : String
+      {
+         trait method QName(PackageNamespace(""),"toString")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"_name")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 3
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("Medal",[PackageNamespace("com.newgrounds")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace(""),"Object")
+newclass 29
+popscope
+initproperty QName(PackageNamespace("com.newgrounds"),"Medal")
+returnvoid
+end ; code
+end ; body
+end ; method
+

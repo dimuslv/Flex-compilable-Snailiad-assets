@@ -1,0 +1,706 @@
+package org.flixel.data
+{
+   import flash.events.KeyboardEvent;
+   
+   public class FlxInput
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 3
+      maxscopedepth 4
+      
+      code
+      getlocal0
+      pushscope
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      internal var _lookup:Object;
+      
+      internal var _map:Array;
+      
+      internal const _t:uint = 256;
+      
+      private var _lastKeys:Array;
+      
+      private const _ringLength:int = 20;
+      
+      private var _ringPos:int = 0;
+      
+      public function FlxInput()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Object")
+         constructprop QName(PackageNamespace(""),"Object"), 0
+         initproperty QName(PackageInternalNs("org.flixel.data"),"_lookup")
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Array")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel.data"),"_t")
+         constructprop QName(PackageNamespace(""),"Array"), 1
+         initproperty QName(PackageInternalNs("org.flixel.data"),"_map")
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         initproperty QName(PrivateNamespace(null,"3"),"_lastKeys")
+         pushbyte 0
+         setlocal1
+         jump ofs0039
+         ofs002b:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_lastKeys")
+         getlocal1
+         pushstring " "
+         setproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         inclocal_i 1
+         ofs0039:
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ringLength")
+         iflt ofs002b
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal1
+         pushbyte 0
+         convert_u
+         setlocal2
+         jump ofs006d
+         ofs000e:
+         label
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel.data"),"_map")
+         getlocal2
+         convert_d
+         dup
+         increment
+         convert_u
+         setlocal2
+         getproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal1
+         getlocal1
+         pushnull
+         ifeq ofs006d
+         getlocal1
+         getproperty Multiname("last",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         pushbyte -1
+         equals
+         dup
+         iffalse ofs0039
+         pop
+         getlocal1
+         getproperty Multiname("current",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         pushbyte -1
+         equals
+         ofs0039:
+         iffalse ofs0047
+         getlocal1
+         pushbyte 0
+         setproperty Multiname("current",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         jump ofs0065
+         ofs0047:
+         getlocal1
+         getproperty Multiname("last",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         pushbyte 2
+         equals
+         dup
+         iffalse ofs005b
+         pop
+         getlocal1
+         getproperty Multiname("current",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         pushbyte 2
+         equals
+         ofs005b:
+         iffalse ofs0065
+         getlocal1
+         pushbyte 1
+         setproperty Multiname("current",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         ofs0065:
+         getlocal1
+         getlocal1
+         getproperty Multiname("current",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         setproperty Multiname("last",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         ofs006d:
+         getlocal2
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel.data"),"_t")
+         iflt ofs000e
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function reset() : void
+      {
+         trait method QName(PackageNamespace(""),"reset")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal1
+         pushbyte 0
+         convert_u
+         setlocal2
+         jump ofs003a
+         ofs000e:
+         label
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel.data"),"_map")
+         getlocal2
+         convert_d
+         dup
+         increment
+         convert_u
+         setlocal2
+         getproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal1
+         getlocal1
+         pushnull
+         ifeq ofs003a
+         getlocal0
+         getlocal1
+         getproperty Multiname("name",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         pushfalse
+         setproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         getlocal1
+         pushbyte 0
+         setproperty Multiname("current",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         getlocal1
+         pushbyte 0
+         setproperty Multiname("last",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         ofs003a:
+         getlocal2
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel.data"),"_t")
+         iflt ofs000e
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function unpress(param1:String) : void
+      {
+         trait method QName(PackageNamespace(""),"unpress")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         pushfalse
+         setproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function press(param1:String) : void
+      {
+         trait method QName(PackageNamespace(""),"press")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         pushtrue
+         setproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function pressed(param1:String) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"pressed")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function justPressed(param1:String) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"justPressed")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 4
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"Boolean")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel.data"),"_lookup")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace(""),"Boolean"), 1
+         convert_b
+         dup
+         iffalse ofs002b
+         pop
+         findpropstrict QName(PackageNamespace(""),"Boolean")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel.data"),"_map")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel.data"),"_lookup")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace(""),"Boolean"), 1
+         convert_b
+         ofs002b:
+         dup
+         iffalse ofs0046
+         pop
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel.data"),"_map")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel.data"),"_lookup")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         getproperty Multiname("current",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         pushbyte 2
+         equals
+         ofs0046:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function justReleased(param1:String) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"justReleased")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel.data"),"_map")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel.data"),"_lookup")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         getproperty Multiname("current",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         pushbyte -1
+         equals
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function handleKeyDown(param1:KeyboardEvent) : void
+      {
+         trait method QName(PackageNamespace(""),"handleKeyDown")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"KeyboardEvent")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 5
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel.data"),"_map")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"keyCode")
+         getproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal2
+         getlocal2
+         pushnull
+         ifne ofs0017
+         returnvoid
+         ofs0017:
+         getlocal2
+         getproperty Multiname("current",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         pushbyte 0
+         ifngt ofs002b
+         getlocal2
+         pushbyte 1
+         setproperty Multiname("current",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         jump ofs0031
+         ofs002b:
+         getlocal2
+         pushbyte 2
+         setproperty Multiname("current",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         ofs0031:
+         getlocal0
+         getlocal2
+         getproperty Multiname("name",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         pushtrue
+         setproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_lastKeys")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ringPos")
+         getlocal2
+         getproperty Multiname("name",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         getlocal0
+         dup
+         setlocal3
+         getproperty QName(PrivateNamespace(null,"3"),"_ringPos")
+         increment_i
+         setlocal 4
+         getlocal3
+         getlocal 4
+         setproperty QName(PrivateNamespace(null,"3"),"_ringPos")
+         kill 4
+         kill 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ringPos")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ringLength")
+         modulo
+         setproperty QName(PrivateNamespace(null,"3"),"_ringPos")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getLastKeys(param1:int = 20) : String
+      {
+         trait method QName(PackageNamespace(""),"getLastKeys")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"int")
+         optional Integer(20)
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 4
+         localcount 3
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ringLength")
+         ifngt ofs0011
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ringLength")
+         convert_i
+         setlocal1
+         ofs0011:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ringLength")
+         getlocal1
+         subtract
+         convert_i
+         setlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_lastKeys")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ringPos")
+         getlocal2
+         add
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ringPos")
+         getlocal2
+         add
+         getlocal1
+         add
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"slice"), 2
+         pushstring ""
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"join"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ringPos")
+         getlocal1
+         subtract
+         pushbyte 0
+         greaterequals
+         iffalse ofs005f
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_lastKeys")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ringPos")
+         getlocal1
+         subtract
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ringPos")
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"slice"), 2
+         pushstring ""
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"join"), 1
+         coerce_a
+         jump ofs0074
+         ofs005f:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_lastKeys")
+         pushbyte 0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ringPos")
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"slice"), 2
+         pushstring ""
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"join"), 1
+         coerce_a
+         ofs0074:
+         add
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function handleKeyUp(param1:KeyboardEvent) : void
+      {
+         trait method QName(PackageNamespace(""),"handleKeyUp")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"KeyboardEvent")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel.data"),"_map")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"keyCode")
+         getproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal2
+         getlocal2
+         pushnull
+         ifne ofs0017
+         returnvoid
+         ofs0017:
+         getlocal2
+         getproperty Multiname("current",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         pushbyte 0
+         ifngt ofs002b
+         getlocal2
+         pushbyte -1
+         setproperty Multiname("current",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         jump ofs0031
+         ofs002b:
+         getlocal2
+         pushbyte 0
+         setproperty Multiname("current",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         ofs0031:
+         getlocal0
+         getlocal2
+         getproperty Multiname("name",[PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         pushfalse
+         setproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      internal function addKey(param1:String, param2:uint) : void
+      {
+         trait method QName(PackageInternalNs("org.flixel.data"),"addKey")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"uint")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 8
+         localcount 3
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel.data"),"_lookup")
+         getlocal1
+         getlocal2
+         setproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel.data"),"_map")
+         getlocal2
+         pushstring "name"
+         getlocal1
+         pushstring "current"
+         pushbyte 0
+         pushstring "last"
+         pushbyte 0
+         newobject 3
+         setproperty MultinameL([PrivateNamespace(null,"3"),PackageNamespace(""),PackageInternalNs("org.flixel.data"),PrivateNamespace(null,"256"),PackageNamespace("org.flixel.data"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel.data:FlxInput"),StaticProtectedNs("org.flixel.data:FlxInput"),StaticProtectedNs("Object")])
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 3
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("FlxInput",[PackageNamespace("org.flixel.data")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace(""),"Object")
+newclass 20
+popscope
+initproperty QName(PackageNamespace("org.flixel.data"),"FlxInput")
+returnvoid
+end ; code
+end ; body
+end ; method
+

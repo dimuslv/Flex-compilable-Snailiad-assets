@@ -1,0 +1,668 @@
+package com.newgrounds.components
+{
+   import com.newgrounds.API;
+   import com.newgrounds.APIEvent;
+   import flash.display.Bitmap;
+   import flash.display.DisplayObject;
+   import flash.display.MovieClip;
+   import flash.display.Shape;
+   import flash.display.Sprite;
+   import flash.events.Event;
+   import flash.events.MouseEvent;
+   import flash.utils.getDefinitionByName;
+   
+   public class FlxNGPreloader extends MovieClip
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 9
+      maxscopedepth 10
+      
+      code
+      getlocal0
+      pushscope
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public var NewgroundsAPIId:String;
+      
+      public var NewgroundsAPIEncryptionKey:String;
+      
+      public var NewgroundsAPIShowAds:Boolean = true;
+      
+      public var autoPlay:Boolean = false;
+      
+      public var className:String;
+      
+      protected var _initialized:Boolean;
+      
+      protected var _preloader:Sprite;
+      
+      protected var _ad:FlashAd;
+      
+      protected var _adContainer:Sprite;
+      
+      protected var _loadBarMask:Shape;
+      
+      protected var _loadBar:Bitmap;
+      
+      public function FlxNGPreloader()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 3
+         localcount 1
+         initscopedepth 10
+         maxscopedepth 11
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.display"),"Sprite")
+         constructprop QName(PackageNamespace("flash.display"),"Sprite"), 0
+         initproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_preloader")
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.display"),"Sprite")
+         constructprop QName(PackageNamespace("flash.display"),"Sprite"), 0
+         initproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.display"),"Shape")
+         constructprop QName(PackageNamespace("flash.display"),"Shape"), 0
+         initproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBarMask")
+         getlocal0
+         constructsuper 0
+         findpropstrict QName(PackageNamespace(""),"addEventListener")
+         getlex QName(PackageNamespace("flash.events"),"Event")
+         getproperty QName(PackageNamespace(""),"ENTER_FRAME")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"enterFrameHandler")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function create() : void
+      {
+         trait method QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"create")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 2
+         initscopedepth 10
+         maxscopedepth 11
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("flash.display"),"Bitmap")
+         setlocal1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"NewgroundsAPIId")
+         iftrue ofs000e
+         returnvoid
+         ofs000e:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"NewgroundsAPIShowAds")
+         iffalse ofs00ac
+         getlex QName(PackageNamespace("com.newgrounds"),"API")
+         getlex QName(PackageNamespace("com.newgrounds"),"APIEvent")
+         getproperty QName(PackageNamespace(""),"ADS_APPROVED")
+         getlocal0
+         getproperty QName(PrivateNamespace(null),"adsApprovedHandler")
+         pushfalse
+         pushbyte 0
+         pushtrue
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 5
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushbyte 0
+         callpropvoid QName(PackageNamespace(""),"beginFill"), 1
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushbyte -4
+         pushbyte -4
+         callpropvoid QName(PackageNamespace(""),"moveTo"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushshort 304
+         pushbyte -4
+         callpropvoid QName(PackageNamespace(""),"lineTo"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushshort 304
+         pushshort 254
+         callpropvoid QName(PackageNamespace(""),"lineTo"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushbyte -4
+         pushshort 254
+         callpropvoid QName(PackageNamespace(""),"lineTo"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushbyte -4
+         pushbyte -4
+         callpropvoid QName(PackageNamespace(""),"lineTo"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         getproperty QName(PackageNamespace(""),"graphics")
+         callpropvoid QName(PackageNamespace(""),"endFill"), 0
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         getlex QName(PackageNamespace(""),"Math")
+         pushbyte 1
+         getlex QName(PackageNamespace(""),"stage")
+         getproperty QName(PackageNamespace(""),"stageWidth")
+         pushshort 325
+         divide
+         callproperty QName(PackageNamespace(""),"min"), 2
+         setproperty QName(PackageNamespace(""),"scaleX")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         getproperty QName(PackageNamespace(""),"scaleX")
+         setproperty QName(PackageNamespace(""),"scaleY")
+         ofs00ac:
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_preloader")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         findpropstrict QName(PackageNamespace("flash.display"),"Bitmap")
+         findpropstrict QName(PackageNamespace(""),"FlxLoaderFrame")
+         pushbyte 0
+         dup
+         constructprop QName(PackageNamespace(""),"FlxLoaderFrame"), 2
+         constructprop QName(PackageNamespace("flash.display"),"Bitmap"), 1
+         coerce QName(PackageNamespace("flash.display"),"Bitmap")
+         setlocal1
+         getlocal1
+         pushshort 260
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_preloader")
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBarMask")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushbyte 0
+         callpropvoid QName(PackageNamespace(""),"beginFill"), 1
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBarMask")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushshort 304
+         pushbyte 0
+         callpropvoid QName(PackageNamespace(""),"lineTo"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBarMask")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushshort 304
+         pushbyte 70
+         callpropvoid QName(PackageNamespace(""),"lineTo"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBarMask")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushbyte 0
+         pushbyte 70
+         callpropvoid QName(PackageNamespace(""),"lineTo"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBarMask")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushbyte 0
+         dup
+         callpropvoid QName(PackageNamespace(""),"lineTo"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBarMask")
+         getproperty QName(PackageNamespace(""),"graphics")
+         callpropvoid QName(PackageNamespace(""),"endFill"), 0
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBarMask")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"scaleX")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBarMask")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"y")
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_preloader")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBarMask")
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.display"),"Bitmap")
+         findpropstrict QName(PackageNamespace(""),"FlxLoaderBar")
+         pushbyte 0
+         dup
+         constructprop QName(PackageNamespace(""),"FlxLoaderBar"), 2
+         constructprop QName(PackageNamespace("flash.display"),"Bitmap"), 1
+         setproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBar")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBar")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"y")
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_preloader")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBar")
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBar")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBarMask")
+         setproperty QName(PackageNamespace(""),"mask")
+         findpropstrict QName(PackageNamespace(""),"addChild")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_preloader")
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_preloader")
+         getlex QName(PackageNamespace(""),"stage")
+         getproperty QName(PackageNamespace(""),"stageWidth")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_preloader")
+         getproperty QName(PackageNamespace(""),"width")
+         subtract
+         pushbyte 2
+         divide
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_preloader")
+         getlex QName(PackageNamespace(""),"stage")
+         getproperty QName(PackageNamespace(""),"stageHeight")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_preloader")
+         getproperty QName(PackageNamespace(""),"height")
+         subtract
+         pushbyte 2
+         divide
+         setproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace("com.newgrounds"),"API")
+         getlex QName(PackageNamespace(""),"loaderInfo")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"NewgroundsAPIId")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"NewgroundsAPIEncryptionKey")
+         callpropvoid QName(PackageNamespace(""),"connect"), 3
+         getlocal0
+         pushtrue
+         setproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_initialized")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function createMedalPopup(param1:Number, param2:Number) : void
+      {
+         trait method QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"createMedalPopup")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 4
+         initscopedepth 10
+         maxscopedepth 11
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace("com.newgrounds.components"),"MedalPopup")
+         constructprop QName(PackageNamespace("com.newgrounds.components"),"MedalPopup"), 0
+         coerce QName(PackageNamespace("com.newgrounds.components"),"MedalPopup")
+         setlocal3
+         getlocal3
+         getlocal1
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal3
+         getlocal2
+         setproperty QName(PackageNamespace(""),"y")
+         findpropstrict QName(PackageNamespace(""),"addChild")
+         getlocal3
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function enterFrameHandler(param1:Event) : void
+      {
+         trait method QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"enterFrameHandler")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"Event")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 5
+         localcount 4
+         initscopedepth 10
+         maxscopedepth 11
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("flash.display"),"Sprite")
+         setlocal2
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_initialized")
+         iftrue ofs0019
+         getlex QName(PackageNamespace(""),"stage")
+         iffalse ofs0018
+         getlocal0
+         callpropvoid QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"create"), 0
+         ofs0018:
+         returnvoid
+         ofs0019:
+         getlex QName(PackageNamespace(""),"loaderInfo")
+         getproperty QName(PackageNamespace(""),"bytesLoaded")
+         getlex QName(PackageNamespace(""),"loaderInfo")
+         getproperty QName(PackageNamespace(""),"bytesTotal")
+         divide
+         convert_d
+         setlocal3
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBarMask")
+         findpropstrict QName(PackageNamespace(""),"uint")
+         getlocal3
+         pushshort 200
+         multiply
+         callproperty QName(PackageNamespace(""),"uint"), 1
+         pushshort 200
+         divide
+         setproperty QName(PackageNamespace(""),"scaleX")
+         getlocal3
+         pushbyte 1
+         ifnge ofs00b0
+         findpropstrict QName(PackageNamespace(""),"removeEventListener")
+         getlex QName(PackageNamespace("flash.events"),"Event")
+         getproperty QName(PackageNamespace(""),"ENTER_FRAME")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"enterFrameHandler")
+         callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+         getlocal0
+         getproperty QName(PackageNamespace(""),"autoPlay")
+         iffalse ofs0061
+         getlocal0
+         callpropvoid QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"startGame"), 0
+         jump ofs00b0
+         ofs0061:
+         findpropstrict QName(PackageNamespace("flash.display"),"Sprite")
+         constructprop QName(PackageNamespace("flash.display"),"Sprite"), 0
+         coerce QName(PackageNamespace("flash.display"),"Sprite")
+         setlocal2
+         getlocal2
+         findpropstrict QName(PackageNamespace("flash.display"),"Bitmap")
+         findpropstrict QName(PackageNamespace(""),"FlxLoaderPlay")
+         pushbyte 0
+         dup
+         constructprop QName(PackageNamespace(""),"FlxLoaderPlay"), 2
+         constructprop QName(PackageNamespace("flash.display"),"Bitmap"), 1
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         getlocal2
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBarMask")
+         getproperty QName(PackageNamespace(""),"x")
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal2
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBarMask")
+         getproperty QName(PackageNamespace(""),"y")
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal2
+         pushtrue
+         setproperty QName(PackageNamespace(""),"buttonMode")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBar")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal2
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"CLICK")
+         getlocal0
+         getproperty QName(PrivateNamespace(null),"playButtonClickHandler")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_preloader")
+         getlocal2
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         ofs00b0:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function startGame() : void
+      {
+         trait method QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"startGame")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 10
+         maxscopedepth 11
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal1
+         findpropstrict QName(PackageNamespace(""),"nextFrame")
+         callpropvoid QName(PackageNamespace(""),"nextFrame"), 0
+         findpropstrict QName(PackageNamespace(""),"Class")
+         findpropstrict QName(PackageNamespace("flash.utils"),"getDefinitionByName")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"className")
+         callproperty QName(PackageNamespace("flash.utils"),"getDefinitionByName"), 1
+         callproperty QName(PackageNamespace(""),"Class"), 1
+         coerce QName(PackageNamespace(""),"Class")
+         setlocal2
+         getlocal2
+         iffalse ofs0038
+         getlocal2
+         construct 0
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal1
+         findpropstrict QName(PackageNamespace(""),"addChild")
+         getlocal1
+         getlex QName(PackageNamespace("flash.display"),"DisplayObject")
+         astypelate
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         ofs0038:
+         findpropstrict QName(PackageNamespace(""),"removeChild")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_preloader")
+         callpropvoid QName(PackageNamespace(""),"removeChild"), 1
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_ad")
+         iffalse ofs004f
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_ad")
+         callpropvoid QName(PackageNamespace(""),"removeAd"), 0
+         ofs004f:
+         getlocal0
+         pushnull
+         setproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_ad")
+         getlocal0
+         pushnull
+         setproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         getlocal0
+         pushnull
+         setproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_loadBarMask")
+         getlocal0
+         pushnull
+         setproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_preloader")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function adsApprovedHandler(param1:APIEvent) : void
+      {
+         trait method QName(PrivateNamespace(null),"adsApprovedHandler")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("com.newgrounds"),"APIEvent")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 10
+         maxscopedepth 11
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("com.newgrounds"),"API")
+         getlex QName(PackageNamespace("com.newgrounds"),"APIEvent")
+         getproperty QName(PackageNamespace(""),"ADS_APPROVED")
+         getlocal0
+         getproperty QName(PrivateNamespace(null),"adsApprovedHandler")
+         callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         iffalse ofs003b
+         getlocal0
+         findpropstrict QName(PackageNamespace("com.newgrounds.components"),"FlashAd")
+         pushfalse
+         constructprop QName(PackageNamespace("com.newgrounds.components"),"FlashAd"), 1
+         setproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_ad")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_ad")
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_preloader")
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         getlocal0
+         getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         ofs003b:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function playButtonClickHandler(param1:MouseEvent) : void
+      {
+         trait method QName(PrivateNamespace(null),"playButtonClickHandler")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"MouseEvent")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 2
+         initscopedepth 10
+         maxscopedepth 11
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callpropvoid QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"startGame"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 9
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("FlxNGPreloader",[PackageNamespace("com.newgrounds.components")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"DisplayObject")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"InteractiveObject")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"DisplayObjectContainer")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"Sprite")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"MovieClip")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"MovieClip")
+newclass 0
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace("com.newgrounds.components"),"FlxNGPreloader")
+returnvoid
+end ; code
+end ; body
+end ; method
+

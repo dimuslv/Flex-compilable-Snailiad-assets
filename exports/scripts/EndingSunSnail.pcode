@@ -1,0 +1,189 @@
+package
+{
+   import org.flixel.FlxG;
+   import org.flixel.FlxSprite;
+   
+   public class EndingSunSnail extends FlxSprite
+   {
+      private static const IMG_WIDTH:int = 32;
+      
+      private static const IMG_HEIGHT:int = 16;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 7
+      maxscopedepth 8
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"124"),"IMG_WIDTH")
+      pushbyte 32
+      initproperty QName(PrivateNamespace(null,"124"),"IMG_WIDTH")
+      findproperty QName(PrivateNamespace(null,"124"),"IMG_HEIGHT")
+      pushbyte 16
+      initproperty QName(PrivateNamespace(null,"124"),"IMG_HEIGHT")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var _elapsed:Number = 0;
+      
+      public function EndingSunSnail(param1:int, param2:int)
+      {
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         returns null
+         
+         body
+         maxstack 6
+         localcount 4
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         getlocal2
+         constructsuper 2
+         findpropstrict QName(PackageNamespace(""),"loadGraphic")
+         getlex QName(PackageNamespace(""),"Art")
+         getproperty QName(PackageNamespace(""),"SnailNpc")
+         pushtrue
+         pushtrue
+         getlex QName(PrivateNamespace(null,"124"),"IMG_WIDTH")
+         getlex QName(PrivateNamespace(null,"124"),"IMG_HEIGHT")
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 5
+         findproperty QName(PackageNamespace(""),"width")
+         getlex QName(PrivateNamespace(null,"124"),"IMG_WIDTH")
+         initproperty QName(PackageNamespace(""),"width")
+         findproperty QName(PackageNamespace(""),"height")
+         getlex QName(PrivateNamespace(null,"124"),"IMG_HEIGHT")
+         initproperty QName(PackageNamespace(""),"height")
+         findpropstrict QName(PackageNamespace(""),"addAnimation")
+         pushstring "normal"
+         pushbyte 38
+         pushbyte 2
+         multiply
+         pushbyte 38
+         pushbyte 2
+         multiply
+         pushbyte 1
+         add
+         newarray 2
+         pushdouble 3.3
+         pushtrue
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 4
+         findpropstrict QName(PackageNamespace(""),"play")
+         pushstring "normal"
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         findproperty QName(PackageNamespace(""),"active")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"active")
+         getlex QName(PackageNamespace(""),"scrollFactor")
+         getlex QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal3
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal3
+         kill 3
+         setproperty QName(PackageNamespace(""),"x")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"124"),"_elapsed")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         add
+         setproperty QName(PrivateNamespace(null,"124"),"_elapsed")
+         getlex QName(PackageNamespace(""),"offset")
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"124"),"_elapsed")
+         pushbyte 2
+         multiply
+         callproperty QName(PackageNamespace(""),"sin"), 1
+         pushbyte 3
+         multiply
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"update"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 7
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("EndingSunSnail",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+newclass 247
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"EndingSunSnail")
+returnvoid
+end ; code
+end ; body
+end ; method
+

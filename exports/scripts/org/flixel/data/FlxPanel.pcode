@@ -1,0 +1,1370 @@
+package org.flixel.data
+{
+   import flash.ui.Mouse;
+   import org.flixel.FlxButton;
+   import org.flixel.FlxG;
+   import org.flixel.FlxObject;
+   import org.flixel.FlxSprite;
+   import org.flixel.FlxText;
+   import org.flixel.FlxU;
+   
+   public class FlxPanel extends FlxObject
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 6
+      maxscopedepth 7
+      
+      code
+      getlocal0
+      pushscope
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var ImgDonate:Class;
+      
+      private var ImgStumble:Class;
+      
+      private var ImgDigg:Class;
+      
+      private var ImgReddit:Class;
+      
+      private var ImgDelicious:Class;
+      
+      private var ImgTwitter:Class;
+      
+      private var ImgClose:Class;
+      
+      protected var _topBar:FlxSprite;
+      
+      protected var _mainBar:FlxSprite;
+      
+      protected var _bottomBar:FlxSprite;
+      
+      protected var _donate:FlxButton;
+      
+      protected var _stumble:FlxButton;
+      
+      protected var _digg:FlxButton;
+      
+      protected var _reddit:FlxButton;
+      
+      protected var _delicious:FlxButton;
+      
+      protected var _twitter:FlxButton;
+      
+      protected var _close:FlxButton;
+      
+      protected var _caption:FlxText;
+      
+      protected var _payPalID:String;
+      
+      protected var _payPalAmount:Number;
+      
+      protected var _gameTitle:String;
+      
+      protected var _gameURL:String;
+      
+      protected var _initialized:Boolean;
+      
+      protected var _closed:Boolean;
+      
+      protected var _ty:Number;
+      
+      protected var _s:Number;
+      
+      public function FlxPanel()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 6
+         localcount 1
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlex QName(PackageNamespace("org.flixel.data"),"FlxPanel_ImgDonate")
+         initproperty QName(PrivateNamespace(null,"4"),"ImgDonate")
+         getlocal0
+         getlex QName(PackageNamespace("org.flixel.data"),"FlxPanel_ImgStumble")
+         initproperty QName(PrivateNamespace(null,"4"),"ImgStumble")
+         getlocal0
+         getlex QName(PackageNamespace("org.flixel.data"),"FlxPanel_ImgDigg")
+         initproperty QName(PrivateNamespace(null,"4"),"ImgDigg")
+         getlocal0
+         getlex QName(PackageNamespace("org.flixel.data"),"FlxPanel_ImgReddit")
+         initproperty QName(PrivateNamespace(null,"4"),"ImgReddit")
+         getlocal0
+         getlex QName(PackageNamespace("org.flixel.data"),"FlxPanel_ImgDelicious")
+         initproperty QName(PrivateNamespace(null,"4"),"ImgDelicious")
+         getlocal0
+         getlex QName(PackageNamespace("org.flixel.data"),"FlxPanel_ImgTwitter")
+         initproperty QName(PrivateNamespace(null,"4"),"ImgTwitter")
+         getlocal0
+         getlex QName(PackageNamespace("org.flixel.data"),"FlxPanel_ImgClose")
+         initproperty QName(PrivateNamespace(null,"4"),"ImgClose")
+         getlocal0
+         constructsuper 0
+         findproperty QName(PackageNamespace(""),"y")
+         pushbyte -21
+         initproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getlex QName(PackageNamespace(""),"y")
+         initproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_ty")
+         getlocal0
+         pushfalse
+         initproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_closed")
+         getlocal0
+         pushfalse
+         initproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_initialized")
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 0
+         initproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_topBar")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_topBar")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 1
+         pushint 2147483647
+         callpropvoid QName(PackageNamespace(""),"createGraphic"), 3
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_topBar")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_topBar")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 0
+         initproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_mainBar")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_mainBar")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 19
+         pushint 2130706432
+         callpropvoid QName(PackageNamespace(""),"createGraphic"), 3
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_mainBar")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_mainBar")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 0
+         initproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_bottomBar")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_bottomBar")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 1
+         pushint 2147483647
+         callpropvoid QName(PackageNamespace(""),"createGraphic"), 3
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_bottomBar")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_bottomBar")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxButton")
+         pushbyte 3
+         pushbyte 0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"onDonate")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxButton"), 3
+         initproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_donate")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_donate")
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         pushbyte 0
+         dup
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"4"),"ImgDonate")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 3
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 1
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_donate")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_donate")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxButton")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 2
+         divide
+         pushbyte 6
+         subtract
+         pushbyte 13
+         subtract
+         pushbyte 6
+         subtract
+         pushbyte 13
+         subtract
+         pushbyte 6
+         subtract
+         pushbyte 0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"onStumble")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxButton"), 3
+         initproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_stumble")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_stumble")
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         pushbyte 0
+         dup
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"4"),"ImgStumble")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 3
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 1
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_stumble")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_stumble")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxButton")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 2
+         divide
+         pushbyte 6
+         subtract
+         pushbyte 13
+         subtract
+         pushbyte 6
+         subtract
+         pushbyte 0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"onDigg")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxButton"), 3
+         initproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_digg")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_digg")
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         pushbyte 0
+         dup
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"4"),"ImgDigg")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 3
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 1
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_digg")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_digg")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxButton")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 2
+         divide
+         pushbyte 6
+         subtract
+         pushbyte 0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"onReddit")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxButton"), 3
+         initproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_reddit")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_reddit")
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         pushbyte 0
+         dup
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"4"),"ImgReddit")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 3
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 1
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_reddit")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_reddit")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxButton")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 2
+         divide
+         pushbyte 7
+         add
+         pushbyte 6
+         add
+         pushbyte 0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"onDelicious")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxButton"), 3
+         initproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_delicious")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_delicious")
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         pushbyte 0
+         dup
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"4"),"ImgDelicious")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 3
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 1
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_delicious")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_delicious")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxButton")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 2
+         divide
+         pushbyte 7
+         add
+         pushbyte 6
+         add
+         pushbyte 12
+         add
+         pushbyte 6
+         add
+         pushbyte 0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"onTwitter")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxButton"), 3
+         initproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_twitter")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_twitter")
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         pushbyte 0
+         dup
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"4"),"ImgTwitter")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 3
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 1
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_twitter")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_twitter")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxText")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 2
+         divide
+         pushbyte 0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 2
+         divide
+         pushbyte 19
+         subtract
+         pushstring ""
+         constructprop QName(PackageNamespace("org.flixel"),"FlxText"), 4
+         initproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_caption")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_caption")
+         pushstring "right"
+         setproperty QName(PackageNamespace(""),"alignment")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_caption")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_caption")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxButton")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 16
+         subtract
+         pushbyte 0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"onClose")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxButton"), 3
+         initproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_close")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_close")
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         pushbyte 0
+         dup
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"4"),"ImgClose")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 3
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 1
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_close")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_close")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"hide"), 0
+         findproperty QName(PackageNamespace(""),"visible")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         pushbyte 50
+         initproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_s")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function setup(param1:String, param2:Number, param3:String, param4:String, param5:String) : void
+      {
+         trait method QName(PackageNamespace(""),"setup")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 6
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_payPalID")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_payPalID")
+         getproperty QName(PackageNamespace(""),"length")
+         pushbyte 0
+         ifnle ofs001c
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_donate")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         ofs001c:
+         getlocal0
+         getlocal2
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_payPalAmount")
+         getlocal0
+         getlocal3
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_gameTitle")
+         getlocal0
+         getlocal 4
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_gameURL")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_caption")
+         getlocal 5
+         setproperty QName(PackageNamespace(""),"text")
+         getlocal0
+         pushtrue
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_initialized")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 1
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_initialized")
+         iftrue ofs000b
+         returnvoid
+         ofs000b:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_ty")
+         getlex QName(PackageNamespace(""),"y")
+         ifeq ofs0121
+         getlex QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_ty")
+         ifnlt ofs0047
+         findproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_s")
+         multiply
+         add
+         initproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_ty")
+         ifngt ofs0043
+         findproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_ty")
+         initproperty QName(PackageNamespace(""),"y")
+         ofs0043:
+         jump ofs006b
+         ofs0047:
+         findproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_s")
+         multiply
+         subtract
+         initproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_ty")
+         ifnlt ofs006b
+         findproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_ty")
+         initproperty QName(PackageNamespace(""),"y")
+         ofs006b:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_topBar")
+         getlex QName(PackageNamespace(""),"y")
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_mainBar")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 1
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_bottomBar")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 20
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_donate")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_donate")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 4
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_stumble")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_stumble")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 4
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_digg")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_digg")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 4
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_reddit")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_reddit")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 4
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_delicious")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_delicious")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 5
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_twitter")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_twitter")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 4
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_caption")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_caption")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 4
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_close")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_close")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 4
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         ofs0121:
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte -21
+         lessequals
+         dup
+         iftrue ofs0134
+         pop
+         getlex QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         greaterequals
+         ofs0134:
+         iffalse ofs0143
+         findproperty QName(PackageNamespace(""),"visible")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"visible")
+         jump ofs014a
+         ofs0143:
+         findproperty QName(PackageNamespace(""),"visible")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"visible")
+         ofs014a:
+         getlex QName(PackageNamespace(""),"visible")
+         iffalse ofs01e1
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_donate")
+         getproperty QName(PackageNamespace(""),"active")
+         iffalse ofs0163
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_donate")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         ofs0163:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_stumble")
+         getproperty QName(PackageNamespace(""),"active")
+         iffalse ofs0175
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_stumble")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         ofs0175:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_digg")
+         getproperty QName(PackageNamespace(""),"active")
+         iffalse ofs0187
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_digg")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         ofs0187:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_reddit")
+         getproperty QName(PackageNamespace(""),"active")
+         iffalse ofs0199
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_reddit")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         ofs0199:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_delicious")
+         getproperty QName(PackageNamespace(""),"active")
+         iffalse ofs01ab
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_delicious")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         ofs01ab:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_twitter")
+         getproperty QName(PackageNamespace(""),"active")
+         iffalse ofs01bd
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_twitter")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         ofs01bd:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_caption")
+         getproperty QName(PackageNamespace(""),"active")
+         iffalse ofs01cf
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_caption")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         ofs01cf:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_close")
+         getproperty QName(PackageNamespace(""),"active")
+         iffalse ofs01e1
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_close")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         ofs01e1:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function render() : void
+      {
+         trait method QName(PackageNamespace(""),"render")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_initialized")
+         iftrue ofs000b
+         returnvoid
+         ofs000b:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_topBar")
+         getproperty QName(PackageNamespace(""),"visible")
+         iffalse ofs001d
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_topBar")
+         callpropvoid QName(PackageNamespace(""),"render"), 0
+         ofs001d:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_mainBar")
+         getproperty QName(PackageNamespace(""),"visible")
+         iffalse ofs002f
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_mainBar")
+         callpropvoid QName(PackageNamespace(""),"render"), 0
+         ofs002f:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_bottomBar")
+         getproperty QName(PackageNamespace(""),"visible")
+         iffalse ofs0041
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_bottomBar")
+         callpropvoid QName(PackageNamespace(""),"render"), 0
+         ofs0041:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_donate")
+         getproperty QName(PackageNamespace(""),"visible")
+         iffalse ofs0053
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_donate")
+         callpropvoid QName(PackageNamespace(""),"render"), 0
+         ofs0053:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_stumble")
+         getproperty QName(PackageNamespace(""),"visible")
+         iffalse ofs0065
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_stumble")
+         callpropvoid QName(PackageNamespace(""),"render"), 0
+         ofs0065:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_digg")
+         getproperty QName(PackageNamespace(""),"visible")
+         iffalse ofs0077
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_digg")
+         callpropvoid QName(PackageNamespace(""),"render"), 0
+         ofs0077:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_reddit")
+         getproperty QName(PackageNamespace(""),"visible")
+         iffalse ofs0089
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_reddit")
+         callpropvoid QName(PackageNamespace(""),"render"), 0
+         ofs0089:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_delicious")
+         getproperty QName(PackageNamespace(""),"visible")
+         iffalse ofs009b
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_delicious")
+         callpropvoid QName(PackageNamespace(""),"render"), 0
+         ofs009b:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_twitter")
+         getproperty QName(PackageNamespace(""),"visible")
+         iffalse ofs00ad
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_twitter")
+         callpropvoid QName(PackageNamespace(""),"render"), 0
+         ofs00ad:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_caption")
+         getproperty QName(PackageNamespace(""),"visible")
+         iffalse ofs00bf
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_caption")
+         callpropvoid QName(PackageNamespace(""),"render"), 0
+         ofs00bf:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_close")
+         getproperty QName(PackageNamespace(""),"visible")
+         iffalse ofs00d1
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_close")
+         callpropvoid QName(PackageNamespace(""),"render"), 0
+         ofs00d1:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function show(param1:Boolean = true) : void
+      {
+         trait method QName(PackageNamespace(""),"show")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Boolean")
+         optional True()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 2
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_closed")
+         iffalse ofs000b
+         returnvoid
+         ofs000b:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_initialized")
+         iftrue ofs001e
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         pushstring "SUPPORT PANEL ERROR: Uninitialized.\nYou forgot to call FlxGame.setupSupportPanel()\nfrom your game constructor."
+         callpropvoid QName(PackageNamespace(""),"log"), 1
+         returnvoid
+         ofs001e:
+         getlocal1
+         iffalse ofs0033
+         findproperty QName(PackageNamespace(""),"y")
+         pushbyte -21
+         initproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         pushbyte -1
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_ty")
+         jump ofs0048
+         ofs0033:
+         findproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         initproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 20
+         subtract
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_ty")
+         ofs0048:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_donate")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_donate")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 4
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_stumble")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_stumble")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 4
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_digg")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_digg")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 4
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_reddit")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_reddit")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 4
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_delicious")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_delicious")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 5
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_twitter")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_twitter")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 4
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_caption")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_caption")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 4
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_close")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_close")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 4
+         add
+         callpropvoid QName(PackageNamespace(""),"reset"), 2
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mouse")
+         getproperty QName(PackageNamespace(""),"cursor")
+         getproperty QName(PackageNamespace(""),"visible")
+         iftrue ofs00f7
+         getlex QName(PackageNamespace("flash.ui"),"Mouse")
+         callpropvoid QName(PackageNamespace(""),"show"), 0
+         ofs00f7:
+         findproperty QName(PackageNamespace(""),"visible")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"visible")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function hide() : void
+      {
+         trait method QName(PackageNamespace(""),"hide")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 0
+         ifnlt ofs0014
+         getlocal0
+         pushbyte -21
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_ty")
+         jump ofs001d
+         ofs0014:
+         getlocal0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_ty")
+         ofs001d:
+         getlex QName(PackageNamespace("flash.ui"),"Mouse")
+         callpropvoid QName(PackageNamespace(""),"hide"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function onDonate() : void
+      {
+         trait method QName(PackageNamespace(""),"onDonate")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 5
+         localcount 1
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("org.flixel"),"FlxU")
+         pushstring "https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business="
+         findpropstrict QName(PackageNamespace(""),"encodeURIComponent")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_payPalID")
+         callproperty QName(PackageNamespace(""),"encodeURIComponent"), 1
+         add
+         pushstring "&item_name="
+         add
+         findpropstrict QName(PackageNamespace(""),"encodeURIComponent")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_gameTitle")
+         pushstring " Contribution ("
+         add
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_gameURL")
+         add
+         callproperty QName(PackageNamespace(""),"encodeURIComponent"), 1
+         add
+         pushstring ")&currency_code=USD&amount="
+         add
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_payPalAmount")
+         add
+         callpropvoid QName(PackageNamespace(""),"openURL"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function onStumble() : void
+      {
+         trait method QName(PackageNamespace(""),"onStumble")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 1
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("org.flixel"),"FlxU")
+         pushstring "http://www.stumbleupon.com/submit?url="
+         findpropstrict QName(PackageNamespace(""),"encodeURIComponent")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_gameURL")
+         callproperty QName(PackageNamespace(""),"encodeURIComponent"), 1
+         add
+         callpropvoid QName(PackageNamespace(""),"openURL"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function onDigg() : void
+      {
+         trait method QName(PackageNamespace(""),"onDigg")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 1
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("org.flixel"),"FlxU")
+         pushstring "http://digg.com/submit?url="
+         findpropstrict QName(PackageNamespace(""),"encodeURIComponent")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_gameURL")
+         callproperty QName(PackageNamespace(""),"encodeURIComponent"), 1
+         add
+         pushstring "&title="
+         add
+         findpropstrict QName(PackageNamespace(""),"encodeURIComponent")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_gameTitle")
+         callproperty QName(PackageNamespace(""),"encodeURIComponent"), 1
+         add
+         callpropvoid QName(PackageNamespace(""),"openURL"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function onReddit() : void
+      {
+         trait method QName(PackageNamespace(""),"onReddit")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 1
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("org.flixel"),"FlxU")
+         pushstring "http://www.reddit.com/submit?url="
+         findpropstrict QName(PackageNamespace(""),"encodeURIComponent")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_gameURL")
+         callproperty QName(PackageNamespace(""),"encodeURIComponent"), 1
+         add
+         callpropvoid QName(PackageNamespace(""),"openURL"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function onDelicious() : void
+      {
+         trait method QName(PackageNamespace(""),"onDelicious")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 1
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("org.flixel"),"FlxU")
+         pushstring "http://delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url="
+         findpropstrict QName(PackageNamespace(""),"encodeURIComponent")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_gameURL")
+         callproperty QName(PackageNamespace(""),"encodeURIComponent"), 1
+         add
+         pushstring "&amp;title="
+         add
+         findpropstrict QName(PackageNamespace(""),"encodeURIComponent")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_gameTitle")
+         callproperty QName(PackageNamespace(""),"encodeURIComponent"), 1
+         add
+         callpropvoid QName(PackageNamespace(""),"openURL"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function onTwitter() : void
+      {
+         trait method QName(PackageNamespace(""),"onTwitter")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 5
+         localcount 1
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("org.flixel"),"FlxU")
+         pushstring "http://twitter.com/home?status=Playing"
+         findpropstrict QName(PackageNamespace(""),"encodeURIComponent")
+         pushstring " "
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_gameTitle")
+         add
+         pushstring " - "
+         add
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_gameURL")
+         add
+         callproperty QName(PackageNamespace(""),"encodeURIComponent"), 1
+         add
+         callpropvoid QName(PackageNamespace(""),"openURL"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function onClose() : void
+      {
+         trait method QName(PackageNamespace(""),"onClose")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         pushtrue
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxPanel"),"_closed")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"hide"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 6
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("FlxPanel",[PackageNamespace("org.flixel.data")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+newclass 22
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace("org.flixel.data"),"FlxPanel")
+returnvoid
+end ; code
+end ; body
+end ; method
+

@@ -1,0 +1,244 @@
+package org.flixel.data
+{
+   import org.flixel.FlxG;
+   import org.flixel.FlxSprite;
+   
+   public class FlxFlash extends FlxSprite
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 7
+      maxscopedepth 8
+      
+      code
+      getlocal0
+      pushscope
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      protected var _delay:Number;
+      
+      protected var _complete:Function;
+      
+      public function FlxFlash()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 5
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         findpropstrict QName(PackageNamespace(""),"createGraphic")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 0
+         pushtrue
+         callpropvoid QName(PackageNamespace(""),"createGraphic"), 4
+         getlex QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         findproperty QName(PackageNamespace(""),"exists")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"exists")
+         findproperty QName(PackageNamespace(""),"solid")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"solid")
+         findproperty QName(PackageNamespace(""),"fixed")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"fixed")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function start(param1:uint = 4294967295, param2:Number = 1, param3:Function = null, param4:Boolean = false) : void
+      {
+         trait method QName(PackageNamespace(""),"start")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Function")
+         param QName(PackageNamespace(""),"Boolean")
+         optional Double(4294967295)
+         optional Integer(1)
+         optional Null()
+         optional False()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 5
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal 4
+         not
+         dup
+         iffalse ofs000e
+         pop
+         getlex QName(PackageNamespace(""),"exists")
+         convert_b
+         ofs000e:
+         iffalse ofs0013
+         returnvoid
+         ofs0013:
+         findpropstrict QName(PackageNamespace(""),"fill")
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"fill"), 1
+         getlocal0
+         getlocal2
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxFlash"),"_delay")
+         getlocal0
+         getlocal3
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxFlash"),"_complete")
+         findproperty QName(PackageNamespace(""),"alpha")
+         pushbyte 1
+         initproperty QName(PackageNamespace(""),"alpha")
+         findproperty QName(PackageNamespace(""),"exists")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"exists")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function stop() : void
+      {
+         trait method QName(PackageNamespace(""),"stop")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         findproperty QName(PackageNamespace(""),"exists")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"exists")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         findproperty QName(PackageNamespace(""),"alpha")
+         getlex QName(PackageNamespace(""),"alpha")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxFlash"),"_delay")
+         divide
+         subtract
+         initproperty QName(PackageNamespace(""),"alpha")
+         getlex QName(PackageNamespace(""),"alpha")
+         pushbyte 0
+         ifnle ofs0033
+         findproperty QName(PackageNamespace(""),"exists")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"exists")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxFlash"),"_complete")
+         pushnull
+         ifeq ofs0033
+         getlocal0
+         callpropvoid QName(ProtectedNamespace("org.flixel.data:FlxFlash"),"_complete"), 0
+         ofs0033:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 7
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("FlxFlash",[PackageNamespace("org.flixel.data")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+newclass 27
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace("org.flixel.data"),"FlxFlash")
+returnvoid
+end ; code
+end ; body
+end ; method
+

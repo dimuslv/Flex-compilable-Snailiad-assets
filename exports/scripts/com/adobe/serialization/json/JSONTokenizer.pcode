@@ -1,0 +1,1346 @@
+package com.adobe.serialization.json
+{
+   public class JSONTokenizer
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 3
+      maxscopedepth 4
+      
+      code
+      getlocal0
+      pushscope
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var obj:Object;
+      
+      private var jsonString:String;
+      
+      private var loc:int;
+      
+      private var ch:String;
+      
+      public function JSONTokenizer(param1:String)
+      {
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns null
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"20"),"jsonString")
+         getlocal0
+         pushbyte 0
+         initproperty QName(PrivateNamespace(null,"20"),"loc")
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getNextToken() : JSONToken
+      {
+         trait method QName(PackageNamespace(""),"getNextToken")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
+         
+         body
+         maxstack 3
+         localcount 6
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce_s
+         setlocal1
+         pushnull
+         coerce_s
+         setlocal2
+         pushnull
+         coerce_s
+         setlocal3
+         findpropstrict QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
+         constructprop QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken"), 0
+         coerce QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
+         setlocal 4
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"skipIgnored"), 0
+         jump ofs0202
+         ofs001d:
+         label
+         getlocal 4
+         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
+         getproperty QName(PackageNamespace(""),"LEFT_BRACE")
+         setproperty QName(PackageNamespace(""),"type")
+         getlocal 4
+         pushstring "{"
+         setproperty QName(PackageNamespace(""),"value")
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         jump ofs02d2
+         ofs003a:
+         label
+         getlocal 4
+         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
+         getproperty QName(PackageNamespace(""),"RIGHT_BRACE")
+         setproperty QName(PackageNamespace(""),"type")
+         getlocal 4
+         pushstring "}"
+         setproperty QName(PackageNamespace(""),"value")
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         jump ofs02d2
+         ofs0057:
+         label
+         getlocal 4
+         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
+         getproperty QName(PackageNamespace(""),"LEFT_BRACKET")
+         setproperty QName(PackageNamespace(""),"type")
+         getlocal 4
+         pushstring "["
+         setproperty QName(PackageNamespace(""),"value")
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         jump ofs02d2
+         ofs0074:
+         label
+         getlocal 4
+         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
+         getproperty QName(PackageNamespace(""),"RIGHT_BRACKET")
+         setproperty QName(PackageNamespace(""),"type")
+         getlocal 4
+         pushstring "]"
+         setproperty QName(PackageNamespace(""),"value")
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         jump ofs02d2
+         ofs0091:
+         label
+         getlocal 4
+         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
+         getproperty QName(PackageNamespace(""),"COMMA")
+         setproperty QName(PackageNamespace(""),"type")
+         getlocal 4
+         pushstring ","
+         setproperty QName(PackageNamespace(""),"value")
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         jump ofs02d2
+         ofs00ae:
+         label
+         getlocal 4
+         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
+         getproperty QName(PackageNamespace(""),"COLON")
+         setproperty QName(PackageNamespace(""),"type")
+         getlocal 4
+         pushstring ":"
+         setproperty QName(PackageNamespace(""),"value")
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         jump ofs02d2
+         ofs00cb:
+         label
+         pushstring "t"
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         add
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         add
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         add
+         coerce_s
+         setlocal1
+         getlocal1
+         pushstring "true"
+         ifne ofs0105
+         getlocal 4
+         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
+         getproperty QName(PackageNamespace(""),"TRUE")
+         setproperty QName(PackageNamespace(""),"type")
+         getlocal 4
+         pushtrue
+         setproperty QName(PackageNamespace(""),"value")
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         jump ofs010f
+         ofs0105:
+         getlocal0
+         pushstring "Expecting \'true\' but found "
+         getlocal1
+         add
+         callpropvoid QName(PackageNamespace(""),"parseError"), 1
+         ofs010f:
+         jump ofs02d2
+         ofs0113:
+         label
+         pushstring "f"
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         add
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         add
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         add
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         add
+         coerce_s
+         setlocal2
+         getlocal2
+         pushstring "false"
+         ifne ofs0153
+         getlocal 4
+         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
+         getproperty QName(PackageNamespace(""),"FALSE")
+         setproperty QName(PackageNamespace(""),"type")
+         getlocal 4
+         pushfalse
+         setproperty QName(PackageNamespace(""),"value")
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         jump ofs015d
+         ofs0153:
+         getlocal0
+         pushstring "Expecting \'false\' but found "
+         getlocal2
+         add
+         callpropvoid QName(PackageNamespace(""),"parseError"), 1
+         ofs015d:
+         jump ofs02d2
+         ofs0161:
+         label
+         pushstring "n"
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         add
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         add
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         add
+         coerce_s
+         setlocal3
+         getlocal3
+         pushstring "null"
+         ifne ofs019b
+         getlocal 4
+         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
+         getproperty QName(PackageNamespace(""),"NULL")
+         setproperty QName(PackageNamespace(""),"type")
+         getlocal 4
+         pushnull
+         setproperty QName(PackageNamespace(""),"value")
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         jump ofs01a5
+         ofs019b:
+         getlocal0
+         pushstring "Expecting \'null\' but found "
+         getlocal3
+         add
+         callpropvoid QName(PackageNamespace(""),"parseError"), 1
+         ofs01a5:
+         jump ofs02d2
+         ofs01a9:
+         label
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"20"),"readString"), 0
+         coerce QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
+         setlocal 4
+         jump ofs02d2
+         ofs01b7:
+         label
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         callproperty QName(PrivateNamespace(null,"20"),"isDigit"), 1
+         convert_b
+         dup
+         iftrue ofs01d0
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring "-"
+         equals
+         ofs01d0:
+         iffalse ofs01e1
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"20"),"readNumber"), 0
+         coerce QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
+         setlocal 4
+         jump ofs01fe
+         ofs01e1:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring ""
+         ifne ofs01ed
+         pushnull
+         returnvalue
+         ofs01ed:
+         getlocal0
+         pushstring "Unexpected "
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         add
+         pushstring " encountered"
+         add
+         callpropvoid QName(PackageNamespace(""),"parseError"), 1
+         ofs01fe:
+         jump ofs02d2
+         ofs0202:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         setlocal 5
+         pushstring "{"
+         getlocal 5
+         ifstrictne ofs0217
+         pushbyte 0
+         jump ofs02aa
+         ofs0217:
+         pushstring "}"
+         getlocal 5
+         ifstrictne ofs0226
+         pushbyte 1
+         jump ofs02aa
+         ofs0226:
+         pushstring "["
+         getlocal 5
+         ifstrictne ofs0235
+         pushbyte 2
+         jump ofs02aa
+         ofs0235:
+         pushstring "]"
+         getlocal 5
+         ifstrictne ofs0244
+         pushbyte 3
+         jump ofs02aa
+         ofs0244:
+         pushstring ","
+         getlocal 5
+         ifstrictne ofs0253
+         pushbyte 4
+         jump ofs02aa
+         ofs0253:
+         pushstring ":"
+         getlocal 5
+         ifstrictne ofs0262
+         pushbyte 5
+         jump ofs02aa
+         ofs0262:
+         pushstring "t"
+         getlocal 5
+         ifstrictne ofs0271
+         pushbyte 6
+         jump ofs02aa
+         ofs0271:
+         pushstring "f"
+         getlocal 5
+         ifstrictne ofs0280
+         pushbyte 7
+         jump ofs02aa
+         ofs0280:
+         pushstring "n"
+         getlocal 5
+         ifstrictne ofs028f
+         pushbyte 8
+         jump ofs02aa
+         ofs028f:
+         pushstring "\""
+         getlocal 5
+         ifstrictne ofs029e
+         pushbyte 9
+         jump ofs02aa
+         ofs029e:
+         jump ofs02a8
+         pushbyte 10
+         jump ofs02a8
+         ofs02a8:
+         pushbyte 10
+         ofs02aa:
+         kill 5
+         lookupswitch ofs01b7, [ofs001d, ofs003a, ofs0057, ofs0074, ofs0091, ofs00ae, ofs00cb, ofs0113, ofs0161, ofs01a9, ofs01b7]
+         ofs02d2:
+         getlocal 4
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function readString() : JSONToken
+      {
+         trait method QName(PrivateNamespace(null,"20"),"readString")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
+         
+         body
+         maxstack 5
+         localcount 6
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce_s
+         setlocal1
+         pushbyte 0
+         setlocal2
+         findpropstrict QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
+         constructprop QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken"), 0
+         coerce QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
+         setlocal3
+         getlocal3
+         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
+         getproperty QName(PackageNamespace(""),"STRING")
+         setproperty QName(PackageNamespace(""),"type")
+         pushstring ""
+         coerce_a
+         setlocal 4
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         jump ofs01e3
+         ofs0028:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring "\\"
+         ifne ofs01d4
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         jump ofs0112
+         ofs003d:
+         label
+         getlocal 4
+         pushstring "\""
+         add
+         coerce_a
+         setlocal 4
+         jump ofs01d0
+         ofs004b:
+         label
+         getlocal 4
+         pushstring "/"
+         add
+         coerce_a
+         setlocal 4
+         jump ofs01d0
+         ofs0059:
+         label
+         getlocal 4
+         pushstring "\\"
+         add
+         coerce_a
+         setlocal 4
+         jump ofs01d0
+         ofs0067:
+         label
+         getlocal 4
+         pushstring "\b"
+         add
+         coerce_a
+         setlocal 4
+         jump ofs01d0
+         ofs0075:
+         label
+         getlocal 4
+         pushstring "\f"
+         add
+         coerce_a
+         setlocal 4
+         jump ofs01d0
+         ofs0083:
+         label
+         getlocal 4
+         pushstring "\n"
+         add
+         coerce_a
+         setlocal 4
+         jump ofs01d0
+         ofs0091:
+         label
+         getlocal 4
+         pushstring "\r"
+         add
+         coerce_a
+         setlocal 4
+         jump ofs01d0
+         ofs009f:
+         label
+         getlocal 4
+         pushstring "\t"
+         add
+         coerce_a
+         setlocal 4
+         jump ofs01d0
+         ofs00ad:
+         label
+         pushstring ""
+         setlocal1
+         pushbyte 0
+         setlocal2
+         jump ofs00de
+         ofs00b8:
+         label
+         getlocal0
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         callproperty QName(PrivateNamespace(null,"20"),"isHexDigit"), 1
+         iftrue ofs00d4
+         getlocal0
+         pushstring " Excepted a hex digit, but found: "
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         add
+         callpropvoid QName(PackageNamespace(""),"parseError"), 1
+         ofs00d4:
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         add
+         coerce_s
+         setlocal1
+         inclocal_i 2
+         ofs00de:
+         getlocal2
+         pushbyte 4
+         iflt ofs00b8
+         getlocal 4
+         getlex QName(PackageNamespace(""),"String")
+         findpropstrict QName(PackageNamespace(""),"parseInt")
+         getlocal1
+         pushbyte 16
+         callproperty QName(PackageNamespace(""),"parseInt"), 2
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"fromCharCode"), 1
+         add
+         coerce_a
+         setlocal 4
+         jump ofs01d0
+         ofs00ff:
+         label
+         getlocal 4
+         pushstring "\\"
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         add
+         add
+         coerce_a
+         setlocal 4
+         jump ofs01d0
+         ofs0112:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         setlocal 5
+         pushstring "\""
+         getlocal 5
+         ifstrictne ofs0127
+         pushbyte 0
+         jump ofs01ab
+         ofs0127:
+         pushstring "/"
+         getlocal 5
+         ifstrictne ofs0136
+         pushbyte 1
+         jump ofs01ab
+         ofs0136:
+         pushstring "\\"
+         getlocal 5
+         ifstrictne ofs0145
+         pushbyte 2
+         jump ofs01ab
+         ofs0145:
+         pushstring "b"
+         getlocal 5
+         ifstrictne ofs0154
+         pushbyte 3
+         jump ofs01ab
+         ofs0154:
+         pushstring "f"
+         getlocal 5
+         ifstrictne ofs0163
+         pushbyte 4
+         jump ofs01ab
+         ofs0163:
+         pushstring "n"
+         getlocal 5
+         ifstrictne ofs0172
+         pushbyte 5
+         jump ofs01ab
+         ofs0172:
+         pushstring "r"
+         getlocal 5
+         ifstrictne ofs0181
+         pushbyte 6
+         jump ofs01ab
+         ofs0181:
+         pushstring "t"
+         getlocal 5
+         ifstrictne ofs0190
+         pushbyte 7
+         jump ofs01ab
+         ofs0190:
+         pushstring "u"
+         getlocal 5
+         ifstrictne ofs019f
+         pushbyte 8
+         jump ofs01ab
+         ofs019f:
+         jump ofs01a9
+         pushbyte 9
+         jump ofs01a9
+         ofs01a9:
+         pushbyte 9
+         ofs01ab:
+         kill 5
+         lookupswitch ofs00ff, [ofs003d, ofs004b, ofs0059, ofs0067, ofs0075, ofs0083, ofs0091, ofs009f, ofs00ad, ofs00ff]
+         ofs01d0:
+         jump ofs01de
+         ofs01d4:
+         getlocal 4
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         add
+         coerce_a
+         setlocal 4
+         ofs01de:
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         ofs01e3:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring "\""
+         equals
+         not
+         dup
+         iffalse ofs01fa
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring ""
+         equals
+         not
+         ofs01fa:
+         iftrue ofs0028
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring ""
+         ifne ofs0210
+         getlocal0
+         pushstring "Unterminated string literal"
+         callpropvoid QName(PackageNamespace(""),"parseError"), 1
+         ofs0210:
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         getlocal3
+         getlocal 4
+         setproperty QName(PackageNamespace(""),"value")
+         getlocal3
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function readNumber() : JSONToken
+      {
+         trait method QName(PrivateNamespace(null,"20"),"readNumber")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
+         
+         body
+         maxstack 3
+         localcount 4
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
+         constructprop QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken"), 0
+         coerce QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
+         setlocal1
+         getlocal1
+         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
+         getproperty QName(PackageNamespace(""),"NUMBER")
+         setproperty QName(PackageNamespace(""),"type")
+         pushstring ""
+         coerce_a
+         setlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring "-"
+         ifne ofs002f
+         getlocal2
+         pushstring "-"
+         add
+         coerce_a
+         setlocal2
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         ofs002f:
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         callproperty QName(PrivateNamespace(null,"20"),"isDigit"), 1
+         iftrue ofs0044
+         getlocal0
+         pushstring "Expecting a digit"
+         callpropvoid QName(PackageNamespace(""),"parseError"), 1
+         ofs0044:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring "0"
+         ifne ofs0075
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         add
+         coerce_a
+         setlocal2
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         callproperty QName(PrivateNamespace(null,"20"),"isDigit"), 1
+         iffalse ofs0071
+         getlocal0
+         pushstring "A digit cannot immediately follow 0"
+         callpropvoid QName(PackageNamespace(""),"parseError"), 1
+         ofs0071:
+         jump ofs0094
+         ofs0075:
+         jump ofs0087
+         ofs0079:
+         label
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         add
+         coerce_a
+         setlocal2
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         ofs0087:
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         callproperty QName(PrivateNamespace(null,"20"),"isDigit"), 1
+         iftrue ofs0079
+         ofs0094:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring "."
+         ifne ofs00df
+         getlocal2
+         pushstring "."
+         add
+         coerce_a
+         setlocal2
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         callproperty QName(PrivateNamespace(null,"20"),"isDigit"), 1
+         iftrue ofs00c0
+         getlocal0
+         pushstring "Expecting a digit"
+         callpropvoid QName(PackageNamespace(""),"parseError"), 1
+         ofs00c0:
+         jump ofs00d2
+         ofs00c4:
+         label
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         add
+         coerce_a
+         setlocal2
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         ofs00d2:
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         callproperty QName(PrivateNamespace(null,"20"),"isDigit"), 1
+         iftrue ofs00c4
+         ofs00df:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring "e"
+         equals
+         dup
+         iftrue ofs00f5
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring "E"
+         equals
+         ofs00f5:
+         iffalse ofs0160
+         getlocal2
+         pushstring "e"
+         add
+         coerce_a
+         setlocal2
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring "+"
+         equals
+         dup
+         iftrue ofs011b
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring "-"
+         equals
+         ofs011b:
+         iffalse ofs012c
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         add
+         coerce_a
+         setlocal2
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         ofs012c:
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         callproperty QName(PrivateNamespace(null,"20"),"isDigit"), 1
+         iftrue ofs0141
+         getlocal0
+         pushstring "Scientific notation number needs exponent value"
+         callpropvoid QName(PackageNamespace(""),"parseError"), 1
+         ofs0141:
+         jump ofs0153
+         ofs0145:
+         label
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         add
+         coerce_a
+         setlocal2
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         ofs0153:
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         callproperty QName(PrivateNamespace(null,"20"),"isDigit"), 1
+         iftrue ofs0145
+         ofs0160:
+         findpropstrict QName(PackageNamespace(""),"Number")
+         getlocal2
+         callproperty QName(PackageNamespace(""),"Number"), 1
+         convert_d
+         setlocal3
+         findpropstrict QName(PackageNamespace(""),"isFinite")
+         getlocal3
+         callproperty QName(PackageNamespace(""),"isFinite"), 1
+         convert_b
+         dup
+         iffalse ofs0180
+         pop
+         findpropstrict QName(PackageNamespace(""),"isNaN")
+         getlocal3
+         callproperty QName(PackageNamespace(""),"isNaN"), 1
+         not
+         ofs0180:
+         iffalse ofs018b
+         getlocal1
+         getlocal3
+         setproperty QName(PackageNamespace(""),"value")
+         getlocal1
+         returnvalue
+         ofs018b:
+         getlocal0
+         pushstring "Number "
+         getlocal3
+         add
+         pushstring " is not valid!"
+         add
+         callpropvoid QName(PackageNamespace(""),"parseError"), 1
+         pushnull
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function nextChar() : String
+      {
+         trait method QName(PrivateNamespace(null,"20"),"nextChar")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 5
+         localcount 3
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"jsonString")
+         getlocal0
+         dup
+         setlocal1
+         getproperty QName(PrivateNamespace(null,"20"),"loc")
+         dup
+         increment_i
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"20"),"loc")
+         kill 2
+         kill 1
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charAt"), 1
+         dup
+         setlocal1
+         setproperty QName(PrivateNamespace(null,"20"),"ch")
+         getlocal1
+         kill 1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function skipIgnored() : void
+      {
+         trait method QName(PrivateNamespace(null,"20"),"skipIgnored")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal1
+         jump ofs000a
+         ofs0009:
+         label
+         ofs000a:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"loc")
+         convert_i
+         setlocal1
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"skipWhite"), 0
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"skipComments"), 0
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"loc")
+         ifne ofs0009
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function skipComments() : void
+      {
+         trait method QName(PrivateNamespace(null,"20"),"skipComments")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring "/"
+         ifne ofs00ea
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         jump ofs00ad
+         ofs0016:
+         label
+         jump ofs001c
+         ofs001b:
+         label
+         ofs001c:
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring "\n"
+         equals
+         not
+         dup
+         iffalse ofs0038
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring ""
+         equals
+         not
+         ofs0038:
+         iftrue ofs001b
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         jump ofs00ea
+         ofs0045:
+         label
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         jump ofs008a
+         ofs004f:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring "*"
+         ifne ofs0073
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring "/"
+         ifne ofs006f
+         jump ofs008e
+         ofs006f:
+         jump ofs0078
+         ofs0073:
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         ofs0078:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         pushstring ""
+         ifne ofs008a
+         getlocal0
+         pushstring "Multi-line comment not closed"
+         callpropvoid QName(PackageNamespace(""),"parseError"), 1
+         ofs008a:
+         jump ofs004f
+         ofs008e:
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         jump ofs00ea
+         ofs0097:
+         label
+         getlocal0
+         pushstring "Unexpected "
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         add
+         pushstring " encountered (expecting \'/\' or \'*\' )"
+         add
+         callpropvoid QName(PackageNamespace(""),"parseError"), 1
+         jump ofs00ea
+         ofs00ad:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         setlocal1
+         pushstring "/"
+         getlocal1
+         ifstrictne ofs00c0
+         pushbyte 0
+         jump ofs00da
+         ofs00c0:
+         pushstring "*"
+         getlocal1
+         ifstrictne ofs00ce
+         pushbyte 1
+         jump ofs00da
+         ofs00ce:
+         jump ofs00d8
+         pushbyte 2
+         jump ofs00d8
+         ofs00d8:
+         pushbyte 2
+         ofs00da:
+         kill 1
+         lookupswitch ofs0097, [ofs0016, ofs0045, ofs0097]
+         ofs00ea:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function skipWhite() : void
+      {
+         trait method QName(PrivateNamespace(null,"20"),"skipWhite")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         jump ofs000c
+         ofs0006:
+         label
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"20"),"nextChar"), 0
+         ofs000c:
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"ch")
+         callproperty QName(PrivateNamespace(null,"20"),"isWhiteSpace"), 1
+         iftrue ofs0006
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function isWhiteSpace(param1:String) : Boolean
+      {
+         trait method QName(PrivateNamespace(null,"20"),"isWhiteSpace")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         pushstring " "
+         equals
+         dup
+         iftrue ofs0012
+         pop
+         getlocal1
+         pushstring "\t"
+         equals
+         ofs0012:
+         dup
+         iftrue ofs001d
+         pop
+         getlocal1
+         pushstring "\n"
+         equals
+         ofs001d:
+         dup
+         iftrue ofs0028
+         pop
+         getlocal1
+         pushstring "\r"
+         equals
+         ofs0028:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function isDigit(param1:String) : Boolean
+      {
+         trait method QName(PrivateNamespace(null,"20"),"isDigit")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         pushstring "0"
+         greaterequals
+         dup
+         iffalse ofs0012
+         pop
+         getlocal1
+         pushstring "9"
+         lessequals
+         ofs0012:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function isHexDigit(param1:String) : Boolean
+      {
+         trait method QName(PrivateNamespace(null,"20"),"isHexDigit")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 2
+         localcount 3
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toUpperCase"), 0
+         coerce_s
+         setlocal2
+         getlocal0
+         getlocal1
+         callproperty QName(PrivateNamespace(null,"20"),"isDigit"), 1
+         convert_b
+         dup
+         iftrue ofs0026
+         pop
+         getlocal2
+         pushstring "A"
+         greaterequals
+         dup
+         iffalse ofs0026
+         pop
+         getlocal2
+         pushstring "F"
+         lessequals
+         ofs0026:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function parseError(param1:String) : void
+      {
+         trait method QName(PackageNamespace(""),"parseError")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace("com.adobe.serialization.json"),"JSONParseError")
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"loc")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"20"),"jsonString")
+         constructprop QName(PackageNamespace("com.adobe.serialization.json"),"JSONParseError"), 3
+         throw
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 3
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("JSONTokenizer",[PackageNamespace("com.adobe.serialization.json")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace(""),"Object")
+newclass 40
+popscope
+initproperty QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenizer")
+returnvoid
+end ; code
+end ; body
+end ; method
+

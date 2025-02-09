@@ -1,0 +1,1555 @@
+package org.flixel
+{
+   import flash.display.Bitmap;
+   import flash.display.BitmapData;
+   import flash.display.Sprite;
+   import flash.display.StageAlign;
+   import flash.display.StageScaleMode;
+   import flash.events.*;
+   import flash.geom.Point;
+   import flash.text.AntiAliasType;
+   import flash.text.GridFitType;
+   import flash.text.TextField;
+   import flash.text.TextFormat;
+   import flash.ui.Mouse;
+   import flash.utils.getTimer;
+   import org.flixel.data.FlxConsole;
+   import org.flixel.data.FlxPause;
+   
+   public class FlxGame extends Sprite
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 8
+      maxscopedepth 9
+      
+      code
+      getlocal0
+      pushscope
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      protected var junk:String = "FlxGame_junk";
+      
+      public var useDefaultHotKeys:Boolean;
+      
+      public var pause:FlxGroup;
+      
+      internal var _iState:Class;
+      
+      internal var _created:Boolean;
+      
+      internal var _state:FlxState;
+      
+      internal var _screen:Sprite;
+      
+      internal var _buffer:Bitmap;
+      
+      internal var _zoom:uint;
+      
+      internal var _gameXOffset:int;
+      
+      internal var _gameYOffset:int;
+      
+      internal var _frame:Class;
+      
+      internal var _zeroPoint:Point;
+      
+      internal var _elapsed:Number;
+      
+      internal var _total:uint;
+      
+      internal var _paused:Boolean;
+      
+      internal var _framerate:uint;
+      
+      internal var _frameratePaused:uint;
+      
+      internal var _soundTray:Sprite;
+      
+      internal var _soundTrayTimer:Number;
+      
+      internal var _soundTrayBars:Array;
+      
+      internal var _console:FlxConsole;
+      
+      public function FlxGame(param1:uint, param2:uint, param3:Class, param4:uint = 2)
+      {
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"Class")
+         param QName(PackageNamespace(""),"uint")
+         optional Integer(2)
+         returns null
+         
+         body
+         maxstack 5
+         localcount 5
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         getlex QName(PackageNamespace("flash.ui"),"Mouse")
+         callpropvoid QName(PackageNamespace(""),"hide"), 0
+         getlocal0
+         getlocal 4
+         initproperty QName(PackageInternalNs("org.flixel"),"_zoom")
+         getlex QName(PackageNamespace("org.flixel"),"FlxState")
+         pushdouble 4278190080
+         setproperty QName(PackageNamespace(""),"bgColor")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getlocal0
+         getlocal1
+         getlocal2
+         getlocal 4
+         callpropvoid QName(PackageInternalNs("org.flixel"),"setGameData"), 4
+         getlocal0
+         pushbyte 0
+         initproperty QName(PackageInternalNs("org.flixel"),"_elapsed")
+         getlocal0
+         pushbyte 0
+         initproperty QName(PackageInternalNs("org.flixel"),"_total")
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxPause")
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxPause"), 0
+         initproperty QName(PackageNamespace(""),"pause")
+         getlocal0
+         pushnull
+         initproperty QName(PackageInternalNs("org.flixel"),"_state")
+         getlocal0
+         getlocal3
+         initproperty QName(PackageInternalNs("org.flixel"),"_iState")
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.geom"),"Point")
+         constructprop QName(PackageNamespace("flash.geom"),"Point"), 0
+         initproperty QName(PackageInternalNs("org.flixel"),"_zeroPoint")
+         getlocal0
+         pushtrue
+         initproperty QName(PackageNamespace(""),"useDefaultHotKeys")
+         getlocal0
+         pushnull
+         initproperty QName(PackageInternalNs("org.flixel"),"_frame")
+         getlocal0
+         pushbyte 0
+         initproperty QName(PackageInternalNs("org.flixel"),"_gameXOffset")
+         getlocal0
+         pushbyte 0
+         initproperty QName(PackageInternalNs("org.flixel"),"_gameYOffset")
+         getlocal0
+         pushfalse
+         initproperty QName(PackageInternalNs("org.flixel"),"_paused")
+         getlocal0
+         pushfalse
+         initproperty QName(PackageInternalNs("org.flixel"),"_created")
+         findpropstrict QName(PackageNamespace(""),"addEventListener")
+         getlex QName(PackageNamespace("flash.events"),"Event")
+         getproperty QName(PackageNamespace(""),"ENTER_FRAME")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"create")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function addFrame(param1:Class, param2:uint, param3:uint) : FlxGame
+      {
+         trait method QName(ProtectedNamespace("org.flixel:FlxGame"),"addFrame")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Class")
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
+         returns QName(PackageNamespace("org.flixel"),"FlxGame")
+         
+         body
+         maxstack 2
+         localcount 4
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         setproperty QName(PackageInternalNs("org.flixel"),"_frame")
+         getlocal0
+         getlocal2
+         setproperty QName(PackageInternalNs("org.flixel"),"_gameXOffset")
+         getlocal0
+         getlocal3
+         setproperty QName(PackageInternalNs("org.flixel"),"_gameYOffset")
+         getlocal0
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function showSoundTray(param1:Boolean = false) : void
+      {
+         trait method QName(PackageNamespace(""),"showSoundTray")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Boolean")
+         optional False()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 4
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         pushbyte 1
+         setproperty QName(PackageInternalNs("org.flixel"),"_soundTrayTimer")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_gameYOffset")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_zoom")
+         multiply
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         getlex QName(PackageNamespace(""),"Math")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"volume")
+         pushbyte 10
+         multiply
+         callproperty QName(PackageNamespace(""),"round"), 1
+         convert_u
+         setlocal2
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mute")
+         iffalse ofs003a
+         pushbyte 0
+         convert_u
+         setlocal2
+         ofs003a:
+         pushbyte 0
+         convert_u
+         setlocal3
+         jump ofs0069
+         ofs0042:
+         label
+         getlocal3
+         getlocal2
+         ifnlt ofs0059
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTrayBars")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"238"),PackageNamespace(""),PackageInternalNs("org.flixel"),PackageNamespace("org.flixel"),PackageNamespace("flash.events"),PrivateNamespace(null,"239"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxGame"),StaticProtectedNs("org.flixel:FlxGame"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         pushbyte 1
+         setproperty Multiname("alpha",[PrivateNamespace(null,"238"),PackageNamespace(""),PackageInternalNs("org.flixel"),PackageNamespace("org.flixel"),PackageNamespace("flash.events"),PrivateNamespace(null,"239"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxGame"),StaticProtectedNs("org.flixel:FlxGame"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         jump ofs0065
+         ofs0059:
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTrayBars")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"238"),PackageNamespace(""),PackageInternalNs("org.flixel"),PackageNamespace("org.flixel"),PackageNamespace("flash.events"),PrivateNamespace(null,"239"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxGame"),StaticProtectedNs("org.flixel:FlxGame"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         pushdouble 0.5
+         setproperty Multiname("alpha",[PrivateNamespace(null,"238"),PackageNamespace(""),PackageInternalNs("org.flixel"),PackageNamespace("org.flixel"),PackageNamespace("flash.events"),PrivateNamespace(null,"239"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxGame"),StaticProtectedNs("org.flixel:FlxGame"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs0065:
+         getlocal3
+         increment
+         convert_u
+         setlocal3
+         ofs0069:
+         getlocal3
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTrayBars")
+         getproperty QName(PackageNamespace(""),"length")
+         iflt ofs0042
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function switchState(param1:FlxState) : void
+      {
+         trait method QName(PackageNamespace(""),"switchState")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("org.flixel"),"FlxState")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 3
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"panel")
+         callpropvoid QName(PackageNamespace(""),"hide"), 0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         callpropvoid QName(PackageNamespace(""),"unfollow"), 0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         callpropvoid QName(PackageNamespace(""),"resetInput"), 0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         callpropvoid QName(PackageInternalNs("org.flixel"),"destroySounds"), 0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"flash")
+         callpropvoid QName(PackageNamespace(""),"stop"), 0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"fade")
+         callpropvoid QName(PackageNamespace(""),"stop"), 0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"quake")
+         callpropvoid QName(PackageNamespace(""),"stop"), 0
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_screen")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_screen")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_screen")
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_state")
+         pushnull
+         ifeq ofs0078
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_state")
+         callpropvoid QName(PackageNamespace(""),"destroy"), 0
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_screen")
+         getlocal1
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_state")
+         callpropvoid QName(PackageNamespace(""),"swapChildren"), 2
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_screen")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_state")
+         callpropvoid QName(PackageNamespace(""),"removeChild"), 1
+         ofs0078:
+         getlocal0
+         getlocal1
+         setproperty QName(PackageInternalNs("org.flixel"),"_state")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_state")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_state")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_zoom")
+         dup
+         setlocal2
+         setproperty QName(PackageNamespace(""),"scaleY")
+         getlocal2
+         kill 2
+         setproperty QName(PackageNamespace(""),"scaleX")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_state")
+         callpropvoid QName(PackageNamespace(""),"create"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function onKeyUp(param1:KeyboardEvent) : void
+      {
+         trait method QName(ProtectedNamespace("org.flixel:FlxGame"),"onKeyUp")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"KeyboardEvent")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 7
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal2
+         pushnull
+         coerce_s
+         setlocal3
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"consoleEnabled")
+         iffalse ofs0034
+         getlocal1
+         getproperty QName(PackageNamespace(""),"keyCode")
+         pushshort 192
+         equals
+         dup
+         iftrue ofs0028
+         pop
+         getlocal1
+         getproperty QName(PackageNamespace(""),"keyCode")
+         pushshort 220
+         equals
+         ofs0028:
+         iffalse ofs0034
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_console")
+         callpropvoid QName(PackageNamespace(""),"toggle"), 0
+         returnvoid
+         ofs0034:
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mobile")
+         not
+         dup
+         iffalse ofs0045
+         pop
+         getlocal0
+         getproperty QName(PackageNamespace(""),"useDefaultHotKeys")
+         convert_b
+         ofs0045:
+         iffalse ofs0152
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"keyCode")
+         callproperty QName(PackageNamespace(""),"int"), 1
+         convert_i
+         setlocal2
+         getlex QName(PackageNamespace(""),"String")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"charCode")
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"fromCharCode"), 1
+         coerce_s
+         setlocal3
+         jump ofs00c0
+         ofs0064:
+         label
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mute")
+         not
+         setproperty QName(PackageNamespace(""),"mute")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"showSoundTray"), 0
+         returnvoid
+         ofs0077:
+         label
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"mute")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"volume")
+         pushdouble 0.1
+         subtract
+         setproperty QName(PackageNamespace(""),"volume")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"showSoundTray"), 0
+         returnvoid
+         ofs0093:
+         label
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"mute")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"volume")
+         pushdouble 0.1
+         add
+         setproperty QName(PackageNamespace(""),"volume")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"showSoundTray"), 0
+         returnvoid
+         ofs00af:
+         label
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"pause")
+         not
+         setproperty QName(PackageNamespace(""),"pause")
+         ofs00bb:
+         label
+         jump ofs0152
+         ofs00c0:
+         getlocal2
+         setlocal 6
+         pushbyte 48
+         getlocal 6
+         ifstrictne ofs00d1
+         pushbyte 0
+         jump ofs0133
+         ofs00d1:
+         pushbyte 96
+         getlocal 6
+         ifstrictne ofs00df
+         pushbyte 1
+         jump ofs0133
+         ofs00df:
+         pushbyte 109
+         getlocal 6
+         ifstrictne ofs00ed
+         pushbyte 2
+         jump ofs0133
+         ofs00ed:
+         pushshort 189
+         getlocal 6
+         ifstrictne ofs00fc
+         pushbyte 3
+         jump ofs0133
+         ofs00fc:
+         pushbyte 107
+         getlocal 6
+         ifstrictne ofs010a
+         pushbyte 4
+         jump ofs0133
+         ofs010a:
+         pushshort 187
+         getlocal 6
+         ifstrictne ofs0119
+         pushbyte 5
+         jump ofs0133
+         ofs0119:
+         pushbyte 80
+         getlocal 6
+         ifstrictne ofs0127
+         pushbyte 6
+         jump ofs0133
+         ofs0127:
+         jump ofs0131
+         pushbyte 7
+         jump ofs0131
+         ofs0131:
+         pushbyte 7
+         ofs0133:
+         kill 6
+         lookupswitch ofs00bb, [ofs0064, ofs0064, ofs0077, ofs0077, ofs0093, ofs0093, ofs00af, ofs00bb]
+         ofs0152:
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"handleKeyUp"), 1
+         pushbyte 0
+         convert_u
+         setlocal 4
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"gamepads")
+         getproperty QName(PackageNamespace(""),"length")
+         convert_u
+         setlocal 5
+         jump ofs0189
+         ofs0172:
+         label
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"gamepads")
+         getlocal 4
+         convert_d
+         dup
+         increment
+         convert_u
+         setlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"238"),PackageNamespace(""),PackageInternalNs("org.flixel"),PackageNamespace("org.flixel"),PackageNamespace("flash.events"),PrivateNamespace(null,"239"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxGame"),StaticProtectedNs("org.flixel:FlxGame"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlocal1
+         callpropvoid Multiname("handleKeyUp",[PrivateNamespace(null,"238"),PackageNamespace(""),PackageInternalNs("org.flixel"),PackageNamespace("org.flixel"),PackageNamespace("flash.events"),PrivateNamespace(null,"239"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxGame"),StaticProtectedNs("org.flixel:FlxGame"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
+         ofs0189:
+         getlocal 4
+         getlocal 5
+         iflt ofs0172
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function onKeyDown(param1:KeyboardEvent) : void
+      {
+         trait method QName(ProtectedNamespace("org.flixel:FlxGame"),"onKeyDown")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"KeyboardEvent")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 4
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"handleKeyDown"), 1
+         pushbyte 0
+         convert_u
+         setlocal2
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"gamepads")
+         getproperty QName(PackageNamespace(""),"length")
+         convert_u
+         setlocal3
+         jump ofs0035
+         ofs0020:
+         label
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"gamepads")
+         getlocal2
+         convert_d
+         dup
+         increment
+         convert_u
+         setlocal2
+         getproperty MultinameL([PrivateNamespace(null,"238"),PackageNamespace(""),PackageInternalNs("org.flixel"),PackageNamespace("org.flixel"),PackageNamespace("flash.events"),PrivateNamespace(null,"239"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxGame"),StaticProtectedNs("org.flixel:FlxGame"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlocal1
+         callpropvoid Multiname("handleKeyDown",[PrivateNamespace(null,"238"),PackageNamespace(""),PackageInternalNs("org.flixel"),PackageNamespace("org.flixel"),PackageNamespace("flash.events"),PrivateNamespace(null,"239"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxGame"),StaticProtectedNs("org.flixel:FlxGame"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
+         ofs0035:
+         getlocal2
+         getlocal3
+         iflt ofs0020
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function onFocus(param1:Event = null) : void
+      {
+         trait method QName(ProtectedNamespace("org.flixel:FlxGame"),"onFocus")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace("flash.events"),"Event")
+         optional Null()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"pause")
+         iffalse ofs001b
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mouse")
+         callpropvoid QName(PackageNamespace(""),"hide"), 0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"pause")
+         ofs001b:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function onFocusLost(param1:Event = null) : void
+      {
+         trait method QName(ProtectedNamespace("org.flixel:FlxGame"),"onFocusLost")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace("flash.events"),"Event")
+         optional Null()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"noPause")
+         iffalse ofs000d
+         returnvoid
+         ofs000d:
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mouse")
+         callpropvoid QName(PackageNamespace(""),"show"), 0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"pause")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      internal function unpauseGame() : void
+      {
+         trait method QName(PackageInternalNs("org.flixel"),"unpauseGame")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"panel")
+         getproperty QName(PackageNamespace(""),"visible")
+         iftrue ofs0016
+         getlex QName(PackageNamespace("flash.ui"),"Mouse")
+         callpropvoid QName(PackageNamespace(""),"hide"), 0
+         ofs0016:
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         callpropvoid QName(PackageNamespace(""),"resetInput"), 0
+         getlocal0
+         pushfalse
+         setproperty QName(PackageInternalNs("org.flixel"),"_paused")
+         getlex QName(PackageNamespace(""),"stage")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_framerate")
+         setproperty QName(PackageNamespace(""),"frameRate")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      internal function pauseGame() : void
+      {
+         trait method QName(PackageInternalNs("org.flixel"),"pauseGame")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 0
+         equals
+         not
+         dup
+         iftrue ofs0014
+         pop
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 0
+         equals
+         not
+         ofs0014:
+         iffalse ofs0024
+         findproperty QName(PackageNamespace(""),"x")
+         pushbyte 0
+         initproperty QName(PackageNamespace(""),"x")
+         findproperty QName(PackageNamespace(""),"y")
+         pushbyte 0
+         initproperty QName(PackageNamespace(""),"y")
+         ofs0024:
+         getlex QName(PackageNamespace("flash.ui"),"Mouse")
+         callpropvoid QName(PackageNamespace(""),"show"), 0
+         getlocal0
+         pushtrue
+         setproperty QName(PackageInternalNs("org.flixel"),"_paused")
+         getlex QName(PackageNamespace(""),"stage")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_frameratePaused")
+         setproperty QName(PackageNamespace(""),"frameRate")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function update(param1:Event) : void
+      {
+         trait method QName(ProtectedNamespace("org.flixel:FlxGame"),"update")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"Event")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 7
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         convert_u
+         setlocal2
+         pushnull
+         coerce QName(PackageNamespace("org.flixel"),"FlxSave")
+         setlocal3
+         findpropstrict QName(PackageNamespace(""),"uint")
+         findpropstrict QName(PackageNamespace("flash.utils"),"getTimer")
+         callproperty QName(PackageNamespace("flash.utils"),"getTimer"), 0
+         callproperty QName(PackageNamespace(""),"uint"), 1
+         convert_u
+         setlocal 4
+         findpropstrict QName(PackageNamespace(""),"uint")
+         getlocal 4
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_total")
+         subtract
+         callproperty QName(PackageNamespace(""),"uint"), 1
+         convert_u
+         setlocal 5
+         getlocal0
+         getlocal 5
+         pushshort 1000
+         divide
+         setproperty QName(PackageInternalNs("org.flixel"),"_elapsed")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_console")
+         getproperty QName(PackageNamespace(""),"mtrTotal")
+         getlocal 5
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         getlocal 4
+         setproperty QName(PackageInternalNs("org.flixel"),"_total")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_elapsed")
+         setproperty QName(PackageNamespace(""),"elapsed")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"maxElapsed")
+         ifngt ofs0065
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"maxElapsed")
+         setproperty QName(PackageNamespace(""),"elapsed")
+         ofs0065:
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"timeScale")
+         multiply
+         setproperty QName(PackageNamespace(""),"elapsed")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         pushnull
+         ifeq ofs00d3
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTrayTimer")
+         pushbyte 0
+         ifngt ofs0097
+         getlocal0
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTrayTimer")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_elapsed")
+         subtract
+         setproperty QName(PackageInternalNs("org.flixel"),"_soundTrayTimer")
+         jump ofs00d3
+         ofs0097:
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         getproperty QName(PackageNamespace(""),"height")
+         negate
+         ifngt ofs00d3
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_elapsed")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         multiply
+         pushbyte 2
+         multiply
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         getproperty QName(PackageNamespace(""),"height")
+         negate
+         ifnle ofs00d3
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         ofs00d3:
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"panel")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_console")
+         getproperty QName(PackageNamespace(""),"visible")
+         iffalse ofs00ec
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_console")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         ofs00ec:
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         callpropvoid QName(PackageInternalNs("org.flixel"),"updateInput"), 0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         callpropvoid QName(PackageInternalNs("org.flixel"),"updateSounds"), 0
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_paused")
+         iffalse ofs010b
+         getlocal0
+         getproperty QName(PackageNamespace(""),"pause")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         jump ofs0165
+         ofs010b:
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         callpropvoid QName(PackageInternalNs("org.flixel"),"doFollow"), 0
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_state")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"flash")
+         getproperty QName(PackageNamespace(""),"exists")
+         iffalse ofs012d
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"flash")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         ofs012d:
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"fade")
+         getproperty QName(PackageNamespace(""),"exists")
+         iffalse ofs0142
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"fade")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         ofs0142:
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"quake")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_screen")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"quake")
+         getproperty QName(PackageNamespace(""),"x")
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_screen")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"quake")
+         getproperty QName(PackageNamespace(""),"y")
+         setproperty QName(PackageNamespace(""),"y")
+         ofs0165:
+         findpropstrict QName(PackageNamespace(""),"uint")
+         findpropstrict QName(PackageNamespace("flash.utils"),"getTimer")
+         callproperty QName(PackageNamespace("flash.utils"),"getTimer"), 0
+         callproperty QName(PackageNamespace(""),"uint"), 1
+         convert_u
+         setlocal 6
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_console")
+         getproperty QName(PackageNamespace(""),"mtrUpdate")
+         getlocal 6
+         getlocal 4
+         subtract
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"buffer")
+         callpropvoid QName(PackageNamespace(""),"lock"), 0
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_state")
+         callpropvoid QName(PackageNamespace(""),"preProcess"), 0
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_state")
+         callpropvoid QName(PackageNamespace(""),"render"), 0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"flash")
+         getproperty QName(PackageNamespace(""),"exists")
+         iffalse ofs01ad
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"flash")
+         callpropvoid QName(PackageNamespace(""),"render"), 0
+         ofs01ad:
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"fade")
+         getproperty QName(PackageNamespace(""),"exists")
+         iffalse ofs01c2
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"fade")
+         callpropvoid QName(PackageNamespace(""),"render"), 0
+         ofs01c2:
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"panel")
+         getproperty QName(PackageNamespace(""),"visible")
+         iffalse ofs01d8
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"panel")
+         callpropvoid QName(PackageNamespace(""),"render"), 0
+         ofs01d8:
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mouse")
+         getproperty QName(PackageNamespace(""),"cursor")
+         pushnull
+         ifeq ofs021e
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mouse")
+         getproperty QName(PackageNamespace(""),"cursor")
+         getproperty QName(PackageNamespace(""),"active")
+         iffalse ofs0202
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mouse")
+         getproperty QName(PackageNamespace(""),"cursor")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         ofs0202:
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mouse")
+         getproperty QName(PackageNamespace(""),"cursor")
+         getproperty QName(PackageNamespace(""),"visible")
+         iffalse ofs021e
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mouse")
+         getproperty QName(PackageNamespace(""),"cursor")
+         callpropvoid QName(PackageNamespace(""),"render"), 0
+         ofs021e:
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_state")
+         callpropvoid QName(PackageNamespace(""),"postProcess"), 0
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_paused")
+         iffalse ofs0231
+         getlocal0
+         getproperty QName(PackageNamespace(""),"pause")
+         callpropvoid QName(PackageNamespace(""),"render"), 0
+         ofs0231:
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"buffer")
+         callpropvoid QName(PackageNamespace(""),"unlock"), 0
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_console")
+         getproperty QName(PackageNamespace(""),"mtrRender")
+         findpropstrict QName(PackageNamespace("flash.utils"),"getTimer")
+         callproperty QName(PackageNamespace("flash.utils"),"getTimer"), 0
+         getlocal 6
+         subtract
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mouse")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"wheel")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      internal function create(param1:Event) : void
+      {
+         trait method QName(PackageInternalNs("org.flixel"),"create")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"Event")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 11
+         localcount 11
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         convert_u
+         setlocal2
+         pushbyte 0
+         convert_u
+         setlocal3
+         pushnull
+         coerce QName(PackageNamespace("org.flixel"),"FlxSave")
+         setlocal 4
+         pushnull
+         coerce QName(PackageNamespace("flash.text"),"TextField")
+         setlocal 5
+         pushbyte 0
+         convert_u
+         setlocal 6
+         pushbyte 0
+         convert_u
+         setlocal 7
+         pushnull
+         coerce QName(PackageNamespace("flash.display"),"Bitmap")
+         setlocal 8
+         getlex QName(PackageNamespace(""),"root")
+         pushnull
+         ifne ofs002d
+         returnvoid
+         ofs002d:
+         getlex QName(PackageNamespace(""),"stage")
+         getlex QName(PackageNamespace("flash.display"),"StageScaleMode")
+         getproperty QName(PackageNamespace(""),"NO_SCALE")
+         setproperty QName(PackageNamespace(""),"scaleMode")
+         getlex QName(PackageNamespace(""),"stage")
+         getlex QName(PackageNamespace("flash.display"),"StageAlign")
+         getproperty QName(PackageNamespace(""),"TOP_LEFT")
+         setproperty QName(PackageNamespace(""),"align")
+         getlex QName(PackageNamespace(""),"stage")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_framerate")
+         setproperty QName(PackageNamespace(""),"frameRate")
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.display"),"Sprite")
+         constructprop QName(PackageNamespace("flash.display"),"Sprite"), 0
+         setproperty QName(PackageInternalNs("org.flixel"),"_screen")
+         findpropstrict QName(PackageNamespace(""),"addChild")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_screen")
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         findpropstrict QName(PackageNamespace("flash.display"),"Bitmap")
+         findpropstrict QName(PackageNamespace("flash.display"),"BitmapData")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         pushtrue
+         getlex QName(PackageNamespace("org.flixel"),"FlxState")
+         getproperty QName(PackageNamespace(""),"bgColor")
+         constructprop QName(PackageNamespace("flash.display"),"BitmapData"), 4
+         constructprop QName(PackageNamespace("flash.display"),"Bitmap"), 1
+         coerce QName(PackageNamespace("flash.display"),"Bitmap")
+         dup
+         setlocal 9
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_gameXOffset")
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 9
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_gameYOffset")
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 9
+         getlocal 9
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_zoom")
+         dup
+         setlocal 10
+         setproperty QName(PackageNamespace(""),"scaleY")
+         getlocal 10
+         kill 10
+         setproperty QName(PackageNamespace(""),"scaleX")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_screen")
+         getlocal 9
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"bitmapData")
+         setproperty QName(PackageNamespace(""),"buffer")
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxConsole")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_gameXOffset")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_gameYOffset")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_zoom")
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxConsole"), 3
+         setproperty QName(PackageInternalNs("org.flixel"),"_console")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mobile")
+         iftrue ofs00d8
+         findpropstrict QName(PackageNamespace(""),"addChild")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_console")
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         ofs00d8:
+         getlex QName(PackageNamespace(""),"stage")
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"MOUSE_DOWN")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mouse")
+         getproperty QName(PackageNamespace(""),"handleMouseDown")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlex QName(PackageNamespace(""),"stage")
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"MOUSE_UP")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mouse")
+         getproperty QName(PackageNamespace(""),"handleMouseUp")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlex QName(PackageNamespace(""),"stage")
+         getlex QName(PackageNamespace("flash.events"),"KeyboardEvent")
+         getproperty QName(PackageNamespace(""),"KEY_DOWN")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxGame"),"onKeyDown")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlex QName(PackageNamespace(""),"stage")
+         getlex QName(PackageNamespace("flash.events"),"KeyboardEvent")
+         getproperty QName(PackageNamespace(""),"KEY_UP")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxGame"),"onKeyUp")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mobile")
+         iftrue ofs02f4
+         getlex QName(PackageNamespace(""),"stage")
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"MOUSE_OUT")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mouse")
+         getproperty QName(PackageNamespace(""),"handleMouseOut")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlex QName(PackageNamespace(""),"stage")
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"MOUSE_OVER")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mouse")
+         getproperty QName(PackageNamespace(""),"handleMouseOver")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlex QName(PackageNamespace(""),"stage")
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"MOUSE_WHEEL")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mouse")
+         getproperty QName(PackageNamespace(""),"handleMouseWheel")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlex QName(PackageNamespace(""),"stage")
+         getlex QName(PackageNamespace("flash.events"),"Event")
+         getproperty QName(PackageNamespace(""),"DEACTIVATE")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxGame"),"onFocusLost")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlex QName(PackageNamespace(""),"stage")
+         getlex QName(PackageNamespace("flash.events"),"Event")
+         getproperty QName(PackageNamespace(""),"ACTIVATE")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxGame"),"onFocus")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.display"),"Sprite")
+         constructprop QName(PackageNamespace("flash.display"),"Sprite"), 0
+         setproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         pushbyte 2
+         setproperty QName(PackageNamespace(""),"scaleX")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         pushbyte 2
+         setproperty QName(PackageNamespace(""),"scaleY")
+         findpropstrict QName(PackageNamespace("flash.display"),"Bitmap")
+         findpropstrict QName(PackageNamespace("flash.display"),"BitmapData")
+         pushbyte 80
+         pushbyte 30
+         pushtrue
+         pushint 2130706432
+         constructprop QName(PackageNamespace("flash.display"),"BitmapData"), 4
+         constructprop QName(PackageNamespace("flash.display"),"Bitmap"), 1
+         coerce QName(PackageNamespace("flash.display"),"Bitmap")
+         setlocal 9
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_gameXOffset")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 2
+         divide
+         add
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_zoom")
+         multiply
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 2
+         divide
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         getproperty QName(PackageNamespace(""),"scaleX")
+         multiply
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         getlocal 9
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         findpropstrict QName(PackageNamespace("flash.text"),"TextField")
+         constructprop QName(PackageNamespace("flash.text"),"TextField"), 0
+         coerce QName(PackageNamespace("flash.text"),"TextField")
+         dup
+         setlocal 5
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"width")
+         setproperty QName(PackageNamespace(""),"width")
+         getlocal 5
+         getlocal 9
+         getproperty QName(PackageNamespace(""),"height")
+         setproperty QName(PackageNamespace(""),"height")
+         getlocal 5
+         pushtrue
+         setproperty QName(PackageNamespace(""),"multiline")
+         getlocal 5
+         pushtrue
+         setproperty QName(PackageNamespace(""),"wordWrap")
+         getlocal 5
+         pushfalse
+         setproperty QName(PackageNamespace(""),"selectable")
+         getlocal 5
+         pushtrue
+         setproperty QName(PackageNamespace(""),"embedFonts")
+         getlocal 5
+         getlex QName(PackageNamespace("flash.text"),"AntiAliasType")
+         getproperty QName(PackageNamespace(""),"NORMAL")
+         setproperty QName(PackageNamespace(""),"antiAliasType")
+         getlocal 5
+         getlex QName(PackageNamespace("flash.text"),"GridFitType")
+         getproperty QName(PackageNamespace(""),"PIXEL")
+         setproperty QName(PackageNamespace(""),"gridFitType")
+         getlocal 5
+         findpropstrict QName(PackageNamespace("flash.text"),"TextFormat")
+         pushstring "system"
+         pushbyte 8
+         pushint 16777215
+         pushnull
+         pushnull
+         pushnull
+         pushnull
+         pushnull
+         pushstring "center"
+         constructprop QName(PackageNamespace("flash.text"),"TextFormat"), 9
+         setproperty QName(PackageNamespace(""),"defaultTextFormat")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         getlocal 5
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         getlocal 5
+         pushstring "VOLUME"
+         setproperty QName(PackageNamespace(""),"text")
+         getlocal 5
+         pushbyte 16
+         setproperty QName(PackageNamespace(""),"y")
+         pushbyte 10
+         convert_u
+         setlocal 6
+         pushbyte 14
+         convert_u
+         setlocal 7
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         setproperty QName(PackageInternalNs("org.flixel"),"_soundTrayBars")
+         pushbyte 0
+         convert_u
+         setlocal2
+         jump ofs02be
+         ofs027c:
+         label
+         findpropstrict QName(PackageNamespace("flash.display"),"Bitmap")
+         findpropstrict QName(PackageNamespace("flash.display"),"BitmapData")
+         pushbyte 4
+         getlocal2
+         increment
+         dup
+         convert_u
+         setlocal2
+         pushfalse
+         pushint 16777215
+         constructprop QName(PackageNamespace("flash.display"),"BitmapData"), 4
+         constructprop QName(PackageNamespace("flash.display"),"Bitmap"), 1
+         coerce QName(PackageNamespace("flash.display"),"Bitmap")
+         dup
+         setlocal 9
+         getlocal 6
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 9
+         getlocal 7
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTrayBars")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         getlocal 9
+         callproperty QName(PackageNamespace(""),"addChild"), 1
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
+         getlocal 6
+         pushbyte 6
+         add
+         convert_u
+         setlocal 6
+         getlocal 7
+         decrement
+         convert_u
+         setlocal 7
+         ofs02be:
+         getlocal2
+         pushbyte 10
+         iflt ofs027c
+         findpropstrict QName(PackageNamespace(""),"addChild")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_soundTray")
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSave")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSave"), 0
+         coerce QName(PackageNamespace("org.flixel"),"FlxSave")
+         dup
+         setlocal 4
+         pushstring "flixel"
+         callproperty QName(PackageNamespace(""),"bind"), 1
+         convert_b
+         dup
+         iffalse ofs02f0
+         pop
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"data")
+         getproperty Multiname("sound",[PrivateNamespace(null,"238"),PackageNamespace(""),PackageInternalNs("org.flixel"),PackageNamespace("org.flixel"),PackageNamespace("flash.events"),PrivateNamespace(null,"239"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxGame"),StaticProtectedNs("org.flixel:FlxGame"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         pushnull
+         equals
+         not
+         ofs02f0:
+         iffalse ofs02f4
+         ofs02f4:
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_frame")
+         pushnull
+         ifeq ofs031c
+         getlocal0
+         constructprop QName(PackageInternalNs("org.flixel"),"_frame"), 0
+         coerce QName(PackageNamespace("flash.display"),"Bitmap")
+         dup
+         setlocal 8
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_zoom")
+         setproperty QName(PackageNamespace(""),"scaleX")
+         getlocal 8
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"_zoom")
+         setproperty QName(PackageNamespace(""),"scaleY")
+         findpropstrict QName(PackageNamespace(""),"addChild")
+         getlocal 8
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         ofs031c:
+         getlocal0
+         getlocal0
+         constructprop QName(PackageInternalNs("org.flixel"),"_iState"), 0
+         callpropvoid QName(PackageNamespace(""),"switchState"), 1
+         getlex QName(PackageNamespace("org.flixel"),"FlxState")
+         getproperty QName(PackageNamespace(""),"screen")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"buffer")
+         callpropvoid QName(PackageInternalNs("org.flixel"),"unsafeBind"), 1
+         findpropstrict QName(PackageNamespace(""),"removeEventListener")
+         getlex QName(PackageNamespace("flash.events"),"Event")
+         getproperty QName(PackageNamespace(""),"ENTER_FRAME")
+         getlocal0
+         getproperty QName(PackageInternalNs("org.flixel"),"create")
+         callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+         findpropstrict QName(PackageNamespace(""),"addEventListener")
+         getlex QName(PackageNamespace("flash.events"),"Event")
+         getproperty QName(PackageNamespace(""),"ENTER_FRAME")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxGame"),"update")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 8
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("FlxGame",[PackageNamespace("org.flixel")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"DisplayObject")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"InteractiveObject")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"DisplayObjectContainer")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"Sprite")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"Sprite")
+newclass 0
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace("org.flixel"),"FlxGame")
+returnvoid
+end ; code
+end ; body
+end ; method
+

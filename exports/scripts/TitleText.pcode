@@ -1,0 +1,527 @@
+package
+{
+   import org.flixel.*;
+   
+   public class TitleText extends FlxGroup
+   {
+      private static const Y_POS:int = 15;
+      
+      private static const SPACING:int = 4;
+      
+      private static const LETTER_DELAY:Number = 0.28559933214452665;
+      
+      private static const LETTER_START:Number = -2.5;
+      
+      private static const TIME_SCALE:Number = 0.8;
+      
+      private static const X_SCALE:Number = 80;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 3
+      localcount 1
+      initscopedepth 7
+      maxscopedepth 8
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"109"),"Y_POS")
+      pushbyte 15
+      initproperty QName(PrivateNamespace(null,"109"),"Y_POS")
+      findproperty QName(PrivateNamespace(null,"109"),"SPACING")
+      pushbyte 4
+      initproperty QName(PrivateNamespace(null,"109"),"SPACING")
+      findproperty QName(PrivateNamespace(null,"109"),"LETTER_DELAY")
+      getlex QName(PackageNamespace(""),"Math")
+      getproperty QName(PackageNamespace(""),"PI")
+      pushbyte 11
+      divide
+      initproperty QName(PrivateNamespace(null,"109"),"LETTER_DELAY")
+      findproperty QName(PrivateNamespace(null,"109"),"LETTER_START")
+      pushdouble -2.5
+      initproperty QName(PrivateNamespace(null,"109"),"LETTER_START")
+      findproperty QName(PrivateNamespace(null,"109"),"TIME_SCALE")
+      pushdouble 0.8
+      initproperty QName(PrivateNamespace(null,"109"),"TIME_SCALE")
+      findproperty QName(PrivateNamespace(null,"109"),"X_SCALE")
+      pushbyte 80
+      initproperty QName(PrivateNamespace(null,"109"),"X_SCALE")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var _letters:Array;
+      
+      private var _totalWidth:int = 0;
+      
+      private var _targetX:int = 0;
+      
+      private var _elapsed:Number = 0;
+      
+      private var _targetY:Number = 0;
+      
+      public function TitleText(param1:Boolean = false)
+      {
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Boolean")
+         optional False()
+         returns null
+         
+         body
+         maxstack 5
+         localcount 4
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         initproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         findpropstrict QName(PackageNamespace(""),"TitleLetter")
+         pushstring "S"
+         constructprop QName(PackageNamespace(""),"TitleLetter"), 1
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         findpropstrict QName(PackageNamespace(""),"TitleLetter")
+         pushstring "N"
+         constructprop QName(PackageNamespace(""),"TitleLetter"), 1
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         findpropstrict QName(PackageNamespace(""),"TitleLetter")
+         pushstring "A"
+         constructprop QName(PackageNamespace(""),"TitleLetter"), 1
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         findpropstrict QName(PackageNamespace(""),"TitleLetter")
+         pushstring "I"
+         constructprop QName(PackageNamespace(""),"TitleLetter"), 1
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         findpropstrict QName(PackageNamespace(""),"TitleLetter")
+         pushstring "L"
+         constructprop QName(PackageNamespace(""),"TitleLetter"), 1
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         findpropstrict QName(PackageNamespace(""),"TitleLetter")
+         pushstring "I"
+         constructprop QName(PackageNamespace(""),"TitleLetter"), 1
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         findpropstrict QName(PackageNamespace(""),"TitleLetter")
+         pushstring "A"
+         constructprop QName(PackageNamespace(""),"TitleLetter"), 1
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         findpropstrict QName(PackageNamespace(""),"TitleLetter")
+         pushstring "D"
+         constructprop QName(PackageNamespace(""),"TitleLetter"), 1
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
+         pushbyte 0
+         setlocal2
+         jump ofs00c9
+         ofs00a5:
+         label
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_totalWidth")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("width",[PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         add
+         initproperty QName(PrivateNamespace(null,"109"),"_totalWidth")
+         inclocal_i 2
+         ofs00c9:
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getproperty QName(PackageNamespace(""),"length")
+         iflt ofs00a5
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_totalWidth")
+         getlex QName(PrivateNamespace(null,"109"),"SPACING")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getproperty QName(PackageNamespace(""),"length")
+         decrement
+         multiply
+         add
+         initproperty QName(PrivateNamespace(null,"109"),"_totalWidth")
+         getlocal0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_totalWidth")
+         subtract
+         pushbyte 2
+         divide
+         initproperty QName(PrivateNamespace(null,"109"),"_targetX")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_targetX")
+         convert_d
+         setlocal3
+         pushbyte 0
+         setlocal2
+         jump ofs0156
+         ofs0108:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal3
+         setproperty Multiname("targetX",[PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("width",[PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         add
+         convert_d
+         setlocal3
+         getlocal3
+         getlex QName(PrivateNamespace(null,"109"),"SPACING")
+         add
+         convert_d
+         setlocal3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PrivateNamespace(null,"109"),"Y_POS")
+         setproperty Multiname("y",[PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal1
+         iffalse ofs0154
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("targetX",[PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty Multiname("x",[PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         ofs0154:
+         inclocal_i 2
+         ofs0156:
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getproperty QName(PackageNamespace(""),"length")
+         iflt ofs0108
+         getlocal0
+         pushbyte 0
+         callpropvoid QName(PackageNamespace(""),"setYOffset"), 1
+         findproperty QName(PackageNamespace(""),"active")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"active")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function destroy() : void
+      {
+         trait method QName(PackageNamespace(""),"destroy")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         pushnull
+         setproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"destroy"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function setYOffset(param1:int, param2:Boolean = false) : void
+      {
+         trait method QName(PackageNamespace(""),"setYOffset")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"Boolean")
+         optional False()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 4
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal3
+         getlocal0
+         getlocal1
+         getlex QName(PrivateNamespace(null,"109"),"Y_POS")
+         add
+         setproperty QName(PrivateNamespace(null,"109"),"_targetY")
+         getlocal2
+         iffalse ofs0038
+         pushbyte 0
+         setlocal3
+         jump ofs002c
+         ofs001a:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_targetY")
+         setproperty Multiname("y",[PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         inclocal_i 3
+         ofs002c:
+         getlocal3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getproperty QName(PackageNamespace(""),"length")
+         iflt ofs001a
+         ofs0038:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 4
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal1
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal2
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_elapsed")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         getlex QName(PrivateNamespace(null,"109"),"TIME_SCALE")
+         multiply
+         add
+         setproperty QName(PrivateNamespace(null,"109"),"_elapsed")
+         pushbyte 0
+         setlocal3
+         jump ofs00f2
+         ofs0026:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_elapsed")
+         getlex QName(PrivateNamespace(null,"109"),"LETTER_DELAY")
+         getlocal3
+         multiply
+         subtract
+         getlex QName(PrivateNamespace(null,"109"),"LETTER_START")
+         add
+         convert_d
+         setlocal1
+         getlocal1
+         getlex QName(PrivateNamespace(null,"109"),"LETTER_START")
+         ifnlt ofs004f
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushfalse
+         setproperty Multiname("visible",[PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         jump ofs00c7
+         ofs004f:
+         getlocal1
+         pushbyte 0
+         ifnlt ofs0097
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushtrue
+         setproperty Multiname("visible",[PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal1
+         negate
+         getlex QName(PackageNamespace(""),"Math")
+         getproperty QName(PackageNamespace(""),"PI")
+         multiply
+         callproperty QName(PackageNamespace(""),"sin"), 1
+         negate
+         getlocal1
+         multiply
+         getlex QName(PrivateNamespace(null,"109"),"X_SCALE")
+         multiply
+         convert_d
+         setlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("targetX",[PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal2
+         add
+         setproperty Multiname("x",[PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         jump ofs00c7
+         ofs0097:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"Utility")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("x",[PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("targetX",[PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushbyte 4
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         callproperty QName(PackageNamespace(""),"integrate"), 4
+         setproperty Multiname("x",[PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         ofs00c7:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"Utility")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("y",[PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_targetY")
+         pushbyte 4
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         callproperty QName(PackageNamespace(""),"integrate"), 4
+         setproperty Multiname("y",[PrivateNamespace(null,"109"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"327"),PackageInternalNs(""),PackageNamespace("org.flixel"),ProtectedNamespace("TitleText"),StaticProtectedNs("TitleText"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         inclocal_i 3
+         ofs00f2:
+         getlocal3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"109"),"_letters")
+         getproperty QName(PackageNamespace(""),"length")
+         iflt ofs0026
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"update"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 7
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("TitleText",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGroup")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGroup")
+newclass 198
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"TitleText")
+returnvoid
+end ; code
+end ; body
+end ; method
+

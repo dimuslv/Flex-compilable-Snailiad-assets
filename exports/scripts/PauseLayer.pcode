@@ -1,0 +1,388 @@
+package
+{
+   import org.flixel.FlxG;
+   import org.flixel.FlxGroup;
+   import org.flixel.FlxSprite;
+   import org.flixel.FlxText;
+   
+   public class PauseLayer extends FlxGroup
+   {
+      public static var hideMe:Boolean = false;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 7
+      maxscopedepth 8
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PackageNamespace(""),"hideMe")
+      pushfalse
+      setproperty QName(PackageNamespace(""),"hideMe")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public var pauseText:FlxText;
+      
+      public var bg1:FlxSprite;
+      
+      public var bg2:FlxSprite;
+      
+      public function PauseLayer()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 5
+         localcount 2
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         getlex QName(PackageNamespace(""),"scrollFactor")
+         getlex QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal1
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal1
+         kill 1
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 0
+         initproperty QName(PackageNamespace(""),"bg1")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg1")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 4
+         divide
+         decrement
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg1")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 12
+         divide
+         pushbyte 5
+         multiply
+         decrement
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg1")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 2
+         divide
+         pushbyte 2
+         add
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 6
+         divide
+         pushbyte 2
+         add
+         pushdouble 4026531839
+         callpropvoid QName(PackageNamespace(""),"createGraphic"), 3
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg1")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg1")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal1
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal1
+         kill 1
+         setproperty QName(PackageNamespace(""),"x")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg1")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 0
+         initproperty QName(PackageNamespace(""),"bg2")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg2")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg1")
+         getproperty QName(PackageNamespace(""),"x")
+         pushbyte 1
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg2")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg1")
+         getproperty QName(PackageNamespace(""),"y")
+         pushbyte 1
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg2")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 2
+         divide
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 6
+         divide
+         pushdouble 4009758784
+         callpropvoid QName(PackageNamespace(""),"createGraphic"), 3
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg2")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg2")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal1
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal1
+         kill 1
+         setproperty QName(PackageNamespace(""),"x")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg2")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxText")
+         pushbyte -2
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 2
+         divide
+         pushbyte 11
+         subtract
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxText"), 3
+         initproperty QName(PackageNamespace(""),"pauseText")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"pauseText")
+         pushstring "center"
+         setproperty QName(PackageNamespace(""),"alignment")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"pauseText")
+         pushint 16777215
+         setproperty QName(PackageNamespace(""),"color")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"pauseText")
+         pushbyte 20
+         setproperty QName(PackageNamespace(""),"size")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"pauseText")
+         getlex QName(PackageNamespace(""),"Fonts")
+         getproperty QName(PackageNamespace(""),"normal")
+         setproperty QName(PackageNamespace(""),"font")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"pauseText")
+         pushbyte 1
+         callpropvoid QName(PackageNamespace(""),"setShadowDistance"), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"pauseText")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"pauseText")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal1
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal1
+         kill 1
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"pauseText")
+         pushstring "- GAME PAUSED -"
+         setproperty QName(PackageNamespace(""),"text")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"pauseText")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"pauseText")
+         getlex QName(PackageNamespace(""),"hideMe")
+         not
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg1")
+         getlex QName(PackageNamespace(""),"hideMe")
+         not
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg2")
+         getlex QName(PackageNamespace(""),"hideMe")
+         not
+         setproperty QName(PackageNamespace(""),"visible")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"mouse")
+         callproperty QName(PackageNamespace(""),"justPressed"), 0
+         convert_b
+         dup
+         iftrue ofs0042
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "Z"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0042:
+         dup
+         iftrue ofs0056
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "X"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0056:
+         dup
+         iftrue ofs006a
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "J"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs006a:
+         dup
+         iftrue ofs007e
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "K"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs007e:
+         dup
+         iftrue ofs0092
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "P"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0092:
+         dup
+         iftrue ofs00a6
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "ESCAPE"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs00a6:
+         dup
+         iftrue ofs00ba
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "SPACE"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs00ba:
+         dup
+         iftrue ofs00ce
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "ENTER"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs00ce:
+         iffalse ofs00d8
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"pause")
+         ofs00d8:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 7
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("PauseLayer",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGroup")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGroup")
+newclass 11
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"PauseLayer")
+returnvoid
+end ; code
+end ; body
+end ; method
+

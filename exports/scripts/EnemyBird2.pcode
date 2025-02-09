@@ -1,0 +1,458 @@
+package
+{
+   import org.flixel.FlxG;
+   
+   public class EnemyBird2 extends Enemy
+   {
+      private static const IMG_WIDTH:int = 16;
+      
+      private static const IMG_HEIGHT:int = 16;
+      
+      private static const IMG_OFS_X:int = 0;
+      
+      private static const IMG_OFS_Y:int = 0;
+      
+      private static const MAX_HP:int = 1;
+      
+      private static const DEFENSE:int = 0;
+      
+      private static const OFFENSE:int = 3;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 8
+      maxscopedepth 9
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"138"),"IMG_WIDTH")
+      pushbyte 16
+      initproperty QName(PrivateNamespace(null,"138"),"IMG_WIDTH")
+      findproperty QName(PrivateNamespace(null,"138"),"IMG_HEIGHT")
+      pushbyte 16
+      initproperty QName(PrivateNamespace(null,"138"),"IMG_HEIGHT")
+      findproperty QName(PrivateNamespace(null,"138"),"IMG_OFS_X")
+      pushbyte 0
+      initproperty QName(PrivateNamespace(null,"138"),"IMG_OFS_X")
+      findproperty QName(PrivateNamespace(null,"138"),"IMG_OFS_Y")
+      pushbyte 0
+      initproperty QName(PrivateNamespace(null,"138"),"IMG_OFS_Y")
+      findproperty QName(PrivateNamespace(null,"138"),"MAX_HP")
+      pushbyte 1
+      initproperty QName(PrivateNamespace(null,"138"),"MAX_HP")
+      findproperty QName(PrivateNamespace(null,"138"),"DEFENSE")
+      pushbyte 0
+      initproperty QName(PrivateNamespace(null,"138"),"DEFENSE")
+      findproperty QName(PrivateNamespace(null,"138"),"OFFENSE")
+      pushbyte 3
+      initproperty QName(PrivateNamespace(null,"138"),"OFFENSE")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var flySpeed:Number = 90;
+      
+      private var thetaMult:Number = 4;
+      
+      private var flyAmplitude:Number = 30;
+      
+      private var theta:Number = 0;
+      
+      private var originY:Number = 0;
+      
+      private var goingUp:Boolean = true;
+      
+      public function EnemyBird2(param1:int, param2:int)
+      {
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         returns null
+         
+         body
+         maxstack 6
+         localcount 3
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         getlocal2
+         getlex QName(PrivateNamespace(null,"138"),"MAX_HP")
+         getlex QName(PrivateNamespace(null,"138"),"DEFENSE")
+         getlex QName(PrivateNamespace(null,"138"),"OFFENSE")
+         constructsuper 5
+         findpropstrict QName(PackageNamespace(""),"loadGraphic")
+         getlex QName(PackageNamespace(""),"Art")
+         getproperty QName(PackageNamespace(""),"EnemyBird2")
+         pushtrue
+         pushtrue
+         getlex QName(PrivateNamespace(null,"138"),"IMG_WIDTH")
+         getlex QName(PrivateNamespace(null,"138"),"IMG_HEIGHT")
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 5
+         findproperty QName(PackageNamespace(""),"width")
+         getlex QName(PrivateNamespace(null,"138"),"IMG_WIDTH")
+         initproperty QName(PackageNamespace(""),"width")
+         findproperty QName(PackageNamespace(""),"height")
+         getlex QName(PrivateNamespace(null,"138"),"IMG_HEIGHT")
+         initproperty QName(PackageNamespace(""),"height")
+         getlocal1
+         getlex QName(PrivateNamespace(null,"138"),"IMG_OFS_X")
+         subtract
+         convert_i
+         setlocal1
+         getlocal2
+         getlex QName(PrivateNamespace(null,"138"),"IMG_OFS_Y")
+         subtract
+         convert_i
+         setlocal2
+         getlocal0
+         getlocal2
+         initproperty QName(PrivateNamespace(null,"138"),"originY")
+         findpropstrict QName(PackageNamespace(""),"addAnimation")
+         pushstring "down"
+         pushbyte 0
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         findpropstrict QName(PackageNamespace(""),"addAnimation")
+         pushstring "up"
+         pushbyte 0
+         pushbyte 1
+         newarray 2
+         pushbyte 20
+         pushtrue
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 4
+         findpropstrict QName(PackageNamespace(""),"play")
+         pushstring "up"
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         getlocal0
+         getlocal1
+         getlocal2
+         pushdouble 13.7
+         multiply
+         add
+         initproperty QName(PrivateNamespace(null,"138"),"theta")
+         getlex QName(PackageNamespace(""),"velocity")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"138"),"thetaMult")
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal1
+         pushdouble 1.732
+         multiply
+         getlocal2
+         pushdouble 3.2
+         multiply
+         subtract
+         callproperty QName(PackageNamespace(""),"sin"), 1
+         add
+         initproperty QName(PrivateNamespace(null,"138"),"thetaMult")
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"138"),"flySpeed")
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal1
+         pushdouble 2.332
+         multiply
+         getlocal2
+         pushdouble 1.9
+         multiply
+         subtract
+         callproperty QName(PackageNamespace(""),"sin"), 1
+         pushbyte 10
+         multiply
+         add
+         initproperty QName(PrivateNamespace(null,"138"),"flySpeed")
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"138"),"flyAmplitude")
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal1
+         pushdouble 7.3
+         multiply
+         getlocal2
+         add
+         callproperty QName(PackageNamespace(""),"sin"), 1
+         pushbyte 5
+         multiply
+         add
+         initproperty QName(PrivateNamespace(null,"138"),"flyAmplitude")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function collideTerrain() : Boolean
+      {
+         trait method QName(PackageNamespace(""),"collideTerrain")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         pushfalse
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function touch(param1:Player) : void
+      {
+         trait method QName(PackageNamespace(""),"touch")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Player")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         callsupervoid QName(PackageNamespace(""),"touch"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 5
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         pushnan
+         setlocal1
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
+         setlocal1
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"realState")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"STATE_GAME")
+         ifeq ofs001a
+         returnvoid
+         ofs001a:
+         getlex QName(PackageNamespace(""),"velocity")
+         getproperty QName(PackageNamespace(""),"x")
+         pushbyte 0
+         ifne ofs0069
+         getlex QName(PackageNamespace(""),"velocity")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"x")
+         lessthan
+         iffalse ofs0041
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"138"),"flySpeed")
+         negate
+         convert_d
+         jump ofs0046
+         ofs0041:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"138"),"flySpeed")
+         convert_d
+         ofs0046:
+         setproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"velocity")
+         getproperty QName(PackageNamespace(""),"x")
+         pushbyte 0
+         ifnle ofs0060
+         findproperty QName(PackageNamespace(""),"facing")
+         getlex QName(PackageNamespace(""),"RIGHT")
+         initproperty QName(PackageNamespace(""),"facing")
+         jump ofs0069
+         ofs0060:
+         findproperty QName(PackageNamespace(""),"facing")
+         getlex QName(PackageNamespace(""),"LEFT")
+         initproperty QName(PackageNamespace(""),"facing")
+         ofs0069:
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"138"),"theta")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         add
+         setproperty QName(PrivateNamespace(null,"138"),"theta")
+         getlex QName(PackageNamespace(""),"y")
+         convert_d
+         setlocal1
+         findproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"138"),"originY")
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"138"),"theta")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"138"),"thetaMult")
+         multiply
+         callproperty QName(PackageNamespace(""),"sin"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"138"),"flyAmplitude")
+         multiply
+         add
+         initproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"y")
+         getlocal1
+         lessthan
+         dup
+         iffalse ofs00a9
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"138"),"goingUp")
+         not
+         ofs00a9:
+         iffalse ofs00bc
+         getlocal0
+         pushtrue
+         setproperty QName(PrivateNamespace(null,"138"),"goingUp")
+         findpropstrict QName(PackageNamespace(""),"play")
+         pushstring "up"
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         ofs00bc:
+         getlex QName(PackageNamespace(""),"y")
+         getlocal1
+         greaterthan
+         dup
+         iffalse ofs00cb
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"138"),"goingUp")
+         convert_b
+         ofs00cb:
+         iffalse ofs00de
+         getlocal0
+         pushfalse
+         setproperty QName(PrivateNamespace(null,"138"),"goingUp")
+         findpropstrict QName(PackageNamespace(""),"play")
+         pushstring "down"
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         ofs00de:
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"update"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function hurt(param1:Number) : void
+      {
+         trait method QName(PackageNamespace(""),"hurt")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         callsupervoid QName(PackageNamespace(""),"hurt"), 1
+         findpropstrict QName(PackageNamespace(""),"play")
+         pushstring "quiver"
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 8
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("EnemyBird2",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+pushscope
+getlex QName(PackageNamespace(""),"Enemy")
+pushscope
+getlex QName(PackageNamespace(""),"Enemy")
+newclass 416
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"EnemyBird2")
+returnvoid
+end ; code
+end ; body
+end ; method
+

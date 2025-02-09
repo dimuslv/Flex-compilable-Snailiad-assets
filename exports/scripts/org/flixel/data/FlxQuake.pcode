@@ -1,0 +1,254 @@
+package org.flixel.data
+{
+   import org.flixel.FlxG;
+   
+   public class FlxQuake
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 3
+      maxscopedepth 4
+      
+      code
+      getlocal0
+      pushscope
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      protected var _zoom:uint;
+      
+      protected var _intensity:Number;
+      
+      protected var _timer:Number;
+      
+      public var x:int;
+      
+      public var y:int;
+      
+      public function FlxQuake(param1:uint)
+      {
+         method
+         name null
+         param QName(PackageNamespace(""),"uint")
+         returns null
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         getlocal0
+         getlocal1
+         initproperty QName(ProtectedNamespace("org.flixel.data:FlxQuake"),"_zoom")
+         getlocal0
+         pushbyte 0
+         callpropvoid QName(PackageNamespace(""),"start"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function start(param1:Number = 0.01, param2:Number = 0.5) : void
+      {
+         trait method QName(PackageNamespace(""),"start")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         optional Double(0.01)
+         optional Double(0.5)
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 3
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"stop"), 0
+         getlocal0
+         getlocal1
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxQuake"),"_intensity")
+         getlocal0
+         getlocal2
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxQuake"),"_timer")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function stop() : void
+      {
+         trait method QName(PackageNamespace(""),"stop")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         pushbyte 0
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxQuake"),"_intensity")
+         getlocal0
+         pushbyte 0
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxQuake"),"_timer")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxQuake"),"_timer")
+         pushbyte 0
+         ifngt ofs0089
+         getlocal0
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxQuake"),"_timer")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         subtract
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxQuake"),"_timer")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxQuake"),"_timer")
+         pushbyte 0
+         ifnle ofs0039
+         getlocal0
+         pushbyte 0
+         setproperty QName(ProtectedNamespace("org.flixel.data:FlxQuake"),"_timer")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         jump ofs0089
+         ofs0039:
+         getlocal0
+         getlex QName(PackageNamespace(""),"Math")
+         callproperty QName(PackageNamespace(""),"random"), 0
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxQuake"),"_intensity")
+         multiply
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         multiply
+         pushbyte 2
+         multiply
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxQuake"),"_intensity")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         multiply
+         subtract
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxQuake"),"_zoom")
+         multiply
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getlex QName(PackageNamespace(""),"Math")
+         callproperty QName(PackageNamespace(""),"random"), 0
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxQuake"),"_intensity")
+         multiply
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         multiply
+         pushbyte 2
+         multiply
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxQuake"),"_intensity")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         multiply
+         subtract
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel.data:FlxQuake"),"_zoom")
+         multiply
+         setproperty QName(PackageNamespace(""),"y")
+         ofs0089:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 3
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("FlxQuake",[PackageNamespace("org.flixel.data")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace(""),"Object")
+newclass 28
+popscope
+initproperty QName(PackageNamespace("org.flixel.data"),"FlxQuake")
+returnvoid
+end ; code
+end ; body
+end ; method
+

@@ -1,0 +1,1372 @@
+package
+{
+   import org.flixel.FlxG;
+   import org.flixel.FlxObject;
+   
+   public class EnemyFireball2 extends Enemy
+   {
+      private static const IMG_WIDTH:int = 16;
+      
+      private static const IMG_HEIGHT:int = 16;
+      
+      private static const IMG_OFS_X:int = 0;
+      
+      private static const IMG_OFS_Y:int = 0;
+      
+      private static const MAX_HP:int = 50;
+      
+      private static const DEFENSE:int = 25;
+      
+      private static const OFFENSE:int = 3;
+      
+      private static const MODE_BOTTOM:int = 0;
+      
+      private static const MODE_RIGHT:int = 1;
+      
+      private static const MODE_TOP:int = 2;
+      
+      private static const MODE_LEFT:int = 3;
+      
+      private static const MODE_FALLING:int = 4;
+      
+      private static const SPEED:int = 1;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 8
+      maxscopedepth 9
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"91"),"IMG_WIDTH")
+      pushbyte 16
+      initproperty QName(PrivateNamespace(null,"91"),"IMG_WIDTH")
+      findproperty QName(PrivateNamespace(null,"91"),"IMG_HEIGHT")
+      pushbyte 16
+      initproperty QName(PrivateNamespace(null,"91"),"IMG_HEIGHT")
+      findproperty QName(PrivateNamespace(null,"91"),"IMG_OFS_X")
+      pushbyte 0
+      initproperty QName(PrivateNamespace(null,"91"),"IMG_OFS_X")
+      findproperty QName(PrivateNamespace(null,"91"),"IMG_OFS_Y")
+      pushbyte 0
+      initproperty QName(PrivateNamespace(null,"91"),"IMG_OFS_Y")
+      findproperty QName(PrivateNamespace(null,"91"),"MAX_HP")
+      pushbyte 50
+      initproperty QName(PrivateNamespace(null,"91"),"MAX_HP")
+      findproperty QName(PrivateNamespace(null,"91"),"DEFENSE")
+      pushbyte 25
+      initproperty QName(PrivateNamespace(null,"91"),"DEFENSE")
+      findproperty QName(PrivateNamespace(null,"91"),"OFFENSE")
+      pushbyte 3
+      initproperty QName(PrivateNamespace(null,"91"),"OFFENSE")
+      findproperty QName(PrivateNamespace(null,"91"),"MODE_BOTTOM")
+      pushbyte 0
+      initproperty QName(PrivateNamespace(null,"91"),"MODE_BOTTOM")
+      findproperty QName(PrivateNamespace(null,"91"),"MODE_RIGHT")
+      pushbyte 1
+      initproperty QName(PrivateNamespace(null,"91"),"MODE_RIGHT")
+      findproperty QName(PrivateNamespace(null,"91"),"MODE_TOP")
+      pushbyte 2
+      initproperty QName(PrivateNamespace(null,"91"),"MODE_TOP")
+      findproperty QName(PrivateNamespace(null,"91"),"MODE_LEFT")
+      pushbyte 3
+      initproperty QName(PrivateNamespace(null,"91"),"MODE_LEFT")
+      findproperty QName(PrivateNamespace(null,"91"),"MODE_FALLING")
+      pushbyte 4
+      initproperty QName(PrivateNamespace(null,"91"),"MODE_FALLING")
+      findproperty QName(PrivateNamespace(null,"91"),"SPEED")
+      pushbyte 1
+      initproperty QName(PrivateNamespace(null,"91"),"SPEED")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var SEC_PER_TICK:Number = 0.015;
+      
+      private var _clockwise:Boolean = true;
+      
+      private var _elapsed:Number = 0;
+      
+      private var vx:int;
+      
+      private var vy:int;
+      
+      private var mode:int;
+      
+      private var turns:int;
+      
+      public function EnemyFireball2(param1:int, param2:int, param3:Boolean)
+      {
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"Boolean")
+         returns null
+         
+         body
+         maxstack 6
+         localcount 4
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         getlocal2
+         getlex QName(PrivateNamespace(null,"91"),"MAX_HP")
+         getlex QName(PrivateNamespace(null,"91"),"DEFENSE")
+         getlex QName(PrivateNamespace(null,"91"),"OFFENSE")
+         constructsuper 5
+         getlocal0
+         getlocal3
+         initproperty QName(PrivateNamespace(null,"91"),"_clockwise")
+         findpropstrict QName(PackageNamespace(""),"Boolean")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"Boolean"), 1
+         convert_b
+         dup
+         iffalse ofs0031
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"_insaneMode")
+         convert_b
+         ofs0031:
+         iffalse ofs0040
+         getlocal0
+         pushdouble 0.009
+         initproperty QName(PrivateNamespace(null,"91"),"SEC_PER_TICK")
+         jump ofs0066
+         ofs0040:
+         findpropstrict QName(PackageNamespace(""),"Boolean")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"Boolean"), 1
+         convert_b
+         dup
+         iffalse ofs005c
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"_hardMode")
+         convert_b
+         ofs005c:
+         iffalse ofs0066
+         getlocal0
+         pushdouble 0.01
+         initproperty QName(PrivateNamespace(null,"91"),"SEC_PER_TICK")
+         ofs0066:
+         findpropstrict QName(PackageNamespace(""),"loadGraphic")
+         getlex QName(PackageNamespace(""),"Art")
+         getproperty QName(PackageNamespace(""),"EnemyFireball2")
+         pushtrue
+         pushtrue
+         getlex QName(PrivateNamespace(null,"91"),"IMG_WIDTH")
+         getlex QName(PrivateNamespace(null,"91"),"IMG_HEIGHT")
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 5
+         findproperty QName(PackageNamespace(""),"width")
+         getlex QName(PrivateNamespace(null,"91"),"IMG_WIDTH")
+         initproperty QName(PackageNamespace(""),"width")
+         findproperty QName(PackageNamespace(""),"height")
+         getlex QName(PrivateNamespace(null,"91"),"IMG_HEIGHT")
+         initproperty QName(PackageNamespace(""),"height")
+         getlocal1
+         getlex QName(PrivateNamespace(null,"91"),"IMG_OFS_X")
+         subtract
+         convert_i
+         setlocal1
+         getlocal2
+         getlex QName(PrivateNamespace(null,"91"),"IMG_OFS_Y")
+         subtract
+         convert_i
+         setlocal2
+         findpropstrict QName(PackageNamespace(""),"addAnimation")
+         pushstring "normal"
+         pushbyte 0
+         pushbyte 1
+         pushbyte 2
+         pushbyte 3
+         newarray 4
+         pushbyte 6
+         pushtrue
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 4
+         findpropstrict QName(PackageNamespace(""),"play")
+         pushstring "normal"
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlocal1
+         getlocal2
+         pushbyte 16
+         add
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         iffalse ofs00f4
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_BOTTOM")
+         initproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"91"),"_clockwise")
+         iffalse ofs00e9
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         negate
+         callproperty QName(PackageNamespace(""),"int"), 1
+         convert_i
+         jump ofs00ed
+         ofs00e9:
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         convert_i
+         ofs00ed:
+         initproperty QName(PrivateNamespace(null,"91"),"vx")
+         jump ofs01c3
+         ofs00f4:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlocal1
+         pushbyte 16
+         add
+         getlocal2
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         iffalse ofs0130
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_RIGHT")
+         initproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"91"),"_clockwise")
+         iffalse ofs011f
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         convert_i
+         jump ofs0129
+         ofs011f:
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         negate
+         callproperty QName(PackageNamespace(""),"int"), 1
+         convert_i
+         ofs0129:
+         initproperty QName(PrivateNamespace(null,"91"),"vy")
+         jump ofs01c3
+         ofs0130:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlocal1
+         getlocal2
+         pushbyte 16
+         subtract
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         iffalse ofs016c
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_TOP")
+         initproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"91"),"_clockwise")
+         iffalse ofs015b
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         convert_i
+         jump ofs0165
+         ofs015b:
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         negate
+         callproperty QName(PackageNamespace(""),"int"), 1
+         convert_i
+         ofs0165:
+         initproperty QName(PrivateNamespace(null,"91"),"vx")
+         jump ofs01c3
+         ofs016c:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlocal1
+         pushbyte 16
+         subtract
+         getlocal2
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         iffalse ofs01a8
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_LEFT")
+         initproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"91"),"_clockwise")
+         iffalse ofs019d
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         negate
+         callproperty QName(PackageNamespace(""),"int"), 1
+         convert_i
+         jump ofs01a1
+         ofs019d:
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         convert_i
+         ofs01a1:
+         initproperty QName(PrivateNamespace(null,"91"),"vy")
+         jump ofs01c3
+         ofs01a8:
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_FALLING")
+         initproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlex QName(PackageNamespace(""),"acceleration")
+         pushshort 1200
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         pushbyte 0
+         initproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         pushbyte 0
+         initproperty QName(PrivateNamespace(null,"91"),"vy")
+         ofs01c3:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function touch(param1:Player) : void
+      {
+         trait method QName(PackageNamespace(""),"touch")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Player")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         callproperty QName(PackageNamespace(""),"isIcy"), 0
+         iftrue ofs0011
+         getlocal0
+         getlocal1
+         callsupervoid QName(PackageNamespace(""),"touch"), 1
+         ofs0011:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 3
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"realState")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"STATE_GAME")
+         ifeq ofs0013
+         returnvoid
+         ofs0013:
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"91"),"_elapsed")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         add
+         setproperty QName(PrivateNamespace(null,"91"),"_elapsed")
+         jump ofs06de
+         ofs0026:
+         label
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"91"),"_elapsed")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"91"),"SEC_PER_TICK")
+         subtract
+         setproperty QName(PrivateNamespace(null,"91"),"_elapsed")
+         findproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"91"),"vx")
+         add
+         initproperty QName(PackageNamespace(""),"x")
+         findproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"91"),"vy")
+         add
+         initproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"91"),"turns")
+         pushbyte 4
+         ifnge ofs0075
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_FALLING")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         getlex QName(PackageNamespace(""),"acceleration")
+         pushshort 1200
+         setproperty QName(PackageNamespace(""),"y")
+         ofs0075:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"91"),"_clockwise")
+         iffalse ofs03af
+         jump ofs034c
+         ofs0081:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 15
+         add
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 16
+         add
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         not
+         dup
+         iffalse ofs00af
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 16
+         add
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         not
+         ofs00af:
+         iffalse ofs00f6
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_RIGHT")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         findproperty QName(PackageNamespace(""),"x")
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 16
+         divide
+         callproperty QName(PackageNamespace(""),"int"), 1
+         pushbyte 16
+         multiply
+         initproperty QName(PackageNamespace(""),"x")
+         findproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 2
+         add
+         initproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         dup
+         setlocal1
+         getproperty QName(PrivateNamespace(null,"91"),"turns")
+         increment_i
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         kill 2
+         kill 1
+         jump ofs0139
+         ofs00f6:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         decrement
+         getlex QName(PackageNamespace(""),"y")
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         iffalse ofs0133
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_LEFT")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         negate
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         getlocal0
+         dup
+         setlocal1
+         getproperty QName(PrivateNamespace(null,"91"),"turns")
+         increment_i
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         kill 2
+         kill 1
+         jump ofs0139
+         ofs0133:
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         ofs0139:
+         jump ofs03ab
+         ofs013d:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 16
+         add
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 15
+         add
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         not
+         dup
+         iffalse ofs016b
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 16
+         add
+         getlex QName(PackageNamespace(""),"y")
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         not
+         ofs016b:
+         iffalse ofs01a1
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_TOP")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         findproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 2
+         add
+         initproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         dup
+         setlocal1
+         getproperty QName(PrivateNamespace(null,"91"),"turns")
+         increment_i
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         kill 2
+         kill 1
+         jump ofs01e6
+         ofs01a1:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 16
+         add
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         iffalse ofs01e0
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_BOTTOM")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         negate
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         getlocal0
+         dup
+         setlocal1
+         getproperty QName(PrivateNamespace(null,"91"),"turns")
+         increment_i
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         kill 2
+         kill 1
+         jump ofs01e6
+         ofs01e0:
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         ofs01e6:
+         jump ofs03ab
+         ofs01ea:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         decrement
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         not
+         dup
+         iffalse ofs0214
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 15
+         add
+         getlex QName(PackageNamespace(""),"y")
+         decrement
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         not
+         ofs0214:
+         iffalse ofs024b
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_LEFT")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         negate
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         findproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 2
+         subtract
+         initproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         dup
+         setlocal1
+         getproperty QName(PrivateNamespace(null,"91"),"turns")
+         increment_i
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         kill 2
+         kill 1
+         jump ofs028f
+         ofs024b:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 16
+         add
+         getlex QName(PackageNamespace(""),"y")
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         iffalse ofs0289
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_RIGHT")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         getlocal0
+         dup
+         setlocal1
+         getproperty QName(PrivateNamespace(null,"91"),"turns")
+         increment_i
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         kill 2
+         kill 1
+         jump ofs028f
+         ofs0289:
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         ofs028f:
+         jump ofs03ab
+         ofs0293:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         decrement
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 15
+         add
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         not
+         dup
+         iffalse ofs02bd
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         decrement
+         getlex QName(PackageNamespace(""),"y")
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         not
+         ofs02bd:
+         iffalse ofs0305
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_BOTTOM")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         negate
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         findproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 2
+         subtract
+         initproperty QName(PackageNamespace(""),"x")
+         findproperty QName(PackageNamespace(""),"y")
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 16
+         divide
+         callproperty QName(PackageNamespace(""),"int"), 1
+         pushbyte 16
+         multiply
+         initproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         dup
+         setlocal1
+         getproperty QName(PrivateNamespace(null,"91"),"turns")
+         increment_i
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         kill 2
+         kill 1
+         jump ofs0347
+         ofs0305:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         decrement
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         iffalse ofs0341
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_TOP")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         getlocal0
+         dup
+         setlocal1
+         getproperty QName(PrivateNamespace(null,"91"),"turns")
+         increment_i
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         kill 2
+         kill 1
+         jump ofs0347
+         ofs0341:
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         ofs0347:
+         label
+         jump ofs03ab
+         ofs034c:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"91"),"mode")
+         setlocal1
+         getlex QName(PrivateNamespace(null,"91"),"MODE_BOTTOM")
+         getlocal1
+         ifstrictne ofs035f
+         pushbyte 0
+         jump ofs0395
+         ofs035f:
+         getlex QName(PrivateNamespace(null,"91"),"MODE_RIGHT")
+         getlocal1
+         ifstrictne ofs036d
+         pushbyte 1
+         jump ofs0395
+         ofs036d:
+         getlex QName(PrivateNamespace(null,"91"),"MODE_TOP")
+         getlocal1
+         ifstrictne ofs037b
+         pushbyte 2
+         jump ofs0395
+         ofs037b:
+         getlex QName(PrivateNamespace(null,"91"),"MODE_LEFT")
+         getlocal1
+         ifstrictne ofs0389
+         pushbyte 3
+         jump ofs0395
+         ofs0389:
+         jump ofs0393
+         pushbyte 4
+         jump ofs0393
+         ofs0393:
+         pushbyte 4
+         ofs0395:
+         kill 1
+         lookupswitch ofs0347, [ofs0081, ofs013d, ofs01ea, ofs0293, ofs0347]
+         ofs03ab:
+         jump ofs06de
+         ofs03af:
+         jump ofs067f
+         ofs03b3:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 15
+         add
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 16
+         add
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         not
+         dup
+         iffalse ofs03e1
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 16
+         add
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         not
+         ofs03e1:
+         iffalse ofs0428
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_LEFT")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         findproperty QName(PackageNamespace(""),"x")
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 16
+         divide
+         callproperty QName(PackageNamespace(""),"int"), 1
+         pushbyte 16
+         multiply
+         initproperty QName(PackageNamespace(""),"x")
+         findproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 1
+         add
+         initproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         dup
+         setlocal1
+         getproperty QName(PrivateNamespace(null,"91"),"turns")
+         increment_i
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         kill 2
+         kill 1
+         jump ofs046d
+         ofs0428:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 16
+         add
+         getlex QName(PackageNamespace(""),"y")
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         iffalse ofs0467
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_RIGHT")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         negate
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         getlocal0
+         dup
+         setlocal1
+         getproperty QName(PrivateNamespace(null,"91"),"turns")
+         increment_i
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         kill 2
+         kill 1
+         jump ofs046d
+         ofs0467:
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         ofs046d:
+         jump ofs06de
+         ofs0471:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 16
+         add
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 15
+         add
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         not
+         dup
+         iffalse ofs049f
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 16
+         add
+         getlex QName(PackageNamespace(""),"y")
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         not
+         ofs049f:
+         iffalse ofs04d5
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_BOTTOM")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         findproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 1
+         add
+         initproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         dup
+         setlocal1
+         getproperty QName(PrivateNamespace(null,"91"),"turns")
+         increment_i
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         kill 2
+         kill 1
+         jump ofs0518
+         ofs04d5:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         decrement
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         iffalse ofs0512
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_TOP")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         negate
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         getlocal0
+         dup
+         setlocal1
+         getproperty QName(PrivateNamespace(null,"91"),"turns")
+         increment_i
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         kill 2
+         kill 1
+         jump ofs0518
+         ofs0512:
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         ofs0518:
+         jump ofs06de
+         ofs051c:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         decrement
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         not
+         dup
+         iffalse ofs0546
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 15
+         add
+         getlex QName(PackageNamespace(""),"y")
+         decrement
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         not
+         ofs0546:
+         iffalse ofs0584
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_RIGHT")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         negate
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         findpropstrict QName(PackageNamespace(""),"y")
+         dup
+         setlocal1
+         getproperty QName(PackageNamespace(""),"y")
+         decrement
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PackageNamespace(""),"y")
+         kill 2
+         kill 1
+         getlocal0
+         dup
+         setlocal1
+         getproperty QName(PrivateNamespace(null,"91"),"turns")
+         increment_i
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         kill 2
+         kill 1
+         jump ofs05c6
+         ofs0584:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         decrement
+         getlex QName(PackageNamespace(""),"y")
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         iffalse ofs05c0
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_LEFT")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         getlocal0
+         dup
+         setlocal1
+         getproperty QName(PrivateNamespace(null,"91"),"turns")
+         increment_i
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         kill 2
+         kill 1
+         jump ofs05c6
+         ofs05c0:
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         ofs05c6:
+         jump ofs06de
+         ofs05ca:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         decrement
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 15
+         add
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         not
+         dup
+         iffalse ofs05f4
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         decrement
+         getlex QName(PackageNamespace(""),"y")
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         not
+         ofs05f4:
+         iffalse ofs0632
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_TOP")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         negate
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         findpropstrict QName(PackageNamespace(""),"x")
+         dup
+         setlocal1
+         getproperty QName(PackageNamespace(""),"x")
+         decrement
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PackageNamespace(""),"x")
+         kill 2
+         kill 1
+         getlocal0
+         dup
+         setlocal1
+         getproperty QName(PrivateNamespace(null,"91"),"turns")
+         increment_i
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         kill 2
+         kill 1
+         jump ofs0676
+         ofs0632:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getlex QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 16
+         add
+         callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
+         iffalse ofs0670
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_BOTTOM")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         getlocal0
+         dup
+         setlocal1
+         getproperty QName(PrivateNamespace(null,"91"),"turns")
+         increment_i
+         setlocal2
+         getlocal1
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         kill 2
+         kill 1
+         jump ofs0676
+         ofs0670:
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"turns")
+         ofs0676:
+         jump ofs06de
+         ofs067a:
+         label
+         jump ofs06de
+         ofs067f:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"91"),"mode")
+         setlocal1
+         getlex QName(PrivateNamespace(null,"91"),"MODE_BOTTOM")
+         getlocal1
+         ifstrictne ofs0692
+         pushbyte 0
+         jump ofs06c8
+         ofs0692:
+         getlex QName(PrivateNamespace(null,"91"),"MODE_RIGHT")
+         getlocal1
+         ifstrictne ofs06a0
+         pushbyte 1
+         jump ofs06c8
+         ofs06a0:
+         getlex QName(PrivateNamespace(null,"91"),"MODE_TOP")
+         getlocal1
+         ifstrictne ofs06ae
+         pushbyte 2
+         jump ofs06c8
+         ofs06ae:
+         getlex QName(PrivateNamespace(null,"91"),"MODE_LEFT")
+         getlocal1
+         ifstrictne ofs06bc
+         pushbyte 3
+         jump ofs06c8
+         ofs06bc:
+         jump ofs06c6
+         pushbyte 4
+         jump ofs06c6
+         ofs06c6:
+         pushbyte 4
+         ofs06c8:
+         kill 1
+         lookupswitch ofs067a, [ofs03b3, ofs0471, ofs051c, ofs05ca, ofs067a]
+         ofs06de:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"91"),"_elapsed")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"91"),"SEC_PER_TICK")
+         ifgt ofs0026
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"update"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function hitBottom(param1:FlxObject, param2:Number) : void
+      {
+         trait method QName(PackageNamespace(""),"hitBottom")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("org.flixel"),"FlxObject")
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlex QName(PrivateNamespace(null,"91"),"MODE_FALLING")
+         ifne ofs0046
+         getlocal0
+         getlex QName(PrivateNamespace(null,"91"),"MODE_BOTTOM")
+         setproperty QName(PrivateNamespace(null,"91"),"mode")
+         getlex QName(PackageNamespace(""),"acceleration")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"velocity")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"91"),"_clockwise")
+         iffalse ofs0039
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         negate
+         callproperty QName(PackageNamespace(""),"int"), 1
+         convert_i
+         jump ofs003d
+         ofs0039:
+         getlex QName(PrivateNamespace(null,"91"),"SPEED")
+         convert_i
+         ofs003d:
+         setproperty QName(PrivateNamespace(null,"91"),"vx")
+         getlocal0
+         pushbyte 0
+         setproperty QName(PrivateNamespace(null,"91"),"vy")
+         ofs0046:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 8
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("EnemyFireball2",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+pushscope
+getlex QName(PackageNamespace(""),"Enemy")
+pushscope
+getlex QName(PackageNamespace(""),"Enemy")
+newclass 162
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"EnemyFireball2")
+returnvoid
+end ; code
+end ; body
+end ; method
+

@@ -1,0 +1,2606 @@
+package org.flixel
+{
+   import flash.display.BitmapData;
+   import flash.display.Stage;
+   import flash.geom.Matrix;
+   import flash.geom.Point;
+   import org.flixel.data.*;
+   
+   public class FlxG
+   {
+      protected static var _game:FlxGame;
+      
+      protected static var _pause:Boolean;
+      
+      public static var debug:Boolean;
+      
+      public static var showBounds:Boolean;
+      
+      public static var elapsed:Number;
+      
+      public static var maxElapsed:Number;
+      
+      public static var timeScale:Number;
+      
+      public static var width:uint;
+      
+      public static var height:uint;
+      
+      public static var mobile:Boolean;
+      
+      public static var levels:Array;
+      
+      public static var level:int;
+      
+      public static var scores:Array;
+      
+      public static var score:int;
+      
+      public static var saves:Array;
+      
+      public static var save:int;
+      
+      public static var mouse:FlxMouse;
+      
+      public static var keys:FlxKeyboard;
+      
+      public static var gamepads:Array;
+      
+      public static var music:FlxSound;
+      
+      public static var sounds:Array;
+      
+      protected static var _mute:Boolean;
+      
+      protected static var _volume:Number;
+      
+      public static var followTarget:FlxObject;
+      
+      public static var followLead:Point;
+      
+      public static var followLerp:Number;
+      
+      public static var followMin:Point;
+      
+      public static var followMax:Point;
+      
+      protected static var _scrollTarget:Point;
+      
+      public static var scroll:Point;
+      
+      public static var buffer:BitmapData;
+      
+      protected static var _cache:Object;
+      
+      protected static var _cacheReverse:Object;
+      
+      public static var kong:FlxKong;
+      
+      public static var panel:FlxPanel;
+      
+      public static var quake:FlxQuake;
+      
+      public static var flash:FlxFlash;
+      
+      public static var fade:FlxFade;
+      
+      public static var noPause:Boolean = false;
+      
+      public static var cheated:Boolean = false;
+      
+      public static var _curSongVolume:Number = 1;
+      
+      public static var consoleEnabled:Boolean = false;
+      
+      protected static var _musicVolume:Number = 1;
+      
+      public static var MinX:int = 0;
+      
+      public static var MinY:int = 0;
+      
+      public static var MaxX:int = 0;
+      
+      public static var MaxY:int = 0;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 3
+      maxscopedepth 4
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PackageNamespace(""),"noPause")
+      pushfalse
+      setproperty QName(PackageNamespace(""),"noPause")
+      findproperty QName(PackageNamespace(""),"cheated")
+      pushfalse
+      setproperty QName(PackageNamespace(""),"cheated")
+      findproperty QName(PackageNamespace(""),"_curSongVolume")
+      pushbyte 1
+      setproperty QName(PackageNamespace(""),"_curSongVolume")
+      findproperty QName(PackageNamespace(""),"consoleEnabled")
+      pushfalse
+      setproperty QName(PackageNamespace(""),"consoleEnabled")
+      findproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_musicVolume")
+      pushbyte 1
+      setproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_musicVolume")
+      findproperty QName(PackageNamespace(""),"MinX")
+      pushbyte 0
+      setproperty QName(PackageNamespace(""),"MinX")
+      findproperty QName(PackageNamespace(""),"MinY")
+      pushbyte 0
+      setproperty QName(PackageNamespace(""),"MinY")
+      findproperty QName(PackageNamespace(""),"MaxX")
+      pushbyte 0
+      setproperty QName(PackageNamespace(""),"MaxX")
+      findproperty QName(PackageNamespace(""),"MaxY")
+      pushbyte 0
+      setproperty QName(PackageNamespace(""),"MaxY")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public function FlxG()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function log(param1:Object) : void
+      {
+         trait method QName(PackageNamespace(""),"log")
+         flag FINAL
+         dispid 3
+         method
+         name null
+         param QName(PackageNamespace(""),"Object")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs0016
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getproperty QName(PackageInternalNs("org.flixel"),"_console")
+         pushnull
+         equals
+         not
+         ofs0016:
+         iffalse ofs0037
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getproperty QName(PackageInternalNs("org.flixel"),"_console")
+         getlocal1
+         pushnull
+         equals
+         iffalse ofs002d
+         pushstring "ERROR: null object"
+         jump ofs0033
+         ofs002d:
+         getlocal1
+         callproperty Multiname("toString",[PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")]), 0
+         coerce_s
+         ofs0033:
+         callpropvoid QName(PackageNamespace(""),"log"), 1
+         ofs0037:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function get pause() : Boolean
+      {
+         trait getter QName(PackageNamespace(""),"pause")
+         flag FINAL
+         dispid 4
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_pause")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function set pause(param1:Boolean) : void
+      {
+         trait setter QName(PackageNamespace(""),"pause")
+         flag FINAL
+         dispid 5
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 3
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_pause")
+         convert_b
+         setlocal2
+         findproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_pause")
+         getlocal1
+         setproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_pause")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_pause")
+         getlocal2
+         ifeq ofs003b
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_pause")
+         iffalse ofs002e
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         callpropvoid QName(PackageInternalNs("org.flixel"),"pauseGame"), 0
+         findpropstrict QName(StaticProtectedNs("org.flixel:FlxG"),"pauseSounds")
+         callpropvoid QName(StaticProtectedNs("org.flixel:FlxG"),"pauseSounds"), 0
+         jump ofs003b
+         ofs002e:
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         callpropvoid QName(PackageInternalNs("org.flixel"),"unpauseGame"), 0
+         findpropstrict QName(StaticProtectedNs("org.flixel:FlxG"),"playSounds")
+         callpropvoid QName(StaticProtectedNs("org.flixel:FlxG"),"playSounds"), 0
+         ofs003b:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function get framerate() : uint
+      {
+         trait getter QName(PackageNamespace(""),"framerate")
+         flag FINAL
+         dispid 6
+         method
+         name null
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getproperty QName(PackageInternalNs("org.flixel"),"_framerate")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function set framerate(param1:uint) : void
+      {
+         trait setter QName(PackageNamespace(""),"framerate")
+         flag FINAL
+         dispid 7
+         method
+         name null
+         param QName(PackageNamespace(""),"uint")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getlocal1
+         setproperty QName(PackageInternalNs("org.flixel"),"_framerate")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getproperty QName(PackageInternalNs("org.flixel"),"_paused")
+         not
+         dup
+         iffalse ofs001d
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getproperty QName(PackageNamespace(""),"stage")
+         pushnull
+         equals
+         not
+         ofs001d:
+         iffalse ofs002b
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getproperty QName(PackageNamespace(""),"stage")
+         getlocal1
+         setproperty QName(PackageNamespace(""),"frameRate")
+         ofs002b:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function get frameratePaused() : uint
+      {
+         trait getter QName(PackageNamespace(""),"frameratePaused")
+         flag FINAL
+         dispid 8
+         method
+         name null
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getproperty QName(PackageInternalNs("org.flixel"),"_frameratePaused")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function set frameratePaused(param1:uint) : void
+      {
+         trait setter QName(PackageNamespace(""),"frameratePaused")
+         flag FINAL
+         dispid 9
+         method
+         name null
+         param QName(PackageNamespace(""),"uint")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getlocal1
+         setproperty QName(PackageInternalNs("org.flixel"),"_frameratePaused")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getproperty QName(PackageInternalNs("org.flixel"),"_paused")
+         convert_b
+         dup
+         iffalse ofs001d
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getproperty QName(PackageNamespace(""),"stage")
+         pushnull
+         equals
+         not
+         ofs001d:
+         iffalse ofs002b
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getproperty QName(PackageNamespace(""),"stage")
+         getlocal1
+         setproperty QName(PackageNamespace(""),"frameRate")
+         ofs002b:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function resetInput() : void
+      {
+         trait method QName(PackageNamespace(""),"resetInput")
+         flag FINAL
+         dispid 10
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"keys")
+         callpropvoid QName(PackageNamespace(""),"reset"), 0
+         getlex QName(PackageNamespace(""),"mouse")
+         callpropvoid QName(PackageNamespace(""),"reset"), 0
+         pushbyte 0
+         convert_u
+         setlocal1
+         getlex QName(PackageNamespace(""),"gamepads")
+         getproperty QName(PackageNamespace(""),"length")
+         convert_u
+         setlocal2
+         jump ofs0031
+         ofs0020:
+         label
+         getlex QName(PackageNamespace(""),"gamepads")
+         getlocal1
+         convert_d
+         dup
+         increment
+         convert_u
+         setlocal1
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         callpropvoid Multiname("reset",[PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")]), 0
+         ofs0031:
+         getlocal1
+         getlocal2
+         iflt ofs0020
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function playMusic(param1:Class, param2:Number = 1, param3:Number = 0) : void
+      {
+         trait method QName(PackageNamespace(""),"playMusic")
+         flag FINAL
+         dispid 11
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Class")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         optional Integer(1)
+         optional Integer(0)
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 4
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"music")
+         pushnull
+         ifne ofs0019
+         findproperty QName(PackageNamespace(""),"music")
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSound")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSound"), 0
+         setproperty QName(PackageNamespace(""),"music")
+         jump ofs002a
+         ofs0019:
+         getlex QName(PackageNamespace(""),"music")
+         getproperty QName(PackageNamespace(""),"active")
+         iffalse ofs002a
+         getlex QName(PackageNamespace(""),"music")
+         callpropvoid QName(PackageNamespace(""),"stop"), 0
+         ofs002a:
+         getlex QName(PackageNamespace(""),"music")
+         getlocal1
+         pushtrue
+         callpropvoid QName(PackageNamespace(""),"loadEmbedded"), 2
+         findproperty QName(PackageNamespace(""),"_curSongVolume")
+         getlocal2
+         setproperty QName(PackageNamespace(""),"_curSongVolume")
+         getlex QName(PackageNamespace(""),"music")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_musicVolume")
+         getlex QName(PackageNamespace(""),"_curSongVolume")
+         multiply
+         setproperty QName(PackageNamespace(""),"volume")
+         getlex QName(PackageNamespace(""),"music")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"survive")
+         getlocal3
+         iffalse ofs005b
+         getlex QName(PackageNamespace(""),"music")
+         getlocal3
+         callpropvoid QName(PackageNamespace(""),"fadeIn"), 1
+         ofs005b:
+         getlex QName(PackageNamespace(""),"music")
+         callpropvoid QName(PackageNamespace(""),"play"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function play(param1:Class, param2:Number = 0.75, param3:Boolean = false) : FlxSound
+      {
+         trait method QName(PackageNamespace(""),"play")
+         flag FINAL
+         dispid 12
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Class")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Boolean")
+         optional Double(0.75)
+         optional False()
+         returns QName(PackageNamespace("org.flixel"),"FlxSound")
+         
+         body
+         maxstack 3
+         localcount 7
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         convert_u
+         setlocal 4
+         getlex QName(PackageNamespace(""),"sounds")
+         getproperty QName(PackageNamespace(""),"length")
+         convert_u
+         setlocal 5
+         jump ofs0031
+         ofs0014:
+         label
+         getlex QName(PackageNamespace(""),"sounds")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace("org.flixel"),"FlxSound")
+         astypelate
+         getproperty QName(PackageNamespace(""),"active")
+         iftrue ofs002b
+         jump ofs0039
+         ofs002b:
+         getlocal 4
+         increment
+         convert_u
+         setlocal 4
+         ofs0031:
+         getlocal 4
+         getlocal 5
+         iflt ofs0014
+         ofs0039:
+         getlex QName(PackageNamespace(""),"sounds")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         pushnull
+         ifne ofs0053
+         getlex QName(PackageNamespace(""),"sounds")
+         getlocal 4
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSound")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSound"), 0
+         setproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         ofs0053:
+         getlex QName(PackageNamespace(""),"sounds")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace("org.flixel"),"FlxSound")
+         dup
+         setlocal 6
+         getlocal1
+         getlocal3
+         callpropvoid QName(PackageNamespace(""),"loadEmbedded"), 2
+         getlocal 6
+         getlocal2
+         setproperty QName(PackageNamespace(""),"volume")
+         getlocal 6
+         callpropvoid QName(PackageNamespace(""),"play"), 0
+         getlocal 6
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function stream(param1:String, param2:Number = 1, param3:Boolean = false) : FlxSound
+      {
+         trait method QName(PackageNamespace(""),"stream")
+         flag FINAL
+         dispid 13
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Boolean")
+         optional Integer(1)
+         optional False()
+         returns QName(PackageNamespace("org.flixel"),"FlxSound")
+         
+         body
+         maxstack 3
+         localcount 7
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         convert_u
+         setlocal 4
+         getlex QName(PackageNamespace(""),"sounds")
+         getproperty QName(PackageNamespace(""),"length")
+         convert_u
+         setlocal 5
+         jump ofs0031
+         ofs0014:
+         label
+         getlex QName(PackageNamespace(""),"sounds")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace("org.flixel"),"FlxSound")
+         astypelate
+         getproperty QName(PackageNamespace(""),"active")
+         iftrue ofs002b
+         jump ofs0039
+         ofs002b:
+         getlocal 4
+         increment
+         convert_u
+         setlocal 4
+         ofs0031:
+         getlocal 4
+         getlocal 5
+         iflt ofs0014
+         ofs0039:
+         getlex QName(PackageNamespace(""),"sounds")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         pushnull
+         ifne ofs0053
+         getlex QName(PackageNamespace(""),"sounds")
+         getlocal 4
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSound")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSound"), 0
+         setproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         ofs0053:
+         getlex QName(PackageNamespace(""),"sounds")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace("org.flixel"),"FlxSound")
+         dup
+         setlocal 6
+         getlocal1
+         getlocal3
+         callpropvoid QName(PackageNamespace(""),"loadStream"), 2
+         getlocal 6
+         getlocal2
+         setproperty QName(PackageNamespace(""),"volume")
+         getlocal 6
+         callpropvoid QName(PackageNamespace(""),"play"), 0
+         getlocal 6
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function get mute() : Boolean
+      {
+         trait getter QName(PackageNamespace(""),"mute")
+         flag FINAL
+         dispid 14
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_mute")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function set mute(param1:Boolean) : void
+      {
+         trait setter QName(PackageNamespace(""),"mute")
+         flag FINAL
+         dispid 15
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_mute")
+         getlocal1
+         setproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_mute")
+         findpropstrict QName(StaticProtectedNs("org.flixel:FlxG"),"changeSounds")
+         callpropvoid QName(StaticProtectedNs("org.flixel:FlxG"),"changeSounds"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function getMuteValue() : uint
+      {
+         trait method QName(PackageNamespace(""),"getMuteValue")
+         flag FINAL
+         dispid 16
+         method
+         name null
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_mute")
+         iffalse ofs000c
+         pushbyte 0
+         returnvalue
+         ofs000c:
+         pushbyte 1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function get volume() : Number
+      {
+         trait getter QName(PackageNamespace(""),"volume")
+         flag FINAL
+         dispid 17
+         method
+         name null
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_volume")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function get musicVolume() : Number
+      {
+         trait getter QName(PackageNamespace(""),"musicVolume")
+         flag FINAL
+         dispid 18
+         method
+         name null
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_musicVolume")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function set volume(param1:Number) : void
+      {
+         trait setter QName(PackageNamespace(""),"volume")
+         flag FINAL
+         dispid 19
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_volume")
+         getlocal1
+         setproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_volume")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_volume")
+         pushbyte 0
+         ifnlt ofs001e
+         findproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_volume")
+         pushbyte 0
+         setproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_volume")
+         jump ofs002f
+         ofs001e:
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_volume")
+         pushbyte 1
+         ifngt ofs002f
+         findproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_volume")
+         pushbyte 1
+         setproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_volume")
+         ofs002f:
+         findpropstrict QName(StaticProtectedNs("org.flixel:FlxG"),"changeSounds")
+         callpropvoid QName(StaticProtectedNs("org.flixel:FlxG"),"changeSounds"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function set musicVolume(param1:Number) : void
+      {
+         trait setter QName(PackageNamespace(""),"musicVolume")
+         flag FINAL
+         dispid 20
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_musicVolume")
+         getlocal1
+         setproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_musicVolume")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_musicVolume")
+         pushbyte 0
+         ifnlt ofs001e
+         findproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_musicVolume")
+         pushbyte 0
+         setproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_musicVolume")
+         jump ofs002f
+         ofs001e:
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_musicVolume")
+         pushbyte 1
+         ifngt ofs002f
+         findproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_musicVolume")
+         pushbyte 1
+         setproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_musicVolume")
+         ofs002f:
+         getlex QName(PackageNamespace(""),"music")
+         pushnull
+         ifeq ofs0044
+         getlex QName(PackageNamespace(""),"music")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_musicVolume")
+         getlex QName(PackageNamespace(""),"_curSongVolume")
+         multiply
+         setproperty QName(PackageNamespace(""),"volume")
+         ofs0044:
+         findpropstrict QName(StaticProtectedNs("org.flixel:FlxG"),"changeSounds")
+         callpropvoid QName(StaticProtectedNs("org.flixel:FlxG"),"changeSounds"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      internal static function destroySounds(param1:Boolean = false) : void
+      {
+         trait method QName(PackageInternalNs("org.flixel"),"destroySounds")
+         flag FINAL
+         dispid 21
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Boolean")
+         optional False()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 5
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("org.flixel"),"FlxSound")
+         setlocal2
+         getlex QName(PackageNamespace(""),"sounds")
+         pushnull
+         ifne ofs000f
+         returnvoid
+         ofs000f:
+         getlex QName(PackageNamespace(""),"music")
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs002a
+         pop
+         getlocal1
+         convert_b
+         dup
+         iftrue ofs002a
+         pop
+         getlex QName(PackageNamespace(""),"music")
+         getproperty QName(PackageNamespace(""),"survive")
+         not
+         ofs002a:
+         iffalse ofs0034
+         getlex QName(PackageNamespace(""),"music")
+         callpropvoid QName(PackageNamespace(""),"destroy"), 0
+         ofs0034:
+         pushbyte 0
+         convert_u
+         setlocal3
+         getlex QName(PackageNamespace(""),"sounds")
+         getproperty QName(PackageNamespace(""),"length")
+         convert_u
+         setlocal 4
+         jump ofs0077
+         ofs0045:
+         label
+         getlex QName(PackageNamespace(""),"sounds")
+         getlocal3
+         convert_d
+         dup
+         increment
+         convert_u
+         setlocal3
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace("org.flixel"),"FlxSound")
+         astypelate
+         coerce QName(PackageNamespace("org.flixel"),"FlxSound")
+         setlocal2
+         getlocal2
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs006f
+         pop
+         getlocal1
+         convert_b
+         dup
+         iftrue ofs006f
+         pop
+         getlocal2
+         getproperty QName(PackageNamespace(""),"survive")
+         not
+         ofs006f:
+         iffalse ofs0077
+         getlocal2
+         callpropvoid QName(PackageNamespace(""),"destroy"), 0
+         ofs0077:
+         getlocal3
+         getlocal 4
+         iflt ofs0045
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected static function changeSounds() : void
+      {
+         trait method QName(StaticProtectedNs("org.flixel:FlxG"),"changeSounds")
+         flag FINAL
+         dispid 22
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 4
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("org.flixel"),"FlxSound")
+         setlocal1
+         getlex QName(PackageNamespace(""),"music")
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs0019
+         pop
+         getlex QName(PackageNamespace(""),"music")
+         getproperty QName(PackageNamespace(""),"active")
+         convert_b
+         ofs0019:
+         iffalse ofs0024
+         getlex QName(PackageNamespace(""),"music")
+         callpropvoid QName(PackageInternalNs("org.flixel"),"updateTransform"), 0
+         ofs0024:
+         pushbyte 0
+         convert_u
+         setlocal2
+         getlex QName(PackageNamespace(""),"sounds")
+         getproperty QName(PackageNamespace(""),"length")
+         convert_u
+         setlocal3
+         jump ofs005f
+         ofs0034:
+         label
+         getlex QName(PackageNamespace(""),"sounds")
+         getlocal2
+         convert_d
+         dup
+         increment
+         convert_u
+         setlocal2
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace("org.flixel"),"FlxSound")
+         astypelate
+         coerce QName(PackageNamespace("org.flixel"),"FlxSound")
+         setlocal1
+         getlocal1
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs0056
+         pop
+         getlocal1
+         getproperty QName(PackageNamespace(""),"active")
+         convert_b
+         ofs0056:
+         iffalse ofs005f
+         getlocal1
+         callpropvoid QName(PackageInternalNs("org.flixel"),"updateTransform"), 0
+         ofs005f:
+         getlocal2
+         getlocal3
+         iflt ofs0034
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      internal static function updateSounds() : void
+      {
+         trait method QName(PackageInternalNs("org.flixel"),"updateSounds")
+         flag FINAL
+         dispid 23
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 4
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("org.flixel"),"FlxSound")
+         setlocal1
+         getlex QName(PackageNamespace(""),"music")
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs0019
+         pop
+         getlex QName(PackageNamespace(""),"music")
+         getproperty QName(PackageNamespace(""),"active")
+         convert_b
+         ofs0019:
+         iffalse ofs0023
+         getlex QName(PackageNamespace(""),"music")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         ofs0023:
+         pushbyte 0
+         convert_u
+         setlocal2
+         getlex QName(PackageNamespace(""),"sounds")
+         getproperty QName(PackageNamespace(""),"length")
+         convert_u
+         setlocal3
+         jump ofs005d
+         ofs0033:
+         label
+         getlex QName(PackageNamespace(""),"sounds")
+         getlocal2
+         convert_d
+         dup
+         increment
+         convert_u
+         setlocal2
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace("org.flixel"),"FlxSound")
+         astypelate
+         coerce QName(PackageNamespace("org.flixel"),"FlxSound")
+         setlocal1
+         getlocal1
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs0055
+         pop
+         getlocal1
+         getproperty QName(PackageNamespace(""),"active")
+         convert_b
+         ofs0055:
+         iffalse ofs005d
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         ofs005d:
+         getlocal2
+         getlocal3
+         iflt ofs0033
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected static function pauseSounds() : void
+      {
+         trait method QName(StaticProtectedNs("org.flixel:FlxG"),"pauseSounds")
+         flag FINAL
+         dispid 24
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 4
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("org.flixel"),"FlxSound")
+         setlocal1
+         pushbyte 0
+         convert_u
+         setlocal2
+         getlex QName(PackageNamespace(""),"sounds")
+         getproperty QName(PackageNamespace(""),"length")
+         convert_u
+         setlocal3
+         jump ofs0040
+         ofs0016:
+         label
+         getlex QName(PackageNamespace(""),"sounds")
+         getlocal2
+         convert_d
+         dup
+         increment
+         convert_u
+         setlocal2
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace("org.flixel"),"FlxSound")
+         astypelate
+         coerce QName(PackageNamespace("org.flixel"),"FlxSound")
+         setlocal1
+         getlocal1
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs0038
+         pop
+         getlocal1
+         getproperty QName(PackageNamespace(""),"active")
+         convert_b
+         ofs0038:
+         iffalse ofs0040
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"pause"), 0
+         ofs0040:
+         getlocal2
+         getlocal3
+         iflt ofs0016
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected static function playSounds() : void
+      {
+         trait method QName(StaticProtectedNs("org.flixel:FlxG"),"playSounds")
+         flag FINAL
+         dispid 25
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 4
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("org.flixel"),"FlxSound")
+         setlocal1
+         getlex QName(PackageNamespace(""),"music")
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs0019
+         pop
+         getlex QName(PackageNamespace(""),"music")
+         getproperty QName(PackageNamespace(""),"active")
+         convert_b
+         ofs0019:
+         iffalse ofs0024
+         getlex QName(PackageNamespace(""),"music")
+         callpropvoid QName(PackageNamespace(""),"play"), 0
+         ofs0024:
+         pushbyte 0
+         convert_u
+         setlocal2
+         getlex QName(PackageNamespace(""),"sounds")
+         getproperty QName(PackageNamespace(""),"length")
+         convert_u
+         setlocal3
+         jump ofs005f
+         ofs0034:
+         label
+         getlex QName(PackageNamespace(""),"sounds")
+         getlocal2
+         convert_d
+         dup
+         increment
+         convert_u
+         setlocal2
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace("org.flixel"),"FlxSound")
+         astypelate
+         coerce QName(PackageNamespace("org.flixel"),"FlxSound")
+         setlocal1
+         getlocal1
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs0056
+         pop
+         getlocal1
+         getproperty QName(PackageNamespace(""),"active")
+         convert_b
+         ofs0056:
+         iffalse ofs005f
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"play"), 0
+         ofs005f:
+         getlocal2
+         getlocal3
+         iflt ofs0034
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function checkBitmapCache(param1:String) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"checkBitmapCache")
+         flag FINAL
+         dispid 26
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"undefined")
+         equals
+         not
+         dup
+         iffalse ofs001e
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         pushnull
+         equals
+         not
+         ofs001e:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function createBitmap(param1:uint, param2:uint, param3:uint, param4:Boolean = false, param5:String = null) : BitmapData
+      {
+         trait method QName(PackageNamespace(""),"createBitmap")
+         flag FINAL
+         dispid 27
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"Boolean")
+         param QName(PackageNamespace(""),"String")
+         optional False()
+         optional Null()
+         returns QName(PackageNamespace("flash.display"),"BitmapData")
+         
+         body
+         maxstack 7
+         localcount 9
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         convert_u
+         setlocal 6
+         pushnull
+         coerce_s
+         setlocal 7
+         getlocal 5
+         coerce_s
+         dup
+         setlocal 8
+         pushnull
+         ifne ofs0090
+         getlocal1
+         pushstring "x"
+         add
+         getlocal2
+         add
+         pushstring ":"
+         add
+         getlocal3
+         add
+         coerce_s
+         setlocal 8
+         getlocal 4
+         convert_b
+         dup
+         iffalse ofs003c
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
+         getlocal 8
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"undefined")
+         equals
+         not
+         ofs003c:
+         dup
+         iffalse ofs004d
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
+         getlocal 8
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         pushnull
+         equals
+         not
+         ofs004d:
+         iffalse ofs0090
+         pushbyte 0
+         convert_u
+         setlocal 6
+         jump ofs005b
+         ofs005a:
+         label
+         ofs005b:
+         getlocal 8
+         getlocal 6
+         convert_d
+         dup
+         increment
+         convert_u
+         setlocal 6
+         add
+         coerce_s
+         setlocal 7
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
+         getlocal 7
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"undefined")
+         equals
+         not
+         dup
+         iffalse ofs0087
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
+         getlocal 7
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         pushnull
+         equals
+         not
+         ofs0087:
+         iftrue ofs005a
+         getlocal 7
+         coerce_s
+         setlocal 8
+         ofs0090:
+         findpropstrict QName(PackageNamespace(""),"checkBitmapCache")
+         getlocal 8
+         callproperty QName(PackageNamespace(""),"checkBitmapCache"), 1
+         iftrue ofs00ae
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
+         getlocal 8
+         findpropstrict QName(PackageNamespace("flash.display"),"BitmapData")
+         getlocal1
+         getlocal2
+         pushtrue
+         getlocal3
+         constructprop QName(PackageNamespace("flash.display"),"BitmapData"), 4
+         setproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         ofs00ae:
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
+         getlocal 8
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function addBitmap(param1:Class, param2:Boolean = false, param3:Boolean = false, param4:String = null) : BitmapData
+      {
+         trait method QName(PackageNamespace(""),"addBitmap")
+         flag FINAL
+         dispid 28
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Class")
+         param QName(PackageNamespace(""),"Boolean")
+         param QName(PackageNamespace(""),"Boolean")
+         param QName(PackageNamespace(""),"String")
+         optional False()
+         optional False()
+         optional Null()
+         returns QName(PackageNamespace("flash.display"),"BitmapData")
+         
+         body
+         maxstack 5
+         localcount 13
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("flash.display"),"BitmapData")
+         setlocal 5
+         pushbyte 0
+         convert_u
+         setlocal 6
+         pushnull
+         coerce_s
+         setlocal 7
+         pushnull
+         coerce QName(PackageNamespace("flash.display"),"BitmapData")
+         setlocal 8
+         pushnull
+         coerce QName(PackageNamespace("flash.geom"),"Matrix")
+         setlocal 9
+         pushfalse
+         setlocal 10
+         getlocal 4
+         coerce_s
+         dup
+         setlocal 11
+         pushnull
+         ifne ofs00a3
+         findpropstrict QName(PackageNamespace(""),"String")
+         getlocal1
+         callproperty QName(PackageNamespace(""),"String"), 1
+         coerce_s
+         dup
+         setlocal 11
+         pushstring "[class SixMap3_Imgplayer]"
+         ifne ofs003a
+         ofs003a:
+         getlocal3
+         convert_b
+         dup
+         iffalse ofs004f
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
+         getlocal 11
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"undefined")
+         equals
+         not
+         ofs004f:
+         dup
+         iffalse ofs0060
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
+         getlocal 11
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         pushnull
+         equals
+         not
+         ofs0060:
+         iffalse ofs00a3
+         pushbyte 0
+         convert_u
+         setlocal 6
+         jump ofs006e
+         ofs006d:
+         label
+         ofs006e:
+         getlocal 11
+         getlocal 6
+         convert_d
+         dup
+         increment
+         convert_u
+         setlocal 6
+         add
+         coerce_s
+         setlocal 7
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
+         getlocal 7
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"undefined")
+         equals
+         not
+         dup
+         iffalse ofs009a
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
+         getlocal 7
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         pushnull
+         equals
+         not
+         ofs009a:
+         iftrue ofs006d
+         getlocal 7
+         coerce_s
+         setlocal 11
+         ofs00a3:
+         pushfalse
+         setlocal 12
+         findpropstrict QName(PackageNamespace(""),"checkBitmapCache")
+         getlocal 11
+         callproperty QName(PackageNamespace(""),"checkBitmapCache"), 1
+         iftrue ofs00cd
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
+         getlocal 11
+         getlocal1
+         construct 0
+         getproperty Multiname("bitmapData",[PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         getlocal2
+         iffalse ofs00c9
+         pushtrue
+         setlocal 10
+         ofs00c9:
+         jump ofs00d0
+         ofs00cd:
+         pushtrue
+         setlocal 12
+         ofs00d0:
+         getlocal 12
+         not
+         dup
+         iftrue ofs00db
+         pop
+         getlocal2
+         not
+         ofs00db:
+         iffalse ofs00eb
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
+         getlocal 11
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace("flash.display"),"BitmapData")
+         setlocal 5
+         ofs00eb:
+         getlocal 12
+         convert_b
+         dup
+         iffalse ofs00f6
+         pop
+         getlocal2
+         convert_b
+         ofs00f6:
+         iffalse ofs0101
+         pushtrue
+         setlocal 10
+         jump ofs0127
+         ofs0101:
+         getlocal 10
+         not
+         dup
+         iffalse ofs010c
+         pop
+         getlocal2
+         convert_b
+         ofs010c:
+         dup
+         iffalse ofs0120
+         pop
+         getlocal 5
+         getproperty QName(PackageNamespace(""),"width")
+         getlocal1
+         construct 0
+         getproperty Multiname("bitmapData",[PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         getproperty Multiname("width",[PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         equals
+         ofs0120:
+         iffalse ofs0127
+         pushtrue
+         setlocal 10
+         ofs0127:
+         getlocal 10
+         iffalse ofs019c
+         getlocal 12
+         iftrue ofs0190
+         findpropstrict QName(PackageNamespace("flash.display"),"BitmapData")
+         getlocal 5
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 1
+         lshift
+         getlocal 5
+         getproperty QName(PackageNamespace(""),"height")
+         pushtrue
+         pushbyte 0
+         constructprop QName(PackageNamespace("flash.display"),"BitmapData"), 4
+         coerce QName(PackageNamespace("flash.display"),"BitmapData")
+         dup
+         setlocal 8
+         getlocal 5
+         callpropvoid QName(PackageNamespace(""),"draw"), 1
+         findpropstrict QName(PackageNamespace("flash.geom"),"Matrix")
+         constructprop QName(PackageNamespace("flash.geom"),"Matrix"), 0
+         coerce QName(PackageNamespace("flash.geom"),"Matrix")
+         dup
+         setlocal 9
+         pushbyte -1
+         pushbyte 1
+         callpropvoid QName(PackageNamespace(""),"scale"), 2
+         getlocal 9
+         getlocal 8
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 0
+         callpropvoid QName(PackageNamespace(""),"translate"), 2
+         getlocal 8
+         getlocal 5
+         getlocal 9
+         callpropvoid QName(PackageNamespace(""),"draw"), 2
+         getlocal 8
+         coerce QName(PackageNamespace("flash.display"),"BitmapData")
+         setlocal 5
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cacheReverse")
+         getlocal 11
+         getlocal 8
+         setproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         jump ofs019c
+         ofs0190:
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cacheReverse")
+         getlocal 11
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace("flash.display"),"BitmapData")
+         setlocal 5
+         ofs019c:
+         getlocal 5
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function follow(param1:FlxObject, param2:Number = 1, param3:Boolean = true) : void
+      {
+         trait method QName(PackageNamespace(""),"follow")
+         flag FINAL
+         dispid 29
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace("org.flixel"),"FlxObject")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Boolean")
+         optional Integer(1)
+         optional True()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 4
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findproperty QName(PackageNamespace(""),"followTarget")
+         getlocal1
+         setproperty QName(PackageNamespace(""),"followTarget")
+         findproperty QName(PackageNamespace(""),"followLerp")
+         getlocal2
+         setproperty QName(PackageNamespace(""),"followLerp")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         getlex QName(PackageNamespace(""),"width")
+         pushbyte 1
+         rshift
+         getlex QName(PackageNamespace(""),"followTarget")
+         getproperty QName(PackageNamespace(""),"x")
+         subtract
+         getlex QName(PackageNamespace(""),"followTarget")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 1
+         rshift
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         getlex QName(PackageNamespace(""),"height")
+         pushbyte 1
+         rshift
+         getlex QName(PackageNamespace(""),"followTarget")
+         getproperty QName(PackageNamespace(""),"y")
+         subtract
+         getlex QName(PackageNamespace(""),"followTarget")
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 1
+         rshift
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal3
+         iffalse ofs005b
+         getlex QName(PackageNamespace(""),"scroll")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         getproperty QName(PackageNamespace(""),"x")
+         setproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"scroll")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         getproperty QName(PackageNamespace(""),"y")
+         setproperty QName(PackageNamespace(""),"y")
+         ofs005b:
+         findpropstrict QName(PackageInternalNs("org.flixel"),"doFollow")
+         callpropvoid QName(PackageInternalNs("org.flixel"),"doFollow"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function followAdjust(param1:Number = 0, param2:Number = 0) : void
+      {
+         trait method QName(PackageNamespace(""),"followAdjust")
+         flag FINAL
+         dispid 30
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         optional Integer(0)
+         optional Integer(0)
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 3
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findproperty QName(PackageNamespace(""),"followLead")
+         findpropstrict QName(PackageNamespace("flash.geom"),"Point")
+         getlocal1
+         getlocal2
+         constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
+         setproperty QName(PackageNamespace(""),"followLead")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function followBounds(param1:int = 0, param2:int = 0, param3:int = 0, param4:int = 0, param5:Boolean = true) : void
+      {
+         trait method QName(PackageNamespace(""),"followBounds")
+         flag FINAL
+         dispid 31
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"Boolean")
+         optional Integer(0)
+         optional Integer(0)
+         optional Integer(0)
+         optional Integer(0)
+         optional True()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 6
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findproperty QName(PackageNamespace(""),"followMin")
+         findpropstrict QName(PackageNamespace("flash.geom"),"Point")
+         getlocal1
+         negate
+         getlocal2
+         negate
+         constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
+         setproperty QName(PackageNamespace(""),"followMin")
+         findproperty QName(PackageNamespace(""),"followMax")
+         findpropstrict QName(PackageNamespace("flash.geom"),"Point")
+         getlocal3
+         negate
+         getlex QName(PackageNamespace(""),"width")
+         add
+         getlocal 4
+         negate
+         getlex QName(PackageNamespace(""),"height")
+         add
+         constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
+         setproperty QName(PackageNamespace(""),"followMax")
+         getlex QName(PackageNamespace(""),"followMax")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"followMin")
+         getproperty QName(PackageNamespace(""),"x")
+         ifngt ofs003f
+         getlex QName(PackageNamespace(""),"followMax")
+         getlex QName(PackageNamespace(""),"followMin")
+         getproperty QName(PackageNamespace(""),"x")
+         setproperty QName(PackageNamespace(""),"x")
+         ofs003f:
+         getlex QName(PackageNamespace(""),"followMax")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"followMin")
+         getproperty QName(PackageNamespace(""),"y")
+         ifngt ofs0057
+         getlex QName(PackageNamespace(""),"followMax")
+         getlex QName(PackageNamespace(""),"followMin")
+         getproperty QName(PackageNamespace(""),"y")
+         setproperty QName(PackageNamespace(""),"y")
+         ofs0057:
+         getlocal 5
+         iffalse ofs006d
+         getlex QName(PackageNamespace("org.flixel"),"FlxU")
+         getlocal1
+         getlocal2
+         getlocal3
+         getlocal1
+         subtract
+         getlocal 4
+         getlocal2
+         subtract
+         callpropvoid QName(PackageNamespace(""),"setWorldBounds"), 4
+         ofs006d:
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getlocal1
+         setproperty QName(PackageNamespace(""),"MinX")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getlocal3
+         setproperty QName(PackageNamespace(""),"MaxX")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getlocal2
+         setproperty QName(PackageNamespace(""),"MinY")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getlocal 4
+         setproperty QName(PackageNamespace(""),"MaxY")
+         findpropstrict QName(PackageInternalNs("org.flixel"),"doFollow")
+         callpropvoid QName(PackageInternalNs("org.flixel"),"doFollow"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function get stage() : Stage
+      {
+         trait getter QName(PackageNamespace(""),"stage")
+         flag FINAL
+         dispid 32
+         method
+         name null
+         returns QName(PackageNamespace("flash.display"),"Stage")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getproperty QName(PackageInternalNs("org.flixel"),"_state")
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs001b
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getproperty QName(PackageInternalNs("org.flixel"),"_state")
+         getproperty QName(PackageNamespace(""),"parent")
+         pushnull
+         equals
+         not
+         ofs001b:
+         iffalse ofs002b
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getproperty QName(PackageInternalNs("org.flixel"),"_state")
+         getproperty QName(PackageNamespace(""),"parent")
+         getproperty QName(PackageNamespace(""),"stage")
+         returnvalue
+         ofs002b:
+         pushnull
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function get state() : FlxState
+      {
+         trait getter QName(PackageNamespace(""),"state")
+         flag FINAL
+         dispid 33
+         method
+         name null
+         returns QName(PackageNamespace("org.flixel"),"FlxState")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getproperty QName(PackageInternalNs("org.flixel"),"_state")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function set state(param1:FlxState) : void
+      {
+         trait setter QName(PackageNamespace(""),"state")
+         flag FINAL
+         dispid 34
+         method
+         name null
+         param QName(PackageNamespace("org.flixel"),"FlxState")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"switchState"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function unfollow() : void
+      {
+         trait method QName(PackageNamespace(""),"unfollow")
+         flag FINAL
+         dispid 35
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 2
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findproperty QName(PackageNamespace(""),"followTarget")
+         pushnull
+         setproperty QName(PackageNamespace(""),"followTarget")
+         findproperty QName(PackageNamespace(""),"followLead")
+         pushnull
+         setproperty QName(PackageNamespace(""),"followLead")
+         findproperty QName(PackageNamespace(""),"followLerp")
+         pushbyte 1
+         setproperty QName(PackageNamespace(""),"followLerp")
+         findproperty QName(PackageNamespace(""),"followMin")
+         pushnull
+         setproperty QName(PackageNamespace(""),"followMin")
+         findproperty QName(PackageNamespace(""),"followMax")
+         pushnull
+         setproperty QName(PackageNamespace(""),"followMax")
+         getlex QName(PackageNamespace(""),"scroll")
+         pushnull
+         ifne ofs003d
+         findproperty QName(PackageNamespace(""),"scroll")
+         findpropstrict QName(PackageNamespace("flash.geom"),"Point")
+         constructprop QName(PackageNamespace("flash.geom"),"Point"), 0
+         setproperty QName(PackageNamespace(""),"scroll")
+         jump ofs004e
+         ofs003d:
+         getlex QName(PackageNamespace(""),"scroll")
+         getlex QName(PackageNamespace(""),"scroll")
+         pushbyte 0
+         dup
+         setlocal1
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal1
+         kill 1
+         setproperty QName(PackageNamespace(""),"x")
+         ofs004e:
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         pushnull
+         ifne ofs0065
+         findproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         findpropstrict QName(PackageNamespace("flash.geom"),"Point")
+         constructprop QName(PackageNamespace("flash.geom"),"Point"), 0
+         setproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         jump ofs0076
+         ofs0065:
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         pushbyte 0
+         dup
+         setlocal1
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal1
+         kill 1
+         setproperty QName(PackageNamespace(""),"x")
+         ofs0076:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      internal static function setGameData(param1:FlxGame, param2:uint, param3:uint, param4:uint) : void
+      {
+         trait method QName(PackageInternalNs("org.flixel"),"setGameData")
+         flag FINAL
+         dispid 36
+         method
+         name null
+         param QName(PackageNamespace("org.flixel"),"FlxGame")
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 5
+         localcount 5
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         getlocal1
+         setproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_game")
+         findproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
+         findpropstrict QName(PackageNamespace(""),"Object")
+         constructprop QName(PackageNamespace(""),"Object"), 0
+         setproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
+         findproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_cacheReverse")
+         findpropstrict QName(PackageNamespace(""),"Object")
+         constructprop QName(PackageNamespace(""),"Object"), 0
+         setproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_cacheReverse")
+         findproperty QName(PackageNamespace(""),"width")
+         getlocal2
+         setproperty QName(PackageNamespace(""),"width")
+         findproperty QName(PackageNamespace(""),"height")
+         getlocal3
+         setproperty QName(PackageNamespace(""),"height")
+         findproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_mute")
+         pushfalse
+         setproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_mute")
+         findproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_volume")
+         pushbyte 1
+         setproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_volume")
+         findproperty QName(PackageNamespace(""),"sounds")
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         setproperty QName(PackageNamespace(""),"sounds")
+         findproperty QName(PackageNamespace(""),"mouse")
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxMouse")
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxMouse"), 0
+         setproperty QName(PackageNamespace(""),"mouse")
+         findproperty QName(PackageNamespace(""),"keys")
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxKeyboard")
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxKeyboard"), 0
+         setproperty QName(PackageNamespace(""),"keys")
+         findproperty QName(PackageNamespace(""),"gamepads")
+         findpropstrict QName(PackageNamespace(""),"Array")
+         pushbyte 4
+         constructprop QName(PackageNamespace(""),"Array"), 1
+         setproperty QName(PackageNamespace(""),"gamepads")
+         getlex QName(PackageNamespace(""),"gamepads")
+         pushbyte 0
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxGamepad")
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxGamepad"), 0
+         setproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"gamepads")
+         pushbyte 1
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxGamepad")
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxGamepad"), 0
+         setproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"gamepads")
+         pushbyte 2
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxGamepad")
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxGamepad"), 0
+         setproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"gamepads")
+         pushbyte 3
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxGamepad")
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxGamepad"), 0
+         setproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         findproperty QName(PackageNamespace(""),"scroll")
+         pushnull
+         setproperty QName(PackageNamespace(""),"scroll")
+         findproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         pushnull
+         setproperty QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         findpropstrict QName(PackageNamespace(""),"unfollow")
+         callpropvoid QName(PackageNamespace(""),"unfollow"), 0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         setproperty QName(PackageNamespace(""),"levels")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         setproperty QName(PackageNamespace(""),"scores")
+         findproperty QName(PackageNamespace(""),"level")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"level")
+         findproperty QName(PackageNamespace(""),"score")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"score")
+         findproperty QName(PackageNamespace(""),"kong")
+         pushnull
+         setproperty QName(PackageNamespace(""),"kong")
+         findproperty QName(PackageNamespace(""),"pause")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"pause")
+         findproperty QName(PackageNamespace(""),"timeScale")
+         pushbyte 1
+         setproperty QName(PackageNamespace(""),"timeScale")
+         findproperty QName(PackageNamespace(""),"framerate")
+         pushbyte 60
+         setproperty QName(PackageNamespace(""),"framerate")
+         findproperty QName(PackageNamespace(""),"frameratePaused")
+         pushbyte 24
+         setproperty QName(PackageNamespace(""),"frameratePaused")
+         findproperty QName(PackageNamespace(""),"maxElapsed")
+         pushdouble 0.0333333
+         setproperty QName(PackageNamespace(""),"maxElapsed")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"elapsed")
+         findproperty QName(PackageNamespace(""),"showBounds")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"showBounds")
+         findproperty QName(PackageNamespace(""),"mobile")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"mobile")
+         findproperty QName(PackageNamespace(""),"panel")
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxPanel")
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxPanel"), 0
+         setproperty QName(PackageNamespace(""),"panel")
+         findproperty QName(PackageNamespace(""),"quake")
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxQuake")
+         getlocal 4
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxQuake"), 1
+         setproperty QName(PackageNamespace(""),"quake")
+         findproperty QName(PackageNamespace(""),"flash")
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxFlash")
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxFlash"), 0
+         setproperty QName(PackageNamespace(""),"flash")
+         findproperty QName(PackageNamespace(""),"fade")
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxFade")
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxFade"), 0
+         setproperty QName(PackageNamespace(""),"fade")
+         getlex QName(PackageNamespace("org.flixel"),"FlxU")
+         pushbyte 0
+         dup
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         callpropvoid QName(PackageNamespace(""),"setWorldBounds"), 4
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      internal static function doFollow() : void
+      {
+         trait method QName(PackageInternalNs("org.flixel"),"doFollow")
+         flag FINAL
+         dispid 37
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 1
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"followTarget")
+         pushnull
+         ifeq ofs013c
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         getlex QName(PackageNamespace(""),"width")
+         pushbyte 1
+         rshift
+         getlex QName(PackageNamespace(""),"followTarget")
+         getproperty QName(PackageNamespace(""),"x")
+         subtract
+         getlex QName(PackageNamespace(""),"followTarget")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 1
+         rshift
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         getlex QName(PackageNamespace(""),"height")
+         pushbyte 1
+         rshift
+         getlex QName(PackageNamespace(""),"followTarget")
+         getproperty QName(PackageNamespace(""),"y")
+         subtract
+         getlex QName(PackageNamespace(""),"followTarget")
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 1
+         rshift
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"followLead")
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs004e
+         pop
+         getlex QName(PackageNamespace(""),"followTarget")
+         getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+         istypelate
+         ofs004e:
+         iffalse ofs008a
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"followTarget")
+         getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+         astypelate
+         getproperty QName(PackageNamespace(""),"velocity")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"followLead")
+         getproperty QName(PackageNamespace(""),"x")
+         multiply
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"followTarget")
+         getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+         astypelate
+         getproperty QName(PackageNamespace(""),"velocity")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"followLead")
+         getproperty QName(PackageNamespace(""),"y")
+         multiply
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         ofs008a:
+         getlex QName(PackageNamespace(""),"scroll")
+         getlex QName(PackageNamespace(""),"scroll")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"scroll")
+         getproperty QName(PackageNamespace(""),"x")
+         subtract
+         getlex QName(PackageNamespace(""),"followLerp")
+         multiply
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         multiply
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"scroll")
+         getlex QName(PackageNamespace(""),"scroll")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_scrollTarget")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"scroll")
+         getproperty QName(PackageNamespace(""),"y")
+         subtract
+         getlex QName(PackageNamespace(""),"followLerp")
+         multiply
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         multiply
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"followMin")
+         pushnull
+         ifeq ofs0104
+         getlex QName(PackageNamespace(""),"scroll")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"followMin")
+         getproperty QName(PackageNamespace(""),"x")
+         ifngt ofs00ec
+         getlex QName(PackageNamespace(""),"scroll")
+         getlex QName(PackageNamespace(""),"followMin")
+         getproperty QName(PackageNamespace(""),"x")
+         setproperty QName(PackageNamespace(""),"x")
+         ofs00ec:
+         getlex QName(PackageNamespace(""),"scroll")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"followMin")
+         getproperty QName(PackageNamespace(""),"y")
+         ifngt ofs0104
+         getlex QName(PackageNamespace(""),"scroll")
+         getlex QName(PackageNamespace(""),"followMin")
+         getproperty QName(PackageNamespace(""),"y")
+         setproperty QName(PackageNamespace(""),"y")
+         ofs0104:
+         getlex QName(PackageNamespace(""),"followMax")
+         pushnull
+         ifeq ofs013c
+         getlex QName(PackageNamespace(""),"scroll")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"followMax")
+         getproperty QName(PackageNamespace(""),"x")
+         ifnlt ofs0124
+         getlex QName(PackageNamespace(""),"scroll")
+         getlex QName(PackageNamespace(""),"followMax")
+         getproperty QName(PackageNamespace(""),"x")
+         setproperty QName(PackageNamespace(""),"x")
+         ofs0124:
+         getlex QName(PackageNamespace(""),"scroll")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"followMax")
+         getproperty QName(PackageNamespace(""),"y")
+         ifnlt ofs013c
+         getlex QName(PackageNamespace(""),"scroll")
+         getlex QName(PackageNamespace(""),"followMax")
+         getproperty QName(PackageNamespace(""),"y")
+         setproperty QName(PackageNamespace(""),"y")
+         ofs013c:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      internal static function updateInput() : void
+      {
+         trait method QName(PackageInternalNs("org.flixel"),"updateInput")
+         flag FINAL
+         dispid 38
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 5
+         localcount 3
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"keys")
+         callpropvoid QName(PackageNamespace(""),"update"), 0
+         getlex QName(PackageNamespace(""),"mouse")
+         getlex QName(PackageNamespace(""),"state")
+         getproperty QName(PackageNamespace(""),"mouseX")
+         getlex QName(PackageNamespace(""),"state")
+         getproperty QName(PackageNamespace(""),"mouseY")
+         getlex QName(PackageNamespace(""),"scroll")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"scroll")
+         getproperty QName(PackageNamespace(""),"y")
+         callpropvoid QName(PackageNamespace(""),"update"), 4
+         pushbyte 0
+         convert_u
+         setlocal1
+         getlex QName(PackageNamespace(""),"gamepads")
+         getproperty QName(PackageNamespace(""),"length")
+         convert_u
+         setlocal2
+         jump ofs0045
+         ofs0034:
+         label
+         getlex QName(PackageNamespace(""),"gamepads")
+         getlocal1
+         convert_d
+         dup
+         increment
+         convert_u
+         setlocal1
+         getproperty MultinameL([PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         callpropvoid Multiname("update",[PrivateNamespace(null,"246"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"247"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")]), 0
+         ofs0045:
+         getlocal1
+         getlocal2
+         iflt ofs0034
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 3
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("FlxG",[PackageNamespace("org.flixel")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace(""),"Object")
+newclass 9
+popscope
+initproperty QName(PackageNamespace("org.flixel"),"FlxG")
+returnvoid
+end ; code
+end ; body
+end ; method
+

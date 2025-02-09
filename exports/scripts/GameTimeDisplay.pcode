@@ -1,0 +1,438 @@
+package
+{
+   import org.flixel.FlxG;
+   import org.flixel.FlxText;
+   
+   public class GameTimeDisplay extends FlxText
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 8
+      maxscopedepth 9
+      
+      code
+      getlocal0
+      pushscope
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public var oldTime:int = -1;
+      
+      public var relY:int = 0;
+      
+      public function GameTimeDisplay()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 5
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 27
+         subtract
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 7
+         subtract
+         constructsuper 3
+         getlocal0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 27
+         subtract
+         initproperty QName(PackageNamespace(""),"relY")
+         findproperty QName(PackageNamespace(""),"font")
+         getlex QName(PackageNamespace(""),"Fonts")
+         getproperty QName(PackageNamespace(""),"normal")
+         initproperty QName(PackageNamespace(""),"font")
+         findproperty QName(PackageNamespace(""),"size")
+         pushbyte 10
+         initproperty QName(PackageNamespace(""),"size")
+         findproperty QName(PackageNamespace(""),"color")
+         pushint 16777215
+         initproperty QName(PackageNamespace(""),"color")
+         findproperty QName(PackageNamespace(""),"shadow")
+         pushbyte 1
+         initproperty QName(PackageNamespace(""),"shadow")
+         findproperty QName(PackageNamespace(""),"alignment")
+         pushstring "right"
+         initproperty QName(PackageNamespace(""),"alignment")
+         getlex QName(PackageNamespace(""),"scrollFactor")
+         getlex QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal1
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal1
+         kill 1
+         setproperty QName(PackageNamespace(""),"x")
+         findpropstrict QName(PackageNamespace(""),"setShadowDistance")
+         pushbyte 1
+         callpropvoid QName(PackageNamespace(""),"setShadowDistance"), 1
+         findproperty QName(PackageNamespace(""),"visible")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"visible")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function padZero(param1:int) : String
+      {
+         trait method QName(PackageNamespace(""),"padZero")
+         flag FINAL
+         dispid 3
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         pushbyte 10
+         ifnlt ofs0013
+         pushstring "0"
+         getlocal1
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         add
+         returnvalue
+         ofs0013:
+         getlocal1
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function format(param1:Number) : String
+      {
+         trait method QName(PackageNamespace(""),"format")
+         flag FINAL
+         dispid 4
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 5
+         localcount 2
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         pushbyte 60
+         dup
+         multiply
+         ifngt ofs0047
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         pushshort 3600
+         divide
+         callproperty QName(PackageNamespace(""),"int"), 1
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         pushstring ":"
+         add
+         findpropstrict QName(PackageNamespace(""),"padZero")
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         pushbyte 60
+         divide
+         pushbyte 60
+         modulo
+         callproperty QName(PackageNamespace(""),"int"), 1
+         callproperty QName(PackageNamespace(""),"padZero"), 1
+         add
+         pushstring ":"
+         add
+         findpropstrict QName(PackageNamespace(""),"padZero")
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         pushbyte 60
+         modulo
+         callproperty QName(PackageNamespace(""),"int"), 1
+         callproperty QName(PackageNamespace(""),"padZero"), 1
+         add
+         returnvalue
+         ofs0047:
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         pushbyte 60
+         divide
+         callproperty QName(PackageNamespace(""),"int"), 1
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         pushstring ":"
+         add
+         findpropstrict QName(PackageNamespace(""),"padZero")
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         pushbyte 60
+         modulo
+         callproperty QName(PackageNamespace(""),"int"), 1
+         callproperty QName(PackageNamespace(""),"padZero"), 1
+         add
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function formatExact(param1:Number) : String
+      {
+         trait method QName(PackageNamespace(""),"formatExact")
+         flag FINAL
+         dispid 5
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 5
+         localcount 2
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         pushbyte 60
+         dup
+         multiply
+         ifngt ofs005f
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         pushshort 3600
+         divide
+         callproperty QName(PackageNamespace(""),"int"), 1
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         pushstring ":"
+         add
+         findpropstrict QName(PackageNamespace(""),"padZero")
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         pushbyte 60
+         divide
+         pushbyte 60
+         modulo
+         callproperty QName(PackageNamespace(""),"int"), 1
+         callproperty QName(PackageNamespace(""),"padZero"), 1
+         add
+         pushstring ":"
+         add
+         findpropstrict QName(PackageNamespace(""),"padZero")
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         pushbyte 60
+         modulo
+         callproperty QName(PackageNamespace(""),"int"), 1
+         callproperty QName(PackageNamespace(""),"padZero"), 1
+         add
+         pushstring "."
+         add
+         findpropstrict QName(PackageNamespace(""),"padZero")
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         pushbyte 100
+         multiply
+         pushbyte 100
+         modulo
+         callproperty QName(PackageNamespace(""),"int"), 1
+         callproperty QName(PackageNamespace(""),"padZero"), 1
+         add
+         returnvalue
+         ofs005f:
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         pushbyte 60
+         divide
+         callproperty QName(PackageNamespace(""),"int"), 1
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         pushstring ":"
+         add
+         findpropstrict QName(PackageNamespace(""),"padZero")
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         pushbyte 60
+         modulo
+         callproperty QName(PackageNamespace(""),"int"), 1
+         callproperty QName(PackageNamespace(""),"padZero"), 1
+         add
+         pushstring "."
+         add
+         findpropstrict QName(PackageNamespace(""),"padZero")
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         pushbyte 100
+         multiply
+         pushbyte 100
+         modulo
+         callproperty QName(PackageNamespace(""),"int"), 1
+         callproperty QName(PackageNamespace(""),"padZero"), 1
+         add
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal1
+         pushbyte 0
+         setlocal1
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         iftrue ofs001b
+         findproperty QName(PackageNamespace(""),"text")
+         pushstring ""
+         initproperty QName(PackageNamespace(""),"text")
+         returnvoid
+         ofs001b:
+         findpropstrict QName(PackageNamespace(""),"Boolean")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"miniMap")
+         callproperty QName(PackageNamespace(""),"Boolean"), 1
+         convert_b
+         dup
+         iffalse ofs003c
+         pop
+         findpropstrict QName(PackageNamespace(""),"Boolean")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"miniMap")
+         getproperty QName(PackageNamespace(""),"subscreen")
+         callproperty QName(PackageNamespace(""),"Boolean"), 1
+         convert_b
+         ofs003c:
+         iffalse ofs0058
+         findproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"relY")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"miniMap")
+         getproperty QName(PackageNamespace(""),"subscreen")
+         getproperty Multiname("panel",[PrivateNamespace(null,"263"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace(""),PrivateNamespace(null,"264"),PackageInternalNs(""),ProtectedNamespace("GameTimeDisplay"),StaticProtectedNs("GameTimeDisplay"),StaticProtectedNs("org.flixel:FlxText"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("y",[PrivateNamespace(null,"263"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace(""),PrivateNamespace(null,"264"),PackageInternalNs(""),ProtectedNamespace("GameTimeDisplay"),StaticProtectedNs("GameTimeDisplay"),StaticProtectedNs("org.flixel:FlxText"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         add
+         initproperty QName(PackageNamespace(""),"y")
+         ofs0058:
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"gameTime")
+         getproperty Multiname("value",[PrivateNamespace(null,"263"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace(""),PrivateNamespace(null,"264"),PackageInternalNs(""),ProtectedNamespace("GameTimeDisplay"),StaticProtectedNs("GameTimeDisplay"),StaticProtectedNs("org.flixel:FlxText"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace(""),"int"), 1
+         convert_i
+         setlocal1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"oldTime")
+         getlocal1
+         ifeq ofs008b
+         findproperty QName(PackageNamespace(""),"text")
+         pushstring "TIME\n"
+         findpropstrict QName(PackageNamespace(""),"format")
+         getlocal1
+         callproperty QName(PackageNamespace(""),"format"), 1
+         add
+         initproperty QName(PackageNamespace(""),"text")
+         getlocal0
+         getlocal1
+         setproperty QName(PackageNamespace(""),"oldTime")
+         ofs008b:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 8
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("GameTimeDisplay",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxText")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxText")
+newclass 33
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"GameTimeDisplay")
+returnvoid
+end ; code
+end ; body
+end ; method
+

@@ -1,0 +1,526 @@
+package org.flixel
+{
+   import flash.net.SharedObject;
+   import flash.net.SharedObjectFlushStatus;
+   
+   public class FlxSave
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 3
+      maxscopedepth 4
+      
+      code
+      getlocal0
+      pushscope
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public var data:Object;
+      
+      public var name:String;
+      
+      protected var _so:SharedObject;
+      
+      public function FlxSave()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         getlocal0
+         pushnull
+         initproperty QName(PackageNamespace(""),"name")
+         getlocal0
+         pushnull
+         initproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
+         getlocal0
+         pushnull
+         initproperty QName(PackageNamespace(""),"data")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function bind(param1:String) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"bind")
+         dispid 0
+         method
+         name null
+         flag NEED_ACTIVATION
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 4
+         localcount 4
+         initscopedepth 5
+         maxscopedepth 10
+         trait slot QName(PackageInternalNs("org.flixel"),"param1")
+         slotid 1
+         type QName(PackageNamespace(""),"String")
+         end ; trait
+         trait slot QName(PackageInternalNs("org.flixel"),"Name")
+         slotid 2
+         type QName(PackageNamespace(""),"String")
+         end ; trait
+         
+         code
+         getlocal0
+         pushscope
+         newactivation
+         dup
+         setlocal2
+         pushscope
+         getscopeobject 1
+         getlocal1
+         setslot 1
+         getscopeobject 1
+         getscopeobject 1
+         getslot 1
+         coerce_s
+         setslot 2
+         getlocal0
+         pushnull
+         setproperty QName(PackageNamespace(""),"name")
+         getlocal0
+         pushnull
+         setproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
+         getlocal0
+         pushnull
+         setproperty QName(PackageNamespace(""),"data")
+         getlocal0
+         getscopeobject 1
+         getslot 2
+         setproperty QName(PackageNamespace(""),"name")
+         ofs0027:
+         getlocal0
+         getlex QName(PackageNamespace("flash.net"),"SharedObject")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"name")
+         pushstring "/"
+         callproperty QName(PackageNamespace(""),"getLocal"), 2
+         setproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
+         ofs0036:
+         jump ofs0065
+         ofs003a:
+         getlocal0
+         pushscope
+         getlocal2
+         pushscope
+         newcatch 0
+         dup
+         setlocal3
+         dup
+         pushscope
+         swap
+         setslot 1
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         pushstring "WARNING: There was a problem binding to\nthe shared object data from FlxSave."
+         callpropvoid QName(PackageNamespace(""),"log"), 1
+         findproperty QName(PackageNamespace(""),"name")
+         pushnull
+         initproperty QName(PackageNamespace(""),"name")
+         findproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
+         pushnull
+         initproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
+         findproperty QName(PackageNamespace(""),"data")
+         pushnull
+         initproperty QName(PackageNamespace(""),"data")
+         pushfalse
+         returnvalue
+         popscope
+         kill 3
+         ofs0065:
+         getlocal0
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
+         getproperty QName(PackageNamespace(""),"data")
+         setproperty QName(PackageNamespace(""),"data")
+         pushtrue
+         returnvalue
+         end ; code
+         try from ofs0027 to ofs0036 target ofs003a type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
+         end ; body
+         end ; method
+      }
+      
+      public function write(param1:String, param2:Object, param3:uint = 0) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"write")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"Object")
+         param QName(PackageNamespace(""),"uint")
+         optional Integer(0)
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 3
+         localcount 4
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
+         pushnull
+         ifne ofs0016
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         pushstring "WARNING: You must call FlxSave.bind()\nbefore calling FlxSave.write()."
+         callpropvoid QName(PackageNamespace(""),"log"), 1
+         pushfalse
+         returnvalue
+         ofs0016:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"data")
+         getlocal1
+         getlocal2
+         setproperty MultinameL([PrivateNamespace(null,"240"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSave"),PackageNamespace("org.flixel"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"241"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxSave"),StaticProtectedNs("Object")])
+         getlocal0
+         getlocal3
+         callproperty QName(PackageNamespace(""),"forceSave"), 1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function read(param1:String) : Object
+      {
+         trait method QName(PackageNamespace(""),"read")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"Object")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
+         pushnull
+         ifne ofs0016
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         pushstring "WARNING: You must call FlxSave.bind()\nbefore calling FlxSave.read()."
+         callpropvoid QName(PackageNamespace(""),"log"), 1
+         pushnull
+         returnvalue
+         ofs0016:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"data")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"240"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSave"),PackageNamespace("org.flixel"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"241"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxSave"),StaticProtectedNs("Object")])
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function forceSave(param1:uint = 0) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"forceSave")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         flag NEED_ACTIVATION
+         param QName(PackageNamespace(""),"uint")
+         optional Integer(0)
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 3
+         localcount 4
+         initscopedepth 5
+         maxscopedepth 10
+         trait slot QName(PackageInternalNs("org.flixel"),"param1")
+         slotid 1
+         type QName(PackageNamespace(""),"uint")
+         value Integer(0)
+         end ; trait
+         trait slot QName(PackageInternalNs("org.flixel"),"status")
+         slotid 2
+         type QName(PackageNamespace(""),"Object")
+         end ; trait
+         trait slot QName(PackageInternalNs("org.flixel"),"MinFileSize")
+         slotid 3
+         type QName(PackageNamespace(""),"uint")
+         end ; trait
+         
+         code
+         getlocal0
+         pushscope
+         newactivation
+         dup
+         setlocal2
+         pushscope
+         getscopeobject 1
+         pushnull
+         coerce QName(PackageNamespace(""),"Object")
+         setslot 2
+         getscopeobject 1
+         getlocal1
+         setslot 1
+         getscopeobject 1
+         getscopeobject 1
+         getslot 1
+         convert_u
+         setslot 3
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
+         pushnull
+         ifne ofs002f
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         pushstring "WARNING: You must call FlxSave.bind()\nbefore calling FlxSave.forceSave()."
+         callpropvoid QName(PackageNamespace(""),"log"), 1
+         pushfalse
+         returnvalue
+         ofs002f:
+         getscopeobject 1
+         pushnull
+         coerce QName(PackageNamespace(""),"Object")
+         setslot 2
+         ofs0036:
+         getscopeobject 1
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
+         getscopeobject 1
+         getslot 3
+         callproperty QName(PackageNamespace(""),"flush"), 1
+         coerce QName(PackageNamespace(""),"Object")
+         setslot 2
+         ofs0047:
+         jump ofs0067
+         ofs004b:
+         getlocal0
+         pushscope
+         getlocal2
+         pushscope
+         newcatch 0
+         dup
+         setlocal3
+         dup
+         pushscope
+         swap
+         setslot 1
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         pushstring "WARNING: There was a problem flushing\nthe shared object data from FlxSave."
+         callpropvoid QName(PackageNamespace(""),"log"), 1
+         pushfalse
+         returnvalue
+         popscope
+         kill 3
+         ofs0067:
+         getscopeobject 1
+         getslot 2
+         getlex QName(PackageNamespace("flash.net"),"SharedObjectFlushStatus")
+         getproperty QName(PackageNamespace(""),"FLUSHED")
+         equals
+         returnvalue
+         end ; code
+         try from ofs0036 to ofs0047 target ofs004b type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
+         end ; body
+         end ; method
+      }
+      
+      public function erase(param1:uint = 0) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"erase")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"uint")
+         optional Integer(0)
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
+         pushnull
+         ifne ofs0016
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         pushstring "WARNING: You must call FlxSave.bind()\nbefore calling FlxSave.erase()."
+         callpropvoid QName(PackageNamespace(""),"log"), 1
+         pushfalse
+         returnvalue
+         ofs0016:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
+         callpropvoid QName(PackageNamespace(""),"clear"), 0
+         getlocal0
+         getlocal1
+         callproperty QName(PackageNamespace(""),"forceSave"), 1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function writeArray(param1:String, param2:Array) : void
+      {
+         trait method QName(PackageNamespace(""),"writeArray")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"Array")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 5
+         localcount 4
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"Array")
+         getlocal2
+         constructprop QName(PackageNamespace(""),"Array"), 1
+         coerce QName(PackageNamespace(""),"Array")
+         setlocal3
+         getlocal0
+         getlocal1
+         getlocal3
+         pushbyte 0
+         getlocal2
+         getproperty QName(PackageNamespace(""),"length")
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"splice"), 2
+         callpropvoid QName(PackageNamespace(""),"write"), 2
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function readArray(param1:String) : Array
+      {
+         trait method QName(PackageNamespace(""),"readArray")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"Array")
+         
+         body
+         maxstack 3
+         localcount 6
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         callproperty QName(PackageNamespace(""),"read"), 1
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal2
+         findpropstrict QName(PackageNamespace(""),"String")
+         getlocal2
+         callproperty QName(PackageNamespace(""),"String"), 1
+         coerce_s
+         setlocal3
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         coerce QName(PackageNamespace(""),"Array")
+         setlocal 4
+         pushbyte 0
+         setlocal 5
+         jump ofs0041
+         ofs0023:
+         label
+         getlocal3
+         getlocal 5
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charAt"), 1
+         pushstring ","
+         ifeq ofs003f
+         getlocal 4
+         getlocal3
+         getlocal 5
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charAt"), 1
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
+         ofs003f:
+         inclocal_i 5
+         ofs0041:
+         getlocal 5
+         getlocal3
+         getproperty QName(PackageNamespace(""),"length")
+         iflt ofs0023
+         getlocal 4
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 3
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("FlxSave",[PackageNamespace("org.flixel")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace(""),"Object")
+newclass 2
+popscope
+initproperty QName(PackageNamespace("org.flixel"),"FlxSave")
+returnvoid
+end ; code
+end ; body
+end ; method
+

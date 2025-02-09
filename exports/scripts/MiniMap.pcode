@@ -1,0 +1,2683 @@
+package
+{
+   import org.flixel.*;
+   
+   public class MiniMap extends FlxGroup
+   {
+      private static const IMG_TABSPRITE_WIDTH:int = 11;
+      
+      private static const IMG_TABSPRITE_HEIGHT:int = 5;
+      
+      private static const TABSPRITE_MARGIN:int = 2;
+      
+      private static const MARGIN:int = 4;
+      
+      private static const TILE_WIDTH:int = 8;
+      
+      private static const TILE_HEIGHT:int = 8;
+      
+      private static const DEFAULT_MAP_COLS:int = 7;
+      
+      private static const DEFAULT_MAP_ROWS:int = 5;
+      
+      public static const SIZE_X:int = 26;
+      
+      public static const SIZE_Y:int = 22;
+      
+      public static const ROOM_WIDTH:int = 26;
+      
+      public static const ROOM_HEIGHT:int = 16;
+      
+      private static const MAX_MAP_COLS:int = 26;
+      
+      private static const MAX_MAP_ROWS:int = 22;
+      
+      private static const BLANK_TILE:String = "187";
+      
+      private static const FULL_OFS_Y:int = 24;
+      
+      public static const MAX_KNOWN:int = 324;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 7
+      maxscopedepth 8
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"10"),"IMG_TABSPRITE_WIDTH")
+      pushbyte 11
+      initproperty QName(PrivateNamespace(null,"10"),"IMG_TABSPRITE_WIDTH")
+      findproperty QName(PrivateNamespace(null,"10"),"IMG_TABSPRITE_HEIGHT")
+      pushbyte 5
+      initproperty QName(PrivateNamespace(null,"10"),"IMG_TABSPRITE_HEIGHT")
+      findproperty QName(PrivateNamespace(null,"10"),"TABSPRITE_MARGIN")
+      pushbyte 2
+      initproperty QName(PrivateNamespace(null,"10"),"TABSPRITE_MARGIN")
+      findproperty QName(PrivateNamespace(null,"10"),"MARGIN")
+      pushbyte 4
+      initproperty QName(PrivateNamespace(null,"10"),"MARGIN")
+      findproperty QName(PrivateNamespace(null,"10"),"TILE_WIDTH")
+      pushbyte 8
+      initproperty QName(PrivateNamespace(null,"10"),"TILE_WIDTH")
+      findproperty QName(PrivateNamespace(null,"10"),"TILE_HEIGHT")
+      pushbyte 8
+      initproperty QName(PrivateNamespace(null,"10"),"TILE_HEIGHT")
+      findproperty QName(PrivateNamespace(null,"10"),"DEFAULT_MAP_COLS")
+      pushbyte 7
+      initproperty QName(PrivateNamespace(null,"10"),"DEFAULT_MAP_COLS")
+      findproperty QName(PrivateNamespace(null,"10"),"DEFAULT_MAP_ROWS")
+      pushbyte 5
+      initproperty QName(PrivateNamespace(null,"10"),"DEFAULT_MAP_ROWS")
+      findproperty QName(PackageNamespace(""),"SIZE_X")
+      pushbyte 26
+      initproperty QName(PackageNamespace(""),"SIZE_X")
+      findproperty QName(PackageNamespace(""),"SIZE_Y")
+      pushbyte 22
+      initproperty QName(PackageNamespace(""),"SIZE_Y")
+      findproperty QName(PackageNamespace(""),"ROOM_WIDTH")
+      pushbyte 26
+      initproperty QName(PackageNamespace(""),"ROOM_WIDTH")
+      findproperty QName(PackageNamespace(""),"ROOM_HEIGHT")
+      pushbyte 16
+      initproperty QName(PackageNamespace(""),"ROOM_HEIGHT")
+      findproperty QName(PrivateNamespace(null,"10"),"MAX_MAP_COLS")
+      getlex QName(PackageNamespace(""),"SIZE_X")
+      initproperty QName(PrivateNamespace(null,"10"),"MAX_MAP_COLS")
+      findproperty QName(PrivateNamespace(null,"10"),"MAX_MAP_ROWS")
+      getlex QName(PackageNamespace(""),"SIZE_Y")
+      initproperty QName(PrivateNamespace(null,"10"),"MAX_MAP_ROWS")
+      findproperty QName(PrivateNamespace(null,"10"),"BLANK_TILE")
+      pushstring "187"
+      initproperty QName(PrivateNamespace(null,"10"),"BLANK_TILE")
+      findproperty QName(PrivateNamespace(null,"10"),"FULL_OFS_Y")
+      pushbyte 24
+      initproperty QName(PrivateNamespace(null,"10"),"FULL_OFS_Y")
+      findproperty QName(PackageNamespace(""),"MAX_KNOWN")
+      pushshort 324
+      initproperty QName(PackageNamespace(""),"MAX_KNOWN")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var totalKnownText:FlxText;
+      
+      private var mapRate:MapRate;
+      
+      private var skillText:SkillText;
+      
+      public var knownList:Array;
+      
+      private var tabSprite:FlxSprite;
+      
+      private var tabText:FlxText;
+      
+      private var DEFAULT_OFS_Y:int = 0;
+      
+      private var subOfsY:int;
+      
+      private var fullAlpha:Number = 0;
+      
+      private var targetFullAlpha:Number = 0;
+      
+      public var subscreen:Subscreen;
+      
+      private var _totalKnown:int = 0;
+      
+      private var mapCols:int = 7;
+      
+      private var mapRows:int = 5;
+      
+      private const SPECIAL_NONE:int = 0;
+      
+      private const SPECIAL_SAVE:int = 1;
+      
+      private const SPECIAL_ITEM:int = 2;
+      
+      private const SPECIAL_ITEMGOTTEN:int = 3;
+      
+      private const SPECIAL_BOSS:int = 4;
+      
+      private var _map:Array;
+      
+      private var _known:Array;
+      
+      private var _display:Array;
+      
+      private var _special:Array;
+      
+      private var _specialDisplay:Array;
+      
+      private var _lastX:int = 0;
+      
+      private var _lastY:int = 0;
+      
+      private var _center:FlxSprite;
+      
+      public function MiniMap()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 8
+         localcount 6
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal1
+         pushbyte 0
+         setlocal2
+         pushnull
+         coerce QName(PackageNamespace("org.flixel"),"FlxSprite")
+         setlocal3
+         pushbyte 0
+         setlocal1
+         pushbyte 0
+         setlocal2
+         pushnull
+         coerce QName(PackageNamespace("org.flixel"),"FlxSprite")
+         setlocal3
+         pushbyte 0
+         setlocal 4
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"DEFAULT_OFS_Y")
+         initproperty QName(PrivateNamespace(null,"10"),"subOfsY")
+         getlocal0
+         constructsuper 0
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Subscreen")
+         constructprop QName(PackageNamespace(""),"Subscreen"), 0
+         initproperty QName(PackageNamespace(""),"subscreen")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"subscreen")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"subscreen")
+         callpropvoid QName(PackageNamespace(""),"hide"), 0
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"SkillText")
+         constructprop QName(PackageNamespace(""),"SkillText"), 0
+         initproperty QName(PrivateNamespace(null,"10"),"skillText")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"skillText")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"MapRate")
+         constructprop QName(PackageNamespace(""),"MapRate"), 0
+         initproperty QName(PrivateNamespace(null,"10"),"mapRate")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"mapRate")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"mapRate")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         initproperty QName(PrivateNamespace(null,"10"),"_map")
+         pushbyte 0
+         setlocal1
+         jump ofs00b1
+         ofs0081:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_map")
+         getlocal1
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushbyte 0
+         setlocal2
+         jump ofs00a7
+         ofs0096:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_map")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal2
+         pushbyte -1
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         inclocal_i 2
+         ofs00a7:
+         getlocal2
+         getlex QName(PackageNamespace(""),"SIZE_X")
+         iflt ofs0096
+         inclocal_i 1
+         ofs00b1:
+         getlocal1
+         getlex QName(PackageNamespace(""),"SIZE_Y")
+         iflt ofs0081
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         initproperty QName(PrivateNamespace(null,"10"),"_known")
+         pushbyte 0
+         setlocal1
+         jump ofs00f8
+         ofs00c9:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_known")
+         getlocal1
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushbyte 0
+         setlocal2
+         jump ofs00ee
+         ofs00de:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_known")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal2
+         pushfalse
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         inclocal_i 2
+         ofs00ee:
+         getlocal2
+         getlex QName(PackageNamespace(""),"SIZE_X")
+         iflt ofs00de
+         inclocal_i 1
+         ofs00f8:
+         getlocal1
+         getlex QName(PackageNamespace(""),"SIZE_Y")
+         iflt ofs00c9
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         initproperty QName(PrivateNamespace(null,"10"),"_special")
+         pushbyte 0
+         setlocal1
+         jump ofs0142
+         ofs0110:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_special")
+         getlocal1
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushbyte 0
+         setlocal2
+         jump ofs0138
+         ofs0125:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_special")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"SPECIAL_NONE")
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         inclocal_i 2
+         ofs0138:
+         getlocal2
+         getlex QName(PackageNamespace(""),"SIZE_X")
+         iflt ofs0125
+         inclocal_i 1
+         ofs0142:
+         getlocal1
+         getlex QName(PackageNamespace(""),"SIZE_Y")
+         iflt ofs0110
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         initproperty QName(PrivateNamespace(null,"10"),"_display")
+         pushbyte 0
+         setlocal1
+         jump ofs0214
+         ofs015a:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_display")
+         getlocal1
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushbyte 0
+         setlocal2
+         jump ofs020a
+         ofs016f:
+         label
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 0
+         coerce QName(PackageNamespace("org.flixel"),"FlxSprite")
+         setlocal3
+         getlocal3
+         getlex QName(PackageNamespace(""),"Art")
+         getproperty QName(PackageNamespace(""),"MiniMapSheet")
+         pushfalse
+         pushfalse
+         getlex QName(PrivateNamespace(null,"10"),"TILE_WIDTH")
+         getlex QName(PrivateNamespace(null,"10"),"TILE_HEIGHT")
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 5
+         getlocal3
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getXPos"), 0
+         getlocal2
+         getlex QName(PrivateNamespace(null,"10"),"TILE_WIDTH")
+         multiply
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal3
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getYPos"), 0
+         getlocal1
+         getlex QName(PrivateNamespace(null,"10"),"TILE_HEIGHT")
+         multiply
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal3
+         pushtrue
+         setproperty QName(PackageNamespace(""),"exists")
+         getlocal3
+         pushfalse
+         setproperty QName(PackageNamespace(""),"solid")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal 5
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 5
+         kill 5
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal3
+         pushfalse
+         setproperty QName(PackageNamespace(""),"active")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal3
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_display")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal2
+         getlocal3
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushbyte 0
+         setlocal 4
+         jump ofs01ff
+         ofs01e5:
+         label
+         getlocal3
+         getlocal 4
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         getlocal 4
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal3
+         getlex QName(PrivateNamespace(null,"10"),"BLANK_TILE")
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         inclocal_i 4
+         ofs01ff:
+         getlocal 4
+         pushshort 240
+         iflt ofs01e5
+         inclocal_i 2
+         ofs020a:
+         getlocal2
+         getlex QName(PrivateNamespace(null,"10"),"MAX_MAP_COLS")
+         iflt ofs016f
+         inclocal_i 1
+         ofs0214:
+         getlocal1
+         getlex QName(PrivateNamespace(null,"10"),"MAX_MAP_ROWS")
+         iflt ofs015a
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         initproperty QName(PrivateNamespace(null,"10"),"_specialDisplay")
+         pushbyte 0
+         setlocal1
+         jump ofs02e5
+         ofs022c:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_specialDisplay")
+         getlocal1
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushbyte 0
+         setlocal2
+         jump ofs02db
+         ofs0241:
+         label
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 0
+         coerce QName(PackageNamespace("org.flixel"),"FlxSprite")
+         setlocal3
+         getlocal3
+         getlex QName(PackageNamespace(""),"Art")
+         getproperty QName(PackageNamespace(""),"MiniMapSpecialSheet")
+         pushfalse
+         pushfalse
+         getlex QName(PrivateNamespace(null,"10"),"TILE_WIDTH")
+         getlex QName(PrivateNamespace(null,"10"),"TILE_HEIGHT")
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 5
+         getlocal3
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getXPos"), 0
+         getlocal2
+         getlex QName(PrivateNamespace(null,"10"),"TILE_WIDTH")
+         multiply
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal3
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getYPos"), 0
+         getlocal1
+         getlex QName(PrivateNamespace(null,"10"),"TILE_HEIGHT")
+         multiply
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal3
+         pushtrue
+         setproperty QName(PackageNamespace(""),"exists")
+         getlocal3
+         pushfalse
+         setproperty QName(PackageNamespace(""),"solid")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal 5
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 5
+         kill 5
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal3
+         pushfalse
+         setproperty QName(PackageNamespace(""),"active")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal3
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_specialDisplay")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal2
+         getlocal3
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushbyte 0
+         setlocal 4
+         jump ofs02d1
+         ofs02b7:
+         label
+         getlocal3
+         getlocal 4
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         getlocal 4
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal3
+         pushstring "0"
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         inclocal_i 4
+         ofs02d1:
+         getlocal 4
+         pushbyte 5
+         iflt ofs02b7
+         inclocal_i 2
+         ofs02db:
+         getlocal2
+         getlex QName(PrivateNamespace(null,"10"),"MAX_MAP_COLS")
+         iflt ofs0241
+         inclocal_i 1
+         ofs02e5:
+         getlocal1
+         getlex QName(PrivateNamespace(null,"10"),"MAX_MAP_ROWS")
+         iflt ofs022c
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 0
+         initproperty QName(PrivateNamespace(null,"10"),"_center")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         getlex QName(PackageNamespace(""),"Art")
+         getproperty QName(PackageNamespace(""),"MiniMapCenter")
+         pushtrue
+         pushfalse
+         getlex QName(PrivateNamespace(null,"10"),"TILE_WIDTH")
+         getlex QName(PrivateNamespace(null,"10"),"TILE_HEIGHT")
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 5
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getXPos"), 0
+         getlex QName(PrivateNamespace(null,"10"),"TILE_WIDTH")
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getCenterCol"), 0
+         multiply
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getYPos"), 0
+         getlex QName(PrivateNamespace(null,"10"),"TILE_HEIGHT")
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getCenterRow"), 0
+         multiply
+         add
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"subOfsY")
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         pushstring "normal"
+         pushbyte 0
+         pushbyte 1
+         pushbyte 2
+         dup
+         pushbyte 1
+         pushbyte 0
+         newarray 6
+         pushbyte 4
+         pushtrue
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 4
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         pushstring "special"
+         pushbyte 4
+         dup
+         pushbyte 5
+         dup
+         newarray 4
+         pushbyte 4
+         pushtrue
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 4
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         pushstring "normal"
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"exists")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"solid")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal 5
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 5
+         kill 5
+         setproperty QName(PackageNamespace(""),"x")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxText")
+         pushbyte 0
+         dup
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 4
+         subtract
+         constructprop QName(PackageNamespace("org.flixel"),"FlxText"), 3
+         initproperty QName(PrivateNamespace(null,"10"),"tabText")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"tabText")
+         getlex QName(PackageNamespace(""),"Fonts")
+         getproperty QName(PackageNamespace(""),"normal")
+         setproperty QName(PackageNamespace(""),"font")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"tabText")
+         pushbyte 10
+         setproperty QName(PackageNamespace(""),"size")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"tabText")
+         pushint 16777215
+         setproperty QName(PackageNamespace(""),"color")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"tabText")
+         pushbyte 1
+         setproperty QName(PackageNamespace(""),"shadow")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"tabText")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         getlex QName(PrivateNamespace(null,"10"),"MARGIN")
+         subtract
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"tabText")
+         getproperty QName(PackageNamespace(""),"realWidth")
+         subtract
+         getlex QName(PrivateNamespace(null,"10"),"TABSPRITE_MARGIN")
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"tabText")
+         getlex QName(PrivateNamespace(null,"10"),"MARGIN")
+         getlex QName(PrivateNamespace(null,"10"),"TILE_HEIGHT")
+         getlex QName(PrivateNamespace(null,"10"),"DEFAULT_MAP_ROWS")
+         multiply
+         add
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"tabText")
+         getproperty QName(PackageNamespace(""),"realHeight")
+         subtract
+         getlex QName(PrivateNamespace(null,"10"),"TABSPRITE_MARGIN")
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"tabText")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"tabText")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal 5
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 5
+         kill 5
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"tabText")
+         pushbyte 1
+         callpropvoid QName(PackageNamespace(""),"setShadowDistance"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"tabText")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"tabText")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxText")
+         pushbyte 0
+         dup
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 4
+         subtract
+         constructprop QName(PackageNamespace("org.flixel"),"FlxText"), 3
+         initproperty QName(PrivateNamespace(null,"10"),"totalKnownText")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"totalKnownText")
+         getlex QName(PackageNamespace(""),"Fonts")
+         getproperty QName(PackageNamespace(""),"normal")
+         setproperty QName(PackageNamespace(""),"font")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"totalKnownText")
+         pushbyte 10
+         setproperty QName(PackageNamespace(""),"size")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"totalKnownText")
+         pushint 16777215
+         setproperty QName(PackageNamespace(""),"color")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"totalKnownText")
+         pushbyte 1
+         setproperty QName(PackageNamespace(""),"shadow")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"totalKnownText")
+         pushstring "right"
+         setproperty QName(PackageNamespace(""),"alignment")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"totalKnownText")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"totalKnownText")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal 5
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 5
+         kill 5
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"totalKnownText")
+         pushbyte 1
+         callpropvoid QName(PackageNamespace(""),"setShadowDistance"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"totalKnownText")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"totalKnownText")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         getlex QName(PrivateNamespace(null,"10"),"DEFAULT_MAP_COLS")
+         getlex QName(PrivateNamespace(null,"10"),"DEFAULT_MAP_ROWS")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"DEFAULT_OFS_Y")
+         callpropvoid QName(PackageNamespace(""),"resizeMiniMap"), 3
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function getXPos() : int
+      {
+         trait method QName(PrivateNamespace(null,"10"),"getXPos")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"int")
+         
+         body
+         maxstack 3
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         getlex QName(PrivateNamespace(null,"10"),"MARGIN")
+         subtract
+         getlex QName(PrivateNamespace(null,"10"),"TILE_WIDTH")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"mapCols")
+         multiply
+         subtract
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function getYPos() : int
+      {
+         trait method QName(PrivateNamespace(null,"10"),"getYPos")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"int")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PrivateNamespace(null,"10"),"MARGIN")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function destroy() : void
+      {
+         trait method QName(PackageNamespace(""),"destroy")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         pushnull
+         setproperty QName(PrivateNamespace(null,"10"),"mapRate")
+         getlocal0
+         pushnull
+         setproperty QName(PrivateNamespace(null,"10"),"totalKnownText")
+         getlocal0
+         pushnull
+         setproperty QName(PrivateNamespace(null,"10"),"skillText")
+         getlocal0
+         pushnull
+         setproperty QName(PackageNamespace(""),"knownList")
+         getlocal0
+         pushnull
+         setproperty QName(PrivateNamespace(null,"10"),"tabSprite")
+         getlocal0
+         pushnull
+         setproperty QName(PrivateNamespace(null,"10"),"tabText")
+         getlocal0
+         pushnull
+         setproperty QName(PackageNamespace(""),"subscreen")
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"destroy"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function getCenterCol() : int
+      {
+         trait method QName(PrivateNamespace(null,"10"),"getCenterCol")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"int")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"mapCols")
+         decrement
+         pushbyte 2
+         divide
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function getCenterRow() : int
+      {
+         trait method QName(PrivateNamespace(null,"10"),"getCenterRow")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"int")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"mapRows")
+         decrement
+         pushbyte 2
+         divide
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function getMapOfsX() : int
+      {
+         trait method QName(PrivateNamespace(null,"10"),"getMapOfsX")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"int")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getCenterCol"), 0
+         negate
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function getMapOfsY() : int
+      {
+         trait method QName(PrivateNamespace(null,"10"),"getMapOfsY")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"int")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getCenterRow"), 0
+         negate
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function setMapBig() : void
+      {
+         trait method QName(PackageNamespace(""),"setMapBig")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlex QName(PackageNamespace(""),"SIZE_X")
+         getlex QName(PackageNamespace(""),"SIZE_Y")
+         getlex QName(PrivateNamespace(null,"10"),"FULL_OFS_Y")
+         callpropvoid QName(PackageNamespace(""),"resizeMiniMap"), 3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"mapRate")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"skillText")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"tabText")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"skillText")
+         callpropvoid QName(PackageNamespace(""),"updateText"), 0
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"bossRush")
+         iftrue ofs0076
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"gameTimeDisplay")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"itemRateHud")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"STATE_SUBSCREEN")
+         setproperty QName(PackageNamespace(""),"realState")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"controlHelp")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"savingText")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"subscreen")
+         callpropvoid QName(PackageNamespace(""),"show"), 0
+         ofs0076:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function setMapLittle() : void
+      {
+         trait method QName(PackageNamespace(""),"setMapLittle")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlex QName(PrivateNamespace(null,"10"),"DEFAULT_MAP_COLS")
+         getlex QName(PrivateNamespace(null,"10"),"DEFAULT_MAP_ROWS")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"DEFAULT_OFS_Y")
+         callpropvoid QName(PackageNamespace(""),"resizeMiniMap"), 3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"mapRate")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"skillText")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"tabText")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"gameTimeDisplay")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"itemRateHud")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"realState")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"STATE_SUBSCREEN")
+         ifne ofs0059
+         getlex QName(PackageNamespace(""),"PlayState")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"STATE_GAME")
+         setproperty QName(PackageNamespace(""),"realState")
+         ofs0059:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"controlHelp")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"savingText")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"subscreen")
+         callpropvoid QName(PackageNamespace(""),"hide"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function toggleMapSize() : void
+      {
+         trait method QName(PackageNamespace(""),"toggleMapSize")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"mapRows")
+         pushbyte 10
+         ifnlt ofs0015
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"setMapBig"), 0
+         jump ofs001a
+         ofs0015:
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"setMapLittle"), 0
+         ofs001a:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function updateMiniMapPos() : void
+      {
+         trait method QName(PackageNamespace(""),"updateMiniMapPos")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 9
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal1
+         pushbyte 0
+         setlocal2
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getXPos"), 0
+         convert_i
+         setlocal3
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getYPos"), 0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"subOfsY")
+         add
+         getlocal0
+         getproperty QName(PackageNamespace(""),"subscreen")
+         getproperty QName(PackageNamespace(""),"panel")
+         getproperty QName(PackageNamespace(""),"y")
+         add
+         convert_i
+         setlocal1
+         pushbyte 0
+         setlocal 4
+         jump ofs00a0
+         ofs002d:
+         label
+         pushbyte 0
+         setlocal2
+         jump ofs0096
+         ofs0035:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_display")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal3
+         getlocal2
+         getlex QName(PrivateNamespace(null,"10"),"TILE_WIDTH")
+         multiply
+         add
+         setproperty Multiname("x",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_display")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal1
+         getlocal 4
+         getlex QName(PrivateNamespace(null,"10"),"TILE_HEIGHT")
+         multiply
+         add
+         setproperty Multiname("y",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_specialDisplay")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal3
+         getlocal2
+         getlex QName(PrivateNamespace(null,"10"),"TILE_WIDTH")
+         multiply
+         add
+         setproperty Multiname("x",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_specialDisplay")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal1
+         getlocal 4
+         getlex QName(PrivateNamespace(null,"10"),"TILE_HEIGHT")
+         multiply
+         add
+         setproperty Multiname("y",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         inclocal_i 2
+         ofs0096:
+         getlocal2
+         getlex QName(PrivateNamespace(null,"10"),"MAX_MAP_COLS")
+         iflt ofs0035
+         inclocal_i 4
+         ofs00a0:
+         getlocal 4
+         getlex QName(PrivateNamespace(null,"10"),"MAX_MAP_ROWS")
+         iflt ofs002d
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"x")
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_WIDTH")
+         divide
+         convert_i
+         setlocal 5
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"y")
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_HEIGHT")
+         divide
+         convert_i
+         setlocal 6
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"mapRows")
+         pushbyte 10
+         greaterthan
+         iffalse ofs00df
+         getlocal 5
+         convert_i
+         jump ofs00e5
+         ofs00df:
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getCenterCol"), 0
+         convert_i
+         ofs00e5:
+         convert_i
+         setlocal 7
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"mapRows")
+         pushbyte 10
+         greaterthan
+         iffalse ofs00fa
+         getlocal 6
+         convert_i
+         jump ofs0100
+         ofs00fa:
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getCenterRow"), 0
+         convert_i
+         ofs0100:
+         convert_i
+         setlocal 8
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         getlocal3
+         getlex QName(PrivateNamespace(null,"10"),"TILE_WIDTH")
+         getlocal 7
+         multiply
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         getlocal1
+         getlex QName(PrivateNamespace(null,"10"),"TILE_HEIGHT")
+         getlocal 8
+         multiply
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function resizeMiniMap(param1:int, param2:int, param3:int) : void
+      {
+         trait method QName(PackageNamespace(""),"resizeMiniMap")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 12
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal 4
+         pushbyte 0
+         setlocal 5
+         getlocal3
+         pushbyte 0
+         equals
+         dup
+         iffalse ofs002f
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"hideMiniMap")
+         convert_b
+         dup
+         iftrue ofs002f
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"hud")
+         getproperty QName(PackageNamespace(""),"bossBarHud")
+         callproperty QName(PackageNamespace(""),"isShown"), 0
+         convert_b
+         ofs002f:
+         iffalse ofs003b
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         negate
+         convert_i
+         setlocal3
+         ofs003b:
+         getlocal0
+         getlocal2
+         setproperty QName(PrivateNamespace(null,"10"),"mapRows")
+         getlocal0
+         getlocal1
+         setproperty QName(PrivateNamespace(null,"10"),"mapCols")
+         getlocal0
+         getlocal3
+         setproperty QName(PrivateNamespace(null,"10"),"subOfsY")
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getXPos"), 0
+         convert_i
+         setlocal 6
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getYPos"), 0
+         getlocal3
+         add
+         convert_i
+         setlocal 4
+         pushbyte 0
+         setlocal 7
+         jump ofs0125
+         ofs0064:
+         label
+         pushbyte 0
+         setlocal 5
+         jump ofs011a
+         ofs006d:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_display")
+         getlocal 7
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 7
+         getlocal2
+         lessthan
+         coerce_a
+         dup
+         iffalse ofs008c
+         pop
+         getlocal 5
+         getlocal1
+         lessthan
+         coerce_a
+         ofs008c:
+         setproperty Multiname("visible",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_display")
+         getlocal 7
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 6
+         getlocal 5
+         getlex QName(PrivateNamespace(null,"10"),"TILE_WIDTH")
+         multiply
+         add
+         setproperty Multiname("x",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_display")
+         getlocal 7
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 4
+         getlocal 7
+         getlex QName(PrivateNamespace(null,"10"),"TILE_HEIGHT")
+         multiply
+         add
+         setproperty Multiname("y",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_specialDisplay")
+         getlocal 7
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 7
+         getlocal2
+         lessthan
+         coerce_a
+         dup
+         iffalse ofs00e1
+         pop
+         getlocal 5
+         getlocal1
+         lessthan
+         coerce_a
+         ofs00e1:
+         setproperty Multiname("visible",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_specialDisplay")
+         getlocal 7
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 6
+         getlocal 5
+         getlex QName(PrivateNamespace(null,"10"),"TILE_WIDTH")
+         multiply
+         add
+         setproperty Multiname("x",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_specialDisplay")
+         getlocal 7
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 4
+         getlocal 7
+         getlex QName(PrivateNamespace(null,"10"),"TILE_HEIGHT")
+         multiply
+         add
+         setproperty Multiname("y",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         inclocal_i 5
+         ofs011a:
+         getlocal 5
+         getlex QName(PrivateNamespace(null,"10"),"MAX_MAP_COLS")
+         iflt ofs006d
+         inclocal_i 7
+         ofs0125:
+         getlocal 7
+         getlex QName(PrivateNamespace(null,"10"),"MAX_MAP_ROWS")
+         iflt ofs0064
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"x")
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_WIDTH")
+         divide
+         convert_i
+         setlocal 8
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"y")
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_HEIGHT")
+         divide
+         convert_i
+         setlocal 9
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"mapRows")
+         pushbyte 10
+         greaterthan
+         iffalse ofs0164
+         getlocal 8
+         convert_i
+         jump ofs016a
+         ofs0164:
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getCenterCol"), 0
+         convert_i
+         ofs016a:
+         convert_i
+         setlocal 10
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"mapRows")
+         pushbyte 10
+         greaterthan
+         iffalse ofs017f
+         getlocal 9
+         convert_i
+         jump ofs0185
+         ofs017f:
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getCenterRow"), 0
+         convert_i
+         ofs0185:
+         convert_i
+         setlocal 11
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         getlocal 6
+         getlex QName(PrivateNamespace(null,"10"),"TILE_WIDTH")
+         getlocal 10
+         multiply
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         getlocal 4
+         getlex QName(PrivateNamespace(null,"10"),"TILE_HEIGHT")
+         getlocal 11
+         multiply
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         pushbyte -1
+         setproperty QName(PrivateNamespace(null,"10"),"_lastX")
+         getlocal0
+         pushbyte -1
+         setproperty QName(PrivateNamespace(null,"10"),"_lastY")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function updateMiniMap(param1:Boolean = false) : void
+      {
+         trait method QName(PackageNamespace(""),"updateMiniMap")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Boolean")
+         optional False()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 15
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal2
+         pushbyte 0
+         setlocal3
+         pushbyte 0
+         setlocal 4
+         pushbyte 0
+         setlocal 5
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"x")
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_WIDTH")
+         divide
+         convert_i
+         setlocal 6
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"y")
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_HEIGHT")
+         divide
+         convert_i
+         setlocal 7
+         getlocal 6
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_lastX")
+         equals
+         dup
+         iffalse ofs0048
+         pop
+         getlocal 7
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_lastY")
+         equals
+         ofs0048:
+         dup
+         iffalse ofs0050
+         pop
+         getlocal1
+         not
+         ofs0050:
+         iffalse ofs0055
+         returnvoid
+         ofs0055:
+         getlocal0
+         getlocal 6
+         setproperty QName(PrivateNamespace(null,"10"),"_lastX")
+         getlocal0
+         getlocal 7
+         setproperty QName(PrivateNamespace(null,"10"),"_lastY")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"mapRows")
+         pushbyte 10
+         greaterthan
+         coerce_a
+         dup
+         setlocal 8
+         iffalse ofs0077
+         getlocal 6
+         convert_i
+         jump ofs007d
+         ofs0077:
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getCenterCol"), 0
+         convert_i
+         ofs007d:
+         convert_i
+         setlocal 9
+         getlocal 8
+         iffalse ofs008d
+         getlocal 7
+         convert_i
+         jump ofs0093
+         ofs008d:
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getCenterRow"), 0
+         convert_i
+         ofs0093:
+         convert_i
+         setlocal 10
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"dead")
+         iftrue ofs00b9
+         getlocal0
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"y")
+         pushtrue
+         callpropvoid QName(PackageNamespace(""),"setKnown"), 3
+         ofs00b9:
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getMapOfsX"), 0
+         convert_i
+         setlocal 11
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getMapOfsY"), 0
+         convert_i
+         setlocal 12
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getXPos"), 0
+         convert_i
+         setlocal 13
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"10"),"getYPos"), 0
+         convert_i
+         setlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         getlocal 13
+         getlex QName(PrivateNamespace(null,"10"),"TILE_WIDTH")
+         getlocal 9
+         multiply
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         getlocal2
+         getlex QName(PrivateNamespace(null,"10"),"TILE_HEIGHT")
+         getlocal 10
+         multiply
+         add
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"subOfsY")
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         pushbyte 0
+         setlocal 14
+         jump ofs0254
+         ofs0102:
+         label
+         pushbyte 0
+         setlocal3
+         jump ofs0249
+         ofs010a:
+         label
+         getlocal 8
+         iffalse ofs0117
+         getlocal3
+         convert_i
+         jump ofs011f
+         ofs0117:
+         getlocal 6
+         getlocal3
+         add
+         getlocal 11
+         add
+         convert_i
+         ofs011f:
+         convert_i
+         setlocal 4
+         getlocal 8
+         iffalse ofs012f
+         getlocal 14
+         convert_i
+         jump ofs0138
+         ofs012f:
+         getlocal 7
+         getlocal 14
+         add
+         getlocal 12
+         add
+         convert_i
+         ofs0138:
+         convert_i
+         dup
+         setlocal 5
+         pushbyte 0
+         lessthan
+         dup
+         iftrue ofs014a
+         pop
+         getlocal 4
+         pushbyte 0
+         lessthan
+         ofs014a:
+         dup
+         iftrue ofs0156
+         pop
+         getlocal 5
+         getlex QName(PackageNamespace(""),"SIZE_Y")
+         greaterequals
+         ofs0156:
+         dup
+         iftrue ofs0162
+         pop
+         getlocal 4
+         getlex QName(PackageNamespace(""),"SIZE_X")
+         greaterequals
+         ofs0162:
+         dup
+         iftrue ofs0179
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_map")
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushbyte 0
+         lessthan
+         ofs0179:
+         dup
+         iftrue ofs018e
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_known")
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         not
+         ofs018e:
+         iffalse ofs01be
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_display")
+         getlocal 14
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PrivateNamespace(null,"10"),"BLANK_TILE")
+         callpropvoid Multiname("play",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_specialDisplay")
+         getlocal 14
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushstring "0"
+         callpropvoid Multiname("play",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         jump ofs0247
+         ofs01be:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_display")
+         getlocal 14
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_map")
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         callproperty Multiname("toString",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 0
+         callpropvoid Multiname("play",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_specialDisplay")
+         getlocal 14
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_special")
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         callproperty Multiname("toString",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 0
+         callpropvoid Multiname("play",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         getlocal 14
+         getlocal 10
+         equals
+         dup
+         iffalse ofs0213
+         pop
+         getlocal3
+         getlocal 9
+         equals
+         ofs0213:
+         iffalse ofs0247
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_special")
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"SPECIAL_NONE")
+         ifne ofs023c
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         pushstring "normal"
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         jump ofs0247
+         ofs023c:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_center")
+         pushstring "special"
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         ofs0247:
+         inclocal_i 3
+         ofs0249:
+         getlocal3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"mapCols")
+         iflt ofs010a
+         inclocal_i 14
+         ofs0254:
+         getlocal 14
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"mapRows")
+         iflt ofs0102
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"realState")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"STATE_GAME")
+         equals
+         not
+         dup
+         iffalse ofs0024
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"realState")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"STATE_SUBSCREEN")
+         equals
+         not
+         ofs0024:
+         iffalse ofs0029
+         returnvoid
+         ofs0029:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"realState")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"STATE_SUBSCREEN")
+         ifne ofs003e
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"updateMiniMapPos"), 0
+         ofs003e:
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"update"), 0
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"updateMiniMap"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function setKnown(param1:int, param2:int, param3:Boolean = true) : void
+      {
+         trait method QName(PackageNamespace(""),"setKnown")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"Boolean")
+         optional True()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 8
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_WIDTH")
+         divide
+         convert_i
+         setlocal 4
+         getlocal2
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_HEIGHT")
+         divide
+         convert_i
+         setlocal 5
+         getlocal 4
+         pushbyte 0
+         equals
+         not
+         dup
+         iftrue ofs002a
+         pop
+         getlocal 5
+         pushbyte 0
+         equals
+         not
+         ofs002a:
+         dup
+         iffalse ofs003f
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_known")
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         not
+         ofs003f:
+         dup
+         iffalse ofs0056
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_map")
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushbyte 0
+         greaterequals
+         ofs0056:
+         iffalse ofs00f4
+         getlocal0
+         dup
+         setlocal 6
+         getproperty QName(PrivateNamespace(null,"10"),"_totalKnown")
+         increment_i
+         setlocal 7
+         getlocal 6
+         getlocal 7
+         setproperty QName(PrivateNamespace(null,"10"),"_totalKnown")
+         kill 7
+         kill 6
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"totalKnownText")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_totalKnown")
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         pushstring " ROOMS"
+         add
+         setproperty QName(PackageNamespace(""),"text")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"mapRate")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_totalKnown")
+         getlex QName(PackageNamespace(""),"MAX_KNOWN")
+         divide
+         callpropvoid QName(PackageNamespace(""),"setRate"), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"knownList")
+         getproperty QName(PackageNamespace(""),"length")
+         pushbyte 0
+         equals
+         dup
+         iftrue ofs00b7
+         pop
+         getlocal0
+         getproperty QName(PackageNamespace(""),"knownList")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"knownList")
+         getproperty QName(PackageNamespace(""),"length")
+         decrement
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("x",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal1
+         equals
+         not
+         ofs00b7:
+         dup
+         iftrue ofs00d2
+         pop
+         getlocal0
+         getproperty QName(PackageNamespace(""),"knownList")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"knownList")
+         getproperty QName(PackageNamespace(""),"length")
+         decrement
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("y",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal2
+         equals
+         not
+         ofs00d2:
+         iffalse ofs00e5
+         getlocal0
+         getproperty QName(PackageNamespace(""),"knownList")
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxPoint")
+         getlocal1
+         getlocal2
+         constructprop QName(PackageNamespace("org.flixel"),"FlxPoint"), 2
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
+         ofs00e5:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_known")
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 4
+         pushtrue
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         ofs00f4:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function saveAll() : void
+      {
+         trait method QName(PackageNamespace(""),"saveAll")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 8
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal1
+         pushbyte 0
+         setlocal2
+         pushbyte 0
+         setlocal3
+         pushbyte 0
+         setlocal 4
+         pushnull
+         coerce QName(PackageNamespace(""),"XML")
+         setlocal 5
+         getlex QName(PackageNamespace(""),"XML")
+         pushstring "<mapData/>"
+         construct 1
+         coerce QName(PackageNamespace(""),"XML")
+         setlocal 6
+         pushbyte 0
+         setlocal 7
+         jump ofs00b4
+         ofs0027:
+         label
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"knownList")
+         getlocal 7
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("x",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace(""),"int"), 1
+         convert_i
+         setlocal1
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"knownList")
+         getlocal 7
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("y",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace(""),"int"), 1
+         convert_i
+         setlocal2
+         getlocal1
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_WIDTH")
+         divide
+         convert_i
+         setlocal3
+         getlocal2
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_HEIGHT")
+         divide
+         convert_i
+         setlocal 4
+         getlex QName(PackageNamespace(""),"XML")
+         pushstring "<k/>"
+         construct 1
+         coerce QName(PackageNamespace(""),"XML")
+         dup
+         setlocal 5
+         getlocal1
+         setproperty MultinameA("x",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 5
+         getlocal2
+         setproperty MultinameA("y",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 5
+         getlocal3
+         setproperty MultinameA("i",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 5
+         getlocal 4
+         setproperty MultinameA("j",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 5
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_map")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameA("k",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 5
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_special")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameA("l",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 6
+         getlocal 5
+         callpropvoid Multiname("appendChild",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         inclocal_i 7
+         ofs00b4:
+         getlocal 7
+         getlocal0
+         getproperty QName(PackageNamespace(""),"knownList")
+         getproperty QName(PackageNamespace(""),"length")
+         iflt ofs0027
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"saveData")
+         getproperty QName(PackageNamespace(""),"xml")
+         getproperty Multiname("mapData",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushnull
+         ifeq ofs00df
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"saveData")
+         getproperty QName(PackageNamespace(""),"xml")
+         deleteproperty Multiname("mapData",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pop
+         ofs00df:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"saveData")
+         getproperty QName(PackageNamespace(""),"xml")
+         getlocal 6
+         callpropvoid Multiname("appendChild",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function loadAll() : void
+      {
+         trait method QName(PackageNamespace(""),"loadAll")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 8
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace(""),"XML")
+         setlocal1
+         pushbyte 0
+         setlocal2
+         pushbyte 0
+         setlocal3
+         pushbyte 0
+         setlocal 4
+         pushbyte 0
+         setlocal 5
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         setproperty QName(PackageNamespace(""),"knownList")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"saveData")
+         getproperty QName(PackageNamespace(""),"data")
+         iftrue ofs002a
+         returnvoid
+         ofs002a:
+         pushbyte 0
+         setlocal 6
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"saveData")
+         getproperty QName(PackageNamespace(""),"xml")
+         getproperty Multiname("mapData",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("k",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         coerce_a
+         setlocal 7
+         jump ofs00b6
+         ofs0044:
+         label
+         getlocal 7
+         getlocal 6
+         nextvalue
+         coerce QName(PackageNamespace(""),"XML")
+         setlocal1
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         getproperty MultinameA("x",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace(""),"int"), 1
+         convert_i
+         setlocal2
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         getproperty MultinameA("y",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace(""),"int"), 1
+         convert_i
+         setlocal3
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         getproperty MultinameA("i",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace(""),"int"), 1
+         convert_i
+         setlocal 4
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         getproperty MultinameA("j",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace(""),"int"), 1
+         convert_i
+         setlocal 5
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_map")
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 4
+         getlocal1
+         getproperty MultinameA("k",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_special")
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 4
+         getlocal1
+         getproperty MultinameA("l",[PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PackageNamespace(""),"knownList")
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxPoint")
+         getlocal2
+         getlocal3
+         constructprop QName(PackageNamespace("org.flixel"),"FlxPoint"), 2
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
+         getlocal0
+         getlocal2
+         getlocal3
+         pushtrue
+         callpropvoid QName(PackageNamespace(""),"setKnown"), 3
+         ofs00b6:
+         hasnext2 7, 6
+         iftrue ofs0044
+         kill 7
+         kill 6
+         getlocal0
+         pushtrue
+         callpropvoid QName(PackageNamespace(""),"updateMiniMap"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function setSpecialSave(param1:int, param2:int) : void
+      {
+         trait method QName(PackageNamespace(""),"setSpecialSave")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 5
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_WIDTH")
+         divide
+         convert_i
+         setlocal3
+         getlocal2
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_HEIGHT")
+         divide
+         convert_i
+         setlocal 4
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_special")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"SPECIAL_SAVE")
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function setSpecialItem(param1:int, param2:int) : void
+      {
+         trait method QName(PackageNamespace(""),"setSpecialItem")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 5
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_WIDTH")
+         divide
+         convert_i
+         setlocal3
+         getlocal2
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_HEIGHT")
+         divide
+         convert_i
+         setlocal 4
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_special")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"SPECIAL_ITEM")
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function setSpecialBoss(param1:int, param2:int) : void
+      {
+         trait method QName(PackageNamespace(""),"setSpecialBoss")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 5
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_WIDTH")
+         divide
+         convert_i
+         setlocal3
+         getlocal2
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_HEIGHT")
+         divide
+         convert_i
+         setlocal 4
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_special")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"SPECIAL_BOSS")
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function setSpecialItemGotten(param1:int, param2:int) : void
+      {
+         trait method QName(PackageNamespace(""),"setSpecialItemGotten")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 5
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_WIDTH")
+         divide
+         convert_i
+         setlocal3
+         getlocal2
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_HEIGHT")
+         divide
+         convert_i
+         setlocal 4
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_special")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"SPECIAL_NONE")
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         pushtrue
+         callpropvoid QName(PackageNamespace(""),"updateMiniMap"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function setTile(param1:int, param2:int, param3:int) : void
+      {
+         trait method QName(PackageNamespace(""),"setTile")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 6
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_WIDTH")
+         divide
+         convert_i
+         setlocal 4
+         getlocal2
+         pushbyte 16
+         divide
+         getlex QName(PackageNamespace(""),"ROOM_HEIGHT")
+         divide
+         convert_i
+         setlocal 5
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"10"),"_map")
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 4
+         getlocal3
+         setproperty MultinameL([PrivateNamespace(null,"10"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"271"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("MiniMap"),StaticProtectedNs("MiniMap"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 7
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("MiniMap",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGroup")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGroup")
+newclass 41
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"MiniMap")
+returnvoid
+end ; code
+end ; body
+end ; method
+

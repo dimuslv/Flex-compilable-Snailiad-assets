@@ -1,0 +1,3423 @@
+package
+{
+   import org.flixel.*;
+   
+   public class SnailNpc extends Npc
+   {
+      private static const IMG_WIDTH:int = 32;
+      
+      private static const IMG_HEIGHT:int = 16;
+      
+      private static const IMG_OFS_X:int = 0;
+      
+      private static const IMG_OFS_Y:int = 0;
+      
+      private static var talkedToCaveSnail:Boolean = false;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 8
+      maxscopedepth 9
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"48"),"IMG_WIDTH")
+      pushbyte 32
+      initproperty QName(PrivateNamespace(null,"48"),"IMG_WIDTH")
+      findproperty QName(PrivateNamespace(null,"48"),"IMG_HEIGHT")
+      pushbyte 16
+      initproperty QName(PrivateNamespace(null,"48"),"IMG_HEIGHT")
+      findproperty QName(PrivateNamespace(null,"48"),"IMG_OFS_X")
+      pushbyte 0
+      initproperty QName(PrivateNamespace(null,"48"),"IMG_OFS_X")
+      findproperty QName(PrivateNamespace(null,"48"),"IMG_OFS_Y")
+      pushbyte 0
+      initproperty QName(PrivateNamespace(null,"48"),"IMG_OFS_Y")
+      findproperty QName(PrivateNamespace(null,"48"),"talkedToCaveSnail")
+      pushfalse
+      setproperty QName(PrivateNamespace(null,"48"),"talkedToCaveSnail")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var _snailNum:int = 0;
+      
+      private var _talkOpen:Boolean = false;
+      
+      private var _nexted:int = 0;
+      
+      private var _elapsed:Number = 0;
+      
+      private var _hasFallen:Boolean = false;
+      
+      private var _speed:Number = 1;
+      
+      public function SnailNpc(param1:int, param2:int, param3:int)
+      {
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         returns null
+         
+         body
+         maxstack 6
+         localcount 4
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getlex QName(PrivateNamespace(null,"48"),"IMG_OFS_X")
+         subtract
+         convert_i
+         setlocal1
+         getlocal2
+         getlex QName(PrivateNamespace(null,"48"),"IMG_OFS_Y")
+         subtract
+         convert_i
+         setlocal2
+         getlocal0
+         getlocal1
+         getlocal2
+         constructsuper 2
+         findpropstrict QName(PackageNamespace(""),"loadGraphic")
+         getlex QName(PackageNamespace(""),"Art")
+         getproperty QName(PackageNamespace(""),"SnailNpc")
+         pushtrue
+         pushtrue
+         getlex QName(PrivateNamespace(null,"48"),"IMG_WIDTH")
+         getlex QName(PrivateNamespace(null,"48"),"IMG_HEIGHT")
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 5
+         findproperty QName(PackageNamespace(""),"width")
+         getlex QName(PrivateNamespace(null,"48"),"IMG_WIDTH")
+         initproperty QName(PackageNamespace(""),"width")
+         findproperty QName(PackageNamespace(""),"height")
+         getlex QName(PrivateNamespace(null,"48"),"IMG_HEIGHT")
+         initproperty QName(PackageNamespace(""),"height")
+         getlocal3
+         pushbyte 26
+         equals
+         dup
+         iffalse ofs004c
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"_slugMode")
+         convert_b
+         ofs004c:
+         iffalse ofs0053
+         pushbyte 44
+         setlocal3
+         ofs0053:
+         getlocal3
+         pushbyte 38
+         ifne ofs0097
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"bossesKilled")
+         pushbyte 4
+         getproperty MultinameL([PrivateNamespace(null,"48"),PackageNamespace(""),PrivateNamespace(null,"298"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("SnailNpc"),StaticProtectedNs("SnailNpc"),StaticProtectedNs("Npc"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         iftrue ofs0072
+         findproperty QName(PackageNamespace(""),"exists")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"exists")
+         jump ofs0097
+         ofs0072:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"getHelixFragments"), 0
+         pushbyte 30
+         ifnlt ofs0097
+         pushbyte 49
+         setlocal3
+         findproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 32
+         add
+         initproperty QName(PackageNamespace(""),"y")
+         findproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 16
+         add
+         initproperty QName(PackageNamespace(""),"x")
+         ofs0097:
+         findpropstrict QName(PackageNamespace(""),"addAnimation")
+         pushstring "normal"
+         pushbyte 2
+         getlocal3
+         multiply
+         pushbyte 2
+         getlocal3
+         multiply
+         pushbyte 1
+         add
+         newarray 2
+         pushbyte 3
+         pushtrue
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 4
+         findpropstrict QName(PackageNamespace(""),"play")
+         pushstring "normal"
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         getlocal0
+         getlocal3
+         initproperty QName(PrivateNamespace(null,"48"),"_snailNum")
+         getlex QName(PackageNamespace(""),"acceleration")
+         pushshort 1200
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal3
+         pushbyte 17
+         ifne ofs00da
+         getlex QName(PackageNamespace(""),"acceleration")
+         pushshort -1200
+         setproperty QName(PackageNamespace(""),"y")
+         ofs00da:
+         getlocal3
+         pushbyte 35
+         equals
+         dup
+         iftrue ofs00e8
+         pop
+         getlocal3
+         pushbyte 47
+         equals
+         ofs00e8:
+         iffalse ofs00f7
+         getlex QName(PackageNamespace(""),"acceleration")
+         pushshort -1200
+         setproperty QName(PackageNamespace(""),"y")
+         ofs00f7:
+         getlocal3
+         pushbyte 43
+         ifne ofs0109
+         getlex QName(PackageNamespace(""),"acceleration")
+         pushshort -1200
+         setproperty QName(PackageNamespace(""),"y")
+         ofs0109:
+         getlocal3
+         pushbyte 39
+         equals
+         dup
+         iftrue ofs0117
+         pop
+         getlocal3
+         pushbyte 38
+         equals
+         ofs0117:
+         dup
+         iftrue ofs0121
+         pop
+         getlocal3
+         pushbyte 49
+         equals
+         ofs0121:
+         iffalse ofs012c
+         getlex QName(PackageNamespace(""),"acceleration")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         ofs012c:
+         getlex QName(PackageNamespace(""),"maxVelocity")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"maxVelocity")
+         getproperty QName(PackageNamespace(""),"y")
+         setproperty QName(PackageNamespace(""),"y")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function touch(param1:Player) : void
+      {
+         trait method QName(PackageNamespace(""),"touch")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Player")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 11
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal2
+         pushbyte 0
+         setlocal3
+         pushfalse
+         setlocal 4
+         pushnull
+         coerce_a
+         setlocal 5
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_snailNum")
+         pushbyte 4
+         modulo
+         convert_i
+         setlocal 6
+         pushstring "Snaily"
+         setlocal 7
+         getlocal1
+         getproperty QName(PackageNamespace(""),"_slugMode")
+         iffalse ofs002b
+         pushstring "Sluggy"
+         setlocal 7
+         ofs002b:
+         pushstring "Snaily Snail"
+         setlocal 8
+         getlocal1
+         getproperty QName(PackageNamespace(""),"_slugMode")
+         iffalse ofs003d
+         pushstring "Sluggy Slug"
+         setlocal 8
+         ofs003d:
+         pushstring "snail"
+         setlocal 9
+         getlocal1
+         getproperty QName(PackageNamespace(""),"_slugMode")
+         iffalse ofs004f
+         pushstring "slug"
+         setlocal 9
+         ofs004f:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_talkOpen")
+         iftrue ofs16a6
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"getPercentComplete"), 0
+         convert_i
+         setlocal2
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"getHelixFragments"), 0
+         convert_i
+         setlocal3
+         pushfalse
+         setlocal 4
+         pushstring "[no text yet: NPC #"
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_snailNum")
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         add
+         pushstring "]"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs130f
+         ofs0089:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 0
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         iftrue ofs00b3
+         pushstring "Hi, "
+         getlocal 7
+         add
+         pushstring "!!  Why don\'t you try\n"
+         add
+         pushstring "climbing up the walls?\n"
+         add
+         pushstring "    Just hold \"UP\" and \"RIGHT\".\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs013e
+         ofs00b3:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 1
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         iftrue ofs00d5
+         pushstring "Oh, nice pea shooter!  I heard\n"
+         pushstring "you can shoot a blue door open\n"
+         add
+         pushstring "with one of those!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs013e
+         ofs00d5:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 2
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         iftrue ofs00f7
+         pushstring "Wow, a boomerang!  You could\n"
+         pushstring "break a pink door open with\n"
+         add
+         pushstring "just one of those!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs013e
+         ofs00f7:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"getHasDevastator"), 0
+         iftrue ofs0117
+         pushstring "Is that a rainbow wave!?  Well,\n"
+         pushstring "then!  You can open a red door\n"
+         add
+         pushstring "with one of those!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs013e
+         ofs0117:
+         getlocal2
+         pushbyte 100
+         ifnlt ofs0130
+         pushstring "A devastator!?  That opens up\n"
+         pushstring "green doors!  It also upgrades\n"
+         add
+         pushstring "all three weapons!  Wow!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs013e
+         ofs0130:
+         pushstring "I hope the next game has more\n"
+         pushstring "weapons.  This game could have\n"
+         add
+         pushstring "used a flame whip!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs013e:
+         jump ofs168e
+         ofs0142:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"hasJumped")
+         not
+         dup
+         iffalse ofs015d
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 0
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         not
+         ofs015d:
+         dup
+         iffalse ofs0170
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 1
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         not
+         ofs0170:
+         iffalse ofs0193
+         pushstring "Hiya, "
+         getlocal 7
+         add
+         pushstring "!  Did you know you\n"
+         add
+         pushstring "can jump?  Just press \""
+         add
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"JUMP_KEY")
+         add
+         pushstring "\"!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs01ef
+         ofs0193:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 0
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         iftrue ofs01bb
+         pushstring ""
+         getlocal 7
+         add
+         pushstring ", some snails are missing!\n"
+         add
+         pushstring "Do you think you could go look\n"
+         add
+         pushstring "for them?  I\'m getting worried!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs01ef
+         ofs01bb:
+         getlocal2
+         pushbyte 100
+         ifnlt ofs01db
+         pushstring "I have a goal in life.  One day,\n"
+         pushstring "I will eat a pizza.  I mean it!!\n"
+         add
+         pushstring "Just you watch, "
+         add
+         getlocal 7
+         add
+         pushstring "!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs01ef
+         ofs01db:
+         pushstring ""
+         getlocal 7
+         add
+         pushstring ", you missed it!  I made a\n"
+         add
+         pushstring "delicious pizza, and I ate the\n"
+         add
+         pushstring "whole thing!!!  Om nom nom!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs01ef:
+         jump ofs168e
+         ofs01f3:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 0
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         not
+         dup
+         iffalse ofs0214
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 1
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         not
+         ofs0214:
+         iffalse ofs0231
+         pushstring "I can see the future, "
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         pushstring "I see you finding a weapon\n"
+         add
+         pushstring "somewhere under the water!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs03de
+         ofs0231:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"bossesKilled")
+         pushbyte 1
+         getproperty MultinameL([PrivateNamespace(null,"48"),PackageNamespace(""),PrivateNamespace(null,"298"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("SnailNpc"),StaticProtectedNs("SnailNpc"),StaticProtectedNs("Npc"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         not
+         dup
+         iffalse ofs024f
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"bossesKilled")
+         pushbyte 2
+         getproperty MultinameL([PrivateNamespace(null,"48"),PackageNamespace(""),PrivateNamespace(null,"298"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("SnailNpc"),StaticProtectedNs("SnailNpc"),StaticProtectedNs("Npc"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         not
+         ofs024f:
+         iffalse ofs026c
+         pushstring "I can see the future, "
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         pushstring "I see you heading to the upper\n"
+         add
+         pushstring "right part of the map!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs03de
+         ofs026c:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 1
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         iftrue ofs0295
+         pushstring "I can see the past, "
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         pushstring "I see you forgot to grab the\n"
+         add
+         pushstring "boomerang after Shellbreaker!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs03de
+         ofs0295:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"bossesKilled")
+         pushbyte 2
+         getproperty MultinameL([PrivateNamespace(null,"48"),PackageNamespace(""),PrivateNamespace(null,"298"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("SnailNpc"),StaticProtectedNs("SnailNpc"),StaticProtectedNs("Npc"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         iftrue ofs02bd
+         pushstring "I can see the future, "
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         pushstring "I see you heading to the lower\n"
+         add
+         pushstring "right part of the map!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs03de
+         ofs02bd:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 2
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         iftrue ofs02e6
+         pushstring "I can see the past, "
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         pushstring "I see you forgot to grab the\n"
+         add
+         pushstring "rainbow wave after Stompy!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs03de
+         ofs02e6:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"bossesKilled")
+         pushbyte 3
+         getproperty MultinameL([PrivateNamespace(null,"48"),PackageNamespace(""),PrivateNamespace(null,"298"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("SnailNpc"),StaticProtectedNs("SnailNpc"),StaticProtectedNs("Npc"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         iftrue ofs030e
+         pushstring "I can see the future, "
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         pushstring "I see you heading to the lower\n"
+         add
+         pushstring "left part of the map!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs03de
+         ofs030e:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hasTurbo"), 0
+         iftrue ofs0335
+         pushstring "I can see the past, "
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         pushstring "I see you forgot to grab the\n"
+         add
+         pushstring "rapid fire before Space Box!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs03de
+         ofs0335:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"bossesKilled")
+         pushbyte 4
+         getproperty MultinameL([PrivateNamespace(null,"48"),PackageNamespace(""),PrivateNamespace(null,"298"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("SnailNpc"),StaticProtectedNs("SnailNpc"),StaticProtectedNs("Npc"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         iftrue ofs035d
+         pushstring "I can see the future, "
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         pushstring "I see you heading to the upper\n"
+         add
+         pushstring "left part of the map!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs03de
+         ofs035d:
+         getlocal3
+         pushbyte 30
+         ifnlt ofs037d
+         pushstring "I can see the future, "
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         pushstring "I see you heading all over the\n"
+         add
+         pushstring "map, finding little shells!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs03de
+         ofs037d:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"hasSeenIsis")
+         iftrue ofs03a3
+         pushstring "I can see the future, "
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         pushstring "I see you heading precisely two\n"
+         add
+         pushstring "screens to the left of here!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs03de
+         ofs03a3:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"_slugMode")
+         iftrue ofs03c9
+         pushstring "I can see the future, "
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         pushstring "I see you having 18,000,000\n"
+         add
+         pushstring "baby snails!!  Congratulations!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs03de
+         ofs03c9:
+         pushstring "I can see the future, "
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         pushstring "I see you having 18,000,000\n"
+         add
+         pushstring "baby slugs!!  Congratulations!!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs03de:
+         jump ofs168e
+         ofs03e2:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hasGravityJump"), 0
+         iftrue ofs040a
+         pushstring "I wonder why I can\'t crawl on\n"
+         pushstring "ceiling corners...  Do you think\n"
+         add
+         pushstring "I\'ll ever be able to, "
+         add
+         getlocal 7
+         add
+         pushstring "?\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0442
+         ofs040a:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hasArmor"), 0
+         iftrue ofs0431
+         pushstring "Oh, my, you\'re a gravity "
+         getlocal 9
+         add
+         pushstring "!\n"
+         add
+         pushstring "You must be really good at\n"
+         add
+         pushstring "crawling around ceilings!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0442
+         ofs0431:
+         pushstring "Oh, my, you\'re a full metal\n"
+         getlocal 9
+         add
+         pushstring "! You must be really good\n"
+         add
+         pushstring "at crawling around ceilings!!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs0442:
+         jump ofs168e
+         ofs0446:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getproperty QName(PackageNamespace(""),"bgmap")
+         pushshort 295
+         pushshort 143
+         callproperty QName(PackageNamespace(""),"getTile"), 2
+         iffalse ofs0470
+         pushstring "I wish I had some way to break\n"
+         pushstring "green blocks.  Those suckers\n"
+         add
+         pushstring "are always getting in my way!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0485
+         ofs0470:
+         pushstring "Whew!  Thanks, "
+         getlocal 7
+         add
+         pushstring "!  I think\n"
+         add
+         pushstring "those blocks were planning to\n"
+         add
+         pushstring "attack!!  You saved the day!!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs0485:
+         jump ofs168e
+         ofs0489:
+         label
+         getlocal2
+         pushbyte 100
+         ifnlt ofs04a3
+         pushstring "There\'s a lot of secrets\n"
+         pushstring "in and around Snail Town.\n"
+         add
+         pushstring "Have you found them all?\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs04b1
+         ofs04a3:
+         pushstring "They say Boss Rush is the\n"
+         pushstring "true test of snail skill.\n"
+         add
+         pushstring "But what about slug skill?\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs04b1:
+         jump ofs168e
+         ofs04b5:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hasHighJump"), 0
+         convert_b
+         dup
+         iftrue ofs04d2
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hasGravityJump"), 0
+         convert_b
+         ofs04d2:
+         iffalse ofs04e4
+         pushstring "Don\'t you think it\'s weird that\n"
+         pushstring "we all live in treehouses?\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs04f5
+         ofs04e4:
+         pushstring "Hey "
+         getlocal 7
+         add
+         pushstring ", how\'d you get up\n"
+         add
+         pushstring "here?  And how do I get down?\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs04f5:
+         jump ofs168e
+         ofs04f9:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 0
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         iftrue ofs0523
+         pushstring "Are you leaving town, "
+         getlocal 7
+         add
+         pushstring "?\n"
+         add
+         pushstring "Well, be careful!  Make sure\n"
+         add
+         pushstring "you save your game often!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs05c4
+         ofs0523:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 1
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         iftrue ofs0548
+         pushstring "Hey, "
+         getlocal 7
+         add
+         pushstring "!  Where\'d you get\n"
+         add
+         pushstring "the pea shooter?\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs05c4
+         ofs0548:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 2
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         iftrue ofs056a
+         pushstring "Ooh, boomerangs!  If I had\n"
+         pushstring "those, I\'d try breaking the\n"
+         add
+         pushstring "ceiling over the save spot!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs05c4
+         ofs056a:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"getHasDevastator"), 0
+         iftrue ofs058d
+         pushstring "Rainbows are so pretty!\n"
+         pushstring "Don\'t you think so, "
+         add
+         getlocal 7
+         add
+         pushstring "?\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs05c4
+         ofs058d:
+         getlex QName(PackageNamespace(""),"PlayState")
+         pushbyte 4
+         callproperty QName(PackageNamespace(""),"isBossDead"), 1
+         iftrue ofs05b3
+         pushstring "I\'m scared, "
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         pushstring "Is Moon Snail going to take\n"
+         add
+         pushstring "me away like the others?\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs05c4
+         ofs05b3:
+         pushstring "Snail Town is safe again,\n"
+         pushstring "thanks to you, "
+         add
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs05c4:
+         jump ofs168e
+         ofs05c8:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getproperty QName(PackageNamespace(""),"bgmap")
+         pushshort 328
+         pushshort 185
+         callproperty QName(PackageNamespace(""),"getTile"), 2
+         iffalse ofs05ee
+         pushstring "There\'s something funny about\n"
+         pushstring "that tree...\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs05f8
+         ofs05ee:
+         pushstring "I knew there was something\n"
+         pushstring "weird about that tree!!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs05f8:
+         jump ofs168e
+         ofs05fc:
+         label
+         getlocal2
+         pushbyte 100
+         ifnlt ofs0616
+         pushstring "The other snails live in houses,\n"
+         pushstring "but I like it here in the dirt.\n"
+         add
+         pushstring "Isn\'t it nice in here?\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0624
+         ofs0616:
+         pushstring "It\'s so cozy in here!  I just\n"
+         pushstring "love my little underground\n"
+         add
+         pushstring "home!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs0624:
+         jump ofs168e
+         ofs0628:
+         label
+         pushstring "Oh, "
+         getlocal 8
+         add
+         pushstring "!  My heart\n"
+         add
+         pushstring "will forever belong to you!\n"
+         add
+         pushstring "             <3\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs168e
+         ofs0642:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 0
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         iftrue ofs0675
+         pushstring ""
+         getlocal 7
+         add
+         pushstring ", it\'s dangerous to go\n"
+         add
+         pushstring "alone!  Take this Pea Shooter!\n"
+         add
+         pushstring "Press \""
+         add
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"SHOOT_KEY")
+         add
+         pushstring "\" to shoot with it!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs068d
+         ofs0675:
+         pushstring "Don\'t forget!\n"
+         pushstring "Press \""
+         add
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"SHOOT_KEY")
+         add
+         pushstring "\" to shoot your\n"
+         add
+         pushstring "weapon at stuff!!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs068d:
+         jump ofs168e
+         ofs0691:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getproperty QName(PackageNamespace(""),"spmap")
+         pushshort 359
+         pushshort 174
+         callproperty QName(PackageNamespace(""),"getTile"), 2
+         iffalse ofs06c2
+         pushstring "Heya, "
+         getlocal 7
+         add
+         pushstring "! I filled the heart\n"
+         add
+         pushstring "container over there with some\n"
+         add
+         pushstring "fresh slime! Enjoy!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs06c8
+         ofs06c2:
+         pushstring "Isn\'t breaking blocks fun!?\n"
+         coerce_a
+         setlocal 5
+         ofs06c8:
+         jump ofs168e
+         ofs06cc:
+         label
+         pushstring "Wow!  It looks like you\'ve\n"
+         pushstring "found "
+         add
+         getlocal2
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         add
+         pushstring "% of the items in this\n"
+         add
+         pushstring "game!  Nice going, "
+         add
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs168e
+         ofs06f0:
+         label
+         getlocal3
+         pushbyte 15
+         ifnlt ofs0711
+         pushstring "Hey, "
+         getlocal 7
+         add
+         pushstring "!  Keep an eye out\n"
+         add
+         pushstring "for \"Helix Fragments\".  They\n"
+         add
+         pushstring "look like spinning white shells!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs074c
+         ofs0711:
+         getlocal3
+         pushbyte 30
+         lessthan
+         dup
+         iftrue ofs0725
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"hasSeenIsis")
+         not
+         ofs0725:
+         iffalse ofs0737
+         pushstring "They say that the Shrine of\n"
+         pushstring "Iris is not located on any map!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs074c
+         ofs0737:
+         pushstring "Wow, "
+         getlocal 7
+         add
+         pushstring "!  You\'re pretty good\n"
+         add
+         pushstring "at finding secrets!  Maybe you\n"
+         add
+         pushstring "should become a detective!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs074c:
+         jump ofs168e
+         ofs0750:
+         label
+         getlocal2
+         pushbyte 20
+         ifnlt ofs0771
+         pushstring "Hi, "
+         getlocal 7
+         add
+         pushstring "!  Let me give you a\n"
+         add
+         pushstring "hint: Come back to town after\n"
+         add
+         pushstring "each area to find secret items!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs083e
+         ofs0771:
+         getlocal2
+         pushbyte 40
+         lessthan
+         dup
+         iffalse ofs0780
+         pop
+         getlocal1
+         getproperty QName(PackageNamespace(""),"_slugMode")
+         not
+         ofs0780:
+         iffalse ofs079d
+         pushstring "Hi, "
+         getlocal 7
+         add
+         pushstring "!  Let me give you a\n"
+         add
+         pushstring "little hint: A shell can fit\n"
+         add
+         pushstring "where a snail cannot!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs083e
+         ofs079d:
+         getlocal2
+         pushbyte 40
+         lessthan
+         dup
+         iffalse ofs07ac
+         pop
+         getlocal1
+         getproperty QName(PackageNamespace(""),"_slugMode")
+         convert_b
+         ofs07ac:
+         iffalse ofs07c9
+         pushstring "Hi, "
+         getlocal 7
+         add
+         pushstring "!  Here\'s a li\'l hint:\n"
+         add
+         pushstring "Slugs may be more fragile than\n"
+         add
+         pushstring "snails, but they\'re also faster!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs083e
+         ofs07c9:
+         getlocal2
+         pushbyte 60
+         ifnlt ofs07e9
+         pushstring "Hi, "
+         getlocal 7
+         add
+         pushstring "!  Let me give you a\n"
+         add
+         pushstring "hint: Sometimes, you\'ll miss a\n"
+         add
+         pushstring "secret if you cling to a wall!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs083e
+         ofs07e9:
+         getlocal2
+         pushbyte 80
+         ifnlt ofs0809
+         pushstring "Hi, "
+         getlocal 7
+         add
+         pushstring "!  Let me give you a\n"
+         add
+         pushstring "hint: You can find the \"high\n"
+         add
+         pushstring "jump\" before any other item!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs083e
+         ofs0809:
+         getlocal2
+         pushbyte 100
+         ifnlt ofs0829
+         pushstring "Hi, "
+         getlocal 7
+         add
+         pushstring "!  Let me tell you a\n"
+         add
+         pushstring "secret: There\'s a boomerang\n"
+         add
+         pushstring "somewhere in Snail Town!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs083e
+         ofs0829:
+         pushstring "Hi, "
+         getlocal 7
+         add
+         pushstring "!  Let me tell you a\n"
+         add
+         pushstring "secret: there\'s a secret\n"
+         add
+         pushstring "somewhere in the main menu!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs083e:
+         jump ofs168e
+         ofs0842:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 0
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         not
+         dup
+         iffalse ofs0863
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 1
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         not
+         ofs0863:
+         iffalse ofs0879
+         pushstring "If you ever get hurt, eat some\n"
+         pushstring "plants!  You need to eat well\n"
+         add
+         pushstring "to stay fit and healthy!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs089c
+         ofs0879:
+         getlex QName(PackageNamespace(""),"y")
+         pushshort 2656
+         ifnlt ofs088c
+         pushstring "I want to go for a ride!!!\n"
+         coerce_a
+         setlocal 5
+         jump ofs089c
+         ofs088c:
+         pushstring "WHEEEE!!  That was fun,\n"
+         pushstring ""
+         add
+         getlocal 7
+         add
+         pushstring "!  Let\'s do it again!!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs089c:
+         jump ofs168e
+         ofs08a0:
+         label
+         getlocal2
+         pushbyte 100
+         ifnlt ofs08ba
+         pushstring "There\'s a hidden room under the\n"
+         pushstring "path into town.  I don\'t know\n"
+         add
+         pushstring "how to get in yet, though...\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs08c8
+         ofs08ba:
+         pushstring "They call me upside-down snail,\n"
+         pushstring "but I think everyone else is\n"
+         add
+         pushstring "upside down!"
+         add
+         coerce_a
+         setlocal 5
+         ofs08c8:
+         jump ofs168e
+         ofs08cc:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getproperty QName(PackageNamespace(""),"spmap")
+         pushshort 215
+         pushshort 140
+         callproperty QName(PackageNamespace(""),"getTile"), 2
+         iffalse ofs0900
+         pushstring "You found the super secret\n"
+         pushstring "boomerang!  Way to go!\n"
+         add
+         pushstring "Press \""
+         add
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"SHOOT_KEY")
+         add
+         pushstring "\" to shoot with it!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0918
+         ofs0900:
+         pushstring "Don\'t forget!\n"
+         pushstring "Press \""
+         add
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"SHOOT_KEY")
+         add
+         pushstring "\" to shoot your\n"
+         add
+         pushstring "weapon at stuff!!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs0918:
+         jump ofs168e
+         ofs091c:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 1
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         iftrue ofs0946
+         pushstring "Hey, "
+         getlocal 7
+         add
+         pushstring "!  If you had a\n"
+         add
+         pushstring "boomerang, you could break\n"
+         add
+         pushstring "all sorts of walls!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0954
+         ofs0946:
+         pushstring "Up, up, down, down, left,\n"
+         pushstring "right...  Wait, never mind,\n"
+         add
+         pushstring "that\'s for some other game.\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs0954:
+         jump ofs168e
+         ofs0958:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 1
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         iftrue ofs097b
+         pushstring "There\'s some kind of secret\n"
+         pushstring "passage to the right, but I\'m\n"
+         add
+         pushstring "not sure how to get through...\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs09a0
+         ofs097b:
+         getlocal2
+         pushbyte 100
+         ifnlt ofs0994
+         pushstring "I hope you can find all the\n"
+         pushstring "other snails!  They\'re not all\n"
+         add
+         pushstring "as brave as me, you know!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs09a0
+         ofs0994:
+         pushstring ""
+         getlocal 8
+         add
+         pushstring "!!  Yay!!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs09a0:
+         jump ofs168e
+         ofs09a4:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 1
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         iftrue ofs09ce
+         pushstring "Yay, "
+         getlocal 7
+         add
+         pushstring ", it\'s you!!\n"
+         add
+         pushstring "Take this boomerang and break\n"
+         add
+         pushstring "some walls open!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs09dc
+         ofs09ce:
+         pushstring "By the way, you can switch\n"
+         pushstring "weapons by pressing numbers,\n"
+         add
+         pushstring "like \"1\" or \"2\"!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs09dc:
+         jump ofs168e
+         ofs09e0:
+         label
+         getlocal2
+         pushbyte 100
+         ifnlt ofs09f6
+         pushstring "I are Cave Snail!\n"
+         pushstring "Thorgle Borgle!!!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs09fc
+         ofs09f6:
+         pushstring "Thorgle Borgle!!!!!!!\n"
+         coerce_a
+         setlocal 5
+         ofs09fc:
+         findproperty QName(PrivateNamespace(null,"48"),"talkedToCaveSnail")
+         pushtrue
+         setproperty QName(PrivateNamespace(null,"48"),"talkedToCaveSnail")
+         jump ofs168e
+         ofs0a07:
+         label
+         getlocal2
+         pushbyte 100
+         lessthan
+         dup
+         iffalse ofs0a16
+         pop
+         getlex QName(PrivateNamespace(null,"48"),"talkedToCaveSnail")
+         not
+         ofs0a16:
+         iffalse ofs0a28
+         pushstring "Cave Snail scares me!\n"
+         pushstring "I\'m staying over here!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0a4b
+         ofs0a28:
+         getlocal2
+         pushbyte 60
+         ifnlt ofs0a41
+         pushstring "Hey, if you get stuck, just hit\n"
+         pushstring "ESCAPE and load your game from\n"
+         add
+         pushstring "town!  You won\'t lose any items!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0a4b
+         ofs0a41:
+         pushstring "Do you think Cave Snail\n"
+         pushstring "is single?\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs0a4b:
+         jump ofs168e
+         ofs0a4f:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getproperty QName(PackageNamespace(""),"spmap")
+         pushshort 291
+         pushshort 220
+         callproperty QName(PackageNamespace(""),"getTile"), 2
+         iffalse ofs0a79
+         pushstring "Take this Helix Fragment!\n"
+         pushstring "Legend says it is but one\n"
+         add
+         pushstring "piece of Iris, the Godsnail!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0a8d
+         ofs0a79:
+         pushstring ""
+         getlocal 7
+         add
+         pushstring ", legend says the\n"
+         add
+         pushstring "Shrine of Iris is somewhere\n"
+         add
+         pushstring "very close to Snail Town!!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs0a8d:
+         jump ofs168e
+         ofs0a91:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 0
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         iffalse ofs0abe
+         pushstring "Have you tried hitting \""
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"MAP_KEY")
+         add
+         pushstring "\"\n"
+         add
+         pushstring "yet?  It makes the map big!  Oh,\n"
+         add
+         pushstring "and hit \"ESC\" for the menu!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0af8
+         ofs0abe:
+         getlocal2
+         pushbyte 60
+         ifnlt ofs0ae7
+         pushstring ""
+         getlocal 7
+         add
+         pushstring ", if you need to see the\n"
+         add
+         pushstring "controls again, just press \"F1\"!\n"
+         add
+         pushstring "By the way, try hitting \""
+         add
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"MAP_KEY")
+         add
+         pushstring "\"!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0af8
+         ofs0ae7:
+         pushstring "Hey "
+         getlocal 7
+         add
+         pushstring ", I\'m hungry!  Know\n"
+         add
+         pushstring "any good plants around town?\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs0af8:
+         jump ofs168e
+         ofs0afc:
+         label
+         pushstring "With this \"Shell Shield\", you\n"
+         pushstring "won\'t take any damage when you\n"
+         add
+         pushstring "hide in your shell!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs168e
+         ofs0b0f:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hasArmor"), 0
+         convert_b
+         dup
+         iftrue ofs0b2c
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hasGravityJump"), 0
+         convert_b
+         ofs0b2c:
+         iffalse ofs0b45
+         pushstring "Hey, "
+         getlocal 7
+         add
+         pushstring "!  You came\n"
+         add
+         pushstring "back to visit!!  Yay!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0b8f
+         ofs0b45:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"isIcy"), 0
+         iffalse ofs0b73
+         pushstring "Oh, "
+         getlocal 7
+         add
+         pushstring ", you\'re an Ice "
+         add
+         getlocal 9
+         add
+         pushstring "!\n"
+         add
+         pushstring "That means the icicles in the\n"
+         add
+         pushstring "room ahead won\'t hurt you!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0b8f
+         ofs0b73:
+         pushstring "Watch out, "
+         getlocal 7
+         add
+         pushstring "!  Without the\n"
+         add
+         pushstring "\"Ice "
+         add
+         getlocal 9
+         add
+         pushstring "\" power, the area\n"
+         add
+         pushstring "ahead will be too difficult!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs0b8f:
+         jump ofs168e
+         ofs0b93:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hasGravityJump"), 0
+         iffalse ofs0bba
+         pushstring ""
+         getlocal 7
+         add
+         pushstring ", you can gravity jump!\n"
+         add
+         pushstring "Jump in the air, then hold any\n"
+         add
+         pushstring "direction and press jump again!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0bd6
+         ofs0bba:
+         pushstring "Oh, "
+         getlocal 7
+         add
+         pushstring ", it\'s you!!  I\'m saved!!\n"
+         add
+         pushstring "Moon Snail took me here!  He\'s\n"
+         add
+         pushstring "gone bad, "
+         add
+         getlocal 7
+         add
+         pushstring "!!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs0bd6:
+         jump ofs168e
+         ofs0bda:
+         label
+         findpropstrict QName(PackageNamespace(""),"Boolean")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"Boolean"), 1
+         convert_b
+         dup
+         iffalse ofs0bf7
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"_insaneMode")
+         convert_b
+         ofs0bf7:
+         iffalse ofs0c14
+         pushstring "Oh, no!! "
+         getlocal 7
+         add
+         pushstring "!! The \"Ice Snail\"\n"
+         add
+         pushstring "power-up is missing on insane\n"
+         add
+         pushstring "mode! Good luck without it!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0c29
+         ofs0c14:
+         pushstring "Don\'t worry about me, "
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         pushstring "I\'m an Ice Snail, so these ice\n"
+         add
+         pushstring "guys and icicles can\'t hurt me!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs0c29:
+         pushtrue
+         setlocal 4
+         jump ofs168e
+         ofs0c30:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hasArmor"), 0
+         not
+         dup
+         iftrue ofs0c4d
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hasTurbo"), 0
+         not
+         ofs0c4d:
+         iffalse ofs0c6a
+         pushstring "Be careful, "
+         getlocal 7
+         add
+         pushstring "!  With only\n"
+         add
+         pushstring "the powers you have now, Moon\n"
+         add
+         pushstring "Snail will eat you for lunch!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0cd4
+         ofs0c6a:
+         getlex QName(PackageNamespace(""),"PlayState")
+         pushbyte 4
+         callproperty QName(PackageNamespace(""),"isBossDead"), 1
+         iftrue ofs0c8f
+         pushstring ""
+         getlocal 7
+         add
+         pushstring ", Moon Snail\'s just ahead!\n"
+         add
+         pushstring "He brought us here!!  He\'s gone\n"
+         add
+         pushstring "bad!!  You need to defeat him!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0cd4
+         ofs0c8f:
+         getlocal3
+         pushbyte 30
+         lessthan
+         dup
+         iftrue ofs0ca3
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"hasSeenIsis")
+         not
+         ofs0ca3:
+         iffalse ofs0cbf
+         pushstring ""
+         getlocal 7
+         add
+         pushstring ", search for the helix\n"
+         add
+         pushstring "fragments!  Maybe Iris can\n"
+         add
+         pushstring "still restore Moon Snail!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0cd4
+         ofs0cbf:
+         pushstring "Congratulations, "
+         getlocal 7
+         add
+         pushstring "!!  Moon\n"
+         add
+         pushstring "Snail is saved!!  Wait, is he a\n"
+         add
+         pushstring "moon snail or a sun snail?\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs0cd4:
+         pushtrue
+         setlocal 4
+         jump ofs168e
+         ofs0cdb:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         pushbyte 4
+         callproperty QName(PackageNamespace(""),"isBossDead"), 1
+         iftrue ofs0cfb
+         pushstring "Moon Snail is still a snail!!  He\n"
+         pushstring "was once known as Sun Snail\n"
+         add
+         pushstring "and enjoyed nomming on grass!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0d43
+         ofs0cfb:
+         getlocal3
+         pushbyte 30
+         lessthan
+         dup
+         iffalse ofs0d0f
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         pushbyte 4
+         callproperty QName(PackageNamespace(""),"isBossDead"), 1
+         convert_b
+         ofs0d0f:
+         dup
+         iftrue ofs0d1f
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"hasSeenIsis")
+         not
+         ofs0d1f:
+         iffalse ofs0d35
+         pushstring "I\'ve heard that the Shrine of\n"
+         pushstring "Iris is not marked on any map!\n"
+         add
+         pushstring "Have you found it yet?\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0d43
+         ofs0d35:
+         pushstring "Don\'t moon snails live in the\n"
+         pushstring "ocean?  HEY, THIS GAME ISN\'T\n"
+         add
+         pushstring "REALISTIC!!  WHAT GIVES??\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs0d43:
+         pushtrue
+         setlocal 4
+         jump ofs168e
+         ofs0d4a:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hasArmor"), 0
+         not
+         dup
+         iftrue ofs0d67
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hasTurbo"), 0
+         not
+         ofs0d67:
+         iffalse ofs0d84
+         pushstring "Watch out, "
+         getlocal 7
+         add
+         pushstring "!  You\'re not\n"
+         add
+         pushstring "strong enough to fight Moon\n"
+         add
+         pushstring "Snail yet!!  Turn back!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0e2c
+         ofs0d84:
+         getlocal3
+         pushbyte 30
+         lessthan
+         dup
+         iffalse ofs0d98
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         pushbyte 4
+         callproperty QName(PackageNamespace(""),"isBossDead"), 1
+         not
+         ofs0d98:
+         iffalse ofs0dae
+         pushstring "If only you had the power of\n"
+         pushstring "Iris!  She could restore his\n"
+         add
+         pushstring "light once he\'s defeated!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0e2c
+         ofs0dae:
+         getlocal3
+         pushbyte 30
+         equals
+         dup
+         iffalse ofs0dc2
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         pushbyte 4
+         callproperty QName(PackageNamespace(""),"isBossDead"), 1
+         not
+         ofs0dc2:
+         iffalse ofs0ddf
+         pushstring "Use the power of Iris, "
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         pushstring "Defeat Moon Snail, and restore\n"
+         add
+         pushstring "him to his former light!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0e2c
+         ofs0ddf:
+         getlocal3
+         pushbyte 30
+         lessthan
+         dup
+         iftrue ofs0df3
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"hasSeenIsis")
+         not
+         ofs0df3:
+         iffalse ofs0e17
+         pushstring "There are 30 fragments hidden\n"
+         pushstring "around "
+         add
+         getlocal 7
+         add
+         pushstring " World!  Good luck\n"
+         add
+         pushstring "finding them, "
+         add
+         getlocal 7
+         add
+         pushstring "!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0e2c
+         ofs0e17:
+         pushstring "Amazing work, "
+         getlocal 7
+         add
+         pushstring "!!  Hey,\n"
+         add
+         pushstring "how\'d we get into outer space,\n"
+         add
+         pushstring "anyway?\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs0e2c:
+         pushtrue
+         setlocal 4
+         jump ofs168e
+         ofs0e33:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         pushbyte 4
+         callproperty QName(PackageNamespace(""),"isBossDead"), 1
+         iffalse ofs0e61
+         pushstring "Congratulations, "
+         getlocal 7
+         add
+         pushstring "!!  You\n"
+         add
+         pushstring "defeated Moon Snail!!  You\'re\n"
+         add
+         pushstring "the best "
+         add
+         getlocal 9
+         add
+         pushstring " ever!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0e9b
+         ofs0e61:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getproperty QName(PackageNamespace(""),"spmap")
+         pushbyte 34
+         pushbyte 7
+         callproperty QName(PackageNamespace(""),"getTile"), 2
+         iffalse ofs0e8e
+         pushstring ""
+         getlocal 7
+         add
+         pushstring ", take this heart!  You\'ll\n"
+         add
+         pushstring "need all the help you can get\n"
+         add
+         pushstring "to defeat Moon Snail!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0e9b
+         ofs0e8e:
+         pushstring "Good luck, "
+         getlocal 7
+         add
+         pushstring "!!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs0e9b:
+         pushtrue
+         setlocal 4
+         jump ofs168e
+         ofs0ea2:
+         label
+         getlocal3
+         pushbyte 30
+         lessthan
+         dup
+         iftrue ofs0eb7
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"hasSeenIsis")
+         not
+         ofs0eb7:
+         iffalse ofs0ed3
+         pushstring ""
+         getlocal 7
+         add
+         pushstring ", search for the Helix\n"
+         add
+         pushstring "Fragments!  Once you have them\n"
+         add
+         pushstring "all, find the Shrine of Iris!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs0ee8
+         ofs0ed3:
+         pushstring "Amazing work, "
+         getlocal 7
+         add
+         pushstring "!!  You\'ve\n"
+         add
+         pushstring "saved Sun Snail using the power\n"
+         add
+         pushstring "of Iris!!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs0ee8:
+         pushtrue
+         setlocal 4
+         jump ofs168e
+         ofs0eef:
+         label
+         pushstring "Wow! You found the secret room\n"
+         pushstring "full of Snelks!! _@_v!!\n"
+         add
+         coerce_a
+         setlocal 5
+         pushtrue
+         setlocal 4
+         jump ofs168e
+         ofs0f01:
+         label
+         pushstring "Heya, "
+         getlocal 7
+         add
+         pushstring "!  Gravity shock\n"
+         add
+         pushstring "upgrades your gravity jump!\n"
+         add
+         pushstring "Pretty neat, huh?\n"
+         add
+         coerce_a
+         setlocal 5
+         pushtrue
+         setlocal 4
+         jump ofs168e
+         ofs0f1e:
+         label
+         pushstring "Where are we, "
+         getlocal 7
+         add
+         pushstring "?  Do you\n"
+         add
+         pushstring "think they put this room in\n"
+         add
+         pushstring "on purpose?\n"
+         add
+         coerce_a
+         setlocal 5
+         pushtrue
+         setlocal 4
+         jump ofs168e
+         ofs0f3b:
+         label
+         pushstring ""
+         getlocal 7
+         add
+         pushstring ", thank you for helping\n"
+         add
+         pushstring "me!  Now I can get back to my\n"
+         add
+         pushstring "hobby: collecting prime numbers!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs168e
+         ofs0f54:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"hasSeenIsis")
+         getlex QName(PackageNamespace(""),"PlayState")
+         pushbyte 4
+         callproperty QName(PackageNamespace(""),"isBossDead"), 1
+         iftrue ofs102c
+         getlocal3
+         pushbyte 0
+         ifne ofs0f8c
+         pushstring "Hello, "
+         getlocal 7
+         add
+         pushstring "!  I am Iris, the\n"
+         add
+         pushstring "Godsnail.  But without the Helix\n"
+         add
+         pushstring "Fragments, I am powerless...\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs1028
+         ofs0f8c:
+         getlocal3
+         pushbyte 25
+         ifnlt ofs0fce
+         pushstring "Hello, "
+         getlocal 7
+         add
+         pushstring "! I am Iris, the\n"
+         add
+         pushstring "Godsnail. But with only "
+         add
+         getlocal3
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         add
+         pushstring " Helix\n"
+         add
+         pushstring "Fragment"
+         add
+         getlocal3
+         pushbyte 1
+         equals
+         iffalse ofs0fbe
+         pushstring ""
+         coerce_a
+         jump ofs0fc2
+         ofs0fbe:
+         pushstring "s"
+         coerce_a
+         ofs0fc2:
+         add
+         pushstring ", I am powerless...\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs1028
+         ofs0fce:
+         getlocal3
+         pushbyte 29
+         ifnlt ofs0ff4
+         pushstring "I can feel my power returning!\n"
+         pushstring "With "
+         add
+         pushbyte 30
+         getlocal3
+         subtract
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         add
+         pushstring " more Helix Fragments,\n"
+         add
+         pushstring "perhaps we can save Moon Snail!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs1028
+         ofs0ff4:
+         getlocal3
+         pushbyte 30
+         ifnlt ofs100d
+         pushstring "I can feel my power returning!\n"
+         pushstring "With 1 more Helix Fragment,\n"
+         add
+         pushstring "perhaps we can save Moon Snail!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs1028
+         ofs100d:
+         getlocal3
+         pushbyte 30
+         ifne ofs1028
+         pushstring "My power has returned!  Now go,\n"
+         pushstring ""
+         add
+         getlocal 7
+         add
+         pushstring ", and defeat Moon Snail!\n"
+         add
+         pushstring "My power will restore him!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs1028:
+         jump ofs1089
+         ofs102c:
+         getlocal3
+         pushbyte 30
+         ifne ofs104c
+         pushstring "Congratulations, "
+         getlocal 7
+         add
+         pushstring "! Thanks\n"
+         add
+         pushstring "to you, Moon Snail is restored,\n"
+         add
+         pushstring "and is now the Sun Snail!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs1089
+         ofs104c:
+         pushstring "Moon Snail rests fitfully\n"
+         pushstring "upon the shrine steps...  Find "
+         add
+         pushbyte 30
+         getlocal3
+         subtract
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         add
+         pushstring "\n"
+         add
+         pushstring "more fragment"
+         add
+         pushbyte 30
+         getlocal3
+         subtract
+         pushbyte 1
+         equals
+         iffalse ofs1076
+         pushstring ""
+         coerce_a
+         jump ofs107a
+         ofs1076:
+         pushstring "s"
+         coerce_a
+         ofs107a:
+         add
+         pushstring ", "
+         add
+         getlocal 8
+         add
+         pushstring "!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs1089:
+         jump ofs168e
+         ofs108d:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         pushbyte 2
+         callproperty QName(PackageNamespace(""),"isBossDead"), 1
+         iftrue ofs10b4
+         pushstring "Be careful, "
+         getlocal 7
+         add
+         pushstring "!!  I\'ve heard\n"
+         add
+         pushstring "some scary stuff happening in\n"
+         add
+         pushstring "the next room!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs10c5
+         ofs10b4:
+         pushstring "Wow!!  You defeated the evil\n"
+         pushstring "monster??  You\'re my hero,\n"
+         add
+         getlocal 8
+         add
+         pushstring "!!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs10c5:
+         jump ofs168e
+         ofs10c9:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         pushbyte 1
+         callproperty QName(PackageNamespace(""),"isBossDead"), 1
+         iftrue ofs10f0
+         pushstring "Watch out, "
+         getlocal 8
+         add
+         pushstring "!!\n"
+         add
+         pushstring "A fierce monster is hiding\n"
+         add
+         pushstring "in the next room!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs115e
+         ofs10f0:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         pushbyte 1
+         callproperty QName(PackageNamespace(""),"hasWeapon"), 1
+         iftrue ofs1112
+         pushstring "Oh hey, that grey door below\n"
+         pushstring "and to the left opened up!\n"
+         add
+         pushstring "I wonder what\'s inside?\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs115e
+         ofs1112:
+         getlocal1
+         getproperty QName(PackageNamespace(""),"_slugMode")
+         iffalse ofs112b
+         pushstring "Good luck, "
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs115e
+         ofs112b:
+         getlex QName(PackageNamespace(""),"PlayState")
+         pushbyte 4
+         callproperty QName(PackageNamespace(""),"isBossDead"), 1
+         iftrue ofs1151
+         pushstring "Good luck, "
+         getlocal 7
+         add
+         pushstring "!  I\'ll wait\n"
+         add
+         pushstring "here for you!!  Let\'s have lots\n"
+         add
+         pushstring "of baby snails later, okay?\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs115e
+         ofs1151:
+         getlocal 8
+         pushstring ", you came\n"
+         add
+         pushstring "back!!  Yay!!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs115e:
+         jump ofs168e
+         ofs1162:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hasTurbo"), 0
+         iftrue ofs118a
+         pushstring "Hey, "
+         getlocal 7
+         add
+         pushstring "!  I heard a rumor\n"
+         add
+         pushstring "that the next room is too hard\n"
+         add
+         pushstring "without \"Rapid Fire\"!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs11be
+         ofs118a:
+         getlex QName(PackageNamespace(""),"PlayState")
+         pushbyte 3
+         callproperty QName(PackageNamespace(""),"isBossDead"), 1
+         iftrue ofs11a9
+         pushstring "Moon Snail brought me here!\n"
+         pushstring "Isn\'t he nice?  All the pink\n"
+         add
+         pushstring "grass I could ever eat!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs11be
+         ofs11a9:
+         pushstring "What?  There was a monster\n"
+         pushstring "in the next room??  Are you\n"
+         add
+         pushstring "trying to scare me, "
+         add
+         getlocal 7
+         add
+         pushstring "??\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs11be:
+         jump ofs168e
+         ofs11c2:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hasGravityJump"), 0
+         iftrue ofs11e3
+         pushstring "I can\'t seem to crawl around\n"
+         pushstring "these corners!  I wonder if\n"
+         add
+         pushstring "I\'ll ever be able to do it...\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs11f8
+         ofs11e3:
+         pushstring "Ooh, "
+         getlocal 7
+         add
+         pushstring ", can you crawl\n"
+         add
+         pushstring "around ceiling corners now??\n"
+         add
+         pushstring "I wish I were a Gravity Snail!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs11f8:
+         jump ofs168e
+         ofs11fc:
+         label
+         getlocal1
+         getproperty QName(PackageNamespace(""),"_slugMode")
+         iffalse ofs1206
+         returnvoid
+         ofs1206:
+         jump ofs168e
+         ofs120a:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hasArmor"), 0
+         iftrue ofs1232
+         pushstring "Hey, "
+         getlocal 7
+         add
+         pushstring "!  If you grab the\n"
+         add
+         pushstring "powerup ahead, you\'ll only take\n"
+         add
+         pushstring "half damage from enemies!!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs125b
+         ofs1232:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"_slugMode")
+         iftrue ofs1251
+         pushstring "Ooh, a Full Metal Snail!  Now\n"
+         pushstring "you\'re as tough as iron, and as\n"
+         add
+         pushstring "quick as Mercury!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs125b
+         ofs1251:
+         pushstring "Ooh, a Full Power Slug, the\n"
+         pushstring "fastest slug on earth!!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs125b:
+         pushtrue
+         setlocal 4
+         jump ofs168e
+         ofs1262:
+         label
+         pushstring "Walleyes can\'t hurt you, "
+         getlocal 7
+         add
+         pushstring "!\n"
+         add
+         pushstring "You can just crawl right past\n"
+         add
+         pushstring "them, right on the same wall!\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs168e
+         ofs127c:
+         label
+         pushstring "So many secret snelks!  Have\n"
+         pushstring "you found the other secret\n"
+         add
+         pushstring "snelk room yet?  _@_v!!\n"
+         add
+         coerce_a
+         setlocal 5
+         pushtrue
+         setlocal 4
+         jump ofs168e
+         ofs1292:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_nexted")
+         pushbyte 0
+         ifne ofs12ae
+         pushstring "Hey, "
+         getlocal 7
+         add
+         pushstring ", what\'s up?\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs12de
+         ofs12ae:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_nexted")
+         pushbyte 1
+         ifne ofs12ce
+         pushbyte 3
+         setlocal 6
+         pushstring "Y\{26}E\n"
+         pushstring "\{27}E\n"
+         add
+         pushstring "\{27}E\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs12de
+         ofs12ce:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_nexted")
+         pushbyte 2
+         ifne ofs12de
+         pushstring "Whew!!  That was scary!!\n"
+         coerce_a
+         setlocal 5
+         ofs12de:
+         jump ofs168e
+         ofs12e2:
+         label
+         pushstring "zzzzz...  4,978,213...  zzzzz...\n"
+         pushstring "7,723,297...  zzzzz...  6,017,093...\n"
+         add
+         pushstring "zzzzz...  2,425,991...  zzzzz...\n"
+         add
+         coerce_a
+         setlocal 5
+         jump ofs168e
+         ofs12f5:
+         label
+         pushstring "Have you tried hitting the\n"
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"STRAFE_KEY")
+         add
+         pushstring " key yet?  It lets you\n"
+         add
+         pushstring "shoot while holding still!\n"
+         add
+         coerce_a
+         setlocal 5
+         ofs130a:
+         label
+         jump ofs168e
+         ofs130f:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_snailNum")
+         setlocal 10
+         pushbyte 0
+         getlocal 10
+         ifstrictne ofs1323
+         pushbyte 0
+         jump ofs15eb
+         ofs1323:
+         pushbyte 1
+         getlocal 10
+         ifstrictne ofs1331
+         pushbyte 1
+         jump ofs15eb
+         ofs1331:
+         pushbyte 2
+         getlocal 10
+         ifstrictne ofs133f
+         pushbyte 2
+         jump ofs15eb
+         ofs133f:
+         pushbyte 3
+         getlocal 10
+         ifstrictne ofs134d
+         pushbyte 3
+         jump ofs15eb
+         ofs134d:
+         pushbyte 4
+         getlocal 10
+         ifstrictne ofs135b
+         pushbyte 4
+         jump ofs15eb
+         ofs135b:
+         pushbyte 5
+         getlocal 10
+         ifstrictne ofs1369
+         pushbyte 5
+         jump ofs15eb
+         ofs1369:
+         pushbyte 6
+         getlocal 10
+         ifstrictne ofs1377
+         pushbyte 6
+         jump ofs15eb
+         ofs1377:
+         pushbyte 7
+         getlocal 10
+         ifstrictne ofs1385
+         pushbyte 7
+         jump ofs15eb
+         ofs1385:
+         pushbyte 8
+         getlocal 10
+         ifstrictne ofs1393
+         pushbyte 8
+         jump ofs15eb
+         ofs1393:
+         pushbyte 9
+         getlocal 10
+         ifstrictne ofs13a1
+         pushbyte 9
+         jump ofs15eb
+         ofs13a1:
+         pushbyte 10
+         getlocal 10
+         ifstrictne ofs13af
+         pushbyte 10
+         jump ofs15eb
+         ofs13af:
+         pushbyte 11
+         getlocal 10
+         ifstrictne ofs13bd
+         pushbyte 11
+         jump ofs15eb
+         ofs13bd:
+         pushbyte 12
+         getlocal 10
+         ifstrictne ofs13cb
+         pushbyte 12
+         jump ofs15eb
+         ofs13cb:
+         pushbyte 13
+         getlocal 10
+         ifstrictne ofs13d9
+         pushbyte 13
+         jump ofs15eb
+         ofs13d9:
+         pushbyte 14
+         getlocal 10
+         ifstrictne ofs13e7
+         pushbyte 14
+         jump ofs15eb
+         ofs13e7:
+         pushbyte 15
+         getlocal 10
+         ifstrictne ofs13f5
+         pushbyte 15
+         jump ofs15eb
+         ofs13f5:
+         pushbyte 16
+         getlocal 10
+         ifstrictne ofs1403
+         pushbyte 16
+         jump ofs15eb
+         ofs1403:
+         pushbyte 17
+         getlocal 10
+         ifstrictne ofs1411
+         pushbyte 17
+         jump ofs15eb
+         ofs1411:
+         pushbyte 18
+         getlocal 10
+         ifstrictne ofs141f
+         pushbyte 18
+         jump ofs15eb
+         ofs141f:
+         pushbyte 19
+         getlocal 10
+         ifstrictne ofs142d
+         pushbyte 19
+         jump ofs15eb
+         ofs142d:
+         pushbyte 20
+         getlocal 10
+         ifstrictne ofs143b
+         pushbyte 20
+         jump ofs15eb
+         ofs143b:
+         pushbyte 21
+         getlocal 10
+         ifstrictne ofs1449
+         pushbyte 21
+         jump ofs15eb
+         ofs1449:
+         pushbyte 22
+         getlocal 10
+         ifstrictne ofs1457
+         pushbyte 22
+         jump ofs15eb
+         ofs1457:
+         pushbyte 23
+         getlocal 10
+         ifstrictne ofs1465
+         pushbyte 23
+         jump ofs15eb
+         ofs1465:
+         pushbyte 24
+         getlocal 10
+         ifstrictne ofs1473
+         pushbyte 24
+         jump ofs15eb
+         ofs1473:
+         pushbyte 25
+         getlocal 10
+         ifstrictne ofs1481
+         pushbyte 25
+         jump ofs15eb
+         ofs1481:
+         pushbyte 26
+         getlocal 10
+         ifstrictne ofs148f
+         pushbyte 26
+         jump ofs15eb
+         ofs148f:
+         pushbyte 27
+         getlocal 10
+         ifstrictne ofs149d
+         pushbyte 27
+         jump ofs15eb
+         ofs149d:
+         pushbyte 28
+         getlocal 10
+         ifstrictne ofs14ab
+         pushbyte 28
+         jump ofs15eb
+         ofs14ab:
+         pushbyte 29
+         getlocal 10
+         ifstrictne ofs14b9
+         pushbyte 29
+         jump ofs15eb
+         ofs14b9:
+         pushbyte 30
+         getlocal 10
+         ifstrictne ofs14c7
+         pushbyte 30
+         jump ofs15eb
+         ofs14c7:
+         pushbyte 31
+         getlocal 10
+         ifstrictne ofs14d5
+         pushbyte 31
+         jump ofs15eb
+         ofs14d5:
+         pushbyte 32
+         getlocal 10
+         ifstrictne ofs14e3
+         pushbyte 32
+         jump ofs15eb
+         ofs14e3:
+         pushbyte 33
+         getlocal 10
+         ifstrictne ofs14f1
+         pushbyte 33
+         jump ofs15eb
+         ofs14f1:
+         pushbyte 34
+         getlocal 10
+         ifstrictne ofs14ff
+         pushbyte 34
+         jump ofs15eb
+         ofs14ff:
+         pushbyte 35
+         getlocal 10
+         ifstrictne ofs150d
+         pushbyte 35
+         jump ofs15eb
+         ofs150d:
+         pushbyte 36
+         getlocal 10
+         ifstrictne ofs151b
+         pushbyte 36
+         jump ofs15eb
+         ofs151b:
+         pushbyte 37
+         getlocal 10
+         ifstrictne ofs1529
+         pushbyte 37
+         jump ofs15eb
+         ofs1529:
+         pushbyte 38
+         getlocal 10
+         ifstrictne ofs1537
+         pushbyte 38
+         jump ofs15eb
+         ofs1537:
+         pushbyte 39
+         getlocal 10
+         ifstrictne ofs1545
+         pushbyte 39
+         jump ofs15eb
+         ofs1545:
+         pushbyte 40
+         getlocal 10
+         ifstrictne ofs1553
+         pushbyte 40
+         jump ofs15eb
+         ofs1553:
+         pushbyte 41
+         getlocal 10
+         ifstrictne ofs1561
+         pushbyte 41
+         jump ofs15eb
+         ofs1561:
+         pushbyte 42
+         getlocal 10
+         ifstrictne ofs156f
+         pushbyte 42
+         jump ofs15eb
+         ofs156f:
+         pushbyte 43
+         getlocal 10
+         ifstrictne ofs157d
+         pushbyte 43
+         jump ofs15eb
+         ofs157d:
+         pushbyte 44
+         getlocal 10
+         ifstrictne ofs158b
+         pushbyte 44
+         jump ofs15eb
+         ofs158b:
+         pushbyte 45
+         getlocal 10
+         ifstrictne ofs1599
+         pushbyte 45
+         jump ofs15eb
+         ofs1599:
+         pushbyte 46
+         getlocal 10
+         ifstrictne ofs15a7
+         pushbyte 46
+         jump ofs15eb
+         ofs15a7:
+         pushbyte 47
+         getlocal 10
+         ifstrictne ofs15b5
+         pushbyte 47
+         jump ofs15eb
+         ofs15b5:
+         pushbyte 48
+         getlocal 10
+         ifstrictne ofs15c3
+         pushbyte 48
+         jump ofs15eb
+         ofs15c3:
+         pushbyte 49
+         getlocal 10
+         ifstrictne ofs15d1
+         pushbyte 49
+         jump ofs15eb
+         ofs15d1:
+         pushbyte 50
+         getlocal 10
+         ifstrictne ofs15df
+         pushbyte 50
+         jump ofs15eb
+         ofs15df:
+         jump ofs15e9
+         pushbyte 51
+         jump ofs15e9
+         ofs15e9:
+         pushbyte 51
+         ofs15eb:
+         kill 10
+         lookupswitch ofs130a, [ofs0089, ofs0142, ofs01f3, ofs03e2, ofs0446, ofs0489, ofs04b5, ofs04f9, ofs05c8, ofs05fc, ofs0628, ofs0642, ofs0691, ofs06cc, ofs06f0, ofs0750, ofs0842, ofs08a0, ofs08cc, ofs091c, ofs0958, ofs09a4, ofs09e0, ofs0a07, ofs0a4f, ofs0a91, ofs0afc, ofs0b0f, ofs0b93, ofs0bda, ofs0c30, ofs0cdb, ofs0d4a, ofs0e33, ofs0ea2, ofs0eef, ofs0f01, ofs0f1e, ofs0f3b, ofs0f54, ofs108d, ofs10c9, ofs1162, ofs11c2, ofs11fc, ofs120a, ofs1262, ofs127c, ofs1292, ofs12e2, ofs12f5, ofs130a]
+         ofs168e:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"dialogue")
+         getlocal 5
+         getlocal 6
+         getlocal 4
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_speed")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_snailNum")
+         callpropvoid QName(PackageNamespace(""),"start"), 5
+         ofs16a6:
+         getlocal0
+         pushtrue
+         setproperty QName(PrivateNamespace(null,"48"),"_talkOpen")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function stopTalking() : void
+      {
+         trait method QName(PackageNamespace(""),"stopTalking")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"dialogue")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_snailNum")
+         callpropvoid QName(PackageNamespace(""),"stop"), 1
+         getlocal0
+         pushfalse
+         setproperty QName(PrivateNamespace(null,"48"),"_talkOpen")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 4
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal1
+         pushbyte 0
+         setlocal2
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"realState")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"STATE_GAME")
+         ifeq ofs0019
+         returnvoid
+         ofs0019:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_snailNum")
+         pushbyte 39
+         equals
+         dup
+         iftrue ofs002d
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_snailNum")
+         pushbyte 38
+         equals
+         ofs002d:
+         iffalse ofs0056
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_elapsed")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         add
+         setproperty QName(PrivateNamespace(null,"48"),"_elapsed")
+         getlex QName(PackageNamespace(""),"offset")
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_elapsed")
+         pushdouble 0.5
+         multiply
+         callproperty QName(PackageNamespace(""),"sin"), 1
+         pushbyte 5
+         multiply
+         setproperty QName(PackageNamespace(""),"y")
+         ofs0056:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_talkOpen")
+         iffalse ofs0227
+         jump ofs018e
+         ofs0062:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"hasJumped")
+         convert_b
+         dup
+         iffalse ofs0077
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_nexted")
+         pushbyte 0
+         equals
+         ofs0077:
+         iffalse ofs0086
+         getlocal0
+         pushbyte 1
+         setproperty QName(PrivateNamespace(null,"48"),"_nexted")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"stopTalking"), 0
+         ofs0086:
+         jump ofs01f9
+         ofs008a:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getproperty QName(PackageNamespace(""),"bgmap")
+         pushshort 295
+         pushshort 143
+         callproperty QName(PackageNamespace(""),"getTile"), 2
+         pushbyte 0
+         equals
+         dup
+         iffalse ofs00ae
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_nexted")
+         pushbyte 0
+         equals
+         ofs00ae:
+         iffalse ofs00bd
+         getlocal0
+         pushbyte 1
+         setproperty QName(PrivateNamespace(null,"48"),"_nexted")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"stopTalking"), 0
+         ofs00bd:
+         jump ofs01f9
+         ofs00c1:
+         label
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getproperty QName(PackageNamespace(""),"bgmap")
+         pushshort 328
+         pushshort 185
+         callproperty QName(PackageNamespace(""),"getTile"), 2
+         pushbyte 0
+         equals
+         dup
+         iffalse ofs00e5
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_nexted")
+         pushbyte 0
+         equals
+         ofs00e5:
+         iffalse ofs00f4
+         getlocal0
+         pushbyte 1
+         setproperty QName(PrivateNamespace(null,"48"),"_nexted")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"stopTalking"), 0
+         ofs00f4:
+         jump ofs01f9
+         ofs00f8:
+         label
+         getlex QName(PackageNamespace(""),"y")
+         pushshort 2656
+         greaterthan
+         dup
+         iffalse ofs010c
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_nexted")
+         pushbyte 0
+         equals
+         ofs010c:
+         iffalse ofs011b
+         getlocal0
+         pushbyte 1
+         setproperty QName(PrivateNamespace(null,"48"),"_nexted")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"stopTalking"), 0
+         ofs011b:
+         jump ofs01f9
+         ofs011f:
+         label
+         getlex QName(PackageNamespace(""),"y")
+         pushshort 198
+         pushbyte 16
+         multiply
+         greaterthan
+         dup
+         iffalse ofs0136
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_nexted")
+         pushbyte 0
+         equals
+         ofs0136:
+         iffalse ofs014f
+         getlocal0
+         pushbyte 2
+         setproperty QName(PrivateNamespace(null,"48"),"_speed")
+         getlocal0
+         pushbyte 1
+         setproperty QName(PrivateNamespace(null,"48"),"_nexted")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"stopTalking"), 0
+         jump ofs0189
+         ofs014f:
+         getlex QName(PackageNamespace(""),"y")
+         pushshort 232
+         pushbyte 16
+         multiply
+         greaterthan
+         dup
+         iffalse ofs0167
+         pop
+         getlex QName(PackageNamespace(""),"velocity")
+         getproperty QName(PackageNamespace(""),"y")
+         pushshort 150
+         lessthan
+         ofs0167:
+         dup
+         iffalse ofs0174
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_nexted")
+         pushbyte 1
+         equals
+         ofs0174:
+         iffalse ofs0189
+         getlocal0
+         pushbyte 1
+         setproperty QName(PrivateNamespace(null,"48"),"_speed")
+         getlocal0
+         pushbyte 2
+         setproperty QName(PrivateNamespace(null,"48"),"_nexted")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"stopTalking"), 0
+         ofs0189:
+         label
+         jump ofs01f9
+         ofs018e:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_snailNum")
+         setlocal3
+         pushbyte 1
+         getlocal3
+         ifstrictne ofs01a0
+         pushbyte 0
+         jump ofs01e0
+         ofs01a0:
+         pushbyte 4
+         getlocal3
+         ifstrictne ofs01ad
+         pushbyte 1
+         jump ofs01e0
+         ofs01ad:
+         pushbyte 8
+         getlocal3
+         ifstrictne ofs01ba
+         pushbyte 2
+         jump ofs01e0
+         ofs01ba:
+         pushbyte 16
+         getlocal3
+         ifstrictne ofs01c7
+         pushbyte 3
+         jump ofs01e0
+         ofs01c7:
+         pushbyte 48
+         getlocal3
+         ifstrictne ofs01d4
+         pushbyte 4
+         jump ofs01e0
+         ofs01d4:
+         jump ofs01de
+         pushbyte 5
+         jump ofs01de
+         ofs01de:
+         pushbyte 5
+         ofs01e0:
+         kill 3
+         lookupswitch ofs0189, [ofs0062, ofs008a, ofs00c1, ofs00f8, ofs011f, ofs0189]
+         ofs01f9:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"x")
+         subtract
+         convert_i
+         setlocal1
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"y")
+         subtract
+         convert_i
+         setlocal2
+         getlocal1
+         getlocal1
+         multiply
+         getlocal2
+         getlocal2
+         multiply
+         add
+         pushbyte 120
+         dup
+         multiply
+         ifngt ofs0227
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"stopTalking"), 0
+         ofs0227:
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"update"), 0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_snailNum")
+         pushbyte 44
+         equals
+         dup
+         iftrue ofs023f
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_snailNum")
+         pushbyte 49
+         equals
+         ofs023f:
+         iffalse ofs0250
+         findproperty QName(PackageNamespace(""),"facing")
+         getlex QName(PackageNamespace(""),"RIGHT")
+         initproperty QName(PackageNamespace(""),"facing")
+         jump ofs0271
+         ofs0250:
+         findproperty QName(PackageNamespace(""),"facing")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"x")
+         lessthan
+         iffalse ofs026a
+         getlex QName(PackageNamespace(""),"LEFT")
+         convert_u
+         jump ofs026e
+         ofs026a:
+         getlex QName(PackageNamespace(""),"RIGHT")
+         convert_u
+         ofs026e:
+         initproperty QName(PackageNamespace(""),"facing")
+         ofs0271:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function kill() : void
+      {
+         trait method QName(PackageNamespace(""),"kill")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"kill"), 0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"48"),"_talkOpen")
+         iffalse ofs0019
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"dialogue")
+         callpropvoid QName(PackageNamespace(""),"stop"), 0
+         ofs0019:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 8
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("SnailNpc",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+pushscope
+getlex QName(PackageNamespace(""),"Npc")
+pushscope
+getlex QName(PackageNamespace(""),"Npc")
+newclass 115
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"SnailNpc")
+returnvoid
+end ; code
+end ; body
+end ; method
+
