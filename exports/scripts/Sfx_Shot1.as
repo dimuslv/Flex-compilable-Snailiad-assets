@@ -1,17 +1,10 @@
 package
 {
-   import flash.display.DisplayObject;
    import mx.core.SoundAsset;
    
-   [Embed(source="/_assets/86_shot1_Sfx_Shot1.mp3")]
+   [Embed(source="/_assets/69_shot1_Sfx_Shot1.mp3")]
    public class Sfx_Shot1 extends SoundAsset
    {
-      public var adMask:DisplayObject;
-      
-      public var background:DisplayObject;
-      
-      public var ngLinkButton:DisplayObject;
-      
       public function Sfx_Shot1()
       {
          super();

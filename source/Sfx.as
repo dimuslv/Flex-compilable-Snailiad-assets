@@ -83,7 +83,7 @@ package
          }
          nextMenuBeep = _loc1_ + MENUBEEP_TIMEOUT;
 		 [Embed(source = 'data/sfx/sfx.swf', symbol = 'menubeep1')]
-         const MenuBeep1:Class;
+		 const MenuBeep1:Class;
          FlxG.play(MenuBeep1);
       }
       

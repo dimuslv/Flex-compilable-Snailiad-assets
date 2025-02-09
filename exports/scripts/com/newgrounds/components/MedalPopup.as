@@ -12,7 +12,7 @@ package com.newgrounds.components
    import flash.utils.Timer;
    import flash.utils.getQualifiedClassName;
    
-   [Embed(source="/_assets/assets.swf", symbol="symbol32")]
+   [Embed(source="/_assets/assets.swf", symbol="symbol15")]
    public class MedalPopup extends MovieClip
    {
       public var medalNameText:TextField;

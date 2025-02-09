@@ -20,7 +20,7 @@ package com.newgrounds.components
    import flash.utils.getQualifiedClassName;
    import flash.utils.getTimer;
    
-   [Embed(source="/_assets/assets.swf", symbol="symbol33")]
+   //[Embed(source="/_assets/assets.swf", symbol="symbol33")]
    public class FlashAd extends Sprite
    {
       private static var _adURL:URLRequest;

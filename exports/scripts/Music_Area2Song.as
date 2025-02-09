@@ -2,7 +2,7 @@ package
 {
    import mx.core.SoundAsset;
    
-   [Embed(source="/_assets/37_spiralis1loop_Music_Area2Song.mp3")]
+   [Embed(source="/_assets/20_spiralis1loop_Music_Area2Song.mp3")]
    public class Music_Area2Song extends SoundAsset
    {
       public function Music_Area2Song()
