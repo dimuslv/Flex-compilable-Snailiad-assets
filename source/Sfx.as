@@ -82,14 +82,16 @@ package
             return;
          }
          nextMenuBeep = _loc1_ + MENUBEEP_TIMEOUT;
-         var _loc2_:Class = Sfx_MenuBeep1;
-         FlxG.play(_loc2_);
+		 [Embed(source = 'data/sfx/sfx.swf', symbol = 'menubeep1')]
+         const MenuBeep1:Class;
+         FlxG.play(MenuBeep1);
       }
       
       public static function playMenuBeep2() : void
       {
-         var _loc1_:Class = Sfx_MenuBeep2;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'menubeep2')]
+         const MenuBeep2:Class;
+         FlxG.play(MenuBeep2);
       }
       
       public static function playSnelk() : void
@@ -100,8 +102,9 @@ package
             return;
          }
          nextSnelk = _loc1_ + SNELK_TIMEOUT;
-         var _loc2_:Class = Sfx_Snelk;
-         FlxG.play(_loc2_);
+		 [Embed(source = 'data/sfx/snelk.mp3')]
+         const Snelk:Class;
+         FlxG.play(Snelk);
       }
       
       public static function playJump1() : void
@@ -112,8 +115,9 @@ package
             return;
          }
          nextJump = _loc1_ + JUMP_TIMEOUT;
-         var _loc2_:Class = Sfx_Jump1;
-         FlxG.play(_loc2_);
+		 [Embed(source = 'data/sfx/sfx.swf', symbol = 'jump1')]
+         const Jump1:Class;
+         FlxG.play(Jump1);
       }
       
       public static function playGrow() : void
@@ -124,8 +128,9 @@ package
             return;
          }
          nextGrow = _loc1_ + GROW_TIMEOUT;
-         var _loc2_:Class = Sfx_Grow;
-         FlxG.play(_loc2_);
+		 [Embed(source = 'data/sfx/sfx.swf', symbol = 'grow')]
+         const Grow:Class;
+         FlxG.play(Grow);
       }
       
       public static function playShot7() : void
@@ -136,8 +141,9 @@ package
             return;
          }
          nextShot7 = _loc1_ + SHOT7_TIMEOUT;
-         var _loc2_:Class = Sfx_Shot7;
-         FlxG.play(_loc2_);
+		 [Embed(source = 'data/sfx/sfx.swf', symbol = 'shot7')]
+         const Shot7:Class;
+         FlxG.play(Shot7);
       }
       
       public static function playLaser() : void
@@ -148,44 +154,51 @@ package
             return;
          }
          nextLaser = _loc1_ + LASER_TIMEOUT;
-         var _loc2_:Class = Sfx_Laser1;
-         FlxG.play(_loc2_);
+		 [Embed(source = 'data/sfx/sfx2.swf', symbol = 'laser')]
+         const Laser1:Class;
+         FlxG.play(Laser1);
       }
       
       public static function playGigaWave() : void
       {
-         var _loc1_:Class = Sfx_GigaWave;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/gigawave.mp3')]
+         const GigaWave:Class;
+         FlxG.play(GigaWave);
       }
       
       public static function playShot1() : void
       {
-         var _loc1_:Class = Sfx_Shot1;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'shot1')]
+         const Shot1:Class;
+         FlxG.play(Shot1);
       }
       
       public static function playShot2() : void
       {
-         var _loc1_:Class = Sfx_Shot2;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'shot2')]
+         const Shot2:Class;
+         FlxG.play(Shot2);
       }
       
       public static function playShot3() : void
       {
-         var _loc1_:Class = Sfx_Shot3;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'shot3')]
+         const Shot3:Class;
+         FlxG.play(Shot3);
       }
       
       public static function playCannon() : void
       {
-         var _loc1_:Class = Sfx_Cannon1;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx2.swf', symbol = 'cannon1')]
+         const Cannon1:Class;
+         FlxG.play(Cannon1);
       }
       
       public static function playCannon2() : void
       {
-         var _loc1_:Class = Sfx_Cannon2;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx2.swf', symbol = 'cannon2')]
+         const Cannon2:Class;
+         FlxG.play(Cannon2);
       }
       
       public static function playShotHit() : void
@@ -196,26 +209,30 @@ package
             return;
          }
          nextShotHit = _loc1_ + SHOTHIT_TIMEOUT;
-         var _loc2_:Class = Sfx_ShotHit;
-         FlxG.play(_loc2_,0.1);
+		 [Embed(source = 'data/sfx/sfx2.swf', symbol = 'shothit')]
+         const ShotHit:Class;
+         FlxG.play(ShotHit,0.1);
       }
       
       public static function playShell() : void
       {
-         var _loc1_:Class = Sfx_Shell1;
-         FlxG.play(_loc1_,0.5);
+         [Embed(source = 'data/sfx/sfx2.swf', symbol = 'shell1')]
+         const Shell1:Class;
+         FlxG.play(Shell1,0.5);
       }
       
       public static function playChirp() : void
       {
-         var _loc1_:Class = Sfx_Chirp1;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx2.swf', symbol = 'chirp1')]
+         const Chirp1:Class;
+         FlxG.play(Chirp1);
       }
       
       public static function playStomp() : void
       {
-         var _loc1_:Class = Sfx_Stomp1;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx2.swf', symbol = 'stomp1')]
+         const Stomp1:Class;
+         FlxG.play(Stomp1);
       }
       
       public static function playShot1b() : void
@@ -226,26 +243,30 @@ package
             return;
          }
          nextShot1b = _loc1_ + SHOT1B_TIMEOUT;
-         var _loc2_:Class = Sfx_Shot1b;
-         FlxG.play(_loc2_);
+		 [Embed(source = 'data/sfx/sfx.swf', symbol = 'shot1b')]
+         const Shot1b:Class;
+         FlxG.play(Shot1b);
       }
       
       public static function playShot2b() : void
       {
-         var _loc1_:Class = Sfx_Shot2b;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'shot2b')]
+         const Shot2b:Class;
+         FlxG.play(Shot2b);
       }
       
       public static function playShot3b() : void
       {
-         var _loc1_:Class = Sfx_Shot3b;
-         FlxG.play(_loc1_,0.6);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'shot3b')]
+         const Shot3b:Class;
+         FlxG.play(Shot3b, 0.6);
       }
       
       public static function playHealth() : void
       {
-         var _loc1_:Class = Sfx_Health;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'health1')]
+         const Health:Class;
+         FlxG.play(Health);
       }
       
       public static function playPongBounce() : void
@@ -256,32 +277,37 @@ package
             return;
          }
          nextPong = _loc1_ + PONG_TIMEOUT;
-         var _loc2_:Class = Sfx_PongBounce;
-         FlxG.play(_loc2_);
+		 [Embed(source = 'data/sfx/pongbounce.mp3')]
+         const PongBounce:Class;
+         FlxG.play(PongBounce);
       }
       
       public static function playPongMiss() : void
       {
-         var _loc1_:Class = Sfx_PongMiss;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/pongmiss.mp3')]
+         const PongMiss:Class;
+         FlxG.play(PongMiss);
       }
       
       public static function playPongHit() : void
       {
-         var _loc1_:Class = Sfx_PongHit;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/ponghit.mp3')]
+         const PongHit:Class;
+         FlxG.play(PongHit);
       }
       
       public static function playPickup1() : void
       {
-         var _loc1_:Class = Sfx_Pickup2;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'pickup2')]
+         const Pickup2:Class;
+         FlxG.play(Pickup2);
       }
       
       public static function playPickup2() : void
       {
-         var _loc1_:Class = Sfx_Pickup2;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'pickup2')]
+         const Pickup2:Class;
+         FlxG.play(Pickup2);
       }
       
       public static function playPickup3() : void
@@ -292,74 +318,86 @@ package
             return;
          }
          nextNom = _loc1_ + NOM_TIMEOUT;
-         var _loc2_:Class = Sfx_Pickup3;
-         FlxG.play(_loc2_);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'pickup3')]
+         const Pickup3:Class;
+         FlxG.play(Pickup3);
       }
       
       public static function playPickup4() : void
       {
-         var _loc1_:Class = Sfx_Pickup4;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'pickup4')]
+         const Pickup4:Class;
+         FlxG.play(Pickup4);
       }
       
       public static function playSave1() : void
       {
-         var _loc1_:Class = Sfx_Save1;
-         FlxG.play(_loc1_,0.45);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'save1')]
+         const Save1:Class;
+         FlxG.play(Save1,0.45);
       }
       
       public static function playSplash1() : void
       {
-         var _loc1_:Class = Sfx_Splash1;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'splash1')]
+         const Splash1:Class;
+         FlxG.play(Splash1);
       }
       
       public static function playHurt() : void
       {
-         var _loc1_:Class = Sfx_Hurt;
-         FlxG.play(_loc1_,0.45);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'hurt2')]
+         const Hurt:Class;
+         FlxG.play(Hurt,0.45);
       }
       
       public static function playDeath() : void
       {
-         var _loc1_:Class = Sfx_Death;
-         FlxG.play(_loc1_,0.45);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'death')]
+         const Death:Class;
+         FlxG.play(Death,0.45);
       }
       
       public static function playExplode1() : void
       {
-         var _loc1_:Class = Sfx_Explode1;
-         FlxG.play(_loc1_,0.4);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'explode1')]
+         const Explode1:Class;
+         FlxG.play(Explode1,0.4);
       }
       
       public static function playExplode2() : void
       {
-         var _loc1_:Class = Sfx_Explode2;
-         FlxG.play(_loc1_,0.4);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'explode2')]
+         const Explode2:Class;
+         FlxG.play(Explode2,0.4);
       }
       
       public static function playExplode3() : void
       {
-         var _loc1_:Class = Sfx_Explode3;
-         FlxG.play(_loc1_,0.4);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'explode3')]
+         const Explode3:Class;
+         FlxG.play(Explode3,0.4);
       }
       
       public static function playExplode4() : void
       {
-         var _loc1_:Class = Sfx_Explode4;
-         FlxG.play(_loc1_,0.4);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'explode4')]
+         const Explode4:Class;
+         FlxG.play(Explode4,0.4);
       }
       
       public static function playSuperItemJingle() : void
       {
-         var _loc1_:Class = Sfx_Jingle4;
-         FlxG.play(_loc1_,0.6);
+         [Embed(source = 'data/sfx/jingle4.mp3')]
+         const Jingle4:Class;
+         FlxG.play(Jingle4,0.6);
       }
       
       public static function playItemJingle() : void
       {
-         var _loc1_:Class = Sfx_Jingle3;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'jingle3')]
+         const Jingle3:Class;
+         FlxG.play(Jingle3);
       }
       
       public static function playRandomExplode() : void
@@ -388,8 +426,9 @@ package
       
       public static function playEnding1() : void
       {
-         var _loc1_:Class = Sfx_Ending1Song;
-         EndingSfx = FlxG.play(_loc1_,0.75 * FlxG.musicVolume);
+         [Embed(source = 'data/sfx/ending1song.mp3')]
+         const Ending1Song:Class;
+         EndingSfx = FlxG.play(Ending1Song,0.75 * FlxG.musicVolume);
       }
       
       public static function stopEnding1() : void
@@ -405,14 +444,16 @@ package
             return;
          }
          nextOpenDoor = _loc1_ + DOOROPEN_TIMEOUT;
-         var _loc2_:Class = Sfx_OpenDoor;
-         FlxG.play(_loc2_);
+		 [Embed(source = 'data/sfx/sfx.swf', symbol = 'opendoor')]
+         const OpenDoor:Class;
+         FlxG.play(OpenDoor);
       }
       
       public static function playCloseDoor() : void
       {
-         var _loc1_:Class = Sfx_CloseDoor;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'closedoor')]
+         const CloseDoor:Class;
+         FlxG.play(CloseDoor);
       }
       
       public static function playBossHpBleep() : void
@@ -423,16 +464,13 @@ package
             return;
          }
          nextBossHpBleep = _loc1_ + BOSS_HP_BLEEP_TIMEOUT;
-         var _loc2_:Class = Sfx_BossHpBleep;
-         FlxG.play(_loc2_);
+		 [Embed(source = 'data/sfx/sfx.swf', symbol = 'bosshpbleep')]
+         const BossHpBleep:Class;
+         FlxG.play(BossHpBleep);
       }
       
       public static function playDialogueLetter(param1:int = 0) : void
       {
-         var _loc3_:Class = null;
-         var _loc4_:Class = null;
-         var _loc5_:Class = null;
-         var _loc6_:Class = null;
          var _loc2_:int = getTimer();
          if(nextDialogueLetter > _loc2_)
          {
@@ -442,39 +480,46 @@ package
          switch(param1)
          {
             case 0:
-               _loc3_ = Sfx_DialogueLetter0;
-               FlxG.play(_loc3_,0.33);
+               [Embed(source = 'data/sfx/sfx.swf', symbol = 'dialogueletter0')]
+			   const DialogueLetter0:Class;
+               FlxG.play(DialogueLetter0,0.33);
                break;
             case 1:
-               _loc4_ = Sfx_DialogueLetter1;
-               FlxG.play(_loc4_,0.33);
+               [Embed(source = 'data/sfx/sfx.swf', symbol = 'dialogueletter1')]
+			   const DialogueLetter1:Class;
+               FlxG.play(DialogueLetter1,0.33);
                break;
             case 2:
-               _loc5_ = Sfx_DialogueLetter2;
-               FlxG.play(_loc5_,0.33);
+               [Embed(source = 'data/sfx/sfx.swf', symbol = 'dialogueletter2')]
+			   const DialogueLetter2:Class;
+               FlxG.play(DialogueLetter2,0.33);
                break;
             case 3:
-               _loc6_ = Sfx_DialogueLetter3;
-               FlxG.play(_loc6_,0.33);
+               [Embed(source = 'data/sfx/sfx.swf', symbol = 'dialogueletter3')]
+			   const DialogueLetter3:Class;
+               FlxG.play(DialogueLetter3,0.33);
          }
       }
       
       public static function playEnemyKilled() : void
       {
-         var _loc1_:Class = Sfx_EnemyKilled;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'bigboom1')]
+         const EnemyKilled:Class;
+         FlxG.play(EnemyKilled);
       }
       
       public static function playEnemyKilled2() : void
       {
-         var _loc1_:Class = Sfx_EnemyKilled2;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'bigboom2')]
+         const EnemyKilled2:Class;
+         FlxG.play(EnemyKilled2);
       }
       
       public static function playEnemyKilled3() : void
       {
-         var _loc1_:Class = Sfx_EnemyKilled3;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/sfx.swf', symbol = 'bigboom3')]
+         const EnemyKilled3:Class;
+         FlxG.play(EnemyKilled3);
       }
       
       public static function playRandomEnemyKilled() : void
@@ -494,8 +539,9 @@ package
       
       public static function playSlugMode() : void
       {
-         var _loc1_:Class = Sfx_SlugMode;
-         FlxG.play(_loc1_);
+         [Embed(source = 'data/sfx/slugmode.mp3')]
+         const SlugMode:Class;
+         FlxG.play(SlugMode);
       }
       
       public static function playEnemyHurt() : void
@@ -510,8 +556,9 @@ package
             return;
          }
          nextPing = _loc1_ + PING_TIMEOUT;
-         var _loc2_:Class = Sfx_EnemyPingOffArmor;
-         FlxG.play(_loc2_);
+		 [Embed(source = 'data/sfx/sfx.swf', symbol = 'ping')]
+         const EnemyPingOffArmor:Class;
+         FlxG.play(EnemyPingOffArmor);
       }
    }
 }

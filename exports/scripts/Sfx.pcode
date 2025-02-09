@@ -1797,9 +1797,6 @@ package
          pushscope
          pushnull
          coerce QName(PackageNamespace(""),"Class")
-         setlocal2
-         pushnull
-         coerce QName(PackageNamespace(""),"Class")
          setlocal3
          pushnull
          coerce QName(PackageNamespace(""),"Class")
@@ -1807,34 +1804,27 @@ package
          pushnull
          coerce QName(PackageNamespace(""),"Class")
          setlocal 5
+         pushnull
+         coerce QName(PackageNamespace(""),"Class")
+         setlocal 6
          findpropstrict QName(PackageNamespace("flash.utils"),"getTimer")
          callproperty QName(PackageNamespace("flash.utils"),"getTimer"), 0
          convert_i
-         setlocal 6
+         setlocal2
          getlex QName(PackageNamespace(""),"nextDialogueLetter")
-         getlocal 6
-         ifngt ofs0028
+         getlocal2
+         ifngt ofs0027
          returnvoid
-         ofs0028:
+         ofs0027:
          findproperty QName(PackageNamespace(""),"nextDialogueLetter")
-         getlocal 6
+         getlocal2
          getlex QName(PackageNamespace(""),"DIALOGUE_LETTER_TIMEOUT")
          add
          setproperty QName(PackageNamespace(""),"nextDialogueLetter")
          jump ofs0095
-         ofs0038:
+         ofs0036:
          label
          getlex QName(PackageNamespace(""),"Sfx_DialogueLetter0")
-         coerce QName(PackageNamespace(""),"Class")
-         setlocal2
-         getlex QName(PackageNamespace("org.flixel"),"FlxG")
-         getlocal2
-         pushdouble 0.33
-         callpropvoid QName(PackageNamespace(""),"play"), 2
-         jump ofs00f2
-         ofs004e:
-         label
-         getlex QName(PackageNamespace(""),"Sfx_DialogueLetter1")
          coerce QName(PackageNamespace(""),"Class")
          setlocal3
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
@@ -1842,9 +1832,9 @@ package
          pushdouble 0.33
          callpropvoid QName(PackageNamespace(""),"play"), 2
          jump ofs00f2
-         ofs0064:
+         ofs004c:
          label
-         getlex QName(PackageNamespace(""),"Sfx_DialogueLetter2")
+         getlex QName(PackageNamespace(""),"Sfx_DialogueLetter1")
          coerce QName(PackageNamespace(""),"Class")
          setlocal 4
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
@@ -1852,13 +1842,23 @@ package
          pushdouble 0.33
          callpropvoid QName(PackageNamespace(""),"play"), 2
          jump ofs00f2
-         ofs007c:
+         ofs0064:
          label
-         getlex QName(PackageNamespace(""),"Sfx_DialogueLetter3")
+         getlex QName(PackageNamespace(""),"Sfx_DialogueLetter2")
          coerce QName(PackageNamespace(""),"Class")
          setlocal 5
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getlocal 5
+         pushdouble 0.33
+         callpropvoid QName(PackageNamespace(""),"play"), 2
+         jump ofs00f2
+         ofs007c:
+         label
+         getlex QName(PackageNamespace(""),"Sfx_DialogueLetter3")
+         coerce QName(PackageNamespace(""),"Class")
+         setlocal 6
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getlocal 6
          pushdouble 0.33
          callpropvoid QName(PackageNamespace(""),"play"), 2
          ofs0090:
@@ -1898,7 +1898,7 @@ package
          pushbyte 4
          ofs00dc:
          kill 7
-         lookupswitch ofs0090, [ofs0038, ofs004e, ofs0064, ofs007c, ofs0090]
+         lookupswitch ofs0090, [ofs0036, ofs004c, ofs0064, ofs007c, ofs0090]
          ofs00f2:
          returnvoid
          end ; code

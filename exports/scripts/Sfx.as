@@ -429,33 +429,33 @@ package
       
       public static function playDialogueLetter(param1:int = 0) : void
       {
-         var _loc2_:Class = null;
          var _loc3_:Class = null;
          var _loc4_:Class = null;
          var _loc5_:Class = null;
-         var _loc6_:int = getTimer();
-         if(nextDialogueLetter > _loc6_)
+         var _loc6_:Class = null;
+         var _loc2_:int = getTimer();
+         if(nextDialogueLetter > _loc2_)
          {
             return;
          }
-         nextDialogueLetter = _loc6_ + DIALOGUE_LETTER_TIMEOUT;
+         nextDialogueLetter = _loc2_ + DIALOGUE_LETTER_TIMEOUT;
          switch(param1)
          {
             case 0:
-               _loc2_ = Sfx_DialogueLetter0;
-               FlxG.play(_loc2_,0.33);
-               break;
-            case 1:
-               _loc3_ = Sfx_DialogueLetter1;
+               _loc3_ = Sfx_DialogueLetter0;
                FlxG.play(_loc3_,0.33);
                break;
-            case 2:
-               _loc4_ = Sfx_DialogueLetter2;
+            case 1:
+               _loc4_ = Sfx_DialogueLetter1;
                FlxG.play(_loc4_,0.33);
                break;
-            case 3:
-               _loc5_ = Sfx_DialogueLetter3;
+            case 2:
+               _loc5_ = Sfx_DialogueLetter2;
                FlxG.play(_loc5_,0.33);
+               break;
+            case 3:
+               _loc6_ = Sfx_DialogueLetter3;
+               FlxG.play(_loc6_,0.33);
          }
       }
       
