@@ -1,0 +1,1550 @@
+package com.newgrounds
+{
+   import flash.errors.IllegalOperationError;
+   import flash.events.Event;
+   import flash.events.EventDispatcher;
+   import flash.events.HTTPStatusEvent;
+   import flash.events.IOErrorEvent;
+   import flash.events.ProgressEvent;
+   import flash.events.SecurityErrorEvent;
+   import flash.net.URLLoader;
+   import flash.net.URLRequest;
+   import flash.net.URLRequestMethod;
+   import flash.net.URLVariables;
+   import flash.net.navigateToURL;
+   import flash.utils.ByteArray;
+   import flash.utils.Dictionary;
+   import flash.utils.Endian;
+   
+   public class SmartURLLoader extends EventDispatcher
+   {
+      private static var _loaders:Dictionary;
+      
+      private static const CRLF:String = "\r\n";
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 4
+      maxscopedepth 5
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"9"),"_loaders")
+      findpropstrict QName(PackageNamespace("flash.utils"),"Dictionary")
+      constructprop QName(PackageNamespace("flash.utils"),"Dictionary"), 0
+      setproperty QName(PrivateNamespace(null,"9"),"_loaders")
+      findproperty QName(PrivateNamespace(null,"9"),"CRLF")
+      pushstring "\r\n"
+      initproperty QName(PrivateNamespace(null,"9"),"CRLF")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var _variables:Dictionary;
+      
+      private var _files:Dictionary;
+      
+      private var _hasVariables:Boolean;
+      
+      private var _method:String = "GET";
+      
+      private var _urlRequest:URLRequest;
+      
+      private var _urlLoader:URLLoader;
+      
+      private var _dataFormat:String = "text";
+      
+      private var _openBrowser:Boolean = false;
+      
+      private var _preventCache:Boolean = false;
+      
+      internal var _command:String;
+      
+      public var owner:*;
+      
+      public function SmartURLLoader()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.net"),"URLRequest")
+         constructprop QName(PackageNamespace("flash.net"),"URLRequest"), 0
+         initproperty QName(PrivateNamespace(null,"9"),"_urlRequest")
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.utils"),"Dictionary")
+         constructprop QName(PackageNamespace("flash.utils"),"Dictionary"), 0
+         initproperty QName(PrivateNamespace(null,"9"),"_variables")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function closeAll() : void
+      {
+         trait method QName(PackageNamespace(""),"closeAll")
+         flag FINAL
+         dispid 3
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 4
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("com.newgrounds"),"SmartURLLoader")
+         setlocal1
+         pushbyte 0
+         setlocal2
+         getlex QName(PrivateNamespace(null,"9"),"_loaders")
+         coerce_a
+         setlocal3
+         jump ofs0025
+         ofs0013:
+         label
+         getlocal3
+         getlocal2
+         nextvalue
+         coerce QName(PackageNamespace("com.newgrounds"),"SmartURLLoader")
+         setlocal1
+         getlocal1
+         iffalse ofs0025
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"dispose"), 0
+         ofs0025:
+         hasnext2 3, 2
+         iftrue ofs0013
+         kill 3
+         kill 2
+         findproperty QName(PrivateNamespace(null,"9"),"_loaders")
+         findpropstrict QName(PackageNamespace("flash.utils"),"Dictionary")
+         constructprop QName(PackageNamespace("flash.utils"),"Dictionary"), 0
+         setproperty QName(PrivateNamespace(null,"9"),"_loaders")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get responseFormat() : String
+      {
+         trait getter QName(PackageNamespace(""),"responseFormat")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_dataFormat")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set responseFormat(param1:String) : void
+      {
+         trait setter QName(PackageNamespace(""),"responseFormat")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"9"),"_dataFormat")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get response() : *
+      {
+         trait getter QName(PackageNamespace(""),"response")
+         dispid 0
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         getproperty QName(PackageNamespace(""),"data")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get hasFiles() : Boolean
+      {
+         trait getter QName(PackageNamespace(""),"hasFiles")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"Boolean")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_files")
+         callproperty QName(PackageNamespace(""),"Boolean"), 1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get method() : String
+      {
+         trait getter QName(PackageNamespace(""),"method")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_method")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set method(param1:String) : void
+      {
+         trait setter QName(PackageNamespace(""),"method")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"hasFiles")
+         convert_b
+         dup
+         iffalse ofs0015
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.net"),"URLRequestMethod")
+         getproperty QName(PackageNamespace(""),"GET")
+         equals
+         ofs0015:
+         iffalse ofs0024
+         findpropstrict QName(PackageNamespace("flash.errors"),"IllegalOperationError")
+         pushstring "GET cannot be used to upload files."
+         constructprop QName(PackageNamespace("flash.errors"),"IllegalOperationError"), 1
+         throw
+         ofs0024:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"9"),"_method")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get openBrowser() : Boolean
+      {
+         trait getter QName(PackageNamespace(""),"openBrowser")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_openBrowser")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set openBrowser(param1:Boolean) : void
+      {
+         trait setter QName(PackageNamespace(""),"openBrowser")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"9"),"_openBrowser")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get preventCache() : Boolean
+      {
+         trait getter QName(PackageNamespace(""),"preventCache")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_preventCache")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set preventCache(param1:Boolean) : void
+      {
+         trait setter QName(PackageNamespace(""),"preventCache")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"9"),"_preventCache")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get bytesLoaded() : uint
+      {
+         trait getter QName(PackageNamespace(""),"bytesLoaded")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         iffalse ofs0016
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         getproperty QName(PackageNamespace(""),"bytesLoaded")
+         convert_u
+         jump ofs0019
+         ofs0016:
+         pushbyte 0
+         convert_u
+         ofs0019:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get bytesTotal() : uint
+      {
+         trait getter QName(PackageNamespace(""),"bytesTotal")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         iffalse ofs0016
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         getproperty QName(PackageNamespace(""),"bytesTotal")
+         convert_u
+         jump ofs0019
+         ofs0016:
+         pushbyte 0
+         convert_u
+         ofs0019:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function addVariable(param1:String, param2:* = "") : void
+      {
+         trait method QName(PackageNamespace(""),"addVariable")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"String")
+         param null
+         optional Utf8("")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_variables")
+         getlocal1
+         getlocal2
+         setproperty MultinameL([PrivateNamespace(null,"9"),PackageNamespace("com.newgrounds"),PackageNamespace(""),PrivateNamespace(null,"10"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SmartURLLoader"),StaticProtectedNs("com.newgrounds:SmartURLLoader"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlocal2
+         iffalse ofs0015
+         getlocal0
+         pushtrue
+         initproperty QName(PrivateNamespace(null,"9"),"_hasVariables")
+         ofs0015:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function addFile(param1:String, param2:ByteArray, param3:String, param4:String = "application/octet-stream") : void
+      {
+         trait method QName(PackageNamespace(""),"addFile")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace("flash.utils"),"ByteArray")
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"String")
+         optional Utf8("application/octet-stream")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 7
+         localcount 5
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlex QName(PackageNamespace("flash.net"),"URLRequestMethod")
+         getproperty QName(PackageNamespace(""),"POST")
+         initproperty QName(PackageNamespace(""),"method")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_files")
+         iftrue ofs001d
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.utils"),"Dictionary")
+         constructprop QName(PackageNamespace("flash.utils"),"Dictionary"), 0
+         initproperty QName(PrivateNamespace(null,"9"),"_files")
+         ofs001d:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_files")
+         getlocal1
+         findpropstrict QName(PrivateNamespace(null,"10"),"File")
+         getlocal1
+         getlocal2
+         getlocal3
+         getlocal 4
+         constructprop QName(PrivateNamespace(null,"10"),"File"), 4
+         setproperty MultinameL([PrivateNamespace(null,"9"),PackageNamespace("com.newgrounds"),PackageNamespace(""),PrivateNamespace(null,"10"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SmartURLLoader"),StaticProtectedNs("com.newgrounds:SmartURLLoader"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function clearVariables() : void
+      {
+         trait method QName(PackageNamespace(""),"clearVariables")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.utils"),"Dictionary")
+         constructprop QName(PackageNamespace("flash.utils"),"Dictionary"), 0
+         initproperty QName(PrivateNamespace(null,"9"),"_variables")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function clearFiles() : void
+      {
+         trait method QName(PackageNamespace(""),"clearFiles")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         pushnull
+         initproperty QName(PrivateNamespace(null,"9"),"_files")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function load(param1:String) : void
+      {
+         trait method QName(PackageNamespace(""),"load")
+         dispid 0
+         method
+         name null
+         flag NEED_ACTIVATION
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 7
+         localcount 5
+         initscopedepth 6
+         maxscopedepth 11
+         trait slot QName(PackageInternalNs("com.newgrounds"),"url")
+         slotid 1
+         type QName(PackageNamespace(""),"String")
+         end ; trait
+         trait slot QName(PackageInternalNs("com.newgrounds"),"urlVariables")
+         slotid 2
+         type QName(PackageNamespace("flash.net"),"URLVariables")
+         end ; trait
+         trait slot QName(PackageInternalNs("com.newgrounds"),"key")
+         slotid 3
+         type QName(PackageNamespace(""),"String")
+         end ; trait
+         trait slot QName(PackageInternalNs("com.newgrounds"),"boundary")
+         slotid 4
+         type QName(PackageNamespace(""),"String")
+         end ; trait
+         trait slot QName(PackageInternalNs("com.newgrounds"),"i")
+         slotid 5
+         type QName(PackageNamespace(""),"uint")
+         end ; trait
+         trait slot QName(PackageInternalNs("com.newgrounds"),"event")
+         slotid 6
+         type QName(PackageNamespace("flash.events"),"SecurityErrorEvent")
+         end ; trait
+         
+         code
+         getlocal0
+         pushscope
+         newactivation
+         dup
+         setlocal2
+         pushscope
+         getscopeobject 1
+         pushnull
+         coerce QName(PackageNamespace("flash.net"),"URLVariables")
+         setslot 2
+         getscopeobject 1
+         pushnull
+         coerce_s
+         setslot 3
+         getscopeobject 1
+         pushnull
+         coerce_s
+         setslot 4
+         getscopeobject 1
+         pushbyte 0
+         convert_u
+         setslot 5
+         getscopeobject 1
+         pushnull
+         coerce QName(PackageNamespace("flash.events"),"SecurityErrorEvent")
+         setslot 6
+         getscopeobject 1
+         getlocal1
+         setslot 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlRequest")
+         getscopeobject 1
+         getslot 1
+         setproperty QName(PackageNamespace(""),"url")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_preventCache")
+         iffalse ofs0069
+         getscopeobject 1
+         getscopeobject 1
+         getslot 1
+         pushstring "?seed="
+         getlex QName(PackageNamespace(""),"Math")
+         callproperty QName(PackageNamespace(""),"random"), 0
+         add
+         add
+         coerce_s
+         setslot 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_hasVariables")
+         iffalse ofs0069
+         getscopeobject 1
+         getscopeobject 1
+         getslot 1
+         pushstring "&"
+         add
+         setslot 1
+         ofs0069:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlRequest")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_method")
+         setproperty QName(PackageNamespace(""),"method")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlRequest")
+         getproperty QName(PackageNamespace(""),"method")
+         getlex QName(PackageNamespace("flash.net"),"URLRequestMethod")
+         getproperty QName(PackageNamespace(""),"GET")
+         equals
+         dup
+         iftrue ofs008d
+         pop
+         getlocal0
+         getproperty QName(PackageNamespace(""),"hasFiles")
+         not
+         ofs008d:
+         iffalse ofs00f8
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlRequest")
+         pushstring "application/x-www-form-urlencoded"
+         setproperty QName(PackageNamespace(""),"contentType")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_hasVariables")
+         iffalse ofs00f4
+         getscopeobject 1
+         findpropstrict QName(PackageNamespace("flash.net"),"URLVariables")
+         constructprop QName(PackageNamespace("flash.net"),"URLVariables"), 0
+         coerce QName(PackageNamespace("flash.net"),"URLVariables")
+         setslot 2
+         pushbyte 0
+         setlocal3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_variables")
+         coerce_a
+         setlocal 4
+         jump ofs00df
+         ofs00bf:
+         label
+         getscopeobject 1
+         getlocal 4
+         getlocal3
+         nextname
+         coerce_s
+         setslot 3
+         getscopeobject 1
+         getslot 2
+         getscopeobject 1
+         getslot 3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_variables")
+         getscopeobject 1
+         getslot 3
+         getproperty MultinameL([PrivateNamespace(null,"9"),PackageNamespace("com.newgrounds"),PackageNamespace(""),PrivateNamespace(null,"10"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SmartURLLoader"),StaticProtectedNs("com.newgrounds:SmartURLLoader"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"9"),PackageNamespace("com.newgrounds"),PackageNamespace(""),PrivateNamespace(null,"10"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SmartURLLoader"),StaticProtectedNs("com.newgrounds:SmartURLLoader"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs00df:
+         hasnext2 4, 3
+         iftrue ofs00bf
+         kill 4
+         kill 3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlRequest")
+         getscopeobject 1
+         getslot 2
+         setproperty QName(PackageNamespace(""),"data")
+         ofs00f4:
+         jump ofs0163
+         ofs00f8:
+         getscopeobject 1
+         pushstring ""
+         setslot 4
+         getscopeobject 1
+         pushbyte 0
+         convert_u
+         setslot 5
+         jump ofs0137
+         ofs0109:
+         label
+         getscopeobject 1
+         getscopeobject 1
+         getslot 4
+         getlex QName(PackageNamespace(""),"String")
+         findpropstrict QName(PackageNamespace(""),"uint")
+         pushbyte 97
+         getlex QName(PackageNamespace(""),"Math")
+         callproperty QName(PackageNamespace(""),"random"), 0
+         pushbyte 25
+         multiply
+         add
+         callproperty QName(PackageNamespace(""),"uint"), 1
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"fromCharCode"), 1
+         add
+         coerce_s
+         setslot 4
+         getscopeobject 1
+         getslot 5
+         increment
+         convert_u
+         getscopeobject 1
+         swap
+         setslot 5
+         ofs0137:
+         getscopeobject 1
+         getslot 5
+         pushbyte 32
+         iflt ofs0109
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlRequest")
+         pushstring "multipart/form-data; boundary=\""
+         getscopeobject 1
+         getslot 4
+         add
+         pushstring "\""
+         add
+         setproperty QName(PackageNamespace(""),"contentType")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlRequest")
+         getlocal0
+         getscopeobject 1
+         getslot 4
+         callproperty QName(PrivateNamespace(null,"9"),"buildMultipartData"), 1
+         setproperty QName(PackageNamespace(""),"data")
+         ofs0163:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"openBrowser")
+         iffalse ofs017d
+         findpropstrict QName(PackageNamespace("flash.net"),"navigateToURL")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlRequest")
+         pushstring "_blank"
+         callpropvoid QName(PackageNamespace("flash.net"),"navigateToURL"), 2
+         jump ofs0235
+         ofs017d:
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.net"),"URLLoader")
+         constructprop QName(PackageNamespace("flash.net"),"URLLoader"), 0
+         initproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_dataFormat")
+         setproperty QName(PackageNamespace(""),"dataFormat")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         getlex QName(PackageNamespace("flash.events"),"Event")
+         getproperty QName(PackageNamespace(""),"COMPLETE")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"onComplete")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         getlex QName(PackageNamespace("flash.events"),"ProgressEvent")
+         getproperty QName(PackageNamespace(""),"PROGRESS")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"onProgress")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         getlex QName(PackageNamespace("flash.events"),"IOErrorEvent")
+         getproperty QName(PackageNamespace(""),"IO_ERROR")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"onIOError")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         getlex QName(PackageNamespace("flash.events"),"HTTPStatusEvent")
+         getproperty QName(PackageNamespace(""),"HTTP_STATUS")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"onHTTPStatus")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         getlex QName(PackageNamespace("flash.events"),"SecurityErrorEvent")
+         getproperty QName(PackageNamespace(""),"SECURITY_ERROR")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"onSecurityError")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlex QName(PrivateNamespace(null,"9"),"_loaders")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         getlocal0
+         setproperty MultinameL([PrivateNamespace(null,"9"),PackageNamespace("com.newgrounds"),PackageNamespace(""),PrivateNamespace(null,"10"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SmartURLLoader"),StaticProtectedNs("com.newgrounds:SmartURLLoader"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs01f1:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlRequest")
+         callpropvoid QName(PackageNamespace(""),"load"), 1
+         ofs01fd:
+         jump ofs0235
+         ofs0201:
+         getlocal0
+         pushscope
+         getlocal2
+         pushscope
+         newcatch 0
+         dup
+         setlocal3
+         dup
+         pushscope
+         swap
+         setslot 1
+         getscopeobject 1
+         findpropstrict QName(PackageNamespace("flash.events"),"SecurityErrorEvent")
+         getlex QName(PackageNamespace("flash.events"),"SecurityErrorEvent")
+         getproperty QName(PackageNamespace(""),"SECURITY_ERROR")
+         pushfalse
+         pushfalse
+         getscopeobject 2
+         getslot 1
+         getproperty QName(PackageNamespace(""),"message")
+         constructprop QName(PackageNamespace("flash.events"),"SecurityErrorEvent"), 4
+         coerce QName(PackageNamespace("flash.events"),"SecurityErrorEvent")
+         setslot 6
+         findpropstrict QName(PrivateNamespace(null,"9"),"onSecurityError")
+         getscopeobject 1
+         getslot 6
+         callpropvoid QName(PrivateNamespace(null,"9"),"onSecurityError"), 1
+         popscope
+         kill 3
+         ofs0235:
+         returnvoid
+         end ; code
+         try from ofs01f1 to ofs01fd target ofs0201 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"error") end
+         end ; body
+         end ; method
+      }
+      
+      public function close() : void
+      {
+         trait method QName(PackageNamespace(""),"close")
+         dispid 0
+         method
+         name null
+         flag NEED_ACTIVATION
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 6
+         maxscopedepth 11
+         
+         code
+         getlocal0
+         pushscope
+         newactivation
+         dup
+         setlocal1
+         pushscope
+         ofs0006:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         callpropvoid QName(PackageNamespace(""),"close"), 0
+         ofs000e:
+         jump ofs0022
+         ofs0012:
+         getlocal0
+         pushscope
+         getlocal1
+         pushscope
+         newcatch 0
+         dup
+         setlocal2
+         dup
+         pushscope
+         swap
+         setslot 1
+         popscope
+         kill 2
+         ofs0022:
+         returnvoid
+         end ; code
+         try from ofs0006 to ofs000e target ofs0012 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
+         end ; body
+         end ; method
+      }
+      
+      public function dispose() : void
+      {
+         trait method QName(PackageNamespace(""),"dispose")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"close"), 0
+         getlocal0
+         pushnull
+         initproperty QName(PrivateNamespace(null,"9"),"_files")
+         getlocal0
+         pushnull
+         initproperty QName(PrivateNamespace(null,"9"),"_variables")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         iffalse ofs0073
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         getlex QName(PackageNamespace("flash.events"),"Event")
+         getproperty QName(PackageNamespace(""),"COMPLETE")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"onComplete")
+         callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         getlex QName(PackageNamespace("flash.events"),"ProgressEvent")
+         getproperty QName(PackageNamespace(""),"PROGRESS")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"onProgress")
+         callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         getlex QName(PackageNamespace("flash.events"),"IOErrorEvent")
+         getproperty QName(PackageNamespace(""),"IO_ERROR")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"onIOError")
+         callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         getlex QName(PackageNamespace("flash.events"),"HTTPStatusEvent")
+         getproperty QName(PackageNamespace(""),"HTTP_STATUS")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"onHTTPStatus")
+         callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         getlex QName(PackageNamespace("flash.events"),"SecurityErrorEvent")
+         getproperty QName(PackageNamespace(""),"SECURITY_ERROR")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"onSecurityError")
+         callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+         getlocal0
+         pushnull
+         initproperty QName(PrivateNamespace(null,"9"),"_urlLoader")
+         ofs0073:
+         getlocal0
+         pushnull
+         initproperty QName(PrivateNamespace(null,"9"),"_urlRequest")
+         getlex QName(PrivateNamespace(null,"9"),"_loaders")
+         getlocal0
+         deleteproperty MultinameL([PrivateNamespace(null,"9"),PackageNamespace("com.newgrounds"),PackageNamespace(""),PrivateNamespace(null,"10"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SmartURLLoader"),StaticProtectedNs("com.newgrounds:SmartURLLoader"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         pop
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function buildMultipartData(param1:String) : ByteArray
+      {
+         trait method QName(PrivateNamespace(null,"9"),"buildMultipartData")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace("flash.utils"),"ByteArray")
+         
+         body
+         maxstack 3
+         localcount 7
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce_s
+         setlocal3
+         pushnull
+         coerce QName(PrivateNamespace(null,"10"),"File")
+         setlocal 4
+         findpropstrict QName(PackageNamespace("flash.utils"),"ByteArray")
+         constructprop QName(PackageNamespace("flash.utils"),"ByteArray"), 0
+         coerce QName(PackageNamespace("flash.utils"),"ByteArray")
+         setlocal2
+         getlocal2
+         getlex QName(PackageNamespace("flash.utils"),"Endian")
+         getproperty QName(PackageNamespace(""),"BIG_ENDIAN")
+         setproperty QName(PackageNamespace(""),"endian")
+         pushstring "--"
+         getlocal1
+         add
+         coerce_s
+         setlocal1
+         pushbyte 0
+         setlocal 5
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_variables")
+         coerce_a
+         setlocal 6
+         jump ofs0070
+         ofs0033:
+         label
+         getlocal 6
+         getlocal 5
+         nextname
+         coerce_s
+         setlocal3
+         getlocal2
+         getlocal1
+         getlex QName(PrivateNamespace(null,"9"),"CRLF")
+         add
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         getlocal2
+         pushstring "Content-Disposition: form-data; name=\""
+         getlocal3
+         add
+         pushstring "\""
+         add
+         getlex QName(PrivateNamespace(null,"9"),"CRLF")
+         add
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         getlocal2
+         getlex QName(PrivateNamespace(null,"9"),"CRLF")
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_variables")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"9"),PackageNamespace("com.newgrounds"),PackageNamespace(""),PrivateNamespace(null,"10"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SmartURLLoader"),StaticProtectedNs("com.newgrounds:SmartURLLoader"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlex QName(PrivateNamespace(null,"9"),"CRLF")
+         add
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         ofs0070:
+         hasnext2 6, 5
+         iftrue ofs0033
+         kill 6
+         kill 5
+         getlocal0
+         getproperty QName(PackageNamespace(""),"hasFiles")
+         iffalse ofs0154
+         pushbyte 0
+         setlocal 5
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"9"),"_files")
+         coerce_a
+         setlocal 6
+         jump ofs011f
+         ofs0092:
+         label
+         getlocal 6
+         getlocal 5
+         nextvalue
+         coerce QName(PrivateNamespace(null,"10"),"File")
+         setlocal 4
+         getlocal2
+         getlocal1
+         getlex QName(PrivateNamespace(null,"9"),"CRLF")
+         add
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         getlocal2
+         pushstring "Content-Disposition: form-data; name=\"Filename\""
+         getlex QName(PrivateNamespace(null,"9"),"CRLF")
+         add
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         getlocal2
+         getlex QName(PrivateNamespace(null,"9"),"CRLF")
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         getlocal2
+         getlocal 4
+         getproperty QName(PrivateNamespace(null,"10"),"fileName")
+         getlex QName(PrivateNamespace(null,"9"),"CRLF")
+         add
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         getlocal2
+         getlocal1
+         getlex QName(PrivateNamespace(null,"9"),"CRLF")
+         add
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         getlocal2
+         pushstring "Content-Disposition: form-data; name=\""
+         getlocal 4
+         getproperty QName(PrivateNamespace(null,"10"),"dataField")
+         add
+         pushstring "\"; filename=\""
+         add
+         getlocal 4
+         getproperty QName(PrivateNamespace(null,"10"),"fileName")
+         add
+         pushstring "\""
+         add
+         getlex QName(PrivateNamespace(null,"9"),"CRLF")
+         add
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         getlocal2
+         pushstring "Content-Type: "
+         getlocal 4
+         getproperty QName(PrivateNamespace(null,"10"),"contentType")
+         add
+         getlex QName(PrivateNamespace(null,"9"),"CRLF")
+         add
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         getlocal2
+         getlex QName(PrivateNamespace(null,"9"),"CRLF")
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         getlocal2
+         getlocal 4
+         getproperty QName(PrivateNamespace(null,"10"),"data")
+         callpropvoid QName(PackageNamespace(""),"writeBytes"), 1
+         getlocal2
+         getlex QName(PrivateNamespace(null,"9"),"CRLF")
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         ofs011f:
+         hasnext2 6, 5
+         iftrue ofs0092
+         kill 6
+         kill 5
+         getlocal2
+         getlocal1
+         getlex QName(PrivateNamespace(null,"9"),"CRLF")
+         add
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         getlocal2
+         pushstring "Content-Disposition: form-data; name=\"Upload\""
+         getlex QName(PrivateNamespace(null,"9"),"CRLF")
+         add
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         getlocal2
+         getlex QName(PrivateNamespace(null,"9"),"CRLF")
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         getlocal2
+         pushstring "Submit Query"
+         getlex QName(PrivateNamespace(null,"9"),"CRLF")
+         add
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         ofs0154:
+         getlocal2
+         getlocal1
+         pushstring "--"
+         add
+         callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         getlocal2
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"position")
+         getlocal2
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"position")
+         getlocal2
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function onComplete(param1:Event) : void
+      {
+         trait method QName(PrivateNamespace(null,"9"),"onComplete")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"Event")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"dispose"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function onProgress(param1:ProgressEvent) : void
+      {
+         trait method QName(PrivateNamespace(null,"9"),"onProgress")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"ProgressEvent")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function onIOError(param1:IOErrorEvent) : void
+      {
+         trait method QName(PrivateNamespace(null,"9"),"onIOError")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"IOErrorEvent")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"dispose"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function onSecurityError(param1:SecurityErrorEvent) : void
+      {
+         trait method QName(PrivateNamespace(null,"9"),"onSecurityError")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"SecurityErrorEvent")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"dispose"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function onHTTPStatus(param1:HTTPStatusEvent) : void
+      {
+         trait method QName(PrivateNamespace(null,"9"),"onHTTPStatus")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"HTTPStatusEvent")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+import flash.utils.ByteArray;
+
+class File
+{
+   method
+   name null
+   returns null
+   
+   body
+   maxstack 1
+   localcount 1
+   initscopedepth 3
+   maxscopedepth 4
+   
+   code
+   getlocal0
+   pushscope
+   returnvoid
+   end ; code
+   end ; body
+   end ; method
+   
+   internal var fileName:String;
+   
+   internal var data:ByteArray;
+   
+   internal var dataField:String;
+   
+   internal var contentType:String;
+   
+   public function File(param1:String, param2:ByteArray, param3:String = "Filedata", param4:String = "application/octet-stream")
+   {
+      method
+      name null
+      flag HAS_OPTIONAL
+      param QName(PackageNamespace(""),"String")
+      param QName(PackageNamespace("flash.utils"),"ByteArray")
+      param QName(PackageNamespace(""),"String")
+      param QName(PackageNamespace(""),"String")
+      optional Utf8("Filedata")
+      optional Utf8("application/octet-stream")
+      returns null
+      
+      body
+      maxstack 2
+      localcount 5
+      initscopedepth 4
+      maxscopedepth 5
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      constructsuper 0
+      getlocal0
+      getlocal1
+      initproperty QName(PrivateNamespace(null,"10"),"fileName")
+      getlocal0
+      getlocal2
+      initproperty QName(PrivateNamespace(null,"10"),"data")
+      getlocal0
+      getlocal3
+      initproperty QName(PrivateNamespace(null,"10"),"dataField")
+      getlocal0
+      getlocal 4
+      initproperty QName(PrivateNamespace(null,"10"),"contentType")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 4
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("SmartURLLoader",[PackageNamespace("com.newgrounds")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+newclass 18
+popscope
+popscope
+initproperty QName(PackageNamespace("com.newgrounds"),"SmartURLLoader")
+findpropstrict Multiname("File",[PrivateNamespace(null,"10")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace(""),"Object")
+newclass 19
+popscope
+initproperty QName(PrivateNamespace(null,"10"),"File")
+returnvoid
+end ; code
+end ; body
+end ; method
+

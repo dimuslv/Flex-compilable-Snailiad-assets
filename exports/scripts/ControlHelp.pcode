@@ -1,0 +1,1298 @@
+package
+{
+   import org.flixel.*;
+   
+   public class ControlHelp extends FlxGroup
+   {
+      private static const IMG_WIDTH:int = 336;
+      
+      private static const IMG_HEIGHT:int = 32;
+      
+      private static const IMG_LETTER_WIDTH:int = 16;
+      
+      private static const IMG_LETTER_HEIGHT:int = 16;
+      
+      private static const SCROLL_RATE:Number = 2.5;
+      
+      private static const TEXTPOS_BASE:int = 0;
+      
+      private static const TEXTPOS_SPACING:int = 16;
+      
+      private static const TEXT_JUMP1:int = 0;
+      
+      private static const TEXT_SHOOT1:int = 1;
+      
+      private static const TEXT_UP1:int = 2;
+      
+      private static const TEXT_DOWN1:int = 3;
+      
+      private static const TEXT_LEFT1:int = 4;
+      
+      private static const TEXT_RIGHT1:int = 5;
+      
+      private static const TEXT_UP2:int = 6;
+      
+      private static const TEXT_DOWN2:int = 7;
+      
+      private static const TEXT_LEFT2:int = 8;
+      
+      private static const TEXT_RIGHT2:int = 9;
+      
+      private static const TEXT_JUMP2:int = 10;
+      
+      private static const TEXT_SHOOT2:int = 11;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 7
+      maxscopedepth 8
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"33"),"IMG_WIDTH")
+      pushshort 336
+      initproperty QName(PrivateNamespace(null,"33"),"IMG_WIDTH")
+      findproperty QName(PrivateNamespace(null,"33"),"IMG_HEIGHT")
+      pushbyte 32
+      initproperty QName(PrivateNamespace(null,"33"),"IMG_HEIGHT")
+      findproperty QName(PrivateNamespace(null,"33"),"IMG_LETTER_WIDTH")
+      pushbyte 16
+      initproperty QName(PrivateNamespace(null,"33"),"IMG_LETTER_WIDTH")
+      findproperty QName(PrivateNamespace(null,"33"),"IMG_LETTER_HEIGHT")
+      pushbyte 16
+      initproperty QName(PrivateNamespace(null,"33"),"IMG_LETTER_HEIGHT")
+      findproperty QName(PrivateNamespace(null,"33"),"SCROLL_RATE")
+      pushdouble 2.5
+      initproperty QName(PrivateNamespace(null,"33"),"SCROLL_RATE")
+      findproperty QName(PrivateNamespace(null,"33"),"TEXTPOS_BASE")
+      pushbyte 0
+      initproperty QName(PrivateNamespace(null,"33"),"TEXTPOS_BASE")
+      findproperty QName(PrivateNamespace(null,"33"),"TEXTPOS_SPACING")
+      pushbyte 16
+      initproperty QName(PrivateNamespace(null,"33"),"TEXTPOS_SPACING")
+      findproperty QName(PrivateNamespace(null,"33"),"TEXT_JUMP1")
+      pushbyte 0
+      initproperty QName(PrivateNamespace(null,"33"),"TEXT_JUMP1")
+      findproperty QName(PrivateNamespace(null,"33"),"TEXT_SHOOT1")
+      pushbyte 1
+      initproperty QName(PrivateNamespace(null,"33"),"TEXT_SHOOT1")
+      findproperty QName(PrivateNamespace(null,"33"),"TEXT_UP1")
+      pushbyte 2
+      initproperty QName(PrivateNamespace(null,"33"),"TEXT_UP1")
+      findproperty QName(PrivateNamespace(null,"33"),"TEXT_DOWN1")
+      pushbyte 3
+      initproperty QName(PrivateNamespace(null,"33"),"TEXT_DOWN1")
+      findproperty QName(PrivateNamespace(null,"33"),"TEXT_LEFT1")
+      pushbyte 4
+      initproperty QName(PrivateNamespace(null,"33"),"TEXT_LEFT1")
+      findproperty QName(PrivateNamespace(null,"33"),"TEXT_RIGHT1")
+      pushbyte 5
+      initproperty QName(PrivateNamespace(null,"33"),"TEXT_RIGHT1")
+      findproperty QName(PrivateNamespace(null,"33"),"TEXT_UP2")
+      pushbyte 6
+      initproperty QName(PrivateNamespace(null,"33"),"TEXT_UP2")
+      findproperty QName(PrivateNamespace(null,"33"),"TEXT_DOWN2")
+      pushbyte 7
+      initproperty QName(PrivateNamespace(null,"33"),"TEXT_DOWN2")
+      findproperty QName(PrivateNamespace(null,"33"),"TEXT_LEFT2")
+      pushbyte 8
+      initproperty QName(PrivateNamespace(null,"33"),"TEXT_LEFT2")
+      findproperty QName(PrivateNamespace(null,"33"),"TEXT_RIGHT2")
+      pushbyte 9
+      initproperty QName(PrivateNamespace(null,"33"),"TEXT_RIGHT2")
+      findproperty QName(PrivateNamespace(null,"33"),"TEXT_JUMP2")
+      pushbyte 10
+      initproperty QName(PrivateNamespace(null,"33"),"TEXT_JUMP2")
+      findproperty QName(PrivateNamespace(null,"33"),"TEXT_SHOOT2")
+      pushbyte 11
+      initproperty QName(PrivateNamespace(null,"33"),"TEXT_SHOOT2")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public var bg:FlxSprite;
+      
+      public var letters:Array;
+      
+      public var textX:Array;
+      
+      public var textY:Array;
+      
+      public var targetX:int;
+      
+      public var targetXv:Number = 0;
+      
+      public var xv:Number = 0;
+      
+      public var hideTimer:Number = 0;
+      
+      public var animTimer:Number = 0;
+      
+      public var menuHelp:Boolean = false;
+      
+      public function ControlHelp(param1:Boolean = false)
+      {
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Boolean")
+         optional False()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 3
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlex QName(PrivateNamespace(null,"33"),"IMG_WIDTH")
+         negate
+         initproperty QName(PackageNamespace(""),"targetX")
+         getlocal0
+         constructsuper 0
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 0
+         initproperty QName(PackageNamespace(""),"bg")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getlex QName(PackageNamespace(""),"Art")
+         getproperty QName(PackageNamespace(""),"ControlHelpBg")
+         pushfalse
+         pushfalse
+         getlex QName(PrivateNamespace(null,"33"),"IMG_WIDTH")
+         getlex QName(PrivateNamespace(null,"33"),"IMG_HEIGHT")
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 5
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getlex QName(PrivateNamespace(null,"33"),"IMG_WIDTH")
+         setproperty QName(PackageNamespace(""),"width")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getlex QName(PrivateNamespace(null,"33"),"IMG_HEIGHT")
+         setproperty QName(PackageNamespace(""),"height")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getlex QName(PrivateNamespace(null,"33"),"IMG_WIDTH")
+         negate
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         pushshort 200
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal2
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal2
+         kill 2
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         pushstring "nogun"
+         pushbyte 0
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         pushstring "gun"
+         pushbyte 1
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         pushshort -500
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getlex QName(PackageNamespace(""),"x")
+         initproperty QName(PackageNamespace(""),"targetX")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         pushstring "nogun"
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"33"),"createAndAddAllLetters"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function updateLetterGraphics() : void
+      {
+         trait method QName(PackageNamespace(""),"updateLetterGraphics")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_JUMP1")
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"JUMP_KEY")
+         callpropvoid Multiname("play",[PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_UP1")
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"UP_KEY")
+         callpropvoid Multiname("play",[PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_DOWN1")
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"DOWN_KEY")
+         callpropvoid Multiname("play",[PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_LEFT1")
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"LEFT_KEY")
+         callpropvoid Multiname("play",[PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_RIGHT1")
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"RIGHT_KEY")
+         callpropvoid Multiname("play",[PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_UP2")
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"ALT_UP_KEY")
+         callpropvoid Multiname("play",[PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_DOWN2")
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"ALT_DOWN_KEY")
+         callpropvoid Multiname("play",[PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_LEFT2")
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"ALT_LEFT_KEY")
+         callpropvoid Multiname("play",[PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_RIGHT2")
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"ALT_RIGHT_KEY")
+         callpropvoid Multiname("play",[PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_JUMP2")
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"ALT_JUMP_KEY")
+         callpropvoid Multiname("play",[PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_SHOOT1")
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"SHOOT_KEY")
+         callpropvoid Multiname("play",[PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_SHOOT2")
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"Player")
+         getproperty QName(PackageNamespace(""),"ALT_SHOOT_KEY")
+         callpropvoid Multiname("play",[PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         convert_b
+         dup
+         iffalse ofs00fe
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hasAnyWeapon"), 0
+         convert_b
+         ofs00fe:
+         iffalse ofs0122
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_SHOOT1")
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushtrue
+         setproperty Multiname("visible",[PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_SHOOT2")
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushtrue
+         setproperty Multiname("visible",[PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         jump ofs013e
+         ofs0122:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_SHOOT1")
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushfalse
+         setproperty Multiname("visible",[PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_SHOOT2")
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushfalse
+         setproperty Multiname("visible",[PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         ofs013e:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function updateLetterPositions() : void
+      {
+         trait method QName(PackageNamespace(""),"updateLetterPositions")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal1
+         jump ofs0027
+         ofs0009:
+         label
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PackageNamespace(""),"textX")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getproperty QName(PackageNamespace(""),"x")
+         add
+         setproperty Multiname("x",[PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         inclocal_i 1
+         ofs0027:
+         getlocal1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getproperty QName(PackageNamespace(""),"length")
+         iflt ofs0009
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function createAndAddSingleLetter(param1:int, param2:int, param3:int) : void
+      {
+         trait method QName(PrivateNamespace(null,"33"),"createAndAddSingleLetter")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 6
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("org.flixel"),"FlxSprite")
+         setlocal 4
+         getlocal0
+         getproperty QName(PackageNamespace(""),"textX")
+         getlocal1
+         getlocal2
+         getlex QName(PrivateNamespace(null,"33"),"TEXTPOS_SPACING")
+         multiply
+         getlex QName(PrivateNamespace(null,"33"),"TEXTPOS_BASE")
+         add
+         setproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PackageNamespace(""),"textY")
+         getlocal1
+         getlocal3
+         getlex QName(PrivateNamespace(null,"33"),"TEXTPOS_SPACING")
+         multiply
+         getlex QName(PrivateNamespace(null,"33"),"TEXTPOS_BASE")
+         add
+         setproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 0
+         coerce QName(PackageNamespace("org.flixel"),"FlxSprite")
+         dup
+         setlocal 4
+         getlex QName(PackageNamespace(""),"Art")
+         getproperty QName(PackageNamespace(""),"ControlHelpLetters")
+         pushfalse
+         pushfalse
+         getlex QName(PrivateNamespace(null,"33"),"IMG_LETTER_WIDTH")
+         getlex QName(PrivateNamespace(null,"33"),"IMG_LETTER_HEIGHT")
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 5
+         getlocal 4
+         getlex QName(PrivateNamespace(null,"33"),"IMG_WIDTH")
+         setproperty QName(PackageNamespace(""),"width")
+         getlocal 4
+         getlex QName(PrivateNamespace(null,"33"),"IMG_HEIGHT")
+         setproperty QName(PackageNamespace(""),"height")
+         getlocal 4
+         pushshort -900
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 4
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"textY")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 4
+         pushstring "A"
+         pushbyte 0
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "B"
+         pushbyte 1
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "C"
+         pushbyte 2
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "D"
+         pushbyte 3
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "E"
+         pushbyte 4
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "F"
+         pushbyte 5
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "G"
+         pushbyte 6
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "H"
+         pushbyte 7
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "I"
+         pushbyte 8
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "J"
+         pushbyte 9
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "K"
+         pushbyte 10
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "L"
+         pushbyte 11
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "M"
+         pushbyte 12
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "N"
+         pushbyte 13
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "O"
+         pushbyte 14
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "P"
+         pushbyte 15
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "Q"
+         pushbyte 16
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "R"
+         pushbyte 17
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "S"
+         pushbyte 18
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "T"
+         pushbyte 19
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "U"
+         pushbyte 20
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "V"
+         pushbyte 21
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "W"
+         pushbyte 22
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "X"
+         pushbyte 23
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "Y"
+         pushbyte 24
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "Z"
+         pushbyte 25
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "QUOTE"
+         pushbyte 26
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "ONE"
+         pushbyte 27
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "TWO"
+         pushbyte 28
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "THREE"
+         pushbyte 29
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "FOUR"
+         pushbyte 30
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "FIVE"
+         pushbyte 31
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "SIX"
+         pushbyte 32
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "SEVEN"
+         pushbyte 33
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "EIGHT"
+         pushbyte 34
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "NINE"
+         pushbyte 35
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "ZERO"
+         pushbyte 36
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "MINUS"
+         pushbyte 37
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "PLUS"
+         pushbyte 38
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "LBRACKET"
+         pushbyte 39
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "RBRACKET"
+         pushbyte 40
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "SEMICOLON"
+         pushbyte 41
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "BACKSLASH"
+         pushbyte 43
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "SLASH"
+         pushbyte 44
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "COMMA"
+         pushbyte 45
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "PERIOD"
+         pushbyte 46
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "COLON"
+         pushbyte 48
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "ALT"
+         pushbyte 49
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "CONTROL"
+         pushbyte 50
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "SHIFT"
+         pushbyte 51
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "ENTER"
+         pushbyte 52
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "UP"
+         pushbyte 53
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "LEFT"
+         pushbyte 54
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "DOWN"
+         pushbyte 55
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "RIGHT"
+         pushbyte 56
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         pushstring "SPACE"
+         pushbyte 57
+         newarray 1
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal 5
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 5
+         kill 5
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 4
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal 4
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlocal1
+         getlocal 4
+         setproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function createAndAddAllLetters() : void
+      {
+         trait method QName(PrivateNamespace(null,"33"),"createAndAddAllLetters")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         initproperty QName(PackageNamespace(""),"letters")
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         initproperty QName(PackageNamespace(""),"textX")
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         initproperty QName(PackageNamespace(""),"textY")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_JUMP1")
+         pushbyte 0
+         pushbyte 1
+         callpropvoid QName(PrivateNamespace(null,"33"),"createAndAddSingleLetter"), 3
+         getlocal0
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_SHOOT1")
+         pushbyte 1
+         dup
+         callpropvoid QName(PrivateNamespace(null,"33"),"createAndAddSingleLetter"), 3
+         getlocal0
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_UP1")
+         pushbyte 5
+         pushbyte 0
+         callpropvoid QName(PrivateNamespace(null,"33"),"createAndAddSingleLetter"), 3
+         getlocal0
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_LEFT1")
+         pushbyte 4
+         pushbyte 1
+         callpropvoid QName(PrivateNamespace(null,"33"),"createAndAddSingleLetter"), 3
+         getlocal0
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_DOWN1")
+         pushbyte 5
+         pushbyte 1
+         callpropvoid QName(PrivateNamespace(null,"33"),"createAndAddSingleLetter"), 3
+         getlocal0
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_RIGHT1")
+         pushbyte 6
+         pushbyte 1
+         callpropvoid QName(PrivateNamespace(null,"33"),"createAndAddSingleLetter"), 3
+         getlocal0
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_UP2")
+         pushbyte 14
+         pushbyte 0
+         callpropvoid QName(PrivateNamespace(null,"33"),"createAndAddSingleLetter"), 3
+         getlocal0
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_LEFT2")
+         pushbyte 13
+         pushbyte 1
+         callpropvoid QName(PrivateNamespace(null,"33"),"createAndAddSingleLetter"), 3
+         getlocal0
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_DOWN2")
+         pushbyte 14
+         pushbyte 1
+         callpropvoid QName(PrivateNamespace(null,"33"),"createAndAddSingleLetter"), 3
+         getlocal0
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_RIGHT2")
+         pushbyte 15
+         pushbyte 1
+         callpropvoid QName(PrivateNamespace(null,"33"),"createAndAddSingleLetter"), 3
+         getlocal0
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_SHOOT2")
+         pushbyte 17
+         pushbyte 1
+         callpropvoid QName(PrivateNamespace(null,"33"),"createAndAddSingleLetter"), 3
+         getlocal0
+         getlex QName(PrivateNamespace(null,"33"),"TEXT_JUMP2")
+         pushbyte 18
+         pushbyte 1
+         callpropvoid QName(PrivateNamespace(null,"33"),"createAndAddSingleLetter"), 3
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"updateLetterPositions"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function destroy() : void
+      {
+         trait method QName(PackageNamespace(""),"destroy")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal1
+         jump ofs0015
+         ofs0009:
+         label
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         getlocal1
+         pushnull
+         setproperty MultinameL([PrivateNamespace(null,"33"),PackageNamespace(""),PrivateNamespace(null,"393"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("ControlHelp"),StaticProtectedNs("ControlHelp"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         inclocal_i 1
+         ofs0015:
+         getlocal1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"letters")
+         callproperty QName(PackageNamespace(""),"length"), 0
+         iflt ofs0009
+         getlocal0
+         pushnull
+         initproperty QName(PackageNamespace(""),"letters")
+         getlocal0
+         pushnull
+         initproperty QName(PackageNamespace(""),"textX")
+         getlocal0
+         pushnull
+         initproperty QName(PackageNamespace(""),"textY")
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"destroy"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function toggle() : void
+      {
+         trait method QName(PackageNamespace(""),"toggle")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"hideTimer")
+         pushbyte 0
+         ifngt ofs0015
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"hide"), 0
+         jump ofs001a
+         ofs0015:
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"show"), 0
+         ofs001a:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function show(param1:Boolean = false) : void
+      {
+         trait method QName(PackageNamespace(""),"show")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Boolean")
+         optional False()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 2
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         coerce_a
+         convert_b
+         dup
+         iffalse ofs001c
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hasAnyWeapon"), 0
+         coerce_a
+         convert_b
+         ofs001c:
+         dup
+         iftrue ofs0024
+         pop
+         getlocal1
+         convert_b
+         ofs0024:
+         iffalse ofs0037
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         pushstring "gun"
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         jump ofs0042
+         ofs0037:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         pushstring "nogun"
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         ofs0042:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         ifngt ofs0062
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getproperty QName(PackageNamespace(""),"width")
+         negate
+         setproperty QName(PackageNamespace(""),"x")
+         ofs0062:
+         getlocal0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 2
+         divide
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 2
+         divide
+         subtract
+         initproperty QName(PackageNamespace(""),"targetX")
+         getlocal0
+         pushbyte 0
+         initproperty QName(PackageNamespace(""),"xv")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"updateLetterGraphics"), 0
+         getlocal0
+         pushbyte 11
+         initproperty QName(PackageNamespace(""),"hideTimer")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function hide() : void
+      {
+         trait method QName(PackageNamespace(""),"hide")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 1
+         add
+         ifngt ofs0029
+         getlocal0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         pushshort 300
+         add
+         initproperty QName(PackageNamespace(""),"targetX")
+         jump ofs0035
+         ofs0029:
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getproperty QName(PackageNamespace(""),"width")
+         negate
+         initproperty QName(PackageNamespace(""),"targetX")
+         ofs0035:
+         getlocal0
+         pushbyte -1
+         initproperty QName(PackageNamespace(""),"hideTimer")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"realState")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"STATE_GAME")
+         equals
+         not
+         dup
+         iffalse ofs001b
+         pop
+         getlocal0
+         getproperty QName(PackageNamespace(""),"menuHelp")
+         not
+         ofs001b:
+         iffalse ofs0020
+         returnvoid
+         ofs0020:
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"hideTimer")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         subtract
+         initproperty QName(PackageNamespace(""),"hideTimer")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"hideTimer")
+         pushbyte 0
+         ifnle ofs003e
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"hide"), 0
+         ofs003e:
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"updateLetterPositions"), 0
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"targetX")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getproperty QName(PackageNamespace(""),"x")
+         subtract
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         multiply
+         pushbyte 4
+         multiply
+         initproperty QName(PackageNamespace(""),"targetXv")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"targetXv")
+         pushbyte 10
+         ifngt ofs006d
+         getlocal0
+         pushbyte 10
+         initproperty QName(PackageNamespace(""),"targetXv")
+         ofs006d:
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"xv")
+         pushbyte 81
+         multiply
+         getlocal0
+         getproperty QName(PackageNamespace(""),"targetXv")
+         pushbyte 19
+         multiply
+         add
+         pushbyte 100
+         divide
+         initproperty QName(PackageNamespace(""),"xv")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"xv")
+         pushdouble 0.05
+         lessthan
+         dup
+         iffalse ofs0098
+         pop
+         getlocal0
+         getproperty QName(PackageNamespace(""),"xv")
+         pushdouble -0.05
+         greaterthan
+         ofs0098:
+         iffalse ofs00a2
+         getlocal0
+         pushbyte 0
+         initproperty QName(PackageNamespace(""),"xv")
+         ofs00a2:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bg")
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"xv")
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 7
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("ControlHelp",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGroup")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGroup")
+newclass 104
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"ControlHelp")
+returnvoid
+end ; code
+end ; body
+end ; method
+

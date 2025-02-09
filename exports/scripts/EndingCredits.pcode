@@ -1,0 +1,884 @@
+package
+{
+   import org.flixel.FlxG;
+   import org.flixel.FlxGroup;
+   import org.flixel.FlxObject;
+   import org.flixel.FlxText;
+   
+   public class EndingCredits extends FlxGroup
+   {
+      private static const VELOCITY_Y:Number = -33;
+      
+      private static const SPACING_Y_MINOR:Number = 2;
+      
+      private static const SPACING_Y_MAJOR:Number = 32;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 7
+      maxscopedepth 8
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"160"),"VELOCITY_Y")
+      pushbyte -33
+      initproperty QName(PrivateNamespace(null,"160"),"VELOCITY_Y")
+      findproperty QName(PrivateNamespace(null,"160"),"SPACING_Y_MINOR")
+      pushbyte 2
+      initproperty QName(PrivateNamespace(null,"160"),"SPACING_Y_MINOR")
+      findproperty QName(PrivateNamespace(null,"160"),"SPACING_Y_MAJOR")
+      pushbyte 32
+      initproperty QName(PrivateNamespace(null,"160"),"SPACING_Y_MAJOR")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var createY:Number;
+      
+      private var _theEnd:FlxObject;
+      
+      public var scrollDone:Boolean = false;
+      
+      public function EndingCredits()
+      {
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 5
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 4
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         constructsuper 0
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_NONE")
+         pushstring "CREDITS"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 40
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         pushbyte -30
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SPIKEY")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 30
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SPIKEY2")
+         pushstring "SPIKEY"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte -25
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_BABYFISH")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 25
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_BABYFISH2")
+         pushstring "BABYFISH"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte -13
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_FLOATSPIKE")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 13
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_FLOATSPIKE2")
+         pushstring "FLOATSPIKE"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte -30
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_BLOB1")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte -10
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_BLOB2")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 10
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_BLOB3")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 30
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_BLOB4")
+         pushstring "BLOB, BLUB, ANGELBLOB, AND DEVILBLOB"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte -14
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_CHIRPY")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 14
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_CHIRPY2")
+         pushstring "CHIRPY"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_BATTY_BAT")
+         pushstring "BATTY BAT"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte -12
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_FIREBALL")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 12
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_ICEBALL")
+         pushstring "FIREBALL AND ICEBALL"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SECRET_SNELK")
+         pushstring "SECRET SNELK"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_KITTY")
+         pushstring "KITTY!!"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_DANDELION")
+         pushstring "GHOST DANDELION"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte -30
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_CANNON")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte -30
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_CANNON_HUB")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 30
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_CANNON2")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 30
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_CANNON2_HUB")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 30
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_NONE")
+         pushstring "CANON AND NON-CANON"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte -20
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SNAKEY")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 20
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_BLUE_SNAKEY")
+         pushstring "SNAKEY"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SKY_SNAKE")
+         pushstring "SKY VIPER"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SPIDER")
+         pushstring "SPIDER"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SPIDER_MAMA")
+         pushstring "SPIDER MAMA"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_GRAVITY_TURTLE")
+         pushstring "GRAVITY TURTLE"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_CHERRY_TURTLE")
+         pushstring "GRAVITY TURTLE (CHERRY RED FINISH)"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_JELLYFISH")
+         pushstring "JELLYFISH"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SEAHORSE")
+         pushstring "SYNGNATHIDA"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte -26
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_TALLFISH")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 26
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_TALLFISH2")
+         pushstring "TALLFISH AND ANGRY TALLFISH"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_WALLEYE")
+         pushstring "WALLEYE"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte -17
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_PINCER")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 17
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SKY_PINCER")
+         pushstring "PINCER AND SKY PINCER"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_GEAR")
+         pushstring "SPINNYGEAR"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_FEDERATION_DRONE")
+         pushstring "FEDERATION DRONE"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_BALLOON")
+         pushstring "BALLOON BUSTER"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 30
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 30
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SHELLBREAKER")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SHELLBREAKER_HAND1")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SHELLBREAKER_HAND2")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SHELLBREAKER_HAND3")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SHELLBREAKER_HAND4")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SHELLBREAKER_HAND5")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SHELLBREAKER_HAND6")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SHELLBREAKER_EYES")
+         pushstring "SHELLBREAKER"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 30
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 30
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         pushbyte -100
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_STOMPY_LFOOT")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 100
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_STOMPY_RFOOT")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 27
+         subtract
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         pushbyte -49
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_STOMPY_EYE")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte -49
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_STOMPY_EYELID")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte -49
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_STOMPY_PUPIL")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 45
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_STOMPY_EYE")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 45
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_STOMPY_EYELID")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         pushbyte 45
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_STOMPY_PUPIL")
+         pushstring ""
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 27
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushshort 160
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_NONE")
+         pushstring "STOMPY"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 30
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SPACE_BOX")
+         pushstring "SPACE BOX"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 30
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_MOON_SNAIL")
+         pushstring "MOON SNAIL"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 30
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_GIGA_SNAIL")
+         pushstring "GIGA SNAIL"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 30
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SNAILY_SNAIL")
+         pushstring "SNAILY SNAIL"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 30
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_SLUGGY_SLUG")
+         pushstring "SLUGGY SLUG"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 30
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_TARSH")
+         pushstring "NEWSTARSHIPSMELL\n(TESTED SNAILY GAME EXTENSIVELY!!)"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 10
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_XDANOND")
+         pushstring "XDANOND\n(DREW SEVERAL THINGS FOR ME!!)"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 10
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_ADAMATOMIC")
+         pushstring "ADAMATOMIC\n(CREATED FLIXEL, WITHOUT WHICH\nSNAILY GAME WOULD NOT EXIST!)"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 10
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_AURIPLANE")
+         pushstring "AURIPLANE\n(AUTHOR ARTIST COMPOSER ETC ETC)"
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 70
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_NONE")
+         pushstring "AND YOU\n\n\n"
+         pushstring "BECAUSE SERIOUSLY, WHY NOT\n\n\n"
+         add
+         pushstring "ALL THE OTHER GAMES\n"
+         add
+         pushstring "PUT \"AND YOU\" IN THE CREDITS\n"
+         add
+         pushstring "SO I FIGURE, \"AND YOU\" MUST BE\n"
+         add
+         pushstring "SOMEONE PRETTY COOL\n\n\n"
+         add
+         pushstring "THANKS, AND YOU!!"
+         add
+         callpropvoid QName(PackageNamespace(""),"addEnemy"), 3
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         pushbyte 40
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         getlocal0
+         pushbyte 0
+         getlex QName(PackageNamespace(""),"EndingEnemy")
+         getproperty QName(PackageNamespace(""),"TYPE_THE_END")
+         pushstring ""
+         callproperty QName(PackageNamespace(""),"addEnemy"), 3
+         initproperty QName(PrivateNamespace(null,"160"),"_theEnd")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function destroy() : void
+      {
+         trait method QName(PackageNamespace(""),"destroy")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         pushnull
+         initproperty QName(PrivateNamespace(null,"160"),"_theEnd")
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"destroy"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function addEnemy(param1:int, param2:int, param3:String) : FlxObject
+      {
+         trait method QName(PackageNamespace(""),"addEnemy")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace("org.flixel"),"FlxObject")
+         
+         body
+         maxstack 4
+         localcount 7
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace(""),"EndingEnemy")
+         setlocal 4
+         pushnull
+         coerce QName(PackageNamespace("org.flixel"),"FlxText")
+         setlocal 5
+         findpropstrict QName(PackageNamespace(""),"EndingEnemy")
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal2
+         constructprop QName(PackageNamespace(""),"EndingEnemy"), 3
+         coerce QName(PackageNamespace(""),"EndingEnemy")
+         dup
+         setlocal 4
+         getproperty QName(PackageNamespace(""),"velocity")
+         getlex QName(PrivateNamespace(null,"160"),"VELOCITY_Y")
+         setproperty QName(PackageNamespace(""),"y")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal 4
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal3
+         pushstring ""
+         ifne ofs003c
+         getlocal 4
+         returnvalue
+         ofs003c:
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"height")
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlex QName(PrivateNamespace(null,"160"),"SPACING_Y_MINOR")
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxText")
+         pushbyte -4
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxText"), 3
+         coerce QName(PackageNamespace("org.flixel"),"FlxText")
+         dup
+         setlocal 5
+         getlex QName(PackageNamespace(""),"Fonts")
+         getproperty QName(PackageNamespace(""),"normal")
+         setproperty QName(PackageNamespace(""),"font")
+         getlocal 5
+         pushbyte 20
+         setproperty QName(PackageNamespace(""),"size")
+         getlocal 5
+         pushint 16777215
+         setproperty QName(PackageNamespace(""),"color")
+         getlocal 5
+         pushtrue
+         setproperty QName(PackageNamespace(""),"outline")
+         getlocal 5
+         pushdouble 4278190080
+         setproperty QName(PackageNamespace(""),"outlineColor")
+         getlocal 5
+         pushstring "center"
+         setproperty QName(PackageNamespace(""),"alignment")
+         getlocal 5
+         getlocal3
+         setproperty QName(PackageNamespace(""),"text")
+         getlocal 5
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         getlocal 5
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal 6
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal 6
+         kill 6
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 5
+         getproperty QName(PackageNamespace(""),"velocity")
+         getlex QName(PrivateNamespace(null,"160"),"VELOCITY_Y")
+         setproperty QName(PackageNamespace(""),"y")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal 5
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal 5
+         getproperty QName(PackageNamespace(""),"realHeight")
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlex QName(PrivateNamespace(null,"160"),"SPACING_Y_MAJOR")
+         add
+         initproperty QName(PrivateNamespace(null,"160"),"createY")
+         getlocal 5
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"_theEnd")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 2
+         divide
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"_theEnd")
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 2
+         divide
+         subtract
+         ifnlt ofs004d
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"_theEnd")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 2
+         divide
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"_theEnd")
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 2
+         divide
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"160"),"_theEnd")
+         getproperty QName(PackageNamespace(""),"velocity")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         pushtrue
+         initproperty QName(PackageNamespace(""),"scrollDone")
+         ofs004d:
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"update"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 7
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("EndingCredits",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGroup")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGroup")
+newclass 399
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"EndingCredits")
+returnvoid
+end ; code
+end ; body
+end ; method
+

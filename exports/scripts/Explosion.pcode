@@ -1,0 +1,221 @@
+package
+{
+   import org.flixel.FlxSprite;
+   
+   public class Explosion extends FlxSprite
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 7
+      maxscopedepth 8
+      
+      code
+      getlocal0
+      pushscope
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public function Explosion()
+      {
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         findproperty QName(PackageNamespace(""),"exists")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"exists")
+         findproperty QName(PackageNamespace(""),"solid")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"solid")
+         findproperty QName(PackageNamespace(""),"visible")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"visible")
+         findproperty QName(PackageNamespace(""),"dead")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"dead")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function boom(param1:int, param2:int) : void
+      {
+         trait method QName(PackageNamespace(""),"boom")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 3
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         findproperty QName(PackageNamespace(""),"x")
+         getlocal1
+         initproperty QName(PackageNamespace(""),"x")
+         findproperty QName(PackageNamespace(""),"y")
+         getlocal2
+         initproperty QName(PackageNamespace(""),"y")
+         findproperty QName(PackageNamespace(""),"dead")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"dead")
+         findproperty QName(PackageNamespace(""),"visible")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"visible")
+         findproperty QName(PackageNamespace(""),"exists")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"exists")
+         findpropstrict QName(PackageNamespace(""),"play")
+         pushstring "boom"
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"realState")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"STATE_GAME")
+         ifeq ofs0013
+         returnvoid
+         ofs0013:
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"update"), 0
+         getlex QName(PackageNamespace(""),"finished")
+         iffalse ofs0034
+         findproperty QName(PackageNamespace(""),"dead")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"dead")
+         findproperty QName(PackageNamespace(""),"visible")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"visible")
+         findproperty QName(PackageNamespace(""),"exists")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"exists")
+         ofs0034:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function kill() : void
+      {
+         trait method QName(PackageNamespace(""),"kill")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         findproperty QName(PackageNamespace(""),"dead")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"dead")
+         findproperty QName(PackageNamespace(""),"visible")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"visible")
+         findproperty QName(PackageNamespace(""),"exists")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"exists")
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"kill"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 7
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("Explosion",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+newclass 384
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"Explosion")
+returnvoid
+end ; code
+end ; body
+end ; method
+

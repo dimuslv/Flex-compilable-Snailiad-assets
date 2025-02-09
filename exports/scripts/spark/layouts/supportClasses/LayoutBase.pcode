@@ -1,0 +1,3251 @@
+package spark.layouts.supportClasses
+{
+   import flash.display.DisplayObject;
+   import flash.events.Event;
+   import flash.events.TimerEvent;
+   import flash.geom.Point;
+   import flash.geom.Rectangle;
+   import flash.utils.Timer;
+   import mx.core.ILayoutElement;
+   import mx.core.UIComponentGlobals;
+   import mx.core.mx_internal;
+   import mx.events.DragEvent;
+   import mx.events.PropertyChangeEvent;
+   import mx.managers.ILayoutManagerClient;
+   import mx.utils.OnDemandEventDispatcher;
+   import spark.components.supportClasses.GroupBase;
+   import spark.components.supportClasses.OverlayDepth;
+   import spark.core.NavigationUnit;
+   
+   use namespace mx_internal;
+   
+   public class LayoutBase extends OnDemandEventDispatcher
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 4
+      maxscopedepth 5
+      
+      code
+      getlocal0
+      pushscope
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var _target:GroupBase;
+      
+      private var _useVirtualLayout:Boolean = false;
+      
+      private var _horizontalScrollPosition:Number = 0;
+      
+      private var _verticalScrollPosition:Number = 0;
+      
+      private var _clipAndEnableScrolling:Boolean = false;
+      
+      private var _typicalLayoutElement:ILayoutElement = null;
+      
+      private var _dropIndicator:DisplayObject;
+      
+      private var _dragScrollTimer:Timer;
+      
+      private var _dragScrollDelta:Point;
+      
+      private var _dragScrollEvent:DragEvent;
+      
+      mx_internal var dragScrollRegionSizeHorizontal:Number = 20;
+      
+      mx_internal var dragScrollRegionSizeVertical:Number = 20;
+      
+      mx_internal var dragScrollSpeed:Number = 5;
+      
+      mx_internal var dragScrollInitialDelay:int = 250;
+      
+      mx_internal var dragScrollInterval:int = 32;
+      
+      mx_internal var dragScrollHidesIndicator:Boolean = false;
+      
+      public function LayoutBase()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get target() : GroupBase
+      {
+         trait getter QName(PackageNamespace(""),"target")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("spark.components.supportClasses"),"GroupBase")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_target")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set target(param1:GroupBase) : void
+      {
+         trait setter QName(PackageNamespace(""),"target")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("spark.components.supportClasses"),"GroupBase")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_target")
+         getlocal1
+         ifne ofs000c
+         returnvoid
+         ofs000c:
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"clearVirtualLayoutCache"), 0
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"62"),"_target")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get useVirtualLayout() : Boolean
+      {
+         trait getter QName(PackageNamespace(""),"useVirtualLayout")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_useVirtualLayout")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set useVirtualLayout(param1:Boolean) : void
+      {
+         trait setter QName(PackageNamespace(""),"useVirtualLayout")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_useVirtualLayout")
+         getlocal1
+         ifne ofs000c
+         returnvoid
+         ofs000c:
+         findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+         findpropstrict QName(PackageNamespace("flash.events"),"Event")
+         pushstring "useVirtualLayoutChanged"
+         constructprop QName(PackageNamespace("flash.events"),"Event"), 1
+         callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_useVirtualLayout")
+         convert_b
+         dup
+         iffalse ofs0028
+         pop
+         getlocal1
+         not
+         ofs0028:
+         iffalse ofs0031
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"clearVirtualLayoutCache"), 0
+         ofs0031:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"62"),"_useVirtualLayout")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         iffalse ofs0046
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         callpropvoid QName(PackageNamespace(""),"invalidateDisplayList"), 0
+         ofs0046:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function clearVirtualLayoutCache() : void
+      {
+         trait method QName(PackageNamespace(""),"clearVirtualLayoutCache")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      [Bindable(event="propertyChange")]
+      public function get horizontalScrollPosition() : Number
+      {
+         trait getter QName(PackageNamespace(""),"horizontalScrollPosition")
+         flag METADATA
+         metadata "Bindable"
+         item "event" "propertyChange"
+         end ; metadata
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_horizontalScrollPosition")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function set _754184102horizontalScrollPosition(param1:Number) : void
+      {
+         trait setter QName(PrivateNamespace(null,"62"),"_754184102horizontalScrollPosition")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_horizontalScrollPosition")
+         ifne ofs000c
+         returnvoid
+         ofs000c:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"62"),"_horizontalScrollPosition")
+         getlocal0
+         callpropvoid QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"scrollPositionChanged"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      [Bindable(event="propertyChange")]
+      public function get verticalScrollPosition() : Number
+      {
+         trait getter QName(PackageNamespace(""),"verticalScrollPosition")
+         flag METADATA
+         metadata "Bindable"
+         item "event" "propertyChange"
+         end ; metadata
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_verticalScrollPosition")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function set _1010846676verticalScrollPosition(param1:Number) : void
+      {
+         trait setter QName(PrivateNamespace(null,"62"),"_1010846676verticalScrollPosition")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_verticalScrollPosition")
+         ifne ofs000c
+         returnvoid
+         ofs000c:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"62"),"_verticalScrollPosition")
+         getlocal0
+         callpropvoid QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"scrollPositionChanged"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get clipAndEnableScrolling() : Boolean
+      {
+         trait getter QName(PackageNamespace(""),"clipAndEnableScrolling")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_clipAndEnableScrolling")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set clipAndEnableScrolling(param1:Boolean) : void
+      {
+         trait setter QName(PackageNamespace(""),"clipAndEnableScrolling")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_clipAndEnableScrolling")
+         ifne ofs000c
+         returnvoid
+         ofs000c:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"62"),"_clipAndEnableScrolling")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         coerce QName(PackageNamespace("spark.components.supportClasses"),"GroupBase")
+         setlocal2
+         getlocal2
+         iffalse ofs002b
+         getlocal0
+         getlocal2
+         getproperty QName(PackageNamespace(""),"width")
+         getlocal2
+         getproperty QName(PackageNamespace(""),"height")
+         callpropvoid QName(PackageNamespace(""),"updateScrollRect"), 2
+         ofs002b:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get typicalLayoutElement() : ILayoutElement
+      {
+         trait getter QName(PackageNamespace(""),"typicalLayoutElement")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("mx.core"),"ILayoutElement")
+         
+         body
+         maxstack 3
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_typicalLayoutElement")
+         not
+         coerce_a
+         convert_b
+         dup
+         iffalse ofs0015
+         pop
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         coerce_a
+         convert_b
+         ofs0015:
+         dup
+         iffalse ofs0025
+         pop
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         getproperty QName(PackageNamespace(""),"numElements")
+         pushbyte 0
+         greaterthan
+         ofs0025:
+         iffalse ofs0037
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         pushbyte 0
+         callproperty QName(PackageNamespace(""),"getElementAt"), 1
+         initproperty QName(PrivateNamespace(null,"62"),"_typicalLayoutElement")
+         ofs0037:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_typicalLayoutElement")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set typicalLayoutElement(param1:ILayoutElement) : void
+      {
+         trait setter QName(PackageNamespace(""),"typicalLayoutElement")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("mx.core"),"ILayoutElement")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_typicalLayoutElement")
+         getlocal1
+         ifne ofs000c
+         returnvoid
+         ofs000c:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"62"),"_typicalLayoutElement")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         coerce QName(PackageNamespace("spark.components.supportClasses"),"GroupBase")
+         setlocal2
+         getlocal2
+         iffalse ofs0023
+         getlocal2
+         callpropvoid QName(PackageNamespace(""),"invalidateSize"), 0
+         ofs0023:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get dropIndicator() : DisplayObject
+      {
+         trait getter QName(PackageNamespace(""),"dropIndicator")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("flash.display"),"DisplayObject")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set dropIndicator(param1:DisplayObject) : void
+      {
+         trait setter QName(PackageNamespace(""),"dropIndicator")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.display"),"DisplayObject")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         iffalse ofs0019
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         getproperty QName(PackageNamespace(""),"overlay")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         callpropvoid QName(PackageNamespace(""),"removeDisplayObject"), 1
+         ofs0019:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         iffalse ofs0080
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         getproperty QName(PackageNamespace(""),"overlay")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         getlex QName(PackageNamespace("spark.components.supportClasses"),"OverlayDepth")
+         getproperty QName(PackageNamespace(""),"DROP_INDICATOR")
+         callpropvoid QName(PackageNamespace(""),"addDisplayObject"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         getlex QName(PackageNamespace("mx.managers"),"ILayoutManagerClient")
+         istypelate
+         iffalse ofs0065
+         getlex QName(PackageNamespace("mx.core"),"UIComponentGlobals")
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"layoutManager")
+         findpropstrict QName(PackageNamespace("mx.managers"),"ILayoutManagerClient")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         callproperty QName(PackageNamespace("mx.managers"),"ILayoutManagerClient"), 1
+         pushtrue
+         callpropvoid QName(Namespace("mx.managers:ILayoutManager"),"validateClient"), 2
+         ofs0065:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         getlex QName(PackageNamespace("mx.core"),"ILayoutElement")
+         istypelate
+         iffalse ofs0080
+         findpropstrict QName(PackageNamespace("mx.core"),"ILayoutElement")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         callproperty QName(PackageNamespace("mx.core"),"ILayoutElement"), 1
+         pushfalse
+         setproperty QName(Namespace("mx.core:ILayoutElement"),"includeInLayout")
+         ofs0080:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function measure() : void
+      {
+         trait method QName(PackageNamespace(""),"measure")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function updateDisplayList(param1:Number, param2:Number) : void
+      {
+         trait method QName(PackageNamespace(""),"updateDisplayList")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function elementAdded(param1:int) : void
+      {
+         trait method QName(PackageNamespace(""),"elementAdded")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function elementRemoved(param1:int) : void
+      {
+         trait method QName(PackageNamespace(""),"elementRemoved")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function scrollPositionChanged() : void
+      {
+         trait method QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"scrollPositionChanged")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         coerce QName(PackageNamespace("spark.components.supportClasses"),"GroupBase")
+         setlocal1
+         getlocal1
+         iftrue ofs0010
+         returnvoid
+         ofs0010:
+         getlocal0
+         getlocal1
+         getproperty QName(PackageNamespace(""),"width")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"height")
+         callpropvoid QName(PackageNamespace(""),"updateScrollRect"), 2
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function updateScrollRect(param1:Number, param2:Number) : void
+      {
+         trait method QName(PackageNamespace(""),"updateScrollRect")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 6
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         pushnan
+         setlocal 4
+         pushnan
+         setlocal 5
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         coerce QName(PackageNamespace("spark.components.supportClasses"),"GroupBase")
+         setlocal3
+         getlocal3
+         iftrue ofs0016
+         returnvoid
+         ofs0016:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"clipAndEnableScrolling")
+         iffalse ofs003f
+         getlocal0
+         getproperty QName(PackageNamespace(""),"horizontalScrollPosition")
+         convert_d
+         setlocal 4
+         getlocal0
+         getproperty QName(PackageNamespace(""),"verticalScrollPosition")
+         convert_d
+         setlocal 5
+         getlocal3
+         findpropstrict QName(PackageNamespace("flash.geom"),"Rectangle")
+         getlocal 4
+         getlocal 5
+         getlocal1
+         getlocal2
+         constructprop QName(PackageNamespace("flash.geom"),"Rectangle"), 4
+         setproperty QName(PackageNamespace(""),"scrollRect")
+         jump ofs0044
+         ofs003f:
+         getlocal3
+         pushnull
+         setproperty QName(PackageNamespace(""),"scrollRect")
+         ofs0044:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getNavigationDestinationIndex(param1:int, param2:uint, param3:Boolean) : int
+      {
+         trait method QName(PackageNamespace(""),"getNavigationDestinationIndex")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"int")
+         
+         body
+         maxstack 2
+         localcount 5
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         not
+         dup
+         iftrue ofs0017
+         pop
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         getproperty QName(PackageNamespace(""),"numElements")
+         pushbyte 1
+         lessthan
+         ofs0017:
+         iffalse ofs001e
+         pushbyte -1
+         returnvalue
+         ofs001e:
+         jump ofs0038
+         ofs0022:
+         label
+         pushbyte 0
+         returnvalue
+         ofs0026:
+         label
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         getproperty QName(PackageNamespace(""),"numElements")
+         decrement
+         returnvalue
+         ofs0030:
+         label
+         pushbyte -1
+         returnvalue
+         jump ofs0038
+         ofs0038:
+         getlocal2
+         setlocal 4
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"HOME")
+         getlocal 4
+         ifstrictne ofs004d
+         pushbyte 0
+         jump ofs006b
+         ofs004d:
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"END")
+         getlocal 4
+         ifstrictne ofs005f
+         pushbyte 1
+         jump ofs006b
+         ofs005f:
+         jump ofs0069
+         pushbyte 2
+         jump ofs0069
+         ofs0069:
+         pushbyte 2
+         ofs006b:
+         kill 4
+         lookupswitch ofs0030, [ofs0022, ofs0026, ofs0030]
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function getScrollRect() : Rectangle
+      {
+         trait method QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"getScrollRect")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("flash.geom"),"Rectangle")
+         
+         body
+         maxstack 5
+         localcount 4
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         coerce QName(PackageNamespace("spark.components.supportClasses"),"GroupBase")
+         setlocal1
+         getlocal1
+         not
+         dup
+         iftrue ofs0017
+         pop
+         getlocal1
+         getproperty QName(PackageNamespace(""),"clipAndEnableScrolling")
+         not
+         ofs0017:
+         iffalse ofs001d
+         pushnull
+         returnvalue
+         ofs001d:
+         getlocal1
+         getproperty QName(PackageNamespace(""),"verticalScrollPosition")
+         convert_d
+         setlocal2
+         getlocal1
+         getproperty QName(PackageNamespace(""),"horizontalScrollPosition")
+         convert_d
+         setlocal3
+         findpropstrict QName(PackageNamespace("flash.geom"),"Rectangle")
+         getlocal3
+         getlocal2
+         getlocal1
+         getproperty QName(PackageNamespace(""),"width")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"height")
+         constructprop QName(PackageNamespace("flash.geom"),"Rectangle"), 4
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getElementBounds(param1:int) : Rectangle
+      {
+         trait method QName(PackageNamespace(""),"getElementBounds")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace("flash.geom"),"Rectangle")
+         
+         body
+         maxstack 5
+         localcount 9
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         coerce QName(PackageNamespace("spark.components.supportClasses"),"GroupBase")
+         setlocal2
+         getlocal2
+         iftrue ofs0011
+         pushnull
+         returnvalue
+         ofs0011:
+         getlocal2
+         getproperty QName(PackageNamespace(""),"numElements")
+         convert_i
+         setlocal3
+         getlocal1
+         pushbyte 0
+         lessthan
+         dup
+         iftrue ofs0024
+         pop
+         getlocal1
+         getlocal3
+         greaterequals
+         ofs0024:
+         iffalse ofs002a
+         pushnull
+         returnvalue
+         ofs002a:
+         getlocal2
+         getlocal1
+         callproperty QName(PackageNamespace(""),"getElementAt"), 1
+         coerce QName(PackageNamespace("mx.core"),"ILayoutElement")
+         dup
+         setlocal 4
+         not
+         dup
+         iftrue ofs0043
+         pop
+         getlocal 4
+         getproperty QName(Namespace("mx.core:ILayoutElement"),"includeInLayout")
+         not
+         ofs0043:
+         iffalse ofs0049
+         pushnull
+         returnvalue
+         ofs0049:
+         getlocal 4
+         callproperty QName(Namespace("mx.core:ILayoutElement"),"getLayoutBoundsX"), 0
+         convert_d
+         setlocal 5
+         getlocal 4
+         callproperty QName(Namespace("mx.core:ILayoutElement"),"getLayoutBoundsY"), 0
+         convert_d
+         setlocal 6
+         getlocal 4
+         callproperty QName(Namespace("mx.core:ILayoutElement"),"getLayoutBoundsWidth"), 0
+         convert_d
+         setlocal 7
+         getlocal 4
+         callproperty QName(Namespace("mx.core:ILayoutElement"),"getLayoutBoundsHeight"), 0
+         convert_d
+         setlocal 8
+         findpropstrict QName(PackageNamespace("flash.geom"),"Rectangle")
+         getlocal 5
+         getlocal 6
+         getlocal 7
+         getlocal 8
+         constructprop QName(PackageNamespace("flash.geom"),"Rectangle"), 4
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function getElementBoundsLeftOfScrollRect(param1:Rectangle) : Rectangle
+      {
+         trait method QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"getElementBoundsLeftOfScrollRect")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.geom"),"Rectangle")
+         returns QName(PackageNamespace("flash.geom"),"Rectangle")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace("flash.geom"),"Rectangle")
+         constructprop QName(PackageNamespace("flash.geom"),"Rectangle"), 0
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         setlocal2
+         getlocal2
+         getlocal1
+         getproperty QName(PackageNamespace(""),"left")
+         decrement
+         setproperty QName(PackageNamespace(""),"left")
+         getlocal2
+         getlocal1
+         getproperty QName(PackageNamespace(""),"left")
+         setproperty QName(PackageNamespace(""),"right")
+         getlocal2
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function getElementBoundsRightOfScrollRect(param1:Rectangle) : Rectangle
+      {
+         trait method QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"getElementBoundsRightOfScrollRect")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.geom"),"Rectangle")
+         returns QName(PackageNamespace("flash.geom"),"Rectangle")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace("flash.geom"),"Rectangle")
+         constructprop QName(PackageNamespace("flash.geom"),"Rectangle"), 0
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         setlocal2
+         getlocal2
+         getlocal1
+         getproperty QName(PackageNamespace(""),"right")
+         setproperty QName(PackageNamespace(""),"left")
+         getlocal2
+         getlocal1
+         getproperty QName(PackageNamespace(""),"right")
+         pushbyte 1
+         add
+         setproperty QName(PackageNamespace(""),"right")
+         getlocal2
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function getElementBoundsAboveScrollRect(param1:Rectangle) : Rectangle
+      {
+         trait method QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"getElementBoundsAboveScrollRect")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.geom"),"Rectangle")
+         returns QName(PackageNamespace("flash.geom"),"Rectangle")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace("flash.geom"),"Rectangle")
+         constructprop QName(PackageNamespace("flash.geom"),"Rectangle"), 0
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         setlocal2
+         getlocal2
+         getlocal1
+         getproperty QName(PackageNamespace(""),"top")
+         decrement
+         setproperty QName(PackageNamespace(""),"top")
+         getlocal2
+         getlocal1
+         getproperty QName(PackageNamespace(""),"top")
+         setproperty QName(PackageNamespace(""),"bottom")
+         getlocal2
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function getElementBoundsBelowScrollRect(param1:Rectangle) : Rectangle
+      {
+         trait method QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"getElementBoundsBelowScrollRect")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.geom"),"Rectangle")
+         returns QName(PackageNamespace("flash.geom"),"Rectangle")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace("flash.geom"),"Rectangle")
+         constructprop QName(PackageNamespace("flash.geom"),"Rectangle"), 0
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         setlocal2
+         getlocal2
+         getlocal1
+         getproperty QName(PackageNamespace(""),"bottom")
+         setproperty QName(PackageNamespace(""),"top")
+         getlocal2
+         getlocal1
+         getproperty QName(PackageNamespace(""),"bottom")
+         pushbyte 1
+         add
+         setproperty QName(PackageNamespace(""),"bottom")
+         getlocal2
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getHorizontalScrollPositionDelta(param1:uint) : Number
+      {
+         trait method QName(PackageNamespace(""),"getHorizontalScrollPositionDelta")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"uint")
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 5
+         localcount 9
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         setlocal 6
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         coerce QName(PackageNamespace("spark.components.supportClasses"),"GroupBase")
+         setlocal2
+         getlocal2
+         iftrue ofs0017
+         pushbyte 0
+         returnvalue
+         ofs0017:
+         getlocal0
+         callproperty QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"getScrollRect"), 0
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         setlocal3
+         getlocal3
+         iftrue ofs0027
+         pushbyte 0
+         returnvalue
+         ofs0027:
+         getlocal3
+         getproperty QName(PackageNamespace(""),"x")
+         pushbyte 0
+         equals
+         dup
+         iffalse ofs003d
+         pop
+         getlocal3
+         getproperty QName(PackageNamespace(""),"width")
+         getlocal2
+         getproperty QName(PackageNamespace(""),"contentWidth")
+         greaterequals
+         ofs003d:
+         iffalse ofs0044
+         pushbyte 0
+         returnvalue
+         ofs0044:
+         getlocal2
+         getproperty QName(PackageNamespace(""),"contentWidth")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"right")
+         subtract
+         convert_d
+         setlocal 4
+         getlocal3
+         getproperty QName(PackageNamespace(""),"left")
+         negate
+         convert_d
+         setlocal 5
+         jump ofs008a
+         ofs005c:
+         label
+         getlocal0
+         getlocal3
+         callproperty QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"getElementBoundsLeftOfScrollRect"), 1
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         setlocal 6
+         jump ofs0121
+         ofs006b:
+         label
+         getlocal0
+         getlocal3
+         callproperty QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"getElementBoundsRightOfScrollRect"), 1
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         setlocal 6
+         jump ofs0121
+         ofs007a:
+         label
+         getlocal 5
+         returnvalue
+         ofs007e:
+         label
+         getlocal 4
+         returnvalue
+         ofs0082:
+         label
+         pushbyte 0
+         returnvalue
+         jump ofs008a
+         ofs008a:
+         getlocal1
+         setlocal 8
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"LEFT")
+         getlocal 8
+         ifstrictne ofs009f
+         pushbyte 0
+         jump ofs0105
+         ofs009f:
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"PAGE_LEFT")
+         getlocal 8
+         ifstrictne ofs00b1
+         pushbyte 1
+         jump ofs0105
+         ofs00b1:
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"RIGHT")
+         getlocal 8
+         ifstrictne ofs00c3
+         pushbyte 2
+         jump ofs0105
+         ofs00c3:
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"PAGE_RIGHT")
+         getlocal 8
+         ifstrictne ofs00d5
+         pushbyte 3
+         jump ofs0105
+         ofs00d5:
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"HOME")
+         getlocal 8
+         ifstrictne ofs00e7
+         pushbyte 4
+         jump ofs0105
+         ofs00e7:
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"END")
+         getlocal 8
+         ifstrictne ofs00f9
+         pushbyte 5
+         jump ofs0105
+         ofs00f9:
+         jump ofs0103
+         pushbyte 6
+         jump ofs0103
+         ofs0103:
+         pushbyte 6
+         ofs0105:
+         kill 8
+         lookupswitch ofs0082, [ofs005c, ofs005c, ofs006b, ofs006b, ofs007a, ofs007e, ofs0082]
+         ofs0121:
+         getlocal 6
+         iftrue ofs012a
+         pushbyte 0
+         returnvalue
+         ofs012a:
+         pushbyte 0
+         convert_d
+         setlocal 7
+         jump ofs01d6
+         ofs0133:
+         label
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"left")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"left")
+         subtract
+         getlocal3
+         getproperty QName(PackageNamespace(""),"width")
+         negate
+         callproperty QName(PackageNamespace(""),"max"), 2
+         convert_d
+         setlocal 7
+         jump ofs0243
+         ofs0151:
+         label
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"right")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"right")
+         subtract
+         getlocal3
+         getproperty QName(PackageNamespace(""),"width")
+         callproperty QName(PackageNamespace(""),"min"), 2
+         convert_d
+         setlocal 7
+         jump ofs0243
+         ofs016e:
+         label
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"right")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"right")
+         subtract
+         convert_d
+         dup
+         setlocal 7
+         pushbyte 0
+         ifnge ofs019c
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"left")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"left")
+         subtract
+         getlocal3
+         getproperty QName(PackageNamespace(""),"width")
+         negate
+         callproperty QName(PackageNamespace(""),"max"), 2
+         convert_d
+         setlocal 7
+         ofs019c:
+         jump ofs0243
+         ofs01a0:
+         label
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"left")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"left")
+         subtract
+         convert_d
+         dup
+         setlocal 7
+         pushbyte 0
+         ifnle ofs01cd
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"right")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"right")
+         subtract
+         getlocal3
+         getproperty QName(PackageNamespace(""),"width")
+         callproperty QName(PackageNamespace(""),"min"), 2
+         convert_d
+         setlocal 7
+         ofs01cd:
+         jump ofs0243
+         ofs01d1:
+         label
+         jump ofs0243
+         ofs01d6:
+         getlocal1
+         setlocal 8
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"LEFT")
+         getlocal 8
+         ifstrictne ofs01eb
+         pushbyte 0
+         jump ofs022d
+         ofs01eb:
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"RIGHT")
+         getlocal 8
+         ifstrictne ofs01fd
+         pushbyte 1
+         jump ofs022d
+         ofs01fd:
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"PAGE_LEFT")
+         getlocal 8
+         ifstrictne ofs020f
+         pushbyte 2
+         jump ofs022d
+         ofs020f:
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"PAGE_RIGHT")
+         getlocal 8
+         ifstrictne ofs0221
+         pushbyte 3
+         jump ofs022d
+         ofs0221:
+         jump ofs022b
+         pushbyte 4
+         jump ofs022b
+         ofs022b:
+         pushbyte 4
+         ofs022d:
+         kill 8
+         lookupswitch ofs01d1, [ofs0133, ofs0151, ofs016e, ofs01a0, ofs01d1]
+         ofs0243:
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 4
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 5
+         getlocal 7
+         callproperty QName(PackageNamespace(""),"max"), 2
+         callproperty QName(PackageNamespace(""),"min"), 2
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getVerticalScrollPositionDelta(param1:uint) : Number
+      {
+         trait method QName(PackageNamespace(""),"getVerticalScrollPositionDelta")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"uint")
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 5
+         localcount 9
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         setlocal 6
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         coerce QName(PackageNamespace("spark.components.supportClasses"),"GroupBase")
+         setlocal2
+         getlocal2
+         iftrue ofs0017
+         pushbyte 0
+         returnvalue
+         ofs0017:
+         getlocal0
+         callproperty QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"getScrollRect"), 0
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         setlocal3
+         getlocal3
+         iftrue ofs0027
+         pushbyte 0
+         returnvalue
+         ofs0027:
+         getlocal3
+         getproperty QName(PackageNamespace(""),"y")
+         pushbyte 0
+         equals
+         dup
+         iffalse ofs003d
+         pop
+         getlocal3
+         getproperty QName(PackageNamespace(""),"height")
+         getlocal2
+         getproperty QName(PackageNamespace(""),"contentHeight")
+         greaterequals
+         ofs003d:
+         iffalse ofs0044
+         pushbyte 0
+         returnvalue
+         ofs0044:
+         getlocal2
+         getproperty QName(PackageNamespace(""),"contentHeight")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"bottom")
+         subtract
+         convert_d
+         setlocal 4
+         getlocal3
+         getproperty QName(PackageNamespace(""),"top")
+         negate
+         convert_d
+         setlocal 5
+         jump ofs008a
+         ofs005c:
+         label
+         getlocal0
+         getlocal3
+         callproperty QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"getElementBoundsAboveScrollRect"), 1
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         setlocal 6
+         jump ofs0121
+         ofs006b:
+         label
+         getlocal0
+         getlocal3
+         callproperty QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"getElementBoundsBelowScrollRect"), 1
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         setlocal 6
+         jump ofs0121
+         ofs007a:
+         label
+         getlocal 5
+         returnvalue
+         ofs007e:
+         label
+         getlocal 4
+         returnvalue
+         ofs0082:
+         label
+         pushbyte 0
+         returnvalue
+         jump ofs008a
+         ofs008a:
+         getlocal1
+         setlocal 8
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"UP")
+         getlocal 8
+         ifstrictne ofs009f
+         pushbyte 0
+         jump ofs0105
+         ofs009f:
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"PAGE_UP")
+         getlocal 8
+         ifstrictne ofs00b1
+         pushbyte 1
+         jump ofs0105
+         ofs00b1:
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"DOWN")
+         getlocal 8
+         ifstrictne ofs00c3
+         pushbyte 2
+         jump ofs0105
+         ofs00c3:
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"PAGE_DOWN")
+         getlocal 8
+         ifstrictne ofs00d5
+         pushbyte 3
+         jump ofs0105
+         ofs00d5:
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"HOME")
+         getlocal 8
+         ifstrictne ofs00e7
+         pushbyte 4
+         jump ofs0105
+         ofs00e7:
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"END")
+         getlocal 8
+         ifstrictne ofs00f9
+         pushbyte 5
+         jump ofs0105
+         ofs00f9:
+         jump ofs0103
+         pushbyte 6
+         jump ofs0103
+         ofs0103:
+         pushbyte 6
+         ofs0105:
+         kill 8
+         lookupswitch ofs0082, [ofs005c, ofs005c, ofs006b, ofs006b, ofs007a, ofs007e, ofs0082]
+         ofs0121:
+         getlocal 6
+         iftrue ofs012a
+         pushbyte 0
+         returnvalue
+         ofs012a:
+         pushbyte 0
+         convert_d
+         setlocal 7
+         jump ofs01d6
+         ofs0133:
+         label
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"top")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"top")
+         subtract
+         getlocal3
+         getproperty QName(PackageNamespace(""),"height")
+         negate
+         callproperty QName(PackageNamespace(""),"max"), 2
+         convert_d
+         setlocal 7
+         jump ofs0243
+         ofs0151:
+         label
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"bottom")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"bottom")
+         subtract
+         getlocal3
+         getproperty QName(PackageNamespace(""),"height")
+         callproperty QName(PackageNamespace(""),"min"), 2
+         convert_d
+         setlocal 7
+         jump ofs0243
+         ofs016e:
+         label
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"bottom")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"bottom")
+         subtract
+         convert_d
+         dup
+         setlocal 7
+         pushbyte 0
+         ifnge ofs019c
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"top")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"top")
+         subtract
+         getlocal3
+         getproperty QName(PackageNamespace(""),"height")
+         negate
+         callproperty QName(PackageNamespace(""),"max"), 2
+         convert_d
+         setlocal 7
+         ofs019c:
+         jump ofs0243
+         ofs01a0:
+         label
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"top")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"top")
+         subtract
+         convert_d
+         dup
+         setlocal 7
+         pushbyte 0
+         ifnle ofs01cd
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"bottom")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"bottom")
+         subtract
+         getlocal3
+         getproperty QName(PackageNamespace(""),"height")
+         callproperty QName(PackageNamespace(""),"min"), 2
+         convert_d
+         setlocal 7
+         ofs01cd:
+         jump ofs0243
+         ofs01d1:
+         label
+         jump ofs0243
+         ofs01d6:
+         getlocal1
+         setlocal 8
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"UP")
+         getlocal 8
+         ifstrictne ofs01eb
+         pushbyte 0
+         jump ofs022d
+         ofs01eb:
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"DOWN")
+         getlocal 8
+         ifstrictne ofs01fd
+         pushbyte 1
+         jump ofs022d
+         ofs01fd:
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"PAGE_UP")
+         getlocal 8
+         ifstrictne ofs020f
+         pushbyte 2
+         jump ofs022d
+         ofs020f:
+         getlex QName(PackageNamespace("spark.core"),"NavigationUnit")
+         getproperty QName(PackageNamespace(""),"PAGE_DOWN")
+         getlocal 8
+         ifstrictne ofs0221
+         pushbyte 3
+         jump ofs022d
+         ofs0221:
+         jump ofs022b
+         pushbyte 4
+         jump ofs022b
+         ofs022b:
+         pushbyte 4
+         ofs022d:
+         kill 8
+         lookupswitch ofs01d1, [ofs0133, ofs0151, ofs016e, ofs01a0, ofs01d1]
+         ofs0243:
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 4
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 5
+         getlocal 7
+         callproperty QName(PackageNamespace(""),"max"), 2
+         callproperty QName(PackageNamespace(""),"min"), 2
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getScrollPositionDeltaToElement(param1:int) : Point
+      {
+         trait method QName(PackageNamespace(""),"getScrollPositionDeltaToElement")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace("flash.geom"),"Point")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         callproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"getScrollPositionDeltaToElementHelper"), 1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      mx_internal function getScrollPositionDeltaToElementHelper(param1:int, param2:Number = NaN, param3:Number = NaN, param4:Number = NaN, param5:Number = NaN) : Point
+      {
+         trait method QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"getScrollPositionDeltaToElementHelper")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         optional Double(NaN)
+         optional Double(NaN)
+         optional Double(NaN)
+         optional Double(NaN)
+         returns QName(PackageNamespace("flash.geom"),"Point")
+         
+         body
+         maxstack 3
+         localcount 14
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         callproperty QName(PackageNamespace(""),"getElementBounds"), 1
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         dup
+         setlocal 6
+         iftrue ofs0013
+         pushnull
+         returnvalue
+         ofs0013:
+         getlocal0
+         callproperty QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"getScrollRect"), 0
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         dup
+         setlocal 7
+         not
+         dup
+         iftrue ofs002c
+         pop
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         getproperty QName(PackageNamespace(""),"clipAndEnableScrolling")
+         not
+         ofs002c:
+         iffalse ofs0032
+         pushnull
+         returnvalue
+         ofs0032:
+         findpropstrict QName(PackageNamespace(""),"isNaN")
+         getlocal2
+         callproperty QName(PackageNamespace(""),"isNaN"), 1
+         convert_b
+         dup
+         iffalse ofs004a
+         pop
+         findpropstrict QName(PackageNamespace(""),"isNaN")
+         getlocal3
+         callproperty QName(PackageNamespace(""),"isNaN"), 1
+         convert_b
+         ofs004a:
+         dup
+         iffalse ofs005a
+         pop
+         findpropstrict QName(PackageNamespace(""),"isNaN")
+         getlocal 4
+         callproperty QName(PackageNamespace(""),"isNaN"), 1
+         convert_b
+         ofs005a:
+         dup
+         iffalse ofs006a
+         pop
+         findpropstrict QName(PackageNamespace(""),"isNaN")
+         getlocal 5
+         callproperty QName(PackageNamespace(""),"isNaN"), 1
+         convert_b
+         ofs006a:
+         dup
+         iffalse ofs0088
+         pop
+         getlocal 7
+         getlocal 6
+         callproperty QName(PackageNamespace(""),"containsRect"), 1
+         convert_b
+         dup
+         iftrue ofs0088
+         pop
+         getlocal 6
+         getlocal 7
+         callproperty QName(PackageNamespace(""),"containsRect"), 1
+         convert_b
+         ofs0088:
+         iffalse ofs008e
+         pushnull
+         returnvalue
+         ofs008e:
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"left")
+         getlocal 7
+         getproperty QName(PackageNamespace(""),"left")
+         subtract
+         convert_d
+         setlocal 8
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"right")
+         getlocal 7
+         getproperty QName(PackageNamespace(""),"right")
+         subtract
+         convert_d
+         setlocal 9
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"top")
+         getlocal 7
+         getproperty QName(PackageNamespace(""),"top")
+         subtract
+         convert_d
+         setlocal 10
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"bottom")
+         getlocal 7
+         getproperty QName(PackageNamespace(""),"bottom")
+         subtract
+         convert_d
+         setlocal 11
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 8
+         callproperty QName(PackageNamespace(""),"abs"), 1
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 9
+         callproperty QName(PackageNamespace(""),"abs"), 1
+         ifnlt ofs00e3
+         getlocal 8
+         convert_d
+         jump ofs00e6
+         ofs00e3:
+         getlocal 9
+         convert_d
+         ofs00e6:
+         convert_d
+         setlocal 12
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 10
+         callproperty QName(PackageNamespace(""),"abs"), 1
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 11
+         callproperty QName(PackageNamespace(""),"abs"), 1
+         ifnlt ofs0106
+         getlocal 10
+         convert_d
+         jump ofs0109
+         ofs0106:
+         getlocal 11
+         convert_d
+         ofs0109:
+         convert_d
+         setlocal 13
+         findpropstrict QName(PackageNamespace(""),"isNaN")
+         getlocal2
+         callproperty QName(PackageNamespace(""),"isNaN"), 1
+         iftrue ofs0123
+         getlocal 10
+         getlocal2
+         add
+         convert_d
+         setlocal 13
+         jump ofs0136
+         ofs0123:
+         findpropstrict QName(PackageNamespace(""),"isNaN")
+         getlocal3
+         callproperty QName(PackageNamespace(""),"isNaN"), 1
+         iftrue ofs0136
+         getlocal 11
+         getlocal3
+         subtract
+         convert_d
+         setlocal 13
+         ofs0136:
+         findpropstrict QName(PackageNamespace(""),"isNaN")
+         getlocal 4
+         callproperty QName(PackageNamespace(""),"isNaN"), 1
+         iftrue ofs014f
+         getlocal 8
+         getlocal 4
+         add
+         convert_d
+         setlocal 12
+         jump ofs0164
+         ofs014f:
+         findpropstrict QName(PackageNamespace(""),"isNaN")
+         getlocal 5
+         callproperty QName(PackageNamespace(""),"isNaN"), 1
+         iftrue ofs0164
+         getlocal 9
+         getlocal 5
+         subtract
+         convert_d
+         setlocal 12
+         ofs0164:
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"left")
+         getlocal 7
+         getproperty QName(PackageNamespace(""),"left")
+         greaterequals
+         dup
+         iffalse ofs0180
+         pop
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"right")
+         getlocal 7
+         getproperty QName(PackageNamespace(""),"right")
+         lessequals
+         ofs0180:
+         iffalse ofs018d
+         pushbyte 0
+         convert_d
+         setlocal 12
+         jump ofs01b2
+         ofs018d:
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"bottom")
+         getlocal 7
+         getproperty QName(PackageNamespace(""),"bottom")
+         lessequals
+         dup
+         iffalse ofs01a9
+         pop
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"top")
+         getlocal 7
+         getproperty QName(PackageNamespace(""),"top")
+         greaterequals
+         ofs01a9:
+         iffalse ofs01b2
+         pushbyte 0
+         convert_d
+         setlocal 13
+         ofs01b2:
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"left")
+         getlocal 7
+         getproperty QName(PackageNamespace(""),"left")
+         lessequals
+         dup
+         iffalse ofs01ce
+         pop
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"right")
+         getlocal 7
+         getproperty QName(PackageNamespace(""),"right")
+         greaterequals
+         ofs01ce:
+         iffalse ofs01db
+         pushbyte 0
+         convert_d
+         setlocal 12
+         jump ofs0200
+         ofs01db:
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"bottom")
+         getlocal 7
+         getproperty QName(PackageNamespace(""),"bottom")
+         greaterequals
+         dup
+         iffalse ofs01f7
+         pop
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"top")
+         getlocal 7
+         getproperty QName(PackageNamespace(""),"top")
+         lessequals
+         ofs01f7:
+         iffalse ofs0200
+         pushbyte 0
+         convert_d
+         setlocal 13
+         ofs0200:
+         findpropstrict QName(PackageNamespace("flash.geom"),"Point")
+         getlocal 12
+         getlocal 13
+         constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function calculateDropLocation(param1:DragEvent) : DropLocation
+      {
+         trait method QName(PackageNamespace(""),"calculateDropLocation")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("mx.events"),"DragEvent")
+         returns QName(PackageNamespace("spark.layouts.supportClasses"),"DropLocation")
+         
+         body
+         maxstack 3
+         localcount 5
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         getproperty QName(PackageNamespace(""),"stageX")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"stageY")
+         callproperty QName(PrivateNamespace(null,"62"),"globalToLocal"), 2
+         coerce QName(PackageNamespace("flash.geom"),"Point")
+         setlocal2
+         getlocal0
+         getlocal2
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal2
+         getproperty QName(PackageNamespace(""),"y")
+         callproperty QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"calculateDropIndex"), 2
+         convert_i
+         setlocal3
+         getlocal3
+         pushbyte -1
+         ifne ofs002a
+         pushnull
+         returnvalue
+         ofs002a:
+         findpropstrict QName(PackageNamespace("spark.layouts.supportClasses"),"DropLocation")
+         constructprop QName(PackageNamespace("spark.layouts.supportClasses"),"DropLocation"), 0
+         coerce QName(PackageNamespace("spark.layouts.supportClasses"),"DropLocation")
+         dup
+         setlocal 4
+         getlocal1
+         setproperty QName(PackageNamespace(""),"dragEvent")
+         getlocal 4
+         getlocal2
+         setproperty QName(PackageNamespace(""),"dropPoint")
+         getlocal 4
+         getlocal3
+         setproperty QName(PackageNamespace(""),"dropIndex")
+         getlocal 4
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function showDropIndicator(param1:DropLocation) : void
+      {
+         trait method QName(PackageNamespace(""),"showDropIndicator")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("spark.layouts.supportClasses"),"DropLocation")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 5
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("mx.core"),"ILayoutElement")
+         setlocal 4
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         iftrue ofs0011
+         returnvoid
+         ofs0011:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         pushbyte 0
+         setlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollTimer")
+         iffalse ofs0035
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollTimer")
+         getproperty QName(PackageNamespace(""),"currentCount")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollTimer")
+         getproperty QName(PackageNamespace(""),"delay")
+         multiply
+         convert_i
+         setlocal2
+         ofs0035:
+         getlocal0
+         getlocal0
+         getlocal1
+         getlocal2
+         callproperty QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"calculateDragScrollDelta"), 2
+         initproperty QName(PrivateNamespace(null,"62"),"_dragScrollDelta")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollDelta")
+         iffalse ofs006c
+         getlocal0
+         getlocal1
+         getproperty QName(PackageNamespace(""),"dragEvent")
+         initproperty QName(PrivateNamespace(null,"62"),"_dragScrollEvent")
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"62"),"dragScrollingInProgress"), 0
+         iftrue ofs005f
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"62"),"startDragScrolling"), 0
+         returnvoid
+         ofs005f:
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"dragScrollHidesIndicator")
+         iffalse ofs0068
+         returnvoid
+         ofs0068:
+         jump ofs0071
+         ofs006c:
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"62"),"stopDragScrolling"), 0
+         ofs0071:
+         getlocal0
+         getlocal1
+         callproperty QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"calculateDropIndicatorBounds"), 1
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         setlocal3
+         getlocal3
+         iftrue ofs0080
+         returnvoid
+         ofs0080:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         getlex QName(PackageNamespace("mx.core"),"ILayoutElement")
+         istypelate
+         iffalse ofs00bb
+         findpropstrict QName(PackageNamespace("mx.core"),"ILayoutElement")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         callproperty QName(PackageNamespace("mx.core"),"ILayoutElement"), 1
+         coerce QName(PackageNamespace("mx.core"),"ILayoutElement")
+         dup
+         setlocal 4
+         getlocal3
+         getproperty QName(PackageNamespace(""),"width")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"height")
+         callpropvoid QName(Namespace("mx.core:ILayoutElement"),"setLayoutBoundsSize"), 2
+         getlocal 4
+         getlocal3
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"y")
+         callpropvoid QName(Namespace("mx.core:ILayoutElement"),"setLayoutBoundsPosition"), 2
+         jump ofs00e7
+         ofs00bb:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"width")
+         setproperty QName(PackageNamespace(""),"width")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"height")
+         setproperty QName(PackageNamespace(""),"height")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"x")
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"y")
+         setproperty QName(PackageNamespace(""),"y")
+         ofs00e7:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function hideDropIndicator() : void
+      {
+         trait method QName(PackageNamespace(""),"hideDropIndicator")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"62"),"stopDragScrolling"), 0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         iffalse ofs0017
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dropIndicator")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         ofs0017:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function calculateDropIndex(param1:Number, param2:Number) : int
+      {
+         trait method QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"calculateDropIndex")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"int")
+         
+         body
+         maxstack 1
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         getproperty QName(PackageNamespace(""),"numElements")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function calculateDropIndicatorBounds(param1:DropLocation) : Rectangle
+      {
+         trait method QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"calculateDropIndicatorBounds")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("spark.layouts.supportClasses"),"DropLocation")
+         returns QName(PackageNamespace("flash.geom"),"Rectangle")
+         
+         body
+         maxstack 1
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function calculateDragScrollDelta(param1:DropLocation, param2:Number) : Point
+      {
+         trait method QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"calculateDragScrollDelta")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("spark.layouts.supportClasses"),"DropLocation")
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace("flash.geom"),"Point")
+         
+         body
+         maxstack 5
+         localcount 16
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         coerce QName(PackageNamespace("spark.components.supportClasses"),"GroupBase")
+         setlocal3
+         getlocal3
+         getproperty QName(PackageNamespace(""),"numElements")
+         pushbyte 0
+         ifne ofs0016
+         pushnull
+         returnvalue
+         ofs0016:
+         getlocal0
+         callproperty QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"getScrollRect"), 0
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         dup
+         setlocal 4
+         iftrue ofs0026
+         pushnull
+         returnvalue
+         ofs0026:
+         getlocal1
+         getproperty QName(PackageNamespace(""),"dropPoint")
+         getproperty QName(PackageNamespace(""),"x")
+         convert_d
+         setlocal 5
+         getlocal1
+         getproperty QName(PackageNamespace(""),"dropPoint")
+         getproperty QName(PackageNamespace(""),"y")
+         convert_d
+         setlocal 6
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"dragScrollRegionSizeHorizontal")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"width")
+         pushbyte 2
+         divide
+         callproperty QName(PackageNamespace(""),"min"), 2
+         convert_d
+         setlocal 7
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"dragScrollRegionSizeVertical")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 2
+         divide
+         callproperty QName(PackageNamespace(""),"min"), 2
+         convert_d
+         setlocal 8
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"left")
+         getlocal 7
+         add
+         getlocal 5
+         lessthan
+         dup
+         iffalse ofs0080
+         pop
+         getlocal 5
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"right")
+         getlocal 7
+         subtract
+         lessthan
+         ofs0080:
+         dup
+         iffalse ofs0091
+         pop
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"top")
+         getlocal 8
+         add
+         getlocal 6
+         lessthan
+         ofs0091:
+         dup
+         iffalse ofs00a2
+         pop
+         getlocal 6
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"bottom")
+         getlocal 8
+         subtract
+         lessthan
+         ofs00a2:
+         iffalse ofs00a8
+         pushnull
+         returnvalue
+         ofs00a8:
+         getlocal2
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"dragScrollInitialDelay")
+         ifnlt ofs00b7
+         findpropstrict QName(PackageNamespace("flash.geom"),"Point")
+         constructprop QName(PackageNamespace("flash.geom"),"Point"), 0
+         returnvalue
+         ofs00b7:
+         getlocal2
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"dragScrollInitialDelay")
+         subtract
+         convert_d
+         setlocal2
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal2
+         pushshort 2000
+         callproperty QName(PackageNamespace(""),"min"), 2
+         pushshort 2000
+         divide
+         convert_d
+         dup
+         setlocal 9
+         pushbyte 3
+         multiply
+         convert_d
+         dup
+         setlocal 9
+         pushbyte 1
+         add
+         convert_d
+         dup
+         dup
+         setlocal 9
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"dragScrollSpeed")
+         multiply
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"dragScrollInterval")
+         multiply
+         pushbyte 50
+         divide
+         multiply
+         convert_d
+         setlocal 9
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"left")
+         negate
+         convert_d
+         setlocal 10
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"top")
+         negate
+         convert_d
+         setlocal 11
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         getproperty QName(PackageNamespace(""),"contentHeight")
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"bottom")
+         subtract
+         convert_d
+         setlocal 12
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         getproperty QName(PackageNamespace(""),"contentWidth")
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"right")
+         subtract
+         convert_d
+         setlocal 13
+         pushbyte 0
+         convert_d
+         setlocal 14
+         pushbyte 0
+         convert_d
+         setlocal 15
+         getlocal 10
+         pushbyte 0
+         equals
+         not
+         dup
+         iffalse ofs0145
+         pop
+         getlocal 5
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"left")
+         subtract
+         getlocal 7
+         lessthan
+         ofs0145:
+         iffalse ofs0175
+         pushbyte 1
+         getlocal 5
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"left")
+         subtract
+         getlocal 7
+         divide
+         subtract
+         convert_d
+         dup
+         dup
+         setlocal 14
+         getlocal 9
+         multiply
+         multiply
+         convert_d
+         setlocal 14
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 14
+         callproperty QName(PackageNamespace(""),"round"), 1
+         negate
+         decrement
+         convert_d
+         setlocal 14
+         jump ofs01b9
+         ofs0175:
+         getlocal 13
+         pushbyte 0
+         equals
+         not
+         dup
+         iffalse ofs018c
+         pop
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"right")
+         getlocal 5
+         subtract
+         getlocal 7
+         lessthan
+         ofs018c:
+         iffalse ofs01b9
+         pushbyte 1
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"right")
+         getlocal 5
+         subtract
+         getlocal 7
+         divide
+         subtract
+         convert_d
+         dup
+         dup
+         setlocal 14
+         getlocal 9
+         multiply
+         multiply
+         convert_d
+         setlocal 14
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 14
+         callproperty QName(PackageNamespace(""),"round"), 1
+         pushbyte 1
+         add
+         convert_d
+         setlocal 14
+         ofs01b9:
+         getlocal 11
+         pushbyte 0
+         equals
+         not
+         dup
+         iffalse ofs01d0
+         pop
+         getlocal 6
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"top")
+         subtract
+         getlocal 8
+         lessthan
+         ofs01d0:
+         iffalse ofs0200
+         pushbyte 1
+         getlocal 6
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"top")
+         subtract
+         getlocal 8
+         divide
+         subtract
+         convert_d
+         dup
+         dup
+         setlocal 15
+         getlocal 9
+         multiply
+         multiply
+         convert_d
+         setlocal 15
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 15
+         callproperty QName(PackageNamespace(""),"round"), 1
+         negate
+         decrement
+         convert_d
+         setlocal 15
+         jump ofs0244
+         ofs0200:
+         getlocal 12
+         pushbyte 0
+         equals
+         not
+         dup
+         iffalse ofs0217
+         pop
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"bottom")
+         getlocal 6
+         subtract
+         getlocal 8
+         lessthan
+         ofs0217:
+         iffalse ofs0244
+         pushbyte 1
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"bottom")
+         getlocal 6
+         subtract
+         getlocal 8
+         divide
+         subtract
+         convert_d
+         dup
+         dup
+         setlocal 15
+         getlocal 9
+         multiply
+         multiply
+         convert_d
+         setlocal 15
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 15
+         callproperty QName(PackageNamespace(""),"round"), 1
+         pushbyte 1
+         add
+         convert_d
+         setlocal 15
+         ofs0244:
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 10
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 13
+         getlocal 14
+         callproperty QName(PackageNamespace(""),"min"), 2
+         callproperty QName(PackageNamespace(""),"max"), 2
+         convert_d
+         setlocal 14
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 11
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 12
+         getlocal 15
+         callproperty QName(PackageNamespace(""),"min"), 2
+         callproperty QName(PackageNamespace(""),"max"), 2
+         convert_d
+         setlocal 15
+         getlocal 14
+         pushbyte 0
+         equals
+         dup
+         iffalse ofs0282
+         pop
+         getlocal 15
+         pushbyte 0
+         equals
+         ofs0282:
+         iffalse ofs0288
+         pushnull
+         returnvalue
+         ofs0288:
+         findpropstrict QName(PackageNamespace("flash.geom"),"Point")
+         getlocal 14
+         getlocal 15
+         constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function dragScrollingInProgress() : Boolean
+      {
+         trait method QName(PrivateNamespace(null,"62"),"dragScrollingInProgress")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollTimer")
+         pushnull
+         equals
+         not
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function startDragScrolling() : void
+      {
+         trait method QName(PrivateNamespace(null,"62"),"startDragScrolling")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollTimer")
+         iffalse ofs000b
+         returnvoid
+         ofs000b:
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.utils"),"Timer")
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"dragScrollInterval")
+         constructprop QName(PackageNamespace("flash.utils"),"Timer"), 1
+         initproperty QName(PrivateNamespace(null,"62"),"_dragScrollTimer")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollTimer")
+         getlex QName(PackageNamespace("flash.events"),"TimerEvent")
+         getproperty QName(PackageNamespace(""),"TIMER")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"dragScroll")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollTimer")
+         callpropvoid QName(PackageNamespace(""),"start"), 0
+         getlocal0
+         pushnull
+         callpropvoid QName(PrivateNamespace(null,"62"),"dragScroll"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function dragScroll(param1:TimerEvent) : void
+      {
+         trait method QName(PrivateNamespace(null,"62"),"dragScroll")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"TimerEvent")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 10
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"horizontalScrollPosition")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollDelta")
+         getproperty QName(PackageNamespace(""),"x")
+         add
+         initproperty QName(PackageNamespace(""),"horizontalScrollPosition")
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"verticalScrollPosition")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollDelta")
+         getproperty QName(PackageNamespace(""),"y")
+         add
+         initproperty QName(PackageNamespace(""),"verticalScrollPosition")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         callpropvoid QName(PackageNamespace(""),"validateNow"), 0
+         findpropstrict QName(PackageNamespace("mx.events"),"DragEvent")
+         getlex QName(PackageNamespace("mx.events"),"DragEvent")
+         getproperty QName(PackageNamespace(""),"DRAG_OVER")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollEvent")
+         getproperty QName(PackageNamespace(""),"bubbles")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollEvent")
+         getproperty QName(PackageNamespace(""),"cancelable")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollEvent")
+         getproperty QName(PackageNamespace(""),"dragInitiator")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollEvent")
+         getproperty QName(PackageNamespace(""),"dragSource")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollEvent")
+         getproperty QName(PackageNamespace(""),"action")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollEvent")
+         getproperty QName(PackageNamespace(""),"ctrlKey")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollEvent")
+         getproperty QName(PackageNamespace(""),"altKey")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollEvent")
+         getproperty QName(PackageNamespace(""),"shiftKey")
+         constructprop QName(PackageNamespace("mx.events"),"DragEvent"), 9
+         coerce QName(PackageNamespace("mx.events"),"DragEvent")
+         setlocal2
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollEvent")
+         getproperty QName(PackageNamespace(""),"draggedItem")
+         setproperty QName(PackageNamespace(""),"draggedItem")
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollEvent")
+         getproperty QName(PackageNamespace(""),"localX")
+         setproperty QName(PackageNamespace(""),"localX")
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollEvent")
+         getproperty QName(PackageNamespace(""),"localY")
+         setproperty QName(PackageNamespace(""),"localY")
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollEvent")
+         getproperty QName(PackageNamespace(""),"relatedObject")
+         setproperty QName(PackageNamespace(""),"relatedObject")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollEvent")
+         getproperty QName(PackageNamespace(""),"target")
+         getlocal2
+         callpropvoid Multiname("dispatchEvent",[PrivateNamespace(null,"62"),PackageNamespace(""),ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("spark.layouts.supportClasses"),PrivateNamespace(null,"423"),PackageInternalNs("spark.layouts.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.layouts.supportClasses:LayoutBase"),StaticProtectedNs("mx.utils:OnDemandEventDispatcher"),StaticProtectedNs("Object")]), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function stopDragScrolling() : void
+      {
+         trait method QName(PrivateNamespace(null,"62"),"stopDragScrolling")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollTimer")
+         iffalse ofs0029
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollTimer")
+         callpropvoid QName(PackageNamespace(""),"stop"), 0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"_dragScrollTimer")
+         getlex QName(PackageNamespace("flash.events"),"TimerEvent")
+         getproperty QName(PackageNamespace(""),"TIMER")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"62"),"dragScroll")
+         callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+         getlocal0
+         pushnull
+         initproperty QName(PrivateNamespace(null,"62"),"_dragScrollTimer")
+         ofs0029:
+         getlocal0
+         pushnull
+         initproperty QName(PrivateNamespace(null,"62"),"_dragScrollEvent")
+         getlocal0
+         pushnull
+         initproperty QName(PrivateNamespace(null,"62"),"_dragScrollDelta")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function globalToLocal(param1:Number, param2:Number) : Point
+      {
+         trait method QName(PrivateNamespace(null,"62"),"globalToLocal")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace("flash.geom"),"Point")
+         
+         body
+         maxstack 4
+         localcount 7
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"target")
+         coerce QName(PackageNamespace("spark.components.supportClasses"),"GroupBase")
+         setlocal3
+         getlocal3
+         getproperty QName(PackageNamespace(""),"parent")
+         coerce QName(PackageNamespace("flash.display"),"DisplayObject")
+         dup
+         setlocal 4
+         findpropstrict QName(PackageNamespace("flash.geom"),"Point")
+         getlocal1
+         getlocal2
+         constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
+         callproperty QName(PackageNamespace(""),"globalToLocal"), 1
+         coerce QName(PackageNamespace("flash.geom"),"Point")
+         dup
+         dup
+         setlocal 5
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"x")
+         subtract
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 5
+         getlocal 5
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"y")
+         subtract
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         callproperty QName(ProtectedNamespace("spark.layouts.supportClasses:LayoutBase"),"getScrollRect"), 0
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         dup
+         setlocal 6
+         iffalse ofs006c
+         getlocal 5
+         getlocal 5
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"x")
+         add
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal 5
+         getlocal 5
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"y")
+         add
+         setproperty QName(PackageNamespace(""),"y")
+         ofs006c:
+         getlocal 5
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set verticalScrollPosition(param1:Number) : void
+      {
+         trait setter QName(PackageNamespace(""),"verticalScrollPosition")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"verticalScrollPosition")
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal2
+         getlocal2
+         getlocal1
+         ifstricteq ofs0031
+         getlocal0
+         getlocal1
+         setproperty QName(PrivateNamespace(null,"62"),"_1010846676verticalScrollPosition")
+         getlocal0
+         pushstring "propertyChange"
+         callproperty QName(PackageNamespace(""),"hasEventListener"), 1
+         iffalse ofs0031
+         getlocal0
+         getlex QName(PackageNamespace("mx.events"),"PropertyChangeEvent")
+         getlocal0
+         pushstring "verticalScrollPosition"
+         getlocal2
+         getlocal1
+         callproperty QName(PackageNamespace(""),"createUpdateEvent"), 4
+         callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+         ofs0031:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set horizontalScrollPosition(param1:Number) : void
+      {
+         trait setter QName(PackageNamespace(""),"horizontalScrollPosition")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"horizontalScrollPosition")
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal2
+         getlocal2
+         getlocal1
+         ifstricteq ofs0031
+         getlocal0
+         getlocal1
+         setproperty QName(PrivateNamespace(null,"62"),"_754184102horizontalScrollPosition")
+         getlocal0
+         pushstring "propertyChange"
+         callproperty QName(PackageNamespace(""),"hasEventListener"), 1
+         iffalse ofs0031
+         getlocal0
+         getlex QName(PackageNamespace("mx.events"),"PropertyChangeEvent")
+         getlocal0
+         pushstring "horizontalScrollPosition"
+         getlocal2
+         getlocal1
+         callproperty QName(PackageNamespace(""),"createUpdateEvent"), 4
+         callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+         ofs0031:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 4
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("LayoutBase",[PackageNamespace("spark.layouts.supportClasses")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("mx.utils"),"OnDemandEventDispatcher")
+pushscope
+getlex QName(PackageNamespace("mx.utils"),"OnDemandEventDispatcher")
+newclass 212
+popscope
+popscope
+initproperty QName(PackageNamespace("spark.layouts.supportClasses"),"LayoutBase")
+returnvoid
+end ; code
+end ; body
+end ; method
+

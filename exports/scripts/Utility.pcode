@@ -1,0 +1,747 @@
+package
+{
+   import org.flixel.FlxG;
+   
+   public class Utility
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 3
+      maxscopedepth 4
+      
+      code
+      getlocal0
+      pushscope
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public function Utility()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function dist(param1:Number, param2:Number, param3:Number, param4:Number) : Number
+      {
+         trait method QName(PackageNamespace(""),"dist")
+         flag FINAL
+         dispid 3
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 5
+         localcount 5
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal3
+         getlocal1
+         subtract
+         getlocal3
+         getlocal1
+         subtract
+         multiply
+         getlocal 4
+         getlocal2
+         subtract
+         getlocal 4
+         getlocal2
+         subtract
+         multiply
+         add
+         callproperty QName(PackageNamespace(""),"sqrt"), 1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function integrate(param1:Number, param2:Number, param3:Number, param4:Number, param5:Number = 0.1) : Number
+      {
+         trait method QName(PackageNamespace(""),"integrate")
+         flag FINAL
+         dispid 4
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         optional Double(0.1)
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 6
+         localcount 7
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"Math")
+         pushdouble 0.1
+         getlocal3
+         callproperty QName(PackageNamespace(""),"pow"), 2
+         convert_d
+         setlocal 6
+         getlocal1
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 6
+         getlocal 4
+         callproperty QName(PackageNamespace(""),"pow"), 2
+         multiply
+         getlocal2
+         pushbyte 1
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 6
+         getlocal 4
+         callproperty QName(PackageNamespace(""),"pow"), 2
+         subtract
+         multiply
+         add
+         convert_d
+         setlocal1
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal1
+         getlocal2
+         subtract
+         callproperty QName(PackageNamespace(""),"abs"), 1
+         getlocal 5
+         ifnlt ofs0042
+         getlocal2
+         convert_d
+         setlocal1
+         ofs0042:
+         getlocal1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function stackTrace(param1:String = "stackTrace") : void
+      {
+         trait method QName(PackageNamespace(""),"stackTrace")
+         flag FINAL
+         dispid 5
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"String")
+         optional Utf8("stackTrace")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 4
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"Error")
+         constructprop QName(PackageNamespace(""),"Error"), 0
+         coerce QName(PackageNamespace(""),"Error")
+         setlocal2
+         getlocal2
+         callproperty QName(PackageNamespace(""),"getStackTrace"), 0
+         coerce_s
+         setlocal3
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getlocal1
+         pushstring ": "
+         add
+         getlocal3
+         add
+         callpropvoid QName(PackageNamespace(""),"log"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function justPressedAnyKey() : Boolean
+      {
+         trait method QName(PackageNamespace(""),"justPressedAnyKey")
+         flag FINAL
+         dispid 6
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "A"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         dup
+         iftrue ofs0024
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "B"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0024:
+         dup
+         iftrue ofs0038
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "C"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0038:
+         dup
+         iftrue ofs004c
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "D"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs004c:
+         dup
+         iftrue ofs0060
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "E"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0060:
+         dup
+         iftrue ofs0074
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "F"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0074:
+         dup
+         iftrue ofs0088
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "G"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0088:
+         dup
+         iftrue ofs009c
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "H"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs009c:
+         dup
+         iftrue ofs00b0
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "I"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs00b0:
+         dup
+         iftrue ofs00c4
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "J"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs00c4:
+         dup
+         iftrue ofs00d8
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "K"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs00d8:
+         dup
+         iftrue ofs00ec
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "L"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs00ec:
+         dup
+         iftrue ofs0100
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "M"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0100:
+         dup
+         iftrue ofs0114
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "N"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0114:
+         dup
+         iftrue ofs0128
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "O"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0128:
+         dup
+         iftrue ofs013c
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "P"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs013c:
+         dup
+         iftrue ofs0150
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "Q"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0150:
+         dup
+         iftrue ofs0164
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "R"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0164:
+         dup
+         iftrue ofs0178
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "S"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0178:
+         dup
+         iftrue ofs018c
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "T"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs018c:
+         dup
+         iftrue ofs01a0
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "U"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs01a0:
+         dup
+         iftrue ofs01b4
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "V"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs01b4:
+         dup
+         iftrue ofs01c8
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "W"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs01c8:
+         dup
+         iftrue ofs01dc
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "X"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs01dc:
+         dup
+         iftrue ofs01f0
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "Y"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs01f0:
+         dup
+         iftrue ofs0204
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "Z"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0204:
+         dup
+         iftrue ofs0218
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "QUOTE"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0218:
+         dup
+         iftrue ofs022c
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "ONE"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs022c:
+         dup
+         iftrue ofs0240
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "TWO"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0240:
+         dup
+         iftrue ofs0254
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "THREE"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0254:
+         dup
+         iftrue ofs0268
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "FOUR"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0268:
+         dup
+         iftrue ofs027c
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "FIVE"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs027c:
+         dup
+         iftrue ofs0290
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "SIX"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0290:
+         dup
+         iftrue ofs02a4
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "SEVEN"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs02a4:
+         dup
+         iftrue ofs02b8
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "EIGHT"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs02b8:
+         dup
+         iftrue ofs02cc
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "NINE"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs02cc:
+         dup
+         iftrue ofs02e0
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "ZERO"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs02e0:
+         dup
+         iftrue ofs02f4
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "MINUS"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs02f4:
+         dup
+         iftrue ofs0308
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "PLUS"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0308:
+         dup
+         iftrue ofs031c
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "LBRACKET"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs031c:
+         dup
+         iftrue ofs0330
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "RBRACKET"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0330:
+         dup
+         iftrue ofs0344
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "SEMICOLON"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0344:
+         dup
+         iftrue ofs0358
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "BACKSLASH"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0358:
+         dup
+         iftrue ofs036c
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "SLASH"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs036c:
+         dup
+         iftrue ofs0380
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "COMMA"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0380:
+         dup
+         iftrue ofs0394
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "PERIOD"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0394:
+         dup
+         iftrue ofs03a8
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "ALT"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs03a8:
+         dup
+         iftrue ofs03bc
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "CONTROL"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs03bc:
+         dup
+         iftrue ofs03d0
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "SHIFT"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs03d0:
+         dup
+         iftrue ofs03e4
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "ENTER"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs03e4:
+         dup
+         iftrue ofs03f8
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "SPACE"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs03f8:
+         dup
+         iftrue ofs040c
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "UP"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs040c:
+         dup
+         iftrue ofs0420
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "LEFT"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0420:
+         dup
+         iftrue ofs0434
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "DOWN"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0434:
+         dup
+         iftrue ofs0448
+         pop
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"keys")
+         pushstring "RIGHT"
+         callproperty QName(PackageNamespace(""),"justPressed"), 1
+         convert_b
+         ofs0448:
+         iffalse ofs044e
+         pushtrue
+         returnvalue
+         ofs044e:
+         pushfalse
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 3
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("Utility",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace(""),"Object")
+newclass 257
+popscope
+initproperty QName(PackageNamespace(""),"Utility")
+returnvoid
+end ; code
+end ; body
+end ; method
+

@@ -1,0 +1,272 @@
+package mx.utils
+{
+   import flash.events.Event;
+   import flash.events.EventDispatcher;
+   import flash.events.IEventDispatcher;
+   
+   public class OnDemandEventDispatcher implements IEventDispatcher
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 3
+      maxscopedepth 4
+      
+      code
+      getlocal0
+      pushscope
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var _dispatcher:EventDispatcher;
+      
+      public function OnDemandEventDispatcher()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function addEventListener(param1:String, param2:Function, param3:Boolean = false, param4:int = 0, param5:Boolean = false) : void
+      {
+         trait method QName(PackageNamespace(""),"addEventListener")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"Function")
+         param QName(PackageNamespace(""),"Boolean")
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"Boolean")
+         optional False()
+         optional Integer(0)
+         optional False()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 6
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_dispatcher")
+         pushnull
+         ifne ofs0017
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.events"),"EventDispatcher")
+         getlocal0
+         constructprop QName(PackageNamespace("flash.events"),"EventDispatcher"), 1
+         initproperty QName(PrivateNamespace(null,"61"),"_dispatcher")
+         ofs0017:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_dispatcher")
+         getlocal1
+         getlocal2
+         getlocal3
+         getlocal 4
+         getlocal 5
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 5
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function dispatchEvent(param1:Event) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"dispatchEvent")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"Event")
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_dispatcher")
+         pushnull
+         ifeq ofs0015
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_dispatcher")
+         getlocal1
+         callproperty QName(PackageNamespace(""),"dispatchEvent"), 1
+         returnvalue
+         ofs0015:
+         pushtrue
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function hasEventListener(param1:String) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"hasEventListener")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_dispatcher")
+         pushnull
+         ifeq ofs0015
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_dispatcher")
+         getlocal1
+         callproperty QName(PackageNamespace(""),"hasEventListener"), 1
+         returnvalue
+         ofs0015:
+         pushfalse
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function removeEventListener(param1:String, param2:Function, param3:Boolean = false) : void
+      {
+         trait method QName(PackageNamespace(""),"removeEventListener")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"Function")
+         param QName(PackageNamespace(""),"Boolean")
+         optional False()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 4
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_dispatcher")
+         pushnull
+         ifeq ofs0016
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_dispatcher")
+         getlocal1
+         getlocal2
+         getlocal3
+         callpropvoid QName(PackageNamespace(""),"removeEventListener"), 3
+         ofs0016:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function willTrigger(param1:String) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"willTrigger")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_dispatcher")
+         pushnull
+         ifeq ofs0015
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_dispatcher")
+         getlocal1
+         callproperty QName(PackageNamespace(""),"willTrigger"), 1
+         returnvalue
+         ofs0015:
+         pushfalse
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 3
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("OnDemandEventDispatcher",[PackageNamespace("mx.utils")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace(""),"Object")
+newclass 211
+popscope
+initproperty QName(PackageNamespace("mx.utils"),"OnDemandEventDispatcher")
+returnvoid
+end ; code
+end ; body
+end ; method
+

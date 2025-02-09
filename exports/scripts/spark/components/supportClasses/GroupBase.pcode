@@ -1,0 +1,3839 @@
+package spark.components.supportClasses
+{
+   import flash.display.DisplayObject;
+   import flash.display.Sprite;
+   import flash.events.Event;
+   import flash.events.MouseEvent;
+   import flash.filters.ShaderFilter;
+   import flash.geom.Point;
+   import flash.geom.Rectangle;
+   import mx.core.IVisualElement;
+   import mx.core.UIComponent;
+   import mx.core.mx_internal;
+   import mx.events.PropertyChangeEvent;
+   import mx.graphics.shaderClasses.LuminosityMaskShader;
+   import spark.components.ResizeMode;
+   import spark.core.IViewport;
+   import spark.core.MaskType;
+   import spark.events.DisplayLayerObjectExistenceEvent;
+   import spark.layouts.BasicLayout;
+   import spark.layouts.supportClasses.LayoutBase;
+   import spark.utils.FTETextUtil;
+   import spark.utils.MaskUtil;
+   
+   use namespace mx_internal;
+   
+   public class GroupBase extends UIComponent implements IViewport
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 10
+      maxscopedepth 11
+      
+      code
+      getlocal0
+      pushscope
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var _explicitAlpha:Number = 1;
+      
+      private var _explicitMouseChildren:Boolean = true;
+      
+      private var _explicitMouseEnabled:Boolean = true;
+      
+      private var _layout:LayoutBase;
+      
+      private var _layoutProperties:Object = null;
+      
+      private var layoutInvalidateSizeFlag:Boolean = false;
+      
+      private var layoutInvalidateDisplayListFlag:Boolean = false;
+      
+      private var clipAndEnableScrollingExplicitlySet:Boolean = false;
+      
+      private var _scrollRectSet:Boolean = false;
+      
+      private var _autoLayout:Boolean = true;
+      
+      mx_internal var _overlay:DisplayLayer;
+      
+      private var _resizeMode:String = "noScale";
+      
+      private var _mouseEnabledWhereTransparent:Boolean = true;
+      
+      private var mouseEventReferenceCount:int;
+      
+      private var _hasMouseListeners:Boolean = false;
+      
+      private var _contentWidth:Number = 0;
+      
+      private var _contentHeight:Number = 0;
+      
+      private var _focusPane:Sprite;
+      
+      private var _mask:DisplayObject;
+      
+      mx_internal var maskChanged:Boolean;
+      
+      private var _maskType:String = "clip";
+      
+      private var maskTypeChanged:Boolean;
+      
+      private var originalMaskFilters:Array;
+      
+      private var _luminosityInvert:Boolean = false;
+      
+      private var luminositySettingsChanged:Boolean;
+      
+      private var _luminosityClip:Boolean = false;
+      
+      public function GroupBase()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         findproperty QName(PackageNamespace(""),"showInAutomationHierarchy")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"showInAutomationHierarchy")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      mx_internal static function sortOnLayer(param1:Vector.<IVisualElement>) : void
+      {
+         trait method QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"sortOnLayer")
+         flag FINAL
+         dispid 3
+         method
+         name null
+         param TypeName(QName(PackageNamespace("__AS3__.vec"),"Vector")<QName(PackageNamespace("mx.core"),"IVisualElement")>)
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 5
+         localcount 6
+         initscopedepth 10
+         maxscopedepth 11
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("mx.core"),"IVisualElement")
+         setlocal3
+         pushbyte 0
+         setlocal 5
+         getlocal1
+         getproperty QName(PackageNamespace(""),"length")
+         convert_d
+         setlocal2
+         getlocal2
+         pushbyte 1
+         ifnle ofs0018
+         returnvoid
+         ofs0018:
+         pushbyte 1
+         setlocal 4
+         jump ofs0077
+         ofs0020:
+         label
+         getlocal 4
+         convert_i
+         setlocal 5
+         jump ofs006d
+         ofs002a:
+         label
+         getlocal1
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty QName(Namespace("mx.core:IVisualElement"),"depth")
+         getlocal1
+         getlocal 5
+         decrement
+         getproperty MultinameL([PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty QName(Namespace("mx.core:IVisualElement"),"depth")
+         ifnlt ofs0064
+         getlocal1
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace("mx.core"),"IVisualElement")
+         setlocal3
+         getlocal1
+         getlocal 5
+         getlocal1
+         getlocal 5
+         decrement
+         getproperty MultinameL([PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlocal1
+         getlocal 5
+         decrement
+         getlocal3
+         setproperty MultinameL([PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         jump ofs0068
+         ofs0064:
+         jump ofs0075
+         ofs0068:
+         getlocal 5
+         decrement_i
+         setlocal 5
+         ofs006d:
+         getlocal 5
+         pushbyte 0
+         ifgt ofs002a
+         ofs0075:
+         inclocal_i 4
+         ofs0077:
+         getlocal 4
+         getlocal2
+         iflt ofs0020
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function set alpha(param1:Number) : void
+      {
+         trait setter QName(PackageNamespace(""),"alpha")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"enabled")
+         iffalse ofs000e
+         getlocal0
+         getlocal1
+         setsuper QName(PackageNamespace(""),"alpha")
+         ofs000e:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"13"),"_explicitAlpha")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function get baselinePosition() : Number
+      {
+         trait getter QName(PackageNamespace(""),"baselinePosition")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 4
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"validateBaselinePosition")
+         callproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"validateBaselinePosition"), 0
+         iftrue ofs0011
+         getlex QName(PackageNamespace(""),"NaN")
+         returnvalue
+         ofs0011:
+         getlex QName(PackageNamespace("spark.utils"),"FTETextUtil")
+         getlocal0
+         getlex QName(PackageNamespace(""),"height")
+         getlex QName(PackageNamespace(""),"moduleFactory")
+         callproperty QName(PackageNamespace(""),"calculateFontBaseline"), 3
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function set mouseChildren(param1:Boolean) : void
+      {
+         trait setter QName(PackageNamespace(""),"mouseChildren")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"enabled")
+         iffalse ofs000e
+         getlocal0
+         getlocal1
+         setsuper QName(PackageNamespace(""),"mouseChildren")
+         ofs000e:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"13"),"_explicitMouseChildren")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function set mouseEnabled(param1:Boolean) : void
+      {
+         trait setter QName(PackageNamespace(""),"mouseEnabled")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"enabled")
+         iffalse ofs000e
+         getlocal0
+         getlocal1
+         setsuper QName(PackageNamespace(""),"mouseEnabled")
+         ofs000e:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"13"),"_explicitMouseEnabled")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function set enabled(param1:Boolean) : void
+      {
+         trait setter QName(PackageNamespace(""),"enabled")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 3
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         pushnan
+         setlocal2
+         getlocal0
+         getlocal1
+         setsuper QName(PackageNamespace(""),"enabled")
+         getlocal0
+         getlocal1
+         iffalse ofs0018
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_explicitMouseChildren")
+         convert_b
+         jump ofs0019
+         ofs0018:
+         pushfalse
+         ofs0019:
+         setsuper QName(PackageNamespace(""),"mouseChildren")
+         getlocal0
+         getlocal1
+         iffalse ofs002b
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_explicitMouseEnabled")
+         convert_b
+         jump ofs002c
+         ofs002b:
+         pushfalse
+         ofs002c:
+         setsuper QName(PackageNamespace(""),"mouseEnabled")
+         getlocal1
+         iffalse ofs0040
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_explicitAlpha")
+         setsuper QName(PackageNamespace(""),"alpha")
+         jump ofs005d
+         ofs0040:
+         findpropstrict QName(PackageNamespace(""),"getStyle")
+         pushstring "disabledAlpha"
+         callproperty QName(PackageNamespace(""),"getStyle"), 1
+         convert_d
+         setlocal2
+         findpropstrict QName(PackageNamespace(""),"isNaN")
+         getlocal2
+         callproperty QName(PackageNamespace(""),"isNaN"), 1
+         iftrue ofs005d
+         getlocal0
+         getlocal2
+         setsuper QName(PackageNamespace(""),"alpha")
+         ofs005d:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get layout() : LayoutBase
+      {
+         trait getter QName(PackageNamespace(""),"layout")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("spark.layouts.supportClasses"),"LayoutBase")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set layout(param1:LayoutBase) : void
+      {
+         trait setter QName(PackageNamespace(""),"layout")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("spark.layouts.supportClasses"),"LayoutBase")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         getlocal1
+         ifne ofs000c
+         returnvoid
+         ofs000c:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         iffalse ofs0045
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         pushnull
+         setproperty QName(PackageNamespace(""),"target")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         getlex QName(PackageNamespace("mx.events"),"PropertyChangeEvent")
+         getproperty QName(PackageNamespace(""),"PROPERTY_CHANGE")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"redispatchLayoutEvent")
+         callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"clipAndEnableScrollingExplicitlySet")
+         iffalse ofs0045
+         getlocal0
+         pushstring "clipAndEnableScrolling"
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         getproperty QName(PackageNamespace(""),"clipAndEnableScrolling")
+         newobject 1
+         initproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         ofs0045:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"13"),"_layout")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         iffalse ofs00c3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         getlocal0
+         setproperty QName(PackageNamespace(""),"target")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         getlex QName(PackageNamespace("mx.events"),"PropertyChangeEvent")
+         getproperty QName(PackageNamespace(""),"PROPERTY_CHANGE")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"redispatchLayoutEvent")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         iffalse ofs00c3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         getproperty Multiname("clipAndEnableScrolling",[PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"undefined")
+         ifstricteq ofs008c
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         getproperty Multiname("clipAndEnableScrolling",[PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         setproperty QName(PackageNamespace(""),"clipAndEnableScrolling")
+         ofs008c:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         getproperty Multiname("verticalScrollPosition",[PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"undefined")
+         ifstricteq ofs00a5
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         getproperty Multiname("verticalScrollPosition",[PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         setproperty QName(PackageNamespace(""),"verticalScrollPosition")
+         ofs00a5:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         getproperty Multiname("horizontalScrollPosition",[PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"undefined")
+         ifstricteq ofs00be
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         getproperty Multiname("horizontalScrollPosition",[PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         setproperty QName(PackageNamespace(""),"horizontalScrollPosition")
+         ofs00be:
+         getlocal0
+         pushnull
+         initproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         ofs00c3:
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"invalidateSize"), 0
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"invalidateDisplayList"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function redispatchLayoutEvent(param1:Event) : void
+      {
+         trait method QName(PrivateNamespace(null,"13"),"redispatchLayoutEvent")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"Event")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 4
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getlex QName(PackageNamespace("mx.events"),"PropertyChangeEvent")
+         astypelate
+         coerce QName(PackageNamespace("mx.events"),"PropertyChangeEvent")
+         setlocal2
+         getlocal2
+         iffalse ofs0061
+         jump ofs0024
+         ofs0012:
+         label
+         findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+         jump ofs0061
+         ofs001f:
+         label
+         jump ofs0061
+         ofs0024:
+         getlocal2
+         getproperty QName(PackageNamespace(""),"property")
+         setlocal3
+         pushstring "verticalScrollPosition"
+         getlocal3
+         ifstrictne ofs0037
+         pushbyte 0
+         jump ofs0051
+         ofs0037:
+         pushstring "horizontalScrollPosition"
+         getlocal3
+         ifstrictne ofs0045
+         pushbyte 1
+         jump ofs0051
+         ofs0045:
+         jump ofs004f
+         pushbyte 2
+         jump ofs004f
+         ofs004f:
+         pushbyte 2
+         ofs0051:
+         kill 3
+         lookupswitch ofs001f, [ofs0012, ofs0012, ofs001f]
+         ofs0061:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      [Bindable(event="propertyChange")]
+      public function get horizontalScrollPosition() : Number
+      {
+         trait getter QName(PackageNamespace(""),"horizontalScrollPosition")
+         flag METADATA
+         metadata "Bindable"
+         item "event" "propertyChange"
+         end ; metadata
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         iffalse ofs0012
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         getproperty QName(PackageNamespace(""),"horizontalScrollPosition")
+         returnvalue
+         ofs0012:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         convert_b
+         dup
+         iffalse ofs0029
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         getproperty Multiname("horizontalScrollPosition",[PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"undefined")
+         strictequals
+         not
+         ofs0029:
+         iffalse ofs0035
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         getproperty Multiname("horizontalScrollPosition",[PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         returnvalue
+         ofs0035:
+         pushbyte 0
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function set _754184102horizontalScrollPosition(param1:Number) : void
+      {
+         trait setter QName(PrivateNamespace(null,"13"),"_754184102horizontalScrollPosition")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         iffalse ofs0016
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         getlocal1
+         setproperty QName(PackageNamespace(""),"horizontalScrollPosition")
+         jump ofs0034
+         ofs0016:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         iffalse ofs002a
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         getlocal1
+         setproperty Multiname("horizontalScrollPosition",[PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         jump ofs0034
+         ofs002a:
+         getlocal0
+         pushstring "horizontalScrollPosition"
+         getlocal1
+         newobject 1
+         initproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         ofs0034:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      [Bindable(event="propertyChange")]
+      public function get verticalScrollPosition() : Number
+      {
+         trait getter QName(PackageNamespace(""),"verticalScrollPosition")
+         flag METADATA
+         metadata "Bindable"
+         item "event" "propertyChange"
+         end ; metadata
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         iffalse ofs0012
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         getproperty QName(PackageNamespace(""),"verticalScrollPosition")
+         returnvalue
+         ofs0012:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         convert_b
+         dup
+         iffalse ofs0029
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         getproperty Multiname("verticalScrollPosition",[PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"undefined")
+         strictequals
+         not
+         ofs0029:
+         iffalse ofs0035
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         getproperty Multiname("verticalScrollPosition",[PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         returnvalue
+         ofs0035:
+         pushbyte 0
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function set _1010846676verticalScrollPosition(param1:Number) : void
+      {
+         trait setter QName(PrivateNamespace(null,"13"),"_1010846676verticalScrollPosition")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         iffalse ofs0016
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         getlocal1
+         setproperty QName(PackageNamespace(""),"verticalScrollPosition")
+         jump ofs0034
+         ofs0016:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         iffalse ofs002a
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         getlocal1
+         setproperty Multiname("verticalScrollPosition",[PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         jump ofs0034
+         ofs002a:
+         getlocal0
+         pushstring "verticalScrollPosition"
+         getlocal1
+         newobject 1
+         initproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         ofs0034:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get clipAndEnableScrolling() : Boolean
+      {
+         trait getter QName(PackageNamespace(""),"clipAndEnableScrolling")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         iffalse ofs0012
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         getproperty QName(PackageNamespace(""),"clipAndEnableScrolling")
+         returnvalue
+         ofs0012:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         convert_b
+         dup
+         iffalse ofs0029
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         getproperty Multiname("clipAndEnableScrolling",[PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"undefined")
+         strictequals
+         not
+         ofs0029:
+         iffalse ofs0035
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         getproperty Multiname("clipAndEnableScrolling",[PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         returnvalue
+         ofs0035:
+         pushfalse
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set clipAndEnableScrolling(param1:Boolean) : void
+      {
+         trait setter QName(PackageNamespace(""),"clipAndEnableScrolling")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         pushtrue
+         initproperty QName(PrivateNamespace(null,"13"),"clipAndEnableScrollingExplicitlySet")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         iffalse ofs001b
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         getlocal1
+         setproperty QName(PackageNamespace(""),"clipAndEnableScrolling")
+         jump ofs0039
+         ofs001b:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         iffalse ofs002f
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         getlocal1
+         setproperty Multiname("clipAndEnableScrolling",[PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         jump ofs0039
+         ofs002f:
+         getlocal0
+         pushstring "clipAndEnableScrolling"
+         getlocal1
+         newobject 1
+         initproperty QName(PrivateNamespace(null,"13"),"_layoutProperties")
+         ofs0039:
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"invalidateSize"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function get scrollRect() : Rectangle
+      {
+         trait getter QName(PackageNamespace(""),"scrollRect")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("flash.geom"),"Rectangle")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_scrollRectSet")
+         iftrue ofs0011
+         pushnull
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         jump ofs0017
+         ofs0011:
+         getlocal0
+         getsuper QName(PackageNamespace(""),"scrollRect")
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         ofs0017:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function set scrollRect(param1:Rectangle) : void
+      {
+         trait setter QName(PackageNamespace(""),"scrollRect")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.geom"),"Rectangle")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_scrollRectSet")
+         not
+         dup
+         iffalse ofs000f
+         pop
+         getlocal1
+         not
+         ofs000f:
+         iffalse ofs0014
+         returnvoid
+         ofs0014:
+         getlocal0
+         pushtrue
+         initproperty QName(PrivateNamespace(null,"13"),"_scrollRectSet")
+         getlocal0
+         getlocal1
+         setsuper QName(PackageNamespace(""),"scrollRect")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get autoLayout() : Boolean
+      {
+         trait getter QName(PackageNamespace(""),"autoLayout")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_autoLayout")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set autoLayout(param1:Boolean) : void
+      {
+         trait setter QName(PackageNamespace(""),"autoLayout")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_autoLayout")
+         getlocal1
+         ifne ofs000c
+         returnvoid
+         ofs000c:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"13"),"_autoLayout")
+         getlocal1
+         iffalse ofs0027
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"invalidateSize"), 0
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"invalidateDisplayList"), 0
+         findpropstrict QName(ProtectedNamespace("mx.core:UIComponent"),"invalidateParentSizeAndDisplayList")
+         callpropvoid QName(ProtectedNamespace("mx.core:UIComponent"),"invalidateParentSizeAndDisplayList"), 0
+         ofs0027:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get overlay() : DisplayLayer
+      {
+         trait getter QName(PackageNamespace(""),"overlay")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("spark.components.supportClasses"),"DisplayLayer")
+         
+         body
+         maxstack 3
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_overlay")
+         iftrue ofs003c
+         getlocal0
+         findpropstrict QName(PackageNamespace("spark.components.supportClasses"),"DisplayLayer")
+         constructprop QName(PackageNamespace("spark.components.supportClasses"),"DisplayLayer"), 0
+         initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_overlay")
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_overlay")
+         getlex QName(PackageNamespace("spark.events"),"DisplayLayerObjectExistenceEvent")
+         getproperty QName(PackageNamespace(""),"OBJECT_ADD")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"overlay_objectAdd")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_overlay")
+         getlex QName(PackageNamespace("spark.events"),"DisplayLayerObjectExistenceEvent")
+         getproperty QName(PackageNamespace(""),"OBJECT_REMOVE")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"overlay_objectRemove")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         findpropstrict QName(PackageNamespace(""),"invalidateProperties")
+         callpropvoid QName(PackageNamespace(""),"invalidateProperties"), 0
+         ofs003c:
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_overlay")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function overlay_objectAdd(param1:DisplayLayerObjectExistenceEvent) : void
+      {
+         trait method QName(PrivateNamespace(null,"13"),"overlay_objectAdd")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("spark.events"),"DisplayLayerObjectExistenceEvent")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         getproperty QName(PackageNamespace(""),"object")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"index")
+         getlex QName(PackageNamespace(""),"numChildren")
+         add
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_overlay")
+         getproperty QName(PackageNamespace(""),"numDisplayObjects")
+         subtract
+         pushbyte 1
+         add
+         callsupervoid QName(PackageNamespace(""),"addChildAt"), 2
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function overlay_objectRemove(param1:DisplayLayerObjectExistenceEvent) : void
+      {
+         trait method QName(PrivateNamespace(null,"13"),"overlay_objectRemove")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("spark.events"),"DisplayLayerObjectExistenceEvent")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         getproperty QName(PackageNamespace(""),"object")
+         callsupervoid QName(PackageNamespace(""),"removeChild"), 1
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_overlay")
+         getproperty QName(PackageNamespace(""),"numDisplayObjects")
+         pushbyte 1
+         ifne ofs001f
+         findpropstrict QName(PackageNamespace(""),"invalidateProperties")
+         callpropvoid QName(PackageNamespace(""),"invalidateProperties"), 0
+         ofs001f:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function destroyOverlay() : void
+      {
+         trait method QName(PrivateNamespace(null,"13"),"destroyOverlay")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_overlay")
+         getlex QName(PackageNamespace("spark.events"),"DisplayLayerObjectExistenceEvent")
+         getproperty QName(PackageNamespace(""),"OBJECT_ADD")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"overlay_objectAdd")
+         callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_overlay")
+         getlex QName(PackageNamespace("spark.events"),"DisplayLayerObjectExistenceEvent")
+         getproperty QName(PackageNamespace(""),"OBJECT_REMOVE")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"overlay_objectRemove")
+         callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+         getlocal0
+         pushnull
+         initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_overlay")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get resizeMode() : String
+      {
+         trait getter QName(PackageNamespace(""),"resizeMode")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_resizeMode")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set resizeMode(param1:String) : void
+      {
+         trait setter QName(PackageNamespace(""),"resizeMode")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_resizeMode")
+         getlocal1
+         ifne ofs000c
+         returnvoid
+         ofs000c:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_resizeMode")
+         getlex QName(PackageNamespace("spark.components"),"ResizeMode")
+         getproperty QName(PackageNamespace(""),"SCALE")
+         ifne ofs0024
+         findpropstrict QName(ProtectedNamespace("mx.core:UIComponent"),"setStretchXY")
+         pushbyte 1
+         dup
+         callpropvoid QName(ProtectedNamespace("mx.core:UIComponent"),"setStretchXY"), 2
+         ofs0024:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"13"),"_resizeMode")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"invalidateSize"), 0
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"invalidateDisplayList"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get mouseEnabledWhereTransparent() : Boolean
+      {
+         trait getter QName(PackageNamespace(""),"mouseEnabledWhereTransparent")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mouseEnabledWhereTransparent")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set mouseEnabledWhereTransparent(param1:Boolean) : void
+      {
+         trait setter QName(PackageNamespace(""),"mouseEnabledWhereTransparent")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mouseEnabledWhereTransparent")
+         ifne ofs000c
+         returnvoid
+         ofs000c:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"13"),"_mouseEnabledWhereTransparent")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_hasMouseListeners")
+         iffalse ofs001e
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"invalidateDisplayList"), 0
+         ofs001e:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      mx_internal function drawBackground() : void
+      {
+         trait method QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"drawBackground")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 5
+         localcount 10
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal3
+         pushbyte 0
+         setlocal 4
+         pushbyte 0
+         setlocal 5
+         pushbyte 0
+         setlocal 6
+         pushbyte 0
+         setlocal 7
+         pushbyte 0
+         setlocal 8
+         pushbyte 0
+         setlocal 9
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mouseEnabledWhereTransparent")
+         not
+         dup
+         iftrue ofs002d
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_hasMouseListeners")
+         not
+         ofs002d:
+         iffalse ofs0032
+         returnvoid
+         ofs0032:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_resizeMode")
+         getlex QName(PackageNamespace("spark.components"),"ResizeMode")
+         getproperty QName(PackageNamespace(""),"SCALE")
+         ifne ofs0048
+         getlex QName(PackageNamespace(""),"measuredWidth")
+         convert_d
+         jump ofs004c
+         ofs0048:
+         getlex QName(ProtectedNamespace("mx.core:UIComponent"),"unscaledWidth")
+         convert_d
+         ofs004c:
+         convert_d
+         setlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_resizeMode")
+         getlex QName(PackageNamespace("spark.components"),"ResizeMode")
+         getproperty QName(PackageNamespace(""),"SCALE")
+         ifne ofs0064
+         getlex QName(PackageNamespace(""),"measuredHeight")
+         convert_d
+         jump ofs0068
+         ofs0064:
+         getlex QName(ProtectedNamespace("mx.core:UIComponent"),"unscaledHeight")
+         convert_d
+         ofs0068:
+         convert_d
+         setlocal2
+         findpropstrict QName(PackageNamespace(""),"isNaN")
+         getlocal1
+         callproperty QName(PackageNamespace(""),"isNaN"), 1
+         convert_b
+         dup
+         iftrue ofs0082
+         pop
+         findpropstrict QName(PackageNamespace(""),"isNaN")
+         getlocal2
+         callproperty QName(PackageNamespace(""),"isNaN"), 1
+         convert_b
+         ofs0082:
+         iffalse ofs0087
+         returnvoid
+         ofs0087:
+         getlex QName(PackageNamespace(""),"graphics")
+         callpropvoid QName(PackageNamespace(""),"clear"), 0
+         getlex QName(PackageNamespace(""),"graphics")
+         pushint 16777215
+         pushbyte 0
+         callpropvoid QName(PackageNamespace(""),"beginFill"), 2
+         getlocal0
+         getproperty QName(PackageNamespace(""),"layout")
+         convert_b
+         dup
+         iffalse ofs00ac
+         pop
+         getlocal0
+         getproperty QName(PackageNamespace(""),"layout")
+         getproperty QName(PackageNamespace(""),"useVirtualLayout")
+         convert_b
+         ofs00ac:
+         iffalse ofs00c5
+         getlex QName(PackageNamespace(""),"graphics")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"horizontalScrollPosition")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"verticalScrollPosition")
+         getlocal1
+         getlocal2
+         callpropvoid QName(PackageNamespace(""),"drawRect"), 4
+         jump ofs0154
+         ofs00c5:
+         pushshort 4096
+         setlocal3
+         getlex QName(PackageNamespace(""),"Math")
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"contentWidth")
+         callproperty QName(PackageNamespace(""),"max"), 2
+         callproperty QName(PackageNamespace(""),"round"), 1
+         convert_i
+         setlocal 4
+         getlex QName(PackageNamespace(""),"Math")
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal2
+         getlocal0
+         getproperty QName(PackageNamespace(""),"contentHeight")
+         callproperty QName(PackageNamespace(""),"max"), 2
+         callproperty QName(PackageNamespace(""),"round"), 1
+         convert_i
+         setlocal 5
+         pushbyte 0
+         setlocal 6
+         jump ofs014c
+         ofs00fd:
+         label
+         pushbyte 0
+         setlocal 7
+         jump ofs013d
+         ofs0106:
+         label
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 4
+         getlocal 6
+         subtract
+         getlocal3
+         callproperty QName(PackageNamespace(""),"min"), 2
+         convert_i
+         setlocal 8
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal 5
+         getlocal 7
+         subtract
+         getlocal3
+         callproperty QName(PackageNamespace(""),"min"), 2
+         convert_i
+         setlocal 9
+         getlex QName(PackageNamespace(""),"graphics")
+         getlocal 6
+         getlocal 7
+         getlocal 8
+         getlocal 9
+         callpropvoid QName(PackageNamespace(""),"drawRect"), 4
+         getlocal 7
+         getlocal3
+         add
+         convert_i
+         setlocal 7
+         ofs013d:
+         getlocal 7
+         getlocal 5
+         iflt ofs0106
+         getlocal 6
+         getlocal3
+         add
+         convert_i
+         setlocal 6
+         ofs014c:
+         getlocal 6
+         getlocal 4
+         iflt ofs00fd
+         ofs0154:
+         getlex QName(PackageNamespace(""),"graphics")
+         callpropvoid QName(PackageNamespace(""),"endFill"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      mx_internal function set hasMouseListeners(param1:Boolean) : void
+      {
+         trait setter QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"hasMouseListeners")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mouseEnabledWhereTransparent")
+         iffalse ofs000f
+         getlocal0
+         callpropvoid QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"$invalidateDisplayList"), 0
+         ofs000f:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"13"),"_hasMouseListeners")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      mx_internal function get hasMouseListeners() : Boolean
+      {
+         trait getter QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"hasMouseListeners")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_hasMouseListeners")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override protected function canSkipMeasurement() : Boolean
+      {
+         trait method QName(ProtectedNamespace("spark.components.supportClasses:GroupBase"),"canSkipMeasurement")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_resizeMode")
+         getlex QName(PackageNamespace("spark.components"),"ResizeMode")
+         getproperty QName(PackageNamespace(""),"SCALE")
+         equals
+         iffalse ofs0016
+         pushfalse
+         jump ofs001c
+         ofs0016:
+         getlocal0
+         callsuper QName(ProtectedNamespace("mx.core:UIComponent"),"canSkipMeasurement"), 0
+         convert_b
+         ofs001c:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function invalidateSize() : void
+      {
+         trait method QName(PackageNamespace(""),"invalidateSize")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"invalidateSize"), 0
+         getlocal0
+         pushtrue
+         initproperty QName(PrivateNamespace(null,"13"),"layoutInvalidateSizeFlag")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function invalidateDisplayList() : void
+      {
+         trait method QName(PackageNamespace(""),"invalidateDisplayList")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"invalidateDisplayList"), 0
+         getlocal0
+         pushtrue
+         initproperty QName(PrivateNamespace(null,"13"),"layoutInvalidateDisplayListFlag")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override mx_internal function childXYChanged() : void
+      {
+         trait method QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"childXYChanged")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"autoLayout")
+         iffalse ofs0014
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"invalidateSize"), 0
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"invalidateDisplayList"), 0
+         ofs0014:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      mx_internal function $invalidateSize() : void
+      {
+         trait method QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"$invalidateSize")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"invalidateSize"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      mx_internal function $invalidateDisplayList() : void
+      {
+         trait method QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"$invalidateDisplayList")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"invalidateDisplayList"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override protected function createChildren() : void
+      {
+         trait method QName(ProtectedNamespace("spark.components.supportClasses:GroupBase"),"createChildren")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callsupervoid QName(ProtectedNamespace("mx.core:UIComponent"),"createChildren"), 0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"layout")
+         iftrue ofs001a
+         getlocal0
+         findpropstrict QName(PackageNamespace("spark.layouts"),"BasicLayout")
+         constructprop QName(PackageNamespace("spark.layouts"),"BasicLayout"), 0
+         initproperty QName(PackageNamespace(""),"layout")
+         ofs001a:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override protected function commitProperties() : void
+      {
+         trait method QName(ProtectedNamespace("spark.components.supportClasses:GroupBase"),"commitProperties")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callsupervoid QName(ProtectedNamespace("mx.core:UIComponent"),"commitProperties"), 0
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_overlay")
+         convert_b
+         dup
+         iffalse ofs001c
+         pop
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_overlay")
+         getproperty QName(PackageNamespace(""),"numDisplayObjects")
+         pushbyte 0
+         equals
+         ofs001c:
+         iffalse ofs0025
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"13"),"destroyOverlay"), 0
+         ofs0025:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override protected function measure() : void
+      {
+         trait method QName(ProtectedNamespace("spark.components.supportClasses:GroupBase"),"measure")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 3
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         pushnan
+         setlocal1
+         pushnan
+         setlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         convert_b
+         dup
+         iffalse ofs0016
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"layoutInvalidateSizeFlag")
+         convert_b
+         ofs0016:
+         iffalse ofs008c
+         getlex QName(PackageNamespace(""),"measuredWidth")
+         convert_d
+         setlocal1
+         getlex QName(PackageNamespace(""),"measuredHeight")
+         convert_d
+         setlocal2
+         getlocal0
+         callsupervoid QName(ProtectedNamespace("mx.core:UIComponent"),"measure"), 0
+         getlocal0
+         pushfalse
+         initproperty QName(PrivateNamespace(null,"13"),"layoutInvalidateSizeFlag")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         callpropvoid QName(PackageNamespace(""),"measure"), 0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"clipAndEnableScrolling")
+         convert_b
+         dup
+         iftrue ofs004c
+         pop
+         getlocal0
+         getproperty QName(PackageNamespace(""),"resizeMode")
+         getlex QName(PackageNamespace("spark.components"),"ResizeMode")
+         getproperty QName(PackageNamespace(""),"SCALE")
+         equals
+         ofs004c:
+         iffalse ofs0060
+         findproperty QName(PackageNamespace(""),"measuredMinWidth")
+         pushbyte 0
+         initproperty QName(PackageNamespace(""),"measuredMinWidth")
+         findproperty QName(PackageNamespace(""),"measuredMinHeight")
+         pushbyte 0
+         initproperty QName(PackageNamespace(""),"measuredMinHeight")
+         ofs0060:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_resizeMode")
+         getlex QName(PackageNamespace("spark.components"),"ResizeMode")
+         getproperty QName(PackageNamespace(""),"SCALE")
+         equals
+         dup
+         iffalse ofs0083
+         pop
+         getlex QName(PackageNamespace(""),"measuredWidth")
+         getlocal1
+         equals
+         not
+         dup
+         iftrue ofs0083
+         pop
+         getlex QName(PackageNamespace(""),"measuredHeight")
+         getlocal2
+         equals
+         not
+         ofs0083:
+         iffalse ofs008c
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"invalidateDisplayList"), 0
+         ofs008c:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override protected function validateMatrix() : void
+      {
+         trait method QName(ProtectedNamespace("spark.components.supportClasses:GroupBase"),"validateMatrix")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         pushnan
+         setlocal1
+         pushnan
+         setlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_resizeMode")
+         getlex QName(PackageNamespace("spark.components"),"ResizeMode")
+         getproperty QName(PackageNamespace(""),"SCALE")
+         ifne ofs0049
+         pushbyte 1
+         convert_d
+         setlocal1
+         pushbyte 1
+         convert_d
+         setlocal2
+         getlex QName(PackageNamespace(""),"measuredWidth")
+         pushbyte 0
+         ifeq ofs002e
+         getlex QName(PackageNamespace(""),"width")
+         getlex QName(PackageNamespace(""),"measuredWidth")
+         divide
+         convert_d
+         setlocal1
+         ofs002e:
+         getlex QName(PackageNamespace(""),"measuredHeight")
+         pushbyte 0
+         ifeq ofs0040
+         getlex QName(PackageNamespace(""),"height")
+         getlex QName(PackageNamespace(""),"measuredHeight")
+         divide
+         convert_d
+         setlocal2
+         ofs0040:
+         findpropstrict QName(ProtectedNamespace("mx.core:UIComponent"),"setStretchXY")
+         getlocal1
+         getlocal2
+         callpropvoid QName(ProtectedNamespace("mx.core:UIComponent"),"setStretchXY"), 2
+         ofs0049:
+         getlocal0
+         callsupervoid QName(ProtectedNamespace("mx.core:UIComponent"),"validateMatrix"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override protected function updateDisplayList(param1:Number, param2:Number) : void
+      {
+         trait method QName(ProtectedNamespace("spark.components.supportClasses:GroupBase"),"updateDisplayList")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 7
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("flash.filters"),"ShaderFilter")
+         setlocal3
+         pushbyte 0
+         setlocal 4
+         pushbyte 0
+         setlocal 5
+         pushnull
+         coerce QName(PackageNamespace("mx.graphics.shaderClasses"),"LuminosityMaskShader")
+         setlocal 6
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_resizeMode")
+         getlex QName(PackageNamespace("spark.components"),"ResizeMode")
+         getproperty QName(PackageNamespace(""),"SCALE")
+         ifne ofs002d
+         getlex QName(PackageNamespace(""),"measuredWidth")
+         convert_d
+         setlocal1
+         getlex QName(PackageNamespace(""),"measuredHeight")
+         convert_d
+         setlocal2
+         ofs002d:
+         getlocal0
+         getlocal1
+         getlocal2
+         callsupervoid QName(ProtectedNamespace("mx.core:UIComponent"),"updateDisplayList"), 2
+         getlocal0
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"maskChanged")
+         iffalse ofs0077
+         getlocal0
+         pushfalse
+         initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"maskChanged")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         iffalse ofs0077
+         getlocal0
+         pushtrue
+         initproperty QName(PrivateNamespace(null,"13"),"maskTypeChanged")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         getproperty QName(PackageNamespace(""),"parent")
+         iftrue ofs0077
+         getlocal0
+         getproperty QName(PackageNamespace(""),"overlay")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         getlex QName(PackageNamespace("spark.components.supportClasses"),"OverlayDepth")
+         getproperty QName(PackageNamespace(""),"MASK")
+         callpropvoid QName(PackageNamespace(""),"addDisplayObject"), 2
+         getlex QName(PackageNamespace("spark.utils"),"MaskUtil")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         pushnull
+         callpropvoid QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"applyMask"), 2
+         ofs0077:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"luminositySettingsChanged")
+         iffalse ofs015e
+         getlocal0
+         pushfalse
+         initproperty QName(PrivateNamespace(null,"13"),"luminositySettingsChanged")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         coerce_a
+         convert_b
+         dup
+         iffalse ofs009d
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_maskType")
+         getlex QName(PackageNamespace("spark.core"),"MaskType")
+         getproperty QName(PackageNamespace(""),"LUMINOSITY")
+         equals
+         coerce_a
+         convert_b
+         ofs009d:
+         dup
+         iffalse ofs00b0
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         getproperty QName(PackageNamespace(""),"filters")
+         getproperty QName(PackageNamespace(""),"length")
+         pushbyte 0
+         greaterthan
+         ofs00b0:
+         iffalse ofs015e
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         getproperty QName(PackageNamespace(""),"filters")
+         getproperty QName(PackageNamespace(""),"length")
+         convert_i
+         setlocal 5
+         pushbyte 0
+         setlocal 4
+         jump ofs0114
+         ofs00c9:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         getproperty QName(PackageNamespace(""),"filters")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace("flash.filters"),"ShaderFilter")
+         istypelate
+         dup
+         iffalse ofs00fa
+         pop
+         findpropstrict QName(PackageNamespace("flash.filters"),"ShaderFilter")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         getproperty QName(PackageNamespace(""),"filters")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace("flash.filters"),"ShaderFilter"), 1
+         getproperty QName(PackageNamespace(""),"shader")
+         getlex QName(PackageNamespace("mx.graphics.shaderClasses"),"LuminosityMaskShader")
+         istypelate
+         ofs00fa:
+         iffalse ofs0112
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         getproperty QName(PackageNamespace(""),"filters")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace("flash.filters"),"ShaderFilter")
+         setlocal3
+         jump ofs011c
+         ofs0112:
+         inclocal_i 4
+         ofs0114:
+         getlocal 4
+         getlocal 5
+         iflt ofs00c9
+         ofs011c:
+         getlocal3
+         convert_b
+         dup
+         iffalse ofs012c
+         pop
+         getlocal3
+         getproperty QName(PackageNamespace(""),"shader")
+         getlex QName(PackageNamespace("mx.graphics.shaderClasses"),"LuminosityMaskShader")
+         istypelate
+         ofs012c:
+         iffalse ofs015e
+         findpropstrict QName(PackageNamespace("mx.graphics.shaderClasses"),"LuminosityMaskShader")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"shader")
+         callproperty QName(PackageNamespace("mx.graphics.shaderClasses"),"LuminosityMaskShader"), 1
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"13"),"calculateLuminositySettings"), 0
+         setproperty QName(PackageNamespace(""),"mode")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         getproperty QName(PackageNamespace(""),"filters")
+         getlocal 4
+         getlocal3
+         setproperty MultinameL([PrivateNamespace(null,"13"),PackageNamespace(""),PrivateNamespace(null,"359"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),ProtectedNamespace("spark.components.supportClasses:GroupBase"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         getproperty QName(PackageNamespace(""),"filters")
+         setproperty QName(PackageNamespace(""),"filters")
+         ofs015e:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"maskTypeChanged")
+         iffalse ofs020b
+         getlocal0
+         pushfalse
+         initproperty QName(PrivateNamespace(null,"13"),"maskTypeChanged")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         iffalse ofs020b
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_maskType")
+         getlex QName(PackageNamespace("spark.core"),"MaskType")
+         getproperty QName(PackageNamespace(""),"CLIP")
+         ifne ofs01a1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"cacheAsBitmap")
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         getproperty QName(PackageNamespace(""),"filters")
+         initproperty QName(PrivateNamespace(null,"13"),"originalMaskFilters")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         newarray 0
+         setproperty QName(PackageNamespace(""),"filters")
+         jump ofs020b
+         ofs01a1:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_maskType")
+         getlex QName(PackageNamespace("spark.core"),"MaskType")
+         getproperty QName(PackageNamespace(""),"ALPHA")
+         ifne ofs01c2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"cacheAsBitmap")
+         findproperty QName(PackageNamespace(""),"cacheAsBitmap")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"cacheAsBitmap")
+         jump ofs020b
+         ofs01c2:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_maskType")
+         getlex QName(PackageNamespace("spark.core"),"MaskType")
+         getproperty QName(PackageNamespace(""),"LUMINOSITY")
+         ifne ofs020b
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"cacheAsBitmap")
+         findproperty QName(PackageNamespace(""),"cacheAsBitmap")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"cacheAsBitmap")
+         findpropstrict QName(PackageNamespace("mx.graphics.shaderClasses"),"LuminosityMaskShader")
+         constructprop QName(PackageNamespace("mx.graphics.shaderClasses"),"LuminosityMaskShader"), 0
+         coerce QName(PackageNamespace("mx.graphics.shaderClasses"),"LuminosityMaskShader")
+         dup
+         setlocal 6
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"13"),"calculateLuminositySettings"), 0
+         setproperty QName(PackageNamespace(""),"mode")
+         findpropstrict QName(PackageNamespace("flash.filters"),"ShaderFilter")
+         getlocal 6
+         constructprop QName(PackageNamespace("flash.filters"),"ShaderFilter"), 1
+         coerce QName(PackageNamespace("flash.filters"),"ShaderFilter")
+         setlocal3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         getlocal3
+         newarray 1
+         setproperty QName(PackageNamespace(""),"filters")
+         ofs020b:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"layoutInvalidateDisplayListFlag")
+         iffalse ofs0248
+         getlocal0
+         pushfalse
+         initproperty QName(PrivateNamespace(null,"13"),"layoutInvalidateDisplayListFlag")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"autoLayout")
+         convert_b
+         dup
+         iffalse ofs0228
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         convert_b
+         ofs0228:
+         iffalse ofs0236
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         getlocal1
+         getlocal2
+         callpropvoid QName(PackageNamespace(""),"updateDisplayList"), 2
+         ofs0236:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         iffalse ofs0248
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_layout")
+         getlocal1
+         getlocal2
+         callpropvoid QName(PackageNamespace(""),"updateScrollRect"), 2
+         ofs0248:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function calculateLuminositySettings() : int
+      {
+         trait method QName(PrivateNamespace(null,"13"),"calculateLuminositySettings")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"int")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"luminosityInvert")
+         iffalse ofs0013
+         getlocal1
+         pushbyte 1
+         add
+         convert_i
+         setlocal1
+         ofs0013:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"luminosityClip")
+         iffalse ofs0021
+         getlocal1
+         pushbyte 2
+         add
+         convert_i
+         setlocal1
+         ofs0021:
+         getlocal1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function styleChanged(param1:String) : void
+      {
+         trait method QName(PackageNamespace(""),"styleChanged")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 4
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         pushnan
+         setlocal3
+         getlocal0
+         getlocal1
+         callsupervoid QName(PackageNamespace(""),"styleChanged"), 1
+         getlocal1
+         pushnull
+         equals
+         dup
+         iftrue ofs0018
+         pop
+         getlocal1
+         pushstring "styleName"
+         equals
+         ofs0018:
+         convert_b
+         setlocal2
+         getlex QName(PackageNamespace(""),"enabled")
+         not
+         dup
+         iffalse ofs0031
+         pop
+         getlocal2
+         convert_b
+         dup
+         iftrue ofs0031
+         pop
+         getlocal1
+         pushstring "disabledAlpha"
+         equals
+         ofs0031:
+         iffalse ofs0052
+         findpropstrict QName(PackageNamespace(""),"getStyle")
+         pushstring "disabledAlpha"
+         callproperty QName(PackageNamespace(""),"getStyle"), 1
+         convert_d
+         setlocal3
+         findpropstrict QName(PackageNamespace(""),"isNaN")
+         getlocal3
+         callproperty QName(PackageNamespace(""),"isNaN"), 1
+         iftrue ofs0052
+         getlocal0
+         getlocal3
+         setsuper QName(PackageNamespace(""),"alpha")
+         ofs0052:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function globalToLocal(param1:Point) : Point
+      {
+         trait method QName(PackageNamespace(""),"globalToLocal")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.geom"),"Point")
+         returns QName(PackageNamespace("flash.geom"),"Point")
+         
+         body
+         maxstack 2
+         localcount 5
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         pushnan
+         setlocal2
+         pushnan
+         setlocal3
+         pushnull
+         coerce QName(PackageNamespace("flash.geom"),"Point")
+         setlocal 4
+         getlocal0
+         getproperty QName(PackageNamespace(""),"resizeMode")
+         getlex QName(PackageNamespace("spark.components"),"ResizeMode")
+         getproperty QName(PackageNamespace(""),"SCALE")
+         equals
+         dup
+         iffalse ofs0022
+         pop
+         getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_layoutFeatures")
+         pushnull
+         equals
+         not
+         ofs0022:
+         iffalse ofs006f
+         getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_layoutFeatures")
+         getproperty QName(PackageNamespace(""),"stretchX")
+         convert_d
+         setlocal2
+         getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_layoutFeatures")
+         getproperty QName(PackageNamespace(""),"stretchY")
+         convert_d
+         setlocal3
+         getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_layoutFeatures")
+         pushbyte 1
+         setproperty QName(PackageNamespace(""),"stretchX")
+         getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_layoutFeatures")
+         pushbyte 1
+         setproperty QName(PackageNamespace(""),"stretchY")
+         findpropstrict QName(ProtectedNamespace("mx.core:UIComponent"),"applyComputedMatrix")
+         callpropvoid QName(ProtectedNamespace("mx.core:UIComponent"),"applyComputedMatrix"), 0
+         getlocal0
+         getlocal1
+         callsuper QName(PackageNamespace(""),"globalToLocal"), 1
+         coerce QName(PackageNamespace("flash.geom"),"Point")
+         setlocal 4
+         getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_layoutFeatures")
+         getlocal2
+         setproperty QName(PackageNamespace(""),"stretchX")
+         getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_layoutFeatures")
+         getlocal3
+         setproperty QName(PackageNamespace(""),"stretchY")
+         findpropstrict QName(ProtectedNamespace("mx.core:UIComponent"),"applyComputedMatrix")
+         callpropvoid QName(ProtectedNamespace("mx.core:UIComponent"),"applyComputedMatrix"), 0
+         getlocal 4
+         returnvalue
+         ofs006f:
+         getlocal0
+         getlocal1
+         callsuper QName(PackageNamespace(""),"globalToLocal"), 1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function localToGlobal(param1:Point) : Point
+      {
+         trait method QName(PackageNamespace(""),"localToGlobal")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.geom"),"Point")
+         returns QName(PackageNamespace("flash.geom"),"Point")
+         
+         body
+         maxstack 2
+         localcount 5
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         pushnan
+         setlocal2
+         pushnan
+         setlocal3
+         pushnull
+         coerce QName(PackageNamespace("flash.geom"),"Point")
+         setlocal 4
+         getlocal0
+         getproperty QName(PackageNamespace(""),"resizeMode")
+         getlex QName(PackageNamespace("spark.components"),"ResizeMode")
+         getproperty QName(PackageNamespace(""),"SCALE")
+         equals
+         dup
+         iffalse ofs0022
+         pop
+         getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_layoutFeatures")
+         pushnull
+         equals
+         not
+         ofs0022:
+         iffalse ofs006f
+         getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_layoutFeatures")
+         getproperty QName(PackageNamespace(""),"stretchX")
+         convert_d
+         setlocal2
+         getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_layoutFeatures")
+         getproperty QName(PackageNamespace(""),"stretchY")
+         convert_d
+         setlocal3
+         getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_layoutFeatures")
+         pushbyte 1
+         setproperty QName(PackageNamespace(""),"stretchX")
+         getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_layoutFeatures")
+         pushbyte 1
+         setproperty QName(PackageNamespace(""),"stretchY")
+         findpropstrict QName(ProtectedNamespace("mx.core:UIComponent"),"applyComputedMatrix")
+         callpropvoid QName(ProtectedNamespace("mx.core:UIComponent"),"applyComputedMatrix"), 0
+         getlocal0
+         getlocal1
+         callsuper QName(PackageNamespace(""),"localToGlobal"), 1
+         coerce QName(PackageNamespace("flash.geom"),"Point")
+         setlocal 4
+         getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_layoutFeatures")
+         getlocal2
+         setproperty QName(PackageNamespace(""),"stretchX")
+         getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_layoutFeatures")
+         getlocal3
+         setproperty QName(PackageNamespace(""),"stretchY")
+         findpropstrict QName(ProtectedNamespace("mx.core:UIComponent"),"applyComputedMatrix")
+         callpropvoid QName(ProtectedNamespace("mx.core:UIComponent"),"applyComputedMatrix"), 0
+         getlocal 4
+         returnvalue
+         ofs006f:
+         getlocal0
+         getlocal1
+         callsuper QName(PackageNamespace(""),"localToGlobal"), 1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getHorizontalScrollPositionDelta(param1:uint) : Number
+      {
+         trait method QName(PackageNamespace(""),"getHorizontalScrollPositionDelta")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"uint")
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"layout")
+         iffalse ofs0018
+         getlocal0
+         getproperty QName(PackageNamespace(""),"layout")
+         getlocal1
+         callproperty QName(PackageNamespace(""),"getHorizontalScrollPositionDelta"), 1
+         convert_d
+         jump ofs001b
+         ofs0018:
+         pushbyte 0
+         convert_d
+         ofs001b:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getVerticalScrollPositionDelta(param1:uint) : Number
+      {
+         trait method QName(PackageNamespace(""),"getVerticalScrollPositionDelta")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"uint")
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"layout")
+         iffalse ofs0018
+         getlocal0
+         getproperty QName(PackageNamespace(""),"layout")
+         getlocal1
+         callproperty QName(PackageNamespace(""),"getVerticalScrollPositionDelta"), 1
+         convert_d
+         jump ofs001b
+         ofs0018:
+         pushbyte 0
+         convert_d
+         ofs001b:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      [Bindable("propertyChange")]
+      public function get contentWidth() : Number
+      {
+         trait getter QName(PackageNamespace(""),"contentWidth")
+         flag METADATA
+         metadata "Bindable"
+         item null "propertyChange"
+         end ; metadata
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_contentWidth")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function setContentWidth(param1:Number) : void
+      {
+         trait method QName(PrivateNamespace(null,"13"),"setContentWidth")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 3
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_contentWidth")
+         ifne ofs000c
+         returnvoid
+         ofs000c:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_contentWidth")
+         convert_d
+         setlocal2
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"13"),"_contentWidth")
+         findpropstrict QName(ProtectedNamespace("mx.core:UIComponent"),"dispatchPropertyChangeEvent")
+         pushstring "contentWidth"
+         getlocal2
+         getlocal1
+         callpropvoid QName(ProtectedNamespace("mx.core:UIComponent"),"dispatchPropertyChangeEvent"), 3
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      [Bindable("propertyChange")]
+      public function get contentHeight() : Number
+      {
+         trait getter QName(PackageNamespace(""),"contentHeight")
+         flag METADATA
+         metadata "Bindable"
+         item null "propertyChange"
+         end ; metadata
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_contentHeight")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function setContentHeight(param1:Number) : void
+      {
+         trait method QName(PrivateNamespace(null,"13"),"setContentHeight")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 3
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_contentHeight")
+         ifne ofs000c
+         returnvoid
+         ofs000c:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_contentHeight")
+         convert_d
+         setlocal2
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"13"),"_contentHeight")
+         findpropstrict QName(ProtectedNamespace("mx.core:UIComponent"),"dispatchPropertyChangeEvent")
+         pushstring "contentHeight"
+         getlocal2
+         getlocal1
+         callpropvoid QName(ProtectedNamespace("mx.core:UIComponent"),"dispatchPropertyChangeEvent"), 3
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function setContentSize(param1:Number, param2:Number) : void
+      {
+         trait method QName(PackageNamespace(""),"setContentSize")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 3
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_contentWidth")
+         equals
+         dup
+         iffalse ofs0014
+         pop
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_contentHeight")
+         equals
+         ofs0014:
+         iffalse ofs0019
+         returnvoid
+         ofs0019:
+         getlocal0
+         getlocal1
+         callpropvoid QName(PrivateNamespace(null,"13"),"setContentWidth"), 1
+         getlocal0
+         getlocal2
+         callpropvoid QName(PrivateNamespace(null,"13"),"setContentHeight"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function addEventListener(param1:String, param2:Function, param3:Boolean = false, param4:int = 0, param5:Boolean = false) : void
+      {
+         trait method QName(PackageNamespace(""),"addEventListener")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"Function")
+         param QName(PackageNamespace(""),"Boolean")
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"Boolean")
+         optional False()
+         optional Integer(0)
+         optional False()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 8
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         getlocal2
+         getlocal3
+         getlocal 4
+         getlocal 5
+         callsupervoid QName(PackageNamespace(""),"addEventListener"), 5
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"CLICK")
+         equals
+         dup
+         iftrue ofs0022
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"DOUBLE_CLICK")
+         equals
+         ofs0022:
+         dup
+         iftrue ofs002f
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"MOUSE_DOWN")
+         equals
+         ofs002f:
+         dup
+         iftrue ofs003c
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"MOUSE_MOVE")
+         equals
+         ofs003c:
+         dup
+         iftrue ofs0049
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"MOUSE_OVER")
+         equals
+         ofs0049:
+         dup
+         iftrue ofs0056
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"MOUSE_OUT")
+         equals
+         ofs0056:
+         dup
+         iftrue ofs0063
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"ROLL_OUT")
+         equals
+         ofs0063:
+         dup
+         iftrue ofs0070
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"ROLL_OVER")
+         equals
+         ofs0070:
+         dup
+         iftrue ofs007d
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"MOUSE_UP")
+         equals
+         ofs007d:
+         dup
+         iftrue ofs008a
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"MOUSE_WHEEL")
+         equals
+         ofs008a:
+         iffalse ofs00af
+         getlocal0
+         dup
+         setlocal 6
+         getproperty QName(PrivateNamespace(null,"13"),"mouseEventReferenceCount")
+         dup
+         increment_i
+         setlocal 7
+         getlocal 6
+         getlocal 7
+         setproperty QName(PrivateNamespace(null,"13"),"mouseEventReferenceCount")
+         kill 7
+         kill 6
+         pushbyte 0
+         ifne ofs00af
+         getlocal0
+         pushtrue
+         initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"hasMouseListeners")
+         ofs00af:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function removeEventListener(param1:String, param2:Function, param3:Boolean = false) : void
+      {
+         trait method QName(PackageNamespace(""),"removeEventListener")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"Function")
+         param QName(PackageNamespace(""),"Boolean")
+         optional False()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 6
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         getlocal2
+         getlocal3
+         callsupervoid QName(PackageNamespace(""),"removeEventListener"), 3
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"CLICK")
+         equals
+         dup
+         iftrue ofs001e
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"DOUBLE_CLICK")
+         equals
+         ofs001e:
+         dup
+         iftrue ofs002b
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"MOUSE_DOWN")
+         equals
+         ofs002b:
+         dup
+         iftrue ofs0038
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"MOUSE_MOVE")
+         equals
+         ofs0038:
+         dup
+         iftrue ofs0045
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"MOUSE_OVER")
+         equals
+         ofs0045:
+         dup
+         iftrue ofs0052
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"MOUSE_OUT")
+         equals
+         ofs0052:
+         dup
+         iftrue ofs005f
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"ROLL_OUT")
+         equals
+         ofs005f:
+         dup
+         iftrue ofs006c
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"ROLL_OVER")
+         equals
+         ofs006c:
+         dup
+         iftrue ofs0079
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"MOUSE_UP")
+         equals
+         ofs0079:
+         dup
+         iftrue ofs0086
+         pop
+         getlocal1
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"MOUSE_WHEEL")
+         equals
+         ofs0086:
+         iffalse ofs00ab
+         getlocal0
+         dup
+         setlocal 4
+         getproperty QName(PrivateNamespace(null,"13"),"mouseEventReferenceCount")
+         decrement_i
+         dup
+         setlocal 5
+         getlocal 4
+         getlocal 5
+         setproperty QName(PrivateNamespace(null,"13"),"mouseEventReferenceCount")
+         kill 5
+         kill 4
+         pushbyte 0
+         ifne ofs00ab
+         getlocal0
+         pushfalse
+         initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"hasMouseListeners")
+         ofs00ab:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      mx_internal function $addEventListener(param1:String, param2:Function, param3:Boolean = false, param4:int = 0, param5:Boolean = false) : void
+      {
+         trait method QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"$addEventListener")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"Function")
+         param QName(PackageNamespace(""),"Boolean")
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"Boolean")
+         optional False()
+         optional Integer(0)
+         optional False()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 6
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         getlocal2
+         getlocal3
+         getlocal 4
+         getlocal 5
+         callsupervoid QName(PackageNamespace(""),"addEventListener"), 5
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      mx_internal function $removeEventListener(param1:String, param2:Function, param3:Boolean = false) : void
+      {
+         trait method QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"$removeEventListener")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"Function")
+         param QName(PackageNamespace(""),"Boolean")
+         optional False()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 4
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         getlocal2
+         getlocal3
+         callsupervoid QName(PackageNamespace(""),"removeEventListener"), 3
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function get focusPane() : Sprite
+      {
+         trait getter QName(PackageNamespace(""),"focusPane")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("flash.display"),"Sprite")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_focusPane")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function set focusPane(param1:Sprite) : void
+      {
+         trait setter QName(PackageNamespace(""),"focusPane")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.display"),"Sprite")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         iffalse ofs0030
+         getlocal0
+         getproperty QName(PackageNamespace(""),"overlay")
+         getlocal1
+         getlex QName(PackageNamespace("spark.components.supportClasses"),"OverlayDepth")
+         getproperty QName(PackageNamespace(""),"FOCUS_PANE")
+         callpropvoid QName(PackageNamespace(""),"addDisplayObject"), 2
+         getlocal1
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal1
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal1
+         pushnull
+         setproperty QName(PackageNamespace(""),"scrollRect")
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"13"),"_focusPane")
+         jump ofs0041
+         ofs0030:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"overlay")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_focusPane")
+         callpropvoid QName(PackageNamespace(""),"removeDisplayObject"), 1
+         getlocal0
+         pushnull
+         initproperty QName(PrivateNamespace(null,"13"),"_focusPane")
+         ofs0041:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get numElements() : int
+      {
+         trait getter QName(PackageNamespace(""),"numElements")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"int")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte -1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getElementAt(param1:int) : IVisualElement
+      {
+         trait method QName(PackageNamespace(""),"getElementAt")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace("mx.core"),"IVisualElement")
+         
+         body
+         maxstack 1
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getVirtualElementAt(param1:int, param2:Number = NaN, param3:Number = NaN) : IVisualElement
+      {
+         trait method QName(PackageNamespace(""),"getVirtualElementAt")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         optional Double(NaN)
+         optional Double(NaN)
+         returns QName(PackageNamespace("mx.core"),"IVisualElement")
+         
+         body
+         maxstack 2
+         localcount 4
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         callproperty QName(PackageNamespace(""),"getElementAt"), 1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getElementIndex(param1:IVisualElement) : int
+      {
+         trait method QName(PackageNamespace(""),"getElementIndex")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("mx.core"),"IVisualElement")
+         returns QName(PackageNamespace(""),"int")
+         
+         body
+         maxstack 1
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte -1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function get mask() : DisplayObject
+      {
+         trait getter QName(PackageNamespace(""),"mask")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("flash.display"),"DisplayObject")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function set mask(param1:DisplayObject) : void
+      {
+         trait setter QName(PackageNamespace(""),"mask")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.display"),"DisplayObject")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         getlocal1
+         ifstricteq ofs003e
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         convert_b
+         dup
+         iffalse ofs001f
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         getproperty QName(PackageNamespace(""),"parent")
+         getlocal0
+         strictequals
+         ofs001f:
+         iffalse ofs002f
+         getlocal0
+         getproperty QName(PackageNamespace(""),"overlay")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_mask")
+         callpropvoid QName(PackageNamespace(""),"removeDisplayObject"), 1
+         ofs002f:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"13"),"_mask")
+         getlocal0
+         pushtrue
+         initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"maskChanged")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"invalidateDisplayList"), 0
+         ofs003e:
+         getlocal0
+         getlocal1
+         setsuper QName(PackageNamespace(""),"mask")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      [Bindable("propertyChange")]
+      public function get maskType() : String
+      {
+         trait getter QName(PackageNamespace(""),"maskType")
+         flag METADATA
+         metadata "Bindable"
+         item null "propertyChange"
+         end ; metadata
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_maskType")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set maskType(param1:String) : void
+      {
+         trait setter QName(PackageNamespace(""),"maskType")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_maskType")
+         getlocal1
+         ifeq ofs001a
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"13"),"_maskType")
+         getlocal0
+         pushtrue
+         initproperty QName(PrivateNamespace(null,"13"),"maskTypeChanged")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"invalidateDisplayList"), 0
+         ofs001a:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get luminosityInvert() : Boolean
+      {
+         trait getter QName(PackageNamespace(""),"luminosityInvert")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_luminosityInvert")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set luminosityInvert(param1:Boolean) : void
+      {
+         trait setter QName(PackageNamespace(""),"luminosityInvert")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_luminosityInvert")
+         getlocal1
+         ifne ofs000c
+         returnvoid
+         ofs000c:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"13"),"_luminosityInvert")
+         getlocal0
+         pushtrue
+         initproperty QName(PrivateNamespace(null,"13"),"luminositySettingsChanged")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"invalidateDisplayList"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get luminosityClip() : Boolean
+      {
+         trait getter QName(PackageNamespace(""),"luminosityClip")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_luminosityClip")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set luminosityClip(param1:Boolean) : void
+      {
+         trait setter QName(PackageNamespace(""),"luminosityClip")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"13"),"_luminosityClip")
+         getlocal1
+         ifne ofs000c
+         returnvoid
+         ofs000c:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"13"),"_luminosityClip")
+         getlocal0
+         pushtrue
+         initproperty QName(PrivateNamespace(null,"13"),"luminositySettingsChanged")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"invalidateDisplayList"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set verticalScrollPosition(param1:Number) : void
+      {
+         trait setter QName(PackageNamespace(""),"verticalScrollPosition")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 3
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"verticalScrollPosition")
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal2
+         getlocal2
+         getlocal1
+         ifstricteq ofs0031
+         getlocal0
+         getlocal1
+         setproperty QName(PrivateNamespace(null,"13"),"_1010846676verticalScrollPosition")
+         getlocal0
+         pushstring "propertyChange"
+         callproperty QName(PackageNamespace(""),"hasEventListener"), 1
+         iffalse ofs0031
+         getlocal0
+         getlex QName(PackageNamespace("mx.events"),"PropertyChangeEvent")
+         getlocal0
+         pushstring "verticalScrollPosition"
+         getlocal2
+         getlocal1
+         callproperty QName(PackageNamespace(""),"createUpdateEvent"), 4
+         callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+         ofs0031:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set horizontalScrollPosition(param1:Number) : void
+      {
+         trait setter QName(PackageNamespace(""),"horizontalScrollPosition")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 3
+         initscopedepth 11
+         maxscopedepth 12
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"horizontalScrollPosition")
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal2
+         getlocal2
+         getlocal1
+         ifstricteq ofs0031
+         getlocal0
+         getlocal1
+         setproperty QName(PrivateNamespace(null,"13"),"_754184102horizontalScrollPosition")
+         getlocal0
+         pushstring "propertyChange"
+         callproperty QName(PackageNamespace(""),"hasEventListener"), 1
+         iffalse ofs0031
+         getlocal0
+         getlex QName(PackageNamespace("mx.events"),"PropertyChangeEvent")
+         getlocal0
+         pushstring "horizontalScrollPosition"
+         getlocal2
+         getlocal1
+         callproperty QName(PackageNamespace(""),"createUpdateEvent"), 4
+         callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+         ofs0031:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 10
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("GroupBase",[PackageNamespace("spark.components.supportClasses")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"DisplayObject")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"InteractiveObject")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"DisplayObjectContainer")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"Sprite")
+pushscope
+getlex QName(PackageNamespace("mx.core"),"FlexSprite")
+pushscope
+getlex QName(PackageNamespace("mx.core"),"UIComponent")
+pushscope
+getlex QName(PackageNamespace("mx.core"),"UIComponent")
+newclass 48
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace("spark.components.supportClasses"),"GroupBase")
+returnvoid
+end ; code
+end ; body
+end ; method
+

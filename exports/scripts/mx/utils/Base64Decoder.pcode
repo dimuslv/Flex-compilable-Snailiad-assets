@@ -1,0 +1,795 @@
+package mx.utils
+{
+   import flash.utils.ByteArray;
+   import mx.resources.IResourceManager;
+   import mx.resources.ResourceManager;
+   
+   public class Base64Decoder
+   {
+      private static const ESCAPE_CHAR_CODE:Number = 61;
+      
+      private static const inverse:Array;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 257
+      localcount 1
+      initscopedepth 3
+      maxscopedepth 4
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"198"),"ESCAPE_CHAR_CODE")
+      pushbyte 61
+      initproperty QName(PrivateNamespace(null,"198"),"ESCAPE_CHAR_CODE")
+      findproperty QName(PrivateNamespace(null,"198"),"inverse")
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      pushbyte 62
+      pushbyte 64
+      dup
+      dup
+      pushbyte 63
+      pushbyte 52
+      pushbyte 53
+      pushbyte 54
+      pushbyte 55
+      pushbyte 56
+      pushbyte 57
+      pushbyte 58
+      pushbyte 59
+      pushbyte 60
+      pushbyte 61
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      pushbyte 0
+      pushbyte 1
+      pushbyte 2
+      pushbyte 3
+      pushbyte 4
+      pushbyte 5
+      pushbyte 6
+      pushbyte 7
+      pushbyte 8
+      pushbyte 9
+      pushbyte 10
+      pushbyte 11
+      pushbyte 12
+      pushbyte 13
+      pushbyte 14
+      pushbyte 15
+      pushbyte 16
+      pushbyte 17
+      pushbyte 18
+      pushbyte 19
+      pushbyte 20
+      pushbyte 21
+      pushbyte 22
+      pushbyte 23
+      pushbyte 24
+      pushbyte 25
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 26
+      pushbyte 27
+      pushbyte 28
+      pushbyte 29
+      pushbyte 30
+      pushbyte 31
+      pushbyte 32
+      pushbyte 33
+      pushbyte 34
+      pushbyte 35
+      pushbyte 36
+      pushbyte 37
+      pushbyte 38
+      pushbyte 39
+      pushbyte 40
+      pushbyte 41
+      pushbyte 42
+      pushbyte 43
+      pushbyte 44
+      pushbyte 45
+      pushbyte 46
+      pushbyte 47
+      pushbyte 48
+      pushbyte 49
+      pushbyte 50
+      pushbyte 51
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      dup
+      dup
+      pushbyte 64
+      newarray 256
+      initproperty QName(PrivateNamespace(null,"198"),"inverse")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var count:int = 0;
+      
+      private var data:ByteArray;
+      
+      private var filled:int = 0;
+      
+      private var work:Array;
+      
+      private var resourceManager:IResourceManager;
+      
+      public function Base64Decoder()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 5
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         pushbyte 0
+         dup
+         dup
+         pushbyte 0
+         newarray 4
+         initproperty QName(PrivateNamespace(null,"198"),"work")
+         getlocal0
+         getlex QName(PackageNamespace("mx.resources"),"ResourceManager")
+         callproperty QName(PackageNamespace(""),"getInstance"), 0
+         initproperty QName(PrivateNamespace(null,"198"),"resourceManager")
+         getlocal0
+         constructsuper 0
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.utils"),"ByteArray")
+         constructprop QName(PackageNamespace("flash.utils"),"ByteArray"), 0
+         initproperty QName(PrivateNamespace(null,"198"),"data")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private static function copyByteArray(param1:ByteArray, param2:ByteArray, param3:uint = 0) : void
+      {
+         trait method QName(PrivateNamespace(null,"198"),"copyByteArray")
+         flag FINAL
+         dispid 3
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace("flash.utils"),"ByteArray")
+         param QName(PackageNamespace("flash.utils"),"ByteArray")
+         param QName(PackageNamespace(""),"uint")
+         optional Integer(0)
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 6
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getproperty QName(PackageNamespace(""),"position")
+         convert_i
+         setlocal 4
+         getlocal1
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"position")
+         getlocal2
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"position")
+         pushbyte 0
+         convert_u
+         setlocal 5
+         jump ofs002f
+         ofs001e:
+         label
+         getlocal2
+         getlocal1
+         callproperty QName(PackageNamespace(""),"readByte"), 0
+         callpropvoid QName(PackageNamespace(""),"writeByte"), 1
+         getlocal 5
+         increment
+         convert_u
+         setlocal 5
+         ofs002f:
+         getlocal1
+         getproperty QName(PackageNamespace(""),"bytesAvailable")
+         pushbyte 0
+         greaterthan
+         dup
+         iffalse ofs0040
+         pop
+         getlocal 5
+         getlocal3
+         lessthan
+         ofs0040:
+         iftrue ofs001e
+         getlocal1
+         getlocal 4
+         setproperty QName(PackageNamespace(""),"position")
+         getlocal2
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"position")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function decode(param1:String) : void
+      {
+         trait method QName(PackageNamespace(""),"decode")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 7
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         pushnan
+         setlocal3
+         pushbyte 0
+         convert_u
+         setlocal2
+         jump ofs0164
+         ofs000c:
+         label
+         getlocal1
+         getlocal2
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charCodeAt"), 1
+         convert_d
+         setlocal3
+         getlocal3
+         getlex QName(PrivateNamespace(null,"198"),"ESCAPE_CHAR_CODE")
+         ifne ofs0045
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"work")
+         getlocal0
+         dup
+         setlocal 5
+         getproperty QName(PrivateNamespace(null,"198"),"count")
+         dup
+         increment_i
+         setlocal 6
+         getlocal 5
+         getlocal 6
+         setproperty QName(PrivateNamespace(null,"198"),"count")
+         kill 6
+         kill 5
+         dup
+         setlocal 4
+         pushbyte -1
+         setproperty MultinameL([PrivateNamespace(null,"198"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"499"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:Base64Decoder"),StaticProtectedNs("mx.utils:Base64Decoder"),StaticProtectedNs("Object")])
+         kill 4
+         jump ofs0083
+         ofs0045:
+         getlex QName(PrivateNamespace(null,"198"),"inverse")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"198"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"499"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:Base64Decoder"),StaticProtectedNs("mx.utils:Base64Decoder"),StaticProtectedNs("Object")])
+         pushbyte 64
+         ifeq ofs007f
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"work")
+         getlocal0
+         dup
+         setlocal 5
+         getproperty QName(PrivateNamespace(null,"198"),"count")
+         dup
+         increment_i
+         setlocal 6
+         getlocal 5
+         getlocal 6
+         setproperty QName(PrivateNamespace(null,"198"),"count")
+         kill 6
+         kill 5
+         dup
+         setlocal 4
+         getlex QName(PrivateNamespace(null,"198"),"inverse")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"198"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"499"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:Base64Decoder"),StaticProtectedNs("mx.utils:Base64Decoder"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"198"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"499"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:Base64Decoder"),StaticProtectedNs("mx.utils:Base64Decoder"),StaticProtectedNs("Object")])
+         kill 4
+         jump ofs0083
+         ofs007f:
+         jump ofs0160
+         ofs0083:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"count")
+         pushbyte 4
+         ifne ofs0160
+         getlocal0
+         pushbyte 0
+         initproperty QName(PrivateNamespace(null,"198"),"count")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"data")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"work")
+         pushbyte 0
+         getproperty MultinameL([PrivateNamespace(null,"198"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"499"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:Base64Decoder"),StaticProtectedNs("mx.utils:Base64Decoder"),StaticProtectedNs("Object")])
+         pushbyte 2
+         lshift
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"work")
+         pushbyte 1
+         getproperty MultinameL([PrivateNamespace(null,"198"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"499"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:Base64Decoder"),StaticProtectedNs("mx.utils:Base64Decoder"),StaticProtectedNs("Object")])
+         pushshort 255
+         bitand
+         pushbyte 4
+         rshift
+         bitor
+         callpropvoid QName(PackageNamespace(""),"writeByte"), 1
+         getlocal0
+         dup
+         setlocal 4
+         getproperty QName(PrivateNamespace(null,"198"),"filled")
+         increment_i
+         setlocal 5
+         getlocal 4
+         getlocal 5
+         setproperty QName(PrivateNamespace(null,"198"),"filled")
+         kill 5
+         kill 4
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"work")
+         pushbyte 2
+         getproperty MultinameL([PrivateNamespace(null,"198"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"499"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:Base64Decoder"),StaticProtectedNs("mx.utils:Base64Decoder"),StaticProtectedNs("Object")])
+         pushbyte -1
+         ifne ofs00e0
+         jump ofs016d
+         ofs00e0:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"data")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"work")
+         pushbyte 1
+         getproperty MultinameL([PrivateNamespace(null,"198"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"499"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:Base64Decoder"),StaticProtectedNs("mx.utils:Base64Decoder"),StaticProtectedNs("Object")])
+         pushbyte 4
+         lshift
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"work")
+         pushbyte 2
+         getproperty MultinameL([PrivateNamespace(null,"198"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"499"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:Base64Decoder"),StaticProtectedNs("mx.utils:Base64Decoder"),StaticProtectedNs("Object")])
+         pushshort 255
+         bitand
+         pushbyte 2
+         rshift
+         bitor
+         callpropvoid QName(PackageNamespace(""),"writeByte"), 1
+         getlocal0
+         dup
+         setlocal 4
+         getproperty QName(PrivateNamespace(null,"198"),"filled")
+         increment_i
+         setlocal 5
+         getlocal 4
+         getlocal 5
+         setproperty QName(PrivateNamespace(null,"198"),"filled")
+         kill 5
+         kill 4
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"work")
+         pushbyte 3
+         getproperty MultinameL([PrivateNamespace(null,"198"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"499"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:Base64Decoder"),StaticProtectedNs("mx.utils:Base64Decoder"),StaticProtectedNs("Object")])
+         pushbyte -1
+         ifne ofs012d
+         jump ofs016d
+         ofs012d:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"data")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"work")
+         pushbyte 2
+         getproperty MultinameL([PrivateNamespace(null,"198"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"499"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:Base64Decoder"),StaticProtectedNs("mx.utils:Base64Decoder"),StaticProtectedNs("Object")])
+         pushbyte 6
+         lshift
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"work")
+         pushbyte 3
+         getproperty MultinameL([PrivateNamespace(null,"198"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"499"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:Base64Decoder"),StaticProtectedNs("mx.utils:Base64Decoder"),StaticProtectedNs("Object")])
+         bitor
+         callpropvoid QName(PackageNamespace(""),"writeByte"), 1
+         getlocal0
+         dup
+         setlocal 4
+         getproperty QName(PrivateNamespace(null,"198"),"filled")
+         increment_i
+         setlocal 5
+         getlocal 4
+         getlocal 5
+         setproperty QName(PrivateNamespace(null,"198"),"filled")
+         kill 5
+         kill 4
+         ofs0160:
+         getlocal2
+         increment
+         convert_u
+         setlocal2
+         ofs0164:
+         getlocal2
+         getlocal1
+         getproperty QName(PackageNamespace(""),"length")
+         iflt ofs000c
+         ofs016d:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function drain() : ByteArray
+      {
+         trait method QName(PackageNamespace(""),"drain")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("flash.utils"),"ByteArray")
+         
+         body
+         maxstack 4
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace("flash.utils"),"ByteArray")
+         constructprop QName(PackageNamespace("flash.utils"),"ByteArray"), 0
+         coerce QName(PackageNamespace("flash.utils"),"ByteArray")
+         setlocal1
+         findpropstrict QName(PrivateNamespace(null,"198"),"copyByteArray")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"data")
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"filled")
+         callpropvoid QName(PrivateNamespace(null,"198"),"copyByteArray"), 3
+         getlocal0
+         pushbyte 0
+         initproperty QName(PrivateNamespace(null,"198"),"filled")
+         getlocal1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function flush() : ByteArray
+      {
+         trait method QName(PackageNamespace(""),"flush")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("flash.utils"),"ByteArray")
+         
+         body
+         maxstack 4
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce_s
+         setlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"count")
+         pushbyte 0
+         ifngt ofs002e
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"resourceManager")
+         pushstring "utils"
+         pushstring "partialBlockDropped"
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"198"),"count")
+         newarray 1
+         callproperty QName(Namespace("mx.resources:IResourceManager"),"getString"), 3
+         coerce_s
+         setlocal1
+         findpropstrict QName(PackageNamespace(""),"Error")
+         getlocal1
+         constructprop QName(PackageNamespace(""),"Error"), 1
+         throw
+         ofs002e:
+         getlocal0
+         callproperty QName(PackageNamespace(""),"drain"), 0
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function reset() : void
+      {
+         trait method QName(PackageNamespace(""),"reset")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.utils"),"ByteArray")
+         constructprop QName(PackageNamespace("flash.utils"),"ByteArray"), 0
+         initproperty QName(PrivateNamespace(null,"198"),"data")
+         getlocal0
+         pushbyte 0
+         initproperty QName(PrivateNamespace(null,"198"),"count")
+         getlocal0
+         pushbyte 0
+         initproperty QName(PrivateNamespace(null,"198"),"filled")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function toByteArray() : ByteArray
+      {
+         trait method QName(PackageNamespace(""),"toByteArray")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("flash.utils"),"ByteArray")
+         
+         body
+         maxstack 1
+         localcount 2
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callproperty QName(PackageNamespace(""),"flush"), 0
+         coerce QName(PackageNamespace("flash.utils"),"ByteArray")
+         setlocal1
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"reset"), 0
+         getlocal1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 3
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("Base64Decoder",[PackageNamespace("mx.utils")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace(""),"Object")
+newclass 692
+popscope
+initproperty QName(PackageNamespace("mx.utils"),"Base64Decoder")
+returnvoid
+end ; code
+end ; body
+end ; method
+

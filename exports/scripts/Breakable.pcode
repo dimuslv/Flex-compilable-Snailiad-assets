@@ -1,0 +1,332 @@
+package
+{
+   import org.flixel.*;
+   
+   public class Breakable extends Enemy
+   {
+      private static const IMG_WIDTH:int = 16;
+      
+      private static const IMG_HEIGHT:int = 16;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 8
+      maxscopedepth 9
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"134"),"IMG_WIDTH")
+      pushbyte 16
+      initproperty QName(PrivateNamespace(null,"134"),"IMG_WIDTH")
+      findproperty QName(PrivateNamespace(null,"134"),"IMG_HEIGHT")
+      pushbyte 16
+      initproperty QName(PrivateNamespace(null,"134"),"IMG_HEIGHT")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var _silent:Boolean = false;
+      
+      public function Breakable(param1:int, param2:int, param3:int, param4:Boolean = false)
+      {
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"Boolean")
+         optional False()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 8
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 1
+         setlocal 5
+         pushbyte 0
+         setlocal 6
+         jump ofs002e
+         ofs000e:
+         label
+         pushbyte 0
+         setlocal 6
+         jump ofs007a
+         ofs0017:
+         label
+         pushbyte 20
+         setlocal 6
+         jump ofs007a
+         ofs0020:
+         label
+         pushbyte 35
+         setlocal 6
+         jump ofs007a
+         ofs0029:
+         label
+         jump ofs007a
+         ofs002e:
+         getlocal3
+         setlocal 7
+         pushbyte 0
+         getlocal 7
+         ifstrictne ofs003f
+         pushbyte 0
+         jump ofs0067
+         ofs003f:
+         pushbyte 1
+         getlocal 7
+         ifstrictne ofs004d
+         pushbyte 1
+         jump ofs0067
+         ofs004d:
+         pushbyte 2
+         getlocal 7
+         ifstrictne ofs005b
+         pushbyte 2
+         jump ofs0067
+         ofs005b:
+         jump ofs0065
+         pushbyte 3
+         jump ofs0065
+         ofs0065:
+         pushbyte 3
+         ofs0067:
+         kill 7
+         lookupswitch ofs0029, [ofs000e, ofs0017, ofs0020, ofs0029]
+         ofs007a:
+         getlocal0
+         getlocal1
+         getlocal2
+         getlocal 5
+         getlocal 6
+         pushbyte 0
+         constructsuper 5
+         getlocal0
+         getlocal 4
+         initproperty QName(PrivateNamespace(null,"134"),"_silent")
+         findproperty QName(PackageNamespace(""),"width")
+         getlex QName(PrivateNamespace(null,"134"),"IMG_WIDTH")
+         initproperty QName(PackageNamespace(""),"width")
+         findproperty QName(PackageNamespace(""),"height")
+         getlex QName(PrivateNamespace(null,"134"),"IMG_HEIGHT")
+         initproperty QName(PackageNamespace(""),"height")
+         findproperty QName(PackageNamespace(""),"visible")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"visible")
+         findproperty QName(PackageNamespace(""),"exists")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"exists")
+         findproperty QName(PackageNamespace(""),"solid")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"solid")
+         findproperty QName(PackageNamespace(""),"active")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"active")
+         findproperty QName(PackageNamespace(""),"fixed")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"fixed")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function kill() : void
+      {
+         trait method QName(PackageNamespace(""),"kill")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"kill"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function hurt(param1:Number) : void
+      {
+         trait method QName(PackageNamespace(""),"hurt")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 7
+         localcount 4
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         pushbyte 10
+         ifne ofs000a
+         returnvoid
+         ofs000a:
+         getlocal1
+         getlex QName(ProtectedNamespace("Enemy"),"_defense")
+         subtract
+         convert_d
+         setlocal1
+         getlocal1
+         pushbyte 0
+         ifnle ofs0028
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"134"),"_silent")
+         iftrue ofs0027
+         getlex QName(PackageNamespace(""),"Sfx")
+         callpropvoid QName(PackageNamespace(""),"playEnemyPingOffArmor"), 0
+         ofs0027:
+         returnvoid
+         ofs0028:
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"kill"), 0
+         getlex QName(PackageNamespace(""),"x")
+         pushbyte 16
+         divide
+         convert_i
+         setlocal2
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 16
+         divide
+         convert_i
+         setlocal3
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"fixBlocks")
+         getlocal2
+         getlocal3
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getproperty QName(PackageNamespace(""),"bgmap")
+         getlocal2
+         getlocal3
+         callproperty Multiname("getTile",[PrivateNamespace(null,"134"),PackageNamespace(""),PrivateNamespace(null,"463"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("Breakable"),StaticProtectedNs("Breakable"),StaticProtectedNs("Enemy"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 2
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getproperty QName(PackageNamespace(""),"fgmap")
+         getlocal2
+         getlocal3
+         callproperty Multiname("getTile",[PrivateNamespace(null,"134"),PackageNamespace(""),PrivateNamespace(null,"463"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("Breakable"),StaticProtectedNs("Breakable"),StaticProtectedNs("Enemy"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 2
+         callpropvoid QName(PackageNamespace(""),"rememberBlock"), 4
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getproperty QName(PackageNamespace(""),"bgmap")
+         getlocal2
+         getlocal3
+         pushbyte 0
+         callpropvoid Multiname("setTile",[PrivateNamespace(null,"134"),PackageNamespace(""),PrivateNamespace(null,"463"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("Breakable"),StaticProtectedNs("Breakable"),StaticProtectedNs("Enemy"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 3
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getproperty QName(PackageNamespace(""),"fgmap")
+         getlocal2
+         getlocal3
+         pushbyte 0
+         callpropvoid Multiname("setTile",[PrivateNamespace(null,"134"),PackageNamespace(""),PrivateNamespace(null,"463"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("Breakable"),StaticProtectedNs("Breakable"),StaticProtectedNs("Enemy"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 3
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"explosionPool")
+         getlex QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 0
+         pushbyte 10
+         getlex QName(PackageNamespace("org.flixel"),"FlxU")
+         callproperty QName(PackageNamespace(""),"random"), 0
+         pushbyte 2
+         multiply
+         pushbyte 1
+         add
+         callpropvoid QName(PackageNamespace(""),"boom"), 5
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"explosionPool")
+         getlex QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 0
+         pushbyte 10
+         getlex QName(PackageNamespace("org.flixel"),"FlxU")
+         callproperty QName(PackageNamespace(""),"random"), 0
+         pushbyte 3
+         multiply
+         pushbyte 1
+         add
+         callpropvoid QName(PackageNamespace(""),"boom"), 5
+         getlex QName(PackageNamespace(""),"Sfx")
+         callpropvoid QName(PackageNamespace(""),"playRandomExplode"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 8
+
+code
+getlocal0
+pushscope
+getscopeobject 0
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+pushscope
+getlex QName(PackageNamespace(""),"Enemy")
+pushscope
+getlex QName(PackageNamespace(""),"Enemy")
+newclass 357
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"Breakable")
+returnvoid
+end ; code
+end ; body
+end ; method
+

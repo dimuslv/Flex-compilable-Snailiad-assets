@@ -1,0 +1,614 @@
+package spark.skins
+{
+   import flash.display.DisplayObject;
+   import flash.geom.ColorTransform;
+   import spark.components.supportClasses.Skin;
+   import spark.primitives.supportClasses.GraphicElement;
+   
+   public class SparkSkin extends Skin
+   {
+      private static const DEFAULT_COLOR_VALUE:uint = 204;
+      
+      private static const DEFAULT_COLOR:uint = 13421772;
+      
+      private static const DEFAULT_SYMBOL_COLOR:uint = 0;
+      
+      private static var colorTransform:ColorTransform;
+      
+      private static var oldContentBackgroundAlpha:Number;
+      
+      private static var contentBackgroundAlphaSetLocally:Boolean;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 13
+      maxscopedepth 14
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"15"),"DEFAULT_COLOR_VALUE")
+      pushshort 204
+      initproperty QName(PrivateNamespace(null,"15"),"DEFAULT_COLOR_VALUE")
+      findproperty QName(PrivateNamespace(null,"15"),"DEFAULT_COLOR")
+      pushint 13421772
+      initproperty QName(PrivateNamespace(null,"15"),"DEFAULT_COLOR")
+      findproperty QName(PrivateNamespace(null,"15"),"DEFAULT_SYMBOL_COLOR")
+      pushbyte 0
+      initproperty QName(PrivateNamespace(null,"15"),"DEFAULT_SYMBOL_COLOR")
+      findproperty QName(PrivateNamespace(null,"15"),"colorTransform")
+      findpropstrict QName(PackageNamespace("flash.geom"),"ColorTransform")
+      constructprop QName(PackageNamespace("flash.geom"),"ColorTransform"), 0
+      setproperty QName(PrivateNamespace(null,"15"),"colorTransform")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      protected var useChromeColor:Boolean = false;
+      
+      private var colorized:Boolean = false;
+      
+      public function SparkSkin()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 14
+         maxscopedepth 15
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get colorizeExclusions() : Array
+      {
+         trait getter QName(PackageNamespace(""),"colorizeExclusions")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Array")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 14
+         maxscopedepth 15
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get symbolItems() : Array
+      {
+         trait getter QName(PackageNamespace(""),"symbolItems")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Array")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 14
+         maxscopedepth 15
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get contentItems() : Array
+      {
+         trait getter QName(PackageNamespace(""),"contentItems")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Array")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 14
+         maxscopedepth 15
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override protected function updateDisplayList(param1:Number, param2:Number) : void
+      {
+         trait method QName(ProtectedNamespace("spark.skins:SparkSkin"),"updateDisplayList")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 12
+         initscopedepth 14
+         maxscopedepth 15
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal3
+         pushbyte 0
+         convert_u
+         setlocal 7
+         pushbyte 0
+         convert_u
+         setlocal 8
+         pushnan
+         setlocal 9
+         pushnull
+         coerce QName(PackageNamespace(""),"Array")
+         setlocal 10
+         pushnull
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal 11
+         getlocal0
+         getproperty QName(PackageNamespace(""),"symbolItems")
+         coerce QName(PackageNamespace(""),"Array")
+         dup
+         setlocal 4
+         convert_b
+         dup
+         iffalse ofs0034
+         pop
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"length")
+         pushbyte 0
+         greaterthan
+         ofs0034:
+         iffalse ofs0076
+         findpropstrict QName(PackageNamespace(""),"getStyle")
+         pushstring "symbolColor"
+         callproperty QName(PackageNamespace(""),"getStyle"), 1
+         convert_u
+         setlocal 7
+         pushbyte 0
+         setlocal3
+         jump ofs006c
+         ofs004c:
+         label
+         getlocal0
+         getlocal 4
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         iffalse ofs006a
+         getlocal0
+         getlocal 4
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlocal 7
+         setproperty Multiname("color",[PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs006a:
+         inclocal_i 3
+         ofs006c:
+         getlocal3
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"length")
+         iflt ofs004c
+         ofs0076:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"contentItems")
+         coerce QName(PackageNamespace(""),"Array")
+         dup
+         setlocal 5
+         convert_b
+         dup
+         iffalse ofs008e
+         pop
+         getlocal 5
+         getproperty QName(PackageNamespace(""),"length")
+         pushbyte 0
+         greaterthan
+         ofs008e:
+         iffalse ofs00ec
+         findpropstrict QName(PackageNamespace(""),"getStyle")
+         pushstring "contentBackgroundColor"
+         callproperty QName(PackageNamespace(""),"getStyle"), 1
+         convert_u
+         setlocal 8
+         findpropstrict QName(PackageNamespace(""),"getStyle")
+         pushstring "contentBackgroundAlpha"
+         callproperty QName(PackageNamespace(""),"getStyle"), 1
+         convert_d
+         setlocal 9
+         pushbyte 0
+         setlocal3
+         jump ofs00e2
+         ofs00b3:
+         label
+         getlocal0
+         getlocal 5
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         iffalse ofs00e0
+         getlocal0
+         getlocal 5
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlocal 8
+         setproperty Multiname("color",[PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlocal0
+         getlocal 5
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlocal 9
+         setproperty Multiname("alpha",[PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs00e0:
+         inclocal_i 3
+         ofs00e2:
+         getlocal3
+         getlocal 5
+         getproperty QName(PackageNamespace(""),"length")
+         iflt ofs00b3
+         ofs00ec:
+         findpropstrict QName(PackageNamespace(""),"getStyle")
+         pushstring "chromeColor"
+         callproperty QName(PackageNamespace(""),"getStyle"), 1
+         convert_u
+         dup
+         setlocal 6
+         getlex QName(PrivateNamespace(null,"15"),"DEFAULT_COLOR")
+         equals
+         not
+         dup
+         iftrue ofs010a
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"15"),"colorized")
+         convert_b
+         ofs010a:
+         dup
+         iffalse ofs0115
+         pop
+         getlocal0
+         getproperty QName(ProtectedNamespace("spark.skins:SparkSkin"),"useChromeColor")
+         convert_b
+         ofs0115:
+         iffalse ofs0204
+         getlex QName(PrivateNamespace(null,"15"),"colorTransform")
+         getlocal 6
+         pushshort 255
+         pushbyte 16
+         lshift
+         bitand
+         pushbyte 16
+         rshift
+         getlex QName(PrivateNamespace(null,"15"),"DEFAULT_COLOR_VALUE")
+         subtract
+         setproperty QName(PackageNamespace(""),"redOffset")
+         getlex QName(PrivateNamespace(null,"15"),"colorTransform")
+         getlocal 6
+         pushshort 255
+         pushbyte 8
+         lshift
+         bitand
+         pushbyte 8
+         rshift
+         getlex QName(PrivateNamespace(null,"15"),"DEFAULT_COLOR_VALUE")
+         subtract
+         setproperty QName(PackageNamespace(""),"greenOffset")
+         getlex QName(PrivateNamespace(null,"15"),"colorTransform")
+         getlocal 6
+         pushshort 255
+         bitand
+         getlex QName(PrivateNamespace(null,"15"),"DEFAULT_COLOR_VALUE")
+         subtract
+         setproperty QName(PackageNamespace(""),"blueOffset")
+         getlex QName(PrivateNamespace(null,"15"),"colorTransform")
+         getlex QName(PackageNamespace(""),"alpha")
+         setproperty QName(PackageNamespace(""),"alphaMultiplier")
+         getlex QName(PackageNamespace(""),"transform")
+         getlex QName(PrivateNamespace(null,"15"),"colorTransform")
+         setproperty QName(PackageNamespace(""),"colorTransform")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"colorizeExclusions")
+         coerce QName(PackageNamespace(""),"Array")
+         dup
+         setlocal 10
+         convert_b
+         dup
+         iffalse ofs017f
+         pop
+         getlocal 10
+         getproperty QName(PackageNamespace(""),"length")
+         pushbyte 0
+         greaterthan
+         ofs017f:
+         iffalse ofs01ff
+         getlex QName(PrivateNamespace(null,"15"),"colorTransform")
+         getlex QName(PrivateNamespace(null,"15"),"colorTransform")
+         getproperty QName(PackageNamespace(""),"redOffset")
+         negate
+         setproperty QName(PackageNamespace(""),"redOffset")
+         getlex QName(PrivateNamespace(null,"15"),"colorTransform")
+         getlex QName(PrivateNamespace(null,"15"),"colorTransform")
+         getproperty QName(PackageNamespace(""),"greenOffset")
+         negate
+         setproperty QName(PackageNamespace(""),"greenOffset")
+         getlex QName(PrivateNamespace(null,"15"),"colorTransform")
+         getlex QName(PrivateNamespace(null,"15"),"colorTransform")
+         getproperty QName(PackageNamespace(""),"blueOffset")
+         negate
+         setproperty QName(PackageNamespace(""),"blueOffset")
+         pushbyte 0
+         setlocal3
+         jump ofs01f5
+         ofs01b1:
+         label
+         getlocal0
+         getlocal 10
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace(""),"Object")
+         dup
+         setlocal 11
+         convert_b
+         dup
+         iffalse ofs01d9
+         pop
+         getlocal 11
+         getlex QName(PackageNamespace("flash.display"),"DisplayObject")
+         istypelate
+         dup
+         iftrue ofs01d9
+         pop
+         getlocal 11
+         getlex QName(PackageNamespace("spark.primitives.supportClasses"),"GraphicElement")
+         istypelate
+         ofs01d9:
+         iffalse ofs01f3
+         getlex QName(PrivateNamespace(null,"15"),"colorTransform")
+         getlocal 11
+         getproperty Multiname("alpha",[PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         setproperty QName(PackageNamespace(""),"alphaMultiplier")
+         getlocal 11
+         getproperty Multiname("transform",[PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlex QName(PrivateNamespace(null,"15"),"colorTransform")
+         setproperty Multiname("colorTransform",[PrivateNamespace(null,"15"),PackageNamespace(""),PrivateNamespace(null,"362"),PackageNamespace("spark.skins"),PackageInternalNs("spark.skins"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.skins:SparkSkin"),StaticProtectedNs("spark.skins:SparkSkin"),StaticProtectedNs("spark.components.supportClasses:Skin"),StaticProtectedNs("spark.components:Group"),StaticProtectedNs("spark.components.supportClasses:GroupBase"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs01f3:
+         inclocal_i 3
+         ofs01f5:
+         getlocal3
+         getlocal 10
+         getproperty QName(PackageNamespace(""),"length")
+         iflt ofs01b1
+         ofs01ff:
+         getlocal0
+         pushtrue
+         initproperty QName(PrivateNamespace(null,"15"),"colorized")
+         ofs0204:
+         getlocal0
+         getlocal1
+         getlocal2
+         callsupervoid QName(ProtectedNamespace("spark.components:Group"),"updateDisplayList"), 2
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function beginHighlightBitmapCapture() : Boolean
+      {
+         trait method QName(PackageNamespace(""),"beginHighlightBitmapCapture")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 14
+         maxscopedepth 15
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callsuper QName(PackageNamespace(""),"beginHighlightBitmapCapture"), 0
+         convert_b
+         setlocal1
+         findpropstrict QName(PackageNamespace(""),"getStyle")
+         pushstring "contentBackgroundAlpha"
+         callproperty QName(PackageNamespace(""),"getStyle"), 1
+         pushdouble 0.5
+         ifnlt ofs0064
+         getlex QName(PackageNamespace(""),"styleDeclaration")
+         convert_b
+         dup
+         iffalse ofs0030
+         pop
+         getlex QName(PackageNamespace(""),"styleDeclaration")
+         pushstring "contentBackgroundAlpha"
+         callproperty QName(PackageNamespace(""),"getStyle"), 1
+         pushnull
+         strictequals
+         not
+         ofs0030:
+         iffalse ofs003f
+         findproperty QName(PrivateNamespace(null,"15"),"contentBackgroundAlphaSetLocally")
+         pushtrue
+         setproperty QName(PrivateNamespace(null,"15"),"contentBackgroundAlphaSetLocally")
+         jump ofs0046
+         ofs003f:
+         findproperty QName(PrivateNamespace(null,"15"),"contentBackgroundAlphaSetLocally")
+         pushfalse
+         setproperty QName(PrivateNamespace(null,"15"),"contentBackgroundAlphaSetLocally")
+         ofs0046:
+         findproperty QName(PrivateNamespace(null,"15"),"oldContentBackgroundAlpha")
+         findpropstrict QName(PackageNamespace(""),"getStyle")
+         pushstring "contentBackgroundAlpha"
+         callproperty QName(PackageNamespace(""),"getStyle"), 1
+         setproperty QName(PrivateNamespace(null,"15"),"oldContentBackgroundAlpha")
+         findpropstrict QName(PackageNamespace(""),"setStyle")
+         pushstring "contentBackgroundAlpha"
+         pushdouble 0.5
+         callpropvoid QName(PackageNamespace(""),"setStyle"), 2
+         pushtrue
+         setlocal1
+         ofs0064:
+         getlocal1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function endHighlightBitmapCapture() : Boolean
+      {
+         trait method QName(PackageNamespace(""),"endHighlightBitmapCapture")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 14
+         maxscopedepth 15
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callsuper QName(PackageNamespace(""),"endHighlightBitmapCapture"), 0
+         convert_b
+         setlocal1
+         findpropstrict QName(PackageNamespace(""),"isNaN")
+         getlex QName(PrivateNamespace(null,"15"),"oldContentBackgroundAlpha")
+         callproperty QName(PackageNamespace(""),"isNaN"), 1
+         iftrue ofs0044
+         getlex QName(PrivateNamespace(null,"15"),"contentBackgroundAlphaSetLocally")
+         iffalse ofs002f
+         findpropstrict QName(PackageNamespace(""),"setStyle")
+         pushstring "contentBackgroundAlpha"
+         getlex QName(PrivateNamespace(null,"15"),"oldContentBackgroundAlpha")
+         callpropvoid QName(PackageNamespace(""),"setStyle"), 2
+         jump ofs0039
+         ofs002f:
+         findpropstrict QName(PackageNamespace(""),"clearStyle")
+         pushstring "contentBackgroundAlpha"
+         callpropvoid QName(PackageNamespace(""),"clearStyle"), 1
+         ofs0039:
+         pushtrue
+         setlocal1
+         findproperty QName(PrivateNamespace(null,"15"),"oldContentBackgroundAlpha")
+         getlex QName(PackageNamespace(""),"NaN")
+         setproperty QName(PrivateNamespace(null,"15"),"oldContentBackgroundAlpha")
+         ofs0044:
+         getlocal1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 13
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("SparkSkin",[PackageNamespace("spark.skins")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"DisplayObject")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"InteractiveObject")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"DisplayObjectContainer")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"Sprite")
+pushscope
+getlex QName(PackageNamespace("mx.core"),"FlexSprite")
+pushscope
+getlex QName(PackageNamespace("mx.core"),"UIComponent")
+pushscope
+getlex QName(PackageNamespace("spark.components.supportClasses"),"GroupBase")
+pushscope
+getlex QName(PackageNamespace("spark.components"),"Group")
+pushscope
+getlex QName(PackageNamespace("spark.components.supportClasses"),"Skin")
+pushscope
+getlex QName(PackageNamespace("spark.components.supportClasses"),"Skin")
+newclass 53
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace("spark.skins"),"SparkSkin")
+returnvoid
+end ; code
+end ; body
+end ; method
+

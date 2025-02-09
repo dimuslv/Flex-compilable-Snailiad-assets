@@ -1,0 +1,458 @@
+package mx.utils
+{
+   import flash.display.DisplayObject;
+   import flash.utils.getQualifiedClassName;
+   import mx.core.IRepeaterClient;
+   import mx.core.mx_internal;
+   
+   use namespace mx_internal;
+   
+   public class NameUtil
+   {
+      mx_internal static const VERSION:String = "4.1.0.16076";
+      
+      private static var counter:int = 0;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 3
+      maxscopedepth 4
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
+      pushstring "4.1.0.16076"
+      initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
+      findproperty QName(PrivateNamespace(null,"28"),"counter")
+      pushbyte 0
+      setproperty QName(PrivateNamespace(null,"28"),"counter")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public function NameUtil()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function createUniqueName(param1:Object) : String
+      {
+         trait method QName(PackageNamespace(""),"createUniqueName")
+         flag FINAL
+         dispid 3
+         method
+         name null
+         param QName(PackageNamespace(""),"Object")
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 4
+         localcount 7
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         iftrue ofs0009
+         pushnull
+         returnvalue
+         ofs0009:
+         findpropstrict QName(PackageNamespace("flash.utils"),"getQualifiedClassName")
+         getlocal1
+         callproperty QName(PackageNamespace("flash.utils"),"getQualifiedClassName"), 1
+         coerce_s
+         setlocal2
+         getlocal2
+         pushstring "::"
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"indexOf"), 1
+         convert_i
+         setlocal3
+         getlocal3
+         pushbyte -1
+         ifeq ofs002f
+         getlocal2
+         getlocal3
+         pushbyte 2
+         add
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"substr"), 1
+         coerce_s
+         setlocal2
+         ofs002f:
+         getlocal2
+         getlocal2
+         getproperty QName(PackageNamespace(""),"length")
+         decrement
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charCodeAt"), 1
+         convert_i
+         dup
+         setlocal 4
+         pushbyte 48
+         greaterequals
+         dup
+         iffalse ofs004b
+         pop
+         getlocal 4
+         pushbyte 57
+         lessequals
+         ofs004b:
+         iffalse ofs0055
+         getlocal2
+         pushstring "_"
+         add
+         setlocal2
+         ofs0055:
+         getlocal2
+         findpropstrict QName(PrivateNamespace(null,"28"),"counter")
+         dup
+         setlocal 5
+         getproperty QName(PrivateNamespace(null,"28"),"counter")
+         dup
+         increment_i
+         setlocal 6
+         getlocal 5
+         getlocal 6
+         setproperty QName(PrivateNamespace(null,"28"),"counter")
+         kill 6
+         kill 5
+         add
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function displayObjectToString(param1:DisplayObject) : String
+      {
+         trait method QName(PackageNamespace(""),"displayObjectToString")
+         flag FINAL
+         dispid 4
+         method
+         name null
+         flag NEED_ACTIVATION
+         param QName(PackageNamespace("flash.display"),"DisplayObject")
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 5
+         localcount 4
+         initscopedepth 4
+         maxscopedepth 9
+         trait slot QName(PackageInternalNs("mx.utils"),"displayObject")
+         slotid 1
+         type QName(PackageNamespace("flash.display"),"DisplayObject")
+         end ; trait
+         trait slot QName(PackageInternalNs("mx.utils"),"result")
+         slotid 2
+         type QName(PackageNamespace(""),"String")
+         end ; trait
+         trait slot QName(PackageInternalNs("mx.utils"),"o")
+         slotid 3
+         type QName(PackageNamespace("flash.display"),"DisplayObject")
+         end ; trait
+         trait slot QName(PackageInternalNs("mx.utils"),"s")
+         slotid 4
+         type QName(PackageNamespace(""),"String")
+         end ; trait
+         trait slot QName(PackageInternalNs("mx.utils"),"indices")
+         slotid 5
+         type QName(PackageNamespace(""),"Array")
+         end ; trait
+         
+         code
+         getlocal0
+         pushscope
+         newactivation
+         dup
+         setlocal2
+         pushscope
+         getscopeobject 1
+         pushnull
+         coerce_s
+         setslot 2
+         getscopeobject 1
+         pushnull
+         coerce QName(PackageNamespace("flash.display"),"DisplayObject")
+         setslot 3
+         getscopeobject 1
+         pushnull
+         coerce_s
+         setslot 4
+         getscopeobject 1
+         pushnull
+         coerce QName(PackageNamespace(""),"Array")
+         setslot 5
+         getscopeobject 1
+         getlocal1
+         setslot 1
+         ofs0025:
+         getscopeobject 1
+         getscopeobject 1
+         getslot 1
+         coerce QName(PackageNamespace("flash.display"),"DisplayObject")
+         setslot 3
+         jump ofs0117
+         ofs0033:
+         label
+         getscopeobject 1
+         getslot 3
+         getproperty QName(PackageNamespace(""),"parent")
+         coerce_a
+         convert_b
+         dup
+         iffalse ofs004c
+         pop
+         getscopeobject 1
+         getslot 3
+         getproperty QName(PackageNamespace(""),"stage")
+         coerce_a
+         convert_b
+         ofs004c:
+         dup
+         iffalse ofs0061
+         pop
+         getscopeobject 1
+         getslot 3
+         getproperty QName(PackageNamespace(""),"parent")
+         getscopeobject 1
+         getslot 3
+         getproperty QName(PackageNamespace(""),"stage")
+         equals
+         ofs0061:
+         iffalse ofs0069
+         jump ofs0120
+         ofs0069:
+         getscopeobject 1
+         pushstring "id"
+         getscopeobject 1
+         getslot 3
+         in
+         dup
+         iffalse ofs0084
+         pop
+         getscopeobject 1
+         getslot 3
+         pushstring "id"
+         getproperty MultinameL([PrivateNamespace(null,"28"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace(""),PrivateNamespace(null,"45"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:NameUtil"),StaticProtectedNs("mx.utils:NameUtil"),StaticProtectedNs("Object")])
+         convert_b
+         ofs0084:
+         iffalse ofs0097
+         getscopeobject 1
+         getslot 3
+         pushstring "id"
+         getproperty MultinameL([PrivateNamespace(null,"28"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace(""),PrivateNamespace(null,"45"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:NameUtil"),StaticProtectedNs("mx.utils:NameUtil"),StaticProtectedNs("Object")])
+         coerce_s
+         jump ofs009f
+         ofs0097:
+         getscopeobject 1
+         getslot 3
+         getproperty QName(PackageNamespace(""),"name")
+         coerce_s
+         ofs009f:
+         coerce_s
+         setslot 4
+         getscopeobject 1
+         getslot 3
+         getlex QName(PackageNamespace("mx.core"),"IRepeaterClient")
+         istypelate
+         iffalse ofs00e4
+         getscopeobject 1
+         findpropstrict QName(PackageNamespace("mx.core"),"IRepeaterClient")
+         getscopeobject 1
+         getslot 3
+         callproperty QName(PackageNamespace("mx.core"),"IRepeaterClient"), 1
+         getproperty QName(Namespace("mx.core:IRepeaterClient"),"instanceIndices")
+         coerce QName(PackageNamespace(""),"Array")
+         setslot 5
+         getscopeobject 1
+         getslot 5
+         iffalse ofs00e4
+         getscopeobject 1
+         getscopeobject 1
+         getslot 4
+         pushstring "["
+         getscopeobject 1
+         getslot 5
+         pushstring "]["
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"join"), 1
+         add
+         pushstring "]"
+         add
+         add
+         coerce_s
+         setslot 4
+         ofs00e4:
+         getscopeobject 1
+         getscopeobject 1
+         getslot 2
+         pushnull
+         equals
+         iffalse ofs00f9
+         getscopeobject 1
+         getslot 4
+         coerce_s
+         jump ofs0107
+         ofs00f9:
+         getscopeobject 1
+         getslot 4
+         pushstring "."
+         add
+         getscopeobject 1
+         getslot 2
+         add
+         coerce_s
+         ofs0107:
+         coerce_s
+         setslot 2
+         getscopeobject 1
+         getscopeobject 1
+         getslot 3
+         getproperty QName(PackageNamespace(""),"parent")
+         coerce QName(PackageNamespace("flash.display"),"DisplayObject")
+         setslot 3
+         ofs0117:
+         getscopeobject 1
+         getslot 3
+         pushnull
+         ifne ofs0033
+         ofs0120:
+         jump ofs0134
+         ofs0124:
+         getlocal0
+         pushscope
+         getlocal2
+         pushscope
+         newcatch 0
+         dup
+         setlocal3
+         dup
+         pushscope
+         swap
+         setslot 1
+         popscope
+         kill 3
+         ofs0134:
+         getscopeobject 1
+         getslot 2
+         returnvalue
+         end ; code
+         try from ofs0025 to ofs0120 target ofs0124 type QName(PackageNamespace(""),"SecurityError") name QName(PackageNamespace(""),"e") end
+         end ; body
+         end ; method
+      }
+      
+      public static function getUnqualifiedClassName(param1:Object) : String
+      {
+         trait method QName(PackageNamespace(""),"getUnqualifiedClassName")
+         flag FINAL
+         dispid 5
+         method
+         name null
+         param QName(PackageNamespace(""),"Object")
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 3
+         localcount 4
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce_s
+         setlocal2
+         getlocal1
+         getlex QName(PackageNamespace(""),"String")
+         istypelate
+         iffalse ofs0017
+         getlocal1
+         getlex QName(PackageNamespace(""),"String")
+         astypelate
+         coerce_s
+         setlocal2
+         jump ofs0021
+         ofs0017:
+         findpropstrict QName(PackageNamespace("flash.utils"),"getQualifiedClassName")
+         getlocal1
+         callproperty QName(PackageNamespace("flash.utils"),"getQualifiedClassName"), 1
+         coerce_s
+         setlocal2
+         ofs0021:
+         getlocal2
+         pushstring "::"
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"indexOf"), 1
+         convert_i
+         setlocal3
+         getlocal3
+         pushbyte -1
+         ifeq ofs003d
+         getlocal2
+         getlocal3
+         pushbyte 2
+         add
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"substr"), 1
+         coerce_s
+         setlocal2
+         ofs003d:
+         getlocal2
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 3
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("NameUtil",[PackageNamespace("mx.utils")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace(""),"Object")
+newclass 32
+popscope
+initproperty QName(PackageNamespace("mx.utils"),"NameUtil")
+returnvoid
+end ; code
+end ; body
+end ; method
+

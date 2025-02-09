@@ -1,0 +1,335 @@
+package spark.primitives.supportClasses
+{
+   import flash.display.Graphics;
+   import flash.events.Event;
+   import flash.events.EventDispatcher;
+   import flash.geom.Point;
+   import flash.geom.Rectangle;
+   import mx.core.mx_internal;
+   import mx.events.PropertyChangeEvent;
+   import mx.graphics.IFill;
+   
+   use namespace mx_internal;
+   
+   public class FilledElement extends StrokedElement
+   {
+      mx_internal static const VERSION:String = "4.1.0.16076";
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 6
+      maxscopedepth 7
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
+      pushstring "4.1.0.16076"
+      initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      protected var _fill:IFill;
+      
+      public function FilledElement()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      [Bindable("propertyChange")]
+      public function get fill() : IFill
+      {
+         trait getter QName(PackageNamespace(""),"fill")
+         flag METADATA
+         metadata "Bindable"
+         item null "propertyChange"
+         end ; metadata
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("mx.graphics"),"IFill")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(ProtectedNamespace("spark.primitives.supportClasses:FilledElement"),"_fill")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set fill(param1:IFill) : void
+      {
+         trait setter QName(PackageNamespace(""),"fill")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("mx.graphics"),"IFill")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 4
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("flash.events"),"EventDispatcher")
+         setlocal3
+         getlocal0
+         getproperty QName(ProtectedNamespace("spark.primitives.supportClasses:FilledElement"),"_fill")
+         coerce QName(PackageNamespace("mx.graphics"),"IFill")
+         setlocal2
+         getlocal0
+         getproperty QName(ProtectedNamespace("spark.primitives.supportClasses:FilledElement"),"_fill")
+         getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+         astypelate
+         coerce QName(PackageNamespace("flash.events"),"EventDispatcher")
+         setlocal3
+         getlocal3
+         iffalse ofs002e
+         getlocal3
+         getlex QName(PackageNamespace("mx.events"),"PropertyChangeEvent")
+         getproperty QName(PackageNamespace(""),"PROPERTY_CHANGE")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"65"),"fill_propertyChangeHandler")
+         callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+         ofs002e:
+         getlocal0
+         getlocal1
+         initproperty QName(ProtectedNamespace("spark.primitives.supportClasses:FilledElement"),"_fill")
+         getlocal0
+         getproperty QName(ProtectedNamespace("spark.primitives.supportClasses:FilledElement"),"_fill")
+         getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+         astypelate
+         coerce QName(PackageNamespace("flash.events"),"EventDispatcher")
+         setlocal3
+         getlocal3
+         iffalse ofs0052
+         getlocal3
+         getlex QName(PackageNamespace("mx.events"),"PropertyChangeEvent")
+         getproperty QName(PackageNamespace(""),"PROPERTY_CHANGE")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"65"),"fill_propertyChangeHandler")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         ofs0052:
+         findpropstrict QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"dispatchPropertyChangeEvent")
+         pushstring "fill"
+         getlocal2
+         getlocal0
+         getproperty QName(ProtectedNamespace("spark.primitives.supportClasses:FilledElement"),"_fill")
+         callpropvoid QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"dispatchPropertyChangeEvent"), 3
+         findpropstrict QName(PackageNamespace(""),"invalidateDisplayList")
+         callpropvoid QName(PackageNamespace(""),"invalidateDisplayList"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override protected function beginDraw(param1:Graphics) : void
+      {
+         trait method QName(ProtectedNamespace("spark.primitives.supportClasses:FilledElement"),"beginDraw")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.display"),"Graphics")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 5
+         localcount 5
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         setlocal3
+         pushnull
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         setlocal 4
+         findpropstrict QName(PackageNamespace("flash.geom"),"Point")
+         getlex QName(ProtectedNamespace("spark.primitives.supportClasses:GraphicElement"),"drawX")
+         getlex QName(ProtectedNamespace("spark.primitives.supportClasses:GraphicElement"),"drawY")
+         constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
+         coerce QName(PackageNamespace("flash.geom"),"Point")
+         setlocal2
+         getlex QName(PackageNamespace(""),"stroke")
+         iffalse ofs0043
+         findpropstrict QName(ProtectedNamespace("spark.primitives.supportClasses:StrokedElement"),"getStrokeBounds")
+         callproperty QName(ProtectedNamespace("spark.primitives.supportClasses:StrokedElement"),"getStrokeBounds"), 0
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         setlocal3
+         getlocal3
+         getlex QName(ProtectedNamespace("spark.primitives.supportClasses:GraphicElement"),"drawX")
+         getlex QName(ProtectedNamespace("spark.primitives.supportClasses:GraphicElement"),"drawY")
+         callpropvoid QName(PackageNamespace(""),"offset"), 2
+         getlex QName(PackageNamespace(""),"stroke")
+         getlocal1
+         getlocal3
+         getlocal2
+         callpropvoid QName(Namespace("mx.graphics:IStroke"),"apply"), 3
+         jump ofs0048
+         ofs0043:
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"lineStyle"), 0
+         ofs0048:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"fill")
+         iffalse ofs0071
+         findpropstrict QName(PackageNamespace("flash.geom"),"Rectangle")
+         getlex QName(ProtectedNamespace("spark.primitives.supportClasses:GraphicElement"),"drawX")
+         getlex QName(ProtectedNamespace("spark.primitives.supportClasses:GraphicElement"),"drawY")
+         getlex QName(PackageNamespace(""),"width")
+         getlex QName(PackageNamespace(""),"height")
+         constructprop QName(PackageNamespace("flash.geom"),"Rectangle"), 4
+         coerce QName(PackageNamespace("flash.geom"),"Rectangle")
+         setlocal 4
+         getlocal0
+         getproperty QName(PackageNamespace(""),"fill")
+         getlocal1
+         getlocal 4
+         getlocal2
+         callpropvoid QName(Namespace("mx.graphics:IFill"),"begin"), 3
+         ofs0071:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override protected function endDraw(param1:Graphics) : void
+      {
+         trait method QName(ProtectedNamespace("spark.primitives.supportClasses:FilledElement"),"endDraw")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.display"),"Graphics")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"fill")
+         iffalse ofs0013
+         getlocal0
+         getproperty QName(PackageNamespace(""),"fill")
+         getlocal1
+         callpropvoid QName(Namespace("mx.graphics:IFill"),"end"), 1
+         ofs0013:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function fill_propertyChangeHandler(param1:Event) : void
+      {
+         trait method QName(PrivateNamespace(null,"65"),"fill_propertyChangeHandler")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"Event")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 2
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"invalidateDisplayList")
+         callpropvoid QName(PackageNamespace(""),"invalidateDisplayList"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 6
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("FilledElement",[PackageNamespace("spark.primitives.supportClasses")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+pushscope
+getlex QName(PackageNamespace("spark.primitives.supportClasses"),"GraphicElement")
+pushscope
+getlex QName(PackageNamespace("spark.primitives.supportClasses"),"StrokedElement")
+pushscope
+getlex QName(PackageNamespace("spark.primitives.supportClasses"),"StrokedElement")
+newclass 226
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace("spark.primitives.supportClasses"),"FilledElement")
+returnvoid
+end ; code
+end ; body
+end ; method
+

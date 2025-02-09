@@ -1,0 +1,255 @@
+package
+{
+   import org.flixel.FlxGroup;
+   
+   public class Hud extends FlxGroup
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 7
+      maxscopedepth 8
+      
+      code
+      getlocal0
+      pushscope
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public var heartHud:HeartHud;
+      
+      public var bossBarHud:BossBarHud;
+      
+      public var areaName:AreaName;
+      
+      public var itemName:ItemName;
+      
+      public var itemRate:ItemRate;
+      
+      public var radar:Radar;
+      
+      public function Hud()
+      {
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"HeartHud")
+         constructprop QName(PackageNamespace(""),"HeartHud"), 0
+         initproperty QName(PackageNamespace(""),"heartHud")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"heartHud")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"BossBarHud")
+         constructprop QName(PackageNamespace(""),"BossBarHud"), 0
+         initproperty QName(PackageNamespace(""),"bossBarHud")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bossBarHud")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"AreaName")
+         constructprop QName(PackageNamespace(""),"AreaName"), 0
+         initproperty QName(PackageNamespace(""),"areaName")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"areaName")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"ItemName")
+         constructprop QName(PackageNamespace(""),"ItemName"), 0
+         initproperty QName(PackageNamespace(""),"itemName")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"itemName")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"ItemRate")
+         constructprop QName(PackageNamespace(""),"ItemRate"), 0
+         initproperty QName(PackageNamespace(""),"itemRate")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"itemRate")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Radar")
+         constructprop QName(PackageNamespace(""),"Radar"), 0
+         initproperty QName(PackageNamespace(""),"radar")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"radar")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function destroy() : void
+      {
+         trait method QName(PackageNamespace(""),"destroy")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         pushnull
+         initproperty QName(PackageNamespace(""),"heartHud")
+         getlocal0
+         pushnull
+         initproperty QName(PackageNamespace(""),"bossBarHud")
+         getlocal0
+         pushnull
+         initproperty QName(PackageNamespace(""),"areaName")
+         getlocal0
+         pushnull
+         initproperty QName(PackageNamespace(""),"itemName")
+         getlocal0
+         pushnull
+         initproperty QName(PackageNamespace(""),"itemRate")
+         getlocal0
+         pushnull
+         initproperty QName(PackageNamespace(""),"radar")
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"destroy"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"realState")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"STATE_GAME")
+         ifeq ofs0033
+         getlocal0
+         getproperty QName(PackageNamespace(""),"itemRate")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"itemName")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bossBarHud")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"radar")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         returnvoid
+         ofs0033:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"itemRate")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"itemName")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"bossBarHud")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"radar")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"update"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 7
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("Hud",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGroup")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGroup")
+newclass 122
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"Hud")
+returnvoid
+end ; code
+end ; body
+end ; method
+

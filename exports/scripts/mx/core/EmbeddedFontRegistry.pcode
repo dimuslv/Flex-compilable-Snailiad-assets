@@ -1,0 +1,1228 @@
+package mx.core
+{
+   import flash.system.Capabilities;
+   import flash.text.FontStyle;
+   import flash.text.TextField;
+   import flash.text.TextFormat;
+   import flash.text.engine.FontDescription;
+   import flash.utils.Dictionary;
+   import flash.utils.getQualifiedClassName;
+   import mx.managers.ISystemManager;
+   import mx.resources.IResourceManager;
+   import mx.resources.ResourceManager;
+   
+   use namespace mx_internal;
+   
+   public class EmbeddedFontRegistry implements IEmbeddedFontRegistry
+   {
+      mx_internal static const VERSION:String = "4.1.0.16076";
+      
+      private static var fonts:Object;
+      
+      private static var cachedFontsForObjects:Dictionary;
+      
+      private static var instance:IEmbeddedFontRegistry;
+      
+      private static var staticTextFormat:TextFormat;
+      
+      private static var flaggedObjects:Dictionary;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 3
+      localcount 1
+      initscopedepth 3
+      maxscopedepth 4
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
+      pushstring "4.1.0.16076"
+      initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
+      findproperty QName(PrivateNamespace(null,"229"),"fonts")
+      newobject 0
+      setproperty QName(PrivateNamespace(null,"229"),"fonts")
+      findproperty QName(PrivateNamespace(null,"229"),"cachedFontsForObjects")
+      findpropstrict QName(PackageNamespace("flash.utils"),"Dictionary")
+      pushtrue
+      constructprop QName(PackageNamespace("flash.utils"),"Dictionary"), 1
+      setproperty QName(PrivateNamespace(null,"229"),"cachedFontsForObjects")
+      findproperty QName(PrivateNamespace(null,"229"),"staticTextFormat")
+      findpropstrict QName(PackageNamespace("flash.text"),"TextFormat")
+      constructprop QName(PackageNamespace("flash.text"),"TextFormat"), 0
+      setproperty QName(PrivateNamespace(null,"229"),"staticTextFormat")
+      findproperty QName(PrivateNamespace(null,"229"),"flaggedObjects")
+      findpropstrict QName(PackageNamespace("flash.utils"),"Dictionary")
+      pushtrue
+      constructprop QName(PackageNamespace("flash.utils"),"Dictionary"), 1
+      setproperty QName(PrivateNamespace(null,"229"),"flaggedObjects")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var _resourceManager:IResourceManager;
+      
+      public function EmbeddedFontRegistry()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function getInstance() : IEmbeddedFontRegistry
+      {
+         trait method QName(PackageNamespace(""),"getInstance")
+         flag FINAL
+         dispid 3
+         method
+         name null
+         returns QName(PackageNamespace("mx.core"),"IEmbeddedFontRegistry")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PrivateNamespace(null,"229"),"instance")
+         iftrue ofs0012
+         findproperty QName(PrivateNamespace(null,"229"),"instance")
+         getlocal0
+         construct 0
+         setproperty QName(PrivateNamespace(null,"229"),"instance")
+         ofs0012:
+         getlex QName(PrivateNamespace(null,"229"),"instance")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private static function createFontKey(param1:EmbeddedFont) : String
+      {
+         trait method QName(PrivateNamespace(null,"229"),"createFontKey")
+         flag FINAL
+         dispid 4
+         method
+         name null
+         param QName(PackageNamespace("mx.core"),"EmbeddedFont")
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getproperty QName(PackageNamespace(""),"fontName")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"fontStyle")
+         add
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private static function createEmbeddedFont(param1:String) : EmbeddedFont
+      {
+         trait method QName(PrivateNamespace(null,"229"),"createEmbeddedFont")
+         flag FINAL
+         dispid 5
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace("mx.core"),"EmbeddedFont")
+         
+         body
+         maxstack 4
+         localcount 6
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce_s
+         setlocal2
+         pushfalse
+         setlocal3
+         pushfalse
+         setlocal 4
+         findpropstrict QName(PrivateNamespace(null,"229"),"endsWith")
+         getlocal1
+         getlex QName(PackageNamespace("flash.text"),"FontStyle")
+         getproperty QName(PackageNamespace(""),"REGULAR")
+         callproperty QName(PrivateNamespace(null,"229"),"endsWith"), 2
+         convert_i
+         dup
+         setlocal 5
+         pushbyte 0
+         ifngt ofs0036
+         getlocal1
+         pushbyte 0
+         getlocal 5
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"substring"), 2
+         coerce_s
+         setlocal2
+         findpropstrict QName(PackageNamespace("mx.core"),"EmbeddedFont")
+         getlocal2
+         pushfalse
+         pushfalse
+         constructprop QName(PackageNamespace("mx.core"),"EmbeddedFont"), 3
+         returnvalue
+         ofs0036:
+         findpropstrict QName(PrivateNamespace(null,"229"),"endsWith")
+         getlocal1
+         getlex QName(PackageNamespace("flash.text"),"FontStyle")
+         getproperty QName(PackageNamespace(""),"BOLD")
+         callproperty QName(PrivateNamespace(null,"229"),"endsWith"), 2
+         convert_i
+         dup
+         setlocal 5
+         pushbyte 0
+         ifngt ofs0062
+         getlocal1
+         pushbyte 0
+         getlocal 5
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"substring"), 2
+         coerce_s
+         setlocal2
+         findpropstrict QName(PackageNamespace("mx.core"),"EmbeddedFont")
+         getlocal2
+         pushtrue
+         pushfalse
+         constructprop QName(PackageNamespace("mx.core"),"EmbeddedFont"), 3
+         returnvalue
+         ofs0062:
+         findpropstrict QName(PrivateNamespace(null,"229"),"endsWith")
+         getlocal1
+         getlex QName(PackageNamespace("flash.text"),"FontStyle")
+         getproperty QName(PackageNamespace(""),"BOLD_ITALIC")
+         callproperty QName(PrivateNamespace(null,"229"),"endsWith"), 2
+         convert_i
+         dup
+         setlocal 5
+         pushbyte 0
+         ifngt ofs008e
+         getlocal1
+         pushbyte 0
+         getlocal 5
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"substring"), 2
+         coerce_s
+         setlocal2
+         findpropstrict QName(PackageNamespace("mx.core"),"EmbeddedFont")
+         getlocal2
+         pushtrue
+         pushtrue
+         constructprop QName(PackageNamespace("mx.core"),"EmbeddedFont"), 3
+         returnvalue
+         ofs008e:
+         findpropstrict QName(PrivateNamespace(null,"229"),"endsWith")
+         getlocal1
+         getlex QName(PackageNamespace("flash.text"),"FontStyle")
+         getproperty QName(PackageNamespace(""),"ITALIC")
+         callproperty QName(PrivateNamespace(null,"229"),"endsWith"), 2
+         convert_i
+         dup
+         setlocal 5
+         pushbyte 0
+         ifngt ofs00ba
+         getlocal1
+         pushbyte 0
+         getlocal 5
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"substring"), 2
+         coerce_s
+         setlocal2
+         findpropstrict QName(PackageNamespace("mx.core"),"EmbeddedFont")
+         getlocal2
+         pushfalse
+         pushtrue
+         constructprop QName(PackageNamespace("mx.core"),"EmbeddedFont"), 3
+         returnvalue
+         ofs00ba:
+         findpropstrict QName(PackageNamespace("mx.core"),"EmbeddedFont")
+         pushstring ""
+         pushfalse
+         pushfalse
+         constructprop QName(PackageNamespace("mx.core"),"EmbeddedFont"), 3
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private static function endsWith(param1:String, param2:String) : int
+      {
+         trait method QName(PrivateNamespace(null,"229"),"endsWith")
+         flag FINAL
+         dispid 6
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"int")
+         
+         body
+         maxstack 2
+         localcount 4
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getlocal2
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"lastIndexOf"), 1
+         convert_i
+         setlocal3
+         getlocal3
+         pushbyte 0
+         greaterthan
+         dup
+         iffalse ofs001f
+         pop
+         getlocal3
+         getlocal2
+         getproperty QName(PackageNamespace(""),"length")
+         add
+         getlocal1
+         getproperty QName(PackageNamespace(""),"length")
+         equals
+         ofs001f:
+         iffalse ofs0025
+         getlocal3
+         returnvalue
+         ofs0025:
+         pushbyte -1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function registerFonts(param1:Object, param2:IFlexModuleFactory) : void
+      {
+         trait method QName(PackageNamespace(""),"registerFonts")
+         flag FINAL
+         dispid 7
+         method
+         name null
+         flag NEED_ACTIVATION
+         param QName(PackageNamespace(""),"Object")
+         param QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 5
+         localcount 8
+         initscopedepth 4
+         maxscopedepth 9
+         trait slot QName(PackageInternalNs("mx.core"),"fonts")
+         slotid 1
+         type QName(PackageNamespace(""),"Object")
+         end ; trait
+         trait slot QName(PackageInternalNs("mx.core"),"moduleFactory")
+         slotid 2
+         type QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+         end ; trait
+         trait slot QName(PackageInternalNs("mx.core"),"fontRegistry")
+         slotid 3
+         type QName(PackageNamespace("mx.core"),"IEmbeddedFontRegistry")
+         end ; trait
+         trait slot QName(PackageInternalNs("mx.core"),"f")
+         slotid 4
+         type QName(PackageNamespace(""),"Object")
+         end ; trait
+         trait slot QName(PackageInternalNs("mx.core"),"fontObj")
+         slotid 5
+         type QName(PackageNamespace(""),"Object")
+         end ; trait
+         trait slot QName(PackageInternalNs("mx.core"),"fieldIter")
+         slotid 6
+         type QName(PackageNamespace(""),"String")
+         end ; trait
+         trait slot QName(PackageInternalNs("mx.core"),"bold")
+         slotid 7
+         type QName(PackageNamespace(""),"Boolean")
+         end ; trait
+         trait slot QName(PackageInternalNs("mx.core"),"italic")
+         slotid 8
+         type QName(PackageNamespace(""),"Boolean")
+         end ; trait
+         
+         code
+         getlocal0
+         pushscope
+         newactivation
+         dup
+         setlocal3
+         pushscope
+         getscopeobject 1
+         pushnull
+         coerce QName(PackageNamespace("mx.core"),"IEmbeddedFontRegistry")
+         setslot 3
+         getscopeobject 1
+         pushnull
+         coerce QName(PackageNamespace(""),"Object")
+         setslot 4
+         getscopeobject 1
+         pushnull
+         coerce QName(PackageNamespace(""),"Object")
+         setslot 5
+         getscopeobject 1
+         pushnull
+         coerce_s
+         setslot 6
+         getscopeobject 1
+         pushfalse
+         setslot 7
+         getscopeobject 1
+         pushfalse
+         setslot 8
+         getscopeobject 1
+         getlocal1
+         setslot 1
+         getscopeobject 1
+         getlocal2
+         setslot 2
+         ofs0035:
+         getscopeobject 1
+         findpropstrict QName(PackageNamespace("mx.core"),"IEmbeddedFontRegistry")
+         getlex QName(PackageNamespace("mx.core"),"Singleton")
+         pushstring "mx.core::IEmbeddedFontRegistry"
+         callproperty QName(PackageNamespace(""),"getInstance"), 1
+         callproperty QName(PackageNamespace("mx.core"),"IEmbeddedFontRegistry"), 1
+         coerce QName(PackageNamespace("mx.core"),"IEmbeddedFontRegistry")
+         setslot 3
+         ofs004a:
+         jump ofs0081
+         ofs004e:
+         getlocal0
+         pushscope
+         getlocal3
+         pushscope
+         newcatch 0
+         dup
+         setlocal 4
+         dup
+         pushscope
+         swap
+         setslot 1
+         getlex QName(PackageNamespace("mx.core"),"Singleton")
+         pushstring "mx.core::IEmbeddedFontRegistry"
+         getlex QName(PackageNamespace("mx.core"),"EmbeddedFontRegistry")
+         callpropvoid QName(PackageNamespace(""),"registerClass"), 2
+         getscopeobject 1
+         findpropstrict QName(PackageNamespace("mx.core"),"IEmbeddedFontRegistry")
+         getlex QName(PackageNamespace("mx.core"),"Singleton")
+         pushstring "mx.core::IEmbeddedFontRegistry"
+         callproperty QName(PackageNamespace(""),"getInstance"), 1
+         callproperty QName(PackageNamespace("mx.core"),"IEmbeddedFontRegistry"), 1
+         coerce QName(PackageNamespace("mx.core"),"IEmbeddedFontRegistry")
+         setslot 3
+         popscope
+         kill 4
+         ofs0081:
+         pushbyte 0
+         setlocal 4
+         getscopeobject 1
+         getslot 1
+         coerce_a
+         setlocal 5
+         jump ofs0168
+         ofs0090:
+         label
+         getscopeobject 1
+         getlocal 5
+         getlocal 4
+         nextname
+         coerce QName(PackageNamespace(""),"Object")
+         setslot 4
+         getscopeobject 1
+         getscopeobject 1
+         getslot 1
+         getscopeobject 1
+         getslot 4
+         getproperty MultinameL([PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace(""),"Object")
+         setslot 5
+         pushbyte 0
+         setlocal 6
+         getscopeobject 1
+         getslot 5
+         coerce_a
+         setlocal 7
+         jump ofs015d
+         ofs00bc:
+         label
+         getscopeobject 1
+         getlocal 7
+         getlocal 6
+         nextname
+         coerce_s
+         setslot 6
+         getscopeobject 1
+         getslot 5
+         getscopeobject 1
+         getslot 6
+         getproperty MultinameL([PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         pushfalse
+         ifne ofs00db
+         jump ofs015d
+         ofs00db:
+         getscopeobject 1
+         getslot 6
+         pushstring "regular"
+         ifne ofs00f4
+         getscopeobject 1
+         pushfalse
+         setslot 7
+         getscopeobject 1
+         pushfalse
+         setslot 8
+         jump ofs013b
+         ofs00f4:
+         getscopeobject 1
+         getslot 6
+         pushstring "boldItalic"
+         ifne ofs010d
+         getscopeobject 1
+         pushtrue
+         setslot 7
+         getscopeobject 1
+         pushtrue
+         setslot 8
+         jump ofs013b
+         ofs010d:
+         getscopeobject 1
+         getslot 6
+         pushstring "bold"
+         ifne ofs0126
+         getscopeobject 1
+         pushtrue
+         setslot 7
+         getscopeobject 1
+         pushfalse
+         setslot 8
+         jump ofs013b
+         ofs0126:
+         getscopeobject 1
+         getslot 6
+         pushstring "italic"
+         ifne ofs013b
+         getscopeobject 1
+         pushfalse
+         setslot 7
+         getscopeobject 1
+         pushtrue
+         setslot 8
+         ofs013b:
+         getscopeobject 1
+         getslot 3
+         findpropstrict QName(PackageNamespace("mx.core"),"EmbeddedFont")
+         findpropstrict QName(PackageNamespace(""),"String")
+         getscopeobject 1
+         getslot 4
+         callproperty QName(PackageNamespace(""),"String"), 1
+         getscopeobject 1
+         getslot 7
+         getscopeobject 1
+         getslot 8
+         constructprop QName(PackageNamespace("mx.core"),"EmbeddedFont"), 3
+         getscopeobject 1
+         getslot 2
+         callpropvoid QName(Namespace("mx.core:IEmbeddedFontRegistry"),"registerFont"), 2
+         ofs015d:
+         hasnext2 7, 6
+         iftrue ofs00bc
+         kill 7
+         kill 6
+         ofs0168:
+         hasnext2 5, 4
+         iftrue ofs0090
+         kill 5
+         kill 4
+         returnvoid
+         end ; code
+         try from ofs0035 to ofs004a target ofs004e type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
+         end ; body
+         end ; method
+      }
+      
+      private function get resourceManager() : IResourceManager
+      {
+         trait getter QName(PrivateNamespace(null,"229"),"resourceManager")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace("mx.resources"),"IResourceManager")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"229"),"_resourceManager")
+         iftrue ofs0015
+         getlocal0
+         getlex QName(PackageNamespace("mx.resources"),"ResourceManager")
+         callproperty QName(PackageNamespace(""),"getInstance"), 0
+         initproperty QName(PrivateNamespace(null,"229"),"_resourceManager")
+         ofs0015:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"229"),"_resourceManager")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getFontStyle(param1:Boolean, param2:Boolean) : String
+      {
+         trait method QName(PackageNamespace(""),"getFontStyle")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 2
+         localcount 4
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("flash.text"),"FontStyle")
+         getproperty QName(PackageNamespace(""),"REGULAR")
+         coerce_s
+         setlocal3
+         getlocal1
+         convert_b
+         dup
+         iffalse ofs0014
+         pop
+         getlocal2
+         convert_b
+         ofs0014:
+         iffalse ofs0024
+         getlex QName(PackageNamespace("flash.text"),"FontStyle")
+         getproperty QName(PackageNamespace(""),"BOLD_ITALIC")
+         coerce_s
+         setlocal3
+         jump ofs0042
+         ofs0024:
+         getlocal1
+         iffalse ofs0035
+         getlex QName(PackageNamespace("flash.text"),"FontStyle")
+         getproperty QName(PackageNamespace(""),"BOLD")
+         coerce_s
+         setlocal3
+         jump ofs0042
+         ofs0035:
+         getlocal2
+         iffalse ofs0042
+         getlex QName(PackageNamespace("flash.text"),"FontStyle")
+         getproperty QName(PackageNamespace(""),"ITALIC")
+         coerce_s
+         setlocal3
+         ofs0042:
+         getlocal3
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function registerFont(param1:EmbeddedFont, param2:IFlexModuleFactory) : void
+      {
+         trait method QName(PackageNamespace(""),"registerFont")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("mx.core"),"EmbeddedFont")
+         param QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 5
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PrivateNamespace(null,"229"),"createFontKey")
+         getlocal1
+         callproperty QName(PrivateNamespace(null,"229"),"createFontKey"), 1
+         coerce_s
+         setlocal3
+         getlex QName(PrivateNamespace(null,"229"),"fonts")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace("flash.utils"),"Dictionary")
+         dup
+         setlocal 4
+         iftrue ofs002f
+         findpropstrict QName(PackageNamespace("flash.utils"),"Dictionary")
+         pushtrue
+         constructprop QName(PackageNamespace("flash.utils"),"Dictionary"), 1
+         coerce QName(PackageNamespace("flash.utils"),"Dictionary")
+         setlocal 4
+         getlex QName(PrivateNamespace(null,"229"),"fonts")
+         getlocal3
+         getlocal 4
+         setproperty MultinameL([PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         ofs002f:
+         getlocal 4
+         getlocal2
+         pushbyte 1
+         setproperty MultinameL([PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function deregisterFont(param1:EmbeddedFont, param2:IFlexModuleFactory) : void
+      {
+         trait method QName(PackageNamespace(""),"deregisterFont")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("mx.core"),"EmbeddedFont")
+         param QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 9
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal 5
+         pushnull
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal 6
+         findpropstrict QName(PrivateNamespace(null,"229"),"createFontKey")
+         getlocal1
+         callproperty QName(PrivateNamespace(null,"229"),"createFontKey"), 1
+         coerce_s
+         setlocal3
+         getlex QName(PrivateNamespace(null,"229"),"fonts")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace("flash.utils"),"Dictionary")
+         dup
+         setlocal 4
+         pushnull
+         ifeq ofs0065
+         getlocal 4
+         getlocal2
+         deleteproperty MultinameL([PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         pop
+         pushbyte 0
+         setlocal 5
+         pushbyte 0
+         setlocal 7
+         getlocal 4
+         coerce_a
+         setlocal 8
+         jump ofs004a
+         ofs003e:
+         label
+         getlocal 8
+         getlocal 7
+         nextname
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal 6
+         inclocal_i 5
+         ofs004a:
+         hasnext2 8, 7
+         iftrue ofs003e
+         kill 8
+         kill 7
+         getlocal 5
+         pushbyte 0
+         ifne ofs0065
+         getlex QName(PrivateNamespace(null,"229"),"fonts")
+         getlocal3
+         deleteproperty MultinameL([PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         pop
+         ofs0065:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function isFontRegistered(param1:EmbeddedFont, param2:IFlexModuleFactory) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"isFontRegistered")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("mx.core"),"EmbeddedFont")
+         param QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 2
+         localcount 5
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PrivateNamespace(null,"229"),"createFontKey")
+         getlocal1
+         callproperty QName(PrivateNamespace(null,"229"),"createFontKey"), 1
+         coerce_s
+         setlocal3
+         getlex QName(PrivateNamespace(null,"229"),"fonts")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace("flash.utils"),"Dictionary")
+         dup
+         setlocal 4
+         convert_b
+         dup
+         iffalse ofs0028
+         pop
+         getlocal 4
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         pushbyte 1
+         equals
+         ofs0028:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getFonts() : Array
+      {
+         trait method QName(PackageNamespace(""),"getFonts")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Array")
+         
+         body
+         maxstack 3
+         localcount 5
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce_s
+         setlocal2
+         newarray 0
+         coerce QName(PackageNamespace(""),"Array")
+         setlocal1
+         pushbyte 0
+         setlocal3
+         getlex QName(PrivateNamespace(null,"229"),"fonts")
+         coerce_a
+         setlocal 4
+         jump ofs002b
+         ofs0017:
+         label
+         getlocal 4
+         getlocal3
+         nextname
+         coerce_s
+         setlocal2
+         getlocal1
+         findpropstrict QName(PrivateNamespace(null,"229"),"createEmbeddedFont")
+         getlocal2
+         callproperty QName(PrivateNamespace(null,"229"),"createEmbeddedFont"), 1
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
+         ofs002b:
+         hasnext2 4, 3
+         iftrue ofs0017
+         kill 4
+         kill 3
+         getlocal1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getAssociatedModuleFactory(param1:String, param2:Boolean, param3:Boolean, param4:Object, param5:IFlexModuleFactory, param6:ISystemManager, param7:* = undefined) : IFlexModuleFactory
+      {
+         trait method QName(PackageNamespace(""),"getAssociatedModuleFactory")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"Boolean")
+         param QName(PackageNamespace(""),"Boolean")
+         param QName(PackageNamespace(""),"Object")
+         param QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+         param QName(PackageNamespace("mx.managers"),"ISystemManager")
+         param null
+         optional Undefined()
+         returns QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+         
+         body
+         maxstack 7
+         localcount 17
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("mx.core"),"EmbeddedFont")
+         setlocal 8
+         pushnull
+         coerce QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+         setlocal 9
+         pushbyte 0
+         setlocal 11
+         pushnull
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal 12
+         pushfalse
+         setlocal 13
+         pushnull
+         coerce_s
+         setlocal 14
+         getlex QName(PrivateNamespace(null,"229"),"cachedFontsForObjects")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace("mx.core"),"EmbeddedFont")
+         dup
+         setlocal 8
+         iftrue ofs0047
+         findpropstrict QName(PackageNamespace("mx.core"),"EmbeddedFont")
+         getlocal1
+         getlocal2
+         getlocal3
+         constructprop QName(PackageNamespace("mx.core"),"EmbeddedFont"), 3
+         coerce QName(PackageNamespace("mx.core"),"EmbeddedFont")
+         setlocal 8
+         getlex QName(PrivateNamespace(null,"229"),"cachedFontsForObjects")
+         getlocal 4
+         getlocal 8
+         setproperty MultinameL([PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         jump ofs0085
+         ofs0047:
+         getlocal 8
+         getproperty QName(PackageNamespace(""),"fontName")
+         getlocal1
+         equals
+         not
+         dup
+         iftrue ofs005d
+         pop
+         getlocal 8
+         getproperty QName(PackageNamespace(""),"bold")
+         getlocal2
+         equals
+         not
+         ofs005d:
+         dup
+         iftrue ofs006b
+         pop
+         getlocal 8
+         getproperty QName(PackageNamespace(""),"italic")
+         getlocal3
+         equals
+         not
+         ofs006b:
+         iffalse ofs0085
+         findpropstrict QName(PackageNamespace("mx.core"),"EmbeddedFont")
+         getlocal1
+         getlocal2
+         getlocal3
+         constructprop QName(PackageNamespace("mx.core"),"EmbeddedFont"), 3
+         coerce QName(PackageNamespace("mx.core"),"EmbeddedFont")
+         setlocal 8
+         getlex QName(PrivateNamespace(null,"229"),"cachedFontsForObjects")
+         getlocal 4
+         getlocal 8
+         setproperty MultinameL([PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         ofs0085:
+         getlex QName(PrivateNamespace(null,"229"),"fonts")
+         findpropstrict QName(PrivateNamespace(null,"229"),"createFontKey")
+         getlocal 8
+         callproperty QName(PrivateNamespace(null,"229"),"createFontKey"), 1
+         getproperty MultinameL([PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace("flash.utils"),"Dictionary")
+         dup
+         setlocal 10
+         iffalse ofs00e4
+         getlocal 10
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         convert_i
+         dup
+         setlocal 11
+         iffalse ofs00b6
+         getlocal 5
+         coerce QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+         setlocal 9
+         jump ofs00e4
+         ofs00b6:
+         pushbyte 0
+         setlocal 15
+         getlocal 10
+         coerce_a
+         setlocal 16
+         jump ofs00d9
+         ofs00c3:
+         label
+         getlocal 16
+         getlocal 15
+         nextname
+         coerce QName(PackageNamespace(""),"Object")
+         dup
+         setlocal 12
+         getlex QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+         astypelate
+         coerce QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+         setlocal 9
+         jump ofs00e0
+         ofs00d9:
+         hasnext2 16, 15
+         iftrue ofs00c3
+         ofs00e0:
+         kill 16
+         kill 15
+         ofs00e4:
+         getlocal 9
+         not
+         dup
+         iffalse ofs00f0
+         pop
+         getlocal 6
+         convert_b
+         ofs00f0:
+         iffalse ofs011c
+         getlex QName(PrivateNamespace(null,"229"),"staticTextFormat")
+         getlocal1
+         setproperty QName(PackageNamespace(""),"font")
+         getlex QName(PrivateNamespace(null,"229"),"staticTextFormat")
+         getlocal2
+         setproperty QName(PackageNamespace(""),"bold")
+         getlex QName(PrivateNamespace(null,"229"),"staticTextFormat")
+         getlocal3
+         setproperty QName(PackageNamespace(""),"italic")
+         getlocal 6
+         getlex QName(PrivateNamespace(null,"229"),"staticTextFormat")
+         callproperty QName(Namespace("mx.managers:ISystemManager"),"isFontFaceEmbedded"), 1
+         iffalse ofs011c
+         getlocal 6
+         coerce QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+         setlocal 9
+         ofs011c:
+         getlocal 9
+         coerce_a
+         convert_b
+         dup
+         iffalse ofs012f
+         pop
+         getlocal 7
+         getlex QName(PackageNamespace(""),"undefined")
+         equals
+         not
+         coerce_a
+         convert_b
+         ofs012f:
+         dup
+         iffalse ofs013c
+         pop
+         getlex QName(PackageNamespace("flash.system"),"Capabilities")
+         getproperty QName(PackageNamespace(""),"isDebugger")
+         convert_b
+         ofs013c:
+         iffalse ofs020c
+         getlocal 7
+         iffalse ofs017d
+         getlocal 9
+         getlex QName(PackageNamespace("flash.text.engine"),"FontDescription")
+         getproperty QName(PackageNamespace(""),"isFontCompatible")
+         pushnull
+         getlocal1
+         getlocal2
+         iffalse ofs015d
+         pushstring "bold"
+         coerce_a
+         jump ofs0161
+         ofs015d:
+         pushstring "normal"
+         coerce_a
+         ofs0161:
+         getlocal3
+         iffalse ofs016e
+         pushstring "italic"
+         coerce_a
+         jump ofs0172
+         ofs016e:
+         pushstring "normal"
+         coerce_a
+         ofs0172:
+         newarray 3
+         callproperty QName(Namespace("mx.core:IFlexModuleFactory"),"callInContext"), 3
+         convert_b
+         jump ofs0195
+         ofs017d:
+         getlocal 9
+         getlex QName(PackageNamespace("flash.text"),"TextField")
+         getproperty QName(PackageNamespace(""),"isFontCompatible")
+         pushnull
+         getlocal1
+         getlocal0
+         getlocal2
+         getlocal3
+         callproperty QName(PackageNamespace(""),"getFontStyle"), 2
+         newarray 2
+         callproperty QName(Namespace("mx.core:IFlexModuleFactory"),"callInContext"), 3
+         convert_b
+         ofs0195:
+         convert_b
+         dup
+         setlocal 13
+         iftrue ofs020c
+         getlex QName(PrivateNamespace(null,"229"),"flaggedObjects")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         iftrue ofs020c
+         findpropstrict QName(PackageNamespace("flash.utils"),"getQualifiedClassName")
+         getlocal 4
+         callproperty QName(PackageNamespace("flash.utils"),"getQualifiedClassName"), 1
+         coerce_s
+         dup
+         setlocal 14
+         pushstring "name"
+         getlocal 4
+         in
+         dup
+         iffalse ofs01ca
+         pop
+         getlocal 4
+         getproperty Multiname("name",[PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         pushnull
+         equals
+         not
+         ofs01ca:
+         iffalse ofs01e0
+         pushstring " ("
+         getlocal 4
+         getproperty Multiname("name",[PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         add
+         pushstring ") "
+         add
+         coerce_a
+         jump ofs01e3
+         ofs01e0:
+         pushstring ""
+         coerce_a
+         ofs01e3:
+         add
+         coerce_s
+         setlocal 14
+         findpropstrict QName(PackageNamespace(""),"trace")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"229"),"resourceManager")
+         pushstring "core"
+         pushstring "fontIncompatible"
+         getlocal1
+         getlocal 14
+         getlocal 7
+         newarray 3
+         callproperty QName(Namespace("mx.resources:IResourceManager"),"getString"), 3
+         callpropvoid QName(PackageNamespace(""),"trace"), 1
+         getlex QName(PrivateNamespace(null,"229"),"flaggedObjects")
+         getlocal 4
+         pushtrue
+         setproperty MultinameL([PrivateNamespace(null,"229"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace("mx.core"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"515"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("mx.core:EmbeddedFontRegistry"),StaticProtectedNs("Object")])
+         ofs020c:
+         getlocal 9
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 3
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("EmbeddedFontRegistry",[PackageNamespace("mx.core")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace(""),"Object")
+newclass 746
+popscope
+initproperty QName(PackageNamespace("mx.core"),"EmbeddedFontRegistry")
+returnvoid
+end ; code
+end ; body
+end ; method
+

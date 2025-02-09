@@ -1,0 +1,267 @@
+package
+{
+   import com.newgrounds.API;
+   import flash.events.ContextMenuEvent;
+   import flash.net.URLRequest;
+   import flash.net.navigateToURL;
+   import flash.ui.ContextMenu;
+   import flash.ui.ContextMenuItem;
+   import org.flixel.FlxG;
+   import org.flixel.FlxGame;
+   import org.flixel.FlxState;
+   
+   public class main extends FlxGame
+   {
+      private static const myPageUrl:String = "http://auriplane.newgrounds.com/";
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 9
+      maxscopedepth 10
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"238"),"myPageUrl")
+      pushstring "http://auriplane.newgrounds.com/"
+      initproperty QName(PrivateNamespace(null,"238"),"myPageUrl")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public function main()
+      {
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 5
+         localcount 4
+         initscopedepth 10
+         maxscopedepth 11
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         convert_u
+         setlocal1
+         pushbyte 0
+         convert_u
+         setlocal2
+         pushbyte 0
+         convert_u
+         setlocal3
+         getlex QName(PackageNamespace(""),"Preloader")
+         getproperty QName(PackageNamespace(""),"fail")
+         iftrue ofs0059
+         pushshort 400
+         convert_u
+         setlocal1
+         pushshort 240
+         convert_u
+         setlocal2
+         pushbyte 2
+         convert_u
+         setlocal3
+         getlocal0
+         getlocal1
+         getlocal2
+         getlex QName(PackageNamespace(""),"PlayState")
+         getlocal3
+         constructsuper 4
+         findproperty QName(PackageNamespace(""),"pause")
+         findpropstrict QName(PackageNamespace(""),"PauseLayer")
+         constructprop QName(PackageNamespace(""),"PauseLayer"), 0
+         initproperty QName(PackageNamespace(""),"pause")
+         getlex QName(PackageNamespace("org.flixel"),"FlxState")
+         pushdouble 4278190080
+         setproperty QName(PackageNamespace(""),"bgColor")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         pushbyte 120
+         setproperty QName(PackageNamespace(""),"framerate")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"showBounds")
+         findproperty QName(PackageNamespace(""),"useDefaultHotKeys")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"useDefaultHotKeys")
+         ofs0059:
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"createContextMenu"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function createContextMenu() : void
+      {
+         trait method QName(PackageNamespace(""),"createContextMenu")
+         dispid 0
+         method
+         name null
+         flag NEED_ACTIVATION
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 2
+         initscopedepth 11
+         maxscopedepth 13
+         trait slot QName(PackageInternalNs(""),"myContextMenu")
+         slotid 1
+         type QName(PackageNamespace("flash.ui"),"ContextMenu")
+         end ; trait
+         trait slot QName(PackageInternalNs(""),"menuCopyright")
+         slotid 2
+         type QName(PackageNamespace("flash.ui"),"ContextMenuItem")
+         end ; trait
+         trait slot QName(PackageInternalNs(""),"menuEmail")
+         slotid 3
+         type QName(PackageNamespace("flash.ui"),"ContextMenuItem")
+         end ; trait
+         trait slot QName(PackageInternalNs(""),"menuUrl")
+         slotid 4
+         type QName(PackageNamespace("flash.ui"),"ContextMenuItem")
+         end ; trait
+         
+         code
+         getlocal0
+         pushscope
+         newactivation
+         dup
+         setlocal1
+         pushscope
+         getscopeobject 1
+         findpropstrict QName(PackageNamespace("flash.ui"),"ContextMenu")
+         constructprop QName(PackageNamespace("flash.ui"),"ContextMenu"), 0
+         coerce QName(PackageNamespace("flash.ui"),"ContextMenu")
+         setslot 1
+         getscopeobject 1
+         getslot 1
+         callpropvoid QName(PackageNamespace(""),"hideBuiltInItems"), 0
+         getscopeobject 1
+         findpropstrict QName(PackageNamespace("flash.ui"),"ContextMenuItem")
+         pushstring "Copyright 2011 Crystal Jacobs"
+         constructprop QName(PackageNamespace("flash.ui"),"ContextMenuItem"), 1
+         coerce QName(PackageNamespace("flash.ui"),"ContextMenuItem")
+         setslot 2
+         getscopeobject 1
+         findpropstrict QName(PackageNamespace("flash.ui"),"ContextMenuItem")
+         pushstring "Email: crystal@panix.com"
+         constructprop QName(PackageNamespace("flash.ui"),"ContextMenuItem"), 1
+         coerce QName(PackageNamespace("flash.ui"),"ContextMenuItem")
+         setslot 3
+         getscopeobject 1
+         findpropstrict QName(PackageNamespace("flash.ui"),"ContextMenuItem")
+         getlex QName(PrivateNamespace(null,"238"),"myPageUrl")
+         constructprop QName(PackageNamespace("flash.ui"),"ContextMenuItem"), 1
+         coerce QName(PackageNamespace("flash.ui"),"ContextMenuItem")
+         setslot 4
+         getlex QName(PackageNamespace("com.newgrounds"),"API")
+         callproperty QName(PackageNamespace(""),"isNewgrounds"), 0
+         iffalse ofs0077
+         getscopeobject 1
+         findpropstrict QName(PackageNamespace("flash.ui"),"ContextMenuItem")
+         getlex QName(PrivateNamespace(null,"238"),"myPageUrl")
+         constructprop QName(PackageNamespace("flash.ui"),"ContextMenuItem"), 1
+         coerce QName(PackageNamespace("flash.ui"),"ContextMenuItem")
+         setslot 4
+         getscopeobject 1
+         getslot 4
+         pushfalse
+         setproperty QName(PackageNamespace(""),"enabled")
+         jump ofs008e
+         ofs0077:
+         getscopeobject 1
+         getslot 4
+         getlex QName(PackageNamespace("flash.events"),"ContextMenuEvent")
+         getproperty QName(PackageNamespace(""),"MENU_ITEM_SELECT")
+         newfunction 15
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getscopeobject 1
+         getslot 4
+         pushtrue
+         setproperty QName(PackageNamespace(""),"enabled")
+         ofs008e:
+         getscopeobject 1
+         getslot 3
+         pushfalse
+         setproperty QName(PackageNamespace(""),"enabled")
+         getscopeobject 1
+         getslot 2
+         pushfalse
+         setproperty QName(PackageNamespace(""),"enabled")
+         getscopeobject 1
+         getslot 1
+         getproperty QName(PackageNamespace(""),"customItems")
+         getscopeobject 1
+         getslot 2
+         getscopeobject 1
+         getslot 3
+         getscopeobject 1
+         getslot 4
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 3
+         findproperty QName(PackageNamespace(""),"contextMenu")
+         getscopeobject 1
+         getslot 1
+         initproperty QName(PackageNamespace(""),"contextMenu")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 9
+
+code
+getlocal0
+pushscope
+getscopeobject 0
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"DisplayObject")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"InteractiveObject")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"DisplayObjectContainer")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"Sprite")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGame")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGame")
+newclass 1
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"main")
+returnvoid
+end ; code
+end ; body
+end ; method
+

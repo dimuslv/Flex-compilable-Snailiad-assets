@@ -1,0 +1,153 @@
+package mx.core
+{
+   import flash.display.Loader;
+   import mx.utils.NameUtil;
+   
+   use namespace mx_internal;
+   
+   public class FlexLoader extends Loader
+   {
+      mx_internal static const VERSION:String = "4.1.0.16076";
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 8
+      maxscopedepth 9
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
+      pushstring "4.1.0.16076"
+      initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public function FlexLoader()
+      {
+         method
+         name null
+         flag NEED_ACTIVATION
+         returns null
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 10
+         maxscopedepth 15
+         
+         code
+         getlocal0
+         pushscope
+         newactivation
+         dup
+         setlocal1
+         pushscope
+         getlocal0
+         constructsuper 0
+         ofs0009:
+         findproperty QName(PackageNamespace(""),"name")
+         getlex QName(PackageNamespace("mx.utils"),"NameUtil")
+         getlocal0
+         callproperty QName(PackageNamespace(""),"createUniqueName"), 1
+         initproperty QName(PackageNamespace(""),"name")
+         ofs0017:
+         jump ofs002b
+         ofs001b:
+         getlocal0
+         pushscope
+         getlocal1
+         pushscope
+         newcatch 0
+         dup
+         setlocal2
+         dup
+         pushscope
+         swap
+         setslot 1
+         popscope
+         kill 2
+         ofs002b:
+         returnvoid
+         end ; code
+         try from ofs0009 to ofs0017 target ofs001b type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
+         end ; body
+         end ; method
+      }
+      
+      override public function toString() : String
+      {
+         trait method QName(PackageNamespace(""),"toString")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("mx.utils"),"NameUtil")
+         getlocal0
+         callproperty QName(PackageNamespace(""),"displayObjectToString"), 1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 8
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("FlexLoader",[PackageNamespace("mx.core")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"DisplayObject")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"InteractiveObject")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"DisplayObjectContainer")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"Loader")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"Loader")
+newclass 236
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace("mx.core"),"FlexLoader")
+returnvoid
+end ; code
+end ; body
+end ; method
+

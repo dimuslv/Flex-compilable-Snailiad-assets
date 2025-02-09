@@ -1,0 +1,619 @@
+package
+{
+   import org.flixel.*;
+   
+   public class Boss4RingCenter extends Enemy
+   {
+      private static const RING_NUM:int = 3;
+      
+      private static const RING_LIFETIME:Number = 5;
+      
+      private static const RING_THETA_VEL:Number = 2.2;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 8
+      maxscopedepth 9
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"203"),"RING_NUM")
+      pushbyte 3
+      initproperty QName(PrivateNamespace(null,"203"),"RING_NUM")
+      findproperty QName(PrivateNamespace(null,"203"),"RING_LIFETIME")
+      pushbyte 5
+      initproperty QName(PrivateNamespace(null,"203"),"RING_LIFETIME")
+      findproperty QName(PrivateNamespace(null,"203"),"RING_THETA_VEL")
+      pushdouble 2.2
+      initproperty QName(PrivateNamespace(null,"203"),"RING_THETA_VEL")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var TURN_SPEED:Number = 0.2;
+      
+      private var RADIUS_VEL:Number = 16;
+      
+      private var _radius:Number = 0;
+      
+      private var _rings:Array;
+      
+      private var _velocity:Number = 0;
+      
+      private var _acceleration:Number = 150;
+      
+      private var _theta:Number = 0;
+      
+      private var _ringTheta:Number = 0;
+      
+      public function Boss4RingCenter(param1:int, param2:int)
+      {
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 7
+         localcount 4
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         getlocal2
+         pushint 99999
+         pushbyte 0
+         dup
+         pushtrue
+         constructsuper 6
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         initproperty QName(PrivateNamespace(null,"203"),"_rings")
+         pushbyte 0
+         setlocal3
+         jump ofs0058
+         ofs001d:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_rings")
+         getlocal3
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"enemyBulletPool")
+         pushbyte 8
+         callproperty QName(PackageNamespace(""),"getBullet"), 1
+         setproperty MultinameL([PrivateNamespace(null,"203"),PrivateNamespace(null,"502"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("Boss4RingCenter"),StaticProtectedNs("Boss4RingCenter"),StaticProtectedNs("Enemy"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_rings")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"203"),PrivateNamespace(null,"502"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("Boss4RingCenter"),StaticProtectedNs("Boss4RingCenter"),StaticProtectedNs("Enemy"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         iffalse ofs0056
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_rings")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"203"),PrivateNamespace(null,"502"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("Boss4RingCenter"),StaticProtectedNs("Boss4RingCenter"),StaticProtectedNs("Enemy"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 0
+         dup
+         getlex QName(PrivateNamespace(null,"203"),"RING_LIFETIME")
+         callpropvoid Multiname("shoot",[PrivateNamespace(null,"203"),PrivateNamespace(null,"502"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("Boss4RingCenter"),StaticProtectedNs("Boss4RingCenter"),StaticProtectedNs("Enemy"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 5
+         ofs0056:
+         inclocal_i 3
+         ofs0058:
+         getlocal3
+         getlex QName(PrivateNamespace(null,"203"),"RING_NUM")
+         iflt ofs001d
+         getlocal0
+         getlex QName(PackageNamespace(""),"Math")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"y")
+         subtract
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"x")
+         subtract
+         callproperty QName(PackageNamespace(""),"atan2"), 2
+         initproperty QName(PrivateNamespace(null,"203"),"_theta")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"_slugMode")
+         iffalse ofs009f
+         getlocal0
+         pushshort 170
+         initproperty QName(PrivateNamespace(null,"203"),"_acceleration")
+         getlocal0
+         pushdouble 0.4
+         initproperty QName(PrivateNamespace(null,"203"),"TURN_SPEED")
+         ofs009f:
+         findproperty QName(PackageNamespace(""),"visible")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"updateRingPos"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function destroy() : void
+      {
+         trait method QName(PackageNamespace(""),"destroy")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal1
+         jump ofs0015
+         ofs0009:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_rings")
+         getlocal1
+         pushnull
+         setproperty MultinameL([PrivateNamespace(null,"203"),PrivateNamespace(null,"502"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("Boss4RingCenter"),StaticProtectedNs("Boss4RingCenter"),StaticProtectedNs("Enemy"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         inclocal_i 1
+         ofs0015:
+         getlocal1
+         getlex QName(PrivateNamespace(null,"203"),"RING_NUM")
+         iflt ofs0009
+         getlocal0
+         pushnull
+         initproperty QName(PrivateNamespace(null,"203"),"_rings")
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"destroy"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function updateRingPos() : void
+      {
+         trait method QName(PackageNamespace(""),"updateRingPos")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 7
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal1
+         jump ofs006a
+         ofs0009:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_rings")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"203"),PrivateNamespace(null,"502"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("Boss4RingCenter"),StaticProtectedNs("Boss4RingCenter"),StaticProtectedNs("Enemy"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_radius")
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_ringTheta")
+         pushbyte 2
+         getlex QName(PackageNamespace(""),"Math")
+         getproperty QName(PackageNamespace(""),"PI")
+         multiply
+         getlex QName(PrivateNamespace(null,"203"),"RING_NUM")
+         divide
+         getlocal1
+         multiply
+         add
+         callproperty QName(PackageNamespace(""),"cos"), 1
+         multiply
+         add
+         setproperty Multiname("x",[PrivateNamespace(null,"203"),PrivateNamespace(null,"502"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("Boss4RingCenter"),StaticProtectedNs("Boss4RingCenter"),StaticProtectedNs("Enemy"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_rings")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"203"),PrivateNamespace(null,"502"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("Boss4RingCenter"),StaticProtectedNs("Boss4RingCenter"),StaticProtectedNs("Enemy"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_radius")
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_ringTheta")
+         pushbyte 2
+         getlex QName(PackageNamespace(""),"Math")
+         getproperty QName(PackageNamespace(""),"PI")
+         multiply
+         getlex QName(PrivateNamespace(null,"203"),"RING_NUM")
+         divide
+         getlocal1
+         multiply
+         add
+         callproperty QName(PackageNamespace(""),"sin"), 1
+         multiply
+         add
+         setproperty Multiname("y",[PrivateNamespace(null,"203"),PrivateNamespace(null,"502"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("Boss4RingCenter"),StaticProtectedNs("Boss4RingCenter"),StaticProtectedNs("Enemy"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         inclocal_i 1
+         ofs006a:
+         getlocal1
+         getlex QName(PrivateNamespace(null,"203"),"RING_NUM")
+         iflt ofs0009
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function updateAim() : void
+      {
+         trait method QName(PackageNamespace(""),"updateAim")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 3
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"Math")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"y")
+         subtract
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"x")
+         subtract
+         callproperty QName(PackageNamespace(""),"atan2"), 2
+         convert_d
+         setlocal1
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_theta")
+         subtract
+         convert_d
+         setlocal2
+         jump ofs003f
+         ofs0031:
+         label
+         getlocal2
+         pushbyte 2
+         getlex QName(PackageNamespace(""),"Math")
+         getproperty QName(PackageNamespace(""),"PI")
+         multiply
+         subtract
+         convert_d
+         setlocal2
+         ofs003f:
+         getlocal2
+         getlex QName(PackageNamespace(""),"Math")
+         getproperty QName(PackageNamespace(""),"PI")
+         ifgt ofs0031
+         jump ofs005c
+         ofs004e:
+         label
+         getlocal2
+         pushbyte 2
+         getlex QName(PackageNamespace(""),"Math")
+         getproperty QName(PackageNamespace(""),"PI")
+         multiply
+         add
+         convert_d
+         setlocal2
+         ofs005c:
+         getlocal2
+         getlex QName(PackageNamespace(""),"Math")
+         getproperty QName(PackageNamespace(""),"PI")
+         negate
+         iflt ofs004e
+         getlocal2
+         pushbyte 0
+         ifngt ofs008a
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_theta")
+         getlex QName(PackageNamespace(""),"Math")
+         getproperty QName(PackageNamespace(""),"PI")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         multiply
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"TURN_SPEED")
+         multiply
+         add
+         initproperty QName(PrivateNamespace(null,"203"),"_theta")
+         ofs008a:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 1
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"realState")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"STATE_GAME")
+         ifeq ofs0013
+         returnvoid
+         ofs0013:
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_radius")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"RADIUS_VEL")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         multiply
+         add
+         initproperty QName(PrivateNamespace(null,"203"),"_radius")
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_ringTheta")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         getlex QName(PackageNamespace(""),"Math")
+         getproperty QName(PackageNamespace(""),"PI")
+         multiply
+         getlex QName(PrivateNamespace(null,"203"),"RING_THETA_VEL")
+         multiply
+         add
+         initproperty QName(PrivateNamespace(null,"203"),"_ringTheta")
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_velocity")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_acceleration")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         multiply
+         add
+         initproperty QName(PrivateNamespace(null,"203"),"_velocity")
+         getlex QName(PackageNamespace(""),"velocity")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_velocity")
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_theta")
+         callproperty QName(PackageNamespace(""),"cos"), 1
+         multiply
+         setproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"velocity")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_velocity")
+         getlex QName(PackageNamespace(""),"Math")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"203"),"_theta")
+         callproperty QName(PackageNamespace(""),"sin"), 1
+         multiply
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"updateRingPos"), 0
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"updateAim"), 0
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"update"), 0
+         getlex QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"MaxX")
+         pushshort 250
+         add
+         greaterthan
+         dup
+         iftrue ofs00b6
+         pop
+         getlex QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"width")
+         add
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"MinX")
+         pushshort 250
+         subtract
+         lessthan
+         ofs00b6:
+         dup
+         iftrue ofs00ca
+         pop
+         getlex QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"MaxY")
+         pushshort 250
+         add
+         greaterthan
+         ofs00ca:
+         dup
+         iftrue ofs00e2
+         pop
+         getlex QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"height")
+         add
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"MinY")
+         pushshort 250
+         subtract
+         lessthan
+         ofs00e2:
+         iffalse ofs00eb
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"kill"), 0
+         ofs00eb:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function kill() : void
+      {
+         trait method QName(PackageNamespace(""),"kill")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"kill"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function touch(param1:Player) : void
+      {
+         trait method QName(PackageNamespace(""),"touch")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Player")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function hurt(param1:Number) : void
+      {
+         trait method QName(PackageNamespace(""),"hurt")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 8
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("Boss4RingCenter",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+pushscope
+getlex QName(PackageNamespace(""),"Enemy")
+pushscope
+getlex QName(PackageNamespace(""),"Enemy")
+newclass 698
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"Boss4RingCenter")
+returnvoid
+end ; code
+end ; body
+end ; method
+

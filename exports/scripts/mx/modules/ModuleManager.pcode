@@ -1,0 +1,2692 @@
+package mx.modules
+{
+   import mx.core.IFlexModuleFactory;
+   import mx.core.mx_internal;
+   
+   use namespace mx_internal;
+   
+   public class ModuleManager
+   {
+      mx_internal static const VERSION:String = "4.1.0.16076";
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 3
+      maxscopedepth 4
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
+      pushstring "4.1.0.16076"
+      initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public function ModuleManager()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function getModule(param1:String) : IModuleInfo
+      {
+         trait method QName(PackageNamespace(""),"getModule")
+         flag FINAL
+         dispid 3
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace("mx.modules"),"IModuleInfo")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PrivateNamespace(null,"317"),"getSingleton")
+         callproperty QName(PrivateNamespace(null,"317"),"getSingleton"), 0
+         getlocal1
+         callproperty Multiname("getModule",[PrivateNamespace(null,"317"),PrivateNamespace(null),PackageNamespace(""),PackageNamespace("mx.modules"),PackageInternalNs("mx.modules"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.modules:ModuleManager"),StaticProtectedNs("mx.modules:ModuleManager"),StaticProtectedNs("Object")]), 1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public static function getAssociatedFactory(param1:Object) : IFlexModuleFactory
+      {
+         trait method QName(PackageNamespace(""),"getAssociatedFactory")
+         flag FINAL
+         dispid 4
+         method
+         name null
+         param QName(PackageNamespace(""),"Object")
+         returns QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PrivateNamespace(null,"317"),"getSingleton")
+         callproperty QName(PrivateNamespace(null,"317"),"getSingleton"), 0
+         getlocal1
+         callproperty Multiname("getAssociatedFactory",[PrivateNamespace(null,"317"),PrivateNamespace(null),PackageNamespace(""),PackageNamespace("mx.modules"),PackageInternalNs("mx.modules"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.modules:ModuleManager"),StaticProtectedNs("mx.modules:ModuleManager"),StaticProtectedNs("Object")]), 1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private static function getSingleton() : Object
+      {
+         trait method QName(PrivateNamespace(null,"317"),"getSingleton")
+         flag FINAL
+         dispid 5
+         method
+         name null
+         returns QName(PackageNamespace(""),"Object")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("mx.modules"),"ModuleManagerGlobals")
+         getproperty QName(PackageNamespace(""),"managerSingleton")
+         iftrue ofs0019
+         getlex QName(PackageNamespace("mx.modules"),"ModuleManagerGlobals")
+         findpropstrict QName(PrivateNamespace(null),"ModuleManagerImpl")
+         constructprop QName(PrivateNamespace(null),"ModuleManagerImpl"), 0
+         setproperty QName(PackageNamespace(""),"managerSingleton")
+         ofs0019:
+         getlex QName(PackageNamespace("mx.modules"),"ModuleManagerGlobals")
+         getproperty QName(PackageNamespace(""),"managerSingleton")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+import flash.display.Loader;
+import flash.events.ErrorEvent;
+import flash.events.Event;
+import flash.events.EventDispatcher;
+import flash.events.IOErrorEvent;
+import flash.events.ProgressEvent;
+import flash.events.SecurityErrorEvent;
+import flash.net.URLRequest;
+import flash.system.ApplicationDomain;
+import flash.system.LoaderContext;
+import flash.system.Security;
+import flash.system.SecurityDomain;
+import flash.utils.ByteArray;
+import flash.utils.Dictionary;
+import flash.utils.getQualifiedClassName;
+import mx.core.IFlexModuleFactory;
+import mx.events.ModuleEvent;
+import mx.events.Request;
+
+class ModuleManagerImpl extends EventDispatcher
+{
+   method
+   name null
+   returns null
+   
+   body
+   maxstack 1
+   localcount 1
+   initscopedepth 4
+   maxscopedepth 5
+   
+   code
+   getlocal0
+   pushscope
+   returnvoid
+   end ; code
+   end ; body
+   end ; method
+   
+   private var moduleList:Object;
+   
+   public function ModuleManagerImpl()
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      newobject 0
+      initproperty QName(PrivateNamespace(null,"182"),"moduleList")
+      getlocal0
+      constructsuper 0
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function getAssociatedFactory(param1:Object) : IFlexModuleFactory
+   {
+      trait method QName(PackageNamespace(""),"getAssociatedFactory")
+      dispid 0
+      method
+      name null
+      flag NEED_ACTIVATION
+      param QName(PackageNamespace(""),"Object")
+      returns QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+      
+      body
+      maxstack 4
+      localcount 6
+      initscopedepth 6
+      maxscopedepth 11
+      trait slot QName(PrivateNamespace(null),"object")
+      slotid 1
+      type QName(PackageNamespace(""),"Object")
+      end ; trait
+      trait slot QName(PrivateNamespace(null),"className")
+      slotid 2
+      type QName(PackageNamespace(""),"String")
+      end ; trait
+      trait slot QName(PrivateNamespace(null),"m")
+      slotid 3
+      type QName(PackageNamespace(""),"Object")
+      end ; trait
+      trait slot QName(PrivateNamespace(null),"info")
+      slotid 4
+      type QName(PrivateNamespace(null),"ModuleInfo")
+      end ; trait
+      trait slot QName(PrivateNamespace(null),"domain")
+      slotid 5
+      type QName(PackageNamespace("flash.system"),"ApplicationDomain")
+      end ; trait
+      trait slot QName(PrivateNamespace(null),"cls")
+      slotid 6
+      type QName(PackageNamespace(""),"Class")
+      end ; trait
+      
+      code
+      getlocal0
+      pushscope
+      newactivation
+      dup
+      setlocal2
+      pushscope
+      getscopeobject 1
+      pushnull
+      coerce QName(PackageNamespace(""),"Object")
+      setslot 3
+      getscopeobject 1
+      pushnull
+      coerce QName(PrivateNamespace(null),"ModuleInfo")
+      setslot 4
+      getscopeobject 1
+      pushnull
+      coerce QName(PackageNamespace("flash.system"),"ApplicationDomain")
+      setslot 5
+      getscopeobject 1
+      pushnull
+      coerce QName(PackageNamespace(""),"Class")
+      setslot 6
+      getscopeobject 1
+      getlocal1
+      setslot 1
+      getscopeobject 1
+      findpropstrict QName(PackageNamespace("flash.utils"),"getQualifiedClassName")
+      getscopeobject 1
+      getslot 1
+      callproperty QName(PackageNamespace("flash.utils"),"getQualifiedClassName"), 1
+      coerce_s
+      setslot 2
+      pushbyte 0
+      setlocal3
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"182"),"moduleList")
+      coerce_a
+      setlocal 4
+      jump ofs00bd
+      ofs0046:
+      label
+      getscopeobject 1
+      getlocal 4
+      getlocal3
+      nextvalue
+      coerce QName(PackageNamespace(""),"Object")
+      setslot 3
+      getscopeobject 1
+      getscopeobject 1
+      getslot 3
+      getlex QName(PrivateNamespace(null),"ModuleInfo")
+      astypelate
+      coerce QName(PrivateNamespace(null),"ModuleInfo")
+      setslot 4
+      getscopeobject 1
+      getslot 4
+      getproperty QName(PackageNamespace(""),"ready")
+      iftrue ofs006f
+      jump ofs00bd
+      ofs006f:
+      getscopeobject 1
+      getscopeobject 1
+      getslot 4
+      getproperty QName(PackageNamespace(""),"applicationDomain")
+      coerce QName(PackageNamespace("flash.system"),"ApplicationDomain")
+      setslot 5
+      ofs007c:
+      getscopeobject 1
+      findpropstrict QName(PackageNamespace(""),"Class")
+      getscopeobject 1
+      getslot 5
+      getscopeobject 1
+      getslot 2
+      callproperty QName(PackageNamespace(""),"getDefinition"), 1
+      callproperty QName(PackageNamespace(""),"Class"), 1
+      coerce QName(PackageNamespace(""),"Class")
+      setslot 6
+      getscopeobject 1
+      getslot 1
+      getscopeobject 1
+      getslot 6
+      istypelate
+      iffalse ofs00a8
+      getscopeobject 1
+      getslot 4
+      getproperty QName(PackageNamespace(""),"factory")
+      returnvalue
+      ofs00a8:
+      jump ofs00bd
+      ofs00ac:
+      getlocal0
+      pushscope
+      getlocal2
+      pushscope
+      newcatch 0
+      dup
+      setlocal 5
+      dup
+      pushscope
+      swap
+      setslot 1
+      popscope
+      kill 5
+      ofs00bd:
+      hasnext2 4, 3
+      iftrue ofs0046
+      kill 4
+      kill 3
+      pushnull
+      returnvalue
+      end ; code
+      try from ofs007c to ofs00a8 target ofs00ac type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"error") end
+      end ; body
+      end ; method
+   }
+   
+   public function getModule(param1:String) : IModuleInfo
+   {
+      trait method QName(PackageNamespace(""),"getModule")
+      dispid 0
+      method
+      name null
+      param QName(PackageNamespace(""),"String")
+      returns QName(PackageNamespace("mx.modules"),"IModuleInfo")
+      
+      body
+      maxstack 3
+      localcount 3
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"182"),"moduleList")
+      getlocal1
+      getproperty MultinameL([PrivateNamespace(null),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("Object"),PrivateNamespace(null,"182"),ProtectedNamespace("ModuleManager.as$580:ModuleManagerImpl"),StaticProtectedNs("ModuleManager.as$580:ModuleManagerImpl"),StaticProtectedNs("flash.events:EventDispatcher")])
+      getlex QName(PrivateNamespace(null),"ModuleInfo")
+      astypelate
+      coerce QName(PrivateNamespace(null),"ModuleInfo")
+      setlocal2
+      getlocal2
+      iftrue ofs002c
+      findpropstrict QName(PrivateNamespace(null),"ModuleInfo")
+      getlocal1
+      constructprop QName(PrivateNamespace(null),"ModuleInfo"), 1
+      coerce QName(PrivateNamespace(null),"ModuleInfo")
+      setlocal2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"182"),"moduleList")
+      getlocal1
+      getlocal2
+      setproperty MultinameL([PrivateNamespace(null),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("Object"),PrivateNamespace(null,"182"),ProtectedNamespace("ModuleManager.as$580:ModuleManagerImpl"),StaticProtectedNs("ModuleManager.as$580:ModuleManagerImpl"),StaticProtectedNs("flash.events:EventDispatcher")])
+      ofs002c:
+      findpropstrict QName(PrivateNamespace(null),"ModuleInfoProxy")
+      getlocal2
+      constructprop QName(PrivateNamespace(null),"ModuleInfoProxy"), 1
+      returnvalue
+      end ; code
+      end ; body
+      end ; method
+   }
+}
+
+class ModuleInfo extends EventDispatcher
+{
+   method
+   name null
+   returns null
+   
+   body
+   maxstack 1
+   localcount 1
+   initscopedepth 4
+   maxscopedepth 5
+   
+   code
+   getlocal0
+   pushscope
+   returnvoid
+   end ; code
+   end ; body
+   end ; method
+   
+   private var factoryInfo:FactoryInfo;
+   
+   private var limbo:Dictionary;
+   
+   private var loader:Loader;
+   
+   private var numReferences:int = 0;
+   
+   private var parentModuleFactory:IFlexModuleFactory;
+   
+   private var _error:Boolean = false;
+   
+   private var _loaded:Boolean = false;
+   
+   private var _ready:Boolean = false;
+   
+   private var _setup:Boolean = false;
+   
+   private var _url:String;
+   
+   public function ModuleInfo(param1:String)
+   {
+      method
+      name null
+      param QName(PackageNamespace(""),"String")
+      returns null
+      
+      body
+      maxstack 2
+      localcount 2
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      constructsuper 0
+      getlocal0
+      getlocal1
+      initproperty QName(PrivateNamespace(null,"183"),"_url")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function get applicationDomain() : ApplicationDomain
+   {
+      trait getter QName(PackageNamespace(""),"applicationDomain")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace("flash.system"),"ApplicationDomain")
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"limbo")
+      not
+      dup
+      iffalse ofs0012
+      pop
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      convert_b
+      ofs0012:
+      iffalse ofs0023
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      getproperty QName(PackageNamespace(""),"applicationDomain")
+      coerce QName(PackageNamespace("flash.system"),"ApplicationDomain")
+      jump ofs0026
+      ofs0023:
+      pushnull
+      coerce QName(PackageNamespace("flash.system"),"ApplicationDomain")
+      ofs0026:
+      returnvalue
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function get error() : Boolean
+   {
+      trait getter QName(PackageNamespace(""),"error")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"Boolean")
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"limbo")
+      iftrue ofs0013
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"_error")
+      convert_b
+      jump ofs0014
+      ofs0013:
+      pushfalse
+      ofs0014:
+      returnvalue
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function get factory() : IFlexModuleFactory
+   {
+      trait getter QName(PackageNamespace(""),"factory")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"limbo")
+      not
+      dup
+      iffalse ofs0012
+      pop
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      convert_b
+      ofs0012:
+      iffalse ofs0023
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      getproperty QName(PackageNamespace(""),"factory")
+      coerce QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+      jump ofs0026
+      ofs0023:
+      pushnull
+      coerce QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+      ofs0026:
+      returnvalue
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function get loaded() : Boolean
+   {
+      trait getter QName(PackageNamespace(""),"loaded")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"Boolean")
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"limbo")
+      iftrue ofs0013
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"_loaded")
+      convert_b
+      jump ofs0014
+      ofs0013:
+      pushfalse
+      ofs0014:
+      returnvalue
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function get ready() : Boolean
+   {
+      trait getter QName(PackageNamespace(""),"ready")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"Boolean")
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"limbo")
+      iftrue ofs0013
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"_ready")
+      convert_b
+      jump ofs0014
+      ofs0013:
+      pushfalse
+      ofs0014:
+      returnvalue
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function get setup() : Boolean
+   {
+      trait getter QName(PackageNamespace(""),"setup")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"Boolean")
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"limbo")
+      iftrue ofs0013
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"_setup")
+      convert_b
+      jump ofs0014
+      ofs0013:
+      pushfalse
+      ofs0014:
+      returnvalue
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function get size() : int
+   {
+      trait getter QName(PackageNamespace(""),"size")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"int")
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"limbo")
+      not
+      dup
+      iffalse ofs0012
+      pop
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      convert_b
+      ofs0012:
+      iffalse ofs0022
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      getproperty QName(PackageNamespace(""),"bytesTotal")
+      convert_i
+      jump ofs0024
+      ofs0022:
+      pushbyte 0
+      ofs0024:
+      returnvalue
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function get url() : String
+   {
+      trait getter QName(PackageNamespace(""),"url")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"String")
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"_url")
+      returnvalue
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function load(param1:ApplicationDomain = null, param2:SecurityDomain = null, param3:ByteArray = null, param4:IFlexModuleFactory = null) : void
+   {
+      trait method QName(PackageNamespace(""),"load")
+      dispid 0
+      method
+      name null
+      flag HAS_OPTIONAL
+      param QName(PackageNamespace("flash.system"),"ApplicationDomain")
+      param QName(PackageNamespace("flash.system"),"SecurityDomain")
+      param QName(PackageNamespace("flash.utils"),"ByteArray")
+      param QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+      optional Null()
+      optional Null()
+      optional Null()
+      optional Null()
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 3
+      localcount 7
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"_loaded")
+      iffalse ofs000b
+      returnvoid
+      ofs000b:
+      getlocal0
+      pushtrue
+      initproperty QName(PrivateNamespace(null,"183"),"_loaded")
+      getlocal0
+      pushnull
+      initproperty QName(PrivateNamespace(null,"183"),"limbo")
+      getlocal0
+      getlocal 4
+      initproperty QName(PrivateNamespace(null,"183"),"parentModuleFactory")
+      getlocal3
+      iffalse ofs0028
+      getlocal0
+      getlocal1
+      getlocal3
+      callpropvoid QName(PrivateNamespace(null,"183"),"loadBytes"), 2
+      returnvoid
+      ofs0028:
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"_url")
+      pushstring "published://"
+      callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"indexOf"), 1
+      pushbyte 0
+      ifne ofs003a
+      returnvoid
+      ofs003a:
+      findpropstrict QName(PackageNamespace("flash.net"),"URLRequest")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"_url")
+      constructprop QName(PackageNamespace("flash.net"),"URLRequest"), 1
+      coerce QName(PackageNamespace("flash.net"),"URLRequest")
+      setlocal 5
+      findpropstrict QName(PackageNamespace("flash.system"),"LoaderContext")
+      constructprop QName(PackageNamespace("flash.system"),"LoaderContext"), 0
+      coerce QName(PackageNamespace("flash.system"),"LoaderContext")
+      dup
+      setlocal 6
+      getlocal1
+      iffalse ofs0063
+      getlocal1
+      coerce QName(PackageNamespace("flash.system"),"ApplicationDomain")
+      jump ofs006f
+      ofs0063:
+      findpropstrict QName(PackageNamespace("flash.system"),"ApplicationDomain")
+      getlex QName(PackageNamespace("flash.system"),"ApplicationDomain")
+      getproperty QName(PackageNamespace(""),"currentDomain")
+      constructprop QName(PackageNamespace("flash.system"),"ApplicationDomain"), 1
+      coerce QName(PackageNamespace("flash.system"),"ApplicationDomain")
+      ofs006f:
+      setproperty QName(PackageNamespace(""),"applicationDomain")
+      getlocal 6
+      getlocal2
+      setproperty QName(PackageNamespace(""),"securityDomain")
+      getlocal2
+      pushnull
+      equals
+      dup
+      iffalse ofs008e
+      pop
+      getlex QName(PackageNamespace("flash.system"),"Security")
+      getproperty QName(PackageNamespace(""),"sandboxType")
+      getlex QName(PackageNamespace("flash.system"),"Security")
+      getproperty QName(PackageNamespace(""),"REMOTE")
+      equals
+      ofs008e:
+      iffalse ofs009c
+      getlocal 6
+      getlex QName(PackageNamespace("flash.system"),"SecurityDomain")
+      getproperty QName(PackageNamespace(""),"currentDomain")
+      setproperty QName(PackageNamespace(""),"securityDomain")
+      ofs009c:
+      getlocal0
+      findpropstrict QName(PackageNamespace("flash.display"),"Loader")
+      constructprop QName(PackageNamespace("flash.display"),"Loader"), 0
+      initproperty QName(PrivateNamespace(null,"183"),"loader")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getlex QName(PackageNamespace("flash.events"),"Event")
+      getproperty QName(PackageNamespace(""),"INIT")
+      getlocal0
+      getproperty QName(PackageNamespace(""),"initHandler")
+      callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getlex QName(PackageNamespace("flash.events"),"Event")
+      getproperty QName(PackageNamespace(""),"COMPLETE")
+      getlocal0
+      getproperty QName(PackageNamespace(""),"completeHandler")
+      callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getlex QName(PackageNamespace("flash.events"),"ProgressEvent")
+      getproperty QName(PackageNamespace(""),"PROGRESS")
+      getlocal0
+      getproperty QName(PackageNamespace(""),"progressHandler")
+      callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getlex QName(PackageNamespace("flash.events"),"IOErrorEvent")
+      getproperty QName(PackageNamespace(""),"IO_ERROR")
+      getlocal0
+      getproperty QName(PackageNamespace(""),"errorHandler")
+      callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getlex QName(PackageNamespace("flash.events"),"SecurityErrorEvent")
+      getproperty QName(PackageNamespace(""),"SECURITY_ERROR")
+      getlocal0
+      getproperty QName(PackageNamespace(""),"errorHandler")
+      callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getlocal 5
+      getlocal 6
+      callpropvoid QName(PackageNamespace(""),"load"), 2
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   private function loadBytes(param1:ApplicationDomain, param2:ByteArray) : void
+   {
+      trait method QName(PrivateNamespace(null,"183"),"loadBytes")
+      dispid 0
+      method
+      name null
+      param QName(PackageNamespace("flash.system"),"ApplicationDomain")
+      param QName(PackageNamespace("flash.utils"),"ByteArray")
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 3
+      localcount 4
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      findpropstrict QName(PackageNamespace("flash.system"),"LoaderContext")
+      constructprop QName(PackageNamespace("flash.system"),"LoaderContext"), 0
+      coerce QName(PackageNamespace("flash.system"),"LoaderContext")
+      setlocal3
+      getlocal3
+      getlocal1
+      iffalse ofs001a
+      getlocal1
+      coerce QName(PackageNamespace("flash.system"),"ApplicationDomain")
+      jump ofs0026
+      ofs001a:
+      findpropstrict QName(PackageNamespace("flash.system"),"ApplicationDomain")
+      getlex QName(PackageNamespace("flash.system"),"ApplicationDomain")
+      getproperty QName(PackageNamespace(""),"currentDomain")
+      constructprop QName(PackageNamespace("flash.system"),"ApplicationDomain"), 1
+      coerce QName(PackageNamespace("flash.system"),"ApplicationDomain")
+      ofs0026:
+      setproperty QName(PackageNamespace(""),"applicationDomain")
+      pushstring "allowLoadBytesCodeExecution"
+      getlocal3
+      in
+      iffalse ofs003a
+      getlocal3
+      pushstring "allowLoadBytesCodeExecution"
+      pushtrue
+      setproperty MultinameL([PrivateNamespace(null),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("Object"),StaticProtectedNs("flash.events:EventDispatcher"),PrivateNamespace(null,"183"),ProtectedNamespace("ModuleManager.as$580:ModuleInfo"),StaticProtectedNs("ModuleManager.as$580:ModuleInfo")])
+      ofs003a:
+      getlocal0
+      findpropstrict QName(PackageNamespace("flash.display"),"Loader")
+      constructprop QName(PackageNamespace("flash.display"),"Loader"), 0
+      initproperty QName(PrivateNamespace(null,"183"),"loader")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getlex QName(PackageNamespace("flash.events"),"Event")
+      getproperty QName(PackageNamespace(""),"INIT")
+      getlocal0
+      getproperty QName(PackageNamespace(""),"initHandler")
+      callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getlex QName(PackageNamespace("flash.events"),"Event")
+      getproperty QName(PackageNamespace(""),"COMPLETE")
+      getlocal0
+      getproperty QName(PackageNamespace(""),"completeHandler")
+      callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getlex QName(PackageNamespace("flash.events"),"IOErrorEvent")
+      getproperty QName(PackageNamespace(""),"IO_ERROR")
+      getlocal0
+      getproperty QName(PackageNamespace(""),"errorHandler")
+      callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getlex QName(PackageNamespace("flash.events"),"SecurityErrorEvent")
+      getproperty QName(PackageNamespace(""),"SECURITY_ERROR")
+      getlocal0
+      getproperty QName(PackageNamespace(""),"errorHandler")
+      callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getlocal2
+      getlocal3
+      callpropvoid QName(PackageNamespace(""),"loadBytes"), 2
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function resurrect() : void
+   {
+      trait method QName(PackageNamespace(""),"resurrect")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 3
+      localcount 4
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      pushnull
+      coerce QName(PackageNamespace(""),"Object")
+      setlocal1
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"_ready")
+      iftrue ofs000f
+      returnvoid
+      ofs000f:
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      not
+      dup
+      iffalse ofs001f
+      pop
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"limbo")
+      convert_b
+      ofs001f:
+      iffalse ofs0054
+      pushbyte 0
+      setlocal2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"limbo")
+      coerce_a
+      setlocal3
+      jump ofs0044
+      ofs0030:
+      label
+      getlocal3
+      getlocal2
+      nextname
+      coerce QName(PackageNamespace(""),"Object")
+      setlocal1
+      getlocal0
+      getlocal1
+      getlex QName(PrivateNamespace(null),"FactoryInfo")
+      astypelate
+      initproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      jump ofs004b
+      ofs0044:
+      hasnext2 3, 2
+      iftrue ofs0030
+      ofs004b:
+      kill 3
+      kill 2
+      getlocal0
+      pushnull
+      initproperty QName(PrivateNamespace(null,"183"),"limbo")
+      ofs0054:
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      iftrue ofs0091
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"_loaded")
+      iffalse ofs0078
+      findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+      findpropstrict QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"UNLOAD")
+      constructprop QName(PackageNamespace("mx.events"),"ModuleEvent"), 1
+      callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+      ofs0078:
+      getlocal0
+      pushnull
+      initproperty QName(PrivateNamespace(null,"183"),"loader")
+      getlocal0
+      pushfalse
+      initproperty QName(PrivateNamespace(null,"183"),"_loaded")
+      getlocal0
+      pushfalse
+      initproperty QName(PrivateNamespace(null,"183"),"_setup")
+      getlocal0
+      pushfalse
+      initproperty QName(PrivateNamespace(null,"183"),"_ready")
+      getlocal0
+      pushfalse
+      initproperty QName(PrivateNamespace(null,"183"),"_error")
+      ofs0091:
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function release() : void
+   {
+      trait method QName(PackageNamespace(""),"release")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 3
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"_ready")
+      convert_b
+      dup
+      iffalse ofs0012
+      pop
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"limbo")
+      not
+      ofs0012:
+      iffalse ofs0036
+      getlocal0
+      findpropstrict QName(PackageNamespace("flash.utils"),"Dictionary")
+      pushtrue
+      constructprop QName(PackageNamespace("flash.utils"),"Dictionary"), 1
+      initproperty QName(PrivateNamespace(null,"183"),"limbo")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"limbo")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      pushbyte 1
+      setproperty MultinameL([PrivateNamespace(null),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("Object"),StaticProtectedNs("flash.events:EventDispatcher"),PrivateNamespace(null,"183"),ProtectedNamespace("ModuleManager.as$580:ModuleInfo"),StaticProtectedNs("ModuleManager.as$580:ModuleInfo")])
+      getlocal0
+      pushnull
+      initproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      jump ofs003b
+      ofs0036:
+      getlocal0
+      callpropvoid QName(PackageNamespace(""),"unload"), 0
+      ofs003b:
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   private function clearLoader() : void
+   {
+      trait method QName(PrivateNamespace(null,"183"),"clearLoader")
+      dispid 0
+      method
+      name null
+      flag NEED_ACTIVATION
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 3
+      localcount 3
+      initscopedepth 6
+      maxscopedepth 13
+      
+      code
+      getlocal0
+      pushscope
+      newactivation
+      dup
+      setlocal1
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      iffalse ofs011d
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      iffalse ofs0080
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getlex QName(PackageNamespace("flash.events"),"Event")
+      getproperty QName(PackageNamespace(""),"INIT")
+      getlocal0
+      getproperty QName(PackageNamespace(""),"initHandler")
+      callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getlex QName(PackageNamespace("flash.events"),"Event")
+      getproperty QName(PackageNamespace(""),"COMPLETE")
+      getlocal0
+      getproperty QName(PackageNamespace(""),"completeHandler")
+      callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getlex QName(PackageNamespace("flash.events"),"ProgressEvent")
+      getproperty QName(PackageNamespace(""),"PROGRESS")
+      getlocal0
+      getproperty QName(PackageNamespace(""),"progressHandler")
+      callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getlex QName(PackageNamespace("flash.events"),"IOErrorEvent")
+      getproperty QName(PackageNamespace(""),"IO_ERROR")
+      getlocal0
+      getproperty QName(PackageNamespace(""),"errorHandler")
+      callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getlex QName(PackageNamespace("flash.events"),"SecurityErrorEvent")
+      getproperty QName(PackageNamespace(""),"SECURITY_ERROR")
+      getlocal0
+      getproperty QName(PackageNamespace(""),"errorHandler")
+      callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+      ofs0080:
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"content")
+      iffalse ofs00c4
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"content")
+      pushstring "ready"
+      getlocal0
+      getproperty QName(PackageNamespace(""),"readyHandler")
+      callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"content")
+      pushstring "error"
+      getlocal0
+      getproperty QName(PackageNamespace(""),"moduleErrorHandler")
+      callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"content")
+      getlex QName(PackageNamespace("mx.events"),"Request")
+      getproperty QName(PackageNamespace(""),"GET_PARENT_FLEX_MODULE_FACTORY_REQUEST")
+      getlocal0
+      getproperty QName(PackageNamespace(""),"getFlexModuleFactoryRequestHandler")
+      callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+      ofs00c4:
+      jump ofs00d8
+      ofs00c8:
+      getlocal0
+      pushscope
+      getlocal1
+      pushscope
+      newcatch 0
+      dup
+      setlocal2
+      dup
+      pushscope
+      swap
+      setslot 1
+      popscope
+      kill 2
+      ofs00d8:
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"_loaded")
+      iffalse ofs00fc
+      ofs00e0:
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      callpropvoid QName(PackageNamespace(""),"close"), 0
+      ofs00e8:
+      jump ofs00fc
+      ofs00ec:
+      getlocal0
+      pushscope
+      getlocal1
+      pushscope
+      newcatch 1
+      dup
+      setlocal2
+      dup
+      pushscope
+      swap
+      setslot 1
+      popscope
+      kill 2
+      ofs00fc:
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      callpropvoid QName(PackageNamespace(""),"unload"), 0
+      ofs0104:
+      jump ofs0118
+      ofs0108:
+      getlocal0
+      pushscope
+      getlocal1
+      pushscope
+      newcatch 2
+      dup
+      setlocal2
+      dup
+      pushscope
+      swap
+      setslot 1
+      popscope
+      kill 2
+      ofs0118:
+      getlocal0
+      pushnull
+      initproperty QName(PrivateNamespace(null,"183"),"loader")
+      ofs011d:
+      returnvoid
+      end ; code
+      try from ofs0080 to ofs00c4 target ofs00c8 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"error") end
+      try from ofs00e0 to ofs00e8 target ofs00ec type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"error") end
+      try from ofs00fc to ofs0104 target ofs0108 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"error") end
+      end ; body
+      end ; method
+   }
+   
+   public function unload() : void
+   {
+      trait method QName(PackageNamespace(""),"unload")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 3
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      callpropvoid QName(PrivateNamespace(null,"183"),"clearLoader"), 0
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"_loaded")
+      iffalse ofs0023
+      findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+      findpropstrict QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"UNLOAD")
+      constructprop QName(PackageNamespace("mx.events"),"ModuleEvent"), 1
+      callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+      ofs0023:
+      getlocal0
+      pushnull
+      initproperty QName(PrivateNamespace(null,"183"),"limbo")
+      getlocal0
+      pushnull
+      initproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      getlocal0
+      pushnull
+      initproperty QName(PrivateNamespace(null,"183"),"parentModuleFactory")
+      getlocal0
+      pushfalse
+      initproperty QName(PrivateNamespace(null,"183"),"_loaded")
+      getlocal0
+      pushfalse
+      initproperty QName(PrivateNamespace(null,"183"),"_setup")
+      getlocal0
+      pushfalse
+      initproperty QName(PrivateNamespace(null,"183"),"_ready")
+      getlocal0
+      pushfalse
+      initproperty QName(PrivateNamespace(null,"183"),"_error")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function publish(param1:IFlexModuleFactory) : void
+   {
+      trait method QName(PackageNamespace(""),"publish")
+      dispid 0
+      method
+      name null
+      param QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 3
+      localcount 2
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      iffalse ofs000b
+      returnvoid
+      ofs000b:
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"_url")
+      pushstring "published://"
+      callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"indexOf"), 1
+      pushbyte 0
+      ifeq ofs001d
+      returnvoid
+      ofs001d:
+      getlocal0
+      findpropstrict QName(PrivateNamespace(null),"FactoryInfo")
+      constructprop QName(PrivateNamespace(null),"FactoryInfo"), 0
+      initproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      getlocal1
+      setproperty QName(PackageNamespace(""),"factory")
+      getlocal0
+      pushtrue
+      initproperty QName(PrivateNamespace(null,"183"),"_loaded")
+      getlocal0
+      pushtrue
+      initproperty QName(PrivateNamespace(null,"183"),"_setup")
+      getlocal0
+      pushtrue
+      initproperty QName(PrivateNamespace(null,"183"),"_ready")
+      getlocal0
+      pushfalse
+      initproperty QName(PrivateNamespace(null,"183"),"_error")
+      findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+      findpropstrict QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"SETUP")
+      constructprop QName(PackageNamespace("mx.events"),"ModuleEvent"), 1
+      callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+      findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+      findpropstrict QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"PROGRESS")
+      constructprop QName(PackageNamespace("mx.events"),"ModuleEvent"), 1
+      callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+      findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+      findpropstrict QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"READY")
+      constructprop QName(PackageNamespace("mx.events"),"ModuleEvent"), 1
+      callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function addReference() : void
+   {
+      trait method QName(PackageNamespace(""),"addReference")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 2
+      localcount 3
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      dup
+      setlocal1
+      getproperty QName(PrivateNamespace(null,"183"),"numReferences")
+      increment_i
+      setlocal2
+      getlocal1
+      getlocal2
+      setproperty QName(PrivateNamespace(null,"183"),"numReferences")
+      kill 2
+      kill 1
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function removeReference() : void
+   {
+      trait method QName(PackageNamespace(""),"removeReference")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 2
+      localcount 3
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      dup
+      setlocal1
+      getproperty QName(PrivateNamespace(null,"183"),"numReferences")
+      decrement_i
+      setlocal2
+      getlocal1
+      getlocal2
+      setproperty QName(PrivateNamespace(null,"183"),"numReferences")
+      kill 2
+      kill 1
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"numReferences")
+      pushbyte 0
+      ifne ofs0022
+      getlocal0
+      callpropvoid QName(PackageNamespace(""),"release"), 0
+      ofs0022:
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function initHandler(param1:Event) : void
+   {
+      trait method QName(PackageNamespace(""),"initHandler")
+      dispid 0
+      method
+      name null
+      flag NEED_ACTIVATION
+      param QName(PackageNamespace("flash.events"),"Event")
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 5
+      localcount 4
+      initscopedepth 6
+      maxscopedepth 13
+      trait slot QName(PrivateNamespace(null),"event")
+      slotid 1
+      type QName(PackageNamespace("flash.events"),"Event")
+      end ; trait
+      trait slot QName(PrivateNamespace(null),"moduleEvent")
+      slotid 2
+      type QName(PackageNamespace("mx.events"),"ModuleEvent")
+      end ; trait
+      
+      code
+      getlocal0
+      pushscope
+      newactivation
+      dup
+      setlocal2
+      pushscope
+      getscopeobject 1
+      pushnull
+      coerce QName(PackageNamespace("mx.events"),"ModuleEvent")
+      setslot 2
+      getscopeobject 1
+      getlocal1
+      setslot 1
+      getlocal0
+      findpropstrict QName(PrivateNamespace(null),"FactoryInfo")
+      constructprop QName(PrivateNamespace(null),"FactoryInfo"), 0
+      initproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      ofs001e:
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"content")
+      getlex QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+      astypelate
+      setproperty QName(PackageNamespace(""),"factory")
+      ofs002f:
+      jump ofs0043
+      ofs0033:
+      getlocal0
+      pushscope
+      getlocal2
+      pushscope
+      newcatch 0
+      dup
+      setlocal3
+      dup
+      pushscope
+      swap
+      setslot 1
+      popscope
+      kill 3
+      ofs0043:
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      getproperty QName(PackageNamespace(""),"factory")
+      iftrue ofs0098
+      getscopeobject 1
+      findpropstrict QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"ERROR")
+      getscopeobject 1
+      getslot 1
+      getproperty QName(PackageNamespace(""),"bubbles")
+      getscopeobject 1
+      getslot 1
+      getproperty QName(PackageNamespace(""),"cancelable")
+      constructprop QName(PackageNamespace("mx.events"),"ModuleEvent"), 3
+      coerce QName(PackageNamespace("mx.events"),"ModuleEvent")
+      setslot 2
+      getscopeobject 1
+      getslot 2
+      pushbyte 0
+      setproperty QName(PackageNamespace(""),"bytesLoaded")
+      getscopeobject 1
+      getslot 2
+      pushbyte 0
+      setproperty QName(PackageNamespace(""),"bytesTotal")
+      getscopeobject 1
+      getslot 2
+      pushstring "SWF is not a loadable module"
+      setproperty QName(PackageNamespace(""),"errorText")
+      findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+      getscopeobject 1
+      getslot 2
+      callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+      returnvoid
+      ofs0098:
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"content")
+      pushstring "ready"
+      getlocal0
+      getproperty QName(PackageNamespace(""),"readyHandler")
+      callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"content")
+      pushstring "error"
+      getlocal0
+      getproperty QName(PackageNamespace(""),"moduleErrorHandler")
+      callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"content")
+      getlex QName(PackageNamespace("mx.events"),"Request")
+      getproperty QName(PackageNamespace(""),"GET_PARENT_FLEX_MODULE_FACTORY_REQUEST")
+      getlocal0
+      getproperty QName(PackageNamespace(""),"getFlexModuleFactoryRequestHandler")
+      callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+      ofs00d1:
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getproperty QName(PackageNamespace(""),"applicationDomain")
+      setproperty QName(PackageNamespace(""),"applicationDomain")
+      ofs00e2:
+      jump ofs00f6
+      ofs00e6:
+      getlocal0
+      pushscope
+      getlocal2
+      pushscope
+      newcatch 1
+      dup
+      setlocal3
+      dup
+      pushscope
+      swap
+      setslot 1
+      popscope
+      kill 3
+      ofs00f6:
+      getlocal0
+      pushtrue
+      initproperty QName(PrivateNamespace(null,"183"),"_setup")
+      findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+      findpropstrict QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"SETUP")
+      constructprop QName(PackageNamespace("mx.events"),"ModuleEvent"), 1
+      callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+      returnvoid
+      end ; code
+      try from ofs001e to ofs002f target ofs0033 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"error") end
+      try from ofs00d1 to ofs00e2 target ofs00e6 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"error") end
+      end ; body
+      end ; method
+   }
+   
+   public function progressHandler(param1:ProgressEvent) : void
+   {
+      trait method QName(PackageNamespace(""),"progressHandler")
+      dispid 0
+      method
+      name null
+      param QName(PackageNamespace("flash.events"),"ProgressEvent")
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 4
+      localcount 3
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      findpropstrict QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"PROGRESS")
+      getlocal1
+      getproperty QName(PackageNamespace(""),"bubbles")
+      getlocal1
+      getproperty QName(PackageNamespace(""),"cancelable")
+      constructprop QName(PackageNamespace("mx.events"),"ModuleEvent"), 3
+      coerce QName(PackageNamespace("mx.events"),"ModuleEvent")
+      setlocal2
+      getlocal2
+      getlocal1
+      getproperty QName(PackageNamespace(""),"bytesLoaded")
+      setproperty QName(PackageNamespace(""),"bytesLoaded")
+      getlocal2
+      getlocal1
+      getproperty QName(PackageNamespace(""),"bytesTotal")
+      setproperty QName(PackageNamespace(""),"bytesTotal")
+      findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+      getlocal2
+      callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function completeHandler(param1:Event) : void
+   {
+      trait method QName(PackageNamespace(""),"completeHandler")
+      dispid 0
+      method
+      name null
+      param QName(PackageNamespace("flash.events"),"Event")
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 4
+      localcount 3
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      findpropstrict QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"PROGRESS")
+      getlocal1
+      getproperty QName(PackageNamespace(""),"bubbles")
+      getlocal1
+      getproperty QName(PackageNamespace(""),"cancelable")
+      constructprop QName(PackageNamespace("mx.events"),"ModuleEvent"), 3
+      coerce QName(PackageNamespace("mx.events"),"ModuleEvent")
+      setlocal2
+      getlocal2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getproperty QName(PackageNamespace(""),"bytesLoaded")
+      setproperty QName(PackageNamespace(""),"bytesLoaded")
+      getlocal2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getproperty QName(PackageNamespace(""),"bytesTotal")
+      setproperty QName(PackageNamespace(""),"bytesTotal")
+      findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+      getlocal2
+      callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function errorHandler(param1:ErrorEvent) : void
+   {
+      trait method QName(PackageNamespace(""),"errorHandler")
+      dispid 0
+      method
+      name null
+      param QName(PackageNamespace("flash.events"),"ErrorEvent")
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 4
+      localcount 3
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      pushtrue
+      initproperty QName(PrivateNamespace(null,"183"),"_error")
+      findpropstrict QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"ERROR")
+      getlocal1
+      getproperty QName(PackageNamespace(""),"bubbles")
+      getlocal1
+      getproperty QName(PackageNamespace(""),"cancelable")
+      constructprop QName(PackageNamespace("mx.events"),"ModuleEvent"), 3
+      coerce QName(PackageNamespace("mx.events"),"ModuleEvent")
+      setlocal2
+      getlocal2
+      pushbyte 0
+      setproperty QName(PackageNamespace(""),"bytesLoaded")
+      getlocal2
+      pushbyte 0
+      setproperty QName(PackageNamespace(""),"bytesTotal")
+      getlocal2
+      getlocal1
+      getproperty QName(PackageNamespace(""),"text")
+      setproperty QName(PackageNamespace(""),"errorText")
+      findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+      getlocal2
+      callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function getFlexModuleFactoryRequestHandler(param1:Request) : void
+   {
+      trait method QName(PackageNamespace(""),"getFlexModuleFactoryRequestHandler")
+      dispid 0
+      method
+      name null
+      param QName(PackageNamespace("mx.events"),"Request")
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 2
+      localcount 2
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal1
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"parentModuleFactory")
+      setproperty QName(PackageNamespace(""),"value")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function readyHandler(param1:Event) : void
+   {
+      trait method QName(PackageNamespace(""),"readyHandler")
+      dispid 0
+      method
+      name null
+      param QName(PackageNamespace("flash.events"),"Event")
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 2
+      localcount 3
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      pushtrue
+      initproperty QName(PrivateNamespace(null,"183"),"_ready")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getproperty QName(PackageNamespace(""),"bytesTotal")
+      setproperty QName(PackageNamespace(""),"bytesTotal")
+      findpropstrict QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"READY")
+      constructprop QName(PackageNamespace("mx.events"),"ModuleEvent"), 1
+      coerce QName(PackageNamespace("mx.events"),"ModuleEvent")
+      setlocal2
+      getlocal2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getproperty QName(PackageNamespace(""),"bytesLoaded")
+      setproperty QName(PackageNamespace(""),"bytesLoaded")
+      getlocal2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getproperty QName(PackageNamespace(""),"bytesTotal")
+      setproperty QName(PackageNamespace(""),"bytesTotal")
+      getlocal0
+      callpropvoid QName(PrivateNamespace(null,"183"),"clearLoader"), 0
+      findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+      getlocal2
+      callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function moduleErrorHandler(param1:Event) : void
+   {
+      trait method QName(PackageNamespace(""),"moduleErrorHandler")
+      dispid 0
+      method
+      name null
+      param QName(PackageNamespace("flash.events"),"Event")
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 2
+      localcount 3
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      pushnull
+      coerce QName(PackageNamespace("mx.events"),"ModuleEvent")
+      setlocal2
+      getlocal0
+      pushtrue
+      initproperty QName(PrivateNamespace(null,"183"),"_ready")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"factoryInfo")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"183"),"loader")
+      getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+      getproperty QName(PackageNamespace(""),"bytesTotal")
+      setproperty QName(PackageNamespace(""),"bytesTotal")
+      getlocal0
+      callpropvoid QName(PrivateNamespace(null,"183"),"clearLoader"), 0
+      getlocal1
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      istypelate
+      iffalse ofs003b
+      findpropstrict QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getlocal1
+      callproperty QName(PackageNamespace("mx.events"),"ModuleEvent"), 1
+      coerce QName(PackageNamespace("mx.events"),"ModuleEvent")
+      setlocal2
+      jump ofs004c
+      ofs003b:
+      findpropstrict QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"ERROR")
+      constructprop QName(PackageNamespace("mx.events"),"ModuleEvent"), 1
+      coerce QName(PackageNamespace("mx.events"),"ModuleEvent")
+      setlocal2
+      ofs004c:
+      findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+      getlocal2
+      callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+}
+
+class FactoryInfo
+{
+   method
+   name null
+   returns null
+   
+   body
+   maxstack 1
+   localcount 1
+   initscopedepth 3
+   maxscopedepth 4
+   
+   code
+   getlocal0
+   pushscope
+   returnvoid
+   end ; code
+   end ; body
+   end ; method
+   
+   public var factory:IFlexModuleFactory;
+   
+   public var applicationDomain:ApplicationDomain;
+   
+   public var bytesTotal:int = 0;
+   
+   public function FactoryInfo()
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 4
+      maxscopedepth 5
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      constructsuper 0
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+}
+
+class ModuleInfoProxy extends EventDispatcher implements IModuleInfo
+{
+   method
+   name null
+   returns null
+   
+   body
+   maxstack 1
+   localcount 1
+   initscopedepth 4
+   maxscopedepth 5
+   
+   code
+   getlocal0
+   pushscope
+   returnvoid
+   end ; code
+   end ; body
+   end ; method
+   
+   private var info:ModuleInfo;
+   
+   private var referenced:Boolean = false;
+   
+   private var _data:Object;
+   
+   public function ModuleInfoProxy(param1:ModuleInfo)
+   {
+      method
+      name null
+      param QName(PrivateNamespace(null),"ModuleInfo")
+      returns null
+      
+      body
+      maxstack 6
+      localcount 2
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      constructsuper 0
+      getlocal0
+      getlocal1
+      initproperty QName(PrivateNamespace(null,"184"),"info")
+      getlocal1
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"SETUP")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"moduleEventHandler")
+      pushfalse
+      pushbyte 0
+      pushtrue
+      callpropvoid QName(PackageNamespace(""),"addEventListener"), 5
+      getlocal1
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"PROGRESS")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"moduleEventHandler")
+      pushfalse
+      pushbyte 0
+      pushtrue
+      callpropvoid QName(PackageNamespace(""),"addEventListener"), 5
+      getlocal1
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"READY")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"moduleEventHandler")
+      pushfalse
+      pushbyte 0
+      pushtrue
+      callpropvoid QName(PackageNamespace(""),"addEventListener"), 5
+      getlocal1
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"ERROR")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"moduleEventHandler")
+      pushfalse
+      pushbyte 0
+      pushtrue
+      callpropvoid QName(PackageNamespace(""),"addEventListener"), 5
+      getlocal1
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"UNLOAD")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"moduleEventHandler")
+      pushfalse
+      pushbyte 0
+      pushtrue
+      callpropvoid QName(PackageNamespace(""),"addEventListener"), 5
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function get data() : Object
+   {
+      trait getter QName(PackageNamespace(""),"data")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"Object")
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"_data")
+      returnvalue
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function set data(param1:Object) : void
+   {
+      trait setter QName(PackageNamespace(""),"data")
+      dispid 0
+      method
+      name null
+      param QName(PackageNamespace(""),"Object")
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 2
+      localcount 2
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getlocal1
+      initproperty QName(PrivateNamespace(null,"184"),"_data")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function get error() : Boolean
+   {
+      trait getter QName(PackageNamespace(""),"error")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"Boolean")
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getproperty QName(PackageNamespace(""),"error")
+      returnvalue
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function get factory() : IFlexModuleFactory
+   {
+      trait getter QName(PackageNamespace(""),"factory")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getproperty QName(PackageNamespace(""),"factory")
+      returnvalue
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function get loaded() : Boolean
+   {
+      trait getter QName(PackageNamespace(""),"loaded")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"Boolean")
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getproperty QName(PackageNamespace(""),"loaded")
+      returnvalue
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function get ready() : Boolean
+   {
+      trait getter QName(PackageNamespace(""),"ready")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"Boolean")
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getproperty QName(PackageNamespace(""),"ready")
+      returnvalue
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function get setup() : Boolean
+   {
+      trait getter QName(PackageNamespace(""),"setup")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"Boolean")
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getproperty QName(PackageNamespace(""),"setup")
+      returnvalue
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function get url() : String
+   {
+      trait getter QName(PackageNamespace(""),"url")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"String")
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getproperty QName(PackageNamespace(""),"url")
+      returnvalue
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function publish(param1:IFlexModuleFactory) : void
+   {
+      trait method QName(PackageNamespace(""),"publish")
+      dispid 0
+      method
+      name null
+      param QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 2
+      localcount 2
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getlocal1
+      callpropvoid QName(PackageNamespace(""),"publish"), 1
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function load(param1:ApplicationDomain = null, param2:SecurityDomain = null, param3:ByteArray = null, param4:IFlexModuleFactory = null) : void
+   {
+      trait method QName(PackageNamespace(""),"load")
+      dispid 0
+      method
+      name null
+      flag HAS_OPTIONAL
+      param QName(PackageNamespace("flash.system"),"ApplicationDomain")
+      param QName(PackageNamespace("flash.system"),"SecurityDomain")
+      param QName(PackageNamespace("flash.utils"),"ByteArray")
+      param QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
+      optional Null()
+      optional Null()
+      optional Null()
+      optional Null()
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 5
+      localcount 6
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      pushnull
+      coerce QName(PackageNamespace("mx.events"),"ModuleEvent")
+      setlocal 5
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      callpropvoid QName(PackageNamespace(""),"resurrect"), 0
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"referenced")
+      iftrue ofs0025
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      callpropvoid QName(PackageNamespace(""),"addReference"), 0
+      getlocal0
+      pushtrue
+      initproperty QName(PrivateNamespace(null,"184"),"referenced")
+      ofs0025:
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getproperty QName(PackageNamespace(""),"error")
+      iffalse ofs0048
+      findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+      findpropstrict QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"ERROR")
+      constructprop QName(PackageNamespace("mx.events"),"ModuleEvent"), 1
+      callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+      jump ofs00d4
+      ofs0048:
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getproperty QName(PackageNamespace(""),"loaded")
+      iffalse ofs00c7
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getproperty QName(PackageNamespace(""),"setup")
+      iffalse ofs00c3
+      findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+      findpropstrict QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"SETUP")
+      constructprop QName(PackageNamespace("mx.events"),"ModuleEvent"), 1
+      callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getproperty QName(PackageNamespace(""),"ready")
+      iffalse ofs00c3
+      findpropstrict QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"PROGRESS")
+      constructprop QName(PackageNamespace("mx.events"),"ModuleEvent"), 1
+      coerce QName(PackageNamespace("mx.events"),"ModuleEvent")
+      dup
+      setlocal 5
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getproperty QName(PackageNamespace(""),"size")
+      setproperty QName(PackageNamespace(""),"bytesLoaded")
+      getlocal 5
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getproperty QName(PackageNamespace(""),"size")
+      setproperty QName(PackageNamespace(""),"bytesTotal")
+      findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+      getlocal 5
+      callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+      findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+      findpropstrict QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"READY")
+      constructprop QName(PackageNamespace("mx.events"),"ModuleEvent"), 1
+      callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+      ofs00c3:
+      jump ofs00d4
+      ofs00c7:
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getlocal1
+      getlocal2
+      getlocal3
+      getlocal 4
+      callpropvoid QName(PackageNamespace(""),"load"), 4
+      ofs00d4:
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function release() : void
+   {
+      trait method QName(PackageNamespace(""),"release")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"referenced")
+      iffalse ofs0017
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      callpropvoid QName(PackageNamespace(""),"removeReference"), 0
+      getlocal0
+      pushfalse
+      initproperty QName(PrivateNamespace(null,"184"),"referenced")
+      ofs0017:
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   public function unload() : void
+   {
+      trait method QName(PackageNamespace(""),"unload")
+      dispid 0
+      method
+      name null
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 3
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      callpropvoid QName(PackageNamespace(""),"unload"), 0
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"SETUP")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"moduleEventHandler")
+      callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"PROGRESS")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"moduleEventHandler")
+      callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"READY")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"moduleEventHandler")
+      callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"ERROR")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"moduleEventHandler")
+      callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"info")
+      getlex QName(PackageNamespace("mx.events"),"ModuleEvent")
+      getproperty QName(PackageNamespace(""),"UNLOAD")
+      getlocal0
+      getproperty QName(PrivateNamespace(null,"184"),"moduleEventHandler")
+      callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+   
+   private function moduleEventHandler(param1:ModuleEvent) : void
+   {
+      trait method QName(PrivateNamespace(null,"184"),"moduleEventHandler")
+      dispid 0
+      method
+      name null
+      param QName(PackageNamespace("mx.events"),"ModuleEvent")
+      returns QName(PackageNamespace(""),"void")
+      
+      body
+      maxstack 2
+      localcount 2
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+      getlocal1
+      callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 4
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("ModuleManager",[PackageNamespace("mx.modules")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace(""),"Object")
+newclass 449
+popscope
+initproperty QName(PackageNamespace("mx.modules"),"ModuleManager")
+findpropstrict Multiname("ModuleManagerImpl",[PrivateNamespace(null)])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+newclass 450
+popscope
+popscope
+initproperty QName(PrivateNamespace(null),"ModuleManagerImpl")
+findpropstrict Multiname("ModuleInfo",[PrivateNamespace(null)])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+newclass 451
+popscope
+popscope
+initproperty QName(PrivateNamespace(null),"ModuleInfo")
+findpropstrict Multiname("FactoryInfo",[PrivateNamespace(null)])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace(""),"Object")
+newclass 452
+popscope
+initproperty QName(PrivateNamespace(null),"FactoryInfo")
+findpropstrict Multiname("ModuleInfoProxy",[PrivateNamespace(null)])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+newclass 453
+popscope
+popscope
+initproperty QName(PrivateNamespace(null),"ModuleInfoProxy")
+returnvoid
+end ; code
+end ; body
+end ; method
+

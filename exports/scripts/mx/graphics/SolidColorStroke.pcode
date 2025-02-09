@@ -1,0 +1,867 @@
+package mx.graphics
+{
+   import flash.display.CapsStyle;
+   import flash.display.Graphics;
+   import flash.display.GraphicsSolidFill;
+   import flash.display.GraphicsStroke;
+   import flash.events.EventDispatcher;
+   import flash.geom.Point;
+   import flash.geom.Rectangle;
+   import mx.core.mx_internal;
+   import mx.events.PropertyChangeEvent;
+   
+   use namespace mx_internal;
+   
+   public class SolidColorStroke extends EventDispatcher implements IStroke
+   {
+      mx_internal static const VERSION:String = "4.1.0.16076";
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 4
+      maxscopedepth 5
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
+      pushstring "4.1.0.16076"
+      initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var _alpha:Number = 0;
+      
+      private var _caps:String = "round";
+      
+      private var _color:uint = 0;
+      
+      private var _joints:String = "round";
+      
+      private var _miterLimit:Number = 3;
+      
+      private var _pixelHinting:Boolean = false;
+      
+      private var _scaleMode:String = "normal";
+      
+      private var _weight:Number;
+      
+      public function SolidColorStroke(param1:uint = 0, param2:Number = 1, param3:Number = 1, param4:Boolean = false, param5:String = "normal", param6:String = "round", param7:String = "round", param8:Number = 3)
+      {
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Boolean")
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"Number")
+         optional Integer(0)
+         optional Integer(1)
+         optional Double(1)
+         optional False()
+         optional Utf8("normal")
+         optional Utf8("round")
+         optional Utf8("round")
+         optional Integer(3)
+         returns null
+         
+         body
+         maxstack 2
+         localcount 9
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         getlocal0
+         getlocal1
+         initproperty QName(PackageNamespace(""),"color")
+         getlocal0
+         getlocal2
+         initproperty QName(PrivateNamespace(null,"69"),"_weight")
+         getlocal0
+         getlocal3
+         initproperty QName(PackageNamespace(""),"alpha")
+         getlocal0
+         getlocal 4
+         initproperty QName(PackageNamespace(""),"pixelHinting")
+         getlocal0
+         getlocal 5
+         initproperty QName(PackageNamespace(""),"scaleMode")
+         getlocal0
+         getlocal 6
+         initproperty QName(PackageNamespace(""),"caps")
+         getlocal0
+         getlocal 7
+         initproperty QName(PackageNamespace(""),"joints")
+         getlocal0
+         getlocal 8
+         initproperty QName(PackageNamespace(""),"miterLimit")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      [Bindable("propertyChange")]
+      public function get alpha() : Number
+      {
+         trait getter QName(PackageNamespace(""),"alpha")
+         flag METADATA
+         metadata "Bindable"
+         item null "propertyChange"
+         end ; metadata
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"69"),"_alpha")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set alpha(param1:Number) : void
+      {
+         trait setter QName(PackageNamespace(""),"alpha")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"69"),"_alpha")
+         convert_d
+         setlocal2
+         getlocal1
+         getlocal2
+         ifeq ofs001d
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"69"),"_alpha")
+         getlocal0
+         pushstring "alpha"
+         getlocal2
+         getlocal1
+         callpropvoid QName(PrivateNamespace(null,"69"),"dispatchStrokeChangedEvent"), 3
+         ofs001d:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      [Bindable("propertyChange")]
+      public function get caps() : String
+      {
+         trait getter QName(PackageNamespace(""),"caps")
+         flag METADATA
+         metadata "Bindable"
+         item null "propertyChange"
+         end ; metadata
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"69"),"_caps")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set caps(param1:String) : void
+      {
+         trait setter QName(PackageNamespace(""),"caps")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"69"),"_caps")
+         coerce_s
+         setlocal2
+         getlocal1
+         getlocal2
+         ifeq ofs001d
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"69"),"_caps")
+         getlocal0
+         pushstring "caps"
+         getlocal2
+         getlocal1
+         callpropvoid QName(PrivateNamespace(null,"69"),"dispatchStrokeChangedEvent"), 3
+         ofs001d:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      [Bindable("propertyChange")]
+      public function get color() : uint
+      {
+         trait getter QName(PackageNamespace(""),"color")
+         flag METADATA
+         metadata "Bindable"
+         item null "propertyChange"
+         end ; metadata
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"69"),"_color")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set color(param1:uint) : void
+      {
+         trait setter QName(PackageNamespace(""),"color")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"uint")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"69"),"_color")
+         convert_u
+         setlocal2
+         getlocal1
+         getlocal2
+         ifeq ofs001d
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"69"),"_color")
+         getlocal0
+         pushstring "color"
+         getlocal2
+         getlocal1
+         callpropvoid QName(PrivateNamespace(null,"69"),"dispatchStrokeChangedEvent"), 3
+         ofs001d:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      [Bindable("propertyChange")]
+      public function get joints() : String
+      {
+         trait getter QName(PackageNamespace(""),"joints")
+         flag METADATA
+         metadata "Bindable"
+         item null "propertyChange"
+         end ; metadata
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"69"),"_joints")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set joints(param1:String) : void
+      {
+         trait setter QName(PackageNamespace(""),"joints")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"69"),"_joints")
+         coerce_s
+         setlocal2
+         getlocal1
+         getlocal2
+         ifeq ofs001d
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"69"),"_joints")
+         getlocal0
+         pushstring "joints"
+         getlocal2
+         getlocal1
+         callpropvoid QName(PrivateNamespace(null,"69"),"dispatchStrokeChangedEvent"), 3
+         ofs001d:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      [Bindable("propertyChange")]
+      public function get miterLimit() : Number
+      {
+         trait getter QName(PackageNamespace(""),"miterLimit")
+         flag METADATA
+         metadata "Bindable"
+         item null "propertyChange"
+         end ; metadata
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"69"),"_miterLimit")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set miterLimit(param1:Number) : void
+      {
+         trait setter QName(PackageNamespace(""),"miterLimit")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"69"),"_miterLimit")
+         convert_d
+         setlocal2
+         getlocal1
+         getlocal2
+         ifeq ofs001d
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"69"),"_miterLimit")
+         getlocal0
+         pushstring "miterLimit"
+         getlocal2
+         getlocal1
+         callpropvoid QName(PrivateNamespace(null,"69"),"dispatchStrokeChangedEvent"), 3
+         ofs001d:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      [Bindable("propertyChange")]
+      public function get pixelHinting() : Boolean
+      {
+         trait getter QName(PackageNamespace(""),"pixelHinting")
+         flag METADATA
+         metadata "Bindable"
+         item null "propertyChange"
+         end ; metadata
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"69"),"_pixelHinting")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set pixelHinting(param1:Boolean) : void
+      {
+         trait setter QName(PackageNamespace(""),"pixelHinting")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"69"),"_pixelHinting")
+         convert_b
+         setlocal2
+         getlocal1
+         getlocal2
+         ifeq ofs001d
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"69"),"_pixelHinting")
+         getlocal0
+         pushstring "pixelHinting"
+         getlocal2
+         getlocal1
+         callpropvoid QName(PrivateNamespace(null,"69"),"dispatchStrokeChangedEvent"), 3
+         ofs001d:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      [Bindable("propertyChange")]
+      public function get scaleMode() : String
+      {
+         trait getter QName(PackageNamespace(""),"scaleMode")
+         flag METADATA
+         metadata "Bindable"
+         item null "propertyChange"
+         end ; metadata
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"String")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"69"),"_scaleMode")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set scaleMode(param1:String) : void
+      {
+         trait setter QName(PackageNamespace(""),"scaleMode")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"69"),"_scaleMode")
+         coerce_s
+         setlocal2
+         getlocal1
+         getlocal2
+         ifeq ofs001d
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"69"),"_scaleMode")
+         getlocal0
+         pushstring "scaleMode"
+         getlocal2
+         getlocal1
+         callpropvoid QName(PrivateNamespace(null,"69"),"dispatchStrokeChangedEvent"), 3
+         ofs001d:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      [Bindable("propertyChange")]
+      public function get weight() : Number
+      {
+         trait getter QName(PackageNamespace(""),"weight")
+         flag METADATA
+         metadata "Bindable"
+         item null "propertyChange"
+         end ; metadata
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"69"),"_weight")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set weight(param1:Number) : void
+      {
+         trait setter QName(PackageNamespace(""),"weight")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Number")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"69"),"_weight")
+         convert_d
+         setlocal2
+         getlocal1
+         getlocal2
+         ifeq ofs001d
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"69"),"_weight")
+         getlocal0
+         pushstring "weight"
+         getlocal2
+         getlocal1
+         callpropvoid QName(PrivateNamespace(null,"69"),"dispatchStrokeChangedEvent"), 3
+         ofs001d:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function apply(param1:Graphics, param2:Rectangle, param3:Point) : void
+      {
+         trait method QName(PackageNamespace(""),"apply")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.display"),"Graphics")
+         param QName(PackageNamespace("flash.geom"),"Rectangle")
+         param QName(PackageNamespace("flash.geom"),"Point")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 9
+         localcount 4
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"weight")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"color")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"alpha")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"pixelHinting")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"scaleMode")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"caps")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"joints")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"miterLimit")
+         callpropvoid QName(PackageNamespace(""),"lineStyle"), 8
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function createGraphicsStroke(param1:Rectangle, param2:Point) : GraphicsStroke
+      {
+         trait method QName(PackageNamespace(""),"createGraphicsStroke")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.geom"),"Rectangle")
+         param QName(PackageNamespace("flash.geom"),"Point")
+         returns QName(PackageNamespace("flash.display"),"GraphicsStroke")
+         
+         body
+         maxstack 2
+         localcount 5
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace("flash.display"),"GraphicsStroke")
+         constructprop QName(PackageNamespace("flash.display"),"GraphicsStroke"), 0
+         coerce QName(PackageNamespace("flash.display"),"GraphicsStroke")
+         setlocal3
+         getlocal3
+         getlocal0
+         getproperty QName(PackageNamespace(""),"weight")
+         setproperty QName(PackageNamespace(""),"thickness")
+         getlocal3
+         getlocal0
+         getproperty QName(PackageNamespace(""),"miterLimit")
+         setproperty QName(PackageNamespace(""),"miterLimit")
+         getlocal3
+         getlocal0
+         getproperty QName(PackageNamespace(""),"pixelHinting")
+         setproperty QName(PackageNamespace(""),"pixelHinting")
+         getlocal3
+         getlocal0
+         getproperty QName(PackageNamespace(""),"scaleMode")
+         setproperty QName(PackageNamespace(""),"scaleMode")
+         getlocal3
+         getlocal0
+         getproperty QName(PackageNamespace(""),"caps")
+         iftrue ofs0041
+         getlex QName(PackageNamespace("flash.display"),"CapsStyle")
+         getproperty QName(PackageNamespace(""),"ROUND")
+         coerce_s
+         jump ofs0046
+         ofs0041:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"caps")
+         coerce_s
+         ofs0046:
+         setproperty QName(PackageNamespace(""),"caps")
+         findpropstrict QName(PackageNamespace("flash.display"),"GraphicsSolidFill")
+         constructprop QName(PackageNamespace("flash.display"),"GraphicsSolidFill"), 0
+         coerce QName(PackageNamespace("flash.display"),"GraphicsSolidFill")
+         dup
+         setlocal 4
+         getlocal0
+         getproperty QName(PackageNamespace(""),"color")
+         setproperty QName(PackageNamespace(""),"color")
+         getlocal 4
+         getlocal0
+         getproperty QName(PackageNamespace(""),"alpha")
+         setproperty QName(PackageNamespace(""),"alpha")
+         getlocal3
+         getlocal 4
+         setproperty QName(PackageNamespace(""),"fill")
+         getlocal3
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function dispatchStrokeChangedEvent(param1:String, param2:*, param3:*) : void
+      {
+         trait method QName(PrivateNamespace(null,"69"),"dispatchStrokeChangedEvent")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         param null
+         param null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 4
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"hasEventListener")
+         pushstring "propertyChange"
+         callproperty QName(PackageNamespace(""),"hasEventListener"), 1
+         iffalse ofs0021
+         findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+         getlex QName(PackageNamespace("mx.events"),"PropertyChangeEvent")
+         getlocal0
+         getlocal1
+         getlocal2
+         getlocal3
+         callproperty QName(PackageNamespace(""),"createUpdateEvent"), 4
+         callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+         ofs0021:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 4
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("SolidColorStroke",[PackageNamespace("mx.graphics")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+newclass 232
+popscope
+popscope
+initproperty QName(PackageNamespace("mx.graphics"),"SolidColorStroke")
+returnvoid
+end ; code
+end ; body
+end ; method
+

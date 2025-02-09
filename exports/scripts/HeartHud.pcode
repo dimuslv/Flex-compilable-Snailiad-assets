@@ -1,0 +1,469 @@
+package
+{
+   import org.flixel.*;
+   
+   public class HeartHud extends FlxGroup
+   {
+      private static const POS_X:int = 4;
+      
+      private static const POS_Y:int = 4;
+      
+      private static const HEARTS_MAX:int = 14;
+      
+      private static const HEARTS_PER_ROW:int = 7;
+      
+      private static const HEART_WIDTH:int = 8;
+      
+      private static const HEART_HEIGHT:int = 8;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 7
+      maxscopedepth 8
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"159"),"POS_X")
+      pushbyte 4
+      initproperty QName(PrivateNamespace(null,"159"),"POS_X")
+      findproperty QName(PrivateNamespace(null,"159"),"POS_Y")
+      pushbyte 4
+      initproperty QName(PrivateNamespace(null,"159"),"POS_Y")
+      findproperty QName(PrivateNamespace(null,"159"),"HEARTS_MAX")
+      pushbyte 14
+      initproperty QName(PrivateNamespace(null,"159"),"HEARTS_MAX")
+      findproperty QName(PrivateNamespace(null,"159"),"HEARTS_PER_ROW")
+      pushbyte 7
+      initproperty QName(PrivateNamespace(null,"159"),"HEARTS_PER_ROW")
+      findproperty QName(PrivateNamespace(null,"159"),"HEART_WIDTH")
+      pushbyte 8
+      initproperty QName(PrivateNamespace(null,"159"),"HEART_WIDTH")
+      findproperty QName(PrivateNamespace(null,"159"),"HEART_HEIGHT")
+      pushbyte 8
+      initproperty QName(PrivateNamespace(null,"159"),"HEART_HEIGHT")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var _hideOfs:Number;
+      
+      private var _hideOfsTarget:Number;
+      
+      private var _hearts:Array;
+      
+      public function HeartHud()
+      {
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 5
+         localcount 4
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal2
+         pushbyte 0
+         setlocal3
+         getlocal0
+         constructsuper 0
+         getlocal0
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         initproperty QName(PrivateNamespace(null,"159"),"_hearts")
+         pushbyte 0
+         setlocal1
+         jump ofs0061
+         ofs001b:
+         label
+         getlex QName(PrivateNamespace(null,"159"),"POS_X")
+         getlocal1
+         getlex QName(PrivateNamespace(null,"159"),"HEARTS_PER_ROW")
+         modulo
+         getlex QName(PrivateNamespace(null,"159"),"HEART_WIDTH")
+         multiply
+         add
+         convert_i
+         setlocal2
+         getlex QName(PrivateNamespace(null,"159"),"POS_Y")
+         getlex QName(PackageNamespace(""),"int")
+         getglobalscope
+         getlocal1
+         getlex QName(PrivateNamespace(null,"159"),"HEARTS_PER_ROW")
+         divide
+         call 1
+         getlex QName(PrivateNamespace(null,"159"),"HEART_HEIGHT")
+         multiply
+         add
+         convert_i
+         setlocal3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"159"),"_hearts")
+         getlocal1
+         findpropstrict QName(PackageNamespace(""),"HeartHudSingle")
+         getlocal2
+         getlocal3
+         constructprop QName(PackageNamespace(""),"HeartHudSingle"), 2
+         setproperty MultinameL([PrivateNamespace(null,"159"),PrivateNamespace(null,"477"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("HeartHud"),StaticProtectedNs("HeartHud"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"159"),"_hearts")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"159"),PrivateNamespace(null,"477"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("HeartHud"),StaticProtectedNs("HeartHud"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         inclocal_i 1
+         ofs0061:
+         getlocal1
+         getlex QName(PrivateNamespace(null,"159"),"HEARTS_MAX")
+         iflt ofs001b
+         getlocal0
+         pushbyte 6
+         callpropvoid QName(PackageNamespace(""),"setMaxHp"), 1
+         getlocal0
+         pushbyte 6
+         callpropvoid QName(PackageNamespace(""),"setCurHp"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function destroy() : void
+      {
+         trait method QName(PackageNamespace(""),"destroy")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 4
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce_s
+         setlocal1
+         pushbyte 0
+         setlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"159"),"_hearts")
+         coerce_a
+         setlocal3
+         jump ofs0021
+         ofs0012:
+         label
+         getlocal3
+         getlocal2
+         nextname
+         coerce_s
+         setlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"159"),"_hearts")
+         getlocal1
+         pushnull
+         setproperty MultinameL([PrivateNamespace(null,"159"),PrivateNamespace(null,"477"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("HeartHud"),StaticProtectedNs("HeartHud"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         ofs0021:
+         hasnext2 3, 2
+         iftrue ofs0012
+         kill 3
+         kill 2
+         getlocal0
+         pushnull
+         initproperty QName(PrivateNamespace(null,"159"),"_hearts")
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"destroy"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function setMaxHp(param1:int, param2:Player = null) : void
+      {
+         trait method QName(PackageNamespace(""),"setMaxHp")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"Player")
+         optional Null()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 5
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         convert_i
+         setlocal3
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         iffalse ofs0027
+         getlocal3
+         pushbyte 4
+         multiply
+         convert_i
+         setlocal3
+         getlocal3
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hpPerHeart"), 0
+         divide
+         convert_i
+         setlocal3
+         jump ofs003b
+         ofs0027:
+         getlocal2
+         iffalse ofs003b
+         getlocal3
+         pushbyte 4
+         multiply
+         convert_i
+         setlocal3
+         getlocal3
+         getlocal2
+         callproperty QName(PackageNamespace(""),"hpPerHeart"), 0
+         divide
+         convert_i
+         setlocal3
+         ofs003b:
+         pushbyte 0
+         setlocal 4
+         jump ofs0059
+         ofs0043:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"159"),"_hearts")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"159"),PrivateNamespace(null,"477"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("HeartHud"),StaticProtectedNs("HeartHud"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 4
+         getlocal3
+         pushbyte 4
+         divide
+         lessthan
+         setproperty Multiname("visible",[PrivateNamespace(null,"159"),PrivateNamespace(null,"477"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("HeartHud"),StaticProtectedNs("HeartHud"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         inclocal_i 4
+         ofs0059:
+         getlocal 4
+         getlex QName(PrivateNamespace(null,"159"),"HEARTS_MAX")
+         iflt ofs0043
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function setCurHp(param1:int, param2:Player = null) : void
+      {
+         trait method QName(PackageNamespace(""),"setCurHp")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"Player")
+         optional Null()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 5
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         convert_i
+         setlocal3
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         iffalse ofs0027
+         getlocal3
+         pushbyte 4
+         multiply
+         convert_i
+         setlocal3
+         getlocal3
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"hpPerHeart"), 0
+         divide
+         convert_i
+         setlocal3
+         jump ofs003b
+         ofs0027:
+         getlocal2
+         iffalse ofs003b
+         getlocal3
+         pushbyte 4
+         multiply
+         convert_i
+         setlocal3
+         getlocal3
+         getlocal2
+         callproperty QName(PackageNamespace(""),"hpPerHeart"), 0
+         divide
+         convert_i
+         setlocal3
+         ofs003b:
+         pushbyte 0
+         setlocal 4
+         jump ofs0092
+         ofs0043:
+         label
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal3
+         pushbyte 4
+         divide
+         callproperty QName(PackageNamespace(""),"int"), 1
+         getlocal 4
+         ifne ofs006c
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"159"),"_hearts")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"159"),PrivateNamespace(null,"477"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("HeartHud"),StaticProtectedNs("HeartHud"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal3
+         pushbyte 4
+         modulo
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         callpropvoid Multiname("play",[PrivateNamespace(null,"159"),PrivateNamespace(null,"477"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("HeartHud"),StaticProtectedNs("HeartHud"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         jump ofs0090
+         ofs006c:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"159"),"_hearts")
+         getlocal 4
+         getproperty MultinameL([PrivateNamespace(null,"159"),PrivateNamespace(null,"477"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("HeartHud"),StaticProtectedNs("HeartHud"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlocal 4
+         getlocal3
+         pushbyte 4
+         divide
+         lessthan
+         iffalse ofs0088
+         pushstring "full"
+         coerce_a
+         jump ofs008c
+         ofs0088:
+         pushstring "empty"
+         coerce_a
+         ofs008c:
+         callpropvoid Multiname("play",[PrivateNamespace(null,"159"),PrivateNamespace(null,"477"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("HeartHud"),StaticProtectedNs("HeartHud"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         ofs0090:
+         inclocal_i 4
+         ofs0092:
+         getlocal 4
+         getlex QName(PrivateNamespace(null,"159"),"HEARTS_MAX")
+         iflt ofs0043
+         getlocal3
+         pushbyte 0
+         ifnle ofs00b2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"159"),"_hearts")
+         pushbyte 0
+         getproperty MultinameL([PrivateNamespace(null,"159"),PrivateNamespace(null,"477"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("HeartHud"),StaticProtectedNs("HeartHud"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         pushstring "empty"
+         callpropvoid Multiname("play",[PrivateNamespace(null,"159"),PrivateNamespace(null,"477"),PackageNamespace(""),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("HeartHud"),StaticProtectedNs("HeartHud"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         ofs00b2:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"realState")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"STATE_GAME")
+         ifeq ofs0013
+         returnvoid
+         ofs0013:
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"update"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 7
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("HeartHud",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGroup")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGroup")
+newclass 398
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"HeartHud")
+returnvoid
+end ; code
+end ; body
+end ; method
+

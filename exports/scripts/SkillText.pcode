@@ -1,0 +1,255 @@
+package
+{
+   import org.flixel.FlxG;
+   import org.flixel.FlxText;
+   
+   public class SkillText extends FlxText
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 8
+      maxscopedepth 9
+      
+      code
+      getlocal0
+      pushscope
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public var relY:int = 0;
+      
+      public function SkillText()
+      {
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         pushshort 194
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 27
+         subtract
+         pushbyte 100
+         constructsuper 3
+         getlocal0
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"height")
+         pushbyte 27
+         subtract
+         initproperty QName(PackageNamespace(""),"relY")
+         findproperty QName(PackageNamespace(""),"font")
+         getlex QName(PackageNamespace(""),"Fonts")
+         getproperty QName(PackageNamespace(""),"normal")
+         initproperty QName(PackageNamespace(""),"font")
+         findproperty QName(PackageNamespace(""),"size")
+         pushbyte 10
+         initproperty QName(PackageNamespace(""),"size")
+         findproperty QName(PackageNamespace(""),"color")
+         pushint 16777215
+         initproperty QName(PackageNamespace(""),"color")
+         findproperty QName(PackageNamespace(""),"shadow")
+         pushbyte 1
+         initproperty QName(PackageNamespace(""),"shadow")
+         findproperty QName(PackageNamespace(""),"alignment")
+         pushstring "left"
+         initproperty QName(PackageNamespace(""),"alignment")
+         getlex QName(PackageNamespace(""),"scrollFactor")
+         getlex QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal1
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal1
+         kill 1
+         setproperty QName(PackageNamespace(""),"x")
+         findpropstrict QName(PackageNamespace(""),"setShadowDistance")
+         pushbyte 1
+         callpropvoid QName(PackageNamespace(""),"setShadowDistance"), 1
+         findproperty QName(PackageNamespace(""),"alpha")
+         pushbyte 1
+         initproperty QName(PackageNamespace(""),"alpha")
+         findproperty QName(PackageNamespace(""),"visible")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"visible")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function updateText() : void
+      {
+         trait method QName(PackageNamespace(""),"updateText")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 1
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         iftrue ofs000d
+         returnvoid
+         ofs000d:
+         findproperty QName(PackageNamespace(""),"text")
+         pushstring "SKILL\n"
+         initproperty QName(PackageNamespace(""),"text")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"_insaneMode")
+         iffalse ofs0034
+         findproperty QName(PackageNamespace(""),"text")
+         getlex QName(PackageNamespace(""),"text")
+         pushstring "INSANE"
+         add
+         initproperty QName(PackageNamespace(""),"text")
+         jump ofs007d
+         ofs0034:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"_hardMode")
+         iffalse ofs0052
+         findproperty QName(PackageNamespace(""),"text")
+         getlex QName(PackageNamespace(""),"text")
+         pushstring "HARD"
+         add
+         initproperty QName(PackageNamespace(""),"text")
+         jump ofs007d
+         ofs0052:
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"_easyMode")
+         iffalse ofs0070
+         findproperty QName(PackageNamespace(""),"text")
+         getlex QName(PackageNamespace(""),"text")
+         pushstring "EASY"
+         add
+         initproperty QName(PackageNamespace(""),"text")
+         jump ofs007d
+         ofs0070:
+         findproperty QName(PackageNamespace(""),"text")
+         getlex QName(PackageNamespace(""),"text")
+         pushstring "NORMAL"
+         add
+         initproperty QName(PackageNamespace(""),"text")
+         ofs007d:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 1
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"miniMap")
+         convert_b
+         dup
+         iffalse ofs0019
+         pop
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"miniMap")
+         getproperty QName(PackageNamespace(""),"subscreen")
+         convert_b
+         ofs0019:
+         iffalse ofs0037
+         findproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"relY")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"miniMap")
+         getproperty QName(PackageNamespace(""),"subscreen")
+         getproperty QName(PackageNamespace(""),"panel")
+         getproperty QName(PackageNamespace(""),"y")
+         add
+         initproperty QName(PackageNamespace(""),"y")
+         ofs0037:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 8
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("SkillText",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxText")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxText")
+newclass 390
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"SkillText")
+returnvoid
+end ; code
+end ; body
+end ; method
+

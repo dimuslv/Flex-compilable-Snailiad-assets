@@ -1,0 +1,180 @@
+package
+{
+   import org.flixel.FlxU;
+   
+   public class Boss4Bullet extends EnemyBullet
+   {
+      private static const DEFAULT_LIFETIME:Number = 2;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 8
+      maxscopedepth 9
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"280"),"DEFAULT_LIFETIME")
+      pushbyte 2
+      initproperty QName(PrivateNamespace(null,"280"),"DEFAULT_LIFETIME")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public function Boss4Bullet(param1:int)
+      {
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         constructsuper 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function hitPlayerBullet(param1:PlayerBullet) : void
+      {
+         trait method QName(PackageNamespace(""),"hitPlayerBullet")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"PlayerBullet")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 7
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"explosionPool")
+         getlex QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"y")
+         pushbyte 0
+         pushbyte 10
+         getlex QName(PackageNamespace("org.flixel"),"FlxU")
+         callproperty QName(PackageNamespace(""),"random"), 0
+         pushbyte 3
+         multiply
+         pushbyte 1
+         add
+         callpropvoid QName(PackageNamespace(""),"boom"), 5
+         getlocal1
+         callpropvoid QName(PackageNamespace(""),"kill"), 0
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"kill"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function kill() : void
+      {
+         trait method QName(PackageNamespace(""),"kill")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"dead")
+         iffalse ofs000a
+         returnvoid
+         ofs000a:
+         getlex QName(PackageNamespace(""),"velocity")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"velocity")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         findproperty QName(PackageNamespace(""),"dead")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"dead")
+         findproperty QName(PackageNamespace(""),"exists")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"exists")
+         findproperty QName(PackageNamespace(""),"solid")
+         pushfalse
+         initproperty QName(PackageNamespace(""),"solid")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 8
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("Boss4Bullet",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+pushscope
+getlex QName(PackageNamespace(""),"EnemyBullet")
+pushscope
+getlex QName(PackageNamespace(""),"EnemyBullet")
+newclass 273
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"Boss4Bullet")
+returnvoid
+end ; code
+end ; body
+end ; method
+

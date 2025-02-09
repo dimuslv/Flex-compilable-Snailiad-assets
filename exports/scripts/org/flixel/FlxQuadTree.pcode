@@ -1,0 +1,1567 @@
+package org.flixel
+{
+   import org.flixel.data.FlxList;
+   
+   public class FlxQuadTree extends FlxRect
+   {
+      public static var quadTree:FlxQuadTree;
+      
+      public static var bounds:FlxRect;
+      
+      public static var divisions:uint;
+      
+      public static const A_LIST:uint = 0;
+      
+      public static const B_LIST:uint = 1;
+      
+      protected static var _min:uint;
+      
+      protected static var _o:FlxObject;
+      
+      protected static var _ol:Number;
+      
+      protected static var _ot:Number;
+      
+      protected static var _or:Number;
+      
+      protected static var _ob:Number;
+      
+      protected static var _oa:uint;
+      
+      protected static var _oc:Function;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 5
+      maxscopedepth 6
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PackageNamespace(""),"A_LIST")
+      pushbyte 0
+      initproperty QName(PackageNamespace(""),"A_LIST")
+      findproperty QName(PackageNamespace(""),"B_LIST")
+      pushbyte 1
+      initproperty QName(PackageNamespace(""),"B_LIST")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      protected var _canSubdivide:Boolean;
+      
+      protected var _headA:FlxList;
+      
+      protected var _tailA:FlxList;
+      
+      protected var _headB:FlxList;
+      
+      protected var _tailB:FlxList;
+      
+      protected var _nw:FlxQuadTree;
+      
+      protected var _ne:FlxQuadTree;
+      
+      protected var _se:FlxQuadTree;
+      
+      protected var _sw:FlxQuadTree;
+      
+      protected var _l:Number;
+      
+      protected var _r:Number;
+      
+      protected var _t:Number;
+      
+      protected var _b:Number;
+      
+      protected var _hw:Number;
+      
+      protected var _hh:Number;
+      
+      protected var _mx:Number;
+      
+      protected var _my:Number;
+      
+      public function FlxQuadTree(param1:Number, param2:Number, param3:Number, param4:Number, param5:FlxQuadTree = null)
+      {
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         optional Null()
+         returns null
+         
+         body
+         maxstack 5
+         localcount 9
+         initscopedepth 6
+         maxscopedepth 7
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 6
+         pushnull
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 7
+         getlocal0
+         getlocal1
+         getlocal2
+         getlocal3
+         getlocal 4
+         constructsuper 4
+         getlocal0
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxList")
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxList"), 0
+         dup
+         setlocal 8
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailA")
+         getlocal 8
+         kill 8
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_headA")
+         getlocal0
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxList")
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxList"), 0
+         dup
+         setlocal 8
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailB")
+         getlocal 8
+         kill 8
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_headB")
+         getlocal 5
+         pushnull
+         ifeq ofs0111
+         getlocal 5
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_headA")
+         getproperty QName(PackageNamespace(""),"object")
+         pushnull
+         ifeq ofs00ab
+         getlocal 5
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_headA")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 6
+         jump ofs00a4
+         ofs0064:
+         label
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailA")
+         getproperty QName(PackageNamespace(""),"object")
+         pushnull
+         ifeq ofs008e
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailA")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 7
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxList")
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxList"), 0
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailA")
+         getlocal 7
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailA")
+         setproperty QName(PackageNamespace(""),"next")
+         ofs008e:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailA")
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"object")
+         setproperty QName(PackageNamespace(""),"object")
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"next")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 6
+         ofs00a4:
+         getlocal 6
+         pushnull
+         ifne ofs0064
+         ofs00ab:
+         getlocal 5
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_headB")
+         getproperty QName(PackageNamespace(""),"object")
+         pushnull
+         ifeq ofs010d
+         getlocal 5
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_headB")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 6
+         jump ofs0106
+         ofs00c6:
+         label
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailB")
+         getproperty QName(PackageNamespace(""),"object")
+         pushnull
+         ifeq ofs00f0
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailB")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 7
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxList")
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxList"), 0
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailB")
+         getlocal 7
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailB")
+         setproperty QName(PackageNamespace(""),"next")
+         ofs00f0:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailB")
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"object")
+         setproperty QName(PackageNamespace(""),"object")
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"next")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 6
+         ofs0106:
+         getlocal 6
+         pushnull
+         ifne ofs00c6
+         ofs010d:
+         jump ofs0125
+         ofs0111:
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_min")
+         getlex QName(PackageNamespace(""),"width")
+         getlex QName(PackageNamespace(""),"height")
+         add
+         pushbyte 2
+         getlex QName(PackageNamespace(""),"divisions")
+         multiply
+         divide
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_min")
+         ofs0125:
+         getlocal0
+         getlex QName(PackageNamespace(""),"width")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_min")
+         greaterthan
+         dup
+         iftrue ofs013a
+         pop
+         getlex QName(PackageNamespace(""),"height")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_min")
+         greaterthan
+         ofs013a:
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_canSubdivide")
+         getlocal0
+         pushnull
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_nw")
+         getlocal0
+         pushnull
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_ne")
+         getlocal0
+         pushnull
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_se")
+         getlocal0
+         pushnull
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_sw")
+         getlocal0
+         getlex QName(PackageNamespace(""),"x")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_l")
+         getlocal0
+         getlex QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"width")
+         add
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_r")
+         getlocal0
+         getlex QName(PackageNamespace(""),"width")
+         pushbyte 2
+         divide
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hw")
+         getlocal0
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_l")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hw")
+         add
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_mx")
+         getlocal0
+         getlex QName(PackageNamespace(""),"y")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_t")
+         getlocal0
+         getlex QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"height")
+         add
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_b")
+         getlocal0
+         getlex QName(PackageNamespace(""),"height")
+         pushbyte 2
+         divide
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hh")
+         getlocal0
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_t")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hh")
+         add
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_my")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function add(param1:FlxObject, param2:uint) : void
+      {
+         trait method QName(PackageNamespace(""),"add")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("org.flixel"),"FlxObject")
+         param QName(PackageNamespace(""),"uint")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 7
+         initscopedepth 6
+         maxscopedepth 7
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         convert_u
+         setlocal3
+         pushnull
+         coerce QName(PackageNamespace("org.flixel"),"FlxObject")
+         setlocal 4
+         pushnull
+         coerce QName(PackageNamespace(""),"Array")
+         setlocal 5
+         pushbyte 0
+         convert_u
+         setlocal 6
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_oa")
+         getlocal2
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_oa")
+         getlocal1
+         getproperty QName(PackageInternalNs("org.flixel"),"_group")
+         iffalse ofs00d6
+         pushbyte 0
+         convert_u
+         setlocal3
+         getlocal1
+         getlex QName(PackageNamespace("org.flixel"),"FlxGroup")
+         astypelate
+         getproperty QName(PackageNamespace(""),"members")
+         coerce QName(PackageNamespace(""),"Array")
+         dup
+         setlocal 5
+         getproperty QName(PackageNamespace(""),"length")
+         convert_u
+         setlocal 6
+         jump ofs00cf
+         ofs003f:
+         label
+         getlocal 5
+         getlocal3
+         convert_d
+         dup
+         increment
+         convert_u
+         setlocal3
+         getproperty MultinameL([PrivateNamespace(null,"429"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxQuadTree"),StaticProtectedNs("org.flixel:FlxQuadTree"),PackageNamespace("org.flixel"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"430"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+         astypelate
+         coerce QName(PackageNamespace("org.flixel"),"FlxObject")
+         dup
+         setlocal 4
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs0062
+         pop
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"exists")
+         convert_b
+         ofs0062:
+         iffalse ofs00cf
+         getlocal 4
+         getproperty QName(PackageInternalNs("org.flixel"),"_group")
+         iffalse ofs007b
+         getlocal0
+         getlocal 4
+         getlocal2
+         callpropvoid QName(PackageNamespace(""),"add"), 2
+         jump ofs00cf
+         ofs007b:
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"solid")
+         iffalse ofs00cf
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getlocal 4
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ol")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"x")
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ol")
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ot")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"y")
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ot")
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_or")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"width")
+         add
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_or")
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ob")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"height")
+         add
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ob")
+         getlocal0
+         callpropvoid QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"addObject"), 0
+         ofs00cf:
+         getlocal3
+         getlocal 6
+         iflt ofs003f
+         ofs00d6:
+         getlocal1
+         getproperty QName(PackageNamespace(""),"solid")
+         iffalse ofs0128
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getlocal1
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ol")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"x")
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ol")
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ot")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"y")
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ot")
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_or")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"width")
+         add
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_or")
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ob")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"height")
+         add
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ob")
+         getlocal0
+         callpropvoid QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"addObject"), 0
+         ofs0128:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function addObject() : void
+      {
+         trait method QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"addObject")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 7
+         localcount 1
+         initscopedepth 6
+         maxscopedepth 7
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_canSubdivide")
+         not
+         dup
+         iftrue ofs003f
+         pop
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_l")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ol")
+         greaterequals
+         dup
+         iffalse ofs0023
+         pop
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_r")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_or")
+         lessequals
+         ofs0023:
+         dup
+         iffalse ofs0031
+         pop
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_t")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ot")
+         greaterequals
+         ofs0031:
+         dup
+         iffalse ofs003f
+         pop
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_b")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ob")
+         lessequals
+         ofs003f:
+         iffalse ofs0049
+         getlocal0
+         callpropvoid QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"addToList"), 0
+         returnvoid
+         ofs0049:
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ol")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_l")
+         greaterthan
+         dup
+         iffalse ofs005f
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_or")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_mx")
+         lessthan
+         ofs005f:
+         iffalse ofs00f3
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ot")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_t")
+         greaterthan
+         dup
+         iffalse ofs0079
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ob")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_my")
+         lessthan
+         ofs0079:
+         iffalse ofs00ab
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_nw")
+         pushnull
+         ifne ofs00a2
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_l")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_t")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hw")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hh")
+         getlocal0
+         constructprop QName(PackageNamespace("org.flixel"),"FlxQuadTree"), 5
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_nw")
+         ofs00a2:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_nw")
+         callpropvoid QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"addObject"), 0
+         returnvoid
+         ofs00ab:
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ot")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_my")
+         greaterthan
+         dup
+         iffalse ofs00c1
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ob")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_b")
+         lessthan
+         ofs00c1:
+         iffalse ofs00f3
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_sw")
+         pushnull
+         ifne ofs00ea
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_l")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_my")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hw")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hh")
+         getlocal0
+         constructprop QName(PackageNamespace("org.flixel"),"FlxQuadTree"), 5
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_sw")
+         ofs00ea:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_sw")
+         callpropvoid QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"addObject"), 0
+         returnvoid
+         ofs00f3:
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ol")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_mx")
+         greaterthan
+         dup
+         iffalse ofs0109
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_or")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_r")
+         lessthan
+         ofs0109:
+         iffalse ofs019d
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ot")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_t")
+         greaterthan
+         dup
+         iffalse ofs0123
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ob")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_my")
+         lessthan
+         ofs0123:
+         iffalse ofs0155
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_ne")
+         pushnull
+         ifne ofs014c
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_mx")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_t")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hw")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hh")
+         getlocal0
+         constructprop QName(PackageNamespace("org.flixel"),"FlxQuadTree"), 5
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_ne")
+         ofs014c:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_ne")
+         callpropvoid QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"addObject"), 0
+         returnvoid
+         ofs0155:
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ot")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_my")
+         greaterthan
+         dup
+         iffalse ofs016b
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ob")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_b")
+         lessthan
+         ofs016b:
+         iffalse ofs019d
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_se")
+         pushnull
+         ifne ofs0194
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_mx")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_my")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hw")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hh")
+         getlocal0
+         constructprop QName(PackageNamespace("org.flixel"),"FlxQuadTree"), 5
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_se")
+         ofs0194:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_se")
+         callpropvoid QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"addObject"), 0
+         returnvoid
+         ofs019d:
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_or")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_l")
+         greaterthan
+         dup
+         iffalse ofs01b3
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ol")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_mx")
+         lessthan
+         ofs01b3:
+         dup
+         iffalse ofs01c1
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ob")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_t")
+         greaterthan
+         ofs01c1:
+         dup
+         iffalse ofs01cf
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ot")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_my")
+         lessthan
+         ofs01cf:
+         iffalse ofs0200
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_nw")
+         pushnull
+         ifne ofs01f8
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_l")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_t")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hw")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hh")
+         getlocal0
+         constructprop QName(PackageNamespace("org.flixel"),"FlxQuadTree"), 5
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_nw")
+         ofs01f8:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_nw")
+         callpropvoid QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"addObject"), 0
+         ofs0200:
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_or")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_mx")
+         greaterthan
+         dup
+         iffalse ofs0216
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ol")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_r")
+         lessthan
+         ofs0216:
+         dup
+         iffalse ofs0224
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ob")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_t")
+         greaterthan
+         ofs0224:
+         dup
+         iffalse ofs0232
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ot")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_my")
+         lessthan
+         ofs0232:
+         iffalse ofs0263
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_ne")
+         pushnull
+         ifne ofs025b
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_mx")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_t")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hw")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hh")
+         getlocal0
+         constructprop QName(PackageNamespace("org.flixel"),"FlxQuadTree"), 5
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_ne")
+         ofs025b:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_ne")
+         callpropvoid QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"addObject"), 0
+         ofs0263:
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_or")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_mx")
+         greaterthan
+         dup
+         iffalse ofs0279
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ol")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_r")
+         lessthan
+         ofs0279:
+         dup
+         iffalse ofs0287
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ob")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_my")
+         greaterthan
+         ofs0287:
+         dup
+         iffalse ofs0295
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ot")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_b")
+         lessthan
+         ofs0295:
+         iffalse ofs02c6
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_se")
+         pushnull
+         ifne ofs02be
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_mx")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_my")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hw")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hh")
+         getlocal0
+         constructprop QName(PackageNamespace("org.flixel"),"FlxQuadTree"), 5
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_se")
+         ofs02be:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_se")
+         callpropvoid QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"addObject"), 0
+         ofs02c6:
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_or")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_l")
+         greaterthan
+         dup
+         iffalse ofs02dc
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ol")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_mx")
+         lessthan
+         ofs02dc:
+         dup
+         iffalse ofs02ea
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ob")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_my")
+         greaterthan
+         ofs02ea:
+         dup
+         iffalse ofs02f8
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_ot")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_b")
+         lessthan
+         ofs02f8:
+         iffalse ofs0329
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_sw")
+         pushnull
+         ifne ofs0321
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_l")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_my")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hw")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_hh")
+         getlocal0
+         constructprop QName(PackageNamespace("org.flixel"),"FlxQuadTree"), 5
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_sw")
+         ofs0321:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_sw")
+         callpropvoid QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"addObject"), 0
+         ofs0329:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function addToList() : void
+      {
+         trait method QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"addToList")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 6
+         maxscopedepth 7
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal1
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_oa")
+         getlex QName(PackageNamespace(""),"A_LIST")
+         ifne ofs0046
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailA")
+         getproperty QName(PackageNamespace(""),"object")
+         pushnull
+         ifeq ofs0038
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailA")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal1
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxList")
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxList"), 0
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailA")
+         getlocal1
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailA")
+         setproperty QName(PackageNamespace(""),"next")
+         ofs0038:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailA")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         setproperty QName(PackageNamespace(""),"object")
+         jump ofs0077
+         ofs0046:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailB")
+         getproperty QName(PackageNamespace(""),"object")
+         pushnull
+         ifeq ofs006d
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailB")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal1
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel.data"),"FlxList")
+         constructprop QName(PackageNamespace("org.flixel.data"),"FlxList"), 0
+         initproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailB")
+         getlocal1
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailB")
+         setproperty QName(PackageNamespace(""),"next")
+         ofs006d:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_tailB")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         setproperty QName(PackageNamespace(""),"object")
+         ofs0077:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_canSubdivide")
+         iftrue ofs0080
+         returnvoid
+         ofs0080:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_nw")
+         pushnull
+         ifeq ofs0091
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_nw")
+         callpropvoid QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"addToList"), 0
+         ofs0091:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_ne")
+         pushnull
+         ifeq ofs00a2
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_ne")
+         callpropvoid QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"addToList"), 0
+         ofs00a2:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_se")
+         pushnull
+         ifeq ofs00b3
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_se")
+         callpropvoid QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"addToList"), 0
+         ofs00b3:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_sw")
+         pushnull
+         ifeq ofs00c4
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_sw")
+         callpropvoid QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"addToList"), 0
+         ofs00c4:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function overlap(param1:Boolean = true, param2:Function = null) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"overlap")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Boolean")
+         param QName(PackageNamespace(""),"Function")
+         optional True()
+         optional Null()
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 3
+         localcount 5
+         initscopedepth 6
+         maxscopedepth 7
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 4
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_oc")
+         getlocal2
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_oc")
+         pushfalse
+         setlocal3
+         getlocal1
+         iffalse ofs0146
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_oa")
+         getlex QName(PackageNamespace(""),"B_LIST")
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_oa")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_headA")
+         getproperty QName(PackageNamespace(""),"object")
+         pushnull
+         ifeq ofs007b
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_headA")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 4
+         jump ofs0074
+         ofs0038:
+         label
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"object")
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"exists")
+         convert_b
+         dup
+         iffalse ofs0058
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"solid")
+         convert_b
+         ofs0058:
+         dup
+         iffalse ofs0064
+         pop
+         getlocal0
+         callproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"overlapNode"), 0
+         convert_b
+         ofs0064:
+         iffalse ofs006a
+         pushtrue
+         setlocal3
+         ofs006a:
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"next")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 4
+         ofs0074:
+         getlocal 4
+         pushnull
+         ifne ofs0038
+         ofs007b:
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_oa")
+         getlex QName(PackageNamespace(""),"A_LIST")
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_oa")
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_headB")
+         getproperty QName(PackageNamespace(""),"object")
+         pushnull
+         ifeq ofs0142
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_headB")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 4
+         jump ofs013b
+         ofs009d:
+         label
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"object")
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"exists")
+         convert_b
+         dup
+         iffalse ofs00bd
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"solid")
+         convert_b
+         ofs00bd:
+         iffalse ofs0131
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_nw")
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs00d7
+         pop
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_nw")
+         callproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"overlapNode"), 0
+         convert_b
+         ofs00d7:
+         iffalse ofs00dd
+         pushtrue
+         setlocal3
+         ofs00dd:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_ne")
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs00f3
+         pop
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_ne")
+         callproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"overlapNode"), 0
+         convert_b
+         ofs00f3:
+         iffalse ofs00f9
+         pushtrue
+         setlocal3
+         ofs00f9:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_se")
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs010f
+         pop
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_se")
+         callproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"overlapNode"), 0
+         convert_b
+         ofs010f:
+         iffalse ofs0115
+         pushtrue
+         setlocal3
+         ofs0115:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_sw")
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs012b
+         pop
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_sw")
+         callproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"overlapNode"), 0
+         convert_b
+         ofs012b:
+         iffalse ofs0131
+         pushtrue
+         setlocal3
+         ofs0131:
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"next")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 4
+         ofs013b:
+         getlocal 4
+         pushnull
+         ifne ofs009d
+         ofs0142:
+         jump ofs01a7
+         ofs0146:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_headA")
+         getproperty QName(PackageNamespace(""),"object")
+         pushnull
+         ifeq ofs01a7
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_headA")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 4
+         jump ofs01a0
+         ofs015f:
+         label
+         findproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"object")
+         setproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"exists")
+         convert_b
+         dup
+         iffalse ofs017f
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"solid")
+         convert_b
+         ofs017f:
+         dup
+         iffalse ofs0190
+         pop
+         getlocal0
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"next")
+         callproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"overlapNode"), 1
+         convert_b
+         ofs0190:
+         iffalse ofs0196
+         pushtrue
+         setlocal3
+         ofs0196:
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"next")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 4
+         ofs01a0:
+         getlocal 4
+         pushnull
+         ifne ofs015f
+         ofs01a7:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_nw")
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs01c1
+         pop
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_nw")
+         getlocal1
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_oc")
+         callproperty QName(PackageNamespace(""),"overlap"), 2
+         convert_b
+         ofs01c1:
+         iffalse ofs01c7
+         pushtrue
+         setlocal3
+         ofs01c7:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_ne")
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs01e1
+         pop
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_ne")
+         getlocal1
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_oc")
+         callproperty QName(PackageNamespace(""),"overlap"), 2
+         convert_b
+         ofs01e1:
+         iffalse ofs01e7
+         pushtrue
+         setlocal3
+         ofs01e7:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_se")
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs0201
+         pop
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_se")
+         getlocal1
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_oc")
+         callproperty QName(PackageNamespace(""),"overlap"), 2
+         convert_b
+         ofs0201:
+         iffalse ofs0207
+         pushtrue
+         setlocal3
+         ofs0207:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_sw")
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs0221
+         pop
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_sw")
+         getlocal1
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_oc")
+         callproperty QName(PackageNamespace(""),"overlap"), 2
+         convert_b
+         ofs0221:
+         iffalse ofs0227
+         pushtrue
+         setlocal3
+         ofs0227:
+         getlocal3
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      protected function overlapNode(param1:FlxList = null) : Boolean
+      {
+         trait method QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"overlapNode")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace("org.flixel.data"),"FlxList")
+         optional Null()
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 3
+         localcount 5
+         initscopedepth 6
+         maxscopedepth 7
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("org.flixel"),"FlxObject")
+         setlocal3
+         pushfalse
+         setlocal2
+         getlocal1
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         dup
+         setlocal 4
+         pushnull
+         ifne ofs0034
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_oa")
+         getlex QName(PackageNamespace(""),"A_LIST")
+         ifne ofs002b
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_headA")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 4
+         jump ofs0034
+         ofs002b:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxQuadTree"),"_headB")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 4
+         ofs0034:
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"object")
+         pushnull
+         ifeq ofs0146
+         jump ofs013f
+         ofs0042:
+         label
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"object")
+         coerce QName(PackageNamespace("org.flixel"),"FlxObject")
+         setlocal3
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getlocal3
+         strictequals
+         dup
+         iftrue ofs005b
+         pop
+         getlocal3
+         getproperty QName(PackageNamespace(""),"exists")
+         not
+         ofs005b:
+         dup
+         iftrue ofs0068
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"exists")
+         not
+         ofs0068:
+         dup
+         iftrue ofs0073
+         pop
+         getlocal3
+         getproperty QName(PackageNamespace(""),"solid")
+         not
+         ofs0073:
+         dup
+         iftrue ofs0080
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"solid")
+         not
+         ofs0080:
+         dup
+         iftrue ofs009f
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"width")
+         add
+         getlocal3
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace("org.flixel"),"FlxU")
+         getproperty QName(PackageInternalNs("org.flixel"),"roundingError")
+         add
+         lessthan
+         ofs009f:
+         dup
+         iftrue ofs00bc
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace("org.flixel"),"FlxU")
+         getproperty QName(PackageInternalNs("org.flixel"),"roundingError")
+         add
+         getlocal3
+         getproperty QName(PackageNamespace(""),"x")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"width")
+         add
+         greaterthan
+         ofs00bc:
+         dup
+         iftrue ofs00db
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"height")
+         add
+         getlocal3
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace("org.flixel"),"FlxU")
+         getproperty QName(PackageInternalNs("org.flixel"),"roundingError")
+         add
+         lessthan
+         ofs00db:
+         dup
+         iftrue ofs00f8
+         pop
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace("org.flixel"),"FlxU")
+         getproperty QName(PackageInternalNs("org.flixel"),"roundingError")
+         add
+         getlocal3
+         getproperty QName(PackageNamespace(""),"y")
+         getlocal3
+         getproperty QName(PackageNamespace(""),"height")
+         add
+         greaterthan
+         ofs00f8:
+         iffalse ofs010a
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"next")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 4
+         jump ofs013f
+         ofs010a:
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_oc")
+         pushnull
+         ifne ofs0124
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         callpropvoid QName(PackageNamespace(""),"kill"), 0
+         getlocal3
+         callpropvoid QName(PackageNamespace(""),"kill"), 0
+         pushtrue
+         setlocal2
+         jump ofs0135
+         ofs0124:
+         findpropstrict QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_oc")
+         getlex QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_o")
+         getlocal3
+         callproperty QName(StaticProtectedNs("org.flixel:FlxQuadTree"),"_oc"), 2
+         iffalse ofs0135
+         pushtrue
+         setlocal2
+         ofs0135:
+         getlocal 4
+         getproperty QName(PackageNamespace(""),"next")
+         coerce QName(PackageNamespace("org.flixel.data"),"FlxList")
+         setlocal 4
+         ofs013f:
+         getlocal 4
+         pushnull
+         ifne ofs0042
+         ofs0146:
+         getlocal2
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 5
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("FlxQuadTree",[PackageNamespace("org.flixel")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+newclass 237
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace("org.flixel"),"FlxQuadTree")
+returnvoid
+end ; code
+end ; body
+end ; method
+

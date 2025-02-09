@@ -1,0 +1,588 @@
+package
+{
+   import org.flixel.FlxG;
+   import org.flixel.FlxGroup;
+   import org.flixel.FlxSprite;
+   import org.flixel.FlxText;
+   
+   public class Dialogue extends FlxGroup
+   {
+      private static const IMG_WIDTH:int = 368;
+      
+      private static const IMG_HEIGHT:int = 64;
+      
+      private static const IMG_OFS_X:int = 0;
+      
+      private static const IMG_OFS_Y:int = 0;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 7
+      maxscopedepth 8
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"39"),"IMG_WIDTH")
+      pushshort 368
+      initproperty QName(PrivateNamespace(null,"39"),"IMG_WIDTH")
+      findproperty QName(PrivateNamespace(null,"39"),"IMG_HEIGHT")
+      pushbyte 64
+      initproperty QName(PrivateNamespace(null,"39"),"IMG_HEIGHT")
+      findproperty QName(PrivateNamespace(null,"39"),"IMG_OFS_X")
+      pushbyte 0
+      initproperty QName(PrivateNamespace(null,"39"),"IMG_OFS_X")
+      findproperty QName(PrivateNamespace(null,"39"),"IMG_OFS_Y")
+      pushbyte 0
+      initproperty QName(PrivateNamespace(null,"39"),"IMG_OFS_Y")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var _msg:FlxText;
+      
+      private var _active:Boolean;
+      
+      private var _started:int;
+      
+      private var _fullMsg:String;
+      
+      private const LETTER_DELAY:Number = 0.027;
+      
+      private var _elapsed:Number = 0;
+      
+      private var _bg:FlxSprite;
+      
+      private var _oldLetters:int;
+      
+      private var _voice:int;
+      
+      private var _speed:Number = 1;
+      
+      public var _diaNum:int = 0;
+      
+      public function Dialogue()
+      {
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 2
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         getlocal0
+         pushfalse
+         initproperty QName(PrivateNamespace(null,"39"),"_active")
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxText")
+         pushbyte 20
+         dup
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"width")
+         constructprop QName(PackageNamespace("org.flixel"),"FlxText"), 3
+         initproperty QName(PrivateNamespace(null,"39"),"_msg")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_msg")
+         getlex QName(PackageNamespace(""),"Fonts")
+         getproperty QName(PackageNamespace(""),"normal")
+         setproperty QName(PackageNamespace(""),"font")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_msg")
+         pushbyte 20
+         setproperty QName(PackageNamespace(""),"size")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_msg")
+         pushint 16777215
+         setproperty QName(PackageNamespace(""),"color")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_msg")
+         pushbyte 1
+         setproperty QName(PackageNamespace(""),"shadow")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_msg")
+         pushstring "left"
+         setproperty QName(PackageNamespace(""),"alignment")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_msg")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_msg")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal1
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal1
+         kill 1
+         setproperty QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_msg")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         findpropstrict QName(PackageNamespace("org.flixel"),"FlxSprite")
+         pushbyte 16
+         pushbyte 20
+         constructprop QName(PackageNamespace("org.flixel"),"FlxSprite"), 2
+         initproperty QName(PrivateNamespace(null,"39"),"_bg")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_bg")
+         getlex QName(PackageNamespace(""),"Art")
+         getproperty QName(PackageNamespace(""),"Dialogue")
+         pushtrue
+         pushtrue
+         getlex QName(PrivateNamespace(null,"39"),"IMG_WIDTH")
+         getlex QName(PrivateNamespace(null,"39"),"IMG_HEIGHT")
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 5
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_bg")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_bg")
+         pushstring "normal"
+         pushbyte 0
+         pushbyte 1
+         pushbyte 2
+         pushbyte 3
+         newarray 4
+         pushbyte 60
+         pushfalse
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 4
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_bg")
+         pushstring "alt"
+         pushbyte 4
+         pushbyte 5
+         pushbyte 6
+         pushbyte 7
+         newarray 4
+         pushbyte 60
+         pushfalse
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 4
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_bg")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"exists")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_bg")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"solid")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_bg")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_bg")
+         getproperty QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal1
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal1
+         kill 1
+         setproperty QName(PackageNamespace(""),"x")
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_bg")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         findpropstrict QName(PackageNamespace(""),"add")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_msg")
+         callpropvoid QName(PackageNamespace(""),"add"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function destroy() : void
+      {
+         trait method QName(PackageNamespace(""),"destroy")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         pushnull
+         initproperty QName(PrivateNamespace(null,"39"),"_bg")
+         getlocal0
+         pushnull
+         initproperty QName(PrivateNamespace(null,"39"),"_msg")
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"destroy"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function start(param1:String, param2:int, param3:Boolean = false, param4:Number = 1, param5:int = 0) : void
+      {
+         trait method QName(PackageNamespace(""),"start")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"Boolean")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"int")
+         optional False()
+         optional Double(1)
+         optional Integer(0)
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 6
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_active")
+         iffalse ofs000b
+         returnvoid
+         ofs000b:
+         getlocal0
+         getlocal 5
+         initproperty QName(PackageNamespace(""),"_diaNum")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_bg")
+         getlocal3
+         iffalse ofs0021
+         pushstring "alt"
+         jump ofs0024
+         ofs0021:
+         pushstring "normal"
+         ofs0024:
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_msg")
+         pushstring ""
+         setproperty QName(PackageNamespace(""),"text")
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"39"),"_fullMsg")
+         getlocal0
+         pushtrue
+         initproperty QName(PrivateNamespace(null,"39"),"_active")
+         getlocal0
+         pushtrue
+         callpropvoid QName(PackageNamespace(""),"moveWindow"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_msg")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_bg")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         pushbyte 0
+         initproperty QName(PrivateNamespace(null,"39"),"_oldLetters")
+         getlocal0
+         getlocal2
+         initproperty QName(PrivateNamespace(null,"39"),"_voice")
+         getlocal0
+         pushbyte 0
+         initproperty QName(PrivateNamespace(null,"39"),"_elapsed")
+         getlocal0
+         getlocal 4
+         initproperty QName(PrivateNamespace(null,"39"),"_speed")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function moveWindow(param1:Boolean) : void
+      {
+         trait method QName(PackageNamespace(""),"moveWindow")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal2
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"player")
+         getproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getproperty QName(PackageNamespace(""),"minY")
+         subtract
+         pushbyte 90
+         ifnlt ofs0026
+         pushshort 160
+         setlocal2
+         jump ofs0029
+         ofs0026:
+         pushbyte 20
+         setlocal2
+         ofs0029:
+         getlocal1
+         iffalse ofs003a
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_bg")
+         getlocal2
+         setproperty QName(PackageNamespace(""),"y")
+         jump ofs0050
+         ofs003a:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_bg")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_bg")
+         getproperty QName(PackageNamespace(""),"y")
+         pushbyte 9
+         multiply
+         getlocal2
+         add
+         pushbyte 10
+         divide
+         setproperty QName(PackageNamespace(""),"y")
+         ofs0050:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_msg")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_bg")
+         getproperty QName(PackageNamespace(""),"y")
+         setproperty QName(PackageNamespace(""),"y")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function stop(param1:int = -1) : void
+      {
+         trait method QName(PackageNamespace(""),"stop")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"int")
+         optional Integer(-1)
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"_diaNum")
+         equals
+         not
+         dup
+         iffalse ofs0014
+         pop
+         getlocal1
+         pushbyte -1
+         equals
+         not
+         ofs0014:
+         iffalse ofs0019
+         returnvoid
+         ofs0019:
+         getlocal0
+         pushfalse
+         initproperty QName(PrivateNamespace(null,"39"),"_active")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_msg")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_bg")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 3
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal1
+         pushnull
+         coerce_s
+         setlocal2
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"realState")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"STATE_GAME")
+         ifeq ofs0019
+         returnvoid
+         ofs0019:
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_elapsed")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         add
+         initproperty QName(PrivateNamespace(null,"39"),"_elapsed")
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"update"), 0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_active")
+         iffalse ofs0099
+         getlocal0
+         pushfalse
+         callpropvoid QName(PackageNamespace(""),"moveWindow"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_elapsed")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"LETTER_DELAY")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_speed")
+         divide
+         divide
+         convert_i
+         setlocal1
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_oldLetters")
+         ifeq ofs0087
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_fullMsg")
+         getlocal1
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charAt"), 1
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toLowerCase"), 0
+         coerce_s
+         setlocal2
+         getlocal2
+         pushstring "a"
+         greaterequals
+         dup
+         iffalse ofs0073
+         pop
+         getlocal2
+         pushstring "z"
+         lessequals
+         ofs0073:
+         iffalse ofs0082
+         getlex QName(PackageNamespace(""),"Sfx")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_voice")
+         callpropvoid QName(PackageNamespace(""),"playDialogueLetter"), 1
+         ofs0082:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"39"),"_oldLetters")
+         ofs0087:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_msg")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"39"),"_fullMsg")
+         pushbyte 0
+         getlocal1
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"substr"), 2
+         setproperty QName(PackageNamespace(""),"text")
+         ofs0099:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 7
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("Dialogue",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGroup")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxGroup")
+newclass 114
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"Dialogue")
+returnvoid
+end ; code
+end ; body
+end ; method
+

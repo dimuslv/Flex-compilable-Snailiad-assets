@@ -1,0 +1,434 @@
+package
+{
+   import org.flixel.FlxG;
+   import org.flixel.FlxSprite;
+   
+   public class Item extends FlxSprite
+   {
+      private static const DISAPPEAR_TIME:Number = 15000;
+      
+      private static const FLICKER_TIME:Number = 5000;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 7
+      maxscopedepth 8
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"34"),"DISAPPEAR_TIME")
+      pushshort 15000
+      initproperty QName(PrivateNamespace(null,"34"),"DISAPPEAR_TIME")
+      findproperty QName(PrivateNamespace(null,"34"),"FLICKER_TIME")
+      pushshort 5000
+      initproperty QName(PrivateNamespace(null,"34"),"FLICKER_TIME")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var _disappearTime:Number = 0;
+      
+      private var _flickerTime:Number = 0;
+      
+      private var _willThisDisappear:Boolean = false;
+      
+      public function Item(param1:int, param2:int, param3:Boolean = false)
+      {
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"int")
+         param QName(PackageNamespace(""),"Boolean")
+         optional False()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 4
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         findproperty QName(PackageNamespace(""),"x")
+         getlocal1
+         initproperty QName(PackageNamespace(""),"x")
+         findproperty QName(PackageNamespace(""),"y")
+         getlocal2
+         initproperty QName(PackageNamespace(""),"y")
+         getlocal3
+         iffalse ofs002b
+         getlocal0
+         getlex QName(PrivateNamespace(null,"34"),"DISAPPEAR_TIME")
+         initproperty QName(PrivateNamespace(null,"34"),"_disappearTime")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"34"),"FLICKER_TIME")
+         initproperty QName(PrivateNamespace(null,"34"),"_flickerTime")
+         getlocal0
+         pushtrue
+         initproperty QName(PrivateNamespace(null,"34"),"_willThisDisappear")
+         ofs002b:
+         findproperty QName(PackageNamespace(""),"fixed")
+         pushtrue
+         initproperty QName(PackageNamespace(""),"fixed")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function touch(param1:Player) : void
+      {
+         trait method QName(PackageNamespace(""),"touch")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Player")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 2
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"realState")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"STATE_GAME")
+         ifeq ofs0013
+         returnvoid
+         ofs0013:
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"update"), 0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"34"),"_willThisDisappear")
+         iffalse ofs0064
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"34"),"_disappearTime")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         subtract
+         initproperty QName(PrivateNamespace(null,"34"),"_disappearTime")
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"34"),"_flickerTime")
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         subtract
+         initproperty QName(PrivateNamespace(null,"34"),"_flickerTime")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"34"),"_disappearTime")
+         pushbyte 0
+         ifnle ofs0053
+         findpropstrict QName(PackageNamespace(""),"kill")
+         callpropvoid QName(PackageNamespace(""),"kill"), 0
+         jump ofs0064
+         ofs0053:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"34"),"_flickerTime")
+         pushbyte 0
+         ifnle ofs0064
+         findpropstrict QName(PackageNamespace(""),"flicker")
+         callpropvoid QName(PackageNamespace(""),"flicker"), 0
+         ofs0064:
+         getlex QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getproperty QName(PackageNamespace(""),"maxX")
+         greaterthan
+         dup
+         iftrue ofs0088
+         pop
+         getlex QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"width")
+         add
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getproperty QName(PackageNamespace(""),"minX")
+         lessthan
+         ofs0088:
+         dup
+         iftrue ofs009b
+         pop
+         getlex QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getproperty QName(PackageNamespace(""),"maxY")
+         greaterthan
+         ofs009b:
+         dup
+         iftrue ofs00b2
+         pop
+         getlex QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"height")
+         add
+         getlex QName(PackageNamespace(""),"PlayState")
+         getproperty QName(PackageNamespace(""),"worldMap")
+         getproperty QName(PackageNamespace(""),"minY")
+         lessthan
+         ofs00b2:
+         iffalse ofs00bd
+         findpropstrict QName(PackageNamespace(""),"kill")
+         callpropvoid QName(PackageNamespace(""),"kill"), 0
+         ofs00bd:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function triggerAi(param1:int) : void
+      {
+         trait method QName(PackageNamespace(""),"triggerAi")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 3
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         jump ofs0033
+         ofs0006:
+         label
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"triggerAi1"), 0
+         jump ofs008b
+         ofs0010:
+         label
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"triggerAi2"), 0
+         jump ofs008b
+         ofs001a:
+         label
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"triggerAi3"), 0
+         jump ofs008b
+         ofs0024:
+         label
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"triggerAi4"), 0
+         jump ofs008b
+         ofs002e:
+         label
+         jump ofs008b
+         ofs0033:
+         getlocal1
+         setlocal2
+         pushbyte 1
+         getlocal2
+         ifstrictne ofs0042
+         pushbyte 0
+         jump ofs0075
+         ofs0042:
+         pushbyte 2
+         getlocal2
+         ifstrictne ofs004f
+         pushbyte 1
+         jump ofs0075
+         ofs004f:
+         pushbyte 3
+         getlocal2
+         ifstrictne ofs005c
+         pushbyte 2
+         jump ofs0075
+         ofs005c:
+         pushbyte 4
+         getlocal2
+         ifstrictne ofs0069
+         pushbyte 3
+         jump ofs0075
+         ofs0069:
+         jump ofs0073
+         pushbyte 4
+         jump ofs0073
+         ofs0073:
+         pushbyte 4
+         ofs0075:
+         kill 2
+         lookupswitch ofs002e, [ofs0006, ofs0010, ofs001a, ofs0024, ofs002e]
+         ofs008b:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function triggerAi1() : void
+      {
+         trait method QName(PackageNamespace(""),"triggerAi1")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function triggerAi2() : void
+      {
+         trait method QName(PackageNamespace(""),"triggerAi2")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function triggerAi3() : void
+      {
+         trait method QName(PackageNamespace(""),"triggerAi3")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function triggerAi4() : void
+      {
+         trait method QName(PackageNamespace(""),"triggerAi4")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 7
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("Item",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+newclass 106
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"Item")
+returnvoid
+end ; code
+end ; body
+end ; method
+

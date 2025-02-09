@@ -1,0 +1,1197 @@
+package com.newgrounds.components
+{
+   import com.newgrounds.API;
+   import com.newgrounds.APIError;
+   import com.newgrounds.APIEvent;
+   import flash.display.DisplayObject;
+   import flash.display.Loader;
+   import flash.display.MovieClip;
+   import flash.display.Shape;
+   import flash.display.Sprite;
+   import flash.events.Event;
+   import flash.events.IOErrorEvent;
+   import flash.events.MouseEvent;
+   import flash.events.SecurityErrorEvent;
+   import flash.net.URLLoader;
+   import flash.net.URLRequest;
+   import flash.system.ApplicationDomain;
+   import flash.system.LoaderContext;
+   import flash.system.Security;
+   import flash.utils.getQualifiedClassName;
+   import flash.utils.getTimer;
+   
+   [Embed(source="/_assets/assets.swf", symbol="symbol33")]
+   public class FlashAd extends Sprite
+   {
+      private static const DEBUG_AD_URL:String = "http://www.ngads.com/adtest.php";
+      
+      private static var _adResetTime:uint = 0;
+      
+      private static var _adURL:URLRequest;
+      
+      private static const REMOVED_FROM_STAGE:String = "removedFromStage";
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 8
+      maxscopedepth 9
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"3"),"DEBUG_AD_URL")
+      pushstring "http://www.ngads.com/adtest.php"
+      initproperty QName(PrivateNamespace(null,"3"),"DEBUG_AD_URL")
+      findproperty QName(PrivateNamespace(null,"3"),"_adResetTime")
+      pushbyte 0
+      setproperty QName(PrivateNamespace(null,"3"),"_adResetTime")
+      findproperty QName(PrivateNamespace(null,"3"),"REMOVED_FROM_STAGE")
+      pushstring "removedFromStage"
+      initproperty QName(PrivateNamespace(null,"3"),"REMOVED_FROM_STAGE")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public var background:MovieClip;
+      
+      private var _showBackground:Boolean;
+      
+      private var _adURLLoader:URLLoader;
+      
+      private var _adRect:Sprite;
+      
+      private var _mask:Shape;
+      
+      private var _ad:Loader;
+      
+      public function FlashAd(param1:Boolean = true)
+      {
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Boolean")
+         optional True()
+         returns null
+         
+         body
+         maxstack 6
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         getlex QName(PackageNamespace(""),"parent")
+         pushnull
+         equals
+         not
+         dup
+         iffalse ofs001f
+         pop
+         findpropstrict QName(PackageNamespace("flash.utils"),"getQualifiedClassName")
+         getlex QName(PackageNamespace(""),"parent")
+         callproperty QName(PackageNamespace("flash.utils"),"getQualifiedClassName"), 1
+         pushstring "fl.livepreview::LivePreviewParent"
+         equals
+         ofs001f:
+         iffalse ofs0024
+         returnvoid
+         ofs0024:
+         getlex QName(PackageNamespace("flash.system"),"Security")
+         pushstring "server.cpmstar.com"
+         callpropvoid QName(PackageNamespace(""),"allowDomain"), 1
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.display"),"Sprite")
+         constructprop QName(PackageNamespace("flash.display"),"Sprite"), 0
+         initproperty QName(PrivateNamespace(null,"3"),"_adRect")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adRect")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushbyte 0
+         callpropvoid QName(PackageNamespace(""),"beginFill"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adRect")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushbyte 0
+         dup
+         callpropvoid QName(PackageNamespace(""),"moveTo"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adRect")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushshort 300
+         pushbyte 0
+         callpropvoid QName(PackageNamespace(""),"lineTo"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adRect")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushshort 300
+         pushshort 250
+         callpropvoid QName(PackageNamespace(""),"lineTo"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adRect")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushbyte 0
+         pushshort 250
+         callpropvoid QName(PackageNamespace(""),"lineTo"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adRect")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushbyte 0
+         dup
+         callpropvoid QName(PackageNamespace(""),"lineTo"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adRect")
+         getproperty QName(PackageNamespace(""),"graphics")
+         callpropvoid QName(PackageNamespace(""),"endFill"), 0
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.display"),"Shape")
+         constructprop QName(PackageNamespace("flash.display"),"Shape"), 0
+         initproperty QName(PrivateNamespace(null,"3"),"_mask")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_mask")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushbyte 0
+         callpropvoid QName(PackageNamespace(""),"beginFill"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_mask")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushbyte 0
+         dup
+         callpropvoid QName(PackageNamespace(""),"moveTo"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_mask")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushshort 300
+         pushbyte 0
+         callpropvoid QName(PackageNamespace(""),"lineTo"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_mask")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushshort 300
+         pushshort 250
+         callpropvoid QName(PackageNamespace(""),"lineTo"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_mask")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushbyte 0
+         pushshort 250
+         callpropvoid QName(PackageNamespace(""),"lineTo"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_mask")
+         getproperty QName(PackageNamespace(""),"graphics")
+         pushbyte 0
+         dup
+         callpropvoid QName(PackageNamespace(""),"lineTo"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_mask")
+         getproperty QName(PackageNamespace(""),"graphics")
+         callpropvoid QName(PackageNamespace(""),"endFill"), 0
+         findpropstrict QName(PackageNamespace(""),"addChild")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adRect")
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adRect")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_mask")
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adRect")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         findproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"Math")
+         getlex QName(PackageNamespace(""),"x")
+         callproperty QName(PackageNamespace(""),"round"), 1
+         initproperty QName(PackageNamespace(""),"x")
+         findproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"Math")
+         getlex QName(PackageNamespace(""),"y")
+         callproperty QName(PackageNamespace(""),"round"), 1
+         initproperty QName(PackageNamespace(""),"y")
+         findproperty QName(PackageNamespace(""),"scaleX")
+         pushbyte 1
+         initproperty QName(PackageNamespace(""),"scaleX")
+         findproperty QName(PackageNamespace(""),"scaleY")
+         pushbyte 1
+         initproperty QName(PackageNamespace(""),"scaleY")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         iffalse ofs017c
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("ngLinkButton",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         iffalse ofs0168
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("ngLinkButton",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"CLICK")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"linkClickHandler")
+         callpropvoid Multiname("addEventListener",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 2
+         ofs0168:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("loadingClip",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         iffalse ofs017c
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("loadingClip",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         pushfalse
+         setproperty Multiname("visible",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs017c:
+         getlex QName(PackageNamespace("com.newgrounds"),"API")
+         pushbyte 9
+         pushbyte 0
+         pushbyte 28
+         callproperty QName(PackageNamespace(""),"isFlashVersion"), 3
+         iffalse ofs0199
+         findpropstrict QName(PackageNamespace(""),"addEventListener")
+         getlex QName(PrivateNamespace(null,"3"),"REMOVED_FROM_STAGE")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"onRemovedFromStage")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         ofs0199:
+         getlex QName(PackageNamespace("com.newgrounds"),"API")
+         getproperty QName(PackageNamespace(""),"adsApproved")
+         iffalse ofs01af
+         getlocal0
+         getlex QName(PackageNamespace("com.newgrounds"),"API")
+         getproperty QName(PackageNamespace(""),"adFeedURL")
+         callpropvoid QName(PrivateNamespace(null,"3"),"loadAdFeed"), 1
+         jump ofs01c1
+         ofs01af:
+         getlex QName(PackageNamespace("com.newgrounds"),"API")
+         getlex QName(PackageNamespace("com.newgrounds"),"APIEvent")
+         getproperty QName(PackageNamespace(""),"ADS_APPROVED")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"onAdsApproved")
+         pushfalse
+         pushbyte 0
+         pushtrue
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 5
+         ofs01c1:
+         getlocal0
+         getlocal1
+         initproperty QName(PackageNamespace(""),"showBackground")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get showBackground() : Boolean
+      {
+         trait getter QName(PackageNamespace(""),"showBackground")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_showBackground")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set showBackground(param1:Boolean) : void
+      {
+         trait setter QName(PackageNamespace(""),"showBackground")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"3"),"_showBackground")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         iffalse ofs002e
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getlocal1
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adRect")
+         getlocal1
+         iffalse ofs0028
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("adMask",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace("flash.display"),"DisplayObject")
+         jump ofs002b
+         ofs0028:
+         pushnull
+         coerce QName(PackageNamespace("flash.display"),"DisplayObject")
+         ofs002b:
+         setproperty QName(PackageNamespace(""),"mask")
+         ofs002e:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function removeAd() : void
+      {
+         trait method QName(PackageNamespace(""),"removeAd")
+         dispid 0
+         method
+         name null
+         flag NEED_ACTIVATION
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 10
+         maxscopedepth 17
+         
+         code
+         getlocal0
+         pushscope
+         newactivation
+         dup
+         setlocal1
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"removeEventListener")
+         getlex QName(PrivateNamespace(null,"3"),"REMOVED_FROM_STAGE")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"onRemovedFromStage")
+         callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         convert_b
+         dup
+         iffalse ofs0024
+         pop
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("loadingClip",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         convert_b
+         ofs0024:
+         iffalse ofs0032
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("loadingClip",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         pushfalse
+         setproperty Multiname("visible",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs0032:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adURLLoader")
+         iffalse ofs0054
+         ofs0039:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adURLLoader")
+         callpropvoid QName(PackageNamespace(""),"close"), 0
+         ofs0040:
+         jump ofs0054
+         ofs0044:
+         getlocal0
+         pushscope
+         getlocal1
+         pushscope
+         newcatch 0
+         dup
+         setlocal2
+         dup
+         pushscope
+         swap
+         setslot 1
+         popscope
+         kill 2
+         ofs0054:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adRect")
+         iffalse ofs0062
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adRect")
+         pushfalse
+         setproperty QName(PackageNamespace(""),"visible")
+         ofs0062:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ad")
+         iffalse ofs00cc
+         findpropstrict QName(PackageNamespace(""),"trace")
+         pushstring "[NewgroundsAPI] :: Ad removed"
+         callpropvoid QName(PackageNamespace(""),"trace"), 1
+         ofs0073:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ad")
+         callpropvoid QName(PackageNamespace(""),"close"), 0
+         ofs007a:
+         jump ofs008e
+         ofs007e:
+         getlocal0
+         pushscope
+         getlocal1
+         pushscope
+         newcatch 1
+         dup
+         setlocal2
+         dup
+         pushscope
+         swap
+         setslot 1
+         popscope
+         kill 2
+         ofs008e:
+         findpropstrict QName(PackageNamespace(""),"Object")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ad")
+         callproperty QName(PackageNamespace(""),"Object"), 1
+         pushtrue
+         callpropvoid Multiname("unloadAndStop",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
+         ofs009b:
+         jump ofs00b5
+         ofs009f:
+         getlocal0
+         pushscope
+         getlocal1
+         pushscope
+         newcatch 2
+         dup
+         setlocal2
+         dup
+         pushscope
+         swap
+         setslot 1
+         getlex QName(PrivateNamespace(null,"3"),"_ad")
+         callpropvoid QName(PackageNamespace(""),"unload"), 0
+         popscope
+         kill 2
+         ofs00b5:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ad")
+         getproperty QName(PackageNamespace(""),"parent")
+         iffalse ofs00cc
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ad")
+         getproperty QName(PackageNamespace(""),"parent")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ad")
+         callpropvoid QName(PackageNamespace(""),"removeChild"), 1
+         ofs00cc:
+         getlocal0
+         pushnull
+         initproperty QName(PrivateNamespace(null,"3"),"_ad")
+         returnvoid
+         end ; code
+         try from ofs0039 to ofs0040 target ofs0044 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
+         try from ofs0073 to ofs007a target ofs007e type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
+         try from ofs008e to ofs009b target ofs009f type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
+         end ; body
+         end ; method
+      }
+      
+      private function onAdsApproved(param1:APIEvent) : void
+      {
+         trait method QName(PrivateNamespace(null,"3"),"onAdsApproved")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("com.newgrounds"),"APIEvent")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("com.newgrounds"),"API")
+         getlex QName(PackageNamespace("com.newgrounds"),"APIEvent")
+         getproperty QName(PackageNamespace(""),"ADS_APPROVED")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"onAdsApproved")
+         pushfalse
+         callpropvoid QName(PackageNamespace(""),"removeEventListener"), 3
+         getlocal1
+         getproperty QName(PackageNamespace(""),"success")
+         iffalse ofs0025
+         getlocal0
+         getlex QName(PackageNamespace("com.newgrounds"),"API")
+         getproperty QName(PackageNamespace(""),"adFeedURL")
+         callpropvoid QName(PrivateNamespace(null,"3"),"loadAdFeed"), 1
+         jump ofs002f
+         ofs0025:
+         findpropstrict QName(PackageNamespace(""),"trace")
+         pushstring "[NewgroundsAPI] :: No ad feed URL supplied to Newgrounds API ad!"
+         callpropvoid QName(PackageNamespace(""),"trace"), 1
+         ofs002f:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function loadAdFeed(param1:String) : void
+      {
+         trait method QName(PrivateNamespace(null,"3"),"loadAdFeed")
+         dispid 0
+         method
+         name null
+         flag NEED_ACTIVATION
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 4
+         initscopedepth 10
+         maxscopedepth 15
+         trait slot QName(PackageInternalNs("com.newgrounds.components"),"adFeedURL")
+         slotid 1
+         type QName(PackageNamespace(""),"String")
+         end ; trait
+         
+         code
+         getlocal0
+         pushscope
+         newactivation
+         dup
+         setlocal2
+         pushscope
+         getscopeobject 1
+         getlocal1
+         setslot 1
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.net"),"URLLoader")
+         constructprop QName(PackageNamespace("flash.net"),"URLLoader"), 0
+         initproperty QName(PrivateNamespace(null,"3"),"_adURLLoader")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adURLLoader")
+         getlex QName(PackageNamespace("flash.events"),"Event")
+         getproperty QName(PackageNamespace(""),"COMPLETE")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"onAdFeedLoaded")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adURLLoader")
+         getlex QName(PackageNamespace("flash.events"),"IOErrorEvent")
+         getproperty QName(PackageNamespace(""),"IO_ERROR")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"onAdError")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adURLLoader")
+         getlex QName(PackageNamespace("flash.events"),"SecurityErrorEvent")
+         getproperty QName(PackageNamespace(""),"SECURITY_ERROR")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"onAdError")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getscopeobject 1
+         getslot 1
+         iftrue ofs0053
+         findpropstrict QName(PackageNamespace(""),"trace")
+         pushstring "[Newgrounds API] :: Invalid feed URL!"
+         callpropvoid QName(PackageNamespace(""),"trace"), 1
+         returnvoid
+         ofs0053:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"hasAdElapsed")
+         iffalse ofs00a9
+         getscopeobject 1
+         getslot 1
+         pushstring "?"
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"indexOf"), 1
+         pushbyte -1
+         ifngt ofs008c
+         findproperty QName(PrivateNamespace(null,"3"),"_adURL")
+         findpropstrict QName(PackageNamespace("flash.net"),"URLRequest")
+         getscopeobject 1
+         getslot 1
+         pushstring "&random="
+         add
+         getlex QName(PackageNamespace(""),"Math")
+         callproperty QName(PackageNamespace(""),"random"), 0
+         add
+         constructprop QName(PackageNamespace("flash.net"),"URLRequest"), 1
+         setproperty QName(PrivateNamespace(null,"3"),"_adURL")
+         jump ofs00a9
+         ofs008c:
+         findproperty QName(PrivateNamespace(null,"3"),"_adURL")
+         findpropstrict QName(PackageNamespace("flash.net"),"URLRequest")
+         getscopeobject 1
+         getslot 1
+         pushstring "?random="
+         add
+         getlex QName(PackageNamespace(""),"Math")
+         callproperty QName(PackageNamespace(""),"random"), 0
+         add
+         constructprop QName(PackageNamespace("flash.net"),"URLRequest"), 1
+         setproperty QName(PrivateNamespace(null,"3"),"_adURL")
+         ofs00a9:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adURLLoader")
+         getlex QName(PrivateNamespace(null,"3"),"_adURL")
+         callpropvoid QName(PackageNamespace(""),"load"), 1
+         ofs00b3:
+         jump ofs00cd
+         ofs00b7:
+         getlocal0
+         pushscope
+         getlocal2
+         pushscope
+         newcatch 0
+         dup
+         setlocal3
+         dup
+         pushscope
+         swap
+         setslot 1
+         findpropstrict QName(PrivateNamespace(null,"3"),"onAdError")
+         pushnull
+         callpropvoid QName(PrivateNamespace(null,"3"),"onAdError"), 1
+         popscope
+         kill 3
+         ofs00cd:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         convert_b
+         dup
+         iffalse ofs00de
+         pop
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("loadingClip",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         convert_b
+         ofs00de:
+         iffalse ofs00ec
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("loadingClip",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         pushtrue
+         setproperty Multiname("visible",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs00ec:
+         returnvoid
+         end ; code
+         try from ofs00a9 to ofs00b3 target ofs00b7 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
+         end ; body
+         end ; method
+      }
+      
+      private function loadAd(param1:String) : void
+      {
+         trait method QName(PrivateNamespace(null,"3"),"loadAd")
+         dispid 0
+         method
+         name null
+         flag NEED_ACTIVATION
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 4
+         initscopedepth 10
+         maxscopedepth 15
+         trait slot QName(PackageInternalNs("com.newgrounds.components"),"url")
+         slotid 1
+         type QName(PackageNamespace(""),"String")
+         end ; trait
+         
+         code
+         getlocal0
+         pushscope
+         newactivation
+         dup
+         setlocal2
+         pushscope
+         getscopeobject 1
+         getlocal1
+         setslot 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ad")
+         iffalse ofs0016
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"removeAd"), 0
+         ofs0016:
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.display"),"Loader")
+         constructprop QName(PackageNamespace("flash.display"),"Loader"), 0
+         initproperty QName(PrivateNamespace(null,"3"),"_ad")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ad")
+         getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+         getlex QName(PackageNamespace("flash.events"),"Event")
+         getproperty QName(PackageNamespace(""),"COMPLETE")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"onAdLoaded")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ad")
+         getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+         getlex QName(PackageNamespace("flash.events"),"IOErrorEvent")
+         getproperty QName(PackageNamespace(""),"IO_ERROR")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"onAdError")
+         callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         ofs0042:
+         findpropstrict QName(PackageNamespace(""),"Object")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ad")
+         getproperty QName(PackageNamespace(""),"contentLoaderInfo")
+         callproperty QName(PackageNamespace(""),"Object"), 1
+         getproperty Multiname("uncaughtErrorEvents",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         pushstring "uncaughtError"
+         newfunction 130
+         callpropvoid Multiname("addEventListener",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 2
+         ofs005a:
+         jump ofs006e
+         ofs005e:
+         getlocal0
+         pushscope
+         getlocal2
+         pushscope
+         newcatch 0
+         dup
+         setlocal3
+         dup
+         pushscope
+         swap
+         setslot 1
+         popscope
+         kill 3
+         ofs006e:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ad")
+         findpropstrict QName(PackageNamespace("flash.net"),"URLRequest")
+         getscopeobject 1
+         getslot 1
+         constructprop QName(PackageNamespace("flash.net"),"URLRequest"), 1
+         findpropstrict QName(PackageNamespace("flash.system"),"LoaderContext")
+         pushfalse
+         findpropstrict QName(PackageNamespace("flash.system"),"ApplicationDomain")
+         pushnull
+         constructprop QName(PackageNamespace("flash.system"),"ApplicationDomain"), 1
+         constructprop QName(PackageNamespace("flash.system"),"LoaderContext"), 2
+         callpropvoid QName(PackageNamespace(""),"load"), 2
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         convert_b
+         dup
+         iffalse ofs00a1
+         pop
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("loadingClip",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         convert_b
+         ofs00a1:
+         iffalse ofs00af
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("loadingClip",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         pushtrue
+         setproperty Multiname("visible",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs00af:
+         returnvoid
+         end ; code
+         try from ofs0042 to ofs005a target ofs005e type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"error") end
+         end ; body
+         end ; method
+      }
+      
+      private function onAdFeedLoaded(param1:Event) : void
+      {
+         trait method QName(PrivateNamespace(null,"3"),"onAdFeedLoaded")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"Event")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 7
+         localcount 3
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace("flash.net"),"URLLoader")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"target")
+         callproperty QName(PackageNamespace("flash.net"),"URLLoader"), 1
+         coerce QName(PackageNamespace("flash.net"),"URLLoader")
+         setlocal2
+         getlocal2
+         getproperty QName(PackageNamespace(""),"data")
+         convert_b
+         dup
+         iffalse ofs001f
+         pop
+         getlocal2
+         getproperty QName(PackageNamespace(""),"data")
+         pushstring ""
+         equals
+         not
+         ofs001f:
+         iffalse ofs0031
+         getlocal0
+         getlocal2
+         getproperty QName(PackageNamespace(""),"data")
+         getlex QName(PackageNamespace(""),"String")
+         astypelate
+         callpropvoid QName(PrivateNamespace(null,"3"),"loadAd"), 1
+         jump ofs006d
+         ofs0031:
+         findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+         findpropstrict QName(PackageNamespace("com.newgrounds"),"APIEvent")
+         getlex QName(PackageNamespace("com.newgrounds"),"APIEvent")
+         getproperty QName(PackageNamespace(""),"AD_ATTACHED")
+         pushfalse
+         findpropstrict QName(PackageNamespace("com.newgrounds"),"APIError")
+         pushstring "FLASH_ADS_NOT_APPROVED"
+         pushstring "Unable to render ad"
+         constructprop QName(PackageNamespace("com.newgrounds"),"APIError"), 2
+         constructprop QName(PackageNamespace("com.newgrounds"),"APIEvent"), 3
+         callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         convert_b
+         dup
+         iffalse ofs005f
+         pop
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("loadingClip",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         convert_b
+         ofs005f:
+         iffalse ofs006d
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("loadingClip",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         pushfalse
+         setproperty Multiname("visible",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs006d:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function onAdFeedError(param1:Event) : void
+      {
+         trait method QName(PrivateNamespace(null,"3"),"onAdFeedError")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"Event")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"trace")
+         pushstring "[NewgroundsAPI] :: Unable to load ad feed!"
+         callpropvoid QName(PackageNamespace(""),"trace"), 1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         convert_b
+         dup
+         iffalse ofs001d
+         pop
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("loadingClip",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         convert_b
+         ofs001d:
+         iffalse ofs002b
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("loadingClip",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         pushfalse
+         setproperty Multiname("visible",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs002b:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function onAdError(param1:Event) : void
+      {
+         trait method QName(PrivateNamespace(null,"3"),"onAdError")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"Event")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 7
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+         findpropstrict QName(PackageNamespace("com.newgrounds"),"APIEvent")
+         getlex QName(PackageNamespace("com.newgrounds"),"APIEvent")
+         getproperty QName(PackageNamespace(""),"AD_ATTACHED")
+         pushfalse
+         findpropstrict QName(PackageNamespace("com.newgrounds"),"APIError")
+         pushstring "FLASH_ADS_NOT_APPROVED"
+         pushstring "Unable to render ad"
+         constructprop QName(PackageNamespace("com.newgrounds"),"APIError"), 2
+         constructprop QName(PackageNamespace("com.newgrounds"),"APIEvent"), 3
+         callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"removeAd"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function onAdLoaded(param1:Event) : void
+      {
+         trait method QName(PrivateNamespace(null,"3"),"onAdLoaded")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"Event")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adRect")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ad")
+         callpropvoid QName(PackageNamespace(""),"addChild"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_ad")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_mask")
+         setproperty QName(PackageNamespace(""),"mask")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adRect")
+         pushtrue
+         setproperty QName(PackageNamespace(""),"visible")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         iffalse ofs004a
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_showBackground")
+         iffalse ofs0036
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"3"),"_adRect")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("adMask",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         setproperty QName(PackageNamespace(""),"mask")
+         ofs0036:
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("loadingClip",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         iffalse ofs004a
+         getlocal0
+         getproperty QName(PackageNamespace(""),"background")
+         getproperty Multiname("loadingClip",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         pushfalse
+         setproperty Multiname("visible",[PrivateNamespace(null,"3"),PackageNamespace(""),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs004a:
+         findpropstrict QName(PackageNamespace(""),"trace")
+         pushstring "[NewgroundsAPI] :: Ad loaded!"
+         callpropvoid QName(PackageNamespace(""),"trace"), 1
+         findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+         findpropstrict QName(PackageNamespace("com.newgrounds"),"APIEvent")
+         getlex QName(PackageNamespace("com.newgrounds"),"APIEvent")
+         getproperty QName(PackageNamespace(""),"AD_ATTACHED")
+         pushtrue
+         constructprop QName(PackageNamespace("com.newgrounds"),"APIEvent"), 2
+         callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function onRemovedFromStage(param1:Event) : void
+      {
+         trait method QName(PrivateNamespace(null,"3"),"onRemovedFromStage")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"Event")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callpropvoid QName(PackageNamespace(""),"removeAd"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function get hasAdElapsed() : Boolean
+      {
+         trait getter QName(PrivateNamespace(null,"3"),"hasAdElapsed")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 4
+         localcount 1
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace("flash.utils"),"getTimer")
+         callproperty QName(PackageNamespace("flash.utils"),"getTimer"), 0
+         getlex QName(PrivateNamespace(null,"3"),"_adResetTime")
+         ifnge ofs0029
+         findproperty QName(PrivateNamespace(null,"3"),"_adResetTime")
+         findpropstrict QName(PackageNamespace("flash.utils"),"getTimer")
+         callproperty QName(PackageNamespace("flash.utils"),"getTimer"), 0
+         pushshort 1000
+         pushbyte 60
+         multiply
+         pushbyte 5
+         multiply
+         add
+         setproperty QName(PrivateNamespace(null,"3"),"_adResetTime")
+         pushtrue
+         returnvalue
+         ofs0029:
+         pushfalse
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function linkClickHandler(param1:MouseEvent) : void
+      {
+         trait method QName(PrivateNamespace(null,"3"),"linkClickHandler")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.events"),"MouseEvent")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 1
+         localcount 2
+         initscopedepth 9
+         maxscopedepth 10
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("com.newgrounds"),"API")
+         callpropvoid QName(PackageNamespace(""),"loadNewgrounds"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 8
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("FlashAd",[PackageNamespace("com.newgrounds.components")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"DisplayObject")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"InteractiveObject")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"DisplayObjectContainer")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"Sprite")
+pushscope
+getlex QName(PackageNamespace("flash.display"),"Sprite")
+newclass 5
+popscope
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace("com.newgrounds.components"),"FlashAd")
+returnvoid
+end ; code
+end ; body
+end ; method
+

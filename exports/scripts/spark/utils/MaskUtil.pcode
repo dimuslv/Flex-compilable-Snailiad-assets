@@ -1,0 +1,411 @@
+package spark.utils
+{
+   import flash.display.DisplayObject;
+   import flash.display.DisplayObjectContainer;
+   import flash.filters.ShaderFilter;
+   import mx.core.UIComponent;
+   import mx.core.UIComponentGlobals;
+   import mx.core.mx_internal;
+   import mx.graphics.shaderClasses.LuminosityMaskShader;
+   import spark.core.MaskType;
+   
+   use namespace mx_internal;
+   
+   public class MaskUtil
+   {
+      mx_internal static const VERSION:String = "4.1.0.16076";
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 3
+      maxscopedepth 4
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
+      pushstring "4.1.0.16076"
+      initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      public function MaskUtil()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      mx_internal static function applyLuminositySettings(param1:DisplayObject, param2:String, param3:Boolean, param4:Boolean) : void
+      {
+         trait method QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"applyLuminositySettings")
+         flag FINAL
+         dispid 3
+         method
+         name null
+         param QName(PackageNamespace("flash.display"),"DisplayObject")
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"Boolean")
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 8
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal 5
+         pushnull
+         coerce QName(PackageNamespace("flash.filters"),"ShaderFilter")
+         setlocal 6
+         getlocal1
+         not
+         dup
+         iftrue ofs001d
+         pop
+         getlocal2
+         getlex QName(PackageNamespace("spark.core"),"MaskType")
+         getproperty QName(PackageNamespace(""),"LUMINOSITY")
+         equals
+         not
+         ofs001d:
+         dup
+         iftrue ofs002d
+         pop
+         getlocal1
+         getproperty QName(PackageNamespace(""),"filters")
+         getproperty QName(PackageNamespace(""),"length")
+         pushbyte 0
+         equals
+         ofs002d:
+         iffalse ofs0032
+         returnvoid
+         ofs0032:
+         getlocal1
+         getproperty QName(PackageNamespace(""),"filters")
+         getproperty QName(PackageNamespace(""),"length")
+         convert_i
+         setlocal 7
+         pushbyte 0
+         setlocal 5
+         jump ofs0087
+         ofs0044:
+         label
+         getlocal1
+         getproperty QName(PackageNamespace(""),"filters")
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"269"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PrivateNamespace(null,"424"),PackageNamespace("spark.utils"),PackageInternalNs("spark.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.utils:MaskUtil"),StaticProtectedNs("spark.utils:MaskUtil"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace("flash.filters"),"ShaderFilter")
+         istypelate
+         dup
+         iffalse ofs006f
+         pop
+         findpropstrict QName(PackageNamespace("flash.filters"),"ShaderFilter")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"filters")
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"269"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PrivateNamespace(null,"424"),PackageNamespace("spark.utils"),PackageInternalNs("spark.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.utils:MaskUtil"),StaticProtectedNs("spark.utils:MaskUtil"),StaticProtectedNs("Object")])
+         callproperty QName(PackageNamespace("flash.filters"),"ShaderFilter"), 1
+         getproperty QName(PackageNamespace(""),"shader")
+         getlex QName(PackageNamespace("mx.graphics.shaderClasses"),"LuminosityMaskShader")
+         istypelate
+         ofs006f:
+         iffalse ofs0085
+         getlocal1
+         getproperty QName(PackageNamespace(""),"filters")
+         getlocal 5
+         getproperty MultinameL([PrivateNamespace(null,"269"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PrivateNamespace(null,"424"),PackageNamespace("spark.utils"),PackageInternalNs("spark.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.utils:MaskUtil"),StaticProtectedNs("spark.utils:MaskUtil"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace("flash.filters"),"ShaderFilter")
+         setlocal 6
+         jump ofs008f
+         ofs0085:
+         inclocal_i 5
+         ofs0087:
+         getlocal 5
+         getlocal 7
+         iflt ofs0044
+         ofs008f:
+         getlocal 6
+         iffalse ofs00c1
+         findpropstrict QName(PackageNamespace("mx.graphics.shaderClasses"),"LuminosityMaskShader")
+         getlocal 6
+         getproperty QName(PackageNamespace(""),"shader")
+         callproperty QName(PackageNamespace("mx.graphics.shaderClasses"),"LuminosityMaskShader"), 1
+         findpropstrict QName(PrivateNamespace(null,"269"),"calculateLuminositySettings")
+         getlocal3
+         getlocal 4
+         callproperty QName(PrivateNamespace(null,"269"),"calculateLuminositySettings"), 2
+         setproperty QName(PackageNamespace(""),"mode")
+         getlocal1
+         getproperty QName(PackageNamespace(""),"filters")
+         getlocal 5
+         getlocal 6
+         setproperty MultinameL([PrivateNamespace(null,"269"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PrivateNamespace(null,"424"),PackageNamespace("spark.utils"),PackageInternalNs("spark.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.utils:MaskUtil"),StaticProtectedNs("spark.utils:MaskUtil"),StaticProtectedNs("Object")])
+         getlocal1
+         getlocal1
+         getproperty QName(PackageNamespace(""),"filters")
+         setproperty QName(PackageNamespace(""),"filters")
+         ofs00c1:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      mx_internal static function applyMask(param1:DisplayObject, param2:DisplayObjectContainer) : void
+      {
+         trait method QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"applyMask")
+         flag FINAL
+         dispid 4
+         method
+         name null
+         param QName(PackageNamespace("flash.display"),"DisplayObject")
+         param QName(PackageNamespace("flash.display"),"DisplayObjectContainer")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 4
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         iftrue ofs0008
+         returnvoid
+         ofs0008:
+         getlocal1
+         getlex QName(PackageNamespace("mx.core"),"UIComponent")
+         astypelate
+         coerce QName(PackageNamespace("mx.core"),"UIComponent")
+         setlocal3
+         getlocal3
+         iffalse ofs004f
+         getlocal2
+         iffalse ofs002f
+         findpropstrict QName(PackageNamespace("mx.core"),"UIComponent")
+         getlocal2
+         callproperty QName(PackageNamespace("mx.core"),"UIComponent"), 1
+         getlocal3
+         callpropvoid QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"addingChild"), 1
+         findpropstrict QName(PackageNamespace("mx.core"),"UIComponent")
+         getlocal2
+         callproperty QName(PackageNamespace("mx.core"),"UIComponent"), 1
+         getlocal3
+         callpropvoid QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"childAdded"), 1
+         ofs002f:
+         getlex QName(PackageNamespace("mx.core"),"UIComponentGlobals")
+         getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"layoutManager")
+         getlocal3
+         pushtrue
+         callpropvoid QName(Namespace("mx.managers:ILayoutManager"),"validateClient"), 2
+         getlocal3
+         callpropvoid QName(PackageNamespace(""),"invalidateDisplayList"), 0
+         getlocal3
+         getlocal3
+         callproperty QName(PackageNamespace(""),"getExplicitOrMeasuredWidth"), 0
+         getlocal3
+         callproperty QName(PackageNamespace(""),"getExplicitOrMeasuredHeight"), 0
+         callpropvoid QName(PackageNamespace(""),"setActualSize"), 2
+         ofs004f:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      mx_internal static function applyMaskType(param1:DisplayObject, param2:String, param3:Boolean, param4:Boolean, param5:DisplayObject) : void
+      {
+         trait method QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"applyMaskType")
+         flag FINAL
+         dispid 5
+         method
+         name null
+         param QName(PackageNamespace("flash.display"),"DisplayObject")
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"Boolean")
+         param QName(PackageNamespace(""),"Boolean")
+         param QName(PackageNamespace("flash.display"),"DisplayObject")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 8
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("mx.graphics.shaderClasses"),"LuminosityMaskShader")
+         setlocal 6
+         pushnull
+         coerce QName(PackageNamespace("flash.filters"),"ShaderFilter")
+         setlocal 7
+         getlocal1
+         iftrue ofs0014
+         returnvoid
+         ofs0014:
+         getlocal2
+         getlex QName(PackageNamespace("spark.core"),"MaskType")
+         getproperty QName(PackageNamespace(""),"CLIP")
+         ifne ofs002e
+         getlocal1
+         pushfalse
+         setproperty QName(PackageNamespace(""),"cacheAsBitmap")
+         getlocal1
+         newarray 0
+         setproperty QName(PackageNamespace(""),"filters")
+         jump ofs008e
+         ofs002e:
+         getlocal2
+         getlex QName(PackageNamespace("spark.core"),"MaskType")
+         getproperty QName(PackageNamespace(""),"ALPHA")
+         ifne ofs0048
+         getlocal1
+         pushtrue
+         setproperty QName(PackageNamespace(""),"cacheAsBitmap")
+         getlocal 5
+         pushtrue
+         setproperty QName(PackageNamespace(""),"cacheAsBitmap")
+         jump ofs008e
+         ofs0048:
+         getlocal2
+         getlex QName(PackageNamespace("spark.core"),"MaskType")
+         getproperty QName(PackageNamespace(""),"LUMINOSITY")
+         ifne ofs008e
+         getlocal1
+         pushtrue
+         setproperty QName(PackageNamespace(""),"cacheAsBitmap")
+         getlocal 5
+         pushtrue
+         setproperty QName(PackageNamespace(""),"cacheAsBitmap")
+         findpropstrict QName(PackageNamespace("mx.graphics.shaderClasses"),"LuminosityMaskShader")
+         constructprop QName(PackageNamespace("mx.graphics.shaderClasses"),"LuminosityMaskShader"), 0
+         coerce QName(PackageNamespace("mx.graphics.shaderClasses"),"LuminosityMaskShader")
+         dup
+         setlocal 6
+         findpropstrict QName(PrivateNamespace(null,"269"),"calculateLuminositySettings")
+         getlocal3
+         getlocal 4
+         callproperty QName(PrivateNamespace(null,"269"),"calculateLuminositySettings"), 2
+         setproperty QName(PackageNamespace(""),"mode")
+         findpropstrict QName(PackageNamespace("flash.filters"),"ShaderFilter")
+         getlocal 6
+         constructprop QName(PackageNamespace("flash.filters"),"ShaderFilter"), 1
+         coerce QName(PackageNamespace("flash.filters"),"ShaderFilter")
+         setlocal 7
+         getlocal1
+         getlocal 7
+         newarray 1
+         setproperty QName(PackageNamespace(""),"filters")
+         ofs008e:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private static function calculateLuminositySettings(param1:Boolean, param2:Boolean) : int
+      {
+         trait method QName(PrivateNamespace(null,"269"),"calculateLuminositySettings")
+         flag FINAL
+         dispid 6
+         method
+         name null
+         param QName(PackageNamespace(""),"Boolean")
+         param QName(PackageNamespace(""),"Boolean")
+         returns QName(PackageNamespace(""),"int")
+         
+         body
+         maxstack 2
+         localcount 4
+         initscopedepth 3
+         maxscopedepth 4
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal3
+         getlocal1
+         iffalse ofs0010
+         getlocal3
+         pushbyte 1
+         add
+         convert_i
+         setlocal3
+         ofs0010:
+         getlocal2
+         iffalse ofs001b
+         getlocal3
+         pushbyte 2
+         add
+         convert_i
+         setlocal3
+         ofs001b:
+         getlocal3
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 3
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("MaskUtil",[PackageNamespace("spark.utils")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace(""),"Object")
+newclass 215
+popscope
+initproperty QName(PackageNamespace("spark.utils"),"MaskUtil")
+returnvoid
+end ; code
+end ; body
+end ; method
+

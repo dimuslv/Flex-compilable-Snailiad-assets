@@ -1,0 +1,240 @@
+package
+{
+   import org.flixel.FlxG;
+   import org.flixel.FlxSprite;
+   
+   public class MainMenuCursor extends FlxSprite
+   {
+      private static const IMG_WIDTH:int = 32;
+      
+      private static const IMG_HEIGHT:int = 32;
+      
+      private static const IMG_OFS_X:int = -2;
+      
+      private static const IMG_OFS_Y:int = 15;
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 7
+      maxscopedepth 8
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(PrivateNamespace(null,"74"),"IMG_WIDTH")
+      pushbyte 32
+      initproperty QName(PrivateNamespace(null,"74"),"IMG_WIDTH")
+      findproperty QName(PrivateNamespace(null,"74"),"IMG_HEIGHT")
+      pushbyte 32
+      initproperty QName(PrivateNamespace(null,"74"),"IMG_HEIGHT")
+      findproperty QName(PrivateNamespace(null,"74"),"IMG_OFS_X")
+      pushbyte -2
+      initproperty QName(PrivateNamespace(null,"74"),"IMG_OFS_X")
+      findproperty QName(PrivateNamespace(null,"74"),"IMG_OFS_Y")
+      pushbyte 15
+      initproperty QName(PrivateNamespace(null,"74"),"IMG_OFS_Y")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var targetX:Number;
+      
+      private var targetY:Number;
+      
+      public function MainMenuCursor()
+      {
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 2
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         findpropstrict QName(PackageNamespace(""),"loadGraphic")
+         getlex QName(PackageNamespace(""),"Art")
+         getproperty QName(PackageNamespace(""),"SnailySnail")
+         pushtrue
+         pushtrue
+         getlex QName(PrivateNamespace(null,"74"),"IMG_WIDTH")
+         getlex QName(PrivateNamespace(null,"74"),"IMG_HEIGHT")
+         callpropvoid QName(PackageNamespace(""),"loadGraphic"), 5
+         findproperty QName(PackageNamespace(""),"width")
+         getlex QName(PrivateNamespace(null,"74"),"IMG_WIDTH")
+         initproperty QName(PackageNamespace(""),"width")
+         findproperty QName(PackageNamespace(""),"height")
+         getlex QName(PrivateNamespace(null,"74"),"IMG_HEIGHT")
+         initproperty QName(PackageNamespace(""),"height")
+         getlex QName(PackageNamespace(""),"offset")
+         getlex QName(PrivateNamespace(null,"74"),"IMG_OFS_X")
+         setproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"offset")
+         getlex QName(PrivateNamespace(null,"74"),"IMG_OFS_Y")
+         setproperty QName(PackageNamespace(""),"y")
+         findpropstrict QName(PackageNamespace(""),"addAnimation")
+         pushstring "normal"
+         pushbyte 0
+         pushbyte 1
+         newarray 2
+         pushbyte 3
+         pushtrue
+         callpropvoid QName(PackageNamespace(""),"addAnimation"), 4
+         findpropstrict QName(PackageNamespace(""),"play")
+         pushstring "normal"
+         callpropvoid QName(PackageNamespace(""),"play"), 1
+         getlex QName(PackageNamespace(""),"scrollFactor")
+         getlex QName(PackageNamespace(""),"scrollFactor")
+         pushbyte 0
+         dup
+         setlocal1
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal1
+         kill 1
+         setproperty QName(PackageNamespace(""),"x")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function moveTo(param1:Number, param2:Number, param3:Boolean = false) : void
+      {
+         trait method QName(PackageNamespace(""),"moveTo")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Number")
+         param QName(PackageNamespace(""),"Boolean")
+         optional False()
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 4
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         getlocal3
+         iffalse ofs0015
+         findproperty QName(PackageNamespace(""),"x")
+         getlocal1
+         initproperty QName(PackageNamespace(""),"x")
+         findproperty QName(PackageNamespace(""),"y")
+         getlocal2
+         initproperty QName(PackageNamespace(""),"y")
+         ofs0015:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"74"),"targetX")
+         getlocal0
+         getlocal2
+         initproperty QName(PrivateNamespace(null,"74"),"targetY")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function update() : void
+      {
+         trait method QName(PackageNamespace(""),"update")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 6
+         localcount 1
+         initscopedepth 8
+         maxscopedepth 9
+         
+         code
+         getlocal0
+         pushscope
+         findproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"Utility")
+         getlex QName(PackageNamespace(""),"x")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"74"),"targetX")
+         pushbyte 10
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         callproperty QName(PackageNamespace(""),"integrate"), 4
+         initproperty QName(PackageNamespace(""),"x")
+         findproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"Utility")
+         getlex QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"74"),"targetY")
+         pushbyte 10
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"elapsed")
+         callproperty QName(PackageNamespace(""),"integrate"), 4
+         initproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"update"), 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 7
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("MainMenuCursor",[PackageNamespace("")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxPoint")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxRect")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxObject")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+pushscope
+getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
+newclass 260
+popscope
+popscope
+popscope
+popscope
+popscope
+initproperty QName(PackageNamespace(""),"MainMenuCursor")
+returnvoid
+end ; code
+end ; body
+end ; method
+
