@@ -17,6 +17,8 @@ package
       private static var txt2:TextField;
       
       public static var fail:Boolean = false;
+	  
+	  private var LoadBg:*;
       
       public function Preloader()
       {

@@ -10,6 +10,9 @@ package
    import org.flixel.FlxGame;
    import org.flixel.FlxState;
    
+   [Frame(factoryClass="Preloader")]
+   [SWF(width="800", height="480", backgroundColor="#000000")]
+   
    public class main extends FlxGame
    {
       private static const myPageUrl:String = "http://auriplane.newgrounds.com/";

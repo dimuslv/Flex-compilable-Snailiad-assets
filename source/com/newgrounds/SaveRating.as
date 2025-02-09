@@ -14,7 +14,7 @@ package com.newgrounds
       
       private var _voted:Boolean;
       
-      public function SaveRating(param1:uint, param2:String, param3:Boolean, param4:Number = -Infinity, param5:Number = Infinity)
+      public function SaveRating(param1:uint, param2:String, param3:Boolean, param4:Number = 0, param5:Number = Infinity)
       {
          super();
          this._id = param1;

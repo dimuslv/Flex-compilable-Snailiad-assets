@@ -163,6 +163,8 @@ package
       private var ltheta:Number = 0;
       
       private var rtheta:Number = 0;
+	  
+	  private var TIMEOUTS:Array;
       
       public function Boss2(param1:int, param2:int)
       {

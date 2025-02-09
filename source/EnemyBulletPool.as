@@ -7,6 +7,10 @@ package
       public var groups:Array;
       
       public var bulletLists:Array;
+	  
+	  private var MAX_BULLET:Array;
+	  
+	  private var MAX_WEAPON:int;
       
       public function EnemyBulletPool()
       {

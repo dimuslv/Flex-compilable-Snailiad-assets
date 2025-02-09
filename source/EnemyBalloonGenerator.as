@@ -9,6 +9,8 @@ package
       private var timeout:Number = 0;
       
       private var listPos:int = 0;
+	  
+	  private var TIMEOUTS:Array;
       
       public function EnemyBalloonGenerator(param1:int, param2:int)
       {

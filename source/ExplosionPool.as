@@ -7,6 +7,10 @@ package
       public var groups:Array;
       
       public var explosionLists:Array;
+	  
+	  private var MAX_EXPLOSIONS:Array;
+	  
+	  private var TYPE_NUM:int;
       
       public function ExplosionPool()
       {

@@ -29,6 +29,8 @@ package
       private var group:FlxGroup;
       
       private var MAX_BUBBLES:int = 20;
+	  
+	  private var TIMEOUTS:Array;
       
       public function BubbleGenerator(param1:int, param2:int)
       {

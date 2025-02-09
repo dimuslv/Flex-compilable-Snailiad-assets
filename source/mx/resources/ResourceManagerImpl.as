@@ -527,6 +527,7 @@ import flash.events.EventDispatcher;
 import mx.events.ModuleEvent;
 import mx.events.ResourceEvent;
 import mx.modules.IModuleInfo;
+import mx.resources.IResourceModule;
 
 class ResourceModuleInfo
 {

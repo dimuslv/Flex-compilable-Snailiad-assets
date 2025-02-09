@@ -9,6 +9,8 @@ package
       public var bulletLists:Array;
       
       private const MAX_WEAPON:int = 6;
+	  
+	  private var MAX_BULLET:Array;
       
       public function PlayerBulletGroups()
       {

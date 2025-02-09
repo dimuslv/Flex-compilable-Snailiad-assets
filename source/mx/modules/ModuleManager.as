@@ -53,6 +53,7 @@ import flash.utils.getQualifiedClassName;
 import mx.core.IFlexModuleFactory;
 import mx.events.ModuleEvent;
 import mx.events.Request;
+import mx.modules.IModuleInfo;
 
 class ModuleManagerImpl extends EventDispatcher
 {
