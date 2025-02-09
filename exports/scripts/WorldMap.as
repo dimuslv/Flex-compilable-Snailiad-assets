@@ -54,14 +54,6 @@ package
       
       public var dFakeMaxY:Number;
       
-      private var WorldMapSkyTxt:*;
-      
-      private var WorldMapBgTxt:*;
-      
-      private var WorldMapFgTxt:*;
-      
-      private var WorldMapSpTxt:*;
-      
       public function WorldMap()
       {
          this.WorldMapSkyTxt = WorldMap_WorldMapSkyTxt;

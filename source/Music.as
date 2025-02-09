@@ -41,7 +41,7 @@ package
             if (songNum == lastSong)
                 return;
 
-            prevSong = lastSong;
+            //prevSong = lastSong;
             lastSong = songNum;
 
             [Embed(source = 'data/music/music64kbit.swf', symbol='amastrida1loop')]  const Area3Song:Class;

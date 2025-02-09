@@ -4,7 +4,12 @@ package
    
    public class WorldMap
    {
-      private static const FG_OFFSET:int = 1000;
+      [Embed(source="data/map_sky.txt",mimeType="application/octet-stream")] private const WorldMapSkyTxt:Class;
+      [Embed(source="data/map_bg.txt",mimeType="application/octet-stream")] private const WorldMapBgTxt:Class;
+      [Embed(source="data/map_fg.txt",mimeType="application/octet-stream")] private const WorldMapFgTxt:Class;
+      [Embed(source="data/map_sp.txt",mimeType="application/octet-stream")] private const WorldMapSpTxt:Class;
+      
+	  private static const FG_OFFSET:int = 1000;
       
       private static const TILE_SIZE:int = 16;
       
@@ -53,21 +58,9 @@ package
       public var dFakeMaxX:Number;
       
       public var dFakeMaxY:Number;
-	  
-	  private var WorldMapSkyTxt:*;
-	  
-	  private var WorldMapBgTxt:*;
-	  
-	  private var WorldMapFgTxt:*;
-	  
-	  private var WorldMapSpTxt:*;
       
       public function WorldMap()
       {
-         this.WorldMapSkyTxt = WorldMap_WorldMapSkyTxt;
-         this.WorldMapBgTxt = WorldMap_WorldMapBgTxt;
-         this.WorldMapFgTxt = WorldMap_WorldMapFgTxt;
-         this.WorldMapSpTxt = WorldMap_WorldMapSpTxt;
          super();
          this.skymap = new FlxTilemap();
          this.skymap.collideIndex = FG_OFFSET + 1;
