@@ -101,6 +101,7 @@ package
          {
             return;
          }
+         prevSong = lastSong;
          lastSong = param1;
          var _loc2_:Class = Music_Area3Song;
          var _loc3_:Class = Music_TownSong;

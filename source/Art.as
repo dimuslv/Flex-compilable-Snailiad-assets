@@ -2,312 +2,307 @@ package
 {
    public class Art
    {
-      public static const EnemyBalloon:Class = Art_EnemyBalloon;
+      [Embed(source = 'data/art/EnemyBalloon.png')] public static const EnemyBalloon:Class;
       
-      public static const EnemyBat:Class = Art_EnemyBat;
+      [Embed(source = 'data/art/EnemyBat.png')] public static const EnemyBat:Class;
       
-      public static const EnemyBabyfish:Class = Art_EnemyBabyfish;
+      [Embed(source = 'data/art/EnemyBabyfish.png')] public static const EnemyBabyfish:Class;
       
-      public static const EnemyBird:Class = Art_EnemyBird;
+      [Embed(source = 'data/art/EnemyBird.png')] public static const EnemyBird:Class;
       
-      public static const EnemyBird2:Class = Art_EnemyBird2;
+      [Embed(source = 'data/art/EnemyBird2.png')] public static const EnemyBird2:Class;
       
-      public static const EnemyBlob:Class = Art_EnemyBlob;
+      [Embed(source = 'data/art/EnemyBlob.png')] public static const EnemyBlob:Class;
       
-      public static const EnemyCannon:Class = Art_EnemyCannon;
+      [Embed(source = 'data/art/EnemyCannon.png')] public static const EnemyCannon:Class;
       
-      public static const EnemyCannon2:Class = Art_EnemyCannon2;
+      [Embed(source = 'data/art/EnemyCannon2.png')] public static const EnemyCannon2:Class;
       
-      public static const EnemyCannonBottom:Class = Art_EnemyCannonBottom;
+      [Embed(source = 'data/art/EnemyCannonBottom.png')] public static const EnemyCannonBottom:Class;
       
-      public static const EnemyCannonBottom2:Class = Art_EnemyCannonBottom2;
+      [Embed(source = 'data/art/EnemyCannonBottom2.png')] public static const EnemyCannonBottom2:Class;
       
-      public static const EnemyCannonLeft:Class = Art_EnemyCannonLeft;
+      [Embed(source = 'data/art/EnemyCannonLeft.png')] public static const EnemyCannonLeft:Class;
       
-      public static const EnemyCannonLeft2:Class = Art_EnemyCannonLeft2;
+      [Embed(source = 'data/art/EnemyCannonLeft2.png')] public static const EnemyCannonLeft2:Class;
       
-      public static const EnemyCannonTop:Class = Art_EnemyCannonTop;
+      [Embed(source = 'data/art/EnemyCannonTop.png')] public static const EnemyCannonTop:Class;
       
-      public static const EnemyCannonTop2:Class = Art_EnemyCannonTop2;
+      [Embed(source = 'data/art/EnemyCannonTop2.png')] public static const EnemyCannonTop2:Class;
       
-      public static const EnemyDandelion:Class = Art_EnemyDandelion;
+      [Embed(source = 'data/art/EnemyDandelion.png')] public static const EnemyDandelion:Class;
       
-      public static const EnemyDrone:Class = Art_EnemyDrone;
+      [Embed(source = 'data/art/EnemyDrone.png')] public static const EnemyDrone:Class;
       
-      public static const EnemyFireball:Class = Art_EnemyFireball;
+      [Embed(source = 'data/art/EnemyFireball.png')] public static const EnemyFireball:Class;
       
-      public static const EnemyFireball2:Class = Art_EnemyFireball2;
+      [Embed(source = 'data/art/EnemyFireball2.png')] public static const EnemyFireball2:Class;
       
-      public static const EnemyFloatSpike:Class = Art_EnemyFloatSpike;
+      [Embed(source = 'data/art/EnemyFloatSpike.png')] public static const EnemyFloatSpike:Class;
       
-      public static const EnemyFloatSpike2:Class = Art_EnemyFloatSpike2;
+      [Embed(source = 'data/art/EnemyFloatSpike2.png')] public static const EnemyFloatSpike2:Class;
       
-      public static const EnemyGear:Class = Art_EnemyGear;
+      [Embed(source = 'data/art/EnemyGear.png')] public static const EnemyGear:Class;
       
-      public static const EnemyGravTurtle:Class = Art_EnemyGravTurtle;
+      [Embed(source = 'data/art/EnemyGravTurtle.png')] public static const EnemyGravTurtle:Class;
       
-      public static const EnemyGravTurtle2:Class = Art_EnemyGravTurtle2;
+      [Embed(source = 'data/art/EnemyGravTurtle2.png')] public static const EnemyGravTurtle2:Class;
       
-      public static const EnemyKitty:Class = Art_EnemyKitty;
+      [Embed(source = 'data/art/EnemyKitty.png')] public static const EnemyKitty:Class;
       
-      public static const EnemyKitty2:Class = Art_EnemyKitty2;
+      [Embed(source = 'data/art/EnemyKitty2.png')] public static const EnemyKitty2:Class;
       
-      public static const EnemyKurage:Class = Art_EnemyKurage;
+      [Embed(source = 'data/art/EnemyKurage.png')] public static const EnemyKurage:Class;
       
-      public static const EnemyMoth:Class = Art_EnemyMoth;
+      [Embed(source = 'data/art/EnemyMoth.png')] public static const EnemyMoth:Class;
       
-      public static const EnemyPincer:Class = Art_EnemyPincer;
+      [Embed(source = 'data/art/EnemyPincer.png')] public static const EnemyPincer:Class;
       
-      public static const EnemyPincer2:Class = Art_EnemyPincer2;
+      [Embed(source = 'data/art/EnemyPincer2.png')] public static const EnemyPincer2:Class;
       
-      public static const EnemySeahorse:Class = Art_EnemySeahorse;
+      [Embed(source = 'data/art/EnemySeahorse.png')] public static const EnemySeahorse:Class;
       
-      public static const EnemySnake:Class = Art_EnemySnake;
+      [Embed(source = 'data/art/EnemySnake.png')] public static const EnemySnake:Class;
       
-      public static const EnemySnake2:Class = Art_EnemySnake2;
+      [Embed(source = 'data/art/EnemySnake2.png')] public static const EnemySnake2:Class;
       
-      public static const EnemySnake3:Class = Art_EnemySnake3;
+      [Embed(source = 'data/art/EnemySnake3.png')] public static const EnemySnake3:Class;
       
-      public static const EnemySnelk:Class = Art_EnemySnelk;
+      [Embed(source = 'data/art/EnemySnelk.png')] public static const EnemySnelk:Class;
       
-      public static const EnemySpider:Class = Art_EnemySpider;
+      [Embed(source = 'data/art/EnemySpider.png')] public static const EnemySpider:Class;
       
-      public static const EnemySpider2:Class = Art_EnemySpider2;
+      [Embed(source = 'data/art/EnemySpider2.png')] public static const EnemySpider2:Class;
       
-      public static const EnemySpike:Class = Art_EnemySpike;
+      [Embed(source = 'data/art/EnemySpike.png')] public static const EnemySpike:Class;
       
-      public static const EnemySpikey:Class = Art_EnemySpikey;
+      [Embed(source = 'data/art/EnemySpikey.png')] public static const EnemySpikey:Class;
       
-      public static const EnemySpikey2:Class = Art_EnemySpikey2;
+      [Embed(source = 'data/art/EnemySpikey2.png')] public static const EnemySpikey2:Class;
       
-      public static const EnemyTallfish:Class = Art_EnemyTallfish;
+      [Embed(source = 'data/art/EnemyTallfish.png')] public static const EnemyTallfish:Class;
       
-      public static const EnemyTallfish2:Class = Art_EnemyTallfish2;
+      [Embed(source = 'data/art/EnemyTallfish2.png')] public static const EnemyTallfish2:Class;
       
-      public static const EnemyWalleye:Class = Art_EnemyWalleye;
+      [Embed(source = 'data/art/EnemyWalleye.png')] public static const EnemyWalleye:Class;
       
-      public static const Boss1:Class = Art_Boss1;
+      [Embed(source = 'data/art/Boss1.png')] public static const Boss1:Class;
       
-      public static const Boss1Eyes:Class = Art_Boss1Eyes;
+      [Embed(source = 'data/art/Boss1Eyes.png')] public static const Boss1Eyes:Class;
       
-      public static const Boss1Hand:Class = Art_Boss1Hand;
+      [Embed(source = 'data/art/Boss1Hand.png')] public static const Boss1Hand:Class;
       
-      public static const Boss1Rush:Class = Art_Boss1Rush;
+      [Embed(source = 'data/art/Boss1Rush.png')] public static const Boss1Rush:Class;
       
-      public static const Boss1RushHand:Class = Art_Boss1RushHand;
+      [Embed(source = 'data/art/Boss1RushHand.png')] public static const Boss1RushHand:Class;
       
-      public static const Boss1Shield:Class = Art_Boss1Shield;
+      [Embed(source = 'data/art/Boss1Shield.png')] public static const Boss1Shield:Class;
       
-      public static const Boss2Eye:Class = Art_Boss2Eye;
+      [Embed(source = 'data/art/Boss2Eye.png')] public static const Boss2Eye:Class;
       
-      public static const Boss2Eyelid:Class = Art_Boss2Eyelid;
+      [Embed(source = 'data/art/Boss2Eyelid.png')] public static const Boss2Eyelid:Class;
       
-      public static const Boss2Foot:Class = Art_Boss2Foot;
+      [Embed(source = 'data/art/Boss2Foot.png')] public static const Boss2Foot:Class;
       
-      public static const Boss2Pupil:Class = Art_Boss2Pupil;
+      [Embed(source = 'data/art/Boss2Pupil.png')] public static const Boss2Pupil:Class;
       
-      public static const Boss2RushFoot:Class = Art_Boss2RushFoot;
+      [Embed(source = 'data/art/Boss2RushFoot.png')] public static const Boss2RushFoot:Class;
       
-      public static const Boss3:Class = Art_Boss3;
+      [Embed(source = 'data/art/Boss3.png')] public static const Boss3:Class;
       
-      public static const Boss3Rush:Class = Art_Boss3Rush;
+      [Embed(source = 'data/art/Boss3Rush.png')] public static const Boss3Rush:Class;
       
-      public static const Boss3RushShield:Class = Art_Boss3RushShield;
+      [Embed(source = 'data/art/Boss3Shield.png')] public static const Boss3RushShield:Class;
       
-      public static const Boss3RushSpawn:Class = Art_Boss3RushSpawn;
+      [Embed(source = 'data/art/Boss3RushSpawn.png')] public static const Boss3RushSpawn:Class;
       
-      public static const Boss3Shield:Class = Art_Boss3Shield;
+      [Embed(source = 'data/art/Boss3Shield.png')] public static const Boss3Shield:Class;
       
-      public static const Boss3Spawn:Class = Art_Boss3Spawn;
+      [Embed(source = 'data/art/Boss3Spawn.png')] public static const Boss3Spawn:Class;
       
-      public static const Boss4:Class = Art_Boss4;
+      [Embed(source = 'data/art/Boss4.png')] public static const Boss4:Class;
       
-      public static const Boss4Rush:Class = Art_Boss4Rush;
+      [Embed(source = 'data/art/Boss4Rush.png')] public static const Boss4Rush:Class;
       
-      public static const Boss4RushSecondForm:Class = Art_Boss4RushSecondForm;
+      [Embed(source = 'data/art/Boss4RushSecondForm.png')] public static const Boss4RushSecondForm:Class;
       
-      public static const Boss4SecondForm:Class = Art_Boss4SecondForm;
+      [Embed(source = 'data/art/Boss4SecondForm.png')] public static const Boss4SecondForm:Class;
       
-      public static const Boss4ShadowBall:Class = Art_Boss4ShadowBall;
+      [Embed(source = 'data/art/Boss4ShadowBall.png')] public static const Boss4ShadowBall:Class;
       
-      public static const BossZzz:Class = Art_BossZzz;
+      [Embed(source = 'data/art/BossZzz.png')] public static const BossZzz:Class;
       
-      public static const PlayerBullet1:Class = Art_PlayerBullet1;
+      [Embed(source = 'data/art/PlayerBullet1.png')] public static const PlayerBullet1:Class;
       
-      public static const PlayerBullet2:Class = Art_PlayerBullet2;
+      [Embed(source = 'data/art/PlayerBullet2.png')] public static const PlayerBullet2:Class;
       
-      public static const PlayerBullet3:Class = Art_PlayerBullet3;
+      [Embed(source = 'data/art/PlayerBullet3.png')] public static const PlayerBullet3:Class;
       
-      public static const PlayerBullet4:Class = Art_PlayerBullet4;
+      [Embed(source = 'data/art/PlayerBullet4.png')] public static const PlayerBullet4:Class;
       
-      public static const PlayerBullet5:Class = Art_PlayerBullet5;
+      [Embed(source = 'data/art/PlayerBullet5.png')] public static const PlayerBullet5:Class;
       
-      public static const PlayerBullet6:Class = Art_PlayerBullet6;
+      [Embed(source = 'data/art/PlayerBullet6.png')] public static const PlayerBullet6:Class;
       
-      public static const Boss4Bullet5:Class = Art_Boss4Bullet5;
+      [Embed(source = 'data/art/Boss4Bullet5.png')] public static const Boss4Bullet5:Class;
       
-      public static const Boss4Bullet6:Class = Art_Boss4Bullet6;
+      [Embed(source = 'data/art/Boss4Bullet6.png')] public static const Boss4Bullet6:Class;
       
-      public static const Boss4Bullet7:Class = Art_Boss4Bullet7;
+      [Embed(source = 'data/art/Boss4Bullet7.png')] public static const Boss4Bullet7:Class;
       
-      public static const EnemyBulletDonut:Class = Art_EnemyBulletDonut;
+      [Embed(source = 'data/art/EnemyBulletDonut.png')] public static const EnemyBulletDonut:Class;
       
-      public static const EnemyBulletFire:Class = Art_EnemyBulletFire;
+      [Embed(source = 'data/art/EnemyBulletFire.png')] public static const EnemyBulletFire:Class;
       
-      public static const EnemyBulletLaser:Class = Art_EnemyBulletLaser;
+      [Embed(source = 'data/art/EnemyBulletLaser.png')] public static const EnemyBulletLaser:Class;
       
-      public static const EnemyBulletSpikeBall:Class = Art_EnemyBulletSpikeBall;
+      [Embed(source = 'data/art/EnemyBulletSpikeBall.png')] public static const EnemyBulletSpikeBall:Class;
       
-      public static const SnailySnail:Class = Art_SnailySnail;
+      [Embed(source = 'data/art/SnailySnail.png')] public static const SnailySnail:Class;
       
-      public static const SnailNpc:Class = Art_SnailNpc;
+      [Embed(source = 'data/art/SnailNpc.png')] public static const SnailNpc:Class;
       
-      public static const TurtleNpc:Class = Art_TurtleNpc;
+      [Embed(source = 'data/art/TurtleNpc.png')] public static const TurtleNpc:Class;
       
-      public static const ItemArmor:Class = Art_ItemArmor;
+      [Embed(source = 'data/art/ItemArmor.png')] public static const ItemArmor:Class;
       
-      public static const ItemDevastator:Class = Art_ItemDevastator;
+      [Embed(source = 'data/art/ItemDevastator.png')] public static const ItemDevastator:Class;
       
-      public static const ItemGravJump:Class = Art_ItemGravJump;
+      [Embed(source = 'data/art/ItemGravJump.png')] public static const ItemGravJump:Class;
       
-      public static const ItemGravityShock:Class = Art_ItemGravityShock;
+      [Embed(source = 'data/art/ItemGravityShock.png')] public static const ItemGravityShock:Class;
       
-      public static const ItemGun1:Class = Art_ItemGun1;
+      [Embed(source = 'data/art/ItemGun1.png')] public static const ItemGun1:Class;
       
-      public static const ItemGun2:Class = Art_ItemGun2;
+      [Embed(source = 'data/art/ItemGun2.png')] public static const ItemGun2:Class;
       
-      public static const ItemGun3:Class = Art_ItemGun3;
+      [Embed(source = 'data/art/ItemGun3.png')] public static const ItemGun3:Class;
       
-      public static const ItemHeartContainer:Class = Art_ItemHeartContainer;
+      [Embed(source = 'data/art/ItemHeartContainer.png')] public static const ItemHeartContainer:Class;
       
-      public static const ItemHelixFragment:Class = Art_ItemHelixFragment;
+      [Embed(source = 'data/art/ItemHelixFragment.png')] public static const ItemHelixFragment:Class;
       
-      public static const ItemHiJump:Class = Art_ItemHiJump;
+      [Embed(source = 'data/art/ItemHiJump.png')] public static const ItemHiJump:Class;
       
-      public static const ItemIceSnail:Class = Art_ItemIceSnail;
+      [Embed(source = 'data/art/ItemIceSnail.png')] public static const ItemIceSnail:Class;
       
-      public static const ItemShellShield:Class = Art_ItemShellShield;
+      [Embed(source = 'data/art/ItemShellShield.png')] public static const ItemShellShield:Class;
       
-      public static const ItemRapidFire:Class = Art_ItemRapidFire;
+      [Embed(source = 'data/art/ItemRapidFire.png')] public static const ItemRapidFire:Class;
       
-      public static const ControlHelpBg:Class = Art_ControlHelpBg;
+      [Embed(source = 'data/art/ControlHelpBg.png')] public static const ControlHelpBg:Class;
       
-      public static const ControlHelpLetters:Class = Art_ControlHelpLetters;
+      [Embed(source = 'data/art/ControlHelpLetters.png')] public static const ControlHelpLetters:Class;
       
-      public static const TitleLetter:Class = Art_TitleLetter;
+      [Embed(source = 'data/art/TitleLetter.png')] public static const TitleLetter:Class;
       
-      public static const Bubble:Class = Art_Bubble;
+      [Embed(source = 'data/art/Bubble.png')] public static const Bubble:Class;
       
-      public static const Dialogue:Class = Art_Dialogue;
+      [Embed(source = 'data/art/Dialogue.png')] public static const Dialogue:Class;
       
-      public static const DoorHoriz:Class = Art_DoorHoriz;
+      [Embed(source = 'data/art/DoorHoriz.png')] public static const DoorHoriz:Class;
       
-      public static const DoorVert:Class = Art_DoorVert;
+      [Embed(source = 'data/art/DoorVert.png')] public static const DoorVert:Class;
       
-      public static const Dust:Class = Art_Dust;
+      [Embed(source = 'data/art/Dust.png')] public static const Dust:Class;
       
-      public static const IntroPicture1:Class = Art_IntroPicture1;
+      [Embed(source = 'data/art/IntroPicture1.png')] public static const IntroPicture1:Class;
       
-      public static const IntroPicture2:Class = Art_IntroPicture2;
+      [Embed(source = 'data/art/IntroPicture2.png')] public static const IntroPicture2:Class;
       
-      public static const IntroPicture3:Class = Art_IntroPicture3;
+      [Embed(source = 'data/art/IntroPicture3.png')] public static const IntroPicture3:Class;
       
-      public static const IntroPicture4:Class = Art_IntroPicture4;
+      [Embed(source = 'data/art/IntroPicture4.png')] public static const IntroPicture4:Class;
       
-      public static const IntroPicture5:Class = Art_IntroPicture5;
+      [Embed(source = 'data/art/IntroPicture5.png')] public static const IntroPicture5:Class;
       
-      public static const IntroPicture5Slug:Class = Art_IntroPicture5Slug;
+      [Embed(source = 'data/art/IntroPicture5Slug.png')] public static const IntroPicture5Slug:Class;
       
-      public static const IntroSpiral:Class = Art_IntroSpiral;
+      [Embed(source = 'data/art/IntroSpiral.png')] public static const IntroSpiral:Class;
       
-      public static const EndingPicture1:Class = Art_EndingPicture1;
+      [Embed(source = 'data/art/EndingPicture1.png')] public static const EndingPicture1:Class;
       
-      public static const EndingPicture2:Class = Art_EndingPicture2;
+      [Embed(source = 'data/art/EndingPicture2.png')] public static const EndingPicture2:Class;
       
-      public static const EndingPicture3:Class = Art_EndingPicture3;
+      [Embed(source = 'data/art/EndingPicture3.png')] public static const EndingPicture3:Class;
       
-      public static const EndingPicture4:Class = Art_EndingPicture4;
+      [Embed(source = 'data/art/EndingPicture4.png')] public static const EndingPicture4:Class;
       
-      public static const EndingPicture5:Class = Art_EndingPicture5;
+      [Embed(source = 'data/art/EndingPicture5.png')] public static const EndingPicture5:Class;
       
-      public static const EndingBg:Class = Art_EndingBg;
+      [Embed(source = 'data/art/EndingBg.png')] public static const EndingBg:Class;
       
-      public static const ExplosionSmall:Class = Art_ExplosionSmall;
+      [Embed(source = 'data/art/ExplosionSmall.png')] public static const ExplosionSmall:Class;
       
-      public static const ExplosionBig:Class = Art_ExplosionBig;
+      [Embed(source = 'data/art/ExplosionBig.png')] public static const ExplosionBig:Class;
       
-      public static const ExplosionHuge:Class = Art_ExplosionHuge;
+      [Embed(source = 'data/art/ExplosionHuge.png')] public static const ExplosionHuge:Class;
       
-      public static const ExplosionTiny:Class = Art_ExplosionTiny;
+      [Embed(source = 'data/art/ExplosionTiny.png')] public static const ExplosionTiny:Class;
       
-      public static const Fire:Class = Art_Fire;
+      [Embed(source = 'data/art/Fire.png')] public static const Fire:Class;
       
-      public static const GiantBlock1:Class = Art_GiantBlock1;
+      [Embed(source = 'data/art/GiantBlock1.png')] public static const GiantBlock1:Class;
       
-      public static const Grass:Class = Art_Grass;
+      [Embed(source = 'data/art/Grass.png')] public static const Grass:Class;
       
-      public static const PowerGrass:Class = Art_PowerGrass;
+      [Embed(source = 'data/art/PowerGrass.png')] public static const PowerGrass:Class;
       
-      public static const HeartHudSingle:Class = Art_HeartHudSingle;
+      [Embed(source = 'data/art/HeartHudSingle.png')] public static const HeartHudSingle:Class;
       
-      public static const IceSpike:Class = Art_IceSpike;
+      [Embed(source = 'data/art/IceSpike.png')] public static const IceSpike:Class;
       
-      public static const IceSpikeLeft:Class = Art_IceSpikeLeft;
+      [Embed(source = 'data/art/IceSpikeLeft.png')] public static const IceSpikeLeft:Class;
       
-      public static const IceSpikeTop:Class = Art_IceSpikeTop;
+      [Embed(source = 'data/art/IceSpikeTop.png')] public static const IceSpikeTop:Class;
       
-      public static const MiniMapCenter:Class = Art_MiniMapCenter;
+      [Embed(source = 'data/art/MiniMapCenter.png')] public static const MiniMapCenter:Class;
       
-      public static const MiniMapSheet:Class = Art_MiniMapSheet;
+      [Embed(source = 'data/art/MiniMapSheet.png')] public static const MiniMapSheet:Class;
       
-      public static const MiniMapSpecialSheet:Class = Art_MiniMapSpecialSheet;
+      [Embed(source = 'data/art/MiniMapSpecialSheet.png')] public static const MiniMapSpecialSheet:Class;
       
-      public static const Muck:Class = Art_Muck;
+      [Embed(source = 'data/art/Muck.png')] public static const Muck:Class;
       
-      public static const Nom:Class = Art_Nom;
+      [Embed(source = 'data/art/Nom.png')] public static const Nom:Class;
       
-      public static const PowerNom:Class = Art_PowerNom;
+      [Embed(source = 'data/art/Nom.png')] public static const PowerNom:Class;
       
-      public static const PixelPeople:Class = Art_PixelPeople;
+      [Embed(source = 'data/art/PixelPeople.png')] public static const PixelPeople:Class;
       
-      public static const Platform4:Class = Art_Platform4;
+      [Embed(source = 'data/art/Platform4.png')] public static const Platform4:Class;
       
-      public static const Platform4b:Class = Art_Platform4b;
+      [Embed(source = 'data/art/Platform4b.png')] public static const Platform4b:Class;
       
-      public static const Platform5:Class = Art_Platform5;
+      [Embed(source = 'data/art/Platform5.png')] public static const Platform5:Class;
       
-      public static const Platform5b:Class = Art_Platform5b;
+      [Embed(source = 'data/art/Platform5b.png')] public static const Platform5b:Class;
       
-      public static const SavePoint:Class = Art_SavePoint;
+      [Embed(source = 'data/art/SavePoint.png')] public static const SavePoint:Class;
       
-      public static const SleepyMoonSnail:Class = Art_SleepyMoonSnail;
+      [Embed(source = 'data/art/SleepyMoonSnail.png')] public static const SleepyMoonSnail:Class;
       
-      public static const Smoke:Class = Art_Smoke;
+      [Embed(source = 'data/art/Smoke.png')] public static const Smoke:Class;
       
-      public static const Snow:Class = Art_Snow;
+      [Embed(source = 'data/art/Snow.png')] public static const Snow:Class;
       
-      public static const Star:Class = Art_Star;
+      [Embed(source = 'data/art/Star.png')] public static const Star:Class;
       
-      public static const Subscreen:Class = Art_Subscreen;
+      [Embed(source = 'data/art/Subscreen.png')] public static const Subscreen:Class;
       
-      public static const SubscreenSlug:Class = Art_SubscreenSlug;
+      [Embed(source = 'data/art/SubscreenSlug.png')] public static const SubscreenSlug:Class;
       
-      public static const TheEnd:Class = Art_TheEnd;
+      [Embed(source = 'data/art/TheEnd.png')] public static const TheEnd:Class;
       
-      public static const TileSheet:Class = Art_TileSheet;
+      [Embed(source = 'data/art/TileSheet.png')] public static const TileSheet:Class;
       
-      public static const Zzz:Class = Art_Zzz;
+      [Embed(source = 'data/art/Zzz.png')] public static const Zzz:Class;
       
-      public static const SponsorSplash:Class = Art_SponsorSplash;
+      [Embed(source = 'data/art/SponsorSplash.png')] public static const SponsorSplash:Class;
       
-      public static const SponsorMoreGames:Class = Art_SponsorMoreGames;
+      [Embed(source = 'data/art/SponsorMoreGames.png')] public static const SponsorMoreGames:Class;
       
-      public static const JayIsGames:Class = Art_JayIsGames;
-      
-      public function Art()
-      {
-         super();
-      }
+      [Embed(source = 'data/art/JayIsGames.png')] public static const JayIsGames:Class;
    }
 }
 

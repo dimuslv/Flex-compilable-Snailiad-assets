@@ -123,7 +123,6 @@ package
       public function addEnemy(param1:int, param2:int, param3:String) : FlxObject
       {
          var _loc4_:EndingEnemy = null;
-         _loc4_ = null;
          var _loc5_:FlxText = null;
          _loc4_ = new EndingEnemy(param1,this.createY,param2);
          _loc4_.velocity.y = VELOCITY_Y;
