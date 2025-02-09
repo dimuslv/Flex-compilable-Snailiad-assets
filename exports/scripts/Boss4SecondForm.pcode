@@ -8,6 +8,10 @@ package
       
       private static const IMG_HEIGHT:int = 44;
       
+      private static const IMG_OFS_X:int = 0;
+      
+      private static const IMG_OFS_Y:int = 0;
+      
       private static const MAX_HP:int = 34000;
       
       private static const DEFENSE:int = 0;
@@ -24,15 +28,13 @@ package
       
       private static const HIT_BOTTOM:int = 4;
       
-      private static const ZZZ_TIMEOUT:Number = 0.3;
-      
       private static const GRAV_JUMP_TIMEOUT:Number = 0.2;
+      
+      private static const START_ATTACK_TIME:Number = 0.45;
       
       private static const JUMP_POWER:Number = 360;
       
       private static const JUMP_TIMEOUT:Number = 0.8;
-      
-      private static const START_ATTACK_TIME:Number = 0.45;
       
       private static const WALK_SPEED:Number = 200;
       
@@ -45,6 +47,8 @@ package
       private static const MODE_SHELLSMASH:int = 3;
       
       private static const MODE_SLEEP:int = 4;
+      
+      private static const ZZZ_TIMEOUT:Number = 0.3;
       
       private static const DECISION_TABLE:Array;
       
@@ -67,6 +71,12 @@ package
       findproperty QName(PrivateNamespace(null,"141"),"IMG_HEIGHT")
       pushbyte 44
       initproperty QName(PrivateNamespace(null,"141"),"IMG_HEIGHT")
+      findproperty QName(PrivateNamespace(null,"141"),"IMG_OFS_X")
+      pushbyte 0
+      initproperty QName(PrivateNamespace(null,"141"),"IMG_OFS_X")
+      findproperty QName(PrivateNamespace(null,"141"),"IMG_OFS_Y")
+      pushbyte 0
+      initproperty QName(PrivateNamespace(null,"141"),"IMG_OFS_Y")
       findproperty QName(PrivateNamespace(null,"141"),"MAX_HP")
       pushint 34000
       initproperty QName(PrivateNamespace(null,"141"),"MAX_HP")
@@ -91,21 +101,18 @@ package
       findproperty QName(PrivateNamespace(null,"141"),"HIT_BOTTOM")
       pushbyte 4
       initproperty QName(PrivateNamespace(null,"141"),"HIT_BOTTOM")
-      findproperty QName(PrivateNamespace(null,"141"),"ZZZ_TIMEOUT")
-      pushdouble 0.3
-      initproperty QName(PrivateNamespace(null,"141"),"ZZZ_TIMEOUT")
       findproperty QName(PrivateNamespace(null,"141"),"GRAV_JUMP_TIMEOUT")
       pushdouble 0.2
       initproperty QName(PrivateNamespace(null,"141"),"GRAV_JUMP_TIMEOUT")
+      findproperty QName(PrivateNamespace(null,"141"),"START_ATTACK_TIME")
+      pushdouble 0.45
+      initproperty QName(PrivateNamespace(null,"141"),"START_ATTACK_TIME")
       findproperty QName(PrivateNamespace(null,"141"),"JUMP_POWER")
       pushshort 360
       initproperty QName(PrivateNamespace(null,"141"),"JUMP_POWER")
       findproperty QName(PrivateNamespace(null,"141"),"JUMP_TIMEOUT")
       pushdouble 0.8
       initproperty QName(PrivateNamespace(null,"141"),"JUMP_TIMEOUT")
-      findproperty QName(PrivateNamespace(null,"141"),"START_ATTACK_TIME")
-      pushdouble 0.45
-      initproperty QName(PrivateNamespace(null,"141"),"START_ATTACK_TIME")
       findproperty QName(PrivateNamespace(null,"141"),"WALK_SPEED")
       pushshort 200
       initproperty QName(PrivateNamespace(null,"141"),"WALK_SPEED")
@@ -124,6 +131,9 @@ package
       findproperty QName(PrivateNamespace(null,"141"),"MODE_SLEEP")
       pushbyte 4
       initproperty QName(PrivateNamespace(null,"141"),"MODE_SLEEP")
+      findproperty QName(PrivateNamespace(null,"141"),"ZZZ_TIMEOUT")
+      pushdouble 0.3
+      initproperty QName(PrivateNamespace(null,"141"),"ZZZ_TIMEOUT")
       findproperty QName(PrivateNamespace(null,"141"),"DECISION_TABLE")
       pushdouble 0.1640168826
       pushdouble 0.3892556902
@@ -234,21 +244,27 @@ package
       
       private var _lastHitDir:int = 0;
       
-      private var _attackPhase:int = 0;
+      private var _lastStomp:int = 0;
       
-      private var _bossSpeed:Number = 1;
+      private var _zzz:Array;
       
-      private var _decisionTableIndex:int = 0;
-      
-      private var _elapsed:Number = 0;
-      
-      private var _lastAnim:String;
+      private var _strafeNum:int = 3;
       
       private var _lastSmashVelX:Number = 0;
       
       private var _lastSmashVelY:Number = 0;
       
-      private var _lastStomp:int = 0;
+      private var _decisionTableIndex:int = 0;
+      
+      private var _shotTimeout:Number = 0;
+      
+      private var _lastAnim:String;
+      
+      private var _bossSpeed:Number = 1;
+      
+      private var _attackPhase:int = 0;
+      
+      private var _elapsed:Number = 0;
       
       private var _modeElapsed:Number = 0;
       
@@ -260,63 +276,51 @@ package
       
       private var _originY:Number = 0;
       
-      private var _shotTimeout:Number = 0;
-      
-      private var _strafeNum:int = 3;
-      
-      private var _strafeTheta:Number = 0;
-      
-      private var _strafeThetaAcc:Number = 0;
-      
-      private var _strafeThetaVel:Number = 0;
-      
       private var _targetX:Number = 0;
       
       private var _targetY:Number = 0;
       
+      private var _strafeTheta:Number = 0;
+      
+      private var _strafeThetaVel:Number = 0;
+      
+      private var _strafeThetaAcc:Number = 0;
+      
       private var _waitingToJump:Boolean = false;
       
-      private var ZZZ_MAX:int = 3;
-      
-      private var _zzzNum:Number = 0;
-      
-      private var _zzzTimeout:Number = 0;
-      
-      private var _zzz:Array;
-      
-      private var SMASH_SPEED:Number = 400;
-      
-      private var STRAFE_SPEED:Number = 400;
+      private var _strafeTimeout:Number = 0;
       
       private var STRAFE_TIMEOUT:Number = 0.03;
       
-      private var _strafeTimeout:Number = 0;
+      private var STRAFE_SPEED:Number = 400;
+      
+      private var SMASH_SPEED:Number = 400;
       
       private var STOMP_TIMEOUT:Number = 0.25;
       
       private var _stompTimeout:Number = 0;
       
-      private var WAVE_SPEED:Number = 30;
-      
       private var WAVE_TIMEOUT:Number = 0.9;
+      
+      private var WAVE_SPEED:Number = 30;
       
       private var _waveTimeout:Number = 0;
       
-      private var _aimed:Boolean = false;
-      
       private var _stomped:Boolean = false;
+      
+      private var _aimed:Boolean = false;
       
       private var _gravJumpTimeout:Number = 99999;
       
       private var _jumpTimeout:Number;
       
-      private var _lastMode:int = 0;
-      
       private var _mode:int = 0;
       
-      private var _bulletGroups:Boss4SecondFormBulletGroups;
+      private var _lastMode:int = 0;
       
       private var bg:Boss4SecondFormBg;
+      
+      private var _bulletGroups:Boss4SecondFormBulletGroups;
       
       private var HEAL_TIMEOUT:Number = 0.1;
       
@@ -325,6 +329,12 @@ package
       private var _healNum:int;
       
       private var _healTimeout:Number = 0.8;
+      
+      private var ZZZ_MAX:int = 3;
+      
+      private var _zzzTimeout:Number = 0;
+      
+      private var _zzzNum:Number = 0;
       
       public function Boss4SecondForm(param1:int, param2:int)
       {
@@ -666,61 +676,6 @@ package
          end ; method
       }
       
-      public function stomp() : void
-      {
-         trait method QName(PackageNamespace(""),"stomp")
-         dispid 0
-         method
-         name null
-         returns QName(PackageNamespace(""),"void")
-         
-         body
-         maxstack 2
-         localcount 1
-         initscopedepth 10
-         maxscopedepth 11
-         
-         code
-         getlocal0
-         pushscope
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"141"),"_stomped")
-         iffalse ofs000b
-         returnvoid
-         ofs000b:
-         getlex QName(PackageNamespace(""),"velocity")
-         pushbyte 0
-         setproperty QName(PackageNamespace(""),"x")
-         getlex QName(PackageNamespace(""),"velocity")
-         pushbyte 0
-         setproperty QName(PackageNamespace(""),"y")
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"141"),"_stompTimeout")
-         pushbyte 0
-         ifnle ofs003e
-         getlex QName(PackageNamespace("org.flixel"),"FlxG")
-         getproperty QName(PackageNamespace(""),"quake")
-         pushdouble 0.02
-         callpropvoid QName(PackageNamespace(""),"start"), 1
-         getlex QName(PackageNamespace(""),"Sfx")
-         callpropvoid QName(PackageNamespace(""),"playStomp"), 0
-         getlocal0
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"141"),"STOMP_TIMEOUT")
-         initproperty QName(PrivateNamespace(null,"141"),"_stompTimeout")
-         ofs003e:
-         getlocal0
-         pushtrue
-         initproperty QName(PrivateNamespace(null,"141"),"_stomped")
-         getlocal0
-         pushint 999999
-         initproperty QName(PrivateNamespace(null,"141"),"_gravJumpTimeout")
-         returnvoid
-         end ; code
-         end ; body
-         end ; method
-      }
-      
       override public function hitLeft(param1:FlxObject, param2:Number) : void
       {
          trait method QName(PackageNamespace(""),"hitLeft")
@@ -829,6 +784,61 @@ package
          getlocal0
          callpropvoid QName(PackageNamespace(""),"stomp"), 0
          ofs004b:
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function stomp() : void
+      {
+         trait method QName(PackageNamespace(""),"stomp")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 10
+         maxscopedepth 11
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"141"),"_stomped")
+         iffalse ofs000b
+         returnvoid
+         ofs000b:
+         getlex QName(PackageNamespace(""),"velocity")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"velocity")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"y")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"141"),"_stompTimeout")
+         pushbyte 0
+         ifnle ofs003e
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getproperty QName(PackageNamespace(""),"quake")
+         pushdouble 0.02
+         callpropvoid QName(PackageNamespace(""),"start"), 1
+         getlex QName(PackageNamespace(""),"Sfx")
+         callpropvoid QName(PackageNamespace(""),"playStomp"), 0
+         getlocal0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"141"),"STOMP_TIMEOUT")
+         initproperty QName(PrivateNamespace(null,"141"),"_stompTimeout")
+         ofs003e:
+         getlocal0
+         pushtrue
+         initproperty QName(PrivateNamespace(null,"141"),"_stomped")
+         getlocal0
+         pushint 999999
+         initproperty QName(PrivateNamespace(null,"141"),"_gravJumpTimeout")
          returnvoid
          end ; code
          end ; body
@@ -2156,15 +2166,6 @@ package
          convert_d
          setlocal1
          getlocal0
-         getlocal1
-         getlex QName(PackageNamespace(""),"Math")
-         getproperty QName(PackageNamespace(""),"PI")
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"141"),"_strafeNum")
-         divide
-         subtract
-         initproperty QName(PrivateNamespace(null,"141"),"_strafeTheta")
-         getlocal0
          pushdouble 2.3
          pushbyte 5
          findpropstrict QName(PackageNamespace(""),"Number")
@@ -2180,19 +2181,28 @@ package
          getlocal0
          getproperty QName(PrivateNamespace(null,"141"),"_strafeNum")
          pushbyte 2
-         ifnlt ofs0068
+         ifnlt ofs0057
          getlocal0
          pushbyte 2
          initproperty QName(PrivateNamespace(null,"141"),"_strafeNum")
-         ofs0068:
+         ofs0057:
          getlocal0
          getproperty QName(PrivateNamespace(null,"141"),"_strafeNum")
          pushbyte 7
-         ifngt ofs0078
+         ifngt ofs0067
          getlocal0
          pushbyte 7
          initproperty QName(PrivateNamespace(null,"141"),"_strafeNum")
-         ofs0078:
+         ofs0067:
+         getlocal0
+         getlocal1
+         getlex QName(PackageNamespace(""),"Math")
+         getproperty QName(PackageNamespace(""),"PI")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"141"),"_strafeNum")
+         divide
+         subtract
+         initproperty QName(PrivateNamespace(null,"141"),"_strafeTheta")
          returnvoid
          end ; code
          end ; body
@@ -2316,22 +2326,19 @@ package
          ofs00d0:
          iffalse ofs0120
          getlocal0
-         pushtrue
-         initproperty QName(PrivateNamespace(null,"141"),"_aimed")
-         getlocal0
          callpropvoid QName(PrivateNamespace(null,"141"),"aimStrafe"), 0
          getlocal0
          callproperty QName(PackageNamespace(""),"getDecision"), 0
          pushdouble 0.5
-         ifngt ofs00fa
+         ifngt ofs00f5
          getlocal0
          getlex QName(PackageNamespace(""),"Math")
          getproperty QName(PackageNamespace(""),"PI")
          pushbyte 8
          divide
          initproperty QName(PrivateNamespace(null,"141"),"_strafeThetaVel")
-         jump ofs0108
-         ofs00fa:
+         jump ofs0103
+         ofs00f5:
          getlocal0
          getlex QName(PackageNamespace(""),"Math")
          getproperty QName(PackageNamespace(""),"PI")
@@ -2339,7 +2346,10 @@ package
          pushbyte 8
          divide
          initproperty QName(PrivateNamespace(null,"141"),"_strafeThetaVel")
-         ofs0108:
+         ofs0103:
+         getlocal0
+         pushtrue
+         initproperty QName(PrivateNamespace(null,"141"),"_aimed")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"_slugMode")

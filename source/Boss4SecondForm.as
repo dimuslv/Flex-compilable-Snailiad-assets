@@ -7,6 +7,9 @@ package
         // sprite sheet, size per cel
         private static const IMG_WIDTH :int  = 80;
         private static const IMG_HEIGHT:int  = 44;
+		
+		private static const IMG_OFS_X:int   = 0;
+		private static const IMG_OFS_Y:int   = 0;
 
         // basic boss stats
         private static const MAX_HP:int      = 34000;
@@ -20,56 +23,55 @@ package
         private static const HIT_TOP:int     = 3;
         private static const HIT_BOTTOM:int  = 4;
         private var _lastHitDir:int          = HIT_NONE;
-
-        private var _attackPhase:int         = 0;
-        private var _bossSpeed:Number        = 1.0;
-        private var _decisionTableIndex:int  = 0;
-        private var _elapsed:Number          = 0;
-        private var _lastAnim:String;
+		
+        private var _lastStomp:int           = 0;
+        private var _zzz:Array;
+        private var _strafeNum:int           = 3;
         private var _lastSmashVelX:Number    = 0;
         private var _lastSmashVelY:Number    = 0;
-        private var _lastStomp:int           = 0;
+
+        private var _decisionTableIndex:int  = 0;
+        private var _shotTimeout:Number      = 0;
+
+        private var _lastAnim:String;
+        private var _bossSpeed:Number        = 1.0;
+        private var _attackPhase:int         = 0;
+        private var _elapsed:Number          = 0;
         private var _modeElapsed:Number      = 0;
         private var _modeInitialized:Boolean = false;
         private var _modeTimeout:Number      = 0;
         private var _originX:Number          = 0;
         private var _originY:Number          = 0;
-        private var _shotTimeout:Number      = 0;
-        private var _strafeNum:int           = 3;
-        private var _strafeTheta:Number      = 0;
-        private var _strafeThetaAcc:Number   = 0;
-        private var _strafeThetaVel:Number   = 0;
         private var _targetX:Number          = 0;
         private var _targetY:Number          = 0;
+        private var _strafeTheta:Number      = 0;
+        private var _strafeThetaVel:Number   = 0;
+        private var _strafeThetaAcc:Number   = 0;
         private var _waitingToJump:Boolean   = false;
-
-        private static const ZZZ_TIMEOUT:Number = 0.3;
-        private var ZZZ_MAX:int                 = 3;
-        private var _zzzNum:Number              = 0;
-        private var _zzzTimeout:Number          = 0;
-        private var _zzz:Array;
+		
+        private var _strafeTimeout:Number = 0;
+        private var STRAFE_TIMEOUT:Number = 0.03;
+        private var STRAFE_SPEED:Number   = 400;
+		
+		private static const GRAV_JUMP_TIMEOUT:Number = 0.2;
+        private static const START_ATTACK_TIME:Number = 0.45;
 
         private var SMASH_SPEED:Number    = 400;
-        private var STRAFE_SPEED:Number   = 400;
-        private var STRAFE_TIMEOUT:Number = 0.03;
-        private var _strafeTimeout:Number = 0;
 
         private var STOMP_TIMEOUT:Number = 0.25;
         private var _stompTimeout:Number = 0;
 
-        private var WAVE_SPEED:Number    = 30;
         private var WAVE_TIMEOUT:Number = 0.9;
+		private var WAVE_SPEED:Number    = 30;
         private var _waveTimeout:Number = 0;
 
-        private var _aimed:Boolean   = false;
         private var _stomped:Boolean = false;
+		private var _aimed:Boolean   = false;
 
-        private static const GRAV_JUMP_TIMEOUT:Number = 0.2;
         private var _gravJumpTimeout:Number           = 99999;
 
         private static const JUMP_POWER:Number        = 360;
         private static const JUMP_TIMEOUT:Number      = 0.8;
-        private static const START_ATTACK_TIME:Number = 0.45;
         private static const WALK_SPEED:Number        = 200;
         private var _jumpTimeout:Number;
 
@@ -80,20 +82,27 @@ package
         private static const MODE_SHELLSTRAFE :int = 2;
         private static const MODE_SHELLSMASH  :int = 3;
         private static const MODE_SLEEP       :int = 4;
-        private var _lastMode:int = MODE_INTRO;
+		
+        private static const ZZZ_TIMEOUT:Number = 0.3;
+		
         private var _mode:int     = MODE_INTRO;
+        private var _lastMode:int = MODE_INTRO;
+		
+        // we have our own special background that covers up the screen
+        private var bg:Boss4SecondFormBg;
 
         // we have two bullet groups; 0 is pea shooter, 1 is giga wave
         private var _bulletGroups:Boss4SecondFormBulletGroups;
-
-        // we have our own special background that covers up the screen
-        private var bg:Boss4SecondFormBg;
 
         // used to heal the player at the beginning of the battle
         private var HEAL_TIMEOUT:Number = 0.10;
         private var _healAmount:int = PlayState.player.hpPerHeart()/2;
         private var _healNum:int = PlayState.player.getMaxHp() / _healAmount;
         private var _healTimeout:Number = 0.8;
+
+        private var ZZZ_MAX:int                 = 3;
+        private var _zzzTimeout:Number          = 0;
+        private var _zzzNum:Number              = 0;
 
         public function blank(tileX:int, tileY:int):void
         {
@@ -180,25 +189,6 @@ package
             return DECISION_TABLE[_decisionTableIndex];
         }
 
-        // we hit the edge of the screen, let's make it shake and play a sound!
-        public function stomp():void
-        {
-            if (_stomped)
-                return;
-
-            velocity.x = 0;
-            velocity.y = 0;
-            if (_stompTimeout <= 0)
-            {
-                FlxG.quake.start(0.02); // shake the screen
-                Sfx.playStomp();
-                _stompTimeout = STOMP_TIMEOUT;
-            }
-
-            _stomped = true;
-            _gravJumpTimeout = 999999;
-        }
-
         // these four "hit" functions are called when moon hits a solid block at 
         // the edge of the screen.  for left/right, they should make moon turn
         // around.  all four can call stomp(), which sets the _stomped variable;
@@ -233,6 +223,25 @@ package
             else
                 stomp();
         }   
+
+        // we hit the edge of the screen, let's make it shake and play a sound!
+        public function stomp():void
+        {
+            if (_stomped)
+                return;
+
+            velocity.x = 0;
+            velocity.y = 0;
+            if (_stompTimeout <= 0)
+            {
+                FlxG.quake.start(0.02); // shake the screen
+                Sfx.playStomp();
+                _stompTimeout = STOMP_TIMEOUT;
+            }
+
+            _stomped = true;
+            _gravJumpTimeout = 999999;
+        }
 
         override public function hitBottom(Contact:FlxObject,Velocity:Number):void
         {   
@@ -580,15 +589,15 @@ package
                 PlayState.player.y - (y + height/2),
                 PlayState.player.x - (x + width/2));
 
-            // then adjust the aim AWAY from snaily
-            _strafeTheta = theta - Math.PI/_strafeNum;
-
             // scale the number of beams so it gets gradually harder as moon's health drops toward zero
             _strafeNum = 2.3 + (5 * Number(MAX_HP - _hp) / MAX_HP);
             if (_strafeNum < 2)
                 _strafeNum = 2;
             if (_strafeNum > 7)
                 _strafeNum = 7;
+
+            // then adjust the aim AWAY from snaily
+            _strafeTheta = theta - Math.PI/_strafeNum;
         }
 
         private function updateAiShellStrafe():void
@@ -615,9 +624,6 @@ package
             // don't shoot until we're in the center or very close
             if (_modeElapsed > START_ATTACK_TIME && !_aimed && Utility.dist(x,y,_targetX,_targetY) < 10)
             {
-                // we only want to do this once per AI cycle . . .
-                _aimed = true;
-
                 // to be fair, we want to aim so snaily is exactly halfway between two streams of bullets
                 aimStrafe();
 
@@ -626,6 +632,9 @@ package
                     _strafeThetaVel = Math.PI / 8;
                 else
                     _strafeThetaVel = -Math.PI / 8;
+				
+                // we only want to do this once per AI cycle . . .
+                _aimed = true;
 
                 // and we'll spin a lot faster in slug mode
                 if (PlayState.player._slugMode)
