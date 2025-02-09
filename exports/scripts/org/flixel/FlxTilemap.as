@@ -493,11 +493,10 @@ package org.flixel
       
       override public function overlaps(param1:FlxObject) : Boolean
       {
-         var _loc5_:Array = null;
          var _loc2_:uint = 0;
          var _loc3_:uint = 0;
          var _loc4_:uint = 0;
-         _loc5_ = new Array();
+         var _loc5_:Array = new Array();
          var _loc6_:uint = Math.floor((param1.x - x) / this._tileWidth);
          var _loc7_:uint = Math.floor((param1.y - y) / this._tileHeight);
          var _loc8_:uint = Math.ceil(param1.width / this._tileWidth) + 1;
