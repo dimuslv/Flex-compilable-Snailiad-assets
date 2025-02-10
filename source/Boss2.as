@@ -340,7 +340,7 @@ package
             {
                lfootxtarget = PlayState.player.x - x + 100;
             }
-            --lfootStompTimeout;
+            lfootStompTimeout -= 1;
             lfootxvel = this.lfootxtarget - this.lfootx;
             lfootx += this.lfootxvel * 0.1;
             if(this.lfootStompTimeout <= 0 && this.lfooty <= RAISED_Y + 10 && this.lfootyVel < 1)
@@ -371,7 +371,7 @@ package
             }
             rfootxvel = this.rfootxtarget - this.rfootx;
             rfootx += this.rfootxvel * 0.1;
-            --rfootStompTimeout;
+            rfootStompTimeout -= 1;
             if(this.rfootStompTimeout <= 0 && this.rfooty <= RAISED_Y + 10 && this.rfootyVel < 1)
             {
                rmode = FOOTMODE_STOMP;

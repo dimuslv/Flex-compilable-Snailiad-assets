@@ -144,7 +144,8 @@ package
          }
          var _loc1_:Number = this.now();
          var _loc2_:Number = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
-         var _loc3_:Number = _loc1_;
+         var _loc3_:Number;
+		 _loc3_ = _loc1_;
          var _loc4_:Number = Math.sin(3 / 7 * _loc3_);
          x = this._originX + 9 * 16 * Math.cos(_loc3_) * _loc4_;
          y = this._originY + 7 * 16 * Math.sin(_loc3_) * _loc4_;
