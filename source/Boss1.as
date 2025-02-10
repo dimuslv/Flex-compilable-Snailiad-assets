@@ -64,6 +64,20 @@ package
       
       private var _totalElapsed:Number = 0;
       
+      override public function destroy() : void
+      {
+         var _loc1_:String = null;
+         for(_loc1_ in this._hand)
+         {
+            this._hand[_loc1_] = null;
+         }
+         _hand = null;
+         _eyes = null;
+         _handThetaCur = null;
+         _handThetaSpeed = null;
+         super.destroy();
+      }
+      
       public function Boss1(param1:int, param2:int) : void
       {
          if(PlayState.player && PlayState.player._insaneMode)
@@ -121,20 +135,6 @@ package
             PlayState.player.setFaceDir(Player.FACE_FLOOR_RIGHT);
             Music.playBoss1();
          }
-      }
-      
-      override public function destroy() : void
-      {
-         var _loc1_:String = null;
-         for(_loc1_ in this._hand)
-         {
-            this._hand[_loc1_] = null;
-         }
-         _hand = null;
-         _eyes = null;
-         _handThetaCur = null;
-         _handThetaSpeed = null;
-         super.destroy();
       }
       
       public function now() : Number
