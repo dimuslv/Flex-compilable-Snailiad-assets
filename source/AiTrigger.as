@@ -6,7 +6,20 @@ package
    {
       private var _number:int = 0;
       
-      public function AiTrigger()
+      override public function destroy() : void
+      {
+         super.destroy();
+      }
+      
+      public function create(param1:int, param2:int, param3:int) : void
+      {
+         super.reset(param1,param2);
+         _number = param3;
+         exists = true;
+         dead = false;
+      }
+	  
+	  public function AiTrigger() : void
       {
          super();
          exists = false;
@@ -17,19 +30,6 @@ package
          width = 16;
          height = 16;
          visible = false;
-      }
-      
-      override public function destroy() : void
-      {
-         super.destroy();
-      }
-      
-      public function create(param1:int, param2:int, param3:int) : void
-      {
-         super.reset(param1,param2);
-         this._number = param3;
-         exists = true;
-         dead = false;
       }
       
       public function getNumber() : int
