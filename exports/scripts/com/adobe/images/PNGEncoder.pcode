@@ -23,9 +23,9 @@ package com.adobe.images
       code
       getlocal0
       pushscope
-      findproperty QName(PrivateNamespace(null,"27"),"crcTableComputed")
+      findproperty QName(PrivateNamespace(null,"#PNGEncoder"),"crcTableComputed")
       pushfalse
-      setproperty QName(PrivateNamespace(null,"27"),"crcTableComputed")
+      setproperty QName(PrivateNamespace(null,"#PNGEncoder"),"crcTableComputed")
       returnvoid
       end ; code
       end ; body
@@ -106,30 +106,30 @@ package com.adobe.images
          getlocal3
          pushbyte 0
          callpropvoid QName(PackageNamespace(""),"writeByte"), 1
-         findpropstrict QName(PrivateNamespace(null,"27"),"writeChunk")
+         findpropstrict QName(PrivateNamespace(null,"#PNGEncoder"),"writeChunk")
          getlocal2
          pushint 1229472850
          getlocal3
-         callpropvoid QName(PrivateNamespace(null,"27"),"writeChunk"), 3
+         callpropvoid QName(PrivateNamespace(null,"#PNGEncoder"),"writeChunk"), 3
          findpropstrict QName(PackageNamespace("flash.utils"),"ByteArray")
          constructprop QName(PackageNamespace("flash.utils"),"ByteArray"), 0
          coerce QName(PackageNamespace("flash.utils"),"ByteArray")
          setlocal 4
          pushbyte 0
          setlocal 5
-         jump ofs00ee
-         ofs0065:
+         jump ofs0
+         ofs1:
          label
          getlocal 4
          pushbyte 0
          callpropvoid QName(PackageNamespace(""),"writeByte"), 1
          getlocal1
          getproperty QName(PackageNamespace(""),"transparent")
-         iftrue ofs00b2
+         iftrue ofs2
          pushbyte 0
          setlocal 7
-         jump ofs00a4
-         ofs007e:
+         jump ofs3
+         ofs4:
          label
          getlocal1
          getlocal 7
@@ -149,17 +149,17 @@ package com.adobe.images
          callproperty QName(PackageNamespace(""),"uint"), 1
          callpropvoid QName(PackageNamespace(""),"writeUnsignedInt"), 1
          inclocal_i 7
-         ofs00a4:
+         ofs3:
          getlocal 7
          getlocal1
          getproperty QName(PackageNamespace(""),"width")
-         iflt ofs007e
-         jump ofs00ec
-         ofs00b2:
+         iflt ofs4
+         jump ofs5
+         ofs2:
          pushbyte 0
          setlocal 7
-         jump ofs00e2
-         ofs00ba:
+         jump ofs6
+         ofs7:
          label
          getlocal1
          getlocal 7
@@ -181,30 +181,30 @@ package com.adobe.images
          callproperty QName(PackageNamespace(""),"uint"), 1
          callpropvoid QName(PackageNamespace(""),"writeUnsignedInt"), 1
          inclocal_i 7
-         ofs00e2:
+         ofs6:
          getlocal 7
          getlocal1
          getproperty QName(PackageNamespace(""),"width")
-         iflt ofs00ba
-         ofs00ec:
+         iflt ofs7
+         ofs5:
          inclocal_i 5
-         ofs00ee:
+         ofs0:
          getlocal 5
          getlocal1
          getproperty QName(PackageNamespace(""),"height")
-         iflt ofs0065
+         iflt ofs1
          getlocal 4
          callpropvoid QName(PackageNamespace(""),"compress"), 0
-         findpropstrict QName(PrivateNamespace(null,"27"),"writeChunk")
+         findpropstrict QName(PrivateNamespace(null,"#PNGEncoder"),"writeChunk")
          getlocal2
          pushint 1229209940
          getlocal 4
-         callpropvoid QName(PrivateNamespace(null,"27"),"writeChunk"), 3
-         findpropstrict QName(PrivateNamespace(null,"27"),"writeChunk")
+         callpropvoid QName(PrivateNamespace(null,"#PNGEncoder"),"writeChunk"), 3
+         findpropstrict QName(PrivateNamespace(null,"#PNGEncoder"),"writeChunk")
          getlocal2
          pushint 1229278788
          pushnull
-         callpropvoid QName(PrivateNamespace(null,"27"),"writeChunk"), 3
+         callpropvoid QName(PrivateNamespace(null,"#PNGEncoder"),"writeChunk"), 3
          getlocal2
          returnvalue
          end ; code
@@ -214,7 +214,7 @@ package com.adobe.images
       
       private static function writeChunk(param1:ByteArray, param2:uint, param3:ByteArray) : void
       {
-         trait method QName(PrivateNamespace(null,"27"),"writeChunk")
+         trait method QName(PrivateNamespace(null,"#PNGEncoder"),"writeChunk")
          flag FINAL
          dispid 4
          method
@@ -242,19 +242,19 @@ package com.adobe.images
          pushbyte 0
          convert_u
          setlocal 10
-         getlex QName(PrivateNamespace(null,"27"),"crcTableComputed")
-         iftrue ofs009b
-         findproperty QName(PrivateNamespace(null,"27"),"crcTableComputed")
+         getlex QName(PrivateNamespace(null,"#PNGEncoder"),"crcTableComputed")
+         iftrue ofs0
+         findproperty QName(PrivateNamespace(null,"#PNGEncoder"),"crcTableComputed")
          pushtrue
-         setproperty QName(PrivateNamespace(null,"27"),"crcTableComputed")
-         findproperty QName(PrivateNamespace(null,"27"),"crcTable")
+         setproperty QName(PrivateNamespace(null,"#PNGEncoder"),"crcTableComputed")
+         findproperty QName(PrivateNamespace(null,"#PNGEncoder"),"crcTable")
          newarray 0
-         setproperty QName(PrivateNamespace(null,"27"),"crcTable")
+         setproperty QName(PrivateNamespace(null,"#PNGEncoder"),"crcTable")
          pushbyte 0
          convert_u
          setlocal 9
-         jump ofs0092
-         ofs0030:
+         jump ofs1
+         ofs2:
          label
          getlocal 9
          convert_u
@@ -262,13 +262,13 @@ package com.adobe.images
          pushbyte 0
          convert_u
          setlocal 10
-         jump ofs007a
-         ofs003f:
+         jump ofs3
+         ofs4:
          label
          getlocal 8
          pushbyte 1
          bitand
-         iffalse ofs0067
+         iffalse ofs5
          findpropstrict QName(PackageNamespace(""),"uint")
          findpropstrict QName(PackageNamespace(""),"uint")
          pushdouble 3988292384
@@ -282,8 +282,8 @@ package com.adobe.images
          callproperty QName(PackageNamespace(""),"uint"), 1
          convert_u
          setlocal 8
-         jump ofs0074
-         ofs0067:
+         jump ofs6
+         ofs5:
          findpropstrict QName(PackageNamespace(""),"uint")
          getlocal 8
          pushbyte 1
@@ -291,39 +291,39 @@ package com.adobe.images
          callproperty QName(PackageNamespace(""),"uint"), 1
          convert_u
          setlocal 8
-         ofs0074:
+         ofs6:
          getlocal 10
          increment
          convert_u
          setlocal 10
-         ofs007a:
+         ofs3:
          getlocal 10
          pushbyte 8
-         iflt ofs003f
-         getlex QName(PrivateNamespace(null,"27"),"crcTable")
+         iflt ofs4
+         getlex QName(PrivateNamespace(null,"#PNGEncoder"),"crcTable")
          getlocal 9
          getlocal 8
-         setproperty MultinameL([PrivateNamespace(null,"27"),PackageNamespace(""),PrivateNamespace(null,"44"),PackageNamespace("com.adobe.images"),PackageInternalNs("com.adobe.images"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("flash.geom"),ProtectedNamespace("com.adobe.images:PNGEncoder"),StaticProtectedNs("com.adobe.images:PNGEncoder"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#PNGEncoder"),PackageNamespace(""),PrivateNamespace(null,"#PNGEncoder/1"),PackageNamespace("com.adobe.images"),PackageInternalNs("com.adobe.images"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("flash.geom"),ProtectedNamespace("com.adobe.images:PNGEncoder"),StaticProtectedNs("com.adobe.images:PNGEncoder"),StaticProtectedNs("Object")])
          getlocal 9
          increment
          convert_u
          setlocal 9
-         ofs0092:
+         ofs1:
          getlocal 9
          pushshort 256
-         iflt ofs0030
-         ofs009b:
+         iflt ofs2
+         ofs0:
          pushbyte 0
          convert_u
          setlocal 4
          getlocal3
          pushnull
-         ifeq ofs00ad
+         ifeq ofs7
          getlocal3
          getproperty QName(PackageNamespace(""),"length")
          convert_u
          setlocal 4
-         ofs00ad:
+         ofs7:
          getlocal1
          getlocal 4
          callpropvoid QName(PackageNamespace(""),"writeUnsignedInt"), 1
@@ -336,11 +336,11 @@ package com.adobe.images
          callpropvoid QName(PackageNamespace(""),"writeUnsignedInt"), 1
          getlocal3
          pushnull
-         ifeq ofs00cd
+         ifeq ofs8
          getlocal1
          getlocal3
          callpropvoid QName(PackageNamespace(""),"writeBytes"), 1
-         ofs00cd:
+         ofs8:
          getlocal1
          getproperty QName(PackageNamespace(""),"position")
          convert_u
@@ -353,11 +353,11 @@ package com.adobe.images
          setlocal 8
          pushbyte 0
          setlocal 7
-         jump ofs0114
-         ofs00e7:
+         jump ofs9
+         ofs10:
          label
          findpropstrict QName(PackageNamespace(""),"uint")
-         getlex QName(PrivateNamespace(null,"27"),"crcTable")
+         getlex QName(PrivateNamespace(null,"#PNGEncoder"),"crcTable")
          getlocal 8
          getlocal1
          callproperty QName(PackageNamespace(""),"readUnsignedByte"), 0
@@ -366,7 +366,7 @@ package com.adobe.images
          pushshort 255
          callproperty QName(PackageNamespace(""),"uint"), 1
          bitand
-         getproperty MultinameL([PrivateNamespace(null,"27"),PackageNamespace(""),PrivateNamespace(null,"44"),PackageNamespace("com.adobe.images"),PackageInternalNs("com.adobe.images"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("flash.geom"),ProtectedNamespace("com.adobe.images:PNGEncoder"),StaticProtectedNs("com.adobe.images:PNGEncoder"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#PNGEncoder"),PackageNamespace(""),PrivateNamespace(null,"#PNGEncoder/1"),PackageNamespace("com.adobe.images"),PackageInternalNs("com.adobe.images"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("flash.geom"),ProtectedNamespace("com.adobe.images:PNGEncoder"),StaticProtectedNs("com.adobe.images:PNGEncoder"),StaticProtectedNs("Object")])
          findpropstrict QName(PackageNamespace(""),"uint")
          getlocal 8
          pushbyte 8
@@ -377,12 +377,12 @@ package com.adobe.images
          convert_u
          setlocal 8
          inclocal_i 7
-         ofs0114:
+         ofs9:
          getlocal 7
          getlocal 6
          getlocal 5
          subtract
-         iflt ofs00e7
+         iflt ofs10
          findpropstrict QName(PackageNamespace(""),"uint")
          getlocal 8
          findpropstrict QName(PackageNamespace(""),"uint")
@@ -423,7 +423,7 @@ findpropstrict Multiname("PNGEncoder",[PackageNamespace("com.adobe.images")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass 29
+newclass #PNGEncoder
 popscope
 initproperty QName(PackageNamespace("com.adobe.images"),"PNGEncoder")
 returnvoid

@@ -2,7 +2,7 @@ package mx.graphics.shaderClasses
 {
    import mx.core.ByteArrayAsset;
    
-   [Embed(source="/_assets/52_mx.graphics.shaderClasses.HueShader_ShaderClass_mx.graphics.shaderClasses.HueShader_ShaderClass.bin", mimeType="application/octet-stream")]
+   [Embed]
    public class HueShader_ShaderClass extends ByteArrayAsset
    {
       public function HueShader_ShaderClass()

@@ -2,7 +2,7 @@ package
 {
    import mx.core.BitmapAsset;
    
-   [Embed(source="/_assets/231_Art_ItemGravityShock.png")]
+   [Embed]
    public class Art_ItemGravityShock extends BitmapAsset
    {
       public function Art_ItemGravityShock()

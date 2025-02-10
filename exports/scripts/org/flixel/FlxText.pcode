@@ -70,10 +70,10 @@ package org.flixel
          callpropvoid QName(PackageNamespace(""),"createGraphic"), 3
          getlocal 4
          pushnull
-         ifne ofs001e
+         ifne ofs0
          pushstring ""
          setlocal 4
-         ofs001e:
+         ofs0:
          getlocal0
          findpropstrict QName(PackageNamespace("flash.text"),"TextField")
          constructprop QName(PackageNamespace("flash.text"),"TextField"), 0
@@ -124,18 +124,18 @@ package org.flixel
          getlocal 4
          getproperty QName(PackageNamespace(""),"length")
          pushbyte 0
-         ifnle ofs009f
+         ifnle ofs1
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_tf")
          pushbyte 1
          setproperty QName(PackageNamespace(""),"height")
-         jump ofs00a8
-         ofs009f:
+         jump ofs2
+         ofs1:
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_tf")
          pushbyte 10
          setproperty QName(PackageNamespace(""),"height")
-         ofs00a8:
+         ofs2:
          getlocal0
          pushtrue
          initproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_regen")
@@ -186,10 +186,10 @@ package org.flixel
          pushscope
          getlocal1
          pushnull
-         ifne ofs000b
+         ifne ofs0
          pushstring ""
          setlocal1
-         ofs000b:
+         ofs0:
          getlocal0
          callproperty QName(ProtectedNamespace("org.flixel:FlxText"),"dtfCopy"), 0
          coerce QName(PackageNamespace("flash.text"),"TextFormat")
@@ -365,13 +365,13 @@ package org.flixel
          getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_tf")
          getproperty QName(PackageNamespace(""),"text")
          getlocal2
-         ifeq ofs0029
+         ifeq ofs0
          getlocal0
          pushtrue
          initproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_regen")
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxText"),"calcFrame"), 0
-         ofs0029:
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -859,7 +859,7 @@ package org.flixel
          setlocal 4
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_regen")
-         iffalse ofs00cb
+         iffalse ofs0
          pushbyte 0
          convert_u
          setlocal1
@@ -871,8 +871,8 @@ package org.flixel
          findproperty QName(PackageNamespace(""),"height")
          pushbyte 0
          initproperty QName(PackageNamespace(""),"height")
-         jump ofs0050
-         ofs0034:
+         jump ofs1
+         ofs2:
          label
          findproperty QName(PackageNamespace(""),"height")
          getlex QName(PackageNamespace(""),"height")
@@ -888,10 +888,10 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"height")
          add
          initproperty QName(PackageNamespace(""),"height")
-         ofs0050:
+         ofs1:
          getlocal1
          getlocal2
-         iflt ofs0034
+         iflt ofs2
          findproperty QName(PackageNamespace(""),"height")
          getlex QName(PackageNamespace(""),"height")
          pushbyte 4
@@ -937,20 +937,20 @@ package org.flixel
          getlocal0
          pushfalse
          initproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_regen")
-         jump ofs00d7
-         ofs00cb:
+         jump ofs3
+         ofs0:
          getlex QName(ProtectedNamespace("org.flixel:FlxSprite"),"_pixels")
          getlex QName(ProtectedNamespace("org.flixel:FlxSprite"),"_flashRect")
          pushbyte 0
          callpropvoid QName(PackageNamespace(""),"fillRect"), 2
-         ofs00d7:
+         ofs3:
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_tf")
          pushnull
          equals
          not
          dup
-         iffalse ofs00ee
+         iffalse ofs4
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_tf")
@@ -958,9 +958,9 @@ package org.flixel
          pushnull
          equals
          not
-         ofs00ee:
+         ofs4:
          dup
-         iffalse ofs0101
+         iffalse ofs5
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_tf")
@@ -968,8 +968,8 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"length")
          pushbyte 0
          greaterthan
-         ofs0101:
-         iffalse ofs0308
+         ofs5:
+         iffalse ofs6
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_tf")
          getproperty QName(PackageNamespace(""),"defaultTextFormat")
@@ -985,15 +985,15 @@ package org.flixel
          pushstring "center"
          equals
          dup
-         iffalse ofs0133
+         iffalse ofs7
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_tf")
          getproperty QName(PackageNamespace(""),"numLines")
          pushbyte 1
          equals
-         ofs0133:
-         iffalse ofs0182
+         ofs7:
+         iffalse ofs8
          findpropstrict QName(PackageNamespace("flash.text"),"TextFormat")
          getlocal3
          getproperty QName(PackageNamespace(""),"font")
@@ -1028,10 +1028,10 @@ package org.flixel
          callproperty QName(PackageNamespace(""),"floor"), 1
          pushbyte 0
          callpropvoid QName(PackageNamespace(""),"translate"), 2
-         ofs0182:
+         ofs8:
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_outline")
-         iffalse ofs024f
+         iffalse ofs9
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_tf")
          findpropstrict QName(PackageNamespace("flash.text"),"TextFormat")
@@ -1112,11 +1112,11 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"align")
          constructprop QName(PackageNamespace("flash.text"),"TextFormat"), 9
          callpropvoid QName(PackageNamespace(""),"setTextFormat"), 1
-         ofs024f:
+         ofs9:
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_shadow")
          pushbyte 0
-         ifngt ofs02d5
+         ifngt ofs10
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_tf")
          findpropstrict QName(PackageNamespace("flash.text"),"TextFormat")
@@ -1173,7 +1173,7 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"align")
          constructprop QName(PackageNamespace("flash.text"),"TextFormat"), 9
          callpropvoid QName(PackageNamespace(""),"setTextFormat"), 1
-         ofs02d5:
+         ofs10:
          getlex QName(ProtectedNamespace("org.flixel:FlxSprite"),"_pixels")
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_tf")
@@ -1198,12 +1198,12 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"align")
          constructprop QName(PackageNamespace("flash.text"),"TextFormat"), 9
          callpropvoid QName(PackageNamespace(""),"setTextFormat"), 1
-         ofs0308:
+         ofs6:
          getlex QName(ProtectedNamespace("org.flixel:FlxSprite"),"_framePixels")
          pushnull
          equals
          dup
-         iftrue ofs0321
+         iftrue ofs11
          pop
          getlex QName(ProtectedNamespace("org.flixel:FlxSprite"),"_framePixels")
          getproperty QName(PackageNamespace(""),"width")
@@ -1211,9 +1211,9 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"width")
          equals
          not
-         ofs0321:
+         ofs11:
          dup
-         iftrue ofs0335
+         iftrue ofs12
          pop
          getlex QName(ProtectedNamespace("org.flixel:FlxSprite"),"_framePixels")
          getproperty QName(PackageNamespace(""),"height")
@@ -1221,8 +1221,8 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"height")
          equals
          not
-         ofs0335:
-         iffalse ofs0353
+         ofs12:
+         iffalse ofs13
          findproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_framePixels")
          findpropstrict QName(PackageNamespace("flash.display"),"BitmapData")
          getlex QName(ProtectedNamespace("org.flixel:FlxSprite"),"_pixels")
@@ -1233,7 +1233,7 @@ package org.flixel
          pushbyte 0
          constructprop QName(PackageNamespace("flash.display"),"BitmapData"), 4
          initproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_framePixels")
-         ofs0353:
+         ofs13:
          getlex QName(ProtectedNamespace("org.flixel:FlxSprite"),"_framePixels")
          getlex QName(ProtectedNamespace("org.flixel:FlxSprite"),"_pixels")
          getlex QName(ProtectedNamespace("org.flixel:FlxSprite"),"_flashRect")
@@ -1241,15 +1241,15 @@ package org.flixel
          callpropvoid QName(PackageNamespace(""),"copyPixels"), 3
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"showBounds")
-         iffalse ofs0374
+         iffalse ofs14
          findpropstrict QName(ProtectedNamespace("org.flixel:FlxSprite"),"drawBounds")
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxSprite"),"drawBounds"), 0
-         ofs0374:
+         ofs14:
          getlex QName(PackageNamespace(""),"solid")
-         iffalse ofs0382
+         iffalse ofs15
          findpropstrict QName(PackageNamespace(""),"refreshHulls")
          callpropvoid QName(PackageNamespace(""),"refreshHulls"), 0
-         ofs0382:
+         ofs15:
          returnvoid
          end ; code
          end ; body
@@ -1360,7 +1360,7 @@ pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
 pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
-newclass 88
+newclass #FlxText
 popscope
 popscope
 popscope

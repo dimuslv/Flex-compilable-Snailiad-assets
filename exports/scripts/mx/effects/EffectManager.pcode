@@ -65,23 +65,23 @@ package mx.effects
       findproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effectsPlaying")
       newarray 0
       setproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effectsPlaying")
-      findproperty QName(PrivateNamespace(null,"252"),"effectTriggersForEvent")
+      findproperty QName(PrivateNamespace(null,"#EffectManager"),"effectTriggersForEvent")
       newobject 0
-      setproperty QName(PrivateNamespace(null,"252"),"effectTriggersForEvent")
-      findproperty QName(PrivateNamespace(null,"252"),"eventsForEffectTriggers")
+      setproperty QName(PrivateNamespace(null,"#EffectManager"),"effectTriggersForEvent")
+      findproperty QName(PrivateNamespace(null,"#EffectManager"),"eventsForEffectTriggers")
       newobject 0
-      setproperty QName(PrivateNamespace(null,"252"),"eventsForEffectTriggers")
-      findproperty QName(PrivateNamespace(null,"252"),"targetsInfo")
+      setproperty QName(PrivateNamespace(null,"#EffectManager"),"eventsForEffectTriggers")
+      findproperty QName(PrivateNamespace(null,"#EffectManager"),"targetsInfo")
       newarray 0
-      setproperty QName(PrivateNamespace(null,"252"),"targetsInfo")
-      findproperty QName(PrivateNamespace(null,"252"),"eventHandlingSuspendCount")
+      setproperty QName(PrivateNamespace(null,"#EffectManager"),"targetsInfo")
+      findproperty QName(PrivateNamespace(null,"#EffectManager"),"eventHandlingSuspendCount")
       pushbyte 0
-      setproperty QName(PrivateNamespace(null,"252"),"eventHandlingSuspendCount")
-      findproperty QName(PrivateNamespace(null,"252"),"effects")
+      setproperty QName(PrivateNamespace(null,"#EffectManager"),"eventHandlingSuspendCount")
+      findproperty QName(PrivateNamespace(null,"#EffectManager"),"effects")
       findpropstrict QName(PackageNamespace("flash.utils"),"Dictionary")
       pushtrue
       constructprop QName(PackageNamespace("flash.utils"),"Dictionary"), 1
-      setproperty QName(PrivateNamespace(null,"252"),"effects")
+      setproperty QName(PrivateNamespace(null,"#EffectManager"),"effects")
       returnvoid
       end ; code
       end ; body
@@ -129,15 +129,15 @@ package mx.effects
          code
          getlocal0
          pushscope
-         findproperty QName(PrivateNamespace(null,"252"),"weakKeys")
+         findproperty QName(PrivateNamespace(null,"#EffectManager"),"weakKeys")
          findpropstrict QName(PackageNamespace("flash.utils"),"Dictionary")
          pushtrue
          constructprop QName(PackageNamespace("flash.utils"),"Dictionary"), 1
-         setproperty QName(PrivateNamespace(null,"252"),"weakKeys")
-         getlex QName(PrivateNamespace(null,"252"),"weakKeys")
+         setproperty QName(PrivateNamespace(null,"#EffectManager"),"weakKeys")
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"weakKeys")
          getlocal1
          pushtrue
-         setproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          returnvoid
          end ; code
          end ; body
@@ -167,11 +167,11 @@ package mx.effects
          setlocal1
          pushbyte 0
          setlocal2
-         getlex QName(PrivateNamespace(null,"252"),"weakKeys")
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"weakKeys")
          coerce_a
          setlocal3
-         jump ofs0019
-         ofs0011:
+         jump ofs0
+         ofs1:
          label
          getlocal3
          getlocal2
@@ -180,9 +180,9 @@ package mx.effects
          setlocal1
          getlocal1
          returnvalue
-         ofs0019:
+         ofs0:
          hasnext2 3, 2
-         iftrue ofs0011
+         iftrue ofs1
          kill 3
          kill 2
          pushnull
@@ -194,7 +194,7 @@ package mx.effects
       
       private static function get resourceManager() : IResourceManager
       {
-         trait getter QName(PrivateNamespace(null,"252"),"resourceManager")
+         trait getter QName(PrivateNamespace(null,"#EffectManager"),"resourceManager")
          flag FINAL
          dispid 5
          method
@@ -210,14 +210,14 @@ package mx.effects
          code
          getlocal0
          pushscope
-         getlex QName(PrivateNamespace(null,"252"),"_resourceManager")
-         iftrue ofs0016
-         findproperty QName(PrivateNamespace(null,"252"),"_resourceManager")
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"_resourceManager")
+         iftrue ofs0
+         findproperty QName(PrivateNamespace(null,"#EffectManager"),"_resourceManager")
          getlex QName(PackageNamespace("mx.resources"),"ResourceManager")
          callproperty QName(PackageNamespace(""),"getInstance"), 0
-         setproperty QName(PrivateNamespace(null,"252"),"_resourceManager")
-         ofs0016:
-         getlex QName(PrivateNamespace(null,"252"),"_resourceManager")
+         setproperty QName(PrivateNamespace(null,"#EffectManager"),"_resourceManager")
+         ofs0:
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"_resourceManager")
          returnvalue
          end ; code
          end ; body
@@ -242,15 +242,15 @@ package mx.effects
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"252"),"eventHandlingSuspendCount")
+         findpropstrict QName(PrivateNamespace(null,"#EffectManager"),"eventHandlingSuspendCount")
          dup
          setlocal1
-         getproperty QName(PrivateNamespace(null,"252"),"eventHandlingSuspendCount")
+         getproperty QName(PrivateNamespace(null,"#EffectManager"),"eventHandlingSuspendCount")
          increment
          setlocal2
          getlocal1
          getlocal2
-         setproperty QName(PrivateNamespace(null,"252"),"eventHandlingSuspendCount")
+         setproperty QName(PrivateNamespace(null,"#EffectManager"),"eventHandlingSuspendCount")
          kill 2
          kill 1
          returnvoid
@@ -277,15 +277,15 @@ package mx.effects
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"252"),"eventHandlingSuspendCount")
+         findpropstrict QName(PrivateNamespace(null,"#EffectManager"),"eventHandlingSuspendCount")
          dup
          setlocal1
-         getproperty QName(PrivateNamespace(null,"252"),"eventHandlingSuspendCount")
+         getproperty QName(PrivateNamespace(null,"#EffectManager"),"eventHandlingSuspendCount")
          decrement
          setlocal2
          getlocal1
          getlocal2
-         setproperty QName(PrivateNamespace(null,"252"),"eventHandlingSuspendCount")
+         setproperty QName(PrivateNamespace(null,"#EffectManager"),"eventHandlingSuspendCount")
          kill 2
          kill 1
          returnvoid
@@ -324,29 +324,29 @@ package mx.effects
          decrement
          convert_i
          setlocal3
-         jump ofs0038
-         ofs0017:
+         jump ofs0
+         ofs1:
          label
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effectsPlaying")
          getlocal3
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         getproperty Multiname("instance",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("instance",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("mx.effects"),"EffectInstance")
          dup
          setlocal 4
          getproperty QName(PackageNamespace(""),"target")
          getlocal1
-         ifne ofs0035
+         ifne ofs2
          getlocal 4
          callpropvoid QName(PackageNamespace(""),"end"), 0
-         ofs0035:
+         ofs2:
          getlocal3
          decrement_i
          setlocal3
-         ofs0038:
+         ofs0:
          getlocal3
          pushbyte 0
-         ifge ofs0017
+         ifge ofs1
          returnvoid
          end ; code
          end ; body
@@ -373,9 +373,9 @@ package mx.effects
          code
          getlocal0
          pushscope
-         getlex QName(PrivateNamespace(null,"252"),"eventsForEffectTriggers")
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"eventsForEffectTriggers")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          coerce_s
          setlocal3
          getlocal3
@@ -383,14 +383,14 @@ package mx.effects
          equals
          not
          dup
-         iffalse ofs001a
+         iffalse ofs0
          pop
          getlocal3
          pushstring ""
          equals
          not
-         ofs001a:
-         iffalse ofs0031
+         ofs0:
+         iffalse ofs1
          getlocal2
          getlocal3
          getlex QName(PackageNamespace("mx.effects"),"EffectManager")
@@ -398,8 +398,8 @@ package mx.effects
          pushfalse
          getlex QName(PackageNamespace("mx.core"),"EventPriority")
          getproperty QName(PackageNamespace(""),"EFFECT")
-         callpropvoid Multiname("addEventListener",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 4
-         ofs0031:
+         callpropvoid Multiname("addEventListener",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 4
+         ofs1:
          returnvoid
          end ; code
          end ; body
@@ -494,42 +494,42 @@ package mx.effects
          getlocal2
          setslot 2
          getscopeobject 1
-         getlex QName(PrivateNamespace(null,"252"),"effectTriggersForEvent")
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"effectTriggersForEvent")
          getscopeobject 1
          getslot 2
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          coerce_s
          setslot 3
          getscopeobject 1
          getslot 3
          pushstring ""
-         ifne ofs0058
+         ifne ofs0
          getscopeobject 1
          getscopeobject 1
          getslot 2
          pushstring "Effect"
          add
          setslot 3
-         ofs0058:
+         ofs0:
          getscopeobject 1
          getscopeobject 1
          getslot 1
          getscopeobject 1
          getslot 3
-         callproperty Multiname("getStyle",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
+         callproperty Multiname("getStyle",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
          coerce QName(PackageNamespace(""),"Object")
          setslot 4
          getscopeobject 1
          getslot 4
-         iftrue ofs0074
+         iftrue ofs1
          pushnull
          returnvalue
-         ofs0074:
+         ofs1:
          getscopeobject 1
          getslot 4
          getlex QName(PackageNamespace(""),"Class")
          istypelate
-         iffalse ofs0099
+         iffalse ofs2
          getscopeobject 1
          findpropstrict QName(PackageNamespace(""),"Class")
          getscopeobject 1
@@ -543,42 +543,42 @@ package mx.effects
          getslot 1
          construct 1
          returnvalue
-         ofs0099:
+         ofs2:
          getscopeobject 1
          getslot 4
          getlex QName(PackageNamespace(""),"String")
          istypelate
-         iffalse ofs00da
+         iffalse ofs3
          getscopeobject 1
          getscopeobject 1
          getslot 1
-         getproperty Multiname("parentDocument",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("parentDocument",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace(""),"Object")
          setslot 8
          getscopeobject 1
          getslot 8
-         iftrue ofs00c5
+         iftrue ofs4
          getscopeobject 1
          getlex QName(PackageNamespace("mx.core"),"FlexGlobals")
          getproperty QName(PackageNamespace(""),"topLevelApplication")
          coerce QName(PackageNamespace(""),"Object")
          setslot 8
-         ofs00c5:
+         ofs4:
          getscopeobject 1
          getscopeobject 1
          getslot 8
          getscopeobject 1
          getslot 4
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("mx.effects"),"Effect")
          setslot 7
-         jump ofs00f4
-         ofs00da:
+         jump ofs5
+         ofs3:
          getscopeobject 1
          getslot 4
          getlex QName(PackageNamespace("mx.effects"),"Effect")
          istypelate
-         iffalse ofs00f4
+         iffalse ofs5
          getscopeobject 1
          findpropstrict QName(PackageNamespace("mx.effects"),"Effect")
          getscopeobject 1
@@ -586,10 +586,10 @@ package mx.effects
          callproperty QName(PackageNamespace("mx.effects"),"Effect"), 1
          coerce QName(PackageNamespace("mx.effects"),"Effect")
          setslot 7
-         ofs00f4:
+         ofs5:
          getscopeobject 1
          getslot 7
-         iffalse ofs010c
+         iffalse ofs6
          getscopeobject 1
          getslot 7
          getscopeobject 1
@@ -598,9 +598,9 @@ package mx.effects
          getscopeobject 1
          getslot 7
          returnvalue
-         ofs010c:
-         jump ofs0121
-         ofs0110:
+         ofs6:
+         jump ofs7
+         ofs8:
          getlocal0
          pushscope
          getlocal3
@@ -614,27 +614,27 @@ package mx.effects
          setslot 1
          popscope
          kill 4
-         ofs0121:
+         ofs7:
          getscopeobject 1
          getslot 1
          getlex QName(PackageNamespace("mx.core"),"UIComponent")
          istypelate
          dup
-         iffalse ofs0136
+         iffalse ofs9
          pop
          getscopeobject 1
          getslot 1
-         getproperty Multiname("moduleFactory",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("moduleFactory",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          convert_b
-         ofs0136:
-         iffalse ofs0180
+         ofs9:
+         iffalse ofs10
          getscopeobject 1
          getscopeobject 1
          getslot 1
-         getproperty Multiname("moduleFactory",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         callproperty Multiname("info",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 0
+         getproperty Multiname("moduleFactory",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         callproperty Multiname("info",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 0
          pushstring "currentDomain"
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("flash.system"),"ApplicationDomain")
          setslot 9
          getscopeobject 1
@@ -644,7 +644,7 @@ package mx.effects
          getslot 4
          add
          callproperty QName(PackageNamespace(""),"hasDefinition"), 1
-         iffalse ofs0180
+         iffalse ofs10
          getscopeobject 1
          findpropstrict QName(PackageNamespace(""),"Class")
          getscopeobject 1
@@ -657,45 +657,45 @@ package mx.effects
          callproperty QName(PackageNamespace(""),"Class"), 1
          coerce QName(PackageNamespace(""),"Class")
          setslot 5
-         ofs0180:
+         ofs10:
          getscopeobject 1
          getslot 5
-         iftrue ofs01a6
+         iftrue ofs11
          getscopeobject 1
          findpropstrict QName(PackageNamespace(""),"Class")
          getscopeobject 1
          getslot 1
-         getproperty Multiname("systemManager",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("systemManager",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pushstring "mx.effects."
          getscopeobject 1
          getslot 4
          add
-         callproperty Multiname("getDefinitionByName",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
+         callproperty Multiname("getDefinitionByName",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
          callproperty QName(PackageNamespace(""),"Class"), 1
          coerce QName(PackageNamespace(""),"Class")
          setslot 5
-         ofs01a6:
+         ofs11:
          getscopeobject 1
          getslot 5
-         iffalse ofs01b9
+         iffalse ofs12
          getscopeobject 1
          getslot 5
          getscopeobject 1
          getslot 1
          construct 1
          returnvalue
-         ofs01b9:
+         ofs12:
          pushnull
          returnvalue
          end ; code
-         try from ofs0099 to ofs010c target ofs0110 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
+         try from ofs2 to ofs6 target ofs8 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
          end ; body
          end ; method
       }
       
       private static function animateSameProperty(param1:Effect, param2:Effect, param3:EffectInstance) : Boolean
       {
-         trait method QName(PrivateNamespace(null,"252"),"animateSameProperty")
+         trait method QName(PrivateNamespace(null,"#EffectManager"),"animateSameProperty")
          flag FINAL
          dispid 11
          method
@@ -732,7 +732,7 @@ package mx.effects
          getproperty QName(PackageNamespace(""),"target")
          getlocal3
          getproperty QName(PackageNamespace(""),"target")
-         ifne ofs0084
+         ifne ofs0
          getlocal1
          callproperty QName(PackageNamespace(""),"getAffectedProperties"), 0
          coerce QName(PackageNamespace(""),"Array")
@@ -751,35 +751,35 @@ package mx.effects
          setlocal 7
          pushbyte 0
          setlocal 8
-         jump ofs007c
-         ofs0052:
+         jump ofs1
+         ofs2:
          label
          pushbyte 0
          setlocal 9
-         jump ofs0072
-         ofs005b:
+         jump ofs3
+         ofs4:
          label
          getlocal 4
          getlocal 8
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlocal 5
          getlocal 9
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         ifne ofs0070
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ifne ofs5
          pushtrue
          returnvalue
-         ofs0070:
+         ofs5:
          inclocal_i 9
-         ofs0072:
+         ofs3:
          getlocal 9
          getlocal 7
-         iflt ofs005b
+         iflt ofs4
          inclocal_i 8
-         ofs007c:
+         ofs1:
          getlocal 8
          getlocal 6
-         iflt ofs0052
-         ofs0084:
+         iflt ofs2
+         ofs0:
          pushfalse
          returnvalue
          end ; code
@@ -806,11 +806,11 @@ package mx.effects
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"252"),"cacheOrUncacheTargetAsBitmap")
+         findpropstrict QName(PrivateNamespace(null,"#EffectManager"),"cacheOrUncacheTargetAsBitmap")
          getlocal1
          pushtrue
          pushtrue
-         callpropvoid QName(PrivateNamespace(null,"252"),"cacheOrUncacheTargetAsBitmap"), 3
+         callpropvoid QName(PrivateNamespace(null,"#EffectManager"),"cacheOrUncacheTargetAsBitmap"), 3
          returnvoid
          end ; code
          end ; body
@@ -836,11 +836,11 @@ package mx.effects
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"252"),"cacheOrUncacheTargetAsBitmap")
+         findpropstrict QName(PrivateNamespace(null,"#EffectManager"),"cacheOrUncacheTargetAsBitmap")
          getlocal1
          pushfalse
          pushtrue
-         callpropvoid QName(PrivateNamespace(null,"252"),"cacheOrUncacheTargetAsBitmap"), 3
+         callpropvoid QName(PrivateNamespace(null,"#EffectManager"),"cacheOrUncacheTargetAsBitmap"), 3
          returnvoid
          end ; code
          end ; body
@@ -866,11 +866,11 @@ package mx.effects
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"252"),"cacheOrUncacheTargetAsBitmap")
+         findpropstrict QName(PrivateNamespace(null,"#EffectManager"),"cacheOrUncacheTargetAsBitmap")
          getlocal1
          pushtrue
          pushfalse
-         callpropvoid QName(PrivateNamespace(null,"252"),"cacheOrUncacheTargetAsBitmap"), 3
+         callpropvoid QName(PrivateNamespace(null,"#EffectManager"),"cacheOrUncacheTargetAsBitmap"), 3
          returnvoid
          end ; code
          end ; body
@@ -896,11 +896,11 @@ package mx.effects
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"252"),"cacheOrUncacheTargetAsBitmap")
+         findpropstrict QName(PrivateNamespace(null,"#EffectManager"),"cacheOrUncacheTargetAsBitmap")
          getlocal1
          pushfalse
          pushfalse
-         callpropvoid QName(PrivateNamespace(null,"252"),"cacheOrUncacheTargetAsBitmap"), 3
+         callpropvoid QName(PrivateNamespace(null,"#EffectManager"),"cacheOrUncacheTargetAsBitmap"), 3
          returnvoid
          end ; code
          end ; body
@@ -909,7 +909,7 @@ package mx.effects
       
       private static function cacheOrUncacheTargetAsBitmap(param1:IUIComponent, param2:Boolean = true, param3:Boolean = true) : void
       {
-         trait method QName(PrivateNamespace(null,"252"),"cacheOrUncacheTargetAsBitmap")
+         trait method QName(PrivateNamespace(null,"#EffectManager"),"cacheOrUncacheTargetAsBitmap")
          flag FINAL
          dispid 16
          method
@@ -938,36 +938,36 @@ package mx.effects
          pushnull
          coerce QName(PackageNamespace(""),"Object")
          setlocal 6
-         getlex QName(PrivateNamespace(null,"252"),"targetsInfo")
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"targetsInfo")
          getproperty QName(PackageNamespace(""),"length")
          convert_i
          setlocal 4
          pushbyte 0
          setlocal 5
-         jump ofs0043
-         ofs0020:
+         jump ofs0
+         ofs1:
          label
-         getlex QName(PrivateNamespace(null,"252"),"targetsInfo")
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"targetsInfo")
          getlocal 5
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         getproperty Multiname("target",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("target",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlocal1
-         ifne ofs0041
-         getlex QName(PrivateNamespace(null,"252"),"targetsInfo")
+         ifne ofs2
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"targetsInfo")
          getlocal 5
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace(""),"Object")
          setlocal 6
-         jump ofs004b
-         ofs0041:
+         jump ofs3
+         ofs2:
          inclocal_i 5
-         ofs0043:
+         ofs0:
          getlocal 5
          getlocal 4
-         iflt ofs0020
-         ofs004b:
+         iflt ofs1
+         ofs3:
          getlocal 6
-         iftrue ofs006e
+         iftrue ofs4
          pushstring "target"
          getlocal1
          pushstring "bitmapEffectsCount"
@@ -977,69 +977,69 @@ package mx.effects
          newobject 3
          coerce QName(PackageNamespace(""),"Object")
          setlocal 6
-         getlex QName(PrivateNamespace(null,"252"),"targetsInfo")
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"targetsInfo")
          getlocal 6
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         ofs006e:
+         ofs4:
          getlocal2
-         iffalse ofs0100
+         iffalse ofs5
          getlocal3
-         iffalse ofs00b5
+         iffalse ofs6
          getlocal 6
          dup
          setlocal 7
-         getproperty Multiname("bitmapEffectsCount",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("bitmapEffectsCount",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          increment
          setlocal 8
          getlocal 7
          getlocal 8
-         setproperty Multiname("bitmapEffectsCount",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         setproperty Multiname("bitmapEffectsCount",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          kill 8
          kill 7
          getlocal 6
-         getproperty Multiname("vectorEffectsCount",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("vectorEffectsCount",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pushbyte 0
          equals
          dup
-         iffalse ofs00a1
+         iffalse ofs7
          pop
          getlocal1
          getlex QName(PackageNamespace("mx.core"),"IDeferredInstantiationUIComponent")
          istypelate
-         ofs00a1:
-         iffalse ofs00b1
+         ofs7:
+         iffalse ofs8
          findpropstrict QName(PackageNamespace("mx.core"),"IDeferredInstantiationUIComponent")
          getlocal1
          callproperty QName(PackageNamespace("mx.core"),"IDeferredInstantiationUIComponent"), 1
          pushtrue
          setproperty QName(Namespace("mx.core:IDeferredInstantiationUIComponent"),"cacheHeuristic")
-         ofs00b1:
-         jump ofs00fc
-         ofs00b5:
+         ofs8:
+         jump ofs9
+         ofs6:
          getlocal 6
          dup
          setlocal 7
-         getproperty Multiname("vectorEffectsCount",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("vectorEffectsCount",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          convert_d
          dup
          increment
          setlocal 8
          getlocal 7
          getlocal 8
-         setproperty Multiname("vectorEffectsCount",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         setproperty Multiname("vectorEffectsCount",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          kill 8
          kill 7
          pushbyte 0
          equals
          dup
-         iffalse ofs00db
+         iffalse ofs10
          pop
          getlocal1
          getlex QName(PackageNamespace("mx.core"),"IDeferredInstantiationUIComponent")
          istypelate
-         ofs00db:
+         ofs10:
          dup
-         iffalse ofs00f3
+         iffalse ofs11
          pop
          findpropstrict QName(PackageNamespace("mx.core"),"IDeferredInstantiationUIComponent")
          getlocal1
@@ -1048,137 +1048,137 @@ package mx.effects
          getlex QName(PackageNamespace("mx.core"),"UIComponentCachePolicy")
          getproperty QName(PackageNamespace(""),"AUTO")
          equals
-         ofs00f3:
-         iffalse ofs00fc
+         ofs11:
+         iffalse ofs9
          getlocal1
          pushfalse
          setproperty QName(Namespace("mx.core:IFlexDisplayObject"),"cacheAsBitmap")
-         ofs00fc:
-         jump ofs01fc
-         ofs0100:
+         ofs9:
+         jump ofs12
+         ofs5:
          getlocal3
-         iffalse ofs013f
+         iffalse ofs13
          getlocal 6
-         getproperty Multiname("bitmapEffectsCount",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("bitmapEffectsCount",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pushbyte 0
-         ifeq ofs0126
+         ifeq ofs14
          getlocal 6
          dup
          setlocal 7
-         getproperty Multiname("bitmapEffectsCount",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("bitmapEffectsCount",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          decrement
          setlocal 8
          getlocal 7
          getlocal 8
-         setproperty Multiname("bitmapEffectsCount",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         setproperty Multiname("bitmapEffectsCount",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          kill 8
          kill 7
-         ofs0126:
+         ofs14:
          getlocal1
          getlex QName(PackageNamespace("mx.core"),"IDeferredInstantiationUIComponent")
          istypelate
-         iffalse ofs013b
+         iffalse ofs15
          findpropstrict QName(PackageNamespace("mx.core"),"IDeferredInstantiationUIComponent")
          getlocal1
          callproperty QName(PackageNamespace("mx.core"),"IDeferredInstantiationUIComponent"), 1
          pushfalse
          setproperty QName(Namespace("mx.core:IDeferredInstantiationUIComponent"),"cacheHeuristic")
-         ofs013b:
-         jump ofs01a7
-         ofs013f:
+         ofs15:
+         jump ofs16
+         ofs13:
          getlocal 6
-         getproperty Multiname("vectorEffectsCount",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("vectorEffectsCount",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pushbyte 0
-         ifeq ofs01a7
+         ifeq ofs16
          getlocal 6
          dup
          setlocal 7
-         getproperty Multiname("vectorEffectsCount",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("vectorEffectsCount",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          decrement
          dup
          setlocal 8
          getlocal 7
          getlocal 8
-         setproperty Multiname("vectorEffectsCount",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         setproperty Multiname("vectorEffectsCount",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          kill 8
          kill 7
          pushbyte 0
          equals
          dup
-         iffalse ofs0173
+         iffalse ofs17
          pop
          getlocal 6
-         getproperty Multiname("bitmapEffectsCount",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("bitmapEffectsCount",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pushbyte 0
          equals
          not
-         ofs0173:
-         iffalse ofs01a7
+         ofs17:
+         iffalse ofs16
          getlocal 6
-         getproperty Multiname("bitmapEffectsCount",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("bitmapEffectsCount",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          convert_i
          setlocal 4
          pushbyte 0
          setlocal 5
-         jump ofs019f
-         ofs0187:
+         jump ofs18
+         ofs19:
          label
          getlocal1
          getlex QName(PackageNamespace("mx.core"),"IDeferredInstantiationUIComponent")
          istypelate
-         iffalse ofs019d
+         iffalse ofs20
          findpropstrict QName(PackageNamespace("mx.core"),"IDeferredInstantiationUIComponent")
          getlocal1
          callproperty QName(PackageNamespace("mx.core"),"IDeferredInstantiationUIComponent"), 1
          pushtrue
          setproperty QName(Namespace("mx.core:IDeferredInstantiationUIComponent"),"cacheHeuristic")
-         ofs019d:
+         ofs20:
          inclocal_i 5
-         ofs019f:
+         ofs18:
          getlocal 5
          getlocal 4
-         iflt ofs0187
-         ofs01a7:
+         iflt ofs19
+         ofs16:
          getlocal 6
-         getproperty Multiname("bitmapEffectsCount",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("bitmapEffectsCount",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pushbyte 0
          equals
          dup
-         iffalse ofs01bd
+         iffalse ofs21
          pop
          getlocal 6
-         getproperty Multiname("vectorEffectsCount",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("vectorEffectsCount",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pushbyte 0
          equals
-         ofs01bd:
-         iffalse ofs01fc
-         getlex QName(PrivateNamespace(null,"252"),"targetsInfo")
+         ofs21:
+         iffalse ofs12
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"targetsInfo")
          getproperty QName(PackageNamespace(""),"length")
          convert_i
          setlocal 4
          pushbyte 0
          setlocal 5
-         jump ofs01f4
-         ofs01d2:
+         jump ofs22
+         ofs23:
          label
-         getlex QName(PrivateNamespace(null,"252"),"targetsInfo")
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"targetsInfo")
          getlocal 5
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         getproperty Multiname("target",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("target",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlocal1
-         ifne ofs01f2
-         getlex QName(PrivateNamespace(null,"252"),"targetsInfo")
+         ifne ofs24
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"targetsInfo")
          getlocal 5
          pushbyte 1
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"splice"), 2
-         jump ofs01fc
-         ofs01f2:
+         jump ofs12
+         ofs24:
          inclocal_i 5
-         ofs01f4:
+         ofs22:
          getlocal 5
          getlocal 4
-         iflt ofs01d2
-         ofs01fc:
+         iflt ofs23
+         ofs12:
          returnvoid
          end ; code
          end ; body
@@ -1209,10 +1209,10 @@ package mx.effects
          setlocal3
          getlocal1
          pushstring ""
-         ifeq ofs0057
+         ifeq ofs0
          getlocal2
          pushstring ""
-         ifne ofs0040
+         ifne ofs1
          getlocal1
          getproperty QName(PackageNamespace(""),"length")
          convert_d
@@ -1221,7 +1221,7 @@ package mx.effects
          pushbyte 6
          greaterthan
          dup
-         iffalse ofs002f
+         iffalse ofs2
          pop
          getlocal1
          getlocal3
@@ -1230,8 +1230,8 @@ package mx.effects
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"substring"), 1
          pushstring "Effect"
          equals
-         ofs002f:
-         iffalse ofs0040
+         ofs2:
+         iffalse ofs1
          getlocal1
          pushbyte 0
          getlocal3
@@ -1240,19 +1240,19 @@ package mx.effects
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"substring"), 2
          coerce_s
          setlocal2
-         ofs0040:
+         ofs1:
          getlocal2
          pushstring ""
-         ifeq ofs0057
-         getlex QName(PrivateNamespace(null,"252"),"effectTriggersForEvent")
+         ifeq ofs0
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"effectTriggersForEvent")
          getlocal2
          getlocal1
-         setproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         getlex QName(PrivateNamespace(null,"252"),"eventsForEffectTriggers")
+         setproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"eventsForEffectTriggers")
          getlocal1
          getlocal2
-         setproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         ofs0057:
+         setproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -1290,17 +1290,17 @@ package mx.effects
          getscopeobject 1
          getlocal1
          setslot 1
-         getlex QName(PrivateNamespace(null,"252"),"eventsForEffectTriggers")
-         iffalse ofs0034
-         ofs0012:
-         getlex QName(PrivateNamespace(null,"252"),"eventsForEffectTriggers")
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"eventsForEffectTriggers")
+         iffalse ofs0
+         ofs1:
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"eventsForEffectTriggers")
          getscopeobject 1
          getslot 1
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          returnvalue
-         ofs001d:
-         jump ofs0021
-         ofs0021:
+         ofs2:
+         jump ofs3
+         ofs3:
          getlocal0
          pushscope
          getlocal2
@@ -1316,11 +1316,11 @@ package mx.effects
          returnvalue
          popscope
          kill 3
-         ofs0034:
+         ofs0:
          pushstring ""
          returnvalue
          end ; code
-         try from ofs0012 to ofs001d target ofs0021 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
+         try from ofs1 to ofs2 target ofs3 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
          end ; body
          end ; method
       }
@@ -1361,19 +1361,19 @@ package mx.effects
          getproperty QName(PackageNamespace(""),"currentTarget")
          getlex QName(PackageNamespace("mx.core"),"IFlexDisplayObject")
          istypelate
-         iftrue ofs0023
+         iftrue ofs0
          returnvoid
-         ofs0023:
-         getlex QName(PrivateNamespace(null,"252"),"eventHandlingSuspendCount")
+         ofs0:
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"eventHandlingSuspendCount")
          pushbyte 0
-         ifngt ofs002d
+         ifngt ofs1
          returnvoid
-         ofs002d:
+         ofs1:
          getlocal1
          getlex QName(PackageNamespace("flash.events"),"FocusEvent")
          istypelate
          dup
-         iffalse ofs0051
+         iffalse ofs2
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"type")
@@ -1381,15 +1381,15 @@ package mx.effects
          getproperty QName(PackageNamespace(""),"FOCUS_OUT")
          equals
          dup
-         iftrue ofs0051
+         iftrue ofs2
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"type")
          getlex QName(PackageNamespace("flash.events"),"FocusEvent")
          getproperty QName(PackageNamespace(""),"FOCUS_IN")
          equals
-         ofs0051:
-         iffalse ofs008d
+         ofs2:
+         iffalse ofs3
          findpropstrict QName(PackageNamespace("flash.events"),"FocusEvent")
          getlocal1
          callproperty QName(PackageNamespace("flash.events"),"FocusEvent"), 1
@@ -1399,17 +1399,17 @@ package mx.effects
          getproperty QName(PackageNamespace(""),"relatedObject")
          convert_b
          dup
-         iffalse ofs0088
+         iffalse ofs4
          pop
          getlocal2
          getproperty QName(PackageNamespace(""),"currentTarget")
          getlocal2
          getproperty QName(PackageNamespace(""),"relatedObject")
-         callproperty Multiname("contains",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
+         callproperty Multiname("contains",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
          coerce_a
          convert_b
          dup
-         iftrue ofs0088
+         iftrue ofs4
          pop
          getlocal2
          getproperty QName(PackageNamespace(""),"currentTarget")
@@ -1418,26 +1418,26 @@ package mx.effects
          equals
          coerce_a
          convert_b
-         ofs0088:
-         iffalse ofs008d
+         ofs4:
+         iffalse ofs3
          returnvoid
-         ofs008d:
+         ofs3:
          getlocal1
          getproperty QName(PackageNamespace(""),"type")
          getlex QName(PackageNamespace("flash.events"),"Event")
          getproperty QName(PackageNamespace(""),"ADDED")
          equals
          dup
-         iftrue ofs00a7
+         iftrue ofs5
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"type")
          getlex QName(PackageNamespace("flash.events"),"Event")
          getproperty QName(PackageNamespace(""),"REMOVED")
          equals
-         ofs00a7:
+         ofs5:
          dup
-         iffalse ofs00b7
+         iffalse ofs6
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"target")
@@ -1445,39 +1445,39 @@ package mx.effects
          getproperty QName(PackageNamespace(""),"currentTarget")
          equals
          not
-         ofs00b7:
-         iffalse ofs00bc
+         ofs6:
+         iffalse ofs7
          returnvoid
-         ofs00bc:
+         ofs7:
          getlocal1
          getproperty QName(PackageNamespace(""),"type")
          getlex QName(PackageNamespace("flash.events"),"Event")
          getproperty QName(PackageNamespace(""),"REMOVED")
-         ifne ofs018a
+         ifne ofs8
          getlocal1
          getproperty QName(PackageNamespace(""),"target")
          getlex QName(PackageNamespace("mx.core"),"UIComponent")
          istypelate
-         iffalse ofs0137
+         iffalse ofs9
          findpropstrict QName(PackageNamespace("mx.core"),"UIComponent")
          getlocal1
          getproperty QName(PackageNamespace(""),"target")
          callproperty QName(PackageNamespace("mx.core"),"UIComponent"), 1
          getproperty QName(PackageNamespace(""),"initialized")
          pushfalse
-         ifne ofs00e6
+         ifne ofs10
          returnvoid
-         ofs00e6:
+         ofs10:
          findpropstrict QName(PackageNamespace("mx.core"),"UIComponent")
          getlocal1
          getproperty QName(PackageNamespace(""),"target")
          callproperty QName(PackageNamespace("mx.core"),"UIComponent"), 1
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"isEffectStarted")
-         iffalse ofs0137
+         iffalse ofs9
          pushbyte 0
          setlocal 4
-         jump ofs0122
-         ofs00fe:
+         jump ofs11
+         ofs12:
          label
          findpropstrict QName(PackageNamespace("mx.core"),"UIComponent")
          getlocal1
@@ -1485,16 +1485,16 @@ package mx.effects
          callproperty QName(PackageNamespace("mx.core"),"UIComponent"), 1
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_effectsStarted")
          getlocal 4
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         getproperty Multiname("triggerEvent",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         getproperty Multiname("type",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("triggerEvent",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("type",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace("flash.events"),"Event")
          getproperty QName(PackageNamespace(""),"REMOVED")
-         ifne ofs0120
+         ifne ofs13
          returnvoid
-         ofs0120:
+         ofs13:
          inclocal_i 4
-         ofs0122:
+         ofs11:
          getlocal 4
          findpropstrict QName(PackageNamespace("mx.core"),"UIComponent")
          getlocal1
@@ -1502,8 +1502,8 @@ package mx.effects
          callproperty QName(PackageNamespace("mx.core"),"UIComponent"), 1
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_effectsStarted")
          getproperty QName(PackageNamespace(""),"length")
-         iflt ofs00fe
-         ofs0137:
+         iflt ofs12
+         ofs9:
          getlocal1
          getproperty QName(PackageNamespace(""),"target")
          getlex QName(PackageNamespace("flash.display"),"DisplayObject")
@@ -1512,7 +1512,7 @@ package mx.effects
          setlocal3
          getlocal3
          pushnull
-         ifeq ofs0186
+         ifeq ofs14
          getlocal3
          getproperty QName(PackageNamespace(""),"parent")
          getlex QName(PackageNamespace("flash.display"),"DisplayObjectContainer")
@@ -1521,7 +1521,7 @@ package mx.effects
          dup
          setlocal 5
          pushnull
-         ifeq ofs0186
+         ifeq ofs14
          getlocal 5
          getlocal3
          callproperty QName(PackageNamespace(""),"getChildIndex"), 1
@@ -1529,30 +1529,30 @@ package mx.effects
          dup
          setlocal 6
          pushbyte 0
-         ifnge ofs0186
+         ifnge ofs14
          getlocal3
          getlex QName(PackageNamespace("mx.core"),"UIComponent")
          istypelate
-         iffalse ofs0186
+         iffalse ofs14
          findpropstrict QName(PackageNamespace("mx.core"),"UIComponent")
          getlocal3
          callproperty QName(PackageNamespace("mx.core"),"UIComponent"), 1
-         getlex QName(PrivateNamespace(null,"252"),"removedEffectHandler")
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"removedEffectHandler")
          getlocal3
          getlocal 5
          getlocal 6
          getlocal1
          newarray 4
          callpropvoid QName(PackageNamespace(""),"callLater"), 2
-         ofs0186:
-         jump ofs0196
-         ofs018a:
-         findpropstrict QName(PrivateNamespace(null,"252"),"createAndPlayEffect")
+         ofs14:
+         jump ofs15
+         ofs8:
+         findpropstrict QName(PrivateNamespace(null,"#EffectManager"),"createAndPlayEffect")
          getlocal1
          getlocal1
          getproperty QName(PackageNamespace(""),"currentTarget")
-         callpropvoid QName(PrivateNamespace(null,"252"),"createAndPlayEffect"), 2
-         ofs0196:
+         callpropvoid QName(PrivateNamespace(null,"#EffectManager"),"createAndPlayEffect"), 2
+         ofs15:
          returnvoid
          end ; code
          end ; body
@@ -1561,7 +1561,7 @@ package mx.effects
       
       private static function createAndPlayEffect(param1:Event, param2:Object) : void
       {
-         trait method QName(PrivateNamespace(null,"252"),"createAndPlayEffect")
+         trait method QName(PrivateNamespace(null,"#EffectManager"),"createAndPlayEffect")
          flag FINAL
          dispid 20
          method
@@ -1616,23 +1616,23 @@ package mx.effects
          coerce QName(PackageNamespace("mx.effects"),"Effect")
          setlocal3
          getlocal3
-         iftrue ofs0048
+         iftrue ofs0
          returnvoid
-         ofs0048:
+         ofs0:
          getlocal3
          getlex QName(PackageNamespace("mx.effects"),"Zoom")
          istypelate
          dup
-         iffalse ofs005d
+         iffalse ofs1
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"type")
          getlex QName(PackageNamespace("mx.events"),"MoveEvent")
          getproperty QName(PackageNamespace(""),"MOVE")
          equals
-         ofs005d:
-         iffalse ofs007b
-         getlex QName(PrivateNamespace(null,"252"),"resourceManager")
+         ofs1:
+         iffalse ofs2
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"resourceManager")
          pushstring "effects"
          pushstring "incorrectTrigger"
          callproperty QName(Namespace("mx.resources:IResourceManager"),"getString"), 2
@@ -1642,11 +1642,11 @@ package mx.effects
          getlocal 9
          constructprop QName(PackageNamespace(""),"Error"), 1
          throw
-         ofs007b:
+         ofs2:
          getlocal2
-         getproperty Multiname("initialized",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("initialized",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pushfalse
-         ifne ofs00d4
+         ifne ofs3
          getlocal1
          getproperty QName(PackageNamespace(""),"type")
          coerce_s
@@ -1656,48 +1656,48 @@ package mx.effects
          getproperty QName(PackageNamespace(""),"MOVE")
          equals
          dup
-         iftrue ofs00a1
+         iftrue ofs4
          pop
          getlocal 10
          getlex QName(PackageNamespace("mx.events"),"ResizeEvent")
          getproperty QName(PackageNamespace(""),"RESIZE")
          equals
-         ofs00a1:
+         ofs4:
          dup
-         iftrue ofs00af
+         iftrue ofs5
          pop
          getlocal 10
          getlex QName(PackageNamespace("mx.events"),"FlexEvent")
          getproperty QName(PackageNamespace(""),"SHOW")
          equals
-         ofs00af:
+         ofs5:
          dup
-         iftrue ofs00bd
+         iftrue ofs6
          pop
          getlocal 10
          getlex QName(PackageNamespace("mx.events"),"FlexEvent")
          getproperty QName(PackageNamespace(""),"HIDE")
          equals
-         ofs00bd:
+         ofs6:
          dup
-         iftrue ofs00cb
+         iftrue ofs7
          pop
          getlocal 10
          getlex QName(PackageNamespace("flash.events"),"Event")
          getproperty QName(PackageNamespace(""),"CHANGE")
          equals
-         ofs00cb:
-         iffalse ofs00d4
+         ofs7:
+         iffalse ofs3
          pushnull
          coerce QName(PackageNamespace("mx.effects"),"Effect")
          setlocal3
          returnvoid
-         ofs00d4:
+         ofs3:
          getlocal3
          getproperty QName(PackageNamespace(""),"target")
          getlex QName(PackageNamespace("mx.core"),"IUIComponent")
          istypelate
-         iffalse ofs0159
+         iffalse ofs8
          findpropstrict QName(PackageNamespace("mx.core"),"IUIComponent")
          getlocal3
          getproperty QName(PackageNamespace(""),"target")
@@ -1708,14 +1708,14 @@ package mx.effects
          setlocal 11
          convert_b
          dup
-         iffalse ofs00ff
+         iffalse ofs9
          pop
          getlocal 11
          getproperty QName(PackageNamespace(""),"length")
          pushbyte 0
          greaterthan
-         ofs00ff:
-         iffalse ofs0159
+         ofs9:
+         iffalse ofs8
          getlocal3
          callproperty QName(PackageNamespace(""),"getAffectedProperties"), 0
          coerce QName(PackageNamespace(""),"Array")
@@ -1730,43 +1730,43 @@ package mx.effects
          setlocal 6
          pushbyte 0
          setlocal 5
-         jump ofs0151
-         ofs0124:
+         jump ofs10
+         ofs11:
          label
          pushbyte 0
          setlocal 7
-         jump ofs0147
-         ofs012d:
+         jump ofs12
+         ofs13:
          label
          getlocal 11
          getlocal 5
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlocal 12
          getlocal 7
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         ifne ofs0145
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ifne ofs14
          pushnull
          coerce QName(PackageNamespace("mx.effects"),"Effect")
          setlocal3
          returnvoid
-         ofs0145:
+         ofs14:
          inclocal_i 7
-         ofs0147:
+         ofs12:
          getlocal 7
          getlocal 6
-         iflt ofs012d
+         iflt ofs13
          inclocal_i 5
-         ofs0151:
+         ofs10:
          getlocal 5
          getlocal 4
-         iflt ofs0124
-         ofs0159:
+         iflt ofs11
+         ofs8:
          getlocal3
          getproperty QName(PackageNamespace(""),"target")
          getlex QName(PackageNamespace("mx.core"),"UIComponent")
          istypelate
          dup
-         iffalse ofs0173
+         iffalse ofs15
          pop
          findpropstrict QName(PackageNamespace("mx.core"),"UIComponent")
          getlocal3
@@ -1774,44 +1774,44 @@ package mx.effects
          callproperty QName(PackageNamespace("mx.core"),"UIComponent"), 1
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"isEffectStarted")
          convert_b
-         ofs0173:
-         iffalse ofs021c
+         ofs15:
+         iffalse ofs16
          getlocal3
          callproperty QName(PackageNamespace(""),"getAffectedProperties"), 0
          coerce QName(PackageNamespace(""),"Array")
          setlocal 13
          pushbyte 0
          setlocal 5
-         jump ofs0211
-         ofs0188:
+         jump ofs17
+         ofs18:
          label
          getlocal3
          getproperty QName(PackageNamespace(""),"target")
          getlocal 13
          getlocal 5
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         callproperty Multiname("getEffectsForProperty",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         callproperty Multiname("getEffectsForProperty",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
          coerce QName(PackageNamespace(""),"Array")
          dup
          setlocal 14
          getproperty QName(PackageNamespace(""),"length")
          pushbyte 0
-         ifngt ofs020f
+         ifngt ofs19
          getlocal1
          getproperty QName(PackageNamespace(""),"type")
          getlex QName(PackageNamespace("mx.events"),"ResizeEvent")
          getproperty QName(PackageNamespace(""),"RESIZE")
-         ifne ofs01b5
+         ifne ofs20
          returnvoid
-         ofs01b5:
+         ofs20:
          pushbyte 0
          setlocal 7
-         jump ofs0204
-         ofs01bd:
+         jump ofs21
+         ofs22:
          label
          getlocal 14
          getlocal 7
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("mx.effects"),"EffectInstance")
          setlocal 15
          getlocal1
@@ -1820,40 +1820,40 @@ package mx.effects
          getproperty QName(PackageNamespace(""),"SHOW")
          equals
          dup
-         iffalse ofs01df
+         iffalse ofs23
          pop
          getlocal 15
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"hideOnEffectEnd")
          convert_b
-         ofs01df:
-         iffalse ofs01fc
+         ofs23:
+         iffalse ofs24
          getlocal 15
          getproperty QName(PackageNamespace(""),"target")
          getlex QName(PackageNamespace("mx.events"),"FlexEvent")
          getproperty QName(PackageNamespace(""),"SHOW")
          getlocal 15
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"eventHandler")
-         callpropvoid Multiname("removeEventListener",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 2
+         callpropvoid Multiname("removeEventListener",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 2
          getlocal 15
          pushfalse
          setproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"hideOnEffectEnd")
-         ofs01fc:
+         ofs24:
          getlocal 15
          callpropvoid QName(PackageNamespace(""),"end"), 0
          inclocal_i 7
-         ofs0204:
+         ofs21:
          getlocal 7
          getlocal 14
          getproperty QName(PackageNamespace(""),"length")
-         iflt ofs01bd
-         ofs020f:
+         iflt ofs22
+         ofs19:
          inclocal_i 5
-         ofs0211:
+         ofs17:
          getlocal 5
          getlocal 13
          getproperty QName(PackageNamespace(""),"length")
-         iflt ofs0188
-         ofs021c:
+         iflt ofs18
+         ofs16:
          getlocal3
          getlocal1
          setproperty QName(PackageNamespace(""),"triggerEvent")
@@ -1876,28 +1876,28 @@ package mx.effects
          setlocal 4
          pushbyte 0
          setlocal 5
-         jump ofs0269
-         ofs0250:
+         jump ofs25
+         ofs26:
          label
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effectsPlaying")
-         findpropstrict QName(PrivateNamespace(null,"54"),"EffectNode")
+         findpropstrict QName(PrivateNamespace(null,"#EffectManager/1"),"EffectNode")
          getlocal3
          getlocal 8
          getlocal 5
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         constructprop QName(PrivateNamespace(null,"54"),"EffectNode"), 2
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         constructprop QName(PrivateNamespace(null,"#EffectManager/1"),"EffectNode"), 2
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
          inclocal_i 5
-         ofs0269:
+         ofs25:
          getlocal 5
          getlocal 4
-         iflt ofs0250
+         iflt ofs26
          getlocal3
          getproperty QName(PackageNamespace(""),"suspendBackgroundProcessing")
-         iffalse ofs027f
+         iffalse ofs27
          getlex QName(PackageNamespace("mx.core"),"UIComponent")
          callpropvoid QName(PackageNamespace(""),"suspendBackgroundProcessing"), 0
-         ofs027f:
+         ofs27:
          returnvoid
          end ; code
          end ; body
@@ -1906,7 +1906,7 @@ package mx.effects
       
       private static function removedEffectHandler(param1:DisplayObject, param2:DisplayObjectContainer, param3:int, param4:Event) : void
       {
-         trait method QName(PrivateNamespace(null,"252"),"removedEffectHandler")
+         trait method QName(PrivateNamespace(null,"#EffectManager"),"removedEffectHandler")
          flag FINAL
          dispid 21
          method
@@ -1932,13 +1932,13 @@ package mx.effects
          getlex QName(PackageNamespace("mx.core"),"IVisualElementContainer")
          istypelate
          dup
-         iffalse ofs0018
+         iffalse ofs0
          pop
          getlocal1
          getlex QName(PackageNamespace("mx.core"),"IVisualElement")
          istypelate
-         ofs0018:
-         iffalse ofs0031
+         ofs0:
+         iffalse ofs1
          findpropstrict QName(PackageNamespace("mx.core"),"IVisualElementContainer")
          getlocal2
          callproperty QName(PackageNamespace("mx.core"),"IVisualElementContainer"), 1
@@ -1947,19 +1947,19 @@ package mx.effects
          astypelate
          getlocal3
          callpropvoid QName(Namespace("mx.core:IVisualElementContainer"),"addElementAt"), 2
-         jump ofs0038
-         ofs0031:
+         jump ofs2
+         ofs1:
          getlocal2
          getlocal1
          getlocal3
          callpropvoid QName(PackageNamespace(""),"addChildAt"), 2
-         ofs0038:
+         ofs2:
          findpropstrict QName(PackageNamespace(""),"resumeEventHandling")
          callpropvoid QName(PackageNamespace(""),"resumeEventHandling"), 0
-         findpropstrict QName(PrivateNamespace(null,"252"),"createAndPlayEffect")
+         findpropstrict QName(PrivateNamespace(null,"#EffectManager"),"createAndPlayEffect")
          getlocal 4
          getlocal1
-         callpropvoid QName(PrivateNamespace(null,"252"),"createAndPlayEffect"), 2
+         callpropvoid QName(PrivateNamespace(null,"#EffectManager"),"createAndPlayEffect"), 2
          returnvoid
          end ; code
          end ; body
@@ -2003,35 +2003,35 @@ package mx.effects
          decrement
          convert_i
          setlocal 4
-         jump ofs0049
-         ofs0024:
+         jump ofs0
+         ofs1:
          label
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effectsPlaying")
          getlocal 4
-         getproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         getproperty Multiname("instance",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("instance",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlocal2
-         ifne ofs0044
+         ifne ofs2
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effectsPlaying")
          getlocal 4
          pushbyte 1
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"splice"), 2
-         jump ofs0051
-         ofs0044:
+         jump ofs3
+         ofs2:
          getlocal 4
          decrement_i
          setlocal 4
-         ofs0049:
+         ofs0:
          getlocal 4
          pushbyte 0
-         ifge ofs0024
-         ofs0051:
+         ifge ofs1
+         ofs3:
          findpropstrict QName(PackageNamespace(""),"Object")
          getlocal2
          callproperty QName(PackageNamespace(""),"Object"), 1
-         getproperty Multiname("hideOnEffectEnd",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("hideOnEffectEnd",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pushtrue
-         ifne ofs007f
+         ifne ofs4
          getlocal2
          getproperty QName(Namespace("mx.effects:IEffectInstance"),"target")
          getlex QName(PackageNamespace("mx.events"),"FlexEvent")
@@ -2039,19 +2039,19 @@ package mx.effects
          findpropstrict QName(PackageNamespace(""),"Object")
          getlocal2
          callproperty QName(PackageNamespace(""),"Object"), 1
-         getproperty Multiname("eventHandler",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         callpropvoid Multiname("removeEventListener",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 2
+         getproperty Multiname("eventHandler",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         callpropvoid Multiname("removeEventListener",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 2
          getlocal2
          getproperty QName(Namespace("mx.effects:IEffectInstance"),"target")
          pushfalse
          pushtrue
-         callpropvoid Multiname("setVisible",[PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 2
-         ofs007f:
+         callpropvoid Multiname("setVisible",[PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 2
+         ofs4:
          getlocal2
          getproperty QName(Namespace("mx.effects:IEffectInstance"),"triggerEvent")
          convert_b
          dup
-         iffalse ofs0097
+         iffalse ofs5
          pop
          getlocal2
          getproperty QName(Namespace("mx.effects:IEffectInstance"),"triggerEvent")
@@ -2059,8 +2059,8 @@ package mx.effects
          getlex QName(PackageNamespace("flash.events"),"Event")
          getproperty QName(PackageNamespace(""),"REMOVED")
          equals
-         ofs0097:
-         iffalse ofs00ff
+         ofs5:
+         iffalse ofs6
          getlocal2
          getproperty QName(Namespace("mx.effects:IEffectInstance"),"target")
          getlex QName(PackageNamespace("flash.display"),"DisplayObject")
@@ -2069,7 +2069,7 @@ package mx.effects
          dup
          setlocal 5
          pushnull
-         ifeq ofs00ff
+         ifeq ofs6
          getlocal 5
          getproperty QName(PackageNamespace(""),"parent")
          getlex QName(PackageNamespace("flash.display"),"DisplayObjectContainer")
@@ -2078,20 +2078,20 @@ package mx.effects
          dup
          setlocal 6
          pushnull
-         ifeq ofs00ff
+         ifeq ofs6
          findpropstrict QName(PackageNamespace(""),"suspendEventHandling")
          callpropvoid QName(PackageNamespace(""),"suspendEventHandling"), 0
          getlocal 6
          getlex QName(PackageNamespace("mx.core"),"IVisualElementContainer")
          istypelate
          dup
-         iffalse ofs00d6
+         iffalse ofs7
          pop
          getlocal 5
          getlex QName(PackageNamespace("mx.core"),"IVisualElement")
          istypelate
-         ofs00d6:
-         iffalse ofs00f0
+         ofs7:
+         iffalse ofs8
          findpropstrict QName(PackageNamespace("mx.core"),"IVisualElementContainer")
          getlocal 6
          callproperty QName(PackageNamespace("mx.core"),"IVisualElementContainer"), 1
@@ -2099,21 +2099,21 @@ package mx.effects
          getlex QName(PackageNamespace("mx.core"),"IVisualElement")
          astypelate
          callpropvoid QName(Namespace("mx.core:IVisualElementContainer"),"removeElement"), 1
-         jump ofs00f8
-         ofs00f0:
+         jump ofs9
+         ofs8:
          getlocal 6
          getlocal 5
          callpropvoid QName(PackageNamespace(""),"removeChild"), 1
-         ofs00f8:
+         ofs9:
          findpropstrict QName(PackageNamespace(""),"resumeEventHandling")
          callpropvoid QName(PackageNamespace(""),"resumeEventHandling"), 0
-         ofs00ff:
+         ofs6:
          getlocal2
          getproperty QName(Namespace("mx.effects:IEffectInstance"),"suspendBackgroundProcessing")
-         iffalse ofs010d
+         iffalse ofs10
          getlex QName(PackageNamespace("mx.core"),"UIComponent")
          callpropvoid QName(PackageNamespace(""),"resumeBackgroundProcessing"), 0
-         ofs010d:
+         ofs10:
          returnvoid
          end ; code
          end ; body
@@ -2139,10 +2139,10 @@ package mx.effects
          code
          getlocal0
          pushscope
-         getlex QName(PrivateNamespace(null,"252"),"effects")
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"effects")
          getlocal1
          pushbyte 1
-         setproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          returnvoid
          end ; code
          end ; body
@@ -2168,9 +2168,9 @@ package mx.effects
          code
          getlocal0
          pushscope
-         getlex QName(PrivateNamespace(null,"252"),"effects")
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"effects")
          getlocal1
-         deleteproperty MultinameL([PrivateNamespace(null,"252"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"54"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         deleteproperty MultinameL([PrivateNamespace(null,"#EffectManager"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PrivateNamespace(null,"#EffectManager/1"),PackageNamespace(""),PackageNamespace("mx.effects"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.effects:EffectManager"),StaticProtectedNs("mx.effects:EffectManager"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pop
          returnvoid
          end ; code
@@ -2201,11 +2201,11 @@ package mx.effects
          setlocal1
          pushbyte 0
          setlocal2
-         getlex QName(PrivateNamespace(null,"252"),"effects")
+         getlex QName(PrivateNamespace(null,"#EffectManager"),"effects")
          coerce_a
          setlocal3
-         jump ofs0019
-         ofs0011:
+         jump ofs0
+         ofs1:
          label
          getlocal3
          getlocal2
@@ -2214,9 +2214,9 @@ package mx.effects
          setlocal1
          pushtrue
          returnvalue
-         ofs0019:
+         ofs0:
          hasnext2 3, 2
-         iftrue ofs0011
+         iftrue ofs1
          kill 3
          kill 2
          pushfalse
@@ -2303,17 +2303,17 @@ pushscope
 getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
 pushscope
 getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
-newclass 153
+newclass #EffectManager
 popscope
 popscope
 initproperty QName(PackageNamespace("mx.effects"),"EffectManager")
-findpropstrict Multiname("EffectNode",[PrivateNamespace(null,"54")])
+findpropstrict Multiname("EffectNode",[PrivateNamespace(null,"#EffectManager/1")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass 154
+newclass #EffectNode
 popscope
-initproperty QName(PrivateNamespace(null,"54"),"EffectNode")
+initproperty QName(PrivateNamespace(null,"#EffectManager/1"),"EffectNode")
 returnvoid
 end ; code
 end ; body

@@ -110,9 +110,9 @@ package mx.styles
          pushnull
          coerce QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          setlocal 14
-         findpropstrict QName(PrivateNamespace(null,"262"),"getStyleManager")
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"262"),"getStyleManager"), 1
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager"), 1
          coerce QName(PackageNamespace("mx.styles"),"IStyleManager2")
          setlocal2
          getlocal2
@@ -120,17 +120,17 @@ package mx.styles
          convert_b
          setlocal3
          getlocal3
-         iffalse ofs0038
+         iffalse ofs0
          findpropstrict QName(PackageNamespace("flash.utils"),"getQualifiedClassName")
          getlocal1
          callproperty QName(PackageNamespace("flash.utils"),"getQualifiedClassName"), 1
          coerce_s
-         jump ofs003d
-         ofs0038:
+         jump ofs1
+         ofs0:
          getlocal1
          getproperty QName(Namespace("mx.styles:IStyleClient"),"className")
          coerce_s
-         ofs003d:
+         ofs1:
          coerce_s
          setlocal 4
          getlocal1
@@ -138,10 +138,10 @@ package mx.styles
          astypelate
          coerce QName(PackageNamespace("mx.styles"),"IAdvancedStyleClient")
          setlocal 5
-         findpropstrict QName(PrivateNamespace(null,"262"),"getTypeHierarchy")
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"getTypeHierarchy")
          getlocal1
          getlocal3
-         callproperty QName(PrivateNamespace(null,"262"),"getTypeHierarchy"), 2
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"getTypeHierarchy"), 2
          coerce QName(PackageNamespace("mx.utils"),"OrderedObject")
          dup
          setlocal 6
@@ -157,18 +157,18 @@ package mx.styles
          setlocal 9
          getlocal2
          callproperty QName(Namespace("mx.styles:IStyleManager2"),"hasAdvancedSelectors"), 0
-         iftrue ofs0087
+         iftrue ofs2
          getlocal2
          getproperty QName(Namespace("mx.styles:IStyleManager"),"typeSelectorCache")
          getlocal 4
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace(""),"Array")
          dup
          setlocal 9
-         iffalse ofs0087
+         iffalse ofs2
          getlocal 9
          returnvalue
-         ofs0087:
+         ofs2:
          newarray 0
          coerce QName(PackageNamespace(""),"Array")
          setlocal 9
@@ -176,38 +176,38 @@ package mx.styles
          decrement
          convert_i
          setlocal 10
-         jump ofs0107
-         ofs0097:
+         jump ofs3
+         ofs4:
          label
          getlocal 7
          getlocal 10
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
-         callproperty Multiname("toString",[PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")]), 0
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         callproperty Multiname("toString",[PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")]), 0
          coerce_s
          setlocal 11
          getlocal2
          callproperty QName(Namespace("mx.styles:IStyleManager2"),"hasAdvancedSelectors"), 0
          convert_b
          dup
-         iffalse ofs00b7
+         iffalse ofs5
          pop
          getlocal 5
          pushnull
          equals
          not
-         ofs00b7:
-         iffalse ofs00ea
+         ofs5:
+         iffalse ofs6
          getlocal2
          getlocal 11
          callproperty QName(Namespace("mx.styles:IStyleManager2"),"getStyleDeclarations"), 1
          coerce QName(PackageNamespace(""),"Array")
          dup
          setlocal 12
-         iffalse ofs00e6
-         findpropstrict QName(PrivateNamespace(null,"262"),"matchStyleDeclarations")
+         iffalse ofs7
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"matchStyleDeclarations")
          getlocal 12
          getlocal 5
-         callproperty QName(PrivateNamespace(null,"262"),"matchStyleDeclarations"), 2
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"matchStyleDeclarations"), 2
          coerce QName(PackageNamespace(""),"Array")
          setlocal 13
          getlocal 9
@@ -215,52 +215,52 @@ package mx.styles
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"concat"), 1
          coerce QName(PackageNamespace(""),"Array")
          setlocal 9
-         ofs00e6:
-         jump ofs0102
-         ofs00ea:
+         ofs7:
+         jump ofs8
+         ofs6:
          getlocal2
          getlocal 11
          callproperty QName(Namespace("mx.styles:IStyleManager2"),"getMergedStyleDeclaration"), 1
          coerce QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          dup
          setlocal 14
-         iffalse ofs0102
+         iffalse ofs8
          getlocal 9
          getlocal 14
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         ofs0102:
+         ofs8:
          getlocal 10
          decrement_i
          setlocal 10
-         ofs0107:
+         ofs3:
          getlocal 10
          pushbyte 0
-         ifge ofs0097
+         ifge ofs4
          getlocal2
          callproperty QName(Namespace("mx.styles:IStyleManager2"),"hasAdvancedSelectors"), 0
          convert_b
          dup
-         iffalse ofs0120
+         iffalse ofs9
          pop
          getlocal 5
          pushnull
          equals
          not
-         ofs0120:
-         iffalse ofs0135
-         findpropstrict QName(PrivateNamespace(null,"262"),"sortOnSpecificity")
+         ofs9:
+         iffalse ofs10
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"sortOnSpecificity")
          getlocal 9
-         callproperty QName(PrivateNamespace(null,"262"),"sortOnSpecificity"), 1
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"sortOnSpecificity"), 1
          coerce QName(PackageNamespace(""),"Array")
          setlocal 9
-         jump ofs0140
-         ofs0135:
+         jump ofs11
+         ofs10:
          getlocal2
          getproperty QName(Namespace("mx.styles:IStyleManager"),"typeSelectorCache")
          getlocal 4
          getlocal 9
-         setproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
-         ofs0140:
+         setproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         ofs11:
          getlocal 9
          returnvalue
          end ; code
@@ -300,9 +300,9 @@ package mx.styles
          pushnull
          coerce QName(PackageNamespace(""),"Array")
          setlocal 16
-         findpropstrict QName(PrivateNamespace(null,"262"),"getStyleManager")
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"262"),"getStyleManager"), 1
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager"), 1
          coerce QName(PackageNamespace("mx.styles"),"IStyleManager2")
          setlocal2
          getlocal1
@@ -328,41 +328,41 @@ package mx.styles
          coerce QName(PackageNamespace(""),"Object")
          dup
          setlocal 10
-         iffalse ofs0091
+         iffalse ofs0
          getlocal 10
          getlex QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          istypelate
-         iffalse ofs0068
+         iffalse ofs1
          getlocal 8
          findpropstrict QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          getlocal 10
          callproperty QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration"), 1
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         jump ofs0091
-         ofs0068:
+         jump ofs0
+         ofs1:
          getlocal 10
          getlex QName(PackageNamespace("mx.core"),"IFlexDisplayObject")
          istypelate
          dup
-         iftrue ofs0078
+         iftrue ofs2
          pop
          getlocal 10
          getlex QName(PackageNamespace("mx.styles"),"IStyleClient")
          istypelate
-         ofs0078:
-         iffalse ofs0085
+         ofs2:
+         iffalse ofs3
          getlex QName(PackageNamespace("mx.styles"),"StyleProtoChain")
          getlocal1
          callpropvoid QName(PackageNamespace(""),"initProtoChainForUIComponentStyleName"), 1
          returnvoid
-         ofs0085:
+         ofs3:
          getlocal 10
          getlex QName(PackageNamespace(""),"String")
          istypelate
-         iffalse ofs0091
+         iffalse ofs0
          pushtrue
          setlocal 9
-         ofs0091:
+         ofs0:
          getlocal2
          getproperty QName(Namespace("mx.styles:IStyleManager"),"stylesRoot")
          coerce QName(PackageNamespace(""),"Object")
@@ -370,25 +370,25 @@ package mx.styles
          setlocal 11
          convert_b
          dup
-         iffalse ofs00a7
+         iffalse ofs4
          pop
          getlocal 11
-         getproperty Multiname("effects",[PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty Multiname("effects",[PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          convert_b
-         ofs00a7:
-         iffalse ofs00b5
+         ofs4:
+         iffalse ofs5
          getlocal1
          getlocal 11
-         getproperty Multiname("effects",[PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty Multiname("effects",[PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          callpropvoid QName(Namespace("mx.styles:IStyleClient"),"registerEffects"), 1
-         ofs00b5:
+         ofs5:
          pushnull
          coerce QName(PackageNamespace("mx.styles"),"IStyleClient")
          setlocal 12
          getlocal1
          getlex QName(PackageNamespace("mx.core"),"IVisualElement")
          istypelate
-         iffalse ofs00d2
+         iffalse ofs6
          findpropstrict QName(PackageNamespace("mx.core"),"IVisualElement")
          getlocal1
          callproperty QName(PackageNamespace("mx.core"),"IVisualElement"), 1
@@ -397,9 +397,9 @@ package mx.styles
          astypelate
          coerce QName(PackageNamespace("mx.styles"),"IStyleClient")
          setlocal 12
-         ofs00d2:
+         ofs6:
          getlocal 12
-         iffalse ofs0122
+         iffalse ofs7
          getlocal 12
          getproperty QName(Namespace("mx.styles:IStyleClient"),"inheritingStyles")
          coerce QName(PackageNamespace(""),"Object")
@@ -407,22 +407,22 @@ package mx.styles
          setlocal 14
          getlex QName(PackageNamespace("mx.styles"),"StyleProtoChain")
          getproperty QName(PackageNamespace(""),"STYLE_UNINITIALIZED")
-         ifne ofs00f2
+         ifne ofs8
          getlocal 11
          coerce QName(PackageNamespace(""),"Object")
          setlocal 14
-         ofs00f2:
+         ofs8:
          getlocal1
          getlex QName(PackageNamespace("mx.modules"),"IModule")
          istypelate
-         iffalse ofs011e
+         iffalse ofs9
          getlocal2
          pushstring "global"
          callproperty QName(Namespace("mx.styles:IStyleManager"),"getStyleDeclaration"), 1
          coerce QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          dup
          setlocal 7
-         iffalse ofs011e
+         iffalse ofs9
          getlocal 7
          getlocal 14
          findpropstrict QName(PackageNamespace("flash.display"),"DisplayObject")
@@ -431,19 +431,19 @@ package mx.styles
          callproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"addStyleToProtoChain"), 2
          coerce QName(PackageNamespace(""),"Object")
          setlocal 14
-         ofs011e:
-         jump ofs017a
-         ofs0122:
+         ofs9:
+         jump ofs10
+         ofs7:
          getlocal 5
          convert_b
          dup
-         iffalse ofs0131
+         iffalse ofs11
          pop
          getlocal 5
          getproperty QName(PackageNamespace(""),"isPopUp")
          convert_b
-         ofs0131:
-         iffalse ofs0172
+         ofs11:
+         iffalse ofs12
          getlocal 5
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_owner")
          coerce QName(PackageNamespace("flash.display"),"DisplayObjectContainer")
@@ -451,34 +451,34 @@ package mx.styles
          setlocal 15
          convert_b
          dup
-         iffalse ofs014b
+         iffalse ofs13
          pop
          getlocal 15
          getlex QName(PackageNamespace("mx.styles"),"IStyleClient")
          istypelate
-         ofs014b:
-         iffalse ofs0161
+         ofs13:
+         iffalse ofs14
          findpropstrict QName(PackageNamespace("mx.styles"),"IStyleClient")
          getlocal 15
          callproperty QName(PackageNamespace("mx.styles"),"IStyleClient"), 1
          getproperty QName(Namespace("mx.styles:IStyleClient"),"inheritingStyles")
          coerce QName(PackageNamespace(""),"Object")
          setlocal 14
-         jump ofs016e
-         ofs0161:
+         jump ofs15
+         ofs14:
          getlex QName(PackageNamespace("mx.core"),"FlexGlobals")
          getproperty QName(PackageNamespace(""),"topLevelApplication")
-         getproperty Multiname("inheritingStyles",[PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty Multiname("inheritingStyles",[PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace(""),"Object")
          setlocal 14
-         ofs016e:
-         jump ofs017a
-         ofs0172:
+         ofs15:
+         jump ofs10
+         ofs12:
          getlocal2
          getproperty QName(Namespace("mx.styles:IStyleManager"),"stylesRoot")
          coerce QName(PackageNamespace(""),"Object")
          setlocal 14
-         ofs017a:
+         ofs10:
          pushnull
          coerce QName(PackageNamespace(""),"Array")
          setlocal 13
@@ -486,14 +486,14 @@ package mx.styles
          callproperty QName(Namespace("mx.styles:IStyleManager2"),"hasAdvancedSelectors"), 0
          convert_b
          dup
-         iffalse ofs0190
+         iffalse ofs16
          pop
          getlocal 6
          pushnull
          equals
          not
-         ofs0190:
-         iffalse ofs0207
+         ofs16:
+         iffalse ofs17
          findpropstrict QName(PackageNamespace(""),"getMatchingStyleDeclarations")
          getlocal 6
          getlocal 8
@@ -502,24 +502,24 @@ package mx.styles
          dup
          setlocal 13
          pushnull
-         ifeq ofs01b3
+         ifeq ofs18
          getlocal 13
          getproperty QName(PackageNamespace(""),"length")
          convert_i
-         jump ofs01b5
-         ofs01b3:
+         jump ofs19
+         ofs18:
          pushbyte 0
-         ofs01b5:
+         ofs19:
          convert_i
          setlocal3
          pushbyte 0
          setlocal 4
-         jump ofs01fc
-         ofs01bf:
+         jump ofs20
+         ofs21:
          label
          getlocal 13
          getlocal 4
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          dup
          setlocal 7
@@ -536,26 +536,26 @@ package mx.styles
          setlocal 11
          getlocal 7
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effects")
-         iffalse ofs01fa
+         iffalse ofs22
          getlocal 6
          getlocal 7
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effects")
          callpropvoid QName(Namespace("mx.styles:IStyleClient"),"registerEffects"), 1
-         ofs01fa:
+         ofs22:
          inclocal_i 4
-         ofs01fc:
+         ofs20:
          getlocal 4
          getlocal3
-         iflt ofs01bf
-         jump ofs0326
-         ofs0207:
+         iflt ofs21
+         jump ofs23
+         ofs17:
          getlocal 9
-         iffalse ofs0266
+         iffalse ofs24
          getlocal 10
          getlex QName(PackageNamespace(""),"RegExp")
          pushstring "\\s+"
          construct 1
-         callproperty Multiname("split",[PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")]), 1
+         callproperty Multiname("split",[PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")]), 1
          coerce QName(PackageNamespace(""),"Array")
          dup
          setlocal 16
@@ -564,59 +564,59 @@ package mx.styles
          setlocal3
          pushbyte 0
          setlocal 4
-         jump ofs025f
-         ofs022d:
+         jump ofs25
+         ofs26:
          label
          getlocal 16
          getlocal 4
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
-         getproperty Multiname("length",[PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
-         iffalse ofs025d
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty Multiname("length",[PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         iffalse ofs27
          getlocal2
          pushstring "."
          getlocal 16
          getlocal 4
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          add
          callproperty QName(Namespace("mx.styles:IStyleManager2"),"getMergedStyleDeclaration"), 1
          coerce QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          dup
          setlocal 7
-         iffalse ofs025d
+         iffalse ofs27
          getlocal 8
          getlocal 7
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         ofs025d:
+         ofs27:
          inclocal_i 4
-         ofs025f:
+         ofs25:
          getlocal 4
          getlocal3
-         iflt ofs022d
-         ofs0266:
+         iflt ofs26
+         ofs24:
          getlocal1
          callproperty QName(Namespace("mx.styles:IStyleClient"),"getClassStyleDeclarations"), 0
          coerce QName(PackageNamespace(""),"Array")
          dup
          setlocal 13
          pushnull
-         ifeq ofs027f
+         ifeq ofs28
          getlocal 13
          getproperty QName(PackageNamespace(""),"length")
          convert_i
-         jump ofs0281
-         ofs027f:
+         jump ofs29
+         ofs28:
          pushbyte 0
-         ofs0281:
+         ofs29:
          convert_i
          setlocal3
          pushbyte 0
          setlocal 4
-         jump ofs02c7
-         ofs028b:
+         jump ofs30
+         ofs31:
          label
          getlocal 13
          getlocal 4
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          dup
          setlocal 7
@@ -633,33 +633,33 @@ package mx.styles
          setlocal 11
          getlocal 7
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effects")
-         iffalse ofs02c5
+         iffalse ofs32
          getlocal1
          getlocal 7
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effects")
          callpropvoid QName(Namespace("mx.styles:IStyleClient"),"registerEffects"), 1
-         ofs02c5:
+         ofs32:
          inclocal_i 4
-         ofs02c7:
+         ofs30:
          getlocal 4
          getlocal3
-         iflt ofs028b
+         iflt ofs31
          getlocal 8
          getproperty QName(PackageNamespace(""),"length")
          convert_i
          setlocal3
          pushbyte 0
          setlocal 4
-         jump ofs031f
-         ofs02dd:
+         jump ofs33
+         ofs34:
          label
          getlocal 8
          getlocal 4
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          dup
          setlocal 7
-         iffalse ofs031d
+         iffalse ofs35
          getlocal 7
          getlocal 14
          getlocal 5
@@ -674,49 +674,49 @@ package mx.styles
          setlocal 11
          getlocal 7
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effects")
-         iffalse ofs031d
+         iffalse ofs35
          getlocal1
          getlocal 7
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effects")
          callpropvoid QName(Namespace("mx.styles:IStyleClient"),"registerEffects"), 1
-         ofs031d:
+         ofs35:
          inclocal_i 4
-         ofs031f:
+         ofs33:
          getlocal 4
          getlocal3
-         iflt ofs02dd
-         ofs0326:
+         iflt ofs34
+         ofs23:
          getlocal1
          getproperty QName(Namespace("mx.styles:IStyleClient"),"styleDeclaration")
          coerce QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          setlocal 7
          getlocal1
          getlocal 7
-         iffalse ofs0345
+         iffalse ofs36
          getlocal 7
          getlocal 14
          getlocal 5
          callproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"addStyleToProtoChain"), 2
          coerce QName(PackageNamespace(""),"Object")
-         jump ofs0349
-         ofs0345:
+         jump ofs37
+         ofs36:
          getlocal 14
          coerce QName(PackageNamespace(""),"Object")
-         ofs0349:
+         ofs37:
          setproperty QName(Namespace("mx.styles:IStyleClient"),"inheritingStyles")
          getlocal1
          getlocal 7
-         iffalse ofs0363
+         iffalse ofs38
          getlocal 7
          getlocal 11
          getlocal 5
          callproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"addStyleToProtoChain"), 2
          coerce QName(PackageNamespace(""),"Object")
-         jump ofs0367
-         ofs0363:
+         jump ofs39
+         ofs38:
          getlocal 11
          coerce QName(PackageNamespace(""),"Object")
-         ofs0367:
+         ofs39:
          setproperty QName(Namespace("mx.styles:IStyleClient"),"nonInheritingStyles")
          returnvoid
          end ; code
@@ -746,9 +746,9 @@ package mx.styles
          pushnull
          coerce QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          setlocal 10
-         findpropstrict QName(PrivateNamespace(null,"262"),"getStyleManager")
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"262"),"getStyleManager"), 1
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager"), 1
          coerce QName(PackageNamespace("mx.styles"),"IStyleManager2")
          setlocal2
          findpropstrict QName(PackageNamespace("mx.styles"),"IStyleClient")
@@ -769,26 +769,26 @@ package mx.styles
          setlocal 5
          not
          dup
-         iftrue ofs003f
+         iftrue ofs0
          pop
          getlocal 5
          getlex QName(PackageNamespace("mx.styles"),"StyleProtoChain")
          getproperty QName(PackageNamespace(""),"STYLE_UNINITIALIZED")
          equals
-         ofs003f:
-         iffalse ofs005d
+         ofs0:
+         iffalse ofs1
          getlocal2
          getproperty QName(Namespace("mx.styles:IStyleManager"),"stylesRoot")
          coerce QName(PackageNamespace(""),"Object")
          dup
          setlocal 5
-         getproperty Multiname("effects",[PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
-         iffalse ofs005d
+         getproperty Multiname("effects",[PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         iffalse ofs1
          getlocal1
          getlocal 5
-         getproperty Multiname("effects",[PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty Multiname("effects",[PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          callpropvoid QName(Namespace("mx.styles:IStyleClient"),"registerEffects"), 1
-         ofs005d:
+         ofs1:
          getlocal3
          getproperty QName(Namespace("mx.styles:IStyleClient"),"inheritingStyles")
          coerce QName(PackageNamespace(""),"Object")
@@ -796,19 +796,19 @@ package mx.styles
          setlocal 6
          not
          dup
-         iftrue ofs0076
+         iftrue ofs2
          pop
          getlocal 6
          getlex QName(PackageNamespace("mx.styles"),"StyleProtoChain")
          getproperty QName(PackageNamespace(""),"STYLE_UNINITIALIZED")
          equals
-         ofs0076:
-         iffalse ofs0082
+         ofs2:
+         iffalse ofs3
          getlocal2
          getproperty QName(Namespace("mx.styles:IStyleManager"),"stylesRoot")
          coerce QName(PackageNamespace(""),"Object")
          setlocal 6
-         ofs0082:
+         ofs3:
          getlocal1
          callproperty QName(Namespace("mx.styles:IStyleClient"),"getClassStyleDeclarations"), 0
          coerce QName(PackageNamespace(""),"Array")
@@ -820,18 +820,18 @@ package mx.styles
          getlocal3
          getlex QName(PackageNamespace("mx.styles"),"StyleProxy")
          istypelate
-         iffalse ofs00c1
+         iffalse ofs4
          getlocal 8
          pushbyte 0
-         ifne ofs00b1
-         findpropstrict QName(PrivateNamespace(null,"262"),"addProperties")
+         ifne ofs5
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"addProperties")
          getlocal 5
          getlocal3
          pushfalse
-         callproperty QName(PrivateNamespace(null,"262"),"addProperties"), 3
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"addProperties"), 3
          coerce QName(PackageNamespace(""),"Object")
          setlocal 5
-         ofs00b1:
+         ofs5:
          findpropstrict QName(PackageNamespace("mx.styles"),"StyleProxy")
          getlocal3
          callproperty QName(PackageNamespace("mx.styles"),"StyleProxy"), 1
@@ -840,15 +840,15 @@ package mx.styles
          astypelate
          coerce QName(PackageNamespace("flash.display"),"DisplayObject")
          setlocal 4
-         ofs00c1:
+         ofs4:
          pushbyte 0
          setlocal 9
-         jump ofs0123
-         ofs00c9:
+         jump ofs6
+         ofs7:
          label
          getlocal 7
          getlocal 9
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          dup
          setlocal 10
@@ -857,11 +857,11 @@ package mx.styles
          callproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"addStyleToProtoChain"), 2
          coerce QName(PackageNamespace(""),"Object")
          setlocal 6
-         findpropstrict QName(PrivateNamespace(null,"262"),"addProperties")
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"addProperties")
          getlocal 6
          getlocal3
          pushtrue
-         callproperty QName(PrivateNamespace(null,"262"),"addProperties"), 3
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"addProperties"), 3
          coerce QName(PackageNamespace(""),"Object")
          setlocal 6
          getlocal 10
@@ -870,57 +870,57 @@ package mx.styles
          callproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"addStyleToProtoChain"), 2
          coerce QName(PackageNamespace(""),"Object")
          setlocal 5
-         findpropstrict QName(PrivateNamespace(null,"262"),"addProperties")
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"addProperties")
          getlocal 5
          getlocal3
          pushfalse
-         callproperty QName(PrivateNamespace(null,"262"),"addProperties"), 3
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"addProperties"), 3
          coerce QName(PackageNamespace(""),"Object")
          setlocal 5
          getlocal 10
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effects")
-         iffalse ofs0121
+         iffalse ofs8
          getlocal1
          getlocal 10
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effects")
          callpropvoid QName(Namespace("mx.styles:IStyleClient"),"registerEffects"), 1
-         ofs0121:
+         ofs8:
          inclocal_i 9
-         ofs0123:
+         ofs6:
          getlocal 9
          getlocal 8
-         iflt ofs00c9
+         iflt ofs7
          getlocal1
          getlocal1
          getproperty QName(Namespace("mx.styles:IStyleClient"),"styleDeclaration")
-         iffalse ofs0146
+         iffalse ofs9
          getlocal1
          getproperty QName(Namespace("mx.styles:IStyleClient"),"styleDeclaration")
          getlocal 6
          getlocal 4
          callproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"addStyleToProtoChain"), 2
          coerce QName(PackageNamespace(""),"Object")
-         jump ofs014a
-         ofs0146:
+         jump ofs10
+         ofs9:
          getlocal 6
          coerce QName(PackageNamespace(""),"Object")
-         ofs014a:
+         ofs10:
          setproperty QName(Namespace("mx.styles:IStyleClient"),"inheritingStyles")
          getlocal1
          getlocal1
          getproperty QName(Namespace("mx.styles:IStyleClient"),"styleDeclaration")
-         iffalse ofs0168
+         iffalse ofs11
          getlocal1
          getproperty QName(Namespace("mx.styles:IStyleClient"),"styleDeclaration")
          getlocal 5
          getlocal 4
          callproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"addStyleToProtoChain"), 2
          coerce QName(PackageNamespace(""),"Object")
-         jump ofs016c
-         ofs0168:
+         jump ofs12
+         ofs11:
          getlocal 5
          coerce QName(PackageNamespace(""),"Object")
-         ofs016c:
+         ofs12:
          setproperty QName(Namespace("mx.styles:IStyleClient"),"nonInheritingStyles")
          returnvoid
          end ; code
@@ -930,7 +930,7 @@ package mx.styles
       
       private static function addProperties(param1:Object, param2:IStyleClient, param3:Boolean) : Object
       {
-         trait method QName(PrivateNamespace(null,"262"),"addProperties")
+         trait method QName(PrivateNamespace(null,"#StyleProtoChain"),"addProperties")
          flag FINAL
          dispid 6
          method
@@ -968,29 +968,29 @@ package mx.styles
          getlex QName(PackageNamespace("mx.styles"),"StyleProxy")
          istypelate
          dup
-         iffalse ofs0029
+         iffalse ofs0
          pop
          getlocal3
          not
-         ofs0029:
-         iffalse ofs003c
+         ofs0:
+         iffalse ofs1
          findpropstrict QName(PackageNamespace("mx.styles"),"StyleProxy")
          getlocal2
          callproperty QName(PackageNamespace("mx.styles"),"StyleProxy"), 1
          getproperty QName(PackageNamespace(""),"filterMap")
          coerce QName(PackageNamespace(""),"Object")
-         jump ofs003f
-         ofs003c:
+         jump ofs2
+         ofs1:
          pushnull
          coerce QName(PackageNamespace(""),"Object")
-         ofs003f:
+         ofs2:
          coerce QName(PackageNamespace(""),"Object")
          setlocal 4
          getlocal2
          coerce QName(PackageNamespace("mx.styles"),"IStyleClient")
          setlocal 5
-         jump ofs005b
-         ofs004c:
+         jump ofs3
+         ofs4:
          label
          findpropstrict QName(PackageNamespace("mx.styles"),"StyleProxy")
          getlocal 5
@@ -998,11 +998,11 @@ package mx.styles
          getproperty QName(PackageNamespace(""),"source")
          coerce QName(PackageNamespace("mx.styles"),"IStyleClient")
          setlocal 5
-         ofs005b:
+         ofs3:
          getlocal 5
          getlex QName(PackageNamespace("mx.styles"),"StyleProxy")
          istypelate
-         iftrue ofs004c
+         iftrue ofs4
          getlocal 5
          getlex QName(PackageNamespace("flash.display"),"DisplayObject")
          astypelate
@@ -1017,9 +1017,9 @@ package mx.styles
          getproperty QName(Namespace("mx.styles:ISimpleStyleClient"),"styleName")
          coerce QName(PackageNamespace(""),"Object")
          setlocal 8
-         findpropstrict QName(PrivateNamespace(null,"262"),"getStyleManager")
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager")
          getlocal 6
-         callproperty QName(PrivateNamespace(null,"262"),"getStyleManager"), 1
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager"), 1
          coerce QName(PackageNamespace("mx.styles"),"IStyleManager2")
          setlocal 11
          getlocal 7
@@ -1027,24 +1027,24 @@ package mx.styles
          equals
          not
          dup
-         iffalse ofs009c
+         iffalse ofs5
          pop
          getlocal 11
          callproperty QName(Namespace("mx.styles:IStyleManager2"),"hasAdvancedSelectors"), 0
          convert_b
-         ofs009c:
-         iffalse ofs012c
+         ofs5:
+         iffalse ofs6
          getlocal 8
          getlex QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          istypelate
-         iffalse ofs00b6
+         iffalse ofs7
          findpropstrict QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          getlocal 8
          callproperty QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration"), 1
          newarray 1
          coerce QName(PackageNamespace(""),"Array")
          setlocal 9
-         ofs00b6:
+         ofs7:
          findpropstrict QName(PackageNamespace(""),"getMatchingStyleDeclarations")
          getlocal 7
          getlocal 9
@@ -1053,16 +1053,16 @@ package mx.styles
          setlocal 9
          pushbyte 0
          setlocal 13
-         jump ofs0101
-         ofs00cd:
+         jump ofs8
+         ofs9:
          label
          getlocal 9
          getlocal 13
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          dup
          setlocal 10
-         iffalse ofs00ff
+         iffalse ofs10
          getlocal 10
          getlocal1
          getlocal 6
@@ -1072,34 +1072,34 @@ package mx.styles
          setlocal1
          getlocal 10
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effects")
-         iffalse ofs00ff
+         iffalse ofs10
          getlocal2
          getlocal 10
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effects")
          callpropvoid QName(Namespace("mx.styles:IStyleClient"),"registerEffects"), 1
-         ofs00ff:
+         ofs10:
          inclocal_i 13
-         ofs0101:
+         ofs8:
          getlocal 13
          getlocal 9
          getproperty QName(PackageNamespace(""),"length")
-         iflt ofs00cd
+         iflt ofs9
          getlocal 8
          getlex QName(PackageNamespace("mx.styles"),"IStyleClient")
          istypelate
-         iffalse ofs0128
-         findpropstrict QName(PrivateNamespace(null,"262"),"addProperties")
+         iffalse ofs11
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"addProperties")
          getlocal1
          findpropstrict QName(PackageNamespace("mx.styles"),"IStyleClient")
          getlocal 8
          callproperty QName(PackageNamespace("mx.styles"),"IStyleClient"), 1
          getlocal3
-         callproperty QName(PrivateNamespace(null,"262"),"addProperties"), 3
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"addProperties"), 3
          coerce QName(PackageNamespace(""),"Object")
          setlocal1
-         ofs0128:
-         jump ofs0255
-         ofs012c:
+         ofs11:
+         jump ofs12
+         ofs6:
          getlocal2
          callproperty QName(Namespace("mx.styles:IStyleClient"),"getClassStyleDeclarations"), 0
          coerce QName(PackageNamespace(""),"Array")
@@ -1110,12 +1110,12 @@ package mx.styles
          setlocal 12
          pushbyte 0
          setlocal 13
-         jump ofs0172
-         ofs0144:
+         jump ofs13
+         ofs14:
          label
          getlocal 9
          getlocal 13
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          dup
          setlocal 10
@@ -1127,95 +1127,95 @@ package mx.styles
          setlocal1
          getlocal 10
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effects")
-         iffalse ofs0170
+         iffalse ofs15
          getlocal2
          getlocal 10
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effects")
          callpropvoid QName(Namespace("mx.styles:IStyleClient"),"registerEffects"), 1
-         ofs0170:
+         ofs15:
          inclocal_i 13
-         ofs0172:
+         ofs13:
          getlocal 13
          getlocal 12
-         iflt ofs0144
+         iflt ofs14
          getlocal 8
-         iffalse ofs0255
+         iffalse ofs12
          newarray 0
          coerce QName(PackageNamespace(""),"Array")
          setlocal 9
          getlocal 8
          typeof
          pushstring "object"
-         ifne ofs01c1
+         ifne ofs16
          getlocal 8
          getlex QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          istypelate
-         iffalse ofs01aa
+         iffalse ofs17
          getlocal 9
          findpropstrict QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          getlocal 8
          callproperty QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration"), 1
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         jump ofs01bd
-         ofs01aa:
-         findpropstrict QName(PrivateNamespace(null,"262"),"addProperties")
+         jump ofs18
+         ofs17:
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"addProperties")
          getlocal1
          findpropstrict QName(PackageNamespace("mx.styles"),"IStyleClient")
          getlocal 8
          callproperty QName(PackageNamespace("mx.styles"),"IStyleClient"), 1
          getlocal3
-         callproperty QName(PrivateNamespace(null,"262"),"addProperties"), 3
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"addProperties"), 3
          coerce QName(PackageNamespace(""),"Object")
          setlocal1
-         ofs01bd:
-         jump ofs020e
-         ofs01c1:
+         ofs18:
+         jump ofs19
+         ofs16:
          getlocal 8
          getlex QName(PackageNamespace(""),"RegExp")
          pushstring "\\s+"
          construct 1
-         callproperty Multiname("split",[PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")]), 1
+         callproperty Multiname("split",[PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")]), 1
          coerce QName(PackageNamespace(""),"Array")
          setlocal 14
          pushbyte 0
          setlocal 15
-         jump ofs0203
-         ofs01db:
+         jump ofs20
+         ofs21:
          label
          getlocal 14
          getlocal 15
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
-         getproperty Multiname("length",[PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
-         iffalse ofs0201
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty Multiname("length",[PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         iffalse ofs22
          getlocal 9
          getlocal 11
          pushstring "."
          getlocal 14
          getlocal 15
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          add
          callproperty QName(Namespace("mx.styles:IStyleManager2"),"getMergedStyleDeclaration"), 1
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         ofs0201:
+         ofs22:
          inclocal_i 15
-         ofs0203:
+         ofs20:
          getlocal 15
          getlocal 14
          getproperty QName(PackageNamespace(""),"length")
-         iflt ofs01db
-         ofs020e:
+         iflt ofs21
+         ofs19:
          pushbyte 0
          setlocal 13
-         jump ofs024a
-         ofs0216:
+         jump ofs23
+         ofs24:
          label
          getlocal 9
          getlocal 13
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          dup
          setlocal 10
-         iffalse ofs0248
+         iffalse ofs25
          getlocal 10
          getlocal1
          getlocal 6
@@ -1225,22 +1225,22 @@ package mx.styles
          setlocal1
          getlocal 10
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effects")
-         iffalse ofs0248
+         iffalse ofs25
          getlocal2
          getlocal 10
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effects")
          callpropvoid QName(Namespace("mx.styles:IStyleClient"),"registerEffects"), 1
-         ofs0248:
+         ofs25:
          inclocal_i 13
-         ofs024a:
+         ofs23:
          getlocal 13
          getlocal 9
          getproperty QName(PackageNamespace(""),"length")
-         iflt ofs0216
-         ofs0255:
+         iflt ofs24
+         ofs12:
          getlocal2
          getproperty QName(Namespace("mx.styles:IStyleClient"),"styleDeclaration")
-         iffalse ofs026d
+         iffalse ofs26
          getlocal2
          getproperty QName(Namespace("mx.styles:IStyleClient"),"styleDeclaration")
          getlocal1
@@ -1249,7 +1249,7 @@ package mx.styles
          callproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"addStyleToProtoChain"), 3
          coerce QName(PackageNamespace(""),"Object")
          setlocal1
-         ofs026d:
+         ofs26:
          getlocal1
          returnvalue
          end ; code
@@ -1298,26 +1298,26 @@ package mx.styles
          coerce QName(PackageNamespace(""),"Array")
          setlocal 4
          getlocal3
-         iffalse ofs00e7
+         iffalse ofs0
          getlocal3
          typeof
          pushstring "object"
-         ifne ofs009c
+         ifne ofs1
          getlocal3
          getlex QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          istypelate
-         iffalse ofs0051
+         iffalse ofs2
          getlocal 4
          findpropstrict QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          getlocal3
          callproperty QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration"), 1
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         jump ofs0098
-         ofs0051:
+         jump ofs3
+         ofs2:
          getlocal3
          getlex QName(PackageNamespace("mx.styles"),"StyleProxy")
          istypelate
-         iffalse ofs007d
+         iffalse ofs4
          getlocal1
          findpropstrict QName(PackageNamespace("mx.styles"),"IStyleClient")
          getlocal3
@@ -1325,17 +1325,17 @@ package mx.styles
          getproperty QName(Namespace("mx.styles:IStyleClient"),"inheritingStyles")
          setproperty QName(Namespace("mx.core:IUITextField"),"inheritingStyles")
          getlocal1
-         findpropstrict QName(PrivateNamespace(null,"262"),"addProperties")
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"addProperties")
          getlocal2
          getproperty QName(Namespace("mx.styles:IStyleManager"),"stylesRoot")
          findpropstrict QName(PackageNamespace("mx.styles"),"IStyleClient")
          getlocal3
          callproperty QName(PackageNamespace("mx.styles"),"IStyleClient"), 1
          pushfalse
-         callproperty QName(PrivateNamespace(null,"262"),"addProperties"), 3
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"addProperties"), 3
          setproperty QName(Namespace("mx.core:IUITextField"),"nonInheritingStyles")
          returnvoid
-         ofs007d:
+         ofs4:
          getlocal1
          findpropstrict QName(PackageNamespace("mx.styles"),"IStyleClient")
          getlocal3
@@ -1349,43 +1349,43 @@ package mx.styles
          getproperty QName(Namespace("mx.styles:IStyleClient"),"nonInheritingStyles")
          setproperty QName(Namespace("mx.core:IUITextField"),"nonInheritingStyles")
          returnvoid
-         ofs0098:
-         jump ofs00e7
-         ofs009c:
+         ofs3:
+         jump ofs0
+         ofs1:
          getlocal3
          getlex QName(PackageNamespace(""),"RegExp")
          pushstring "\\s+"
          construct 1
-         callproperty Multiname("split",[PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")]), 1
+         callproperty Multiname("split",[PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")]), 1
          coerce QName(PackageNamespace(""),"Array")
          setlocal 8
          pushbyte 0
          setlocal 9
-         jump ofs00dc
-         ofs00b5:
+         jump ofs5
+         ofs6:
          label
          getlocal 8
          getlocal 9
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
-         getproperty Multiname("length",[PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
-         iffalse ofs00da
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty Multiname("length",[PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         iffalse ofs7
          getlocal 4
          getlocal2
          pushstring "."
          getlocal 8
          getlocal 9
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          add
          callproperty QName(Namespace("mx.styles:IStyleManager2"),"getMergedStyleDeclaration"), 1
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         ofs00da:
+         ofs7:
          inclocal_i 9
-         ofs00dc:
+         ofs5:
          getlocal 9
          getlocal 8
          getproperty QName(PackageNamespace(""),"length")
-         iflt ofs00b5
-         ofs00e7:
+         iflt ofs6
+         ofs0:
          findpropstrict QName(PackageNamespace("mx.styles"),"IStyleClient")
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"parent")
@@ -1398,24 +1398,24 @@ package mx.styles
          coerce QName(PackageNamespace(""),"Object")
          setlocal 6
          getlocal 5
-         iftrue ofs010d
+         iftrue ofs8
          getlocal2
          getproperty QName(Namespace("mx.styles:IStyleManager"),"stylesRoot")
          coerce QName(PackageNamespace(""),"Object")
          setlocal 5
-         ofs010d:
+         ofs8:
          pushbyte 0
          setlocal 7
-         jump ofs014c
-         ofs0115:
+         jump ofs9
+         ofs10:
          label
          getlocal 4
          getlocal 7
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          dup
          setlocal 10
-         iffalse ofs014a
+         iffalse ofs11
          getlocal 10
          getlocal 5
          findpropstrict QName(PackageNamespace("flash.display"),"DisplayObject")
@@ -1432,13 +1432,13 @@ package mx.styles
          callproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"addStyleToProtoChain"), 2
          coerce QName(PackageNamespace(""),"Object")
          setlocal 6
-         ofs014a:
+         ofs11:
          inclocal_i 7
-         ofs014c:
+         ofs9:
          getlocal 7
          getlocal 4
          getproperty QName(PackageNamespace(""),"length")
-         iflt ofs0115
+         iflt ofs10
          getlocal1
          getlocal 5
          setproperty QName(Namespace("mx.core:IUITextField"),"inheritingStyles")
@@ -1472,29 +1472,29 @@ package mx.styles
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"262"),"getStyleManager")
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"262"),"getStyleManager"), 1
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager"), 1
          coerce QName(PackageNamespace("mx.styles"),"IStyleManager2")
          setlocal 4
          getlocal2
          pushstring "styleName"
-         ifne ofs001c
+         ifne ofs0
          getlocal1
          getlocal3
          setproperty QName(Namespace("mx.styles:ISimpleStyleClient"),"styleName")
          returnvoid
-         ofs001c:
+         ofs0:
          getlex QName(PackageNamespace("mx.effects"),"EffectManager")
          getlocal2
          callproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"getEventForEffectTrigger"), 1
          pushstring ""
-         ifeq ofs0033
+         ifeq ofs1
          getlex QName(PackageNamespace("mx.effects"),"EffectManager")
          getlocal2
          getlocal1
          callpropvoid QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"setStyle"), 2
-         ofs0033:
+         ofs1:
          getlocal 4
          getlocal2
          callproperty QName(Namespace("mx.styles:IStyleManager"),"isInheritingStyle"), 1
@@ -1516,7 +1516,7 @@ package mx.styles
          setlocal 7
          getlocal1
          getproperty QName(Namespace("mx.styles:IStyleClient"),"styleDeclaration")
-         iftrue ofs0085
+         iftrue ofs2
          getlocal1
          findpropstrict QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          pushnull
@@ -1529,28 +1529,28 @@ package mx.styles
          getlocal3
          callpropvoid QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"setLocalStyle"), 2
          getlocal 6
-         iffalse ofs0081
+         iffalse ofs3
          getlocal1
          getlocal 5
          callpropvoid QName(Namespace("mx.styles:IStyleClient"),"regenerateStyleCache"), 1
-         ofs0081:
-         jump ofs008f
-         ofs0085:
+         ofs3:
+         jump ofs4
+         ofs2:
          getlocal1
          getproperty QName(Namespace("mx.styles:IStyleClient"),"styleDeclaration")
          getlocal2
          getlocal3
          callpropvoid QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"setLocalStyle"), 2
-         ofs008f:
+         ofs4:
          getlocal 6
          convert_b
          dup
-         iffalse ofs009b
+         iffalse ofs5
          pop
          getlocal 7
          convert_b
-         ofs009b:
-         iffalse ofs00ad
+         ofs5:
+         iffalse ofs6
          getlocal1
          getlocal2
          callpropvoid QName(Namespace("mx.styles:ISimpleStyleClient"),"styleChanged"), 1
@@ -1558,7 +1558,7 @@ package mx.styles
          getlocal2
          getlocal 5
          callpropvoid QName(Namespace("mx.styles:IStyleClient"),"notifyStyleChangeInChildren"), 2
-         ofs00ad:
+         ofs6:
          returnvoid
          end ; code
          end ; body
@@ -1588,116 +1588,116 @@ package mx.styles
          pushnull
          coerce QName(PackageNamespace("mx.core"),"IInvalidating")
          setlocal 4
-         findpropstrict QName(PrivateNamespace(null,"262"),"getStyleManager")
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"262"),"getStyleManager"), 1
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager"), 1
          coerce QName(PackageNamespace("mx.styles"),"IStyleManager2")
          setlocal3
          getlocal1
          getlex QName(PackageNamespace("mx.core"),"IFontContextComponent")
          istypelate
          dup
-         iffalse ofs0022
+         iffalse ofs0
          pop
          pushstring "hasFontContextChanged"
          getlocal1
          in
-         ofs0022:
+         ofs0:
          dup
-         iffalse ofs0039
+         iffalse ofs1
          pop
          getlocal1
          dup
          setlocal 5
          pushstring "hasFontContextChanged"
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          getlocal 5
          call 0
          kill 5
          convert_b
-         ofs0039:
-         iffalse ofs0042
+         ofs1:
+         iffalse ofs2
          getlocal1
          callpropvoid QName(Namespace("mx.core:IInvalidating"),"invalidateProperties"), 0
-         ofs0042:
+         ofs2:
          getlocal2
          not
          dup
-         iftrue ofs004f
+         iftrue ofs3
          pop
          getlocal2
          pushstring "styleName"
          equals
-         ofs004f:
+         ofs3:
          dup
-         iftrue ofs005a
+         iftrue ofs4
          pop
          getlocal2
          pushstring "layoutDirection"
          equals
-         ofs005a:
-         iffalse ofs0063
+         ofs4:
+         iffalse ofs5
          getlocal1
          callpropvoid QName(Namespace("mx.core:IInvalidating"),"invalidateProperties"), 0
-         ofs0063:
+         ofs5:
          getlocal2
          not
          dup
-         iftrue ofs0070
+         iftrue ofs6
          pop
          getlocal2
          pushstring "styleName"
          equals
-         ofs0070:
+         ofs6:
          dup
-         iftrue ofs007d
+         iftrue ofs7
          pop
          getlocal3
          getlocal2
          callproperty QName(Namespace("mx.styles:IStyleManager"),"isSizeInvalidatingStyle"), 1
          convert_b
-         ofs007d:
-         iffalse ofs0086
+         ofs7:
+         iffalse ofs8
          getlocal1
          callpropvoid QName(Namespace("mx.core:IInvalidating"),"invalidateSize"), 0
-         ofs0086:
+         ofs8:
          getlocal2
          not
          dup
-         iftrue ofs0093
+         iftrue ofs9
          pop
          getlocal2
          pushstring "styleName"
          equals
-         ofs0093:
+         ofs9:
          dup
-         iftrue ofs009e
+         iftrue ofs10
          pop
          getlocal2
          pushstring "themeColor"
          equals
-         ofs009e:
-         iffalse ofs00bb
+         ofs10:
+         iffalse ofs11
          getlocal1
          getlex QName(PackageNamespace("mx.core"),"UIComponent")
          istypelate
-         iffalse ofs00bb
+         iffalse ofs11
          getlocal1
          dup
          setlocal 5
          pushstring "initThemeColor"
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          getlocal 5
          call 0
          pop
          kill 5
-         ofs00bb:
+         ofs11:
          getlocal1
          callpropvoid QName(Namespace("mx.core:IInvalidating"),"invalidateDisplayList"), 0
          getlocal1
          getlex QName(PackageNamespace("mx.core"),"IVisualElement")
          istypelate
-         iffalse ofs00d8
+         iffalse ofs12
          findpropstrict QName(PackageNamespace("mx.core"),"IVisualElement")
          getlocal1
          callproperty QName(PackageNamespace("mx.core"),"IVisualElement"), 1
@@ -1706,39 +1706,39 @@ package mx.styles
          astypelate
          coerce QName(PackageNamespace("mx.core"),"IInvalidating")
          setlocal 4
-         ofs00d8:
+         ofs12:
          getlocal 4
-         iffalse ofs0116
+         iffalse ofs13
          getlocal2
          pushstring "styleName"
          equals
          dup
-         iftrue ofs00f0
+         iftrue ofs14
          pop
          getlocal3
          getlocal2
          callproperty QName(Namespace("mx.styles:IStyleManager"),"isParentSizeInvalidatingStyle"), 1
          convert_b
-         ofs00f0:
-         iffalse ofs00fa
+         ofs14:
+         iffalse ofs15
          getlocal 4
          callpropvoid QName(Namespace("mx.core:IInvalidating"),"invalidateSize"), 0
-         ofs00fa:
+         ofs15:
          getlocal2
          pushstring "styleName"
          equals
          dup
-         iftrue ofs010c
+         iftrue ofs16
          pop
          getlocal3
          getlocal2
          callproperty QName(Namespace("mx.styles:IStyleManager"),"isParentDisplayListInvalidatingStyle"), 1
          convert_b
-         ofs010c:
-         iffalse ofs0116
+         ofs16:
+         iffalse ofs13
          getlocal 4
          callpropvoid QName(Namespace("mx.core:IInvalidating"),"invalidateDisplayList"), 0
-         ofs0116:
+         ofs13:
          returnvoid
          end ; code
          end ; body
@@ -1765,19 +1765,19 @@ package mx.styles
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"262"),"getStyleManager")
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"262"),"getStyleManager"), 1
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager"), 1
          coerce QName(PackageNamespace("mx.styles"),"IStyleManager2")
          setlocal3
          getlocal3
          getproperty QName(Namespace("mx.styles:IStyleManager2"),"qualifiedTypeSelectors")
          convert_b
          setlocal 4
-         findpropstrict QName(PrivateNamespace(null,"262"),"getTypeHierarchy")
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"getTypeHierarchy")
          getlocal1
          getlocal 4
-         callproperty QName(PrivateNamespace(null,"262"),"getTypeHierarchy"), 2
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"getTypeHierarchy"), 2
          coerce QName(PackageNamespace("mx.utils"),"OrderedObject")
          dup
          setlocal 5
@@ -1814,27 +1814,27 @@ package mx.styles
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"262"),"getStyleManager")
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"262"),"getStyleManager"), 1
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager"), 1
          coerce QName(PackageNamespace("mx.styles"),"IStyleManager2")
          setlocal3
          getlocal2
          pushnull
-         ifne ofs0018
+         ifne ofs0
          newarray 0
          coerce QName(PackageNamespace(""),"Array")
          setlocal2
-         ofs0018:
+         ofs0:
          getlocal3
          pushstring "*"
          callproperty QName(Namespace("mx.styles:IStyleManager2"),"getStyleDeclarations"), 1
          coerce QName(PackageNamespace(""),"Array")
          setlocal 4
-         findpropstrict QName(PrivateNamespace(null,"262"),"matchStyleDeclarations")
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"matchStyleDeclarations")
          getlocal 4
          getlocal1
-         callproperty QName(PrivateNamespace(null,"262"),"matchStyleDeclarations"), 2
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"matchStyleDeclarations"), 2
          getlocal2
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"concat"), 1
          coerce QName(PackageNamespace(""),"Array")
@@ -1842,25 +1842,25 @@ package mx.styles
          getlocal2
          getproperty QName(PackageNamespace(""),"length")
          pushbyte 0
-         ifngt ofs005c
+         ifngt ofs1
          getlocal1
          callproperty QName(Namespace("mx.styles:IStyleClient"),"getClassStyleDeclarations"), 0
          getlocal2
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"concat"), 1
          coerce QName(PackageNamespace(""),"Array")
          setlocal2
-         findpropstrict QName(PrivateNamespace(null,"262"),"sortOnSpecificity")
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"sortOnSpecificity")
          getlocal2
-         callproperty QName(PrivateNamespace(null,"262"),"sortOnSpecificity"), 1
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"sortOnSpecificity"), 1
          coerce QName(PackageNamespace(""),"Array")
          setlocal2
-         jump ofs0064
-         ofs005c:
+         jump ofs2
+         ofs1:
          getlocal1
          callproperty QName(Namespace("mx.styles:IStyleClient"),"getClassStyleDeclarations"), 0
          coerce QName(PackageNamespace(""),"Array")
          setlocal2
-         ofs0064:
+         ofs2:
          getlocal2
          returnvalue
          end ; code
@@ -1870,7 +1870,7 @@ package mx.styles
       
       private static function getTypeHierarchy(param1:IStyleClient, param2:Boolean = true) : OrderedObject
       {
-         trait method QName(PrivateNamespace(null,"262"),"getTypeHierarchy")
+         trait method QName(PrivateNamespace(null,"#StyleProtoChain"),"getTypeHierarchy")
          flag FINAL
          dispid 12
          method
@@ -1955,10 +1955,10 @@ package mx.styles
          getlocal2
          setslot 2
          getscopeobject 1
-         findpropstrict QName(PrivateNamespace(null,"262"),"getStyleManager")
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager")
          getscopeobject 1
          getslot 1
-         callproperty QName(PrivateNamespace(null,"262"),"getStyleManager"), 1
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager"), 1
          coerce QName(PackageNamespace("mx.styles"),"IStyleManager2")
          setslot 3
          getscopeobject 1
@@ -1974,7 +1974,7 @@ package mx.styles
          getproperty QName(Namespace("mx.styles:IStyleManager2"),"typeHierarchyCache")
          getscopeobject 1
          getslot 4
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace("mx.utils"),"OrderedObject")
          astypelate
          coerce QName(PackageNamespace("mx.utils"),"OrderedObject")
@@ -1982,7 +1982,7 @@ package mx.styles
          getscopeobject 1
          getslot 5
          pushnull
-         ifne ofs0172
+         ifne ofs0
          getscopeobject 1
          findpropstrict QName(PackageNamespace("mx.utils"),"OrderedObject")
          constructprop QName(PackageNamespace("mx.utils"),"OrderedObject"), 0
@@ -1998,19 +1998,19 @@ package mx.styles
          getscopeobject 1
          getslot 7
          pushnull
-         ifeq ofs00ae
+         ifeq ofs1
          getscopeobject 1
          findpropstrict QName(PackageNamespace("flash.system"),"ApplicationDomain")
          getscopeobject 1
          getslot 7
          callproperty QName(Namespace("mx.core:IFlexModuleFactory"),"info"), 0
          pushstring "currentDomain"
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          callproperty QName(PackageNamespace("flash.system"),"ApplicationDomain"), 1
          coerce QName(PackageNamespace("flash.system"),"ApplicationDomain")
          setslot 6
-         jump ofs00dc
-         ofs00ae:
+         jump ofs2
+         ofs1:
          getscopeobject 1
          getlex QName(PackageNamespace("mx.managers"),"SystemManager")
          getscopeobject 1
@@ -2020,11 +2020,11 @@ package mx.styles
          setslot 8
          getscopeobject 1
          getslot 8
-         iftrue ofs00cc
+         iftrue ofs3
          getscopeobject 1
          getslot 5
          returnvalue
-         ofs00cc:
+         ofs3:
          getscopeobject 1
          getscopeobject 1
          getslot 8
@@ -2032,7 +2032,7 @@ package mx.styles
          getproperty QName(PackageNamespace(""),"applicationDomain")
          coerce QName(PackageNamespace("flash.system"),"ApplicationDomain")
          setslot 6
-         ofs00dc:
+         ofs2:
          getscopeobject 1
          getslot 3
          getproperty QName(Namespace("mx.styles:IStyleManager2"),"typeHierarchyCache")
@@ -2040,14 +2040,14 @@ package mx.styles
          getslot 4
          getscopeobject 1
          getslot 5
-         setproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
-         jump ofs0162
-         ofs00f2:
+         setproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         jump ofs4
+         ofs5:
          label
-         ofs00f3:
+         ofs6:
          getscopeobject 1
          getslot 2
-         iffalse ofs0112
+         iffalse ofs7
          getscopeobject 1
          getscopeobject 1
          getslot 4
@@ -2056,8 +2056,8 @@ package mx.styles
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"replace"), 2
          coerce_s
          setslot 9
-         jump ofs0122
-         ofs0112:
+         jump ofs8
+         ofs7:
          getscopeobject 1
          getlex QName(PackageNamespace("mx.utils"),"NameUtil")
          getscopeobject 1
@@ -2065,7 +2065,7 @@ package mx.styles
          callproperty QName(PackageNamespace(""),"getUnqualifiedClassName"), 1
          coerce_s
          setslot 9
-         ofs0122:
+         ofs8:
          getscopeobject 1
          getslot 5
          getscopeobject 1
@@ -2082,9 +2082,9 @@ package mx.styles
          callproperty QName(PackageNamespace("flash.utils"),"getQualifiedSuperclassName"), 1
          coerce_s
          setslot 4
-         ofs0147:
-         jump ofs0162
-         ofs014b:
+         ofs9:
+         jump ofs4
+         ofs10:
          getlocal0
          pushscope
          getlocal3
@@ -2102,26 +2102,26 @@ package mx.styles
          setslot 4
          popscope
          kill 4
-         ofs0162:
-         findpropstrict QName(PrivateNamespace(null,"262"),"isStopClass")
+         ofs4:
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"isStopClass")
          getscopeobject 1
          getslot 4
-         callproperty QName(PrivateNamespace(null,"262"),"isStopClass"), 1
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"isStopClass"), 1
          not
-         iftrue ofs00f2
-         ofs0172:
+         iftrue ofs5
+         ofs0:
          getscopeobject 1
          getslot 5
          returnvalue
          end ; code
-         try from ofs00f3 to ofs0147 target ofs014b type QName(PackageNamespace(""),"ReferenceError") name QName(PackageNamespace(""),"e") end
+         try from ofs6 to ofs9 target ofs10 type QName(PackageNamespace(""),"ReferenceError") name QName(PackageNamespace(""),"e") end
          end ; body
          end ; method
       }
       
       private static function isStopClass(param1:String) : Boolean
       {
-         trait method QName(PrivateNamespace(null,"262"),"isStopClass")
+         trait method QName(PrivateNamespace(null,"#StyleProtoChain"),"isStopClass")
          flag FINAL
          dispid 13
          method
@@ -2142,26 +2142,26 @@ package mx.styles
          pushnull
          equals
          dup
-         iftrue ofs0010
+         iftrue ofs0
          pop
          getlocal1
          pushstring "mx.core::UIComponent"
          equals
-         ofs0010:
+         ofs0:
          dup
-         iftrue ofs001b
+         iftrue ofs1
          pop
          getlocal1
          pushstring "mx.core::UITextField"
          equals
-         ofs001b:
+         ofs1:
          dup
-         iftrue ofs0026
+         iftrue ofs2
          pop
          getlocal1
          pushstring "mx.graphics.baseClasses::GraphicElement"
          equals
-         ofs0026:
+         ofs2:
          returnvalue
          end ; code
          end ; body
@@ -2170,7 +2170,7 @@ package mx.styles
       
       private static function matchStyleDeclarations(param1:Array, param2:IAdvancedStyleClient) : Array
       {
-         trait method QName(PrivateNamespace(null,"262"),"matchStyleDeclarations")
+         trait method QName(PrivateNamespace(null,"#StyleProtoChain"),"matchStyleDeclarations")
          flag FINAL
          dispid 14
          method
@@ -2199,8 +2199,8 @@ package mx.styles
          getlocal1
          coerce_a
          setlocal 6
-         jump ofs0033
-         ofs0018:
+         jump ofs0
+         ofs1:
          label
          getlocal 6
          getlocal 5
@@ -2210,13 +2210,13 @@ package mx.styles
          setlocal 4
          getlocal2
          callproperty QName(PackageNamespace(""),"matchesStyleClient"), 1
-         iffalse ofs0033
+         iffalse ofs0
          getlocal3
          getlocal 4
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         ofs0033:
+         ofs0:
          hasnext2 6, 5
-         iftrue ofs0018
+         iftrue ofs1
          kill 6
          kill 5
          getlocal3
@@ -2228,7 +2228,7 @@ package mx.styles
       
       private static function sortOnSpecificity(param1:Array) : Array
       {
-         trait method QName(PrivateNamespace(null,"262"),"sortOnSpecificity")
+         trait method QName(PrivateNamespace(null,"#StyleProtoChain"),"sortOnSpecificity")
          flag FINAL
          dispid 15
          method
@@ -2256,34 +2256,34 @@ package mx.styles
          setlocal2
          getlocal2
          pushbyte 1
-         ifnle ofs0019
+         ifnle ofs0
          getlocal1
          returnvalue
-         ofs0019:
+         ofs0:
          pushbyte 1
          setlocal 4
-         jump ofs0078
-         ofs0021:
+         jump ofs1
+         ofs2:
          label
          getlocal 4
          convert_i
          setlocal 5
-         jump ofs006e
-         ofs002b:
+         jump ofs3
+         ofs4:
          label
          getlocal1
          getlocal 5
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
-         getproperty Multiname("specificity",[PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty Multiname("specificity",[PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          getlocal1
          getlocal 5
          decrement
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
-         getproperty Multiname("specificity",[PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
-         ifnlt ofs0065
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty Multiname("specificity",[PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         ifnlt ofs5
          getlocal1
          getlocal 5
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("mx.styles"),"CSSStyleDeclaration")
          setlocal3
          getlocal1
@@ -2291,30 +2291,30 @@ package mx.styles
          getlocal1
          getlocal 5
          decrement
-         getproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
-         setproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
          getlocal1
          getlocal 5
          decrement
          getlocal3
-         setproperty MultinameL([PrivateNamespace(null,"262"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"417"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
-         jump ofs0069
-         ofs0065:
-         jump ofs0076
-         ofs0069:
+         setproperty MultinameL([PrivateNamespace(null,"#StyleProtoChain"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.styles"),Namespace("http://www.adobe.com/2006/actionscript/flash/objectproxy"),PrivateNamespace(null,"#StyleProtoChain/1"),PackageInternalNs("mx.styles"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.styles:StyleProtoChain"),StaticProtectedNs("mx.styles:StyleProtoChain"),StaticProtectedNs("Object")])
+         jump ofs6
+         ofs5:
+         jump ofs7
+         ofs6:
          getlocal 5
          decrement_i
          setlocal 5
-         ofs006e:
+         ofs3:
          getlocal 5
          pushbyte 0
-         ifgt ofs002b
-         ofs0076:
+         ifgt ofs4
+         ofs7:
          inclocal_i 4
-         ofs0078:
+         ofs1:
          getlocal 4
          getlocal2
-         iflt ofs0021
+         iflt ofs2
          getlocal1
          returnvalue
          end ; code
@@ -2324,7 +2324,7 @@ package mx.styles
       
       private static function getStyleManager(param1:Object) : IStyleManager2
       {
-         trait method QName(PrivateNamespace(null,"262"),"getStyleManager")
+         trait method QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManager")
          flag FINAL
          dispid 16
          method
@@ -2344,7 +2344,7 @@ package mx.styles
          getlocal1
          getlex QName(PackageNamespace("mx.core"),"IFlexModule")
          istypelate
-         iffalse ofs001e
+         iffalse ofs0
          getlex QName(PackageNamespace("mx.styles"),"StyleManager")
          findpropstrict QName(PackageNamespace("mx.core"),"IFlexModule")
          getlocal1
@@ -2352,18 +2352,18 @@ package mx.styles
          getproperty QName(Namespace("mx.core:IFlexModule"),"moduleFactory")
          callproperty QName(PackageNamespace(""),"getStyleManager"), 1
          returnvalue
-         ofs001e:
+         ofs0:
          getlocal1
          getlex QName(PackageNamespace("mx.styles"),"StyleProxy")
          istypelate
-         iffalse ofs0034
-         findpropstrict QName(PrivateNamespace(null,"262"),"getStyleManagerFromStyleProxy")
+         iffalse ofs1
+         findpropstrict QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManagerFromStyleProxy")
          findpropstrict QName(PackageNamespace("mx.styles"),"StyleProxy")
          getlocal1
          callproperty QName(PackageNamespace("mx.styles"),"StyleProxy"), 1
-         callproperty QName(PrivateNamespace(null,"262"),"getStyleManagerFromStyleProxy"), 1
+         callproperty QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManagerFromStyleProxy"), 1
          returnvalue
-         ofs0034:
+         ofs1:
          getlex QName(PackageNamespace("mx.styles"),"StyleManager")
          pushnull
          callproperty QName(PackageNamespace(""),"getStyleManager"), 1
@@ -2375,7 +2375,7 @@ package mx.styles
       
       private static function getStyleManagerFromStyleProxy(param1:StyleProxy) : IStyleManager2
       {
-         trait method QName(PrivateNamespace(null,"262"),"getStyleManagerFromStyleProxy")
+         trait method QName(PrivateNamespace(null,"#StyleProtoChain"),"getStyleManagerFromStyleProxy")
          flag FINAL
          dispid 17
          method
@@ -2395,8 +2395,8 @@ package mx.styles
          getlocal1
          coerce QName(PackageNamespace("mx.styles"),"IStyleClient")
          setlocal2
-         jump ofs0017
-         ofs000a:
+         jump ofs0
+         ofs1:
          label
          findpropstrict QName(PackageNamespace("mx.styles"),"StyleProxy")
          getlocal2
@@ -2404,15 +2404,15 @@ package mx.styles
          getproperty QName(PackageNamespace(""),"source")
          coerce QName(PackageNamespace("mx.styles"),"IStyleClient")
          setlocal2
-         ofs0017:
+         ofs0:
          getlocal2
          getlex QName(PackageNamespace("mx.styles"),"StyleProxy")
          istypelate
-         iftrue ofs000a
+         iftrue ofs1
          getlocal2
          getlex QName(PackageNamespace("mx.core"),"IFlexModule")
          istypelate
-         iffalse ofs003b
+         iffalse ofs2
          getlex QName(PackageNamespace("mx.styles"),"StyleManager")
          findpropstrict QName(PackageNamespace("mx.core"),"IFlexModule")
          getlocal2
@@ -2420,7 +2420,7 @@ package mx.styles
          getproperty QName(Namespace("mx.core:IFlexModule"),"moduleFactory")
          callproperty QName(PackageNamespace(""),"getStyleManager"), 1
          returnvalue
-         ofs003b:
+         ofs2:
          getlex QName(PackageNamespace("mx.styles"),"StyleManager")
          pushnull
          callproperty QName(PackageNamespace(""),"getStyleManager"), 1
@@ -2449,7 +2449,7 @@ findpropstrict Multiname("StyleProtoChain",[PackageNamespace("mx.styles")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass 184
+newclass #StyleProtoChain
 popscope
 initproperty QName(PackageNamespace("mx.styles"),"StyleProtoChain")
 returnvoid

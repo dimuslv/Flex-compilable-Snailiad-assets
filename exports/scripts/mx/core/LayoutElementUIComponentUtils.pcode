@@ -30,12 +30,12 @@ package mx.core
       findproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
       pushstring "4.1.0.16076"
       initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
-      findproperty QName(PrivateNamespace(null,"258"),"DEFAULT_MAX_WIDTH")
+      findproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"DEFAULT_MAX_WIDTH")
       pushshort 10000
-      initproperty QName(PrivateNamespace(null,"258"),"DEFAULT_MAX_WIDTH")
-      findproperty QName(PrivateNamespace(null,"258"),"DEFAULT_MAX_HEIGHT")
+      initproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"DEFAULT_MAX_WIDTH")
+      findproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"DEFAULT_MAX_HEIGHT")
       pushshort 10000
-      initproperty QName(PrivateNamespace(null,"258"),"DEFAULT_MAX_HEIGHT")
+      initproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"DEFAULT_MAX_HEIGHT")
       returnvoid
       end ; code
       end ; body
@@ -66,7 +66,7 @@ package mx.core
       
       private static function getPreferredUBoundsWidth(param1:IUIComponent) : Number
       {
-         trait method QName(PrivateNamespace(null,"258"),"getPreferredUBoundsWidth")
+         trait method QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsWidth")
          flag FINAL
          dispid 3
          method
@@ -91,24 +91,24 @@ package mx.core
          getproperty QName(PackageNamespace(""),"compatibilityVersion")
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"VERSION_4_0")
-         ifnlt ofs0033
+         ifnlt ofs0
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleX")
          pushbyte 0
-         ifne ofs002a
+         ifne ofs1
          pushbyte 0
          convert_d
-         jump ofs0031
-         ofs002a:
+         jump ofs2
+         ofs1:
          getlocal2
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleX")
          divide
          convert_d
-         ofs0031:
+         ofs2:
          convert_d
          setlocal2
-         ofs0033:
+         ofs0:
          getlocal2
          returnvalue
          end ; code
@@ -118,7 +118,7 @@ package mx.core
       
       private static function getPreferredUBoundsHeight(param1:IUIComponent) : Number
       {
-         trait method QName(PrivateNamespace(null,"258"),"getPreferredUBoundsHeight")
+         trait method QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsHeight")
          flag FINAL
          dispid 4
          method
@@ -143,24 +143,24 @@ package mx.core
          getproperty QName(PackageNamespace(""),"compatibilityVersion")
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"VERSION_4_0")
-         ifnlt ofs0033
+         ifnlt ofs0
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleY")
          pushbyte 0
-         ifne ofs002a
+         ifne ofs1
          pushbyte 0
          convert_d
-         jump ofs0031
-         ofs002a:
+         jump ofs2
+         ofs1:
          getlocal2
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleY")
          divide
          convert_d
-         ofs0031:
+         ofs2:
          convert_d
          setlocal2
-         ofs0033:
+         ofs0:
          getlocal2
          returnvalue
          end ; code
@@ -170,7 +170,7 @@ package mx.core
       
       private static function getMinUBoundsWidth(param1:IUIComponent) : Number
       {
-         trait method QName(PrivateNamespace(null,"258"),"getMinUBoundsWidth")
+         trait method QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsWidth")
          flag FINAL
          dispid 5
          method
@@ -193,33 +193,33 @@ package mx.core
          getlocal1
          getproperty QName(Namespace("mx.core:IUIComponent"),"explicitMinWidth")
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs001d
+         iftrue ofs0
          getlocal1
          getproperty QName(Namespace("mx.core:IUIComponent"),"explicitMinWidth")
          convert_d
          setlocal2
-         jump ofs0057
-         ofs001d:
+         jump ofs1
+         ofs0:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal1
          getproperty QName(Namespace("mx.core:IUIComponent"),"measuredMinWidth")
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iffalse ofs0033
+         iffalse ofs2
          pushbyte 0
          convert_d
-         jump ofs0038
-         ofs0033:
+         jump ofs3
+         ofs2:
          getlocal1
          getproperty QName(Namespace("mx.core:IUIComponent"),"measuredMinWidth")
          convert_d
-         ofs0038:
+         ofs3:
          convert_d
          setlocal2
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal1
          getproperty QName(Namespace("mx.core:IUIComponent"),"explicitMaxWidth")
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs0057
+         iftrue ofs1
          getlex QName(PackageNamespace(""),"Math")
          getlocal2
          getlocal1
@@ -227,29 +227,29 @@ package mx.core
          callproperty QName(PackageNamespace(""),"min"), 2
          convert_d
          setlocal2
-         ofs0057:
+         ofs1:
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"compatibilityVersion")
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"VERSION_4_0")
-         ifnlt ofs0081
+         ifnlt ofs4
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleX")
          pushbyte 0
-         ifne ofs0078
+         ifne ofs5
          pushbyte 0
          convert_d
-         jump ofs007f
-         ofs0078:
+         jump ofs6
+         ofs5:
          getlocal2
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleX")
          divide
          convert_d
-         ofs007f:
+         ofs6:
          convert_d
          setlocal2
-         ofs0081:
+         ofs4:
          getlocal2
          returnvalue
          end ; code
@@ -259,7 +259,7 @@ package mx.core
       
       private static function getMinUBoundsHeight(param1:IUIComponent) : Number
       {
-         trait method QName(PrivateNamespace(null,"258"),"getMinUBoundsHeight")
+         trait method QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsHeight")
          flag FINAL
          dispid 6
          method
@@ -282,33 +282,33 @@ package mx.core
          getlocal1
          getproperty QName(Namespace("mx.core:IUIComponent"),"explicitMinHeight")
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs001d
+         iftrue ofs0
          getlocal1
          getproperty QName(Namespace("mx.core:IUIComponent"),"explicitMinHeight")
          convert_d
          setlocal2
-         jump ofs0057
-         ofs001d:
+         jump ofs1
+         ofs0:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal1
          getproperty QName(Namespace("mx.core:IUIComponent"),"measuredMinHeight")
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iffalse ofs0033
+         iffalse ofs2
          pushbyte 0
          convert_d
-         jump ofs0038
-         ofs0033:
+         jump ofs3
+         ofs2:
          getlocal1
          getproperty QName(Namespace("mx.core:IUIComponent"),"measuredMinHeight")
          convert_d
-         ofs0038:
+         ofs3:
          convert_d
          setlocal2
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal1
          getproperty QName(Namespace("mx.core:IUIComponent"),"explicitMaxHeight")
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs0057
+         iftrue ofs1
          getlex QName(PackageNamespace(""),"Math")
          getlocal2
          getlocal1
@@ -316,29 +316,29 @@ package mx.core
          callproperty QName(PackageNamespace(""),"min"), 2
          convert_d
          setlocal2
-         ofs0057:
+         ofs1:
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"compatibilityVersion")
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"VERSION_4_0")
-         ifnlt ofs0081
+         ifnlt ofs4
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleY")
          pushbyte 0
-         ifne ofs0078
+         ifne ofs5
          pushbyte 0
          convert_d
-         jump ofs007f
-         ofs0078:
+         jump ofs6
+         ofs5:
          getlocal2
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleY")
          divide
          convert_d
-         ofs007f:
+         ofs6:
          convert_d
          setlocal2
-         ofs0081:
+         ofs4:
          getlocal2
          returnvalue
          end ; code
@@ -348,7 +348,7 @@ package mx.core
       
       private static function getMaxUBoundsWidth(param1:IUIComponent) : Number
       {
-         trait method QName(PrivateNamespace(null,"258"),"getMaxUBoundsWidth")
+         trait method QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsWidth")
          flag FINAL
          dispid 7
          method
@@ -371,39 +371,39 @@ package mx.core
          getlocal1
          getproperty QName(Namespace("mx.core:IUIComponent"),"explicitMaxWidth")
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs001d
+         iftrue ofs0
          getlocal1
          getproperty QName(Namespace("mx.core:IUIComponent"),"explicitMaxWidth")
          convert_d
          setlocal2
-         jump ofs0022
-         ofs001d:
-         getlex QName(PrivateNamespace(null,"258"),"DEFAULT_MAX_WIDTH")
+         jump ofs1
+         ofs0:
+         getlex QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"DEFAULT_MAX_WIDTH")
          convert_d
          setlocal2
-         ofs0022:
+         ofs1:
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"compatibilityVersion")
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"VERSION_4_0")
-         ifnlt ofs004c
+         ifnlt ofs2
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleX")
          pushbyte 0
-         ifne ofs0043
+         ifne ofs3
          pushbyte 0
          convert_d
-         jump ofs004a
-         ofs0043:
+         jump ofs4
+         ofs3:
          getlocal2
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleX")
          divide
          convert_d
-         ofs004a:
+         ofs4:
          convert_d
          setlocal2
-         ofs004c:
+         ofs2:
          getlocal2
          returnvalue
          end ; code
@@ -413,7 +413,7 @@ package mx.core
       
       private static function getMaxUBoundsHeight(param1:IUIComponent) : Number
       {
-         trait method QName(PrivateNamespace(null,"258"),"getMaxUBoundsHeight")
+         trait method QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsHeight")
          flag FINAL
          dispid 8
          method
@@ -436,39 +436,39 @@ package mx.core
          getlocal1
          getproperty QName(Namespace("mx.core:IUIComponent"),"explicitMaxHeight")
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs001d
+         iftrue ofs0
          getlocal1
          getproperty QName(Namespace("mx.core:IUIComponent"),"explicitMaxHeight")
          convert_d
          setlocal2
-         jump ofs0022
-         ofs001d:
-         getlex QName(PrivateNamespace(null,"258"),"DEFAULT_MAX_HEIGHT")
+         jump ofs1
+         ofs0:
+         getlex QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"DEFAULT_MAX_HEIGHT")
          convert_d
          setlocal2
-         ofs0022:
+         ofs1:
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"compatibilityVersion")
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"VERSION_4_0")
-         ifnlt ofs004c
+         ifnlt ofs2
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleY")
          pushbyte 0
-         ifne ofs0043
+         ifne ofs3
          pushbyte 0
          convert_d
-         jump ofs004a
-         ofs0043:
+         jump ofs4
+         ofs3:
          getlocal2
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleY")
          divide
          convert_d
-         ofs004a:
+         ofs4:
          convert_d
          setlocal2
-         ofs004c:
+         ofs2:
          getlocal2
          returnvalue
          end ; code
@@ -496,24 +496,24 @@ package mx.core
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"258"),"getPreferredUBoundsWidth")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getPreferredUBoundsWidth"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsWidth"), 1
          convert_d
          setlocal3
          getlocal2
-         iffalse ofs0027
+         iffalse ofs0
          getlex QName(PackageNamespace("mx.utils"),"MatrixUtil")
          getlocal3
-         findpropstrict QName(PrivateNamespace(null,"258"),"getPreferredUBoundsHeight")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getPreferredUBoundsHeight"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsHeight"), 1
          getlocal2
          callproperty QName(PackageNamespace(""),"transformSize"), 3
          getproperty QName(PackageNamespace(""),"x")
          convert_d
          setlocal3
-         ofs0027:
+         ofs0:
          getlocal3
          returnvalue
          end ; code
@@ -541,24 +541,24 @@ package mx.core
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"258"),"getPreferredUBoundsHeight")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getPreferredUBoundsHeight"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsHeight"), 1
          convert_d
          setlocal3
          getlocal2
-         iffalse ofs0027
+         iffalse ofs0
          getlex QName(PackageNamespace("mx.utils"),"MatrixUtil")
-         findpropstrict QName(PrivateNamespace(null,"258"),"getPreferredUBoundsWidth")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getPreferredUBoundsWidth"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsWidth"), 1
          getlocal3
          getlocal2
          callproperty QName(PackageNamespace(""),"transformSize"), 3
          getproperty QName(PackageNamespace(""),"y")
          convert_d
          setlocal3
-         ofs0027:
+         ofs0:
          getlocal3
          returnvalue
          end ; code
@@ -586,24 +586,24 @@ package mx.core
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMinUBoundsWidth")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMinUBoundsWidth"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsWidth"), 1
          convert_d
          setlocal3
          getlocal2
-         iffalse ofs0027
+         iffalse ofs0
          getlex QName(PackageNamespace("mx.utils"),"MatrixUtil")
          getlocal3
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMinUBoundsHeight")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMinUBoundsHeight"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsHeight"), 1
          getlocal2
          callproperty QName(PackageNamespace(""),"transformSize"), 3
          getproperty QName(PackageNamespace(""),"x")
          convert_d
          setlocal3
-         ofs0027:
+         ofs0:
          getlocal3
          returnvalue
          end ; code
@@ -631,24 +631,24 @@ package mx.core
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMinUBoundsHeight")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMinUBoundsHeight"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsHeight"), 1
          convert_d
          setlocal3
          getlocal2
-         iffalse ofs0027
+         iffalse ofs0
          getlex QName(PackageNamespace("mx.utils"),"MatrixUtil")
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMinUBoundsWidth")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMinUBoundsWidth"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsWidth"), 1
          getlocal3
          getlocal2
          callproperty QName(PackageNamespace(""),"transformSize"), 3
          getproperty QName(PackageNamespace(""),"y")
          convert_d
          setlocal3
-         ofs0027:
+         ofs0:
          getlocal3
          returnvalue
          end ; code
@@ -676,24 +676,24 @@ package mx.core
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMaxUBoundsWidth")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMaxUBoundsWidth"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsWidth"), 1
          convert_d
          setlocal3
          getlocal2
-         iffalse ofs0027
+         iffalse ofs0
          getlex QName(PackageNamespace("mx.utils"),"MatrixUtil")
          getlocal3
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMaxUBoundsHeight")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMaxUBoundsHeight"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsHeight"), 1
          getlocal2
          callproperty QName(PackageNamespace(""),"transformSize"), 3
          getproperty QName(PackageNamespace(""),"x")
          convert_d
          setlocal3
-         ofs0027:
+         ofs0:
          getlocal3
          returnvalue
          end ; code
@@ -721,24 +721,24 @@ package mx.core
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMaxUBoundsHeight")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMaxUBoundsHeight"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsHeight"), 1
          convert_d
          setlocal3
          getlocal2
-         iffalse ofs0027
+         iffalse ofs0
          getlex QName(PackageNamespace("mx.utils"),"MatrixUtil")
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMaxUBoundsWidth")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMaxUBoundsWidth"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsWidth"), 1
          getlocal3
          getlocal2
          callproperty QName(PackageNamespace(""),"transformSize"), 3
          getproperty QName(PackageNamespace(""),"y")
          convert_d
          setlocal3
-         ofs0027:
+         ofs0:
          getlocal3
          returnvalue
          end ; code
@@ -769,49 +769,49 @@ package mx.core
          getlocal0
          pushscope
          getlocal 4
-         iftrue ofs000d
+         iftrue ofs0
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"x")
          returnvalue
-         ofs000d:
+         ofs0:
          getlex QName(PackageNamespace("mx.utils"),"MatrixUtil")
          getlocal2
          getlocal3
          getlocal 4
-         findpropstrict QName(PrivateNamespace(null,"258"),"getPreferredUBoundsWidth")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getPreferredUBoundsWidth"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getPreferredUBoundsHeight")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsWidth"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getPreferredUBoundsHeight"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMinUBoundsWidth")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsHeight"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMinUBoundsWidth"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMinUBoundsHeight")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsWidth"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMinUBoundsHeight"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMaxUBoundsWidth")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsHeight"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMaxUBoundsWidth"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMaxUBoundsHeight")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsWidth"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMaxUBoundsHeight"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsHeight"), 1
          callproperty QName(PackageNamespace(""),"fitBounds"), 9
          coerce QName(PackageNamespace("flash.geom"),"Point")
          dup
          setlocal 5
-         iftrue ofs006a
+         iftrue ofs1
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMinUBoundsWidth")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMinUBoundsWidth"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMinUBoundsHeight")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsWidth"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMinUBoundsHeight"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsHeight"), 1
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          coerce QName(PackageNamespace("flash.geom"),"Point")
          setlocal 5
-         ofs006a:
+         ofs1:
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 0
          coerce QName(PackageNamespace("flash.geom"),"Point")
@@ -855,49 +855,49 @@ package mx.core
          getlocal0
          pushscope
          getlocal 4
-         iftrue ofs000d
+         iftrue ofs0
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"y")
          returnvalue
-         ofs000d:
+         ofs0:
          getlex QName(PackageNamespace("mx.utils"),"MatrixUtil")
          getlocal2
          getlocal3
          getlocal 4
-         findpropstrict QName(PrivateNamespace(null,"258"),"getPreferredUBoundsWidth")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getPreferredUBoundsWidth"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getPreferredUBoundsHeight")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsWidth"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getPreferredUBoundsHeight"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMinUBoundsWidth")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsHeight"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMinUBoundsWidth"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMinUBoundsHeight")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsWidth"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMinUBoundsHeight"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMaxUBoundsWidth")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsHeight"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMaxUBoundsWidth"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMaxUBoundsHeight")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsWidth"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMaxUBoundsHeight"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsHeight"), 1
          callproperty QName(PackageNamespace(""),"fitBounds"), 9
          coerce QName(PackageNamespace("flash.geom"),"Point")
          dup
          setlocal 5
-         iftrue ofs006a
+         iftrue ofs1
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMinUBoundsWidth")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMinUBoundsWidth"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMinUBoundsHeight")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsWidth"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMinUBoundsHeight"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsHeight"), 1
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          coerce QName(PackageNamespace("flash.geom"),"Point")
          setlocal 5
-         ofs006a:
+         ofs1:
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 0
          coerce QName(PackageNamespace("flash.geom"),"Point")
@@ -948,26 +948,26 @@ package mx.core
          getproperty QName(PackageNamespace(""),"compatibilityVersion")
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"VERSION_4_0")
-         ifnlt ofs0035
+         ifnlt ofs0
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleX")
          pushbyte 0
-         ifne ofs002c
+         ifne ofs1
          pushbyte 0
          convert_d
-         jump ofs0033
-         ofs002c:
+         jump ofs2
+         ofs1:
          getlocal3
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleX")
          divide
          convert_d
-         ofs0033:
+         ofs2:
          convert_d
          setlocal3
-         ofs0035:
+         ofs0:
          getlocal2
-         iffalse ofs0082
+         iffalse ofs3
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"height")
          convert_d
@@ -976,24 +976,24 @@ package mx.core
          getproperty QName(PackageNamespace(""),"compatibilityVersion")
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"VERSION_4_0")
-         ifnlt ofs006d
+         ifnlt ofs4
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleY")
          pushbyte 0
-         ifne ofs0062
+         ifne ofs5
          pushbyte 0
          convert_d
-         jump ofs006a
-         ofs0062:
+         jump ofs6
+         ofs5:
          getlocal 4
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleY")
          divide
          convert_d
-         ofs006a:
+         ofs6:
          convert_d
          setlocal 4
-         ofs006d:
+         ofs4:
          getlex QName(PackageNamespace("mx.utils"),"MatrixUtil")
          getlocal3
          getlocal 4
@@ -1004,7 +1004,7 @@ package mx.core
          getproperty QName(PackageNamespace(""),"x")
          convert_d
          setlocal3
-         ofs0082:
+         ofs3:
          getlocal3
          returnvalue
          end ; code
@@ -1042,26 +1042,26 @@ package mx.core
          getproperty QName(PackageNamespace(""),"compatibilityVersion")
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"VERSION_4_0")
-         ifnlt ofs0035
+         ifnlt ofs0
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleY")
          pushbyte 0
-         ifne ofs002c
+         ifne ofs1
          pushbyte 0
          convert_d
-         jump ofs0033
-         ofs002c:
+         jump ofs2
+         ofs1:
          getlocal3
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleY")
          divide
          convert_d
-         ofs0033:
+         ofs2:
          convert_d
          setlocal3
-         ofs0035:
+         ofs0:
          getlocal2
-         iffalse ofs0082
+         iffalse ofs3
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"width")
          convert_d
@@ -1070,24 +1070,24 @@ package mx.core
          getproperty QName(PackageNamespace(""),"compatibilityVersion")
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"VERSION_4_0")
-         ifnlt ofs006d
+         ifnlt ofs4
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleX")
          pushbyte 0
-         ifne ofs0062
+         ifne ofs5
          pushbyte 0
          convert_d
-         jump ofs006a
-         ofs0062:
+         jump ofs6
+         ofs5:
          getlocal 4
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleX")
          divide
          convert_d
-         ofs006a:
+         ofs6:
          convert_d
          setlocal 4
-         ofs006d:
+         ofs4:
          getlex QName(PackageNamespace("mx.utils"),"MatrixUtil")
          getlocal 4
          getlocal3
@@ -1098,7 +1098,7 @@ package mx.core
          getproperty QName(PackageNamespace(""),"y")
          convert_d
          setlocal3
-         ofs0082:
+         ofs3:
          getlocal3
          returnvalue
          end ; code
@@ -1128,11 +1128,11 @@ package mx.core
          pushscope
          getlocal2
          pushnull
-         ifne ofs000d
+         ifne ofs0
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"x")
          returnvalue
-         ofs000d:
+         ofs0:
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"width")
          convert_d
@@ -1145,40 +1145,40 @@ package mx.core
          getproperty QName(PackageNamespace(""),"compatibilityVersion")
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"VERSION_4_0")
-         ifnlt ofs0060
+         ifnlt ofs1
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleX")
          pushbyte 0
-         ifne ofs003b
+         ifne ofs2
          pushbyte 0
          convert_d
-         jump ofs0042
-         ofs003b:
+         jump ofs3
+         ofs2:
          getlocal3
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleX")
          divide
          convert_d
-         ofs0042:
+         ofs3:
          convert_d
          setlocal3
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleY")
          pushbyte 0
-         ifne ofs0055
+         ifne ofs4
          pushbyte 0
          convert_d
-         jump ofs005d
-         ofs0055:
+         jump ofs5
+         ofs4:
          getlocal 4
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleY")
          divide
          convert_d
-         ofs005d:
+         ofs5:
          convert_d
          setlocal 4
-         ofs0060:
+         ofs1:
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 0
          coerce QName(PackageNamespace("flash.geom"),"Point")
@@ -1219,11 +1219,11 @@ package mx.core
          pushscope
          getlocal2
          pushnull
-         ifne ofs000d
+         ifne ofs0
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"y")
          returnvalue
-         ofs000d:
+         ofs0:
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"width")
          convert_d
@@ -1236,40 +1236,40 @@ package mx.core
          getproperty QName(PackageNamespace(""),"compatibilityVersion")
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"VERSION_4_0")
-         ifnlt ofs0060
+         ifnlt ofs1
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleX")
          pushbyte 0
-         ifne ofs003b
+         ifne ofs2
          pushbyte 0
          convert_d
-         jump ofs0042
-         ofs003b:
+         jump ofs3
+         ofs2:
          getlocal3
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleX")
          divide
          convert_d
-         ofs0042:
+         ofs3:
          convert_d
          setlocal3
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleY")
          pushbyte 0
-         ifne ofs0055
+         ifne ofs4
          pushbyte 0
          convert_d
-         jump ofs005d
-         ofs0055:
+         jump ofs5
+         ofs4:
          getlocal 4
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleY")
          divide
          convert_d
-         ofs005d:
+         ofs5:
          convert_d
          setlocal 4
-         ofs0060:
+         ofs1:
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 0
          coerce QName(PackageNamespace("flash.geom"),"Point")
@@ -1311,7 +1311,7 @@ package mx.core
          getlocal0
          pushscope
          getlocal 4
-         iffalse ofs002e
+         iffalse ofs0
          getlocal2
          findpropstrict QName(PackageNamespace(""),"getLayoutBoundsX")
          getlocal1
@@ -1334,7 +1334,7 @@ package mx.core
          add
          convert_d
          setlocal3
-         ofs002e:
+         ofs0:
          getlocal1
          getlocal2
          getlocal3
@@ -1368,32 +1368,32 @@ package mx.core
          getlocal0
          pushscope
          getlocal 4
-         iftrue ofs005c
+         iftrue ofs0
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal2
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iffalse ofs001e
-         findpropstrict QName(PrivateNamespace(null,"258"),"getPreferredUBoundsWidth")
+         iffalse ofs1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getPreferredUBoundsWidth"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsWidth"), 1
          convert_d
          setlocal2
-         ofs001e:
+         ofs1:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal3
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iffalse ofs0034
-         findpropstrict QName(PrivateNamespace(null,"258"),"getPreferredUBoundsHeight")
+         iffalse ofs2
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getPreferredUBoundsHeight"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsHeight"), 1
          convert_d
          setlocal3
-         ofs0034:
+         ofs2:
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"compatibilityVersion")
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"VERSION_4_0")
-         ifnlt ofs0054
+         ifnlt ofs3
          getlocal2
          getlocal1
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleX")
@@ -1406,56 +1406,56 @@ package mx.core
          multiply
          convert_d
          setlocal3
-         ofs0054:
+         ofs3:
          getlocal1
          getlocal2
          getlocal3
          callpropvoid QName(Namespace("mx.core:IFlexDisplayObject"),"setActualSize"), 2
          returnvoid
-         ofs005c:
+         ofs0:
          getlex QName(PackageNamespace("mx.utils"),"MatrixUtil")
          getlocal2
          getlocal3
          getlocal 4
-         findpropstrict QName(PrivateNamespace(null,"258"),"getPreferredUBoundsWidth")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getPreferredUBoundsWidth"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getPreferredUBoundsHeight")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsWidth"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getPreferredUBoundsHeight"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMinUBoundsWidth")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getPreferredUBoundsHeight"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMinUBoundsWidth"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMinUBoundsHeight")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsWidth"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMinUBoundsHeight"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMaxUBoundsWidth")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsHeight"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMaxUBoundsWidth"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMaxUBoundsHeight")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsWidth"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMaxUBoundsHeight"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMaxUBoundsHeight"), 1
          callproperty QName(PackageNamespace(""),"fitBounds"), 9
          coerce QName(PackageNamespace("flash.geom"),"Point")
          dup
          setlocal 5
-         iftrue ofs00b9
+         iftrue ofs4
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMinUBoundsWidth")
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsWidth")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMinUBoundsWidth"), 1
-         findpropstrict QName(PrivateNamespace(null,"258"),"getMinUBoundsHeight")
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsWidth"), 1
+         findpropstrict QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsHeight")
          getlocal1
-         callproperty QName(PrivateNamespace(null,"258"),"getMinUBoundsHeight"), 1
+         callproperty QName(PrivateNamespace(null,"#LayoutElementUIComponentUtils"),"getMinUBoundsHeight"), 1
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          coerce QName(PackageNamespace("flash.geom"),"Point")
          setlocal 5
-         ofs00b9:
+         ofs4:
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"compatibilityVersion")
          getlex QName(PackageNamespace("mx.core"),"FlexVersion")
          getproperty QName(PackageNamespace(""),"VERSION_4_0")
-         ifnlt ofs00e6
+         ifnlt ofs5
          getlocal1
          getlocal 5
          getproperty QName(PackageNamespace(""),"x")
@@ -1468,15 +1468,15 @@ package mx.core
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"scaleY")
          multiply
          callpropvoid QName(Namespace("mx.core:IFlexDisplayObject"),"setActualSize"), 2
-         jump ofs00f5
-         ofs00e6:
+         jump ofs6
+         ofs5:
          getlocal1
          getlocal 5
          getproperty QName(PackageNamespace(""),"x")
          getlocal 5
          getproperty QName(PackageNamespace(""),"y")
          callpropvoid QName(Namespace("mx.core:IFlexDisplayObject"),"setActualSize"), 2
-         ofs00f5:
+         ofs6:
          returnvoid
          end ; code
          end ; body
@@ -1502,7 +1502,7 @@ findpropstrict Multiname("LayoutElementUIComponentUtils",[PackageNamespace("mx.c
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass 175
+newclass #LayoutElementUIComponentUtils
 popscope
 initproperty QName(PackageNamespace("mx.core"),"LayoutElementUIComponentUtils")
 returnvoid

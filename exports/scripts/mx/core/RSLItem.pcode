@@ -192,21 +192,21 @@ package mx.core
          getlocal0
          getproperty QName(ProtectedNamespace("mx.core:RSLItem"),"moduleFactory")
          pushnull
-         ifeq ofs00c0
+         ifeq ofs0
          getlocal 7
          getlocal0
          getproperty QName(ProtectedNamespace("mx.core:RSLItem"),"moduleFactory")
          callproperty QName(Namespace("mx.core:IFlexModuleFactory"),"info"), 0
          pushstring "currentDomain"
-         getproperty MultinameL([PrivateNamespace(null,"188"),ProtectedNamespace("mx.core:RSLItem"),PackageNamespace(""),PackageNamespace("mx.core"),PrivateNamespace(null,"491"),PackageInternalNs("mx.core"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("mx.core:RSLItem"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#RSLItem"),ProtectedNamespace("mx.core:RSLItem"),PackageNamespace(""),PackageNamespace("mx.core"),PrivateNamespace(null,"#RSLItem/1"),PackageInternalNs("mx.core"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("mx.core:RSLItem"),StaticProtectedNs("Object")])
          setproperty QName(PackageNamespace(""),"applicationDomain")
-         jump ofs00ca
-         ofs00c0:
+         jump ofs1
+         ofs0:
          getlocal 7
          getlex QName(PackageNamespace("flash.system"),"ApplicationDomain")
          getproperty QName(PackageNamespace(""),"currentDomain")
          setproperty QName(PackageNamespace(""),"applicationDomain")
-         ofs00ca:
+         ofs1:
          getlocal 6
          getlocal0
          getproperty QName(PackageNamespace(""),"urlRequest")
@@ -247,11 +247,11 @@ package mx.core
          getlocal0
          getproperty QName(ProtectedNamespace("mx.core:RSLItem"),"chainedProgressHandler")
          pushnull
-         ifeq ofs0021
+         ifeq ofs0
          getlocal0
          getlocal1
          callpropvoid QName(ProtectedNamespace("mx.core:RSLItem"),"chainedProgressHandler"), 1
-         ofs0021:
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -278,15 +278,15 @@ package mx.core
          pushscope
          getlocal0
          pushtrue
-         initproperty QName(PrivateNamespace(null,"188"),"completed")
+         initproperty QName(PrivateNamespace(null,"#RSLItem"),"completed")
          getlocal0
          getproperty QName(ProtectedNamespace("mx.core:RSLItem"),"chainedCompleteHandler")
          pushnull
-         ifeq ofs0016
+         ifeq ofs0
          getlocal0
          getlocal1
          callpropvoid QName(ProtectedNamespace("mx.core:RSLItem"),"chainedCompleteHandler"), 1
-         ofs0016:
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -316,10 +316,10 @@ package mx.core
          getlocal1
          getproperty QName(PackageNamespace(""),"text")
          callproperty QName(PackageNamespace(""),"decodeURI"), 1
-         initproperty QName(PrivateNamespace(null,"188"),"errorText")
+         initproperty QName(PrivateNamespace(null,"#RSLItem"),"errorText")
          getlocal0
          pushtrue
-         initproperty QName(PrivateNamespace(null,"188"),"completed")
+         initproperty QName(PrivateNamespace(null,"#RSLItem"),"completed")
          getlocal0
          pushbyte 0
          initproperty QName(PackageNamespace(""),"loaded")
@@ -328,7 +328,7 @@ package mx.core
          initproperty QName(PackageNamespace(""),"total")
          findpropstrict QName(PackageNamespace(""),"trace")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"errorText")
+         getproperty QName(PrivateNamespace(null,"#RSLItem"),"errorText")
          callpropvoid QName(PackageNamespace(""),"trace"), 1
          getlocal1
          getproperty QName(PackageNamespace(""),"type")
@@ -336,59 +336,59 @@ package mx.core
          getproperty QName(PackageNamespace(""),"IO_ERROR")
          equals
          dup
-         iffalse ofs0045
+         iffalse ofs0
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("mx.core:RSLItem"),"chainedIOErrorHandler")
          pushnull
          equals
          not
-         ofs0045:
-         iffalse ofs0053
+         ofs0:
+         iffalse ofs1
          getlocal0
          getlocal1
          callpropvoid QName(ProtectedNamespace("mx.core:RSLItem"),"chainedIOErrorHandler"), 1
-         jump ofs009b
-         ofs0053:
+         jump ofs2
+         ofs1:
          getlocal1
          getproperty QName(PackageNamespace(""),"type")
          getlex QName(PackageNamespace("flash.events"),"SecurityErrorEvent")
          getproperty QName(PackageNamespace(""),"SECURITY_ERROR")
          equals
          dup
-         iffalse ofs006b
+         iffalse ofs3
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("mx.core:RSLItem"),"chainedSecurityErrorHandler")
          pushnull
          equals
          not
-         ofs006b:
-         iffalse ofs0079
+         ofs3:
+         iffalse ofs4
          getlocal0
          getlocal1
          callpropvoid QName(ProtectedNamespace("mx.core:RSLItem"),"chainedSecurityErrorHandler"), 1
-         jump ofs009b
-         ofs0079:
+         jump ofs2
+         ofs4:
          getlocal1
          getproperty QName(PackageNamespace(""),"type")
          getlex QName(PackageNamespace("mx.events"),"RSLEvent")
          getproperty QName(PackageNamespace(""),"RSL_ERROR")
          equals
          dup
-         iffalse ofs0091
+         iffalse ofs5
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("mx.core:RSLItem"),"chainedRSLErrorHandler")
          pushnull
          equals
          not
-         ofs0091:
-         iffalse ofs009b
+         ofs5:
+         iffalse ofs2
          getlocal0
          getlocal1
          callpropvoid QName(ProtectedNamespace("mx.core:RSLItem"),"chainedRSLErrorHandler"), 1
-         ofs009b:
+         ofs2:
          returnvoid
          end ; code
          end ; body
@@ -414,7 +414,7 @@ findpropstrict Multiname("RSLItem",[PackageNamespace("mx.core")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass 463
+newclass #RSLItem
 popscope
 initproperty QName(PackageNamespace("mx.core"),"RSLItem")
 returnvoid

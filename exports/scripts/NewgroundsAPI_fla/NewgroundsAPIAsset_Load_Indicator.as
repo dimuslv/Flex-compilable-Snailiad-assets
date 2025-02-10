@@ -3,7 +3,7 @@ package NewgroundsAPI_fla
    import flash.display.MovieClip;
    import flash.events.Event;
    
-   [Embed(source="/_assets/assets.swf", symbol="symbol31")]
+   [Embed]
    public dynamic class NewgroundsAPIAsset_Load_Indicator_3 extends MovieClip
    {
       public function NewgroundsAPIAsset_Load_Indicator_3()

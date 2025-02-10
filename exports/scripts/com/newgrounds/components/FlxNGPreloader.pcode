@@ -113,20 +113,20 @@ package com.newgrounds.components
          pushscope
          getlocal0
          getproperty QName(PackageNamespace(""),"NewgroundsAPIId")
-         iftrue ofs0014
+         iftrue ofs0
          findpropstrict QName(PackageNamespace(""),"trace")
          pushstring "[NewgroundsAPI] :: No API ID set! Please set NewgroundsAPIId in your preloader."
          callpropvoid QName(PackageNamespace(""),"trace"), 1
          returnvoid
-         ofs0014:
+         ofs0:
          getlocal0
          getproperty QName(PackageNamespace(""),"NewgroundsAPIShowAds")
-         iffalse ofs00b2
+         iffalse ofs1
          getlex QName(PackageNamespace("com.newgrounds"),"API")
          getlex QName(PackageNamespace("com.newgrounds"),"APIEvent")
          getproperty QName(PackageNamespace(""),"ADS_APPROVED")
          getlocal0
-         getproperty QName(PrivateNamespace(null),"adsApprovedHandler")
+         getproperty QName(PrivateNamespace(null,"#FlxNGPreloader"),"adsApprovedHandler")
          pushfalse
          pushbyte 0
          pushtrue
@@ -186,7 +186,7 @@ package com.newgrounds.components
          getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
          getproperty QName(PackageNamespace(""),"scaleX")
          setproperty QName(PackageNamespace(""),"scaleY")
-         ofs00b2:
+         ofs1:
          getlocal0
          getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_preloader")
          getlocal0
@@ -384,14 +384,14 @@ package com.newgrounds.components
          setlocal3
          getlocal0
          getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_initialized")
-         iftrue ofs0019
+         iftrue ofs0
          getlex QName(PackageNamespace(""),"stage")
-         iffalse ofs0018
+         iffalse ofs1
          getlocal0
          callpropvoid QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"create"), 0
-         ofs0018:
+         ofs1:
          returnvoid
-         ofs0019:
+         ofs0:
          getlex QName(PackageNamespace(""),"loaderInfo")
          getproperty QName(PackageNamespace(""),"bytesLoaded")
          getlex QName(PackageNamespace(""),"loaderInfo")
@@ -411,7 +411,7 @@ package com.newgrounds.components
          setproperty QName(PackageNamespace(""),"scaleX")
          getlocal2
          pushbyte 1
-         ifnge ofs00b0
+         ifnge ofs2
          findpropstrict QName(PackageNamespace(""),"removeEventListener")
          getlex QName(PackageNamespace("flash.events"),"Event")
          getproperty QName(PackageNamespace(""),"ENTER_FRAME")
@@ -420,11 +420,11 @@ package com.newgrounds.components
          callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
          getlocal0
          getproperty QName(PackageNamespace(""),"autoPlay")
-         iffalse ofs0061
+         iffalse ofs3
          getlocal0
          callpropvoid QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"startGame"), 0
-         jump ofs00b0
-         ofs0061:
+         jump ofs2
+         ofs3:
          findpropstrict QName(PackageNamespace("flash.display"),"Sprite")
          constructprop QName(PackageNamespace("flash.display"),"Sprite"), 0
          coerce QName(PackageNamespace("flash.display"),"Sprite")
@@ -458,13 +458,13 @@ package com.newgrounds.components
          getlex QName(PackageNamespace("flash.events"),"MouseEvent")
          getproperty QName(PackageNamespace(""),"CLICK")
          getlocal0
-         getproperty QName(PrivateNamespace(null),"playButtonClickHandler")
+         getproperty QName(PrivateNamespace(null,"#FlxNGPreloader"),"playButtonClickHandler")
          callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
          getlocal0
          getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_preloader")
          getlocal3
          callpropvoid QName(PackageNamespace(""),"addChild"), 1
-         ofs00b0:
+         ofs2:
          returnvoid
          end ; code
          end ; body
@@ -502,7 +502,7 @@ package com.newgrounds.components
          coerce QName(PackageNamespace(""),"Class")
          setlocal1
          getlocal1
-         iffalse ofs0035
+         iffalse ofs0
          getlocal1
          construct 0
          coerce QName(PackageNamespace(""),"Object")
@@ -512,18 +512,18 @@ package com.newgrounds.components
          getlex QName(PackageNamespace("flash.display"),"DisplayObject")
          astypelate
          callpropvoid QName(PackageNamespace(""),"addChild"), 1
-         ofs0035:
+         ofs0:
          findpropstrict QName(PackageNamespace(""),"removeChild")
          getlocal0
          getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_preloader")
          callpropvoid QName(PackageNamespace(""),"removeChild"), 1
          getlocal0
          getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_ad")
-         iffalse ofs004c
+         iffalse ofs1
          getlocal0
          getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_ad")
          callpropvoid QName(PackageNamespace(""),"removeAd"), 0
-         ofs004c:
+         ofs1:
          getlocal0
          pushnull
          initproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_ad")
@@ -544,7 +544,7 @@ package com.newgrounds.components
       
       private function adsApprovedHandler(param1:APIEvent) : void
       {
-         trait method QName(PrivateNamespace(null),"adsApprovedHandler")
+         trait method QName(PrivateNamespace(null,"#FlxNGPreloader"),"adsApprovedHandler")
          dispid 0
          method
          name null
@@ -564,11 +564,11 @@ package com.newgrounds.components
          getlex QName(PackageNamespace("com.newgrounds"),"APIEvent")
          getproperty QName(PackageNamespace(""),"ADS_APPROVED")
          getlocal0
-         getproperty QName(PrivateNamespace(null),"adsApprovedHandler")
+         getproperty QName(PrivateNamespace(null,"#FlxNGPreloader"),"adsApprovedHandler")
          callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
          getlocal0
          getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
-         iffalse ofs003b
+         iffalse ofs0
          getlocal0
          findpropstrict QName(PackageNamespace("com.newgrounds.components"),"FlashAd")
          pushfalse
@@ -588,7 +588,7 @@ package com.newgrounds.components
          getproperty QName(ProtectedNamespace("com.newgrounds.components:FlxNGPreloader"),"_adContainer")
          pushtrue
          setproperty QName(PackageNamespace(""),"visible")
-         ofs003b:
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -597,7 +597,7 @@ package com.newgrounds.components
       
       private function playButtonClickHandler(param1:MouseEvent) : void
       {
-         trait method QName(PrivateNamespace(null),"playButtonClickHandler")
+         trait method QName(PrivateNamespace(null,"#FlxNGPreloader"),"playButtonClickHandler")
          dispid 0
          method
          name null
@@ -652,7 +652,7 @@ pushscope
 getlex QName(PackageNamespace("flash.display"),"MovieClip")
 pushscope
 getlex QName(PackageNamespace("flash.display"),"MovieClip")
-newclass 0
+newclass #FlxNGPreloader
 popscope
 popscope
 popscope

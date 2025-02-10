@@ -2,7 +2,7 @@ package
 {
    import mx.core.SoundAsset;
    
-   [Embed(source="/_assets/64_shot2_Sfx_Shot2.mp3")]
+   [Embed]
    public class Sfx_Shot2 extends SoundAsset
    {
       public function Sfx_Shot2()

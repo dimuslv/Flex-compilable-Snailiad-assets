@@ -2,7 +2,7 @@ package
 {
    import mx.core.BitmapAsset;
    
-   [Embed(source="/_assets/112_Art_Boss2Eyelid.png")]
+   [Embed]
    public class Art_Boss2Eyelid extends BitmapAsset
    {
       public function Art_Boss2Eyelid()

@@ -2,7 +2,7 @@ package org.flixel.data
 {
    import mx.core.BitmapAsset;
    
-   [Embed(source="/_assets/274_org.flixel.data.FlxPanel_ImgDigg.png")]
+   [Embed]
    public class FlxPanel_ImgDigg extends BitmapAsset
    {
       public function FlxPanel_ImgDigg()

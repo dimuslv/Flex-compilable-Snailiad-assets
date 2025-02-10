@@ -25,18 +25,18 @@ package
       code
       getlocal0
       pushscope
-      findproperty QName(PrivateNamespace(null,"282"),"DEFAULT_LIFETIME")
+      findproperty QName(PrivateNamespace(null,"#Boss4Bullet6"),"DEFAULT_LIFETIME")
       pushbyte 2
-      initproperty QName(PrivateNamespace(null,"282"),"DEFAULT_LIFETIME")
-      findproperty QName(PrivateNamespace(null,"282"),"WIDTH")
+      initproperty QName(PrivateNamespace(null,"#Boss4Bullet6"),"DEFAULT_LIFETIME")
+      findproperty QName(PrivateNamespace(null,"#Boss4Bullet6"),"WIDTH")
       pushbyte 48
-      initproperty QName(PrivateNamespace(null,"282"),"WIDTH")
-      findproperty QName(PrivateNamespace(null,"282"),"HEIGHT")
+      initproperty QName(PrivateNamespace(null,"#Boss4Bullet6"),"WIDTH")
+      findproperty QName(PrivateNamespace(null,"#Boss4Bullet6"),"HEIGHT")
       pushbyte 48
-      initproperty QName(PrivateNamespace(null,"282"),"HEIGHT")
-      findproperty QName(PrivateNamespace(null,"282"),"FIREPOWER")
+      initproperty QName(PrivateNamespace(null,"#Boss4Bullet6"),"HEIGHT")
+      findproperty QName(PrivateNamespace(null,"#Boss4Bullet6"),"FIREPOWER")
       pushbyte 16
-      initproperty QName(PrivateNamespace(null,"282"),"FIREPOWER")
+      initproperty QName(PrivateNamespace(null,"#Boss4Bullet6"),"FIREPOWER")
       returnvoid
       end ; code
       end ; body
@@ -60,30 +60,30 @@ package
          getlocal0
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"bossRush")
-         iffalse ofs0018
-         getlex QName(PrivateNamespace(null,"282"),"FIREPOWER")
+         iffalse ofs0
+         getlex QName(PrivateNamespace(null,"#Boss4Bullet6"),"FIREPOWER")
          pushbyte 8
          divide
          convert_i
-         jump ofs001c
-         ofs0018:
-         getlex QName(PrivateNamespace(null,"282"),"FIREPOWER")
+         jump ofs1
+         ofs0:
+         getlex QName(PrivateNamespace(null,"#Boss4Bullet6"),"FIREPOWER")
          convert_i
-         ofs001c:
+         ofs1:
          constructsuper 1
          findpropstrict QName(PackageNamespace(""),"loadGraphic")
          getlex QName(PackageNamespace(""),"Art")
          getproperty QName(PackageNamespace(""),"Boss4Bullet6")
          pushtrue
          pushtrue
-         getlex QName(PrivateNamespace(null,"282"),"WIDTH")
-         getlex QName(PrivateNamespace(null,"282"),"HEIGHT")
+         getlex QName(PrivateNamespace(null,"#Boss4Bullet6"),"WIDTH")
+         getlex QName(PrivateNamespace(null,"#Boss4Bullet6"),"HEIGHT")
          callpropvoid QName(PackageNamespace(""),"loadGraphic"), 5
          findproperty QName(PackageNamespace(""),"width")
-         getlex QName(PrivateNamespace(null,"282"),"WIDTH")
+         getlex QName(PrivateNamespace(null,"#Boss4Bullet6"),"WIDTH")
          initproperty QName(PackageNamespace(""),"width")
          findproperty QName(PackageNamespace(""),"height")
-         getlex QName(PrivateNamespace(null,"282"),"HEIGHT")
+         getlex QName(PrivateNamespace(null,"#Boss4Bullet6"),"HEIGHT")
          initproperty QName(PackageNamespace(""),"height")
          pushstring "up"
          pushstring "right_up"
@@ -98,23 +98,23 @@ package
          setlocal1
          pushbyte 0
          setlocal2
-         jump ofs007e
-         ofs0069:
+         jump ofs2
+         ofs3:
          label
          findpropstrict QName(PackageNamespace(""),"addAnimation")
          getlocal1
          getlocal2
-         getproperty MultinameL([PrivateNamespace(null,"282"),PackageNamespace(""),PrivateNamespace(null,"440"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("Boss4Bullet6"),StaticProtectedNs("Boss4Bullet6"),StaticProtectedNs("Boss4Bullet"),StaticProtectedNs("EnemyBullet"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Boss4Bullet6"),PackageNamespace(""),PrivateNamespace(null,"#Boss4Bullet6/1"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("Boss4Bullet6"),StaticProtectedNs("Boss4Bullet6"),StaticProtectedNs("Boss4Bullet"),StaticProtectedNs("EnemyBullet"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          getlocal2
          pushbyte 6
          multiply
          newarray 1
          callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
          inclocal_i 2
-         ofs007e:
+         ofs2:
          getlocal2
          pushbyte 8
-         iflt ofs0069
+         iflt ofs3
          returnvoid
          end ; code
          end ; body
@@ -167,69 +167,69 @@ package
          callpropvoid QName(PackageNamespace(""),"playShot3b"), 0
          getlocal3
          pushbyte 0
-         ifnlt ofs006b
+         ifnlt ofs0
          getlocal 4
          pushbyte 0
-         ifnlt ofs0047
+         ifnlt ofs1
          findpropstrict QName(PackageNamespace(""),"play")
          pushstring "left_up"
          callpropvoid QName(PackageNamespace(""),"play"), 1
-         jump ofs0067
-         ofs0047:
+         jump ofs2
+         ofs1:
          getlocal 4
          pushbyte 0
-         ifngt ofs005d
+         ifngt ofs3
          findpropstrict QName(PackageNamespace(""),"play")
          pushstring "left_down"
          callpropvoid QName(PackageNamespace(""),"play"), 1
-         jump ofs0067
-         ofs005d:
+         jump ofs2
+         ofs3:
          findpropstrict QName(PackageNamespace(""),"play")
          pushstring "left"
          callpropvoid QName(PackageNamespace(""),"play"), 1
-         ofs0067:
-         jump ofs00d4
-         ofs006b:
+         ofs2:
+         jump ofs4
+         ofs0:
          getlocal3
          pushbyte 0
-         ifngt ofs00ac
+         ifngt ofs5
          getlocal 4
          pushbyte 0
-         ifnlt ofs0088
+         ifnlt ofs6
          findpropstrict QName(PackageNamespace(""),"play")
          pushstring "right_up"
          callpropvoid QName(PackageNamespace(""),"play"), 1
-         jump ofs00a8
-         ofs0088:
+         jump ofs7
+         ofs6:
          getlocal 4
          pushbyte 0
-         ifngt ofs009e
+         ifngt ofs8
          findpropstrict QName(PackageNamespace(""),"play")
          pushstring "right_down"
          callpropvoid QName(PackageNamespace(""),"play"), 1
-         jump ofs00a8
-         ofs009e:
+         jump ofs7
+         ofs8:
          findpropstrict QName(PackageNamespace(""),"play")
          pushstring "right"
          callpropvoid QName(PackageNamespace(""),"play"), 1
-         ofs00a8:
-         jump ofs00d4
-         ofs00ac:
+         ofs7:
+         jump ofs4
+         ofs5:
          getlocal 4
          pushbyte 0
-         ifnlt ofs00c2
+         ifnlt ofs9
          findpropstrict QName(PackageNamespace(""),"play")
          pushstring "up"
          callpropvoid QName(PackageNamespace(""),"play"), 1
-         jump ofs00d4
-         ofs00c2:
+         jump ofs4
+         ofs9:
          getlocal 4
          pushbyte 0
-         ifngt ofs00d4
+         ifngt ofs4
          findpropstrict QName(PackageNamespace(""),"play")
          pushstring "down"
          callpropvoid QName(PackageNamespace(""),"play"), 1
-         ofs00d4:
+         ofs4:
          returnvoid
          end ; code
          end ; body
@@ -286,23 +286,23 @@ package
          getproperty QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"STATE_GAME")
-         ifeq ofs0013
+         ifeq ofs0
          returnvoid
-         ofs0013:
+         ofs0:
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0
          findpropstrict QName(PackageNamespace(""),"onScreen")
          callproperty QName(PackageNamespace(""),"onScreen"), 0
-         iftrue ofs0028
+         iftrue ofs1
          getlocal0
          callsupervoid QName(PackageNamespace(""),"kill"), 0
-         ofs0028:
+         ofs1:
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"MaxX")
          greaterthan
          dup
-         iftrue ofs0046
+         iftrue ofs2
          pop
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"width")
@@ -310,17 +310,17 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"MinX")
          lessthan
-         ofs0046:
+         ofs2:
          dup
-         iftrue ofs0056
+         iftrue ofs3
          pop
          getlex QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"MaxY")
          greaterthan
-         ofs0056:
+         ofs3:
          dup
-         iftrue ofs006a
+         iftrue ofs4
          pop
          getlex QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"height")
@@ -328,11 +328,11 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"MinY")
          lessthan
-         ofs006a:
-         iffalse ofs0075
+         ofs4:
+         iffalse ofs5
          findpropstrict QName(PackageNamespace(""),"kill")
          callpropvoid QName(PackageNamespace(""),"kill"), 0
-         ofs0075:
+         ofs5:
          returnvoid
          end ; code
          end ; body
@@ -370,7 +370,7 @@ pushscope
 getlex QName(PackageNamespace(""),"Boss4Bullet")
 pushscope
 getlex QName(PackageNamespace(""),"Boss4Bullet")
-newclass 275
+newclass #Boss4Bullet6
 popscope
 popscope
 popscope

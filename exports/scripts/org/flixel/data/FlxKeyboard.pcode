@@ -215,8 +215,8 @@ package org.flixel.data
          pushbyte 65
          convert_u
          setlocal1
-         jump ofs0026
-         ofs0011:
+         jump ofs0
+         ofs1:
          label
          findpropstrict QName(PackageInternalNs("org.flixel.data"),"addKey")
          getlex QName(PackageNamespace(""),"String")
@@ -229,10 +229,10 @@ package org.flixel.data
          convert_u
          setlocal1
          callpropvoid QName(PackageInternalNs("org.flixel.data"),"addKey"), 2
-         ofs0026:
+         ofs0:
          getlocal1
          pushbyte 90
-         ifle ofs0011
+         ifle ofs1
          pushbyte 48
          convert_u
          setlocal1
@@ -422,8 +422,8 @@ package org.flixel.data
          pushbyte 1
          convert_u
          setlocal1
-         jump ofs0193
-         ofs017d:
+         jump ofs2
+         ofs3:
          label
          findpropstrict QName(PackageInternalNs("org.flixel.data"),"addKey")
          pushstring "F"
@@ -438,10 +438,10 @@ package org.flixel.data
          setlocal1
          add
          callpropvoid QName(PackageInternalNs("org.flixel.data"),"addKey"), 2
-         ofs0193:
+         ofs2:
          getlocal1
          pushbyte 12
-         ifle ofs017d
+         ifle ofs3
          findpropstrict QName(PackageInternalNs("org.flixel.data"),"addKey")
          pushstring "TAB"
          pushbyte 9
@@ -575,13 +575,13 @@ maxscopedepth 4
 code
 getlocal0
 pushscope
-getscopeobject 0
+findpropstrict Multiname("FlxKeyboard",[PackageNamespace("org.flixel.data")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace("org.flixel.data"),"FlxInput")
 pushscope
 getlex QName(PackageNamespace("org.flixel.data"),"FlxInput")
-newclass 81
+newclass #FlxKeyboard
 popscope
 popscope
 initproperty QName(PackageNamespace("org.flixel.data"),"FlxKeyboard")

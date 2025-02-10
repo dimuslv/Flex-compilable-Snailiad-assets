@@ -89,41 +89,41 @@ package mx.core
          equals
          not
          dup
-         iffalse ofs0027
+         iffalse ofs0
          pop
          getlocal1
          getlocal2
          equals
-         ofs0027:
-         iffalse ofs002c
+         ofs0:
+         iffalse ofs1
          returnvoid
-         ofs002c:
-         jump ofs008f
-         ofs0030:
+         ofs1:
+         jump ofs2
+         ofs3:
          label
          getlocal 4
          getproperty QName(PackageNamespace(""),"parent")
-         iffalse ofs0046
+         iffalse ofs4
          getlocal 4
          getproperty QName(PackageNamespace(""),"parent")
          coerce QName(PackageNamespace("flash.display"),"InteractiveObject")
          setlocal3
-         jump ofs004a
-         ofs0046:
+         jump ofs5
+         ofs4:
          pushnull
          coerce QName(PackageNamespace("flash.display"),"InteractiveObject")
          setlocal3
-         ofs004a:
+         ofs5:
          getlocal 4
          getlex QName(PackageNamespace("mx.core"),"IUIComponent")
          istypelate
-         iffalse ofs005e
+         iffalse ofs6
          findpropstrict QName(PackageNamespace("mx.core"),"IUIComponent")
          getlocal 4
          callproperty QName(PackageNamespace("mx.core"),"IUIComponent"), 1
          coerce QName(PackageNamespace("mx.core"),"IUIComponent")
          setlocal 5
-         ofs005e:
+         ofs6:
          getlocal3
          coerce QName(PackageNamespace("flash.display"),"InteractiveObject")
          dup
@@ -131,67 +131,67 @@ package mx.core
          coerce_a
          convert_b
          dup
-         iffalse ofs0074
+         iffalse ofs7
          pop
          getlocal 4
          getlex QName(PackageNamespace("mx.managers"),"IFocusManagerContainer")
          istypelate
          coerce_a
          convert_b
-         ofs0074:
+         ofs7:
          dup
-         iffalse ofs0087
+         iffalse ofs8
          pop
          findpropstrict QName(PackageNamespace("mx.managers"),"IFocusManagerContainer")
          getlocal 4
          callproperty QName(PackageNamespace("mx.managers"),"IFocusManagerContainer"), 1
          getproperty QName(Namespace("mx.managers:IFocusManagerContainer"),"defaultButton")
          convert_b
-         ofs0087:
-         iffalse ofs008f
-         jump ofs0095
-         ofs008f:
+         ofs8:
+         iffalse ofs2
+         jump ofs9
+         ofs2:
          getlocal 4
-         iftrue ofs0030
-         ofs0095:
+         iftrue ofs3
+         ofs9:
          getlex QName(PackageNamespace("mx.core"),"ContainerGlobals")
          getproperty QName(PackageNamespace(""),"focusedContainer")
          getlocal 4
          equals
          not
          dup
-         iftrue ofs00b7
+         iftrue ofs10
          pop
          getlex QName(PackageNamespace("mx.core"),"ContainerGlobals")
          getproperty QName(PackageNamespace(""),"focusedContainer")
          pushnull
          equals
          dup
-         iffalse ofs00b7
+         iffalse ofs10
          pop
          getlocal 4
          pushnull
          equals
-         ofs00b7:
-         iffalse ofs013b
+         ofs10:
+         iffalse ofs11
          getlocal 4
-         iftrue ofs00cc
+         iftrue ofs12
          findpropstrict QName(PackageNamespace("flash.display"),"InteractiveObject")
          getlocal 5
          callproperty QName(PackageNamespace("flash.display"),"InteractiveObject"), 1
          coerce QName(PackageNamespace("flash.display"),"InteractiveObject")
          setlocal 4
-         ofs00cc:
+         ofs12:
          getlocal 4
          convert_b
          dup
-         iffalse ofs00db
+         iffalse ofs13
          pop
          getlocal 4
          getlex QName(PackageNamespace("mx.managers"),"IFocusManagerContainer")
          istypelate
-         ofs00db:
-         iffalse ofs013b
+         ofs13:
+         iffalse ofs11
          findpropstrict QName(PackageNamespace("mx.managers"),"IFocusManagerContainer")
          getlocal 4
          callproperty QName(PackageNamespace("mx.managers"),"IFocusManagerContainer"), 1
@@ -199,9 +199,9 @@ package mx.core
          coerce QName(PackageNamespace("mx.managers"),"IFocusManager")
          dup
          setlocal 6
-         iftrue ofs00f5
+         iftrue ofs14
          returnvoid
-         ofs00f5:
+         ofs14:
          findpropstrict QName(PackageNamespace("mx.managers"),"IFocusManagerContainer")
          getlocal 4
          callproperty QName(PackageNamespace("mx.managers"),"IFocusManagerContainer"), 1
@@ -211,7 +211,7 @@ package mx.core
          coerce QName(PackageNamespace("mx.core"),"IButton")
          dup
          setlocal 7
-         iffalse ofs0128
+         iffalse ofs15
          getlex QName(PackageNamespace("mx.core"),"ContainerGlobals")
          findpropstrict QName(PackageNamespace("flash.display"),"InteractiveObject")
          getlocal 4
@@ -222,8 +222,8 @@ package mx.core
          getlex QName(PackageNamespace("mx.core"),"IButton")
          astypelate
          setproperty QName(Namespace("mx.managers:IFocusManager"),"defaultButton")
-         jump ofs013b
-         ofs0128:
+         jump ofs11
+         ofs15:
          getlex QName(PackageNamespace("mx.core"),"ContainerGlobals")
          findpropstrict QName(PackageNamespace("flash.display"),"InteractiveObject")
          getlocal 4
@@ -232,7 +232,7 @@ package mx.core
          getlocal 6
          pushnull
          setproperty QName(Namespace("mx.managers:IFocusManager"),"defaultButton")
-         ofs013b:
+         ofs11:
          returnvoid
          end ; code
          end ; body
@@ -258,7 +258,7 @@ findpropstrict Multiname("ContainerGlobals",[PackageNamespace("mx.core")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass 139
+newclass #ContainerGlobals
 popscope
 initproperty QName(PackageNamespace("mx.core"),"ContainerGlobals")
 returnvoid

@@ -5,7 +5,7 @@ package NewgroundsAPI_fla
    import flash.display.SimpleButton;
    import flash.events.MouseEvent;
    
-   [Embed(source="/_assets/assets.swf", symbol="symbol32")]
+   [Embed]
    public dynamic class NewgroundsAPIAsset_FlashAd_Container_23 extends MovieClip
    {
       public var adMask:MovieClip;

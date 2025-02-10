@@ -2,7 +2,7 @@ package
 {
    import flash.display.BitmapData;
    
-   [Embed(source="/_assets/35_FlxLoaderPlay_FlxLoaderPlay.png")]
+   [Embed]
    public dynamic class FlxLoaderPlay extends BitmapData
    {
       public function FlxLoaderPlay(param1:int = 304, param2:int = 70)

@@ -23,15 +23,15 @@ package
       code
       getlocal0
       pushscope
-      findproperty QName(PrivateNamespace(null,"273"),"WIDTH")
+      findproperty QName(PrivateNamespace(null,"#PlayerBullet2"),"WIDTH")
       pushbyte 16
-      initproperty QName(PrivateNamespace(null,"273"),"WIDTH")
-      findproperty QName(PrivateNamespace(null,"273"),"HEIGHT")
+      initproperty QName(PrivateNamespace(null,"#PlayerBullet2"),"WIDTH")
+      findproperty QName(PrivateNamespace(null,"#PlayerBullet2"),"HEIGHT")
       pushbyte 16
-      initproperty QName(PrivateNamespace(null,"273"),"HEIGHT")
-      findproperty QName(PrivateNamespace(null,"273"),"FIREPOWER")
+      initproperty QName(PrivateNamespace(null,"#PlayerBullet2"),"HEIGHT")
+      findproperty QName(PrivateNamespace(null,"#PlayerBullet2"),"FIREPOWER")
       pushbyte 20
-      initproperty QName(PrivateNamespace(null,"273"),"FIREPOWER")
+      initproperty QName(PrivateNamespace(null,"#PlayerBullet2"),"FIREPOWER")
       returnvoid
       end ; code
       end ; body
@@ -53,21 +53,21 @@ package
          getlocal0
          pushscope
          getlocal0
-         getlex QName(PrivateNamespace(null,"273"),"FIREPOWER")
+         getlex QName(PrivateNamespace(null,"#PlayerBullet2"),"FIREPOWER")
          constructsuper 1
          findpropstrict QName(PackageNamespace(""),"loadGraphic")
          getlex QName(PackageNamespace(""),"Art")
          getproperty QName(PackageNamespace(""),"PlayerBullet2")
          pushtrue
          pushtrue
-         getlex QName(PrivateNamespace(null,"273"),"WIDTH")
-         getlex QName(PrivateNamespace(null,"273"),"HEIGHT")
+         getlex QName(PrivateNamespace(null,"#PlayerBullet2"),"WIDTH")
+         getlex QName(PrivateNamespace(null,"#PlayerBullet2"),"HEIGHT")
          callpropvoid QName(PackageNamespace(""),"loadGraphic"), 5
          findproperty QName(PackageNamespace(""),"width")
-         getlex QName(PrivateNamespace(null,"273"),"WIDTH")
+         getlex QName(PrivateNamespace(null,"#PlayerBullet2"),"WIDTH")
          initproperty QName(PackageNamespace(""),"width")
          findproperty QName(PackageNamespace(""),"height")
-         getlex QName(PrivateNamespace(null,"273"),"HEIGHT")
+         getlex QName(PrivateNamespace(null,"#PlayerBullet2"),"HEIGHT")
          initproperty QName(PackageNamespace(""),"height")
          findpropstrict QName(PackageNamespace(""),"addAnimation")
          pushstring "normal"
@@ -159,9 +159,9 @@ package
          pushscope
          findpropstrict QName(PackageNamespace(""),"onScreen")
          callproperty QName(PackageNamespace(""),"onScreen"), 0
-         iftrue ofs000e
+         iftrue ofs0
          returnvoid
-         ofs000e:
+         ofs0:
          getlocal0
          getlocal1
          callsupervoid QName(PackageNamespace(""),"hitEnemy"), 1
@@ -193,9 +193,9 @@ package
          getproperty QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"STATE_GAME")
-         ifeq ofs0013
+         ifeq ofs0
          returnvoid
-         ofs0013:
+         ofs0:
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0
          getlex QName(PackageNamespace(""),"x")
@@ -205,7 +205,7 @@ package
          add
          greaterthan
          dup
-         iftrue ofs003e
+         iftrue ofs1
          pop
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"width")
@@ -215,9 +215,9 @@ package
          pushshort 250
          subtract
          lessthan
-         ofs003e:
+         ofs1:
          dup
-         iftrue ofs0052
+         iftrue ofs2
          pop
          getlex QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
@@ -225,9 +225,9 @@ package
          pushshort 250
          add
          greaterthan
-         ofs0052:
+         ofs2:
          dup
-         iftrue ofs006a
+         iftrue ofs3
          pop
          getlex QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"height")
@@ -237,11 +237,11 @@ package
          pushshort 250
          subtract
          lessthan
-         ofs006a:
-         iffalse ofs0075
+         ofs3:
+         iffalse ofs4
          findpropstrict QName(PackageNamespace(""),"kill")
          callpropvoid QName(PackageNamespace(""),"kill"), 0
-         ofs0075:
+         ofs4:
          returnvoid
          end ; code
          end ; body
@@ -277,7 +277,7 @@ pushscope
 getlex QName(PackageNamespace(""),"PlayerBullet")
 pushscope
 getlex QName(PackageNamespace(""),"PlayerBullet")
-newclass 249
+newclass #PlayerBullet2
 popscope
 popscope
 popscope

@@ -21,9 +21,9 @@ package
       code
       getlocal0
       pushscope
-      findproperty QName(PrivateNamespace(null,"36"),"DEFAULT_LIFETIME")
+      findproperty QName(PrivateNamespace(null,"#EnemyBullet"),"DEFAULT_LIFETIME")
       pushdouble 1.6
-      initproperty QName(PrivateNamespace(null,"36"),"DEFAULT_LIFETIME")
+      initproperty QName(PrivateNamespace(null,"#EnemyBullet"),"DEFAULT_LIFETIME")
       returnvoid
       end ; code
       end ; body
@@ -68,7 +68,7 @@ package
          setproperty QName(PackageNamespace(""),"y")
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"36"),"_firepower")
+         initproperty QName(PrivateNamespace(null,"#EnemyBullet"),"_firepower")
          returnvoid
          end ; code
          end ; body
@@ -182,7 +182,7 @@ package
          pushscope
          getlocal1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"36"),"_firepower")
+         getproperty QName(PrivateNamespace(null,"#EnemyBullet"),"_firepower")
          callpropvoid QName(PackageNamespace(""),"hurt"), 1
          returnvoid
          end ; code
@@ -212,16 +212,16 @@ package
          getproperty QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"STATE_GAME")
-         ifeq ofs0013
+         ifeq ofs0
          returnvoid
-         ofs0013:
+         ofs0:
          getlex QName(PackageNamespace(""),"dead")
-         iffalse ofs0022
+         iffalse ofs1
          findproperty QName(PackageNamespace(""),"exists")
          pushfalse
          initproperty QName(PackageNamespace(""),"exists")
          returnvoid
-         ofs0022:
+         ofs1:
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0
          getlocal0
@@ -234,10 +234,10 @@ package
          getlocal0
          getproperty QName(ProtectedNamespace("EnemyBullet"),"_lifetime")
          pushbyte 0
-         ifnle ofs0045
+         ifnle ofs2
          getlocal0
          callpropvoid QName(PackageNamespace(""),"kill"), 0
-         ofs0045:
+         ofs2:
          returnvoid
          end ; code
          end ; body
@@ -347,9 +347,9 @@ package
          getlocal0
          pushscope
          getlex QName(PackageNamespace(""),"dead")
-         iffalse ofs000a
+         iffalse ofs0
          returnvoid
-         ofs000a:
+         ofs0:
          getlex QName(PackageNamespace(""),"velocity")
          pushbyte 0
          setproperty QName(PackageNamespace(""),"x")
@@ -398,7 +398,7 @@ pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
 pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
-newclass 111
+newclass #EnemyBullet
 popscope
 popscope
 popscope

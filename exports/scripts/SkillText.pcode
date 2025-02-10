@@ -113,51 +113,51 @@ package
          pushscope
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
-         iftrue ofs000d
+         iftrue ofs0
          returnvoid
-         ofs000d:
+         ofs0:
          findproperty QName(PackageNamespace(""),"text")
          pushstring "SKILL\n"
          initproperty QName(PackageNamespace(""),"text")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"_insaneMode")
-         iffalse ofs0034
+         iffalse ofs1
          findproperty QName(PackageNamespace(""),"text")
          getlex QName(PackageNamespace(""),"text")
          pushstring "INSANE"
          add
          initproperty QName(PackageNamespace(""),"text")
-         jump ofs007d
-         ofs0034:
+         jump ofs2
+         ofs1:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"_hardMode")
-         iffalse ofs0052
+         iffalse ofs3
          findproperty QName(PackageNamespace(""),"text")
          getlex QName(PackageNamespace(""),"text")
          pushstring "HARD"
          add
          initproperty QName(PackageNamespace(""),"text")
-         jump ofs007d
-         ofs0052:
+         jump ofs2
+         ofs3:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"_easyMode")
-         iffalse ofs0070
+         iffalse ofs4
          findproperty QName(PackageNamespace(""),"text")
          getlex QName(PackageNamespace(""),"text")
          pushstring "EASY"
          add
          initproperty QName(PackageNamespace(""),"text")
-         jump ofs007d
-         ofs0070:
+         jump ofs2
+         ofs4:
          findproperty QName(PackageNamespace(""),"text")
          getlex QName(PackageNamespace(""),"text")
          pushstring "NORMAL"
          add
          initproperty QName(PackageNamespace(""),"text")
-         ofs007d:
+         ofs2:
          returnvoid
          end ; code
          end ; body
@@ -186,14 +186,14 @@ package
          getproperty QName(PackageNamespace(""),"miniMap")
          convert_b
          dup
-         iffalse ofs0019
+         iffalse ofs0
          pop
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"miniMap")
          getproperty QName(PackageNamespace(""),"subscreen")
          convert_b
-         ofs0019:
-         iffalse ofs0037
+         ofs0:
+         iffalse ofs1
          findproperty QName(PackageNamespace(""),"y")
          getlocal0
          getproperty QName(PackageNamespace(""),"relY")
@@ -204,7 +204,7 @@ package
          getproperty QName(PackageNamespace(""),"y")
          add
          initproperty QName(PackageNamespace(""),"y")
-         ofs0037:
+         ofs1:
          returnvoid
          end ; code
          end ; body
@@ -240,7 +240,7 @@ pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxText")
 pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxText")
-newclass 390
+newclass #SkillText
 popscope
 popscope
 popscope

@@ -36,10 +36,10 @@ package mx.utils
       findproperty QName(PackageNamespace(""),"MAX_BUFFER_SIZE")
       pushshort 32767
       initproperty QName(PackageNamespace(""),"MAX_BUFFER_SIZE")
-      findproperty QName(PrivateNamespace(null,"199"),"ESCAPE_CHAR_CODE")
+      findproperty QName(PrivateNamespace(null,"#Base64Encoder"),"ESCAPE_CHAR_CODE")
       pushbyte 61
-      initproperty QName(PrivateNamespace(null,"199"),"ESCAPE_CHAR_CODE")
-      findproperty QName(PrivateNamespace(null,"199"),"ALPHABET_CHAR_CODES")
+      initproperty QName(PrivateNamespace(null,"#Base64Encoder"),"ESCAPE_CHAR_CODE")
+      findproperty QName(PrivateNamespace(null,"#Base64Encoder"),"ALPHABET_CHAR_CODES")
       pushbyte 65
       pushbyte 66
       pushbyte 67
@@ -105,7 +105,7 @@ package mx.utils
       pushbyte 43
       pushbyte 47
       newarray 64
-      initproperty QName(PrivateNamespace(null,"199"),"ALPHABET_CHAR_CODES")
+      initproperty QName(PrivateNamespace(null,"#Base64Encoder"),"ALPHABET_CHAR_CODES")
       returnvoid
       end ; code
       end ; body
@@ -141,7 +141,7 @@ package mx.utils
          dup
          dup
          newarray 3
-         initproperty QName(PrivateNamespace(null,"199"),"_work")
+         initproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          getlocal0
          constructsuper 0
          getlocal0
@@ -177,13 +177,13 @@ package mx.utils
          pushbyte 0
          convert_u
          setlocal2
-         jump ofs0033
-         ofs0011:
+         jump ofs0
+         ofs1:
          label
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_buffers")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_buffers")
          getlocal2
-         getproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace(""),"Array")
          astypelate
          coerce QName(PackageNamespace(""),"Array")
@@ -201,17 +201,17 @@ package mx.utils
          increment
          convert_u
          setlocal2
-         ofs0033:
+         ofs0:
          getlocal2
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_buffers")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_buffers")
          getproperty QName(PackageNamespace(""),"length")
-         iflt ofs0011
+         iflt ofs1
          getlocal0
          newarray 0
-         initproperty QName(PrivateNamespace(null,"199"),"_buffers")
+         initproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_buffers")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_buffers")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_buffers")
          newarray 0
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
          getlocal1
@@ -246,12 +246,12 @@ package mx.utils
          pushscope
          getlocal3
          pushbyte 0
-         ifne ofs000f
+         ifne ofs0
          getlocal1
          getproperty QName(PackageNamespace(""),"length")
          convert_u
          setlocal3
-         ofs000f:
+         ofs0:
          getlocal2
          convert_u
          setlocal 4
@@ -263,79 +263,79 @@ package mx.utils
          setlocal 5
          getlocal1
          getproperty QName(PackageNamespace(""),"length")
-         ifngt ofs0029
+         ifngt ofs1
          getlocal1
          getproperty QName(PackageNamespace(""),"length")
          convert_u
          setlocal 5
-         ofs0029:
-         jump ofs00a4
-         ofs002d:
+         ofs1:
+         jump ofs2
+         ofs3:
          label
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_count")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_count")
          getlocal1
          getlocal 4
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charCodeAt"), 1
-         setproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          getlocal0
          dup
          setlocal 6
-         getproperty QName(PrivateNamespace(null,"199"),"_count")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_count")
          increment
          setlocal 7
          getlocal 6
          getlocal 7
-         setproperty QName(PrivateNamespace(null,"199"),"_count")
+         setproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_count")
          kill 7
          kill 6
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_count")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_count")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          getproperty QName(PackageNamespace(""),"length")
          equals
          dup
-         iftrue ofs006f
+         iftrue ofs4
          pop
          getlocal 5
          getlocal 4
          subtract
          pushbyte 1
          equals
-         ofs006f:
-         iffalse ofs009e
+         ofs4:
+         iffalse ofs5
          getlocal0
-         callpropvoid QName(PrivateNamespace(null,"199"),"encodeBlock"), 0
+         callpropvoid QName(PrivateNamespace(null,"#Base64Encoder"),"encodeBlock"), 0
          getlocal0
          pushbyte 0
-         initproperty QName(PrivateNamespace(null,"199"),"_count")
+         initproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_count")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          pushbyte 0
          dup
-         setproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          pushbyte 1
          pushbyte 0
-         setproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          pushbyte 2
          pushbyte 0
-         setproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
-         ofs009e:
+         setproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         ofs5:
          getlocal 4
          increment
          convert_u
          setlocal 4
-         ofs00a4:
+         ofs2:
          getlocal 4
          getlocal 5
-         iflt ofs002d
+         iflt ofs3
          returnvoid
          end ; code
          end ; body
@@ -404,12 +404,12 @@ package mx.utils
          pushscope
          getlocal3
          pushbyte 0
-         ifne ofs000f
+         ifne ofs0
          getlocal1
          getproperty QName(PackageNamespace(""),"length")
          convert_u
          setlocal3
-         ofs000f:
+         ofs0:
          getlocal1
          getproperty QName(PackageNamespace(""),"position")
          convert_u
@@ -428,79 +428,79 @@ package mx.utils
          setlocal 6
          getlocal1
          getproperty QName(PackageNamespace(""),"length")
-         ifngt ofs0035
+         ifngt ofs1
          getlocal1
          getproperty QName(PackageNamespace(""),"length")
          convert_u
          setlocal 6
-         ofs0035:
-         jump ofs00af
-         ofs0039:
+         ofs1:
+         jump ofs2
+         ofs3:
          label
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_count")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_count")
          getlocal1
          getlocal 5
-         getproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
-         setproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          getlocal0
          dup
          setlocal 7
-         getproperty QName(PrivateNamespace(null,"199"),"_count")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_count")
          increment
          setlocal 8
          getlocal 7
          getlocal 8
-         setproperty QName(PrivateNamespace(null,"199"),"_count")
+         setproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_count")
          kill 8
          kill 7
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_count")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_count")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          getproperty QName(PackageNamespace(""),"length")
          equals
          dup
-         iftrue ofs007a
+         iftrue ofs4
          pop
          getlocal 6
          getlocal 5
          subtract
          pushbyte 1
          equals
-         ofs007a:
-         iffalse ofs00a9
+         ofs4:
+         iffalse ofs5
          getlocal0
-         callpropvoid QName(PrivateNamespace(null,"199"),"encodeBlock"), 0
+         callpropvoid QName(PrivateNamespace(null,"#Base64Encoder"),"encodeBlock"), 0
          getlocal0
          pushbyte 0
-         initproperty QName(PrivateNamespace(null,"199"),"_count")
+         initproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_count")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          pushbyte 0
          dup
-         setproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          pushbyte 1
          pushbyte 0
-         setproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          pushbyte 2
          pushbyte 0
-         setproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
-         ofs00a9:
+         setproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         ofs5:
          getlocal 5
          increment
          convert_u
          setlocal 5
-         ofs00af:
+         ofs2:
          getlocal 5
          getlocal 6
-         iflt ofs0039
+         iflt ofs3
          getlocal1
          getlocal 4
          setproperty QName(PackageNamespace(""),"position")
@@ -528,12 +528,12 @@ package mx.utils
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_count")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_count")
          pushbyte 0
-         ifngt ofs0011
+         ifngt ofs0
          getlocal0
-         callpropvoid QName(PrivateNamespace(null,"199"),"encodeBlock"), 0
-         ofs0011:
+         callpropvoid QName(PrivateNamespace(null,"#Base64Encoder"),"encodeBlock"), 0
+         ofs0:
          getlocal0
          callproperty QName(PackageNamespace(""),"drain"), 0
          coerce_s
@@ -566,32 +566,32 @@ package mx.utils
          pushscope
          getlocal0
          newarray 0
-         initproperty QName(PrivateNamespace(null,"199"),"_buffers")
+         initproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_buffers")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_buffers")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_buffers")
          newarray 0
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
          getlocal0
          pushbyte 0
-         initproperty QName(PrivateNamespace(null,"199"),"_count")
+         initproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_count")
          getlocal0
          pushbyte 0
-         initproperty QName(PrivateNamespace(null,"199"),"_line")
+         initproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_line")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          pushbyte 0
          dup
-         setproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          pushbyte 1
          pushbyte 0
-         setproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          pushbyte 2
          pushbyte 0
-         setproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          returnvoid
          end ; code
          end ; body
@@ -625,7 +625,7 @@ package mx.utils
       
       private function encodeBlock() : void
       {
-         trait method QName(PrivateNamespace(null,"199"),"encodeBlock")
+         trait method QName(PrivateNamespace(null,"#Base64Encoder"),"encodeBlock")
          dispid 0
          method
          name null
@@ -641,12 +641,12 @@ package mx.utils
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_buffers")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_buffers")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_buffers")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_buffers")
          getproperty QName(PackageNamespace(""),"length")
          decrement
-         getproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace(""),"Array")
          astypelate
          coerce QName(PackageNamespace(""),"Array")
@@ -654,121 +654,121 @@ package mx.utils
          getlocal1
          getproperty QName(PackageNamespace(""),"length")
          getlex QName(PackageNamespace(""),"MAX_BUFFER_SIZE")
-         ifnge ofs0030
+         ifnge ofs0
          newarray 0
          coerce QName(PackageNamespace(""),"Array")
          setlocal1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_buffers")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_buffers")
          getlocal1
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         ofs0030:
+         ofs0:
          getlocal1
-         getlex QName(PrivateNamespace(null,"199"),"ALPHABET_CHAR_CODES")
+         getlex QName(PrivateNamespace(null,"#Base64Encoder"),"ALPHABET_CHAR_CODES")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          pushbyte 0
-         getproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          pushshort 255
          bitand
          pushbyte 2
          rshift
-         getproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
          getlocal1
-         getlex QName(PrivateNamespace(null,"199"),"ALPHABET_CHAR_CODES")
+         getlex QName(PrivateNamespace(null,"#Base64Encoder"),"ALPHABET_CHAR_CODES")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          pushbyte 0
-         getproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          pushbyte 3
          bitand
          pushbyte 4
          lshift
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          pushbyte 1
-         getproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          pushshort 240
          bitand
          pushbyte 4
          rshift
          bitor
-         getproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_count")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_count")
          pushbyte 1
-         ifngt ofs00af
+         ifngt ofs1
          getlocal1
-         getlex QName(PrivateNamespace(null,"199"),"ALPHABET_CHAR_CODES")
+         getlex QName(PrivateNamespace(null,"#Base64Encoder"),"ALPHABET_CHAR_CODES")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          pushbyte 1
-         getproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          pushbyte 15
          bitand
          pushbyte 2
          lshift
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          pushbyte 2
-         getproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          pushshort 192
          bitand
          pushbyte 6
          rshift
          bitor
-         getproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         jump ofs00b7
-         ofs00af:
+         jump ofs2
+         ofs1:
          getlocal1
-         getlex QName(PrivateNamespace(null,"199"),"ESCAPE_CHAR_CODE")
+         getlex QName(PrivateNamespace(null,"#Base64Encoder"),"ESCAPE_CHAR_CODE")
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         ofs00b7:
+         ofs2:
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_count")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_count")
          pushbyte 2
-         ifngt ofs00dc
+         ifngt ofs3
          getlocal1
-         getlex QName(PrivateNamespace(null,"199"),"ALPHABET_CHAR_CODES")
+         getlex QName(PrivateNamespace(null,"#Base64Encoder"),"ALPHABET_CHAR_CODES")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_work")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_work")
          pushbyte 2
-         getproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          pushbyte 63
          bitand
-         getproperty MultinameL([PrivateNamespace(null,"199"),PackageNamespace(""),PrivateNamespace(null,"500"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Base64Encoder"),PackageNamespace(""),PrivateNamespace(null,"#Base64Encoder/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:Base64Encoder"),StaticProtectedNs("mx.utils:Base64Encoder"),StaticProtectedNs("Object")])
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         jump ofs00e4
-         ofs00dc:
+         jump ofs4
+         ofs3:
          getlocal1
-         getlex QName(PrivateNamespace(null,"199"),"ESCAPE_CHAR_CODE")
+         getlex QName(PrivateNamespace(null,"#Base64Encoder"),"ESCAPE_CHAR_CODE")
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         ofs00e4:
+         ofs4:
          getlocal0
          getproperty QName(PackageNamespace(""),"insertNewLines")
-         iffalse ofs0110
+         iffalse ofs5
          getlocal0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"199"),"_line")
+         getproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_line")
          pushbyte 4
          add
          dup
          setlocal2
-         initproperty QName(PrivateNamespace(null,"199"),"_line")
+         initproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_line")
          getlocal2
          kill 2
          pushbyte 76
-         ifne ofs0110
+         ifne ofs5
          getlocal1
          getlex QName(PackageNamespace(""),"newLine")
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
          getlocal0
          pushbyte 0
-         initproperty QName(PrivateNamespace(null,"199"),"_line")
-         ofs0110:
+         initproperty QName(PrivateNamespace(null,"#Base64Encoder"),"_line")
+         ofs5:
          returnvoid
          end ; code
          end ; body
@@ -794,7 +794,7 @@ findpropstrict Multiname("Base64Encoder",[PackageNamespace("mx.utils")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass 693
+newclass #Base64Encoder
 popscope
 initproperty QName(PackageNamespace("mx.utils"),"Base64Encoder")
 returnvoid

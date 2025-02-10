@@ -108,15 +108,15 @@ package org.flixel
          pushscope
          getlocal1
          pushbyte 0
-         ifngt ofs000f
+         ifngt ofs0
          getlocal1
          convert_d
-         jump ofs0012
-         ofs000f:
+         jump ofs1
+         ofs0:
          getlocal1
          negate
          convert_d
-         ofs0012:
+         ofs1:
          returnvalue
          end ; code
          end ; body
@@ -149,22 +149,22 @@ package org.flixel
          setlocal2
          getlocal1
          pushbyte 0
-         ifngt ofs0017
+         ifngt ofs0
          getlocal2
          convert_d
-         jump ofs0026
-         ofs0017:
+         jump ofs1
+         ofs0:
          getlocal2
          getlocal1
-         ifeq ofs0024
+         ifeq ofs2
          getlocal2
          decrement
          convert_d
-         jump ofs0026
-         ofs0024:
+         jump ofs1
+         ofs2:
          getlocal2
          convert_d
-         ofs0026:
+         ofs1:
          returnvalue
          end ; code
          end ; body
@@ -197,24 +197,24 @@ package org.flixel
          setlocal2
          getlocal1
          pushbyte 0
-         ifngt ofs0026
+         ifngt ofs0
          getlocal2
          getlocal1
-         ifeq ofs0020
+         ifeq ofs1
          getlocal2
          pushbyte 1
          add
          convert_d
-         jump ofs0022
-         ofs0020:
+         jump ofs2
+         ofs1:
          getlocal2
          convert_d
-         ofs0022:
-         jump ofs0028
-         ofs0026:
+         ofs2:
+         jump ofs3
+         ofs0:
          getlocal2
          convert_d
-         ofs0028:
+         ofs3:
          returnvalue
          end ; code
          end ; body
@@ -243,14 +243,14 @@ package org.flixel
          pushscope
          getlocal1
          getlocal2
-         ifnle ofs000e
+         ifnle ofs0
          getlocal1
          convert_d
-         jump ofs0010
-         ofs000e:
+         jump ofs1
+         ofs0:
          getlocal2
          convert_d
-         ofs0010:
+         ofs1:
          returnvalue
          end ; code
          end ; body
@@ -279,14 +279,14 @@ package org.flixel
          pushscope
          getlocal1
          getlocal2
-         ifnge ofs000e
+         ifnge ofs0
          getlocal1
          convert_d
-         jump ofs0010
-         ofs000e:
+         jump ofs1
+         ofs0:
          getlocal2
          convert_d
-         ofs0010:
+         ofs1:
          returnvalue
          end ; code
          end ; body
@@ -317,44 +317,44 @@ package org.flixel
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal1
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iffalse ofs0016
+         iffalse ofs0
          getlex QName(PackageNamespace(""),"Math")
          callproperty QName(PackageNamespace(""),"random"), 0
          returnvalue
-         ofs0016:
+         ofs0:
          getlocal1
          pushbyte 0
-         ifne ofs0024
+         ifne ofs1
          getlex QName(PackageNamespace(""),"Number")
          getproperty QName(PackageNamespace(""),"MIN_VALUE")
          convert_d
          setlocal1
-         ofs0024:
+         ofs1:
          getlocal1
          pushbyte 1
-         ifnge ofs0049
+         ifnge ofs2
          getlocal1
          pushbyte 1
          modulo
          pushbyte 0
-         ifne ofs003f
+         ifne ofs3
          getlocal1
          getlex QName(PackageNamespace(""),"Math")
          getproperty QName(PackageNamespace(""),"PI")
          divide
          convert_d
          setlocal1
-         ofs003f:
+         ofs3:
          getlocal1
          pushbyte 1
          modulo
          convert_d
          setlocal1
-         jump ofs0059
-         ofs0049:
+         jump ofs4
+         ofs2:
          getlocal1
          pushbyte 0
-         ifnlt ofs0059
+         ifnlt ofs4
          getlocal1
          pushbyte 1
          modulo
@@ -362,7 +362,7 @@ package org.flixel
          add
          convert_d
          setlocal1
-         ofs0059:
+         ofs4:
          pushint 69621
          findpropstrict QName(PackageNamespace(""),"int")
          getlocal1
@@ -435,7 +435,7 @@ package org.flixel
          convert_u
          setlocal 4
          getlocal3
-         iffalse ofs002a
+         iffalse ofs0
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getlocal2
          pushstring ": "
@@ -449,7 +449,7 @@ package org.flixel
          pushstring "s"
          add
          callpropvoid QName(PackageNamespace(""),"log"), 1
-         ofs002a:
+         ofs0:
          getlocal 4
          returnvalue
          end ; code
@@ -494,33 +494,33 @@ package org.flixel
          multiply
          convert_d
          setlocal 9
-         jump ofs0021
-         ofs0018:
+         jump ofs0
+         ofs1:
          label
          getlocal 9
          pushdouble 6.28318531
          add
          convert_d
          setlocal 9
-         ofs0021:
+         ofs0:
          getlocal 9
          pushdouble -3.14159265
-         iflt ofs0018
-         jump ofs0036
-         ofs002d:
+         iflt ofs1
+         jump ofs2
+         ofs3:
          label
          getlocal 9
          pushdouble 6.28318531
          subtract
          convert_d
          setlocal 9
-         ofs0036:
+         ofs2:
          getlocal 9
          pushdouble 3.14159265
-         ifgt ofs002d
+         ifgt ofs3
          getlocal 9
          pushbyte 0
-         ifnlt ofs0089
+         ifnlt ofs4
          pushdouble 1.27323954
          getlocal 9
          multiply
@@ -534,7 +534,7 @@ package org.flixel
          dup
          setlocal 7
          pushbyte 0
-         ifnlt ofs0074
+         ifnlt ofs5
          pushdouble 0.225
          getlocal 7
          getlocal 7
@@ -547,8 +547,8 @@ package org.flixel
          add
          convert_d
          setlocal 7
-         jump ofs0085
-         ofs0074:
+         jump ofs6
+         ofs5:
          pushdouble 0.225
          getlocal 7
          getlocal 7
@@ -560,9 +560,9 @@ package org.flixel
          add
          convert_d
          setlocal 7
-         ofs0085:
-         jump ofs00c8
-         ofs0089:
+         ofs6:
+         jump ofs7
+         ofs4:
          pushdouble 1.27323954
          getlocal 9
          multiply
@@ -576,7 +576,7 @@ package org.flixel
          dup
          setlocal 7
          pushbyte 0
-         ifnlt ofs00b7
+         ifnlt ofs8
          pushdouble 0.225
          getlocal 7
          getlocal 7
@@ -589,8 +589,8 @@ package org.flixel
          add
          convert_d
          setlocal 7
-         jump ofs00c8
-         ofs00b7:
+         jump ofs7
+         ofs8:
          pushdouble 0.225
          getlocal 7
          getlocal 7
@@ -602,7 +602,7 @@ package org.flixel
          add
          convert_d
          setlocal 7
-         ofs00c8:
+         ofs7:
          getlocal 9
          pushdouble 1.57079632
          add
@@ -610,16 +610,16 @@ package org.flixel
          dup
          setlocal 9
          pushdouble 3.14159265
-         ifngt ofs00df
+         ifngt ofs9
          getlocal 9
          pushdouble 6.28318531
          subtract
          convert_d
          setlocal 9
-         ofs00df:
+         ofs9:
          getlocal 9
          pushbyte 0
-         ifnlt ofs012a
+         ifnlt ofs10
          pushdouble 1.27323954
          getlocal 9
          multiply
@@ -633,7 +633,7 @@ package org.flixel
          dup
          setlocal 8
          pushbyte 0
-         ifnlt ofs0115
+         ifnlt ofs11
          pushdouble 0.225
          getlocal 8
          getlocal 8
@@ -646,8 +646,8 @@ package org.flixel
          add
          convert_d
          setlocal 8
-         jump ofs0126
-         ofs0115:
+         jump ofs12
+         ofs11:
          pushdouble 0.225
          getlocal 8
          getlocal 8
@@ -659,9 +659,9 @@ package org.flixel
          add
          convert_d
          setlocal 8
-         ofs0126:
-         jump ofs0169
-         ofs012a:
+         ofs12:
+         jump ofs13
+         ofs10:
          pushdouble 1.27323954
          getlocal 9
          multiply
@@ -675,7 +675,7 @@ package org.flixel
          dup
          setlocal 8
          pushbyte 0
-         ifnlt ofs0158
+         ifnlt ofs14
          pushdouble 0.225
          getlocal 8
          getlocal 8
@@ -688,8 +688,8 @@ package org.flixel
          add
          convert_d
          setlocal 8
-         jump ofs0169
-         ofs0158:
+         jump ofs13
+         ofs14:
          pushdouble 0.225
          getlocal 8
          getlocal 8
@@ -701,7 +701,7 @@ package org.flixel
          add
          convert_d
          setlocal 8
-         ofs0169:
+         ofs13:
          getlocal1
          getlocal3
          subtract
@@ -714,12 +714,12 @@ package org.flixel
          setlocal 11
          getlocal 6
          pushnull
-         ifne ofs0186
+         ifne ofs15
          findpropstrict QName(PackageNamespace("org.flixel"),"FlxPoint")
          constructprop QName(PackageNamespace("org.flixel"),"FlxPoint"), 0
          coerce QName(PackageNamespace("org.flixel"),"FlxPoint")
          setlocal 6
-         ofs0186:
+         ofs15:
          getlocal 6
          getlocal3
          getlocal 8
@@ -781,15 +781,15 @@ package org.flixel
          setlocal 4
          getlocal2
          pushbyte 0
-         ifnlt ofs001e
+         ifnlt ofs0
          getlocal2
          negate
          convert_d
-         jump ofs0020
-         ofs001e:
+         jump ofs1
+         ofs0:
          getlocal2
          convert_d
-         ofs0020:
+         ofs1:
          convert_d
          setlocal 5
          pushbyte 0
@@ -797,7 +797,7 @@ package org.flixel
          setlocal 6
          getlocal1
          pushbyte 0
-         ifnge ofs0043
+         ifnge ofs2
          getlocal3
          getlocal3
          getlocal1
@@ -811,8 +811,8 @@ package org.flixel
          subtract
          convert_d
          setlocal 6
-         jump ofs0054
-         ofs0043:
+         jump ofs3
+         ofs2:
          getlocal 4
          getlocal3
          getlocal1
@@ -826,18 +826,18 @@ package org.flixel
          subtract
          convert_d
          setlocal 6
-         ofs0054:
+         ofs3:
          getlocal2
          pushbyte 0
-         ifnlt ofs0063
+         ifnlt ofs4
          getlocal 6
          negate
          coerce_a
-         jump ofs0066
-         ofs0063:
+         jump ofs5
+         ofs4:
          getlocal 6
          coerce_a
-         ofs0066:
+         ofs5:
          pushdouble 57.2957796
          multiply
          returnvalue
@@ -872,16 +872,16 @@ package org.flixel
          pushscope
          getlocal 4
          pushbyte 1
-         ifngt ofs0011
+         ifngt ofs0
          getlocal 4
          coerce_a
-         jump ofs0018
-         ofs0011:
+         jump ofs1
+         ofs0:
          getlocal 4
          pushshort 255
          multiply
          coerce_a
-         ofs0018:
+         ofs1:
          pushshort 255
          bitand
          pushbyte 24
@@ -950,7 +950,7 @@ package org.flixel
          setlocal 12
          getlocal2
          pushdouble 0
-         ifne ofs0032
+         ifne ofs0
          getlocal3
          convert_d
          setlocal 5
@@ -960,15 +960,15 @@ package org.flixel
          getlocal3
          convert_d
          setlocal 7
-         jump ofs0181
-         ofs0032:
+         jump ofs1
+         ofs0:
          getlocal1
          pushshort 360
-         ifne ofs003e
+         ifne ofs2
          pushbyte 0
          convert_d
          setlocal1
-         ofs003e:
+         ofs2:
          getlocal1
          pushbyte 60
          divide
@@ -1008,8 +1008,8 @@ package org.flixel
          multiply
          convert_d
          setlocal 12
-         jump ofs0101
-         ofs0077:
+         jump ofs3
+         ofs4:
          label
          getlocal3
          convert_d
@@ -1020,8 +1020,8 @@ package org.flixel
          getlocal 10
          convert_d
          setlocal 7
-         jump ofs0181
-         ofs008a:
+         jump ofs1
+         ofs5:
          label
          getlocal 11
          convert_d
@@ -1032,8 +1032,8 @@ package org.flixel
          getlocal 10
          convert_d
          setlocal 7
-         jump ofs0181
-         ofs009d:
+         jump ofs1
+         ofs6:
          label
          getlocal 10
          convert_d
@@ -1044,8 +1044,8 @@ package org.flixel
          getlocal 12
          convert_d
          setlocal 7
-         jump ofs0181
-         ofs00b0:
+         jump ofs1
+         ofs7:
          label
          getlocal 10
          convert_d
@@ -1056,8 +1056,8 @@ package org.flixel
          getlocal3
          convert_d
          setlocal 7
-         jump ofs0181
-         ofs00c3:
+         jump ofs1
+         ofs8:
          label
          getlocal 12
          convert_d
@@ -1068,8 +1068,8 @@ package org.flixel
          getlocal3
          convert_d
          setlocal 7
-         jump ofs0181
-         ofs00d6:
+         jump ofs1
+         ofs9:
          label
          getlocal3
          convert_d
@@ -1080,8 +1080,8 @@ package org.flixel
          getlocal 11
          convert_d
          setlocal 7
-         jump ofs0181
-         ofs00e9:
+         jump ofs1
+         ofs10:
          label
          pushbyte 0
          convert_d
@@ -1092,68 +1092,68 @@ package org.flixel
          pushbyte 0
          convert_d
          setlocal 7
-         jump ofs0181
-         jump ofs0101
-         ofs0101:
+         jump ofs1
+         jump ofs3
+         ofs3:
          getlocal 8
          setlocal 13
          pushbyte 0
          getlocal 13
-         ifstrictne ofs0113
+         ifstrictne ofs11
          pushbyte 0
-         jump ofs0165
-         ofs0113:
+         jump ofs12
+         ofs11:
          pushbyte 1
          getlocal 13
-         ifstrictne ofs0121
+         ifstrictne ofs13
          pushbyte 1
-         jump ofs0165
-         ofs0121:
+         jump ofs12
+         ofs13:
          pushbyte 2
          getlocal 13
-         ifstrictne ofs012f
+         ifstrictne ofs14
          pushbyte 2
-         jump ofs0165
-         ofs012f:
+         jump ofs12
+         ofs14:
          pushbyte 3
          getlocal 13
-         ifstrictne ofs013d
+         ifstrictne ofs15
          pushbyte 3
-         jump ofs0165
-         ofs013d:
+         jump ofs12
+         ofs15:
          pushbyte 4
          getlocal 13
-         ifstrictne ofs014b
+         ifstrictne ofs16
          pushbyte 4
-         jump ofs0165
-         ofs014b:
+         jump ofs12
+         ofs16:
          pushbyte 5
          getlocal 13
-         ifstrictne ofs0159
+         ifstrictne ofs17
          pushbyte 5
-         jump ofs0165
-         ofs0159:
-         jump ofs0163
+         jump ofs12
+         ofs17:
+         jump ofs18
          pushbyte 6
-         jump ofs0163
-         ofs0163:
+         jump ofs18
+         ofs18:
          pushbyte 6
-         ofs0165:
+         ofs12:
          kill 13
-         lookupswitch ofs00e9, [ofs0077, ofs008a, ofs009d, ofs00b0, ofs00c3, ofs00d6, ofs00e9]
-         ofs0181:
+         lookupswitch ofs10, [ofs4, ofs5, ofs6, ofs7, ofs8, ofs9, ofs10]
+         ofs1:
          getlocal 4
          pushbyte 1
-         ifngt ofs0190
+         ifngt ofs19
          getlocal 4
          coerce_a
-         jump ofs0197
-         ofs0190:
+         jump ofs20
+         ofs19:
          getlocal 4
          pushshort 255
          multiply
          coerce_a
-         ofs0197:
+         ofs20:
          pushshort 255
          bitand
          pushbyte 24
@@ -1210,12 +1210,12 @@ package org.flixel
          pushscope
          getlocal2
          pushnull
-         ifne ofs0010
+         ifne ofs0
          findpropstrict QName(PackageNamespace(""),"Array")
          constructprop QName(PackageNamespace(""),"Array"), 0
          coerce QName(PackageNamespace(""),"Array")
          setlocal2
-         ofs0010:
+         ofs0:
          getlocal2
          pushbyte 0
          getlocal1
@@ -1223,7 +1223,7 @@ package org.flixel
          rshift
          pushshort 255
          bitand
-         setproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          getlocal2
          pushbyte 1
          getlocal1
@@ -1231,13 +1231,13 @@ package org.flixel
          rshift
          pushshort 255
          bitand
-         setproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          getlocal2
          pushbyte 2
          getlocal1
          pushshort 255
          bitand
-         setproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          getlocal2
          pushbyte 3
          findpropstrict QName(PackageNamespace(""),"Number")
@@ -1249,7 +1249,7 @@ package org.flixel
          callproperty QName(PackageNamespace(""),"Number"), 1
          pushshort 255
          divide
-         setproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          getlocal2
          returnvalue
          end ; code
@@ -1281,12 +1281,12 @@ package org.flixel
          pushscope
          getlocal2
          pushnull
-         ifne ofs0010
+         ifne ofs0
          findpropstrict QName(PackageNamespace(""),"Array")
          constructprop QName(PackageNamespace(""),"Array"), 0
          coerce QName(PackageNamespace(""),"Array")
          setlocal2
-         ofs0010:
+         ofs0:
          findpropstrict QName(PackageNamespace(""),"Number")
          getlocal1
          pushbyte 16
@@ -1320,50 +1320,50 @@ package org.flixel
          setlocal 5
          getlocal3
          getlocal 4
-         ifngt ofs0055
+         ifngt ofs1
          getlocal3
          convert_d
-         jump ofs0058
-         ofs0055:
+         jump ofs2
+         ofs1:
          getlocal 4
          convert_d
-         ofs0058:
+         ofs2:
          convert_d
          dup
          setlocal 6
          getlocal 5
-         ifngt ofs0069
+         ifngt ofs3
          getlocal 6
          convert_d
-         jump ofs006c
-         ofs0069:
+         jump ofs4
+         ofs3:
          getlocal 5
          convert_d
-         ofs006c:
+         ofs4:
          convert_d
          setlocal 7
          getlocal3
          getlocal 4
-         ifngt ofs007d
+         ifngt ofs5
          getlocal 4
          convert_d
-         jump ofs007f
-         ofs007d:
+         jump ofs6
+         ofs5:
          getlocal3
          convert_d
-         ofs007f:
+         ofs6:
          convert_d
          dup
          setlocal 6
          getlocal 5
-         ifngt ofs0090
+         ifngt ofs7
          getlocal 5
          convert_d
-         jump ofs0093
-         ofs0090:
+         jump ofs8
+         ofs7:
          getlocal 6
          convert_d
-         ofs0093:
+         ofs8:
          convert_d
          setlocal 8
          getlocal 7
@@ -1374,33 +1374,33 @@ package org.flixel
          getlocal2
          pushbyte 2
          getlocal 7
-         setproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          getlocal2
          pushbyte 1
          pushbyte 0
-         setproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          getlocal2
          pushbyte 0
          dup
-         setproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          getlocal 7
          pushbyte 0
-         ifeq ofs00c8
+         ifeq ofs9
          getlocal2
          pushbyte 1
          getlocal 9
          getlocal 7
          divide
-         setproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
-         ofs00c8:
+         setproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         ofs9:
          getlocal2
          pushbyte 1
-         getproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          pushbyte 0
-         ifeq ofs014c
+         ifeq ofs10
          getlocal3
          getlocal 7
-         ifne ofs00ed
+         ifne ofs11
          getlocal2
          pushbyte 0
          getlocal 4
@@ -1408,12 +1408,12 @@ package org.flixel
          subtract
          getlocal 9
          divide
-         setproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
-         jump ofs0121
-         ofs00ed:
+         setproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         jump ofs12
+         ofs11:
          getlocal 4
          getlocal 7
-         ifne ofs0109
+         ifne ofs13
          getlocal2
          pushbyte 0
          pushbyte 2
@@ -1423,12 +1423,12 @@ package org.flixel
          getlocal 9
          divide
          add
-         setproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
-         jump ofs0121
-         ofs0109:
+         setproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         jump ofs12
+         ofs13:
          getlocal 5
          getlocal 7
-         ifne ofs0121
+         ifne ofs12
          getlocal2
          pushbyte 0
          pushbyte 4
@@ -1438,30 +1438,30 @@ package org.flixel
          getlocal 9
          divide
          add
-         setproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
-         ofs0121:
+         setproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         ofs12:
          getlocal2
          pushbyte 0
          getlocal2
          pushbyte 0
-         getproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          pushbyte 60
          multiply
-         setproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          getlocal2
          pushbyte 0
-         getproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          pushbyte 0
-         ifnlt ofs014c
+         ifnlt ofs10
          getlocal2
          pushbyte 0
          getlocal2
          pushbyte 0
-         getproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          pushshort 360
          add
-         setproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
-         ofs014c:
+         setproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         ofs10:
          getlocal2
          pushbyte 3
          findpropstrict QName(PackageNamespace(""),"Number")
@@ -1473,7 +1473,7 @@ package org.flixel
          callproperty QName(PackageNamespace(""),"Number"), 1
          pushshort 255
          divide
-         setproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          getlocal2
          returnvalue
          end ; code
@@ -1515,7 +1515,7 @@ package org.flixel
          coerce_s
          setlocal3
          getlocal2
-         iffalse ofs0030
+         iffalse ofs0
          getlocal3
          getlocal3
          pushstring "."
@@ -1525,7 +1525,7 @@ package org.flixel
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"substr"), 1
          coerce_s
          setlocal3
-         ofs0030:
+         ofs0:
          getlocal3
          returnvalue
          end ; code
@@ -1593,7 +1593,7 @@ package org.flixel
          setlocal 5
          getlocal2
          pushbyte 0
-         ifeq ofs001c
+         ifeq ofs0
          getlocal1
          getlocal2
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
@@ -1602,11 +1602,11 @@ package org.flixel
          add
          convert_d
          setlocal1
-         jump ofs005a
-         ofs001c:
+         jump ofs1
+         ofs0:
          getlocal3
          pushbyte 0
-         ifeq ofs005a
+         ifeq ofs1
          getlocal3
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
@@ -1617,60 +1617,60 @@ package org.flixel
          getlocal 5
          subtract
          pushbyte 0
-         ifngt ofs0042
+         ifngt ofs2
          getlocal1
          getlocal 5
          subtract
          convert_d
          setlocal1
-         jump ofs005a
-         ofs0042:
+         jump ofs1
+         ofs2:
          getlocal1
          getlocal 5
          add
          pushbyte 0
-         ifnlt ofs0056
+         ifnlt ofs3
          getlocal1
          getlocal 5
          add
          convert_d
          setlocal1
-         jump ofs005a
-         ofs0056:
+         jump ofs1
+         ofs3:
          pushbyte 0
          convert_d
          setlocal1
-         ofs005a:
+         ofs1:
          getlocal1
          pushbyte 0
          equals
          not
          dup
-         iffalse ofs006c
+         iffalse ofs4
          pop
          getlocal 4
          pushshort 10000
          equals
          not
-         ofs006c:
-         iffalse ofs008c
+         ofs4:
+         iffalse ofs5
          getlocal1
          getlocal 4
-         ifngt ofs007f
+         ifngt ofs6
          getlocal 4
          convert_d
          setlocal1
-         jump ofs008c
-         ofs007f:
+         jump ofs5
+         ofs6:
          getlocal1
          getlocal 4
          negate
-         ifnlt ofs008c
+         ifnlt ofs5
          getlocal 4
          negate
          convert_d
          setlocal1
-         ofs008c:
+         ofs5:
          getlocal1
          returnvalue
          end ; code
@@ -1710,12 +1710,12 @@ package org.flixel
          getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
          getproperty QName(PackageNamespace(""),"bounds")
          pushnull
-         ifne ofs001a
+         ifne ofs0
          getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
          findpropstrict QName(PackageNamespace("org.flixel"),"FlxRect")
          constructprop QName(PackageNamespace("org.flixel"),"FlxRect"), 0
          setproperty QName(PackageNamespace(""),"bounds")
-         ofs001a:
+         ofs0:
          getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
          getproperty QName(PackageNamespace(""),"bounds")
          getlocal1
@@ -1726,27 +1726,27 @@ package org.flixel
          setproperty QName(PackageNamespace(""),"y")
          getlocal3
          pushbyte 0
-         ifngt ofs003f
+         ifngt ofs1
          getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
          getproperty QName(PackageNamespace(""),"bounds")
          getlocal3
          setproperty QName(PackageNamespace(""),"width")
-         ofs003f:
+         ofs1:
          getlocal 4
          pushbyte 0
-         ifngt ofs0052
+         ifngt ofs2
          getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
          getproperty QName(PackageNamespace(""),"bounds")
          getlocal 4
          setproperty QName(PackageNamespace(""),"height")
-         ofs0052:
+         ofs2:
          getlocal 5
          pushbyte 0
-         ifngt ofs0062
+         ifngt ofs3
          getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
          getlocal 5
          setproperty QName(PackageNamespace(""),"divisions")
-         ofs0062:
+         ofs3:
          returnvoid
          end ; code
          end ; body
@@ -1780,30 +1780,30 @@ package org.flixel
          pushnull
          equals
          dup
-         iftrue ofs0010
+         iftrue ofs0
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"exists")
          not
-         ofs0010:
+         ofs0:
          dup
-         iftrue ofs0019
+         iftrue ofs1
          pop
          getlocal2
          pushnull
          equals
-         ofs0019:
+         ofs1:
          dup
-         iftrue ofs0024
+         iftrue ofs2
          pop
          getlocal2
          getproperty QName(PackageNamespace(""),"exists")
          not
-         ofs0024:
-         iffalse ofs002a
+         ofs2:
+         iffalse ofs3
          pushfalse
          returnvalue
-         ofs002a:
+         ofs3:
          findproperty QName(PackageNamespace(""),"quadTree")
          findpropstrict QName(PackageNamespace("org.flixel"),"FlxQuadTree")
          getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
@@ -1827,13 +1827,13 @@ package org.flixel
          callpropvoid QName(PackageNamespace(""),"add"), 2
          getlocal1
          getlocal2
-         ifstrictne ofs0079
+         ifstrictne ofs4
          getlex QName(PackageNamespace(""),"quadTree")
          pushfalse
          getlocal3
          callproperty QName(PackageNamespace(""),"overlap"), 2
          returnvalue
-         ofs0079:
+         ofs4:
          getlex QName(PackageNamespace(""),"quadTree")
          getlocal2
          getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
@@ -1873,30 +1873,30 @@ package org.flixel
          pushnull
          equals
          dup
-         iftrue ofs0010
+         iftrue ofs0
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"exists")
          not
-         ofs0010:
+         ofs0:
          dup
-         iftrue ofs0019
+         iftrue ofs1
          pop
          getlocal2
          pushnull
          equals
-         ofs0019:
+         ofs1:
          dup
-         iftrue ofs0024
+         iftrue ofs2
          pop
          getlocal2
          getproperty QName(PackageNamespace(""),"exists")
          not
-         ofs0024:
-         iffalse ofs002a
+         ofs2:
+         iffalse ofs3
          pushfalse
          returnvalue
-         ofs002a:
+         ofs3:
          findproperty QName(PackageNamespace(""),"quadTree")
          findpropstrict QName(PackageNamespace("org.flixel"),"FlxQuadTree")
          getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
@@ -1923,13 +1923,13 @@ package org.flixel
          strictequals
          setlocal3
          getlocal3
-         iftrue ofs0080
+         iftrue ofs4
          getlex QName(PackageNamespace(""),"quadTree")
          getlocal2
          getlex QName(PackageNamespace("org.flixel"),"FlxQuadTree")
          getproperty QName(PackageNamespace(""),"B_LIST")
          callpropvoid QName(PackageNamespace(""),"add"), 2
-         ofs0080:
+         ofs4:
          getlex QName(PackageNamespace(""),"quadTree")
          getlocal3
          not
@@ -1947,11 +1947,11 @@ package org.flixel
          getlocal 4
          convert_b
          dup
-         iftrue ofs00aa
+         iftrue ofs5
          pop
          getlocal 5
          convert_b
-         ofs00aa:
+         ofs5:
          returnvalue
          end ; code
          end ; body
@@ -2023,10 +2023,10 @@ package org.flixel
          setlocal 4
          getlocal3
          getlocal 4
-         ifne ofs0052
+         ifne ofs0
          pushfalse
          returnvalue
-         ofs0052:
+         ofs0:
          getlocal1
          getlocal2
          callpropvoid QName(PackageNamespace(""),"preCollide"), 1
@@ -2086,155 +2086,155 @@ package org.flixel
          getlocal 10
          convert_b
          dup
-         iffalse ofs00c6
+         iffalse ofs1
          pop
          getlocal 14
          convert_b
-         ofs00c6:
+         ofs1:
          dup
-         iftrue ofs00d8
+         iftrue ofs2
          pop
          getlocal 12
          convert_b
          dup
-         iffalse ofs00d8
+         iffalse ofs2
          pop
          getlocal 13
          convert_b
-         ofs00d8:
+         ofs2:
          dup
-         iftrue ofs00ea
+         iftrue ofs3
          pop
          getlocal 12
          convert_b
          dup
-         iffalse ofs00ea
+         iffalse ofs3
          pop
          getlocal 14
          convert_b
-         ofs00ea:
+         ofs3:
          dup
-         iftrue ofs0126
+         iftrue ofs4
          pop
          getlocal 11
          convert_b
          dup
-         iffalse ofs00fc
+         iffalse ofs5
          pop
          getlocal 14
          convert_b
-         ofs00fc:
+         ofs5:
          dup
-         iffalse ofs0126
+         iffalse ofs4
          pop
          getlocal3
          pushbyte 0
-         ifngt ofs010f
+         ifngt ofs6
          getlocal3
          coerce_a
-         jump ofs0112
-         ofs010f:
+         jump ofs7
+         ofs6:
          getlocal3
          negate
          coerce_a
-         ofs0112:
+         ofs7:
          getlocal 4
          pushbyte 0
-         ifngt ofs0121
+         ifngt ofs8
          getlocal 4
          coerce_a
-         jump ofs0125
-         ofs0121:
+         jump ofs9
+         ofs8:
          getlocal 4
          negate
          coerce_a
-         ofs0125:
+         ofs9:
          lessthan
-         ofs0126:
+         ofs4:
          dup
-         iftrue ofs0162
+         iftrue ofs10
          pop
          getlocal 12
          convert_b
          dup
-         iffalse ofs0138
+         iffalse ofs11
          pop
          getlocal 15
          convert_b
-         ofs0138:
+         ofs11:
          dup
-         iffalse ofs0162
+         iffalse ofs10
          pop
          getlocal3
          pushbyte 0
-         ifngt ofs014b
+         ifngt ofs12
          getlocal3
          coerce_a
-         jump ofs014e
-         ofs014b:
+         jump ofs13
+         ofs12:
          getlocal3
          negate
          coerce_a
-         ofs014e:
+         ofs13:
          getlocal 4
          pushbyte 0
-         ifngt ofs015d
+         ifngt ofs14
          getlocal 4
          coerce_a
-         jump ofs0161
-         ofs015d:
+         jump ofs15
+         ofs14:
          getlocal 4
          negate
          coerce_a
-         ofs0161:
+         ofs15:
          greaterthan
-         ofs0162:
+         ofs10:
          convert_b
          dup
          setlocal 9
-         iffalse ofs017e
+         iffalse ofs16
          getlocal1
          getproperty QName(PackageNamespace(""),"collideRight")
          not
          dup
-         iftrue ofs017a
+         iftrue ofs17
          pop
          getlocal2
          getproperty QName(PackageNamespace(""),"collideLeft")
          not
-         ofs017a:
-         jump ofs018e
-         ofs017e:
+         ofs17:
+         jump ofs18
+         ofs16:
          getlocal1
          getproperty QName(PackageNamespace(""),"collideLeft")
          not
          dup
-         iftrue ofs018e
+         iftrue ofs18
          pop
          getlocal2
          getproperty QName(PackageNamespace(""),"collideRight")
          not
-         ofs018e:
-         iffalse ofs0194
+         ofs18:
+         iffalse ofs19
          pushfalse
          returnvalue
-         ofs0194:
+         ofs19:
          pushbyte 0
          convert_u
          setlocal 16
-         jump ofs0655
-         ofs019d:
+         jump ofs20
+         ofs21:
          label
          getlocal 20
          getlocal 16
-         getproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
-         getproperty Multiname("x",[PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty Multiname("x",[PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          convert_d
          setlocal 24
          getlocal 20
          getlocal 16
-         getproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
-         getproperty Multiname("y",[PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty Multiname("y",[PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          convert_d
          setlocal 25
          getlocal 18
@@ -2252,19 +2252,19 @@ package org.flixel
          pushbyte 0
          convert_u
          setlocal 17
-         jump ofs062d
-         ofs01db:
+         jump ofs22
+         ofs23:
          label
          getlocal 21
          getlocal 17
-         getproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
-         getproperty Multiname("x",[PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty Multiname("x",[PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          convert_d
          setlocal 26
          getlocal 21
          getlocal 17
-         getproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
-         getproperty Multiname("y",[PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty Multiname("y",[PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          convert_d
          setlocal 27
          getlocal 19
@@ -2290,7 +2290,7 @@ package org.flixel
          add
          lessthan
          dup
-         iftrue ofs0240
+         iftrue ofs24
          pop
          getlocal 18
          getproperty QName(PackageNamespace(""),"x")
@@ -2302,9 +2302,9 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"width")
          add
          greaterthan
-         ofs0240:
+         ofs24:
          dup
-         iftrue ofs025b
+         iftrue ofs25
          pop
          getlocal 18
          getproperty QName(PackageNamespace(""),"y")
@@ -2316,9 +2316,9 @@ package org.flixel
          getlex QName(PackageInternalNs("org.flixel"),"roundingError")
          add
          lessthan
-         ofs025b:
+         ofs25:
          dup
-         iftrue ofs0276
+         iftrue ofs26
          pop
          getlocal 18
          getproperty QName(PackageNamespace(""),"y")
@@ -2330,8 +2330,8 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"height")
          add
          greaterthan
-         ofs0276:
-         iffalse ofs029e
+         ofs26:
+         iffalse ofs27
          getlocal 19
          getlocal 19
          getproperty QName(PackageNamespace(""),"x")
@@ -2348,12 +2348,12 @@ package org.flixel
          increment
          convert_u
          setlocal 17
-         jump ofs062d
-         ofs029e:
+         jump ofs22
+         ofs27:
          getlocal 9
-         iffalse ofs02f8
+         iffalse ofs28
          getlocal 11
-         iffalse ofs02be
+         iffalse ofs29
          getlocal 18
          getproperty QName(PackageNamespace(""),"x")
          getlocal1
@@ -2362,8 +2362,8 @@ package org.flixel
          add
          convert_d
          setlocal 28
-         jump ofs02cc
-         ofs02be:
+         jump ofs30
+         ofs29:
          getlocal 18
          getproperty QName(PackageNamespace(""),"x")
          getlocal 18
@@ -2371,15 +2371,15 @@ package org.flixel
          add
          convert_d
          setlocal 28
-         ofs02cc:
+         ofs30:
          getlocal 14
-         iffalse ofs02de
+         iffalse ofs31
          getlocal 19
          getproperty QName(PackageNamespace(""),"x")
          convert_d
          setlocal 29
-         jump ofs02f4
-         ofs02de:
+         jump ofs32
+         ofs31:
          getlocal 19
          getproperty QName(PackageNamespace(""),"x")
          getlocal 19
@@ -2391,11 +2391,11 @@ package org.flixel
          subtract
          convert_d
          setlocal 29
-         ofs02f4:
-         jump ofs034c
-         ofs02f8:
+         ofs32:
+         jump ofs33
+         ofs28:
          getlocal 14
-         iffalse ofs0313
+         iffalse ofs34
          getlocal 19
          getproperty QName(PackageNamespace(""),"x")
          negate
@@ -2405,8 +2405,8 @@ package org.flixel
          subtract
          convert_d
          setlocal 28
-         jump ofs0322
-         ofs0313:
+         jump ofs35
+         ofs34:
          getlocal 19
          getproperty QName(PackageNamespace(""),"x")
          negate
@@ -2415,16 +2415,16 @@ package org.flixel
          subtract
          convert_d
          setlocal 28
-         ofs0322:
+         ofs35:
          getlocal 11
-         iffalse ofs0335
+         iffalse ofs36
          getlocal 18
          getproperty QName(PackageNamespace(""),"x")
          negate
          convert_d
          setlocal 29
-         jump ofs034c
-         ofs0335:
+         jump ofs33
+         ofs36:
          getlocal 18
          getproperty QName(PackageNamespace(""),"x")
          negate
@@ -2437,7 +2437,7 @@ package org.flixel
          add
          convert_d
          setlocal 29
-         ofs034c:
+         ofs33:
          getlocal 28
          getlocal 29
          subtract
@@ -2454,16 +2454,16 @@ package org.flixel
          getlocal 5
          convert_b
          dup
-         iffalse ofs036e
+         iffalse ofs37
          pop
          getlocal 6
          convert_b
-         ofs036e:
-         iffalse ofs03b3
+         ofs37:
+         iffalse ofs38
          getlocal 5
          convert_b
          dup
-         iffalse ofs038f
+         iffalse ofs39
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"colVector")
@@ -2471,18 +2471,18 @@ package org.flixel
          pushbyte 0
          equals
          dup
-         iffalse ofs038f
+         iffalse ofs39
          pop
          getlocal3
          pushbyte 0
          equals
-         ofs038f:
+         ofs39:
          convert_b
          setlocal 5
          getlocal 6
          convert_b
          dup
-         iffalse ofs03b0
+         iffalse ofs40
          pop
          getlocal2
          getproperty QName(PackageNamespace(""),"colVector")
@@ -2490,69 +2490,69 @@ package org.flixel
          pushbyte 0
          equals
          dup
-         iffalse ofs03b0
+         iffalse ofs40
          pop
          getlocal 4
          pushbyte 0
          equals
-         ofs03b0:
+         ofs40:
          convert_b
          setlocal 6
-         ofs03b3:
+         ofs38:
          getlocal 7
          pushbyte 0
          equals
          dup
-         iftrue ofs03e3
+         iftrue ofs41
          pop
          getlocal 5
          not
          dup
-         iffalse ofs03e3
+         iffalse ofs41
          pop
          getlocal 7
          pushbyte 0
-         ifngt ofs03d6
+         ifngt ofs42
          getlocal 7
          coerce_a
-         jump ofs03da
-         ofs03d6:
+         jump ofs43
+         ofs42:
          getlocal 7
          negate
          coerce_a
-         ofs03da:
+         ofs43:
          getlocal 18
          getproperty QName(PackageNamespace(""),"width")
          pushdouble 0.8
          multiply
          greaterthan
-         ofs03e3:
+         ofs41:
          dup
-         iftrue ofs040e
+         iftrue ofs44
          pop
          getlocal 6
          not
          dup
-         iffalse ofs040e
+         iffalse ofs44
          pop
          getlocal 7
          pushbyte 0
-         ifngt ofs0401
+         ifngt ofs45
          getlocal 7
          coerce_a
-         jump ofs0405
-         ofs0401:
+         jump ofs46
+         ofs45:
          getlocal 7
          negate
          coerce_a
-         ofs0405:
+         ofs46:
          getlocal 19
          getproperty QName(PackageNamespace(""),"width")
          pushdouble 0.8
          multiply
          greaterthan
-         ofs040e:
-         iffalse ofs0436
+         ofs44:
+         iffalse ofs47
          getlocal 19
          getlocal 19
          getproperty QName(PackageNamespace(""),"x")
@@ -2569,8 +2569,8 @@ package org.flixel
          increment
          convert_u
          setlocal 17
-         jump ofs062d
-         ofs0436:
+         jump ofs22
+         ofs47:
          pushtrue
          setlocal 8
          getlocal2
@@ -2586,15 +2586,15 @@ package org.flixel
          getlocal 5
          not
          dup
-         iffalse ofs0459
+         iffalse ofs48
          pop
          getlocal 6
          convert_b
-         ofs0459:
-         iffalse ofs0488
+         ofs48:
+         iffalse ofs49
          getlocal1
          getproperty QName(PackageInternalNs("org.flixel"),"_group")
-         iffalse ofs0479
+         iffalse ofs50
          getlocal1
          getlocal1
          getproperty QName(PackageNamespace(""),"x")
@@ -2603,29 +2603,29 @@ package org.flixel
          getlocal1
          getproperty QName(PackageNamespace(""),"y")
          callpropvoid QName(PackageNamespace(""),"reset"), 2
-         jump ofs0484
-         ofs0479:
+         jump ofs51
+         ofs50:
          getlocal1
          getlocal1
          getproperty QName(PackageNamespace(""),"x")
          getlocal 7
          subtract
          setproperty QName(PackageNamespace(""),"x")
-         ofs0484:
-         jump ofs0539
-         ofs0488:
+         ofs51:
+         jump ofs52
+         ofs49:
          getlocal 5
          convert_b
          dup
-         iffalse ofs0494
+         iffalse ofs53
          pop
          getlocal 6
          not
-         ofs0494:
-         iffalse ofs04c3
+         ofs53:
+         iffalse ofs54
          getlocal2
          getproperty QName(PackageInternalNs("org.flixel"),"_group")
-         iffalse ofs04b4
+         iffalse ofs55
          getlocal2
          getlocal2
          getproperty QName(PackageNamespace(""),"x")
@@ -2634,26 +2634,26 @@ package org.flixel
          getlocal2
          getproperty QName(PackageNamespace(""),"y")
          callpropvoid QName(PackageNamespace(""),"reset"), 2
-         jump ofs04bf
-         ofs04b4:
+         jump ofs56
+         ofs55:
          getlocal2
          getlocal2
          getproperty QName(PackageNamespace(""),"x")
          getlocal 7
          add
          setproperty QName(PackageNamespace(""),"x")
-         ofs04bf:
-         jump ofs0539
-         ofs04c3:
+         ofs56:
+         jump ofs52
+         ofs54:
          getlocal 5
          not
          dup
-         iffalse ofs04cf
+         iffalse ofs57
          pop
          getlocal 6
          not
-         ofs04cf:
-         iffalse ofs0539
+         ofs57:
+         iffalse ofs52
          getlocal 7
          pushbyte 2
          divide
@@ -2661,7 +2661,7 @@ package org.flixel
          setlocal 7
          getlocal1
          getproperty QName(PackageInternalNs("org.flixel"),"_group")
-         iffalse ofs04f7
+         iffalse ofs58
          getlocal1
          getlocal1
          getproperty QName(PackageNamespace(""),"x")
@@ -2670,18 +2670,18 @@ package org.flixel
          getlocal1
          getproperty QName(PackageNamespace(""),"y")
          callpropvoid QName(PackageNamespace(""),"reset"), 2
-         jump ofs0502
-         ofs04f7:
+         jump ofs59
+         ofs58:
          getlocal1
          getlocal1
          getproperty QName(PackageNamespace(""),"x")
          getlocal 7
          subtract
          setproperty QName(PackageNamespace(""),"x")
-         ofs0502:
+         ofs59:
          getlocal2
          getproperty QName(PackageInternalNs("org.flixel"),"_group")
-         iffalse ofs051e
+         iffalse ofs60
          getlocal2
          getlocal2
          getproperty QName(PackageNamespace(""),"x")
@@ -2690,15 +2690,15 @@ package org.flixel
          getlocal2
          getproperty QName(PackageNamespace(""),"y")
          callpropvoid QName(PackageNamespace(""),"reset"), 2
-         jump ofs0529
-         ofs051e:
+         jump ofs61
+         ofs60:
          getlocal2
          getlocal2
          getproperty QName(PackageNamespace(""),"x")
          getlocal 7
          add
          setproperty QName(PackageNamespace(""),"x")
-         ofs0529:
+         ofs61:
          getlocal 30
          pushdouble 0.5
          multiply
@@ -2709,9 +2709,9 @@ package org.flixel
          multiply
          convert_d
          setlocal 31
-         ofs0539:
+         ofs52:
          getlocal 9
-         iffalse ofs0553
+         iffalse ofs62
          getlocal1
          getlocal2
          getlocal 30
@@ -2720,8 +2720,8 @@ package org.flixel
          getlocal1
          getlocal 31
          callpropvoid QName(PackageNamespace(""),"hitLeft"), 2
-         jump ofs0563
-         ofs0553:
+         jump ofs63
+         ofs62:
          getlocal1
          getlocal2
          getlocal 30
@@ -2730,28 +2730,28 @@ package org.flixel
          getlocal1
          getlocal 31
          callpropvoid QName(PackageNamespace(""),"hitRight"), 2
-         ofs0563:
+         ofs63:
          getlocal 5
          not
          dup
-         iffalse ofs0572
+         iffalse ofs64
          pop
          getlocal 7
          pushbyte 0
          equals
          not
-         ofs0572:
-         iffalse ofs05b8
+         ofs64:
+         iffalse ofs65
          getlocal 9
-         iffalse ofs058d
+         iffalse ofs66
          getlocal 18
          getlocal 18
          getproperty QName(PackageNamespace(""),"width")
          getlocal 7
          subtract
          setproperty QName(PackageNamespace(""),"width")
-         jump ofs05a7
-         ofs058d:
+         jump ofs67
+         ofs66:
          getlocal 18
          getlocal 18
          getproperty QName(PackageNamespace(""),"x")
@@ -2764,7 +2764,7 @@ package org.flixel
          getlocal 7
          add
          setproperty QName(PackageNamespace(""),"width")
-         ofs05a7:
+         ofs67:
          getlocal1
          getproperty QName(PackageNamespace(""),"colHullY")
          getlocal1
@@ -2773,20 +2773,20 @@ package org.flixel
          getlocal 7
          subtract
          setproperty QName(PackageNamespace(""),"x")
-         ofs05b8:
+         ofs65:
          getlocal 6
          not
          dup
-         iffalse ofs05c7
+         iffalse ofs68
          pop
          getlocal 7
          pushbyte 0
          equals
          not
-         ofs05c7:
-         iffalse ofs060d
+         ofs68:
+         iffalse ofs69
          getlocal 9
-         iffalse ofs05ef
+         iffalse ofs70
          getlocal 19
          getlocal 19
          getproperty QName(PackageNamespace(""),"x")
@@ -2799,15 +2799,15 @@ package org.flixel
          getlocal 7
          subtract
          setproperty QName(PackageNamespace(""),"width")
-         jump ofs05fc
-         ofs05ef:
+         jump ofs71
+         ofs70:
          getlocal 19
          getlocal 19
          getproperty QName(PackageNamespace(""),"width")
          getlocal 7
          add
          setproperty QName(PackageNamespace(""),"width")
-         ofs05fc:
+         ofs71:
          getlocal2
          getproperty QName(PackageNamespace(""),"colHullY")
          getlocal2
@@ -2816,7 +2816,7 @@ package org.flixel
          getlocal 7
          add
          setproperty QName(PackageNamespace(""),"x")
-         ofs060d:
+         ofs69:
          getlocal 19
          getlocal 19
          getproperty QName(PackageNamespace(""),"x")
@@ -2833,10 +2833,10 @@ package org.flixel
          increment
          convert_u
          setlocal 17
-         ofs062d:
+         ofs22:
          getlocal 17
          getlocal 23
-         iflt ofs01db
+         iflt ofs23
          getlocal 18
          getlocal 18
          getproperty QName(PackageNamespace(""),"x")
@@ -2853,10 +2853,10 @@ package org.flixel
          increment
          convert_u
          setlocal 16
-         ofs0655:
+         ofs20:
          getlocal 16
          getlocal 22
-         iflt ofs019d
+         iflt ofs21
          getlocal 8
          returnvalue
          end ; code
@@ -2926,10 +2926,10 @@ package org.flixel
          setlocal 4
          getlocal3
          getlocal 4
-         ifne ofs004c
+         ifne ofs0
          pushfalse
          returnvalue
-         ofs004c:
+         ofs0:
          getlocal1
          getlocal2
          callpropvoid QName(PackageNamespace(""),"preCollide"), 1
@@ -2989,155 +2989,155 @@ package org.flixel
          getlocal 10
          convert_b
          dup
-         iffalse ofs00c0
+         iffalse ofs1
          pop
          getlocal 14
          convert_b
-         ofs00c0:
+         ofs1:
          dup
-         iftrue ofs00d2
+         iftrue ofs2
          pop
          getlocal 12
          convert_b
          dup
-         iffalse ofs00d2
+         iffalse ofs2
          pop
          getlocal 13
          convert_b
-         ofs00d2:
+         ofs2:
          dup
-         iftrue ofs00e4
+         iftrue ofs3
          pop
          getlocal 12
          convert_b
          dup
-         iffalse ofs00e4
+         iffalse ofs3
          pop
          getlocal 14
          convert_b
-         ofs00e4:
+         ofs3:
          dup
-         iftrue ofs0120
+         iftrue ofs4
          pop
          getlocal 11
          convert_b
          dup
-         iffalse ofs00f6
+         iffalse ofs5
          pop
          getlocal 14
          convert_b
-         ofs00f6:
+         ofs5:
          dup
-         iffalse ofs0120
+         iffalse ofs4
          pop
          getlocal3
          pushbyte 0
-         ifngt ofs0109
+         ifngt ofs6
          getlocal3
          coerce_a
-         jump ofs010c
-         ofs0109:
+         jump ofs7
+         ofs6:
          getlocal3
          negate
          coerce_a
-         ofs010c:
+         ofs7:
          getlocal 4
          pushbyte 0
-         ifngt ofs011b
+         ifngt ofs8
          getlocal 4
          coerce_a
-         jump ofs011f
-         ofs011b:
+         jump ofs9
+         ofs8:
          getlocal 4
          negate
          coerce_a
-         ofs011f:
+         ofs9:
          lessthan
-         ofs0120:
+         ofs4:
          dup
-         iftrue ofs015c
+         iftrue ofs10
          pop
          getlocal 12
          convert_b
          dup
-         iffalse ofs0132
+         iffalse ofs11
          pop
          getlocal 15
          convert_b
-         ofs0132:
+         ofs11:
          dup
-         iffalse ofs015c
+         iffalse ofs10
          pop
          getlocal3
          pushbyte 0
-         ifngt ofs0145
+         ifngt ofs12
          getlocal3
          coerce_a
-         jump ofs0148
-         ofs0145:
+         jump ofs13
+         ofs12:
          getlocal3
          negate
          coerce_a
-         ofs0148:
+         ofs13:
          getlocal 4
          pushbyte 0
-         ifngt ofs0157
+         ifngt ofs14
          getlocal 4
          coerce_a
-         jump ofs015b
-         ofs0157:
+         jump ofs15
+         ofs14:
          getlocal 4
          negate
          coerce_a
-         ofs015b:
+         ofs15:
          greaterthan
-         ofs015c:
+         ofs10:
          convert_b
          dup
          setlocal 9
-         iffalse ofs0178
+         iffalse ofs16
          getlocal1
          getproperty QName(PackageNamespace(""),"collideBottom")
          not
          dup
-         iftrue ofs0174
+         iftrue ofs17
          pop
          getlocal2
          getproperty QName(PackageNamespace(""),"collideTop")
          not
-         ofs0174:
-         jump ofs0188
-         ofs0178:
+         ofs17:
+         jump ofs18
+         ofs16:
          getlocal1
          getproperty QName(PackageNamespace(""),"collideTop")
          not
          dup
-         iftrue ofs0188
+         iftrue ofs18
          pop
          getlocal2
          getproperty QName(PackageNamespace(""),"collideBottom")
          not
-         ofs0188:
-         iffalse ofs018e
+         ofs18:
+         iffalse ofs19
          pushfalse
          returnvalue
-         ofs018e:
+         ofs19:
          pushbyte 0
          convert_u
          setlocal 16
-         jump ofs06b7
-         ofs0197:
+         jump ofs20
+         ofs21:
          label
          getlocal 20
          getlocal 16
-         getproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
-         getproperty Multiname("x",[PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty Multiname("x",[PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          convert_d
          setlocal 24
          getlocal 20
          getlocal 16
-         getproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
-         getproperty Multiname("y",[PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty Multiname("y",[PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          convert_d
          setlocal 25
          getlocal 18
@@ -3155,19 +3155,19 @@ package org.flixel
          pushbyte 0
          convert_u
          setlocal 17
-         jump ofs068f
-         ofs01d5:
+         jump ofs22
+         ofs23:
          label
          getlocal 21
          getlocal 17
-         getproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
-         getproperty Multiname("x",[PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty Multiname("x",[PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          convert_d
          setlocal 26
          getlocal 21
          getlocal 17
-         getproperty MultinameL([PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
-         getproperty Multiname("y",[PrivateNamespace(null,"371"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"372"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
+         getproperty Multiname("y",[PrivateNamespace(null,"#FlxU/1"),PackageInternalNs("org.flixel"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxU/2"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxU"),StaticProtectedNs("org.flixel:FlxU"),StaticProtectedNs("Object")])
          convert_d
          setlocal 27
          getlocal 19
@@ -3193,7 +3193,7 @@ package org.flixel
          add
          lessthan
          dup
-         iftrue ofs023a
+         iftrue ofs24
          pop
          getlocal 18
          getproperty QName(PackageNamespace(""),"x")
@@ -3205,9 +3205,9 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"width")
          add
          greaterthan
-         ofs023a:
+         ofs24:
          dup
-         iftrue ofs0255
+         iftrue ofs25
          pop
          getlocal 18
          getproperty QName(PackageNamespace(""),"y")
@@ -3219,9 +3219,9 @@ package org.flixel
          getlex QName(PackageInternalNs("org.flixel"),"roundingError")
          add
          lessthan
-         ofs0255:
+         ofs25:
          dup
-         iftrue ofs0270
+         iftrue ofs26
          pop
          getlocal 18
          getproperty QName(PackageNamespace(""),"y")
@@ -3233,8 +3233,8 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"height")
          add
          greaterthan
-         ofs0270:
-         iffalse ofs0298
+         ofs26:
+         iffalse ofs27
          getlocal 19
          getlocal 19
          getproperty QName(PackageNamespace(""),"x")
@@ -3251,12 +3251,12 @@ package org.flixel
          increment
          convert_u
          setlocal 17
-         jump ofs068f
-         ofs0298:
+         jump ofs22
+         ofs27:
          getlocal 9
-         iffalse ofs02f2
+         iffalse ofs28
          getlocal 11
-         iffalse ofs02b8
+         iffalse ofs29
          getlocal 18
          getproperty QName(PackageNamespace(""),"y")
          getlocal1
@@ -3265,8 +3265,8 @@ package org.flixel
          add
          convert_d
          setlocal 28
-         jump ofs02c6
-         ofs02b8:
+         jump ofs30
+         ofs29:
          getlocal 18
          getproperty QName(PackageNamespace(""),"y")
          getlocal 18
@@ -3274,15 +3274,15 @@ package org.flixel
          add
          convert_d
          setlocal 28
-         ofs02c6:
+         ofs30:
          getlocal 14
-         iffalse ofs02d8
+         iffalse ofs31
          getlocal 19
          getproperty QName(PackageNamespace(""),"y")
          convert_d
          setlocal 29
-         jump ofs02ee
-         ofs02d8:
+         jump ofs32
+         ofs31:
          getlocal 19
          getproperty QName(PackageNamespace(""),"y")
          getlocal 19
@@ -3294,11 +3294,11 @@ package org.flixel
          subtract
          convert_d
          setlocal 29
-         ofs02ee:
-         jump ofs0346
-         ofs02f2:
+         ofs32:
+         jump ofs33
+         ofs28:
          getlocal 14
-         iffalse ofs030d
+         iffalse ofs34
          getlocal 19
          getproperty QName(PackageNamespace(""),"y")
          negate
@@ -3308,8 +3308,8 @@ package org.flixel
          subtract
          convert_d
          setlocal 28
-         jump ofs031c
-         ofs030d:
+         jump ofs35
+         ofs34:
          getlocal 19
          getproperty QName(PackageNamespace(""),"y")
          negate
@@ -3318,16 +3318,16 @@ package org.flixel
          subtract
          convert_d
          setlocal 28
-         ofs031c:
+         ofs35:
          getlocal 11
-         iffalse ofs032f
+         iffalse ofs36
          getlocal 18
          getproperty QName(PackageNamespace(""),"y")
          negate
          convert_d
          setlocal 29
-         jump ofs0346
-         ofs032f:
+         jump ofs33
+         ofs36:
          getlocal 18
          getproperty QName(PackageNamespace(""),"y")
          negate
@@ -3340,7 +3340,7 @@ package org.flixel
          add
          convert_d
          setlocal 29
-         ofs0346:
+         ofs33:
          getlocal 28
          getlocal 29
          subtract
@@ -3357,16 +3357,16 @@ package org.flixel
          getlocal 5
          convert_b
          dup
-         iffalse ofs0368
+         iffalse ofs37
          pop
          getlocal 6
          convert_b
-         ofs0368:
-         iffalse ofs03ad
+         ofs37:
+         iffalse ofs38
          getlocal 5
          convert_b
          dup
-         iffalse ofs0389
+         iffalse ofs39
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"colVector")
@@ -3374,18 +3374,18 @@ package org.flixel
          pushbyte 0
          equals
          dup
-         iffalse ofs0389
+         iffalse ofs39
          pop
          getlocal3
          pushbyte 0
          equals
-         ofs0389:
+         ofs39:
          convert_b
          setlocal 5
          getlocal 6
          convert_b
          dup
-         iffalse ofs03aa
+         iffalse ofs40
          pop
          getlocal2
          getproperty QName(PackageNamespace(""),"colVector")
@@ -3393,69 +3393,69 @@ package org.flixel
          pushbyte 0
          equals
          dup
-         iffalse ofs03aa
+         iffalse ofs40
          pop
          getlocal 4
          pushbyte 0
          equals
-         ofs03aa:
+         ofs40:
          convert_b
          setlocal 6
-         ofs03ad:
+         ofs38:
          getlocal 7
          pushbyte 0
          equals
          dup
-         iftrue ofs03dd
+         iftrue ofs41
          pop
          getlocal 5
          not
          dup
-         iffalse ofs03dd
+         iffalse ofs41
          pop
          getlocal 7
          pushbyte 0
-         ifngt ofs03d0
+         ifngt ofs42
          getlocal 7
          coerce_a
-         jump ofs03d4
-         ofs03d0:
+         jump ofs43
+         ofs42:
          getlocal 7
          negate
          coerce_a
-         ofs03d4:
+         ofs43:
          getlocal 18
          getproperty QName(PackageNamespace(""),"height")
          pushdouble 0.8
          multiply
          greaterthan
-         ofs03dd:
+         ofs41:
          dup
-         iftrue ofs0408
+         iftrue ofs44
          pop
          getlocal 6
          not
          dup
-         iffalse ofs0408
+         iffalse ofs44
          pop
          getlocal 7
          pushbyte 0
-         ifngt ofs03fb
+         ifngt ofs45
          getlocal 7
          coerce_a
-         jump ofs03ff
-         ofs03fb:
+         jump ofs46
+         ofs45:
          getlocal 7
          negate
          coerce_a
-         ofs03ff:
+         ofs46:
          getlocal 19
          getproperty QName(PackageNamespace(""),"height")
          pushdouble 0.8
          multiply
          greaterthan
-         ofs0408:
-         iffalse ofs0430
+         ofs44:
+         iffalse ofs47
          getlocal 19
          getlocal 19
          getproperty QName(PackageNamespace(""),"x")
@@ -3472,8 +3472,8 @@ package org.flixel
          increment
          convert_u
          setlocal 17
-         jump ofs068f
-         ofs0430:
+         jump ofs22
+         ofs47:
          pushtrue
          setlocal 8
          getlocal2
@@ -3489,15 +3489,15 @@ package org.flixel
          getlocal 5
          not
          dup
-         iffalse ofs0453
+         iffalse ofs48
          pop
          getlocal 6
          convert_b
-         ofs0453:
-         iffalse ofs0482
+         ofs48:
+         iffalse ofs49
          getlocal1
          getproperty QName(PackageInternalNs("org.flixel"),"_group")
-         iffalse ofs0473
+         iffalse ofs50
          getlocal1
          getlocal1
          getproperty QName(PackageNamespace(""),"x")
@@ -3506,29 +3506,29 @@ package org.flixel
          getlocal 7
          subtract
          callpropvoid QName(PackageNamespace(""),"reset"), 2
-         jump ofs047e
-         ofs0473:
+         jump ofs51
+         ofs50:
          getlocal1
          getlocal1
          getproperty QName(PackageNamespace(""),"y")
          getlocal 7
          subtract
          setproperty QName(PackageNamespace(""),"y")
-         ofs047e:
-         jump ofs0533
-         ofs0482:
+         ofs51:
+         jump ofs52
+         ofs49:
          getlocal 5
          convert_b
          dup
-         iffalse ofs048e
+         iffalse ofs53
          pop
          getlocal 6
          not
-         ofs048e:
-         iffalse ofs04bd
+         ofs53:
+         iffalse ofs54
          getlocal2
          getproperty QName(PackageInternalNs("org.flixel"),"_group")
-         iffalse ofs04ae
+         iffalse ofs55
          getlocal2
          getlocal2
          getproperty QName(PackageNamespace(""),"x")
@@ -3537,26 +3537,26 @@ package org.flixel
          getlocal 7
          add
          callpropvoid QName(PackageNamespace(""),"reset"), 2
-         jump ofs04b9
-         ofs04ae:
+         jump ofs56
+         ofs55:
          getlocal2
          getlocal2
          getproperty QName(PackageNamespace(""),"y")
          getlocal 7
          add
          setproperty QName(PackageNamespace(""),"y")
-         ofs04b9:
-         jump ofs0533
-         ofs04bd:
+         ofs56:
+         jump ofs52
+         ofs54:
          getlocal 5
          not
          dup
-         iffalse ofs04c9
+         iffalse ofs57
          pop
          getlocal 6
          not
-         ofs04c9:
-         iffalse ofs0533
+         ofs57:
+         iffalse ofs52
          getlocal 7
          pushbyte 2
          divide
@@ -3564,7 +3564,7 @@ package org.flixel
          setlocal 7
          getlocal1
          getproperty QName(PackageInternalNs("org.flixel"),"_group")
-         iffalse ofs04f1
+         iffalse ofs58
          getlocal1
          getlocal1
          getproperty QName(PackageNamespace(""),"x")
@@ -3573,18 +3573,18 @@ package org.flixel
          getlocal 7
          subtract
          callpropvoid QName(PackageNamespace(""),"reset"), 2
-         jump ofs04fc
-         ofs04f1:
+         jump ofs59
+         ofs58:
          getlocal1
          getlocal1
          getproperty QName(PackageNamespace(""),"y")
          getlocal 7
          subtract
          setproperty QName(PackageNamespace(""),"y")
-         ofs04fc:
+         ofs59:
          getlocal2
          getproperty QName(PackageInternalNs("org.flixel"),"_group")
-         iffalse ofs0518
+         iffalse ofs60
          getlocal2
          getlocal2
          getproperty QName(PackageNamespace(""),"x")
@@ -3593,15 +3593,15 @@ package org.flixel
          getlocal 7
          add
          callpropvoid QName(PackageNamespace(""),"reset"), 2
-         jump ofs0523
-         ofs0518:
+         jump ofs61
+         ofs60:
          getlocal2
          getlocal2
          getproperty QName(PackageNamespace(""),"y")
          getlocal 7
          add
          setproperty QName(PackageNamespace(""),"y")
-         ofs0523:
+         ofs61:
          getlocal 30
          pushdouble 0.5
          multiply
@@ -3612,9 +3612,9 @@ package org.flixel
          multiply
          convert_d
          setlocal 31
-         ofs0533:
+         ofs52:
          getlocal 9
-         iffalse ofs054d
+         iffalse ofs62
          getlocal1
          getlocal2
          getlocal 30
@@ -3623,8 +3623,8 @@ package org.flixel
          getlocal1
          getlocal 31
          callpropvoid QName(PackageNamespace(""),"hitTop"), 2
-         jump ofs055d
-         ofs054d:
+         jump ofs63
+         ofs62:
          getlocal1
          getlocal2
          getlocal 30
@@ -3633,20 +3633,20 @@ package org.flixel
          getlocal1
          getlocal 31
          callpropvoid QName(PackageNamespace(""),"hitBottom"), 2
-         ofs055d:
+         ofs63:
          getlocal 5
          not
          dup
-         iffalse ofs056c
+         iffalse ofs64
          pop
          getlocal 7
          pushbyte 0
          equals
          not
-         ofs056c:
-         iffalse ofs05e6
+         ofs64:
+         iffalse ofs65
          getlocal 9
-         iffalse ofs05cc
+         iffalse ofs66
          getlocal 18
          getlocal 18
          getproperty QName(PackageNamespace(""),"y")
@@ -3656,13 +3656,13 @@ package org.flixel
          getlocal 6
          convert_b
          dup
-         iffalse ofs0591
+         iffalse ofs67
          pop
          getlocal2
          getproperty QName(PackageNamespace(""),"moves")
          convert_b
-         ofs0591:
-         iffalse ofs05c8
+         ofs67:
+         iffalse ofs68
          getlocal2
          getproperty QName(PackageNamespace(""),"colVector")
          getproperty QName(PackageNamespace(""),"x")
@@ -3688,9 +3688,9 @@ package org.flixel
          getlocal 30
          add
          setproperty QName(PackageNamespace(""),"x")
-         ofs05c8:
-         jump ofs05e6
-         ofs05cc:
+         ofs68:
+         jump ofs65
+         ofs66:
          getlocal 18
          getlocal 18
          getproperty QName(PackageNamespace(""),"y")
@@ -3703,20 +3703,20 @@ package org.flixel
          getlocal 7
          add
          setproperty QName(PackageNamespace(""),"height")
-         ofs05e6:
+         ofs65:
          getlocal 6
          not
          dup
-         iffalse ofs05f5
+         iffalse ofs69
          pop
          getlocal 7
          pushbyte 0
          equals
          not
-         ofs05f5:
-         iffalse ofs066f
+         ofs69:
+         iffalse ofs70
          getlocal 9
-         iffalse ofs061d
+         iffalse ofs71
          getlocal 19
          getlocal 19
          getproperty QName(PackageNamespace(""),"y")
@@ -3729,8 +3729,8 @@ package org.flixel
          getlocal 7
          subtract
          setproperty QName(PackageNamespace(""),"height")
-         jump ofs066f
-         ofs061d:
+         jump ofs70
+         ofs71:
          getlocal 19
          getlocal 19
          getproperty QName(PackageNamespace(""),"height")
@@ -3740,13 +3740,13 @@ package org.flixel
          getlocal 5
          convert_b
          dup
-         iffalse ofs0638
+         iffalse ofs72
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"moves")
          convert_b
-         ofs0638:
-         iffalse ofs066f
+         ofs72:
+         iffalse ofs70
          getlocal1
          getproperty QName(PackageNamespace(""),"colVector")
          getproperty QName(PackageNamespace(""),"x")
@@ -3772,7 +3772,7 @@ package org.flixel
          getlocal 31
          add
          setproperty QName(PackageNamespace(""),"x")
-         ofs066f:
+         ofs70:
          getlocal 19
          getlocal 19
          getproperty QName(PackageNamespace(""),"x")
@@ -3789,10 +3789,10 @@ package org.flixel
          increment
          convert_u
          setlocal 17
-         ofs068f:
+         ofs22:
          getlocal 17
          getlocal 23
-         iflt ofs01d5
+         iflt ofs23
          getlocal 18
          getlocal 18
          getproperty QName(PackageNamespace(""),"x")
@@ -3809,10 +3809,10 @@ package org.flixel
          increment
          convert_u
          setlocal 16
-         ofs06b7:
+         ofs20:
          getlocal 16
          getlocal 22
-         iflt ofs0197
+         iflt ofs21
          getlocal 8
          returnvalue
          end ; code
@@ -3839,7 +3839,7 @@ findpropstrict Multiname("FlxU",[PackageNamespace("org.flixel")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass 73
+newclass #FlxU
 popscope
 initproperty QName(PackageNamespace("org.flixel"),"FlxU")
 returnvoid

@@ -19,9 +19,9 @@ package
       code
       getlocal0
       pushscope
-      findproperty QName(PrivateNamespace(null,"102"),"HOLD_TIMEOUT")
+      findproperty QName(PrivateNamespace(null,"#UniqueItem"),"HOLD_TIMEOUT")
       pushbyte 2
-      initproperty QName(PrivateNamespace(null,"102"),"HOLD_TIMEOUT")
+      initproperty QName(PrivateNamespace(null,"#UniqueItem"),"HOLD_TIMEOUT")
       returnvoid
       end ; code
       end ; body
@@ -67,22 +67,22 @@ package
          getlocal2
          initproperty QName(PackageNamespace(""),"y")
          getlocal3
-         iftrue ofs0027
+         iftrue ofs0
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"miniMap")
          getlocal1
          getlocal2
          callpropvoid QName(PackageNamespace(""),"setSpecialItem"), 2
-         ofs0027:
+         ofs0:
          getlocal0
          getlex QName(PackageNamespace(""),"x")
-         initproperty QName(PrivateNamespace(null,"102"),"_origX")
+         initproperty QName(PrivateNamespace(null,"#UniqueItem"),"_origX")
          getlocal0
          getlex QName(PackageNamespace(""),"y")
-         initproperty QName(PrivateNamespace(null,"102"),"_origY")
+         initproperty QName(PrivateNamespace(null,"#UniqueItem"),"_origY")
          getlocal0
          pushfalse
-         initproperty QName(PrivateNamespace(null,"102"),"gotten")
+         initproperty QName(PrivateNamespace(null,"#UniqueItem"),"gotten")
          findproperty QName(PackageNamespace(""),"active")
          pushtrue
          initproperty QName(PackageNamespace(""),"active")
@@ -112,18 +112,18 @@ package
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"102"),"gotten")
-         iffalse ofs000b
+         getproperty QName(PrivateNamespace(null,"#UniqueItem"),"gotten")
+         iffalse ofs0
          returnvoid
-         ofs000b:
+         ofs0:
          getlocal0
-         getproperty QName(PrivateNamespace(null,"102"),"_origX")
+         getproperty QName(PrivateNamespace(null,"#UniqueItem"),"_origX")
          pushbyte 16
          divide
          convert_i
          setlocal2
          getlocal0
-         getproperty QName(PrivateNamespace(null,"102"),"_origY")
+         getproperty QName(PrivateNamespace(null,"#UniqueItem"),"_origY")
          pushbyte 16
          divide
          convert_i
@@ -134,42 +134,42 @@ package
          getlocal2
          getlocal3
          pushbyte 0
-         callpropvoid Multiname("setTile",[PrivateNamespace(null,"102"),PackageNamespace(""),PrivateNamespace(null,"450"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("UniqueItem"),StaticProtectedNs("UniqueItem"),StaticProtectedNs("Item"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 3
+         callpropvoid Multiname("setTile",[PrivateNamespace(null,"#UniqueItem"),PackageNamespace(""),PrivateNamespace(null,"#UniqueItem/1"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("UniqueItem"),StaticProtectedNs("UniqueItem"),StaticProtectedNs("Item"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 3
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"miniMap")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"102"),"_origX")
+         getproperty QName(PrivateNamespace(null,"#UniqueItem"),"_origX")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"102"),"_origY")
+         getproperty QName(PrivateNamespace(null,"#UniqueItem"),"_origY")
          callpropvoid QName(PackageNamespace(""),"setSpecialItemGotten"), 2
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"bossRush")
-         iftrue ofs0056
+         iftrue ofs1
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"uniqueBlocks")
          getlocal2
          getlocal3
          callpropvoid QName(PackageNamespace(""),"rememberBlock"), 2
-         ofs0056:
+         ofs1:
          findproperty QName(PackageNamespace(""),"solid")
          pushfalse
          initproperty QName(PackageNamespace(""),"solid")
          getlocal0
          pushtrue
-         initproperty QName(PrivateNamespace(null,"102"),"gotten")
+         initproperty QName(PrivateNamespace(null,"#UniqueItem"),"gotten")
          getlocal0
-         getlex QName(PrivateNamespace(null,"102"),"HOLD_TIMEOUT")
-         initproperty QName(PrivateNamespace(null,"102"),"disappearTime")
+         getlex QName(PrivateNamespace(null,"#UniqueItem"),"HOLD_TIMEOUT")
+         initproperty QName(PrivateNamespace(null,"#UniqueItem"),"disappearTime")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"bossRush")
-         iffalse ofs007e
+         iffalse ofs2
          getlex QName(PackageNamespace(""),"Sfx")
          callpropvoid QName(PackageNamespace(""),"playPickup4"), 0
-         jump ofs0085
-         ofs007e:
+         jump ofs3
+         ofs2:
          getlex QName(PackageNamespace(""),"Sfx")
          callpropvoid QName(PackageNamespace(""),"playItemJingle"), 0
-         ofs0085:
+         ofs3:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          callpropvoid QName(PackageNamespace(""),"saveNoCoords"), 0
@@ -201,16 +201,16 @@ package
          getproperty QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"STATE_GAME")
-         ifeq ofs0013
+         ifeq ofs0
          returnvoid
-         ofs0013:
+         ofs0:
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"102"),"gotten")
-         iffalse ofs0161
-         jump ofs00d1
-         ofs0024:
+         getproperty QName(PrivateNamespace(null,"#UniqueItem"),"gotten")
+         iffalse ofs1
+         jump ofs2
+         ofs3:
          label
          findproperty QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"PlayState")
@@ -224,8 +224,8 @@ package
          getlex QName(PackageNamespace(""),"height")
          subtract
          initproperty QName(PackageNamespace(""),"y")
-         jump ofs013d
-         ofs004b:
+         jump ofs4
+         ofs5:
          label
          findproperty QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"PlayState")
@@ -241,8 +241,8 @@ package
          getproperty QName(PackageNamespace(""),"height")
          add
          initproperty QName(PackageNamespace(""),"y")
-         jump ofs013d
-         ofs0078:
+         jump ofs4
+         ofs6:
          label
          findproperty QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"PlayState")
@@ -258,8 +258,8 @@ package
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"y")
          initproperty QName(PackageNamespace(""),"y")
-         jump ofs013d
-         ofs00a5:
+         jump ofs4
+         ofs7:
          label
          findproperty QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"PlayState")
@@ -273,11 +273,11 @@ package
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"y")
          initproperty QName(PackageNamespace(""),"y")
-         jump ofs013d
-         ofs00cc:
+         jump ofs4
+         ofs8:
          label
-         jump ofs013d
-         ofs00d1:
+         jump ofs4
+         ofs2:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"_gravityDir")
@@ -285,63 +285,63 @@ package
          getlex QName(PackageNamespace(""),"Player")
          getproperty QName(PackageNamespace(""),"GRAV_DOWN")
          getlocal1
-         ifstrictne ofs00eb
+         ifstrictne ofs9
          pushbyte 0
-         jump ofs0127
-         ofs00eb:
+         jump ofs10
+         ofs9:
          getlex QName(PackageNamespace(""),"Player")
          getproperty QName(PackageNamespace(""),"GRAV_UP")
          getlocal1
-         ifstrictne ofs00fb
+         ifstrictne ofs11
          pushbyte 1
-         jump ofs0127
-         ofs00fb:
+         jump ofs10
+         ofs11:
          getlex QName(PackageNamespace(""),"Player")
          getproperty QName(PackageNamespace(""),"GRAV_LEFT")
          getlocal1
-         ifstrictne ofs010b
+         ifstrictne ofs12
          pushbyte 2
-         jump ofs0127
-         ofs010b:
+         jump ofs10
+         ofs12:
          getlex QName(PackageNamespace(""),"Player")
          getproperty QName(PackageNamespace(""),"GRAV_RIGHT")
          getlocal1
-         ifstrictne ofs011b
+         ifstrictne ofs13
          pushbyte 3
-         jump ofs0127
-         ofs011b:
-         jump ofs0125
+         jump ofs10
+         ofs13:
+         jump ofs14
          pushbyte 4
-         jump ofs0125
-         ofs0125:
+         jump ofs14
+         ofs14:
          pushbyte 4
-         ofs0127:
+         ofs10:
          kill 1
-         lookupswitch ofs00cc, [ofs0024, ofs004b, ofs0078, ofs00a5, ofs00cc]
-         ofs013d:
+         lookupswitch ofs8, [ofs3, ofs5, ofs6, ofs7, ofs8]
+         ofs4:
          getlocal0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"102"),"disappearTime")
+         getproperty QName(PrivateNamespace(null,"#UniqueItem"),"disappearTime")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         initproperty QName(PrivateNamespace(null,"102"),"disappearTime")
+         initproperty QName(PrivateNamespace(null,"#UniqueItem"),"disappearTime")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"102"),"disappearTime")
+         getproperty QName(PrivateNamespace(null,"#UniqueItem"),"disappearTime")
          pushbyte 0
-         ifnlt ofs015d
+         ifnlt ofs15
          findpropstrict QName(PackageNamespace(""),"kill")
          callpropvoid QName(PackageNamespace(""),"kill"), 0
-         ofs015d:
-         jump ofs01ba
-         ofs0161:
+         ofs15:
+         jump ofs16
+         ofs1:
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"maxX")
          greaterthan
          dup
-         iftrue ofs0185
+         iftrue ofs17
          pop
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"width")
@@ -350,18 +350,18 @@ package
          getproperty QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"minX")
          lessthan
-         ofs0185:
+         ofs17:
          dup
-         iftrue ofs0198
+         iftrue ofs18
          pop
          getlex QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"maxY")
          greaterthan
-         ofs0198:
+         ofs18:
          dup
-         iftrue ofs01af
+         iftrue ofs19
          pop
          getlex QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"height")
@@ -370,11 +370,11 @@ package
          getproperty QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"minY")
          lessthan
-         ofs01af:
-         iffalse ofs01ba
+         ofs19:
+         iffalse ofs16
          findpropstrict QName(PackageNamespace(""),"kill")
          callpropvoid QName(PackageNamespace(""),"kill"), 0
-         ofs01ba:
+         ofs16:
          returnvoid
          end ; code
          end ; body
@@ -410,7 +410,7 @@ pushscope
 getlex QName(PackageNamespace(""),"Item")
 pushscope
 getlex QName(PackageNamespace(""),"Item")
-newclass 314
+newclass #UniqueItem
 popscope
 popscope
 popscope

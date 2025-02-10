@@ -90,14 +90,14 @@ package
          getproperty QName(PackageNamespace(""),"_gravityDir")
          getlex QName(PackageNamespace(""),"Player")
          getproperty QName(PackageNamespace(""),"GRAV_DOWN")
-         ifne ofs0047
+         ifne ofs0
          getlocal1
          getproperty QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"y")
          getlocal1
          getproperty QName(PackageNamespace(""),"height")
          subtract
-         ifngt ofs0043
+         ifngt ofs1
          getlocal1
          getlex QName(PackageNamespace(""),"y")
          getlocal1
@@ -114,22 +114,22 @@ package
          getlocal1
          pushtrue
          setproperty QName(PackageNamespace(""),"_justHitSteps")
-         ofs0043:
-         jump ofs0103
-         ofs0047:
+         ofs1:
+         jump ofs2
+         ofs0:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"_gravityDir")
          getlex QName(PackageNamespace(""),"Player")
          getproperty QName(PackageNamespace(""),"GRAV_RIGHT")
-         ifne ofs00d9
+         ifne ofs3
          getlocal1
          getproperty QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"y")
          getlocal1
          getproperty QName(PackageNamespace(""),"height")
          subtract
-         ifngt ofs00d5
+         ifngt ofs4
          getlocal1
          getlex QName(PackageNamespace(""),"y")
          getlocal1
@@ -147,7 +147,7 @@ package
          callproperty QName(PackageNamespace(""),"pressed"), 1
          convert_b
          dup
-         iftrue ofs00a4
+         iftrue ofs5
          pop
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"keys")
@@ -155,8 +155,8 @@ package
          getproperty QName(PackageNamespace(""),"ALT_LEFT_KEY")
          callproperty QName(PackageNamespace(""),"pressed"), 1
          convert_b
-         ofs00a4:
-         iffalse ofs00d0
+         ofs5:
+         iffalse ofs6
          getlocal1
          getlocal1
          getproperty QName(PackageNamespace(""),"y")
@@ -177,20 +177,20 @@ package
          getlocal1
          getlex QName(PackageNamespace(""),"left")
          setproperty QName(PackageNamespace(""),"facing")
-         ofs00d0:
+         ofs6:
          getlocal1
          pushtrue
          setproperty QName(PackageNamespace(""),"_justHitSteps")
-         ofs00d5:
-         jump ofs0103
-         ofs00d9:
+         ofs4:
+         jump ofs2
+         ofs3:
          getlocal1
          getproperty QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"y")
          getlocal1
          getproperty QName(PackageNamespace(""),"height")
          subtract
-         ifngt ofs0103
+         ifngt ofs2
          getlocal1
          getlex QName(PackageNamespace(""),"y")
          getlocal1
@@ -204,7 +204,7 @@ package
          getlocal1
          pushtrue
          setproperty QName(PackageNamespace(""),"_justHitSteps")
-         ofs0103:
+         ofs2:
          returnvoid
          end ; code
          end ; body
@@ -233,9 +233,9 @@ package
          getproperty QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"STATE_GAME")
-         ifeq ofs0013
+         ifeq ofs0
          returnvoid
-         ofs0013:
+         ofs0:
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0
          returnvoid
@@ -273,7 +273,7 @@ pushscope
 getlex QName(PackageNamespace(""),"Item")
 pushscope
 getlex QName(PackageNamespace(""),"Item")
-newclass 370
+newclass #Step
 popscope
 popscope
 popscope

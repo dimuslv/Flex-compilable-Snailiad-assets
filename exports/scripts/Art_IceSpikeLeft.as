@@ -2,7 +2,7 @@ package
 {
    import mx.core.BitmapAsset;
    
-   [Embed(source="/_assets/277_Art_IceSpikeLeft.png")]
+   [Embed]
    public class Art_IceSpikeLeft extends BitmapAsset
    {
       public function Art_IceSpikeLeft()

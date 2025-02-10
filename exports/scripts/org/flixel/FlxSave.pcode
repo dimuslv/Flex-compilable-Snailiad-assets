@@ -104,7 +104,7 @@ package org.flixel
          getscopeobject 1
          getslot 1
          initproperty QName(PackageNamespace(""),"name")
-         ofs0022:
+         ofs0:
          getlocal0
          getlex QName(PackageNamespace("flash.net"),"SharedObject")
          getlocal0
@@ -112,9 +112,9 @@ package org.flixel
          pushstring "/"
          callproperty QName(PackageNamespace(""),"getLocal"), 2
          initproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
-         ofs0034:
-         jump ofs0069
-         ofs0038:
+         ofs1:
+         jump ofs2
+         ofs3:
          getlocal0
          pushscope
          getlocal2
@@ -142,7 +142,7 @@ package org.flixel
          returnvalue
          popscope
          kill 3
-         ofs0069:
+         ofs2:
          getlocal0
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
@@ -151,7 +151,7 @@ package org.flixel
          pushtrue
          returnvalue
          end ; code
-         try from ofs0022 to ofs0034 target ofs0038 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
+         try from ofs0 to ofs1 target ofs3 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
          end ; body
          end ; method
       }
@@ -181,18 +181,18 @@ package org.flixel
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
          pushnull
-         ifne ofs0017
+         ifne ofs0
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          pushstring "WARNING: You must call FlxSave.bind()\nbefore calling FlxSave.write()."
          callpropvoid QName(PackageNamespace(""),"log"), 1
          pushfalse
          returnvalue
-         ofs0017:
+         ofs0:
          getlocal0
          getproperty QName(PackageNamespace(""),"data")
          getlocal1
          getlocal2
-         setproperty MultinameL([PrivateNamespace(null,"351"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSave"),PackageNamespace("org.flixel"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"352"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxSave"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxSave/1"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSave"),PackageNamespace("org.flixel"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"#FlxSave/2"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxSave"),StaticProtectedNs("Object")])
          getlocal0
          getlocal3
          callproperty QName(PackageNamespace(""),"forceSave"), 1
@@ -223,17 +223,17 @@ package org.flixel
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
          pushnull
-         ifne ofs0017
+         ifne ofs0
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          pushstring "WARNING: You must call FlxSave.bind()\nbefore calling FlxSave.read()."
          callpropvoid QName(PackageNamespace(""),"log"), 1
          pushnull
          returnvalue
-         ofs0017:
+         ofs0:
          getlocal0
          getproperty QName(PackageNamespace(""),"data")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"351"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSave"),PackageNamespace("org.flixel"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"352"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxSave"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxSave/1"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSave"),PackageNamespace("org.flixel"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"#FlxSave/2"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxSave"),StaticProtectedNs("Object")])
          returnvalue
          end ; code
          end ; body
@@ -280,18 +280,18 @@ package org.flixel
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
          pushnull
-         ifne ofs0020
+         ifne ofs0
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          pushstring "WARNING: You must call FlxSave.bind()\nbefore calling FlxSave.forceSave()."
          callpropvoid QName(PackageNamespace(""),"log"), 1
          pushfalse
          returnvalue
-         ofs0020:
+         ofs0:
          getscopeobject 1
          pushnull
          coerce QName(PackageNamespace(""),"Object")
          setslot 2
-         ofs0027:
+         ofs1:
          getscopeobject 1
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
@@ -300,9 +300,9 @@ package org.flixel
          callproperty QName(PackageNamespace(""),"flush"), 1
          coerce QName(PackageNamespace(""),"Object")
          setslot 2
-         ofs0039:
-         jump ofs0059
-         ofs003d:
+         ofs2:
+         jump ofs3
+         ofs4:
          getlocal0
          pushscope
          getlocal2
@@ -321,7 +321,7 @@ package org.flixel
          returnvalue
          popscope
          kill 3
-         ofs0059:
+         ofs3:
          getscopeobject 1
          getslot 2
          getlex QName(PackageNamespace("flash.net"),"SharedObjectFlushStatus")
@@ -329,7 +329,7 @@ package org.flixel
          equals
          returnvalue
          end ; code
-         try from ofs0027 to ofs0039 target ofs003d type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
+         try from ofs1 to ofs2 target ofs4 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
          end ; body
          end ; method
       }
@@ -357,13 +357,13 @@ package org.flixel
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
          pushnull
-         ifne ofs0017
+         ifne ofs0
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          pushstring "WARNING: You must call FlxSave.bind()\nbefore calling FlxSave.erase()."
          callpropvoid QName(PackageNamespace(""),"log"), 1
          pushfalse
          returnvalue
-         ofs0017:
+         ofs0:
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
          callpropvoid QName(PackageNamespace(""),"clear"), 0
@@ -448,26 +448,26 @@ package org.flixel
          setlocal 4
          pushbyte 0
          setlocal 5
-         jump ofs0042
-         ofs0024:
+         jump ofs0
+         ofs1:
          label
          getlocal3
          getlocal 5
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charAt"), 1
          pushstring ","
-         ifeq ofs0040
+         ifeq ofs2
          getlocal 4
          getlocal3
          getlocal 5
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charAt"), 1
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         ofs0040:
+         ofs2:
          inclocal_i 5
-         ofs0042:
+         ofs0:
          getlocal 5
          getlocal3
          getproperty QName(PackageNamespace(""),"length")
-         iflt ofs0024
+         iflt ofs1
          getlocal 4
          returnvalue
          end ; code
@@ -494,7 +494,7 @@ findpropstrict Multiname("FlxSave",[PackageNamespace("org.flixel")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass 9
+newclass #FlxSave
 popscope
 initproperty QName(PackageNamespace("org.flixel"),"FlxSave")
 returnvoid

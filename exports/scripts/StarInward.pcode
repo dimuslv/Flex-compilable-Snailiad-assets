@@ -23,12 +23,12 @@ package
       code
       getlocal0
       pushscope
-      findproperty QName(PrivateNamespace(null,"341"),"IMG_WIDTH")
+      findproperty QName(PrivateNamespace(null,"#StarInward"),"IMG_WIDTH")
       pushbyte 16
-      initproperty QName(PrivateNamespace(null,"341"),"IMG_WIDTH")
-      findproperty QName(PrivateNamespace(null,"341"),"IMG_HEIGHT")
+      initproperty QName(PrivateNamespace(null,"#StarInward"),"IMG_WIDTH")
+      findproperty QName(PrivateNamespace(null,"#StarInward"),"IMG_HEIGHT")
       pushbyte 16
-      initproperty QName(PrivateNamespace(null,"341"),"IMG_HEIGHT")
+      initproperty QName(PrivateNamespace(null,"#StarInward"),"IMG_HEIGHT")
       returnvoid
       end ; code
       end ; body
@@ -56,14 +56,14 @@ package
          getproperty QName(PackageNamespace(""),"Star")
          pushtrue
          pushtrue
-         getlex QName(PrivateNamespace(null,"341"),"IMG_WIDTH")
-         getlex QName(PrivateNamespace(null,"341"),"IMG_HEIGHT")
+         getlex QName(PrivateNamespace(null,"#StarInward"),"IMG_WIDTH")
+         getlex QName(PrivateNamespace(null,"#StarInward"),"IMG_HEIGHT")
          callpropvoid QName(PackageNamespace(""),"loadGraphic"), 5
          findproperty QName(PackageNamespace(""),"width")
-         getlex QName(PrivateNamespace(null,"341"),"IMG_WIDTH")
+         getlex QName(PrivateNamespace(null,"#StarInward"),"IMG_WIDTH")
          initproperty QName(PackageNamespace(""),"width")
          findproperty QName(PackageNamespace(""),"height")
-         getlex QName(PrivateNamespace(null,"341"),"IMG_HEIGHT")
+         getlex QName(PrivateNamespace(null,"#StarInward"),"IMG_HEIGHT")
          initproperty QName(PackageNamespace(""),"height")
          findpropstrict QName(PackageNamespace(""),"addAnimation")
          pushstring "normal"
@@ -117,8 +117,8 @@ package
          setlocal3
          pushnan
          setlocal 4
-         jump ofs00a0
-         ofs000b:
+         jump ofs0
+         ofs1:
          label
          findproperty QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
@@ -131,8 +131,8 @@ package
          getlex QName(PackageNamespace(""),"height")
          negate
          initproperty QName(PackageNamespace(""),"y")
-         jump ofs010b
-         ofs002e:
+         jump ofs2
+         ofs3:
          label
          findproperty QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
@@ -145,8 +145,8 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"height")
          initproperty QName(PackageNamespace(""),"y")
-         jump ofs010b
-         ofs0053:
+         jump ofs2
+         ofs4:
          label
          findproperty QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"width")
@@ -159,8 +159,8 @@ package
          getproperty QName(PackageNamespace(""),"height")
          multiply
          initproperty QName(PackageNamespace(""),"y")
-         jump ofs010b
-         ofs0076:
+         jump ofs2
+         ofs5:
          label
          findproperty QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
@@ -173,11 +173,11 @@ package
          getproperty QName(PackageNamespace(""),"height")
          multiply
          initproperty QName(PackageNamespace(""),"y")
-         jump ofs010b
-         ofs009b:
+         jump ofs2
+         ofs6:
          label
-         jump ofs010b
-         ofs00a0:
+         jump ofs2
+         ofs0:
          findpropstrict QName(PackageNamespace(""),"int")
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
          callproperty QName(PackageNamespace(""),"random"), 0
@@ -187,37 +187,37 @@ package
          setlocal 5
          pushbyte 0
          getlocal 5
-         ifstrictne ofs00bf
+         ifstrictne ofs7
          pushbyte 0
-         jump ofs00f5
-         ofs00bf:
+         jump ofs8
+         ofs7:
          pushbyte 1
          getlocal 5
-         ifstrictne ofs00cd
+         ifstrictne ofs9
          pushbyte 1
-         jump ofs00f5
-         ofs00cd:
+         jump ofs8
+         ofs9:
          pushbyte 2
          getlocal 5
-         ifstrictne ofs00db
+         ifstrictne ofs10
          pushbyte 2
-         jump ofs00f5
-         ofs00db:
+         jump ofs8
+         ofs10:
          pushbyte 3
          getlocal 5
-         ifstrictne ofs00e9
+         ifstrictne ofs11
          pushbyte 3
-         jump ofs00f5
-         ofs00e9:
-         jump ofs00f3
+         jump ofs8
+         ofs11:
+         jump ofs12
          pushbyte 4
-         jump ofs00f3
-         ofs00f3:
+         jump ofs12
+         ofs12:
          pushbyte 4
-         ofs00f5:
+         ofs8:
          kill 5
-         lookupswitch ofs009b, [ofs000b, ofs002e, ofs0053, ofs0076, ofs009b]
-         ofs010b:
+         lookupswitch ofs6, [ofs1, ofs3, ofs4, ofs5, ofs6]
+         ofs2:
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"width")
          pushbyte 2
@@ -291,7 +291,7 @@ package
          pushbyte 0
          lessthan
          dup
-         iffalse ofs0025
+         iffalse ofs0
          pop
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
@@ -303,17 +303,17 @@ package
          divide
          add
          lessthan
-         ofs0025:
-         iffalse ofs002e
+         ofs0:
+         iffalse ofs1
          getlocal0
          callpropvoid QName(PackageNamespace(""),"placeRandom"), 0
-         ofs002e:
+         ofs1:
          getlex QName(PackageNamespace(""),"velocity")
          getproperty QName(PackageNamespace(""),"x")
          pushbyte 0
          greaterthan
          dup
-         iffalse ofs0051
+         iffalse ofs2
          pop
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
@@ -325,11 +325,11 @@ package
          divide
          subtract
          greaterthan
-         ofs0051:
-         iffalse ofs005a
+         ofs2:
+         iffalse ofs3
          getlocal0
          callpropvoid QName(PackageNamespace(""),"placeRandom"), 0
-         ofs005a:
+         ofs3:
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0
          returnvoid
@@ -365,7 +365,7 @@ pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
 pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
-newclass 769
+newclass #StarInward
 popscope
 popscope
 popscope

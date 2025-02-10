@@ -102,14 +102,14 @@ package org.flixel.data
          getlocal 4
          not
          dup
-         iffalse ofs000f
+         iffalse ofs0
          pop
          getlex QName(PackageNamespace(""),"exists")
          convert_b
-         ofs000f:
-         iffalse ofs0014
+         ofs0:
+         iffalse ofs1
          returnvoid
-         ofs0014:
+         ofs1:
          findpropstrict QName(PackageNamespace(""),"fill")
          getlocal1
          callpropvoid QName(PackageNamespace(""),"fill"), 1
@@ -186,17 +186,17 @@ package org.flixel.data
          initproperty QName(PackageNamespace(""),"alpha")
          getlex QName(PackageNamespace(""),"alpha")
          pushbyte 1
-         ifnge ofs0036
+         ifnge ofs0
          findproperty QName(PackageNamespace(""),"alpha")
          pushbyte 1
          initproperty QName(PackageNamespace(""),"alpha")
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel.data:FlxFade"),"_complete")
          pushnull
-         ifeq ofs0036
+         ifeq ofs0
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel.data:FlxFade"),"_complete"), 0
-         ofs0036:
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -230,7 +230,7 @@ pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
 pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
-newclass 79
+newclass #FlxFade
 popscope
 popscope
 popscope

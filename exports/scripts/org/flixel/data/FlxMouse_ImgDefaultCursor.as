@@ -2,7 +2,7 @@ package org.flixel.data
 {
    import mx.core.BitmapAsset;
    
-   [Embed(source="/_assets/117_org.flixel.data.FlxMouse_ImgDefaultCursor.png")]
+   [Embed]
    public class FlxMouse_ImgDefaultCursor extends BitmapAsset
    {
       public function FlxMouse_ImgDefaultCursor()

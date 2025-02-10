@@ -2,7 +2,7 @@ package
 {
    import mx.core.ByteArrayAsset;
    
-   [Embed(source="/_assets/159_WorldMap_WorldMapBgTxt.bin", mimeType="application/octet-stream")]
+   [Embed]
    public class WorldMap_WorldMapBgTxt extends ByteArrayAsset
    {
       public function WorldMap_WorldMapBgTxt()

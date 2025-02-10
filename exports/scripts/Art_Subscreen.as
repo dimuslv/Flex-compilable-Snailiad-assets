@@ -2,7 +2,7 @@ package
 {
    import mx.core.BitmapAsset;
    
-   [Embed(source="/_assets/152_Art_Subscreen.png")]
+   [Embed]
    public class Art_Subscreen extends BitmapAsset
    {
       public function Art_Subscreen()

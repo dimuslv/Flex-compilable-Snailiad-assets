@@ -2,7 +2,7 @@ package
 {
    import mx.core.BitmapAsset;
    
-   [Embed(source="/_assets/132_Art_TheEnd.png")]
+   [Embed]
    public class Art_TheEnd extends BitmapAsset
    {
       public function Art_TheEnd()

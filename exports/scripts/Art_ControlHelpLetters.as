@@ -2,7 +2,7 @@ package
 {
    import mx.core.BitmapAsset;
    
-   [Embed(source="/_assets/241_Art_ControlHelpLetters.png")]
+   [Embed]
    public class Art_ControlHelpLetters extends BitmapAsset
    {
       public function Art_ControlHelpLetters()

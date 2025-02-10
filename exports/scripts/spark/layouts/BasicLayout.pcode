@@ -60,7 +60,7 @@ package spark.layouts
       
       private static function constraintsDetermineWidth(param1:ILayoutElement) : Boolean
       {
-         trait method QName(PrivateNamespace(null,"63"),"constraintsDetermineWidth")
+         trait method QName(PrivateNamespace(null,"#BasicLayout"),"constraintsDetermineWidth")
          flag FINAL
          dispid 3
          method
@@ -83,7 +83,7 @@ package spark.layouts
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
          dup
-         iftrue ofs0040
+         iftrue ofs0
          pop
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlex QName(PackageNamespace("spark.layouts.supportClasses"),"LayoutElementHelper")
@@ -93,7 +93,7 @@ package spark.layouts
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
          dup
-         iffalse ofs0040
+         iffalse ofs0
          pop
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlex QName(PackageNamespace("spark.layouts.supportClasses"),"LayoutElementHelper")
@@ -102,7 +102,7 @@ package spark.layouts
          callproperty QName(PackageNamespace(""),"parseConstraintValue"), 1
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
-         ofs0040:
+         ofs0:
          returnvalue
          end ; code
          end ; body
@@ -111,7 +111,7 @@ package spark.layouts
       
       private static function constraintsDetermineHeight(param1:ILayoutElement) : Boolean
       {
-         trait method QName(PrivateNamespace(null,"63"),"constraintsDetermineHeight")
+         trait method QName(PrivateNamespace(null,"#BasicLayout"),"constraintsDetermineHeight")
          flag FINAL
          dispid 4
          method
@@ -134,7 +134,7 @@ package spark.layouts
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
          dup
-         iftrue ofs0040
+         iftrue ofs0
          pop
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlex QName(PackageNamespace("spark.layouts.supportClasses"),"LayoutElementHelper")
@@ -144,7 +144,7 @@ package spark.layouts
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
          dup
-         iffalse ofs0040
+         iffalse ofs0
          pop
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlex QName(PackageNamespace("spark.layouts.supportClasses"),"LayoutElementHelper")
@@ -153,7 +153,7 @@ package spark.layouts
          callproperty QName(PackageNamespace(""),"parseConstraintValue"), 1
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
-         ofs0040:
+         ofs0:
          returnvalue
          end ; code
          end ; body
@@ -162,7 +162,7 @@ package spark.layouts
       
       private static function maxSizeToFitIn(param1:Number, param2:Number, param3:Number, param4:Number, param5:Number) : Number
       {
-         trait method QName(PrivateNamespace(null,"63"),"maxSizeToFitIn")
+         trait method QName(PrivateNamespace(null,"#BasicLayout"),"maxSizeToFitIn")
          flag FINAL
          dispid 5
          method
@@ -186,7 +186,7 @@ package spark.layouts
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal2
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs001c
+         iftrue ofs0
          getlocal1
          pushbyte 2
          getlex QName(PackageNamespace(""),"Math")
@@ -195,25 +195,25 @@ package spark.layouts
          multiply
          subtract
          returnvalue
-         ofs001c:
+         ofs0:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal3
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs002c
+         iftrue ofs1
          getlocal1
          getlocal3
          subtract
          returnvalue
-         ofs002c:
+         ofs1:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 4
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs003e
+         iftrue ofs2
          getlocal1
          getlocal 4
          subtract
          returnvalue
-         ofs003e:
+         ofs2:
          getlocal1
          getlocal 5
          subtract
@@ -225,7 +225,7 @@ package spark.layouts
       
       private function checkUseVirtualLayout() : void
       {
-         trait method QName(PrivateNamespace(null,"63"),"checkUseVirtualLayout")
+         trait method QName(PrivateNamespace(null,"#BasicLayout"),"checkUseVirtualLayout")
          dispid 0
          method
          name null
@@ -241,7 +241,7 @@ package spark.layouts
          getlocal0
          pushscope
          getlex QName(PackageNamespace(""),"useVirtualLayout")
-         iffalse ofs0022
+         iffalse ofs0
          findpropstrict QName(PackageNamespace(""),"Error")
          getlex QName(PackageNamespace("mx.resources"),"ResourceManager")
          callproperty QName(PackageNamespace(""),"getInstance"), 0
@@ -250,7 +250,7 @@ package spark.layouts
          callproperty QName(Namespace("mx.resources:IResourceManager"),"getString"), 2
          constructprop QName(PackageNamespace(""),"Error"), 1
          throw
-         ofs0022:
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -305,16 +305,16 @@ package spark.layouts
          pushnan
          setlocal 21
          getlocal0
-         callpropvoid QName(PrivateNamespace(null,"63"),"checkUseVirtualLayout"), 0
+         callpropvoid QName(PrivateNamespace(null,"#BasicLayout"),"checkUseVirtualLayout"), 0
          getlocal0
          callsupervoid QName(PackageNamespace(""),"measure"), 0
          getlex QName(PackageNamespace(""),"target")
          coerce QName(PackageNamespace("spark.components.supportClasses"),"GroupBase")
          setlocal1
          getlocal1
-         iftrue ofs0046
+         iftrue ofs0
          returnvoid
-         ofs0046:
+         ofs0:
          pushbyte 0
          convert_d
          setlocal2
@@ -333,8 +333,8 @@ package spark.layouts
          setlocal 6
          pushbyte 0
          setlocal 7
-         jump ofs0308
-         ofs0067:
+         jump ofs1
+         ofs2:
          label
          getlocal1
          getlocal 7
@@ -344,15 +344,15 @@ package spark.layouts
          setlocal 8
          not
          dup
-         iftrue ofs0082
+         iftrue ofs3
          pop
          getlocal 8
          getproperty QName(Namespace("mx.core:ILayoutElement"),"includeInLayout")
          not
-         ofs0082:
-         iffalse ofs008a
-         jump ofs0306
-         ofs008a:
+         ofs3:
+         iffalse ofs4
+         jump ofs5
+         ofs4:
          getlex QName(PackageNamespace("spark.layouts.supportClasses"),"LayoutElementHelper")
          getlocal 8
          getproperty QName(Namespace("mx.core:ILayoutElement"),"horizontalCenter")
@@ -400,25 +400,25 @@ package spark.layouts
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
          dup
-         iffalse ofs010d
+         iffalse ofs6
          pop
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 13
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
-         ofs010d:
-         iffalse ofs011d
+         ofs6:
+         iffalse ofs7
          getlocal 12
          getlocal 13
          add
          convert_d
          setlocal 16
-         jump ofs01a4
-         ofs011d:
+         jump ofs8
+         ofs7:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 9
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs013d
+         iftrue ofs9
          getlex QName(PackageNamespace(""),"Math")
          getlocal 9
          callproperty QName(PackageNamespace(""),"abs"), 1
@@ -426,82 +426,82 @@ package spark.layouts
          multiply
          convert_d
          setlocal 16
-         jump ofs01a4
-         ofs013d:
+         jump ofs8
+         ofs9:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 12
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
          dup
-         iftrue ofs0157
+         iftrue ofs10
          pop
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 13
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
-         ofs0157:
-         iffalse ofs0195
+         ofs10:
+         iffalse ofs11
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 12
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iffalse ofs016f
+         iffalse ofs12
          pushbyte 0
          convert_d
-         jump ofs0172
-         ofs016f:
+         jump ofs13
+         ofs12:
          getlocal 12
          convert_d
-         ofs0172:
+         ofs13:
          convert_d
          dup
          setlocal 16
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 13
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iffalse ofs018a
+         iffalse ofs14
          pushbyte 0
          coerce_a
-         jump ofs018d
-         ofs018a:
+         jump ofs15
+         ofs14:
          getlocal 13
          coerce_a
-         ofs018d:
+         ofs15:
          add
          convert_d
          setlocal 16
-         jump ofs01a4
-         ofs0195:
+         jump ofs8
+         ofs11:
          getlocal 8
          getlex QName(PackageNamespace(""),"NaN")
          getlex QName(PackageNamespace(""),"NaN")
          callproperty QName(Namespace("mx.core:ILayoutElement"),"getBoundsXAtSize"), 2
          convert_d
          setlocal 16
-         ofs01a4:
+         ofs8:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 14
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
          dup
-         iffalse ofs01be
+         iffalse ofs16
          pop
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 15
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
-         ofs01be:
-         iffalse ofs01ce
+         ofs16:
+         iffalse ofs17
          getlocal 14
          getlocal 15
          add
          convert_d
          setlocal 17
-         jump ofs0278
-         ofs01ce:
+         jump ofs18
+         ofs17:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 10
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs01ee
+         iftrue ofs19
          getlex QName(PackageNamespace(""),"Math")
          getlocal 10
          callproperty QName(PackageNamespace(""),"abs"), 1
@@ -509,12 +509,12 @@ package spark.layouts
          multiply
          convert_d
          setlocal 17
-         jump ofs0278
-         ofs01ee:
+         jump ofs18
+         ofs19:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 11
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs0211
+         iftrue ofs20
          getlex QName(PackageNamespace(""),"Math")
          getlocal 11
          getlocal 8
@@ -523,58 +523,58 @@ package spark.layouts
          callproperty QName(PackageNamespace(""),"round"), 1
          convert_d
          setlocal 17
-         jump ofs0278
-         ofs0211:
+         jump ofs18
+         ofs20:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 14
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
          dup
-         iftrue ofs022b
+         iftrue ofs21
          pop
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 15
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
-         ofs022b:
-         iffalse ofs0269
+         ofs21:
+         iffalse ofs22
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 14
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iffalse ofs0243
+         iffalse ofs23
          pushbyte 0
          convert_d
-         jump ofs0246
-         ofs0243:
+         jump ofs24
+         ofs23:
          getlocal 14
          convert_d
-         ofs0246:
+         ofs24:
          convert_d
          dup
          setlocal 17
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 15
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iffalse ofs025e
+         iffalse ofs25
          pushbyte 0
          coerce_a
-         jump ofs0261
-         ofs025e:
+         jump ofs26
+         ofs25:
          getlocal 15
          coerce_a
-         ofs0261:
+         ofs26:
          add
          convert_d
          setlocal 17
-         jump ofs0278
-         ofs0269:
+         jump ofs18
+         ofs22:
          getlocal 8
          getlex QName(PackageNamespace(""),"NaN")
          getlex QName(PackageNamespace(""),"NaN")
          callproperty QName(Namespace("mx.core:ILayoutElement"),"getBoundsYAtSize"), 2
          convert_d
          setlocal 17
-         ofs0278:
+         ofs18:
          getlocal 8
          callproperty QName(Namespace("mx.core:ILayoutElement"),"getPreferredBoundsWidth"), 0
          convert_d
@@ -599,32 +599,32 @@ package spark.layouts
          callproperty QName(PackageNamespace(""),"max"), 2
          convert_d
          setlocal3
-         findpropstrict QName(PrivateNamespace(null,"63"),"constraintsDetermineWidth")
+         findpropstrict QName(PrivateNamespace(null,"#BasicLayout"),"constraintsDetermineWidth")
          getlocal 8
-         callproperty QName(PrivateNamespace(null,"63"),"constraintsDetermineWidth"), 1
-         iffalse ofs02c0
+         callproperty QName(PrivateNamespace(null,"#BasicLayout"),"constraintsDetermineWidth"), 1
+         iffalse ofs27
          getlocal 8
          callproperty QName(Namespace("mx.core:ILayoutElement"),"getMinBoundsWidth"), 0
          convert_d
-         jump ofs02c3
-         ofs02c0:
+         jump ofs28
+         ofs27:
          getlocal 18
          convert_d
-         ofs02c3:
+         ofs28:
          convert_d
          setlocal 20
-         findpropstrict QName(PrivateNamespace(null,"63"),"constraintsDetermineHeight")
+         findpropstrict QName(PrivateNamespace(null,"#BasicLayout"),"constraintsDetermineHeight")
          getlocal 8
-         callproperty QName(PrivateNamespace(null,"63"),"constraintsDetermineHeight"), 1
-         iffalse ofs02de
+         callproperty QName(PrivateNamespace(null,"#BasicLayout"),"constraintsDetermineHeight"), 1
+         iffalse ofs29
          getlocal 8
          callproperty QName(Namespace("mx.core:ILayoutElement"),"getMinBoundsHeight"), 0
          convert_d
-         jump ofs02e1
-         ofs02de:
+         jump ofs30
+         ofs29:
          getlocal 19
          convert_d
-         ofs02e1:
+         ofs30:
          convert_d
          setlocal 21
          getlex QName(PackageNamespace(""),"Math")
@@ -643,12 +643,12 @@ package spark.layouts
          callproperty QName(PackageNamespace(""),"max"), 2
          convert_d
          setlocal 5
-         ofs0306:
+         ofs5:
          inclocal_i 7
-         ofs0308:
+         ofs1:
          getlocal 7
          getlocal 6
-         iflt ofs0067
+         iflt ofs2
          getlocal1
          getlex QName(PackageNamespace(""),"Math")
          getlex QName(PackageNamespace(""),"Math")
@@ -743,7 +743,7 @@ package spark.layouts
          pushnan
          setlocal 27
          getlocal0
-         callpropvoid QName(PrivateNamespace(null,"63"),"checkUseVirtualLayout"), 0
+         callpropvoid QName(PrivateNamespace(null,"#BasicLayout"),"checkUseVirtualLayout"), 0
          getlocal0
          getlocal1
          getlocal2
@@ -752,9 +752,9 @@ package spark.layouts
          coerce QName(PackageNamespace("spark.components.supportClasses"),"GroupBase")
          setlocal3
          getlocal3
-         iftrue ofs005a
+         iftrue ofs0
          returnvoid
-         ofs005a:
+         ofs0:
          getlocal3
          getproperty QName(PackageNamespace(""),"numElements")
          convert_i
@@ -767,8 +767,8 @@ package spark.layouts
          setlocal 6
          pushbyte 0
          setlocal 7
-         jump ofs042b
-         ofs0073:
+         jump ofs1
+         ofs2:
          label
          getlocal3
          getlocal 7
@@ -778,15 +778,15 @@ package spark.layouts
          setlocal 8
          not
          dup
-         iftrue ofs008e
+         iftrue ofs3
          pop
          getlocal 8
          getproperty QName(Namespace("mx.core:ILayoutElement"),"includeInLayout")
          not
-         ofs008e:
-         iffalse ofs0096
-         jump ofs0429
-         ofs0096:
+         ofs3:
+         iffalse ofs4
+         jump ofs5
+         ofs4:
          getlex QName(PackageNamespace("spark.layouts.supportClasses"),"LayoutElementHelper")
          getlocal 8
          getproperty QName(Namespace("mx.core:ILayoutElement"),"horizontalCenter")
@@ -852,30 +852,30 @@ package spark.layouts
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 16
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs01a5
+         iftrue ofs6
          getlocal1
          convert_d
          setlocal 26
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 12
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs014d
+         iftrue ofs7
          getlocal 26
          getlocal 12
          subtract
          convert_d
          setlocal 26
-         ofs014d:
+         ofs7:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 13
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs0162
+         iftrue ofs8
          getlocal 26
          getlocal 13
          subtract
          convert_d
          setlocal 26
-         ofs0162:
+         ofs8:
          getlex QName(PackageNamespace(""),"Math")
          getlocal 26
          getlex QName(PackageNamespace(""),"Math")
@@ -891,32 +891,32 @@ package spark.layouts
          getlex QName(PackageNamespace(""),"Math")
          getlocal 8
          callproperty QName(Namespace("mx.core:ILayoutElement"),"getMaxBoundsWidth"), 0
-         findpropstrict QName(PrivateNamespace(null,"63"),"maxSizeToFitIn")
+         findpropstrict QName(PrivateNamespace(null,"#BasicLayout"),"maxSizeToFitIn")
          getlocal1
          getlocal 9
          getlocal 12
          getlocal 13
          getlocal 8
          callproperty QName(Namespace("mx.core:ILayoutElement"),"getLayoutBoundsX"), 0
-         callproperty QName(PrivateNamespace(null,"63"),"maxSizeToFitIn"), 5
+         callproperty QName(PrivateNamespace(null,"#BasicLayout"),"maxSizeToFitIn"), 5
          callproperty QName(PackageNamespace(""),"min"), 2
          convert_d
          setlocal 18
-         jump ofs01cd
-         ofs01a5:
+         jump ofs9
+         ofs6:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 12
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
          dup
-         iffalse ofs01bf
+         iffalse ofs10
          pop
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 13
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
-         ofs01bf:
-         iffalse ofs01cd
+         ofs10:
+         iffalse ofs9
          getlocal1
          getlocal 13
          subtract
@@ -924,34 +924,34 @@ package spark.layouts
          subtract
          convert_d
          setlocal 20
-         ofs01cd:
+         ofs9:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 17
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs024b
+         iftrue ofs11
          getlocal2
          convert_d
          setlocal 27
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 14
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs01f3
+         iftrue ofs12
          getlocal 27
          getlocal 14
          subtract
          convert_d
          setlocal 27
-         ofs01f3:
+         ofs12:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 15
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs0208
+         iftrue ofs13
          getlocal 27
          getlocal 15
          subtract
          convert_d
          setlocal 27
-         ofs0208:
+         ofs13:
          getlex QName(PackageNamespace(""),"Math")
          getlocal 27
          getlex QName(PackageNamespace(""),"Math")
@@ -967,32 +967,32 @@ package spark.layouts
          getlex QName(PackageNamespace(""),"Math")
          getlocal 8
          callproperty QName(Namespace("mx.core:ILayoutElement"),"getMaxBoundsHeight"), 0
-         findpropstrict QName(PrivateNamespace(null,"63"),"maxSizeToFitIn")
+         findpropstrict QName(PrivateNamespace(null,"#BasicLayout"),"maxSizeToFitIn")
          getlocal2
          getlocal 10
          getlocal 14
          getlocal 15
          getlocal 8
          callproperty QName(Namespace("mx.core:ILayoutElement"),"getLayoutBoundsY"), 0
-         callproperty QName(PrivateNamespace(null,"63"),"maxSizeToFitIn"), 5
+         callproperty QName(PrivateNamespace(null,"#BasicLayout"),"maxSizeToFitIn"), 5
          callproperty QName(PackageNamespace(""),"min"), 2
          convert_d
          setlocal 19
-         jump ofs0273
-         ofs024b:
+         jump ofs14
+         ofs11:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 14
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
          dup
-         iffalse ofs0265
+         iffalse ofs15
          pop
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 15
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
-         ofs0265:
-         iffalse ofs0273
+         ofs15:
+         iffalse ofs14
          getlocal2
          getlocal 15
          subtract
@@ -1000,20 +1000,20 @@ package spark.layouts
          subtract
          convert_d
          setlocal 21
-         ofs0273:
+         ofs14:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 20
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs02b1
+         iftrue ofs16
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 18
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iffalse ofs0296
+         iffalse ofs17
          getlocal 8
          callproperty QName(Namespace("mx.core:ILayoutElement"),"getMaxBoundsWidth"), 0
          convert_d
          setlocal 18
-         ofs0296:
+         ofs17:
          getlex QName(PackageNamespace(""),"Math")
          getlocal 8
          callproperty QName(Namespace("mx.core:ILayoutElement"),"getMinBoundsWidth"), 0
@@ -1024,20 +1024,20 @@ package spark.layouts
          callproperty QName(PackageNamespace(""),"max"), 2
          convert_d
          setlocal 20
-         ofs02b1:
+         ofs16:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 21
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs02ef
+         iftrue ofs18
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 19
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iffalse ofs02d4
+         iffalse ofs19
          getlocal 8
          callproperty QName(Namespace("mx.core:ILayoutElement"),"getMaxBoundsHeight"), 0
          convert_d
          setlocal 19
-         ofs02d4:
+         ofs19:
          getlex QName(PackageNamespace(""),"Math")
          getlocal 8
          callproperty QName(Namespace("mx.core:ILayoutElement"),"getMinBoundsHeight"), 0
@@ -1048,7 +1048,7 @@ package spark.layouts
          callproperty QName(PackageNamespace(""),"max"), 2
          convert_d
          setlocal 21
-         ofs02ef:
+         ofs18:
          getlocal 8
          getlocal 20
          getlocal 21
@@ -1070,7 +1070,7 @@ package spark.layouts
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 9
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs033c
+         iftrue ofs20
          getlex QName(PackageNamespace(""),"Math")
          getlocal1
          getlocal 22
@@ -1082,21 +1082,21 @@ package spark.layouts
          callproperty QName(PackageNamespace(""),"round"), 1
          convert_d
          setlocal 24
-         jump ofs0376
-         ofs033c:
+         jump ofs21
+         ofs20:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 12
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs0352
+         iftrue ofs22
          getlocal 12
          convert_d
          setlocal 24
-         jump ofs0376
-         ofs0352:
+         jump ofs21
+         ofs22:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 13
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs036d
+         iftrue ofs23
          getlocal1
          getlocal 22
          subtract
@@ -1104,17 +1104,17 @@ package spark.layouts
          subtract
          convert_d
          setlocal 24
-         jump ofs0376
-         ofs036d:
+         jump ofs21
+         ofs23:
          getlocal 8
          callproperty QName(Namespace("mx.core:ILayoutElement"),"getLayoutBoundsX"), 0
          convert_d
          setlocal 24
-         ofs0376:
+         ofs21:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 10
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs039b
+         iftrue ofs24
          getlex QName(PackageNamespace(""),"Math")
          getlocal2
          getlocal 23
@@ -1126,12 +1126,12 @@ package spark.layouts
          callproperty QName(PackageNamespace(""),"round"), 1
          convert_d
          setlocal 25
-         jump ofs03fd
-         ofs039b:
+         jump ofs25
+         ofs24:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 11
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs03c3
+         iftrue ofs26
          getlex QName(PackageNamespace(""),"Math")
          getlocal 11
          findpropstrict QName(PackageNamespace("mx.core"),"IVisualElement")
@@ -1142,21 +1142,21 @@ package spark.layouts
          callproperty QName(PackageNamespace(""),"round"), 1
          convert_d
          setlocal 25
-         jump ofs03fd
-         ofs03c3:
+         jump ofs25
+         ofs26:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 14
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs03d9
+         iftrue ofs27
          getlocal 14
          convert_d
          setlocal 25
-         jump ofs03fd
-         ofs03d9:
+         jump ofs25
+         ofs27:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 15
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs03f4
+         iftrue ofs28
          getlocal2
          getlocal 23
          subtract
@@ -1164,13 +1164,13 @@ package spark.layouts
          subtract
          convert_d
          setlocal 25
-         jump ofs03fd
-         ofs03f4:
+         jump ofs25
+         ofs28:
          getlocal 8
          callproperty QName(Namespace("mx.core:ILayoutElement"),"getLayoutBoundsY"), 0
          convert_d
          setlocal 25
-         ofs03fd:
+         ofs25:
          getlocal 8
          getlocal 24
          getlocal 25
@@ -1191,12 +1191,12 @@ package spark.layouts
          callproperty QName(PackageNamespace(""),"max"), 2
          convert_d
          setlocal 6
-         ofs0429:
+         ofs5:
          inclocal_i 7
-         ofs042b:
+         ofs1:
          getlocal 7
          getlocal 4
-         iflt ofs0073
+         iflt ofs2
          getlocal3
          getlex QName(PackageNamespace(""),"Math")
          getlocal 5
@@ -1234,7 +1234,7 @@ pushscope
 getlex QName(PackageNamespace("spark.layouts.supportClasses"),"LayoutBase")
 pushscope
 getlex QName(PackageNamespace("spark.layouts.supportClasses"),"LayoutBase")
-newclass 213
+newclass #BasicLayout
 popscope
 popscope
 popscope

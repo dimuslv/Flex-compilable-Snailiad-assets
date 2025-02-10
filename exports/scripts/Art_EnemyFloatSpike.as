@@ -2,7 +2,7 @@ package
 {
    import mx.core.BitmapAsset;
    
-   [Embed(source="/_assets/254_Art_EnemyFloatSpike.png")]
+   [Embed]
    public class Art_EnemyFloatSpike extends BitmapAsset
    {
       public function Art_EnemyFloatSpike()

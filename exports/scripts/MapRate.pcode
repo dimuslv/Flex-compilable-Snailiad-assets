@@ -115,17 +115,17 @@ package
          pushscope
          getlocal1
          pushbyte 1
-         ifngt ofs000d
+         ifngt ofs0
          pushbyte 1
          convert_d
          setlocal1
-         ofs000d:
+         ofs0:
          getlocal1
          pushbyte 1
-         ifnge ofs001b
+         ifnge ofs1
          getlex QName(PackageNamespace(""),"NgMedal")
          callpropvoid QName(PackageNamespace(""),"unlockExplorer"), 0
-         ofs001b:
+         ofs1:
          findproperty QName(PackageNamespace(""),"text")
          pushstring "MAP\n"
          findpropstrict QName(PackageNamespace(""),"int")
@@ -172,14 +172,14 @@ package
          getproperty QName(PackageNamespace(""),"miniMap")
          convert_b
          dup
-         iffalse ofs0019
+         iffalse ofs0
          pop
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"miniMap")
          getproperty QName(PackageNamespace(""),"subscreen")
          convert_b
-         ofs0019:
-         iffalse ofs0037
+         ofs0:
+         iffalse ofs1
          findproperty QName(PackageNamespace(""),"y")
          getlocal0
          getproperty QName(PackageNamespace(""),"relY")
@@ -190,7 +190,7 @@ package
          getproperty QName(PackageNamespace(""),"y")
          add
          initproperty QName(PackageNamespace(""),"y")
-         ofs0037:
+         ofs1:
          returnvoid
          end ; code
          end ; body
@@ -226,7 +226,7 @@ pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxText")
 pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxText")
-newclass 391
+newclass #MapRate
 popscope
 popscope
 popscope

@@ -1,10 +1,12 @@
 package NewgroundsAPI_fla
 {
+   import com.newgrounds.API;
    import flash.display.MovieClip;
-   import flash.events.Event;
+   import flash.display.SimpleButton;
+   import flash.events.MouseEvent;
    
-   [Embed(source="/_assets/assets.swf", symbol="symbol31")]
-   public dynamic class NewgroundsAPIAsset_Load_Indicator_3 extends MovieClip
+   [Embed]
+   public dynamic class NewgroundsAPIAsset_FlashAd_Container_23 extends MovieClip
    {
       method
       name null
@@ -24,14 +26,18 @@ package NewgroundsAPI_fla
       end ; body
       end ; method
       
-      public function NewgroundsAPIAsset_Load_Indicator_3()
+      public var adMask:MovieClip;
+      
+      public var ngLinkButton:SimpleButton;
+      
+      public function NewgroundsAPIAsset_FlashAd_Container_23()
       {
          method
          name null
          returns null
          
          body
-         maxstack 3
+         maxstack 5
          localcount 1
          initscopedepth 10
          maxscopedepth 11
@@ -45,24 +51,27 @@ package NewgroundsAPI_fla
          pushbyte 0
          getlocal0
          getproperty QName(PackageInternalNs("NewgroundsAPI_fla"),"frame1")
-         callpropvoid QName(PackageNamespace(""),"addFrameScript"), 2
+         pushbyte 10
+         getlocal0
+         getproperty QName(PackageInternalNs("NewgroundsAPI_fla"),"frame11")
+         callpropvoid QName(PackageNamespace(""),"addFrameScript"), 4
          returnvoid
          end ; code
          end ; body
          end ; method
       }
       
-      public function onEnterFrame(param1:Event) : void
+      public function onNGLinkClicked(param1:MouseEvent) : void
       {
-         trait method QName(PackageNamespace(""),"onEnterFrame")
+         trait method QName(PackageNamespace(""),"onNGLinkClicked")
          dispid 0
          method
          name null
-         param QName(PackageNamespace("flash.events"),"Event")
+         param QName(PackageNamespace("flash.events"),"MouseEvent")
          returns QName(PackageNamespace(""),"void")
          
          body
-         maxstack 3
+         maxstack 1
          localcount 2
          initscopedepth 10
          maxscopedepth 11
@@ -70,29 +79,8 @@ package NewgroundsAPI_fla
          code
          getlocal0
          pushscope
-         getlex QName(PackageNamespace(""),"visible")
-         convert_b
-         dup
-         iffalse ofs0010
-         pop
-         getlex QName(PackageNamespace(""),"stage")
-         convert_b
-         ofs0010:
-         iffalse ofs0024
-         findproperty QName(PackageNamespace(""),"rotation")
-         getlex QName(PackageNamespace(""),"rotation")
-         pushbyte 30
-         add
-         initproperty QName(PackageNamespace(""),"rotation")
-         jump ofs0034
-         ofs0024:
-         findpropstrict QName(PackageNamespace(""),"removeEventListener")
-         getlex QName(PackageNamespace("flash.events"),"Event")
-         getproperty QName(PackageNamespace(""),"ENTER_FRAME")
-         getlocal0
-         getproperty QName(PackageNamespace(""),"onEnterFrame")
-         callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
-         ofs0034:
+         getlex QName(PackageNamespace("com.newgrounds"),"API")
+         callpropvoid QName(PackageNamespace(""),"loadNewgrounds"), 0
          returnvoid
          end ; code
          end ; body
@@ -116,12 +104,39 @@ package NewgroundsAPI_fla
          code
          getlocal0
          pushscope
-         findpropstrict QName(PackageNamespace(""),"addEventListener")
-         getlex QName(PackageNamespace("flash.events"),"Event")
-         getproperty QName(PackageNamespace(""),"ENTER_FRAME")
          getlocal0
-         getproperty QName(PackageNamespace(""),"onEnterFrame")
+         getproperty QName(PackageNamespace(""),"ngLinkButton")
+         getlex QName(PackageNamespace("flash.events"),"MouseEvent")
+         getproperty QName(PackageNamespace(""),"CLICK")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"onNGLinkClicked")
          callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      internal function frame11() : *
+      {
+         trait method QName(PackageInternalNs("NewgroundsAPI_fla"),"frame11")
+         dispid 0
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 10
+         maxscopedepth 11
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"gotoAndPlay")
+         pushbyte 1
+         callpropvoid QName(PackageNamespace(""),"gotoAndPlay"), 1
          returnvoid
          end ; code
          end ; body
@@ -143,7 +158,7 @@ maxscopedepth 9
 code
 getlocal0
 pushscope
-getscopeobject 0
+findpropstrict Multiname("NewgroundsAPIAsset_FlashAd_Container_23",[PackageNamespace("NewgroundsAPI_fla")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
@@ -159,7 +174,7 @@ pushscope
 getlex QName(PackageNamespace("flash.display"),"MovieClip")
 pushscope
 getlex QName(PackageNamespace("flash.display"),"MovieClip")
-newclass 31
+newclass #NewgroundsAPIAsset_FlashAd_Container_23
 popscope
 popscope
 popscope
@@ -167,7 +182,7 @@ popscope
 popscope
 popscope
 popscope
-initproperty QName(PackageNamespace("NewgroundsAPI_fla"),"NewgroundsAPIAsset_Load_Indicator_3")
+initproperty QName(PackageNamespace("NewgroundsAPI_fla"),"NewgroundsAPIAsset_FlashAd_Container_23")
 returnvoid
 end ; code
 end ; body

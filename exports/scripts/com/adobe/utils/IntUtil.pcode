@@ -17,9 +17,9 @@ package com.adobe.utils
       code
       getlocal0
       pushscope
-      findproperty QName(PrivateNamespace(null,"29"),"hexChars")
+      findproperty QName(PrivateNamespace(null,"#IntUtil"),"hexChars")
       pushstring "0123456789abcdef"
-      setproperty QName(PrivateNamespace(null,"29"),"hexChars")
+      setproperty QName(PrivateNamespace(null,"#IntUtil"),"hexChars")
       returnvoid
       end ; code
       end ; body
@@ -152,14 +152,14 @@ package com.adobe.utils
          pushstring ""
          setlocal3
          getlocal2
-         iffalse ofs0059
+         iffalse ofs0
          pushbyte 0
          setlocal 4
-         jump ofs004d
-         ofs001a:
+         jump ofs1
+         ofs2:
          label
          getlocal3
-         getlex QName(PrivateNamespace(null,"29"),"hexChars")
+         getlex QName(PrivateNamespace(null,"#IntUtil"),"hexChars")
          getlocal1
          pushbyte 3
          getlocal 4
@@ -172,7 +172,7 @@ package com.adobe.utils
          pushbyte 15
          bitand
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charAt"), 1
-         getlex QName(PrivateNamespace(null,"29"),"hexChars")
+         getlex QName(PrivateNamespace(null,"#IntUtil"),"hexChars")
          getlocal1
          pushbyte 3
          getlocal 4
@@ -188,19 +188,19 @@ package com.adobe.utils
          coerce_s
          setlocal3
          inclocal_i 4
-         ofs004d:
+         ofs1:
          getlocal 4
          pushbyte 4
-         iflt ofs001a
-         jump ofs0096
-         ofs0059:
+         iflt ofs2
+         jump ofs3
+         ofs0:
          pushbyte 0
          setlocal 5
-         jump ofs008e
-         ofs0061:
+         jump ofs4
+         ofs5:
          label
          getlocal3
-         getlex QName(PrivateNamespace(null,"29"),"hexChars")
+         getlex QName(PrivateNamespace(null,"#IntUtil"),"hexChars")
          getlocal1
          getlocal 5
          pushbyte 8
@@ -211,7 +211,7 @@ package com.adobe.utils
          pushbyte 15
          bitand
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charAt"), 1
-         getlex QName(PrivateNamespace(null,"29"),"hexChars")
+         getlex QName(PrivateNamespace(null,"#IntUtil"),"hexChars")
          getlocal1
          getlocal 5
          pushbyte 8
@@ -225,11 +225,11 @@ package com.adobe.utils
          coerce_s
          setlocal3
          inclocal_i 5
-         ofs008e:
+         ofs4:
          getlocal 5
          pushbyte 4
-         iflt ofs0061
-         ofs0096:
+         iflt ofs5
+         ofs3:
          getlocal3
          returnvalue
          end ; code
@@ -256,7 +256,7 @@ findpropstrict Multiname("IntUtil",[PackageNamespace("com.adobe.utils")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass 39
+newclass #IntUtil
 popscope
 initproperty QName(PackageNamespace("com.adobe.utils"),"IntUtil")
 returnvoid

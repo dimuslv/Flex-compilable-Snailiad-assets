@@ -77,8 +77,8 @@ package
          getproperty QName(PackageNamespace(""),"blocks")
          coerce_a
          setlocal3
-         jump ofs0021
-         ofs0012:
+         jump ofs0
+         ofs1:
          label
          getlocal3
          getlocal2
@@ -89,10 +89,10 @@ package
          getproperty QName(PackageNamespace(""),"blocks")
          getlocal1
          pushnull
-         setproperty MultinameL([PrivateNamespace(null,"383"),PackageNamespace(""),PrivateNamespace(null,"384"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("FixBlocks"),StaticProtectedNs("FixBlocks"),StaticProtectedNs("Object")])
-         ofs0021:
+         setproperty MultinameL([PrivateNamespace(null,"#FixBlocks/1"),PackageNamespace(""),PrivateNamespace(null,"#FixBlocks/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("FixBlocks"),StaticProtectedNs("FixBlocks"),StaticProtectedNs("Object")])
+         ofs0:
          hasnext2 3, 2
-         iftrue ofs0012
+         iftrue ofs1
          kill 3
          kill 2
          getlocal0
@@ -159,21 +159,21 @@ package
          pushscope
          pushbyte 0
          setlocal1
-         jump ofs0018
-         ofs0009:
+         jump ofs0
+         ofs1:
          label
          getlocal0
          getproperty QName(PackageNamespace(""),"blocks")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"383"),PackageNamespace(""),PrivateNamespace(null,"384"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("FixBlocks"),StaticProtectedNs("FixBlocks"),StaticProtectedNs("Object")])
-         callpropvoid Multiname("repair",[PrivateNamespace(null,"383"),PackageNamespace(""),PrivateNamespace(null,"384"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("FixBlocks"),StaticProtectedNs("FixBlocks"),StaticProtectedNs("Object")]), 0
+         getproperty MultinameL([PrivateNamespace(null,"#FixBlocks/1"),PackageNamespace(""),PrivateNamespace(null,"#FixBlocks/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("FixBlocks"),StaticProtectedNs("FixBlocks"),StaticProtectedNs("Object")])
+         callpropvoid Multiname("repair",[PrivateNamespace(null,"#FixBlocks/1"),PackageNamespace(""),PrivateNamespace(null,"#FixBlocks/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("FixBlocks"),StaticProtectedNs("FixBlocks"),StaticProtectedNs("Object")]), 0
          inclocal_i 1
-         ofs0018:
+         ofs0:
          getlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"blocks")
          getproperty QName(PackageNamespace(""),"length")
-         iflt ofs0009
+         iflt ofs1
          getlocal0
          findpropstrict QName(PackageNamespace(""),"Array")
          constructprop QName(PackageNamespace(""),"Array"), 0
@@ -199,11 +199,11 @@ maxscopedepth 3
 code
 getlocal0
 pushscope
-getscopeobject 0
+findpropstrict Multiname("FixBlocks",[PackageNamespace("")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass 92
+newclass #FixBlocks
 popscope
 initproperty QName(PackageNamespace(""),"FixBlocks")
 returnvoid
