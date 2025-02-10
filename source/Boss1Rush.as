@@ -66,9 +66,23 @@ package
       
       private var _totalElapsed:Number = 0;
       
-      public function Boss1Rush(param1:int, param2:int)
+      override public function destroy() : void
       {
-         if(Boolean(PlayState.player) && PlayState.player._hardMode)
+         var _loc1_:String = null;
+         for(_loc1_ in this._hand)
+         {
+            this._hand[_loc1_] = null;
+         }
+         _hand = null;
+         _eyes = null;
+         _handThetaCur = null;
+         _handThetaSpeed = null;
+         super.destroy();
+      }
+      
+      public function Boss1Rush(param1:int, param2:int) : void
+      {
+         if(PlayState.player && PlayState.player._hardMode)
          {
             this.HAND_NUM += 24;
          }
@@ -105,20 +119,6 @@ package
          PlayState.player.setFaceDir(Player.FACE_FLOOR_RIGHT);
       }
       
-      override public function destroy() : void
-      {
-         var _loc1_:String = null;
-         for(_loc1_ in this._hand)
-         {
-            this._hand[_loc1_] = null;
-         }
-         this._hand = null;
-         this._eyes = null;
-         this._handThetaCur = null;
-         this._handThetaSpeed = null;
-         super.destroy();
-      }
-      
       public function now() : Number
       {
          return this._totalElapsed * 1.15;
@@ -131,37 +131,33 @@ package
       
       override public function update() : void
       {
-         var _loc1_:Number = NaN;
-         var _loc2_:Number = NaN;
-         var _loc3_:Number = NaN;
-         var _loc4_:Number = NaN;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
          }
-         this._totalElapsed += FlxG.elapsed;
+         _totalElapsed += FlxG.elapsed;
          if(!this._createdChildren)
          {
-            this._eyes = new Boss1Eyes(x,y);
+            _eyes = new Boss1Eyes(x,y);
             PlayState.enemies.add(this._eyes);
-            this._createdChildren = true;
+            _createdChildren = true;
          }
-         _loc1_ = this.now();
-         _loc2_ = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
-         _loc3_ = _loc1_;
-         _loc4_ = Math.sin(3 / 7 * _loc3_);
+         var _loc1_:Number = this.now();
+         var _loc2_:Number = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
+         var _loc3_:Number = _loc1_;
+         var _loc4_:Number = Math.sin(3 / 7 * _loc3_);
          x = this._originX + 9 * 16 * Math.cos(_loc3_) * _loc4_;
          y = this._originY + 7 * 16 * Math.sin(_loc3_) * _loc4_;
          this._eyes.x = x - Math.cos(_loc2_) * 2 + 0.5;
          this._eyes.y = y - Math.sin(_loc2_) * 2.5;
          this.fire(_loc1_);
-         this._handRadius = 40 + 90 * Math.sin(Math.sin(_loc1_ * 5 / 3));
+         _handRadius = 40 + 90 * Math.sin(Math.sin(_loc1_ * 5 / 3));
          if(this._handRadius < 50)
          {
-            this._handRadius = 50;
+            _handRadius = 50;
          }
-         this._handRadius *= this._radiusMultCur;
-         this._radiusMultCur = this._radiusMultCur * 0.9 + this._radiusMultTarget * 0.1;
+         _handRadius *= this._radiusMultCur;
+         _radiusMultCur = this._radiusMultCur * 0.9 + this._radiusMultTarget * 0.1;
          var _loc5_:int = 0;
          while(_loc5_ < this.HAND_NUM)
          {
@@ -181,7 +177,7 @@ package
          super.update();
          if(_introDone && !PlayState.player.dead && !this.started)
          {
-            this.started = true;
+            started = true;
             PlayState.bossRushTimer.going = true;
             PlayState.bossRushTimer.started = true;
          }
@@ -209,10 +205,10 @@ package
          if(param1 > this._firingPatternTimeout)
          {
             play("shoot" + this._attackMode.toString());
-            this._radiusMultTarget = 0;
+            _radiusMultTarget = 0.0;
             if(param1 > this._shotTimeout)
             {
-               this._shotTimeout = param1 + this.SHOT_DELAY * this._turboMultiplier;
+               _shotTimeout = param1 + this.SHOT_DELAY * this._turboMultiplier;
                ++this._shotNum;
                switch(this._firingPattern)
                {
@@ -227,13 +223,14 @@ package
                      break;
                   case 3:
                      this.shoot(_loc2_ - (Math.PI / this._shotMax - Math.PI / 2) * this._shotNum / 8);
+					 break;
                }
                if(this._shotNum >= this._shotMax)
                {
-                  this._firingPattern = (this._firingPattern + 1) % 4;
-                  this._firingPatternTimeout = param1 + PATTERN_DELAY;
-                  this._radiusMultTarget = 1;
-                  this._shotNum = 0;
+                  _firingPattern = (this._firingPattern + 1) % 4;
+                  _firingPatternTimeout = param1 + PATTERN_DELAY;
+                  _radiusMultTarget = 1;
+                  _shotNum = 0;
                   play("normal" + this._attackMode.toString());
                }
             }
@@ -267,16 +264,16 @@ package
       {
          if(_hp <= this.MAX_HP * 0.33 && this._attackMode < 2)
          {
-            this._shotMax += 27;
-            this._turboMultiplier = 0.19;
-            this._attackMode = 2;
+            _shotMax += 27;
+            _turboMultiplier = 0.19;
+            _attackMode = 2;
             play("normal2");
          }
          else if(_hp <= this.MAX_HP * 0.66 && this._attackMode < 1)
          {
-            this._shotMax += 9;
-            this._turboMultiplier = 0.28;
-            this._attackMode = 1;
+            _shotMax += 9;
+            _turboMultiplier = 0.28;
+            _attackMode = 1;
             play("normal1");
          }
          super.hurt(param1);

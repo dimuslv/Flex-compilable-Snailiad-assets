@@ -12,7 +12,7 @@ package
       
       private static const DEFAULT_LIFETIME:Number = 4;
       
-      public function Boss1Boomerang()
+      public function Boss1Boomerang() : void
       {
          super(FIREPOWER);
          loadGraphic(Art.PlayerBullet5,true,true,WIDTH,HEIGHT);

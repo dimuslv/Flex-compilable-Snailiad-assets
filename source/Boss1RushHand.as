@@ -16,7 +16,7 @@ package
       
       private static const OFFENSE:int = 3;
       
-      public function Boss1RushHand(param1:int, param2:int)
+      public function Boss1RushHand(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE,true);
          loadGraphic(Art.Boss1RushHand,true,true,IMG_WIDTH,IMG_HEIGHT);
