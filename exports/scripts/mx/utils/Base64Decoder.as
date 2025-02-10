@@ -45,24 +45,23 @@ package mx.utils
       
       public function decode(param1:String) : void
       {
-         var _loc4_:* = undefined;
-         var _loc2_:Number = NaN;
-         var _loc3_:uint = 0;
-         for(; _loc3_ < param1.length; _loc3_++)
+         var _loc3_:Number = NaN;
+         var _loc2_:uint = 0;
+         for(; _loc2_ < param1.length; _loc2_++)
          {
-            _loc2_ = Number(param1.charCodeAt(_loc3_));
-            if(_loc2_ == ESCAPE_CHAR_CODE)
+            _loc3_ = Number(param1.charCodeAt(_loc2_));
+            if(_loc3_ == ESCAPE_CHAR_CODE)
             {
-               var _loc5_:*;
-               this.work[_loc5_ = _loc4_ = this.count++] = -1;
+               var _loc4_:*;
+               this.work[_loc4_ = this.count++] = -1;
             }
             else
             {
-               if(inverse[_loc2_] == 64)
+               if(inverse[_loc3_] == 64)
                {
                   continue;
                }
-               this.work[_loc5_ = _loc4_ = this.count++] = inverse[_loc2_];
+               this.work[_loc4_ = this.count++] = inverse[_loc3_];
             }
             if(this.count == 4)
             {

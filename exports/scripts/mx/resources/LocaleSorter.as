@@ -6,7 +6,7 @@ package mx.resources
    
    public class LocaleSorter
    {
-      mx_internal static const VERSION:String = "4.1.0.16076";
+      mx_internal static const VERSION:String = "4.1.0.21490";
       
       public function LocaleSorter()
       {
@@ -17,16 +17,13 @@ package mx.resources
       {
          var result:Array = null;
          var hasLocale:Object = null;
-         var appLocales:Array = null;
-         result = null;
-         hasLocale = null;
          var i:int = 0;
          var j:int = 0;
          var k:int = 0;
          var l:int = 0;
          var locale:String = null;
          var plocale:LocaleID = null;
-         appLocales = param1;
+         var appLocales:Array = param1;
          var systemPreferences:Array = param2;
          var ultimateFallbackLocale:String = param3;
          var addAll:Boolean = param4;
@@ -183,87 +180,87 @@ class LocaleID
    
    public static function fromString(param1:String) : LocaleID
    {
-      var _loc2_:Array = null;
-      var _loc3_:String = null;
-      var _loc4_:int = 0;
-      var _loc5_:String = null;
-      var _loc6_:LocaleID = new LocaleID();
-      var _loc7_:int = int(STATE_PRIMARY_LANGUAGE);
-      var _loc8_:Array = param1.replace(/-/g,"_").split("_");
+      var _loc5_:Array = null;
+      var _loc8_:String = null;
       var _loc9_:int = 0;
-      var _loc10_:int = int(_loc8_.length);
-      while(_loc9_ < _loc10_)
+      var _loc10_:String = null;
+      var _loc2_:LocaleID = new LocaleID();
+      var _loc3_:int = int(STATE_PRIMARY_LANGUAGE);
+      var _loc4_:Array = param1.replace(/-/g,"_").split("_");
+      var _loc6_:int = 0;
+      var _loc7_:int = int(_loc4_.length);
+      while(_loc6_ < _loc7_)
       {
-         _loc3_ = _loc8_[_loc9_].toLowerCase();
-         if(_loc7_ == STATE_PRIMARY_LANGUAGE)
+         _loc8_ = _loc4_[_loc6_].toLowerCase();
+         if(_loc3_ == STATE_PRIMARY_LANGUAGE)
          {
-            if(_loc3_ == "x")
+            if(_loc8_ == "x")
             {
-               _loc6_.privateLangs = true;
+               _loc2_.privateLangs = true;
             }
-            else if(_loc3_ == "i")
+            else if(_loc8_ == "i")
             {
-               _loc6_.lang += "i-";
+               _loc2_.lang += "i-";
             }
             else
             {
-               _loc6_.lang += _loc3_;
-               _loc7_ = int(STATE_EXTENDED_LANGUAGES);
+               _loc2_.lang += _loc8_;
+               _loc3_ = int(STATE_EXTENDED_LANGUAGES);
             }
          }
          else
          {
-            _loc4_ = _loc3_.length;
-            if(_loc4_ != 0)
+            _loc9_ = _loc8_.length;
+            if(_loc9_ != 0)
             {
-               _loc5_ = _loc3_.charAt(0).toLowerCase();
-               if(_loc7_ <= STATE_EXTENDED_LANGUAGES && _loc4_ == 3)
+               _loc10_ = _loc8_.charAt(0).toLowerCase();
+               if(_loc3_ <= STATE_EXTENDED_LANGUAGES && _loc9_ == 3)
                {
-                  _loc6_.extended_langs.push(_loc3_);
-                  if(_loc6_.extended_langs.length == 3)
+                  _loc2_.extended_langs.push(_loc8_);
+                  if(_loc2_.extended_langs.length == 3)
                   {
-                     _loc7_ = int(STATE_SCRIPT);
+                     _loc3_ = int(STATE_SCRIPT);
                   }
                }
-               else if(_loc7_ <= STATE_SCRIPT && _loc4_ == 4)
+               else if(_loc3_ <= STATE_SCRIPT && _loc9_ == 4)
                {
-                  _loc6_.script = _loc3_;
-                  _loc7_ = int(STATE_REGION);
+                  _loc2_.script = _loc8_;
+                  _loc3_ = int(STATE_REGION);
                }
-               else if(_loc7_ <= STATE_REGION && (_loc4_ == 2 || _loc4_ == 3))
+               else if(_loc3_ <= STATE_REGION && (_loc9_ == 2 || _loc9_ == 3))
                {
-                  _loc6_.region = _loc3_;
-                  _loc7_ = int(STATE_VARIANTS);
+                  _loc2_.region = _loc8_;
+                  _loc3_ = int(STATE_VARIANTS);
                }
-               else if(_loc7_ <= STATE_VARIANTS && (_loc5_ >= "a" && _loc5_ <= "z" && _loc4_ >= 5 || _loc5_ >= "0" && _loc5_ <= "9" && _loc4_ >= 4))
+               else if(_loc3_ <= STATE_VARIANTS && (_loc10_ >= "a" && _loc10_ <= "z" && _loc9_ >= 5 || _loc10_ >= "0" && _loc10_ <= "9" && _loc9_ >= 4))
                {
-                  _loc6_.variants.push(_loc3_);
-                  _loc7_ = int(STATE_VARIANTS);
+                  _loc2_.variants.push(_loc8_);
+                  _loc3_ = int(STATE_VARIANTS);
                }
-               else if(_loc7_ < STATE_PRIVATES && _loc4_ == 1)
+               else if(_loc3_ < STATE_PRIVATES && _loc9_ == 1)
                {
-                  if(_loc3_ == "x")
+                  if(_loc8_ == "x")
                   {
-                     _loc7_ = int(STATE_PRIVATES);
-                     _loc2_ = _loc6_.privates;
+                     _loc3_ = int(STATE_PRIVATES);
+                     _loc5_ = _loc2_.privates;
                   }
                   else
                   {
-                     _loc7_ = int(STATE_EXTENSIONS);
-                     _loc2_ = _loc6_.extensions[_loc3_] || [];
-                     _loc6_.extensions[_loc3_] = _loc2_;
+                     _loc3_ = int(STATE_EXTENSIONS);
+                     _loc5_ = _loc2_.extensions[_loc8_] || [];
+                     _loc2_.extensions[_loc8_] = _loc5_;
                   }
                }
-               else if(_loc7_ >= STATE_EXTENSIONS)
+               else if(_loc3_ >= STATE_EXTENSIONS)
                {
-                  _loc2_.push(_loc3_);
+                  _loc5_.push(_loc8_);
                }
             }
          }
-         _loc9_++;
+         _loc6_++;
       }
-      _loc6_.canonicalize();
-      return _loc6_;
+      _loc2_.canonicalize();
+      return _loc2_;
    }
    
    public function canonicalize() : void
@@ -302,32 +299,32 @@ class LocaleID
    
    public function toString() : String
    {
-      var _loc1_:String = null;
-      var _loc2_:Array = [this.lang];
-      appendElements(_loc2_,this.extended_langs);
+      var _loc2_:String = null;
+      var _loc1_:Array = [this.lang];
+      appendElements(_loc1_,this.extended_langs);
       if(this.script != "")
       {
-         _loc2_.push(this.script);
+         _loc1_.push(this.script);
       }
       if(this.region != "")
       {
-         _loc2_.push(this.region);
+         _loc1_.push(this.region);
       }
-      appendElements(_loc2_,this.variants);
-      for(_loc1_ in this.extensions)
+      appendElements(_loc1_,this.variants);
+      for(_loc2_ in this.extensions)
       {
-         if(this.extensions.hasOwnProperty(_loc1_))
+         if(this.extensions.hasOwnProperty(_loc2_))
          {
-            _loc2_.push(_loc1_);
-            appendElements(_loc2_,this.extensions[_loc1_]);
+            _loc1_.push(_loc2_);
+            appendElements(_loc1_,this.extensions[_loc2_]);
          }
       }
       if(this.privates.length > 0)
       {
-         _loc2_.push("x");
-         appendElements(_loc2_,this.privates);
+         _loc1_.push("x");
+         appendElements(_loc1_,this.privates);
       }
-      return _loc2_.join("_");
+      return _loc1_.join("_");
    }
    
    public function equals(param1:LocaleID) : Boolean
@@ -342,31 +339,31 @@ class LocaleID
    
    public function transformToParent() : Boolean
    {
-      var _loc1_:String = null;
-      var _loc2_:Array = null;
-      var _loc3_:String = null;
+      var _loc2_:String = null;
+      var _loc3_:Array = null;
+      var _loc4_:String = null;
       if(this.privates.length > 0)
       {
          this.privates.splice(this.privates.length - 1,1);
          return true;
       }
-      var _loc4_:String = null;
-      for(_loc1_ in this.extensions)
+      var _loc1_:String = null;
+      for(_loc2_ in this.extensions)
       {
-         if(this.extensions.hasOwnProperty(_loc1_))
+         if(this.extensions.hasOwnProperty(_loc2_))
          {
-            _loc4_ = _loc1_;
+            _loc1_ = _loc2_;
          }
       }
-      if(_loc4_)
+      if(_loc1_)
       {
-         _loc2_ = this.extensions[_loc4_];
-         if(_loc2_.length == 1)
+         _loc3_ = this.extensions[_loc1_];
+         if(_loc3_.length == 1)
          {
-            delete this.extensions[_loc4_];
+            delete this.extensions[_loc1_];
             return true;
          }
-         _loc2_.splice(_loc2_.length - 1,1);
+         _loc3_.splice(_loc3_.length - 1,1);
          return true;
       }
       if(this.variants.length > 0)
@@ -383,10 +380,10 @@ class LocaleID
          }
          if(this.region == "")
          {
-            _loc3_ = LocaleRegistry.getDefaultRegionForLangAndScript(this.lang,this.script);
-            if(_loc3_ != "")
+            _loc4_ = LocaleRegistry.getDefaultRegionForLangAndScript(this.lang,this.script);
+            if(_loc4_ != "")
             {
-               this.region = _loc3_;
+               this.region = _loc4_;
                this.script = "";
                return true;
             }

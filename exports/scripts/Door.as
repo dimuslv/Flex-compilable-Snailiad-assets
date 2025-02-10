@@ -1,6 +1,7 @@
 package
 {
-   import org.flixel.*;
+   import org.flixel.FlxG;
+   import org.flixel.FlxObject;
    
    public class Door extends Item
    {

@@ -6,7 +6,7 @@ package mx.utils
    
    public class StringUtil
    {
-      mx_internal static const VERSION:String = "4.1.0.16076";
+      mx_internal static const VERSION:String = "4.1.0.21490";
       
       public function StringUtil()
       {
@@ -76,25 +76,25 @@ package mx.utils
       
       public static function substitute(param1:String, ... rest) : String
       {
-         var _loc3_:Array = null;
+         var _loc4_:Array = null;
          if(param1 == null)
          {
             return "";
          }
-         var _loc4_:uint = uint(rest.length);
-         if(_loc4_ == 1 && rest[0] is Array)
+         var _loc3_:uint = uint(rest.length);
+         if(_loc3_ == 1 && rest[0] is Array)
          {
-            _loc3_ = rest[0] as Array;
-            _loc4_ = _loc3_.length;
+            _loc4_ = rest[0] as Array;
+            _loc3_ = _loc4_.length;
          }
          else
          {
-            _loc3_ = rest;
+            _loc4_ = rest;
          }
          var _loc5_:int = 0;
-         while(_loc5_ < _loc4_)
+         while(_loc5_ < _loc3_)
          {
-            param1 = param1.replace(new RegExp("\\{" + _loc5_ + "\\}","g"),_loc3_[_loc5_]);
+            param1 = param1.replace(new RegExp("\\{" + _loc5_ + "\\}","g"),_loc4_[_loc5_]);
             _loc5_++;
          }
          return param1;
@@ -118,7 +118,7 @@ package mx.utils
       
       public static function restrict(param1:String, param2:String) : String
       {
-         var _loc3_:uint = 0;
+         var _loc6_:uint = 0;
          if(param2 == null)
          {
             return param1;
@@ -127,91 +127,91 @@ package mx.utils
          {
             return "";
          }
-         var _loc4_:Array = [];
-         var _loc5_:int = param1.length;
-         var _loc6_:int = 0;
-         while(_loc6_ < _loc5_)
+         var _loc3_:Array = [];
+         var _loc4_:int = param1.length;
+         var _loc5_:int = 0;
+         while(_loc5_ < _loc4_)
          {
-            _loc3_ = uint(param1.charCodeAt(_loc6_));
-            if(testCharacter(_loc3_,param2))
+            _loc6_ = uint(param1.charCodeAt(_loc5_));
+            if(testCharacter(_loc6_,param2))
             {
-               _loc4_.push(_loc3_);
+               _loc3_.push(_loc6_);
             }
-            _loc6_++;
+            _loc5_++;
          }
-         return String.fromCharCode.apply(null,_loc4_);
+         return String.fromCharCode.apply(null,_loc3_);
       }
       
       private static function testCharacter(param1:uint, param2:String) : Boolean
       {
-         var _loc3_:uint = 0;
+         var _loc9_:uint = 0;
+         var _loc11_:Boolean = false;
+         var _loc3_:Boolean = false;
          var _loc4_:Boolean = false;
          var _loc5_:Boolean = false;
-         var _loc6_:Boolean = false;
-         var _loc7_:Boolean = false;
-         var _loc8_:* = true;
-         var _loc9_:uint = 0;
-         var _loc10_:int = param2.length;
-         if(_loc10_ > 0)
+         var _loc6_:* = true;
+         var _loc7_:uint = 0;
+         var _loc8_:int = param2.length;
+         if(_loc8_ > 0)
          {
-            _loc3_ = uint(param2.charCodeAt(0));
-            if(_loc3_ == 94)
+            _loc9_ = uint(param2.charCodeAt(0));
+            if(_loc9_ == 94)
             {
-               _loc5_ = true;
+               _loc3_ = true;
             }
          }
-         var _loc11_:int = 0;
-         while(_loc11_ < _loc10_)
+         var _loc10_:int = 0;
+         while(_loc10_ < _loc8_)
          {
-            _loc3_ = uint(param2.charCodeAt(_loc11_));
-            _loc4_ = false;
-            if(!_loc6_)
+            _loc9_ = uint(param2.charCodeAt(_loc10_));
+            _loc11_ = false;
+            if(!_loc4_)
             {
-               if(_loc3_ == 45)
+               if(_loc9_ == 45)
                {
-                  _loc7_ = true;
+                  _loc5_ = true;
                }
-               else if(_loc3_ == 94)
+               else if(_loc9_ == 94)
                {
-                  _loc8_ = !_loc8_;
+                  _loc6_ = !_loc6_;
                }
-               else if(_loc3_ == 92)
+               else if(_loc9_ == 92)
                {
-                  _loc6_ = true;
+                  _loc4_ = true;
                }
                else
                {
-                  _loc4_ = true;
+                  _loc11_ = true;
                }
             }
             else
             {
-               _loc4_ = true;
-               _loc6_ = false;
+               _loc11_ = true;
+               _loc4_ = false;
             }
-            if(_loc4_)
+            if(_loc11_)
             {
-               if(_loc7_)
+               if(_loc5_)
                {
-                  if(_loc9_ <= param1 && param1 <= _loc3_)
+                  if(_loc7_ <= param1 && param1 <= _loc9_)
                   {
-                     _loc5_ = _loc8_;
+                     _loc3_ = _loc6_;
                   }
-                  _loc7_ = false;
-                  _loc9_ = 0;
+                  _loc5_ = false;
+                  _loc7_ = 0;
                }
                else
                {
-                  if(param1 == _loc3_)
+                  if(param1 == _loc9_)
                   {
-                     _loc5_ = _loc8_;
+                     _loc3_ = _loc6_;
                   }
-                  _loc9_ = _loc3_;
+                  _loc7_ = _loc9_;
                }
             }
-            _loc11_++;
+            _loc10_++;
          }
-         return _loc5_;
+         return _loc3_;
       }
    }
 }

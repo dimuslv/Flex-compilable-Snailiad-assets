@@ -2,7 +2,7 @@ package
 {
    import mx.core.BitmapAsset;
    
-   [Embed(source="/_assets/243_Art_MiniMapSheet.png")]
+   [Embed(source="/_assets/254_Art_MiniMapSheet.png")]
    public class Art_MiniMapSheet extends BitmapAsset
    {
       public function Art_MiniMapSheet()

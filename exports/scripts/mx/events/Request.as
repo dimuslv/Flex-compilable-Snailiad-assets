@@ -7,7 +7,7 @@ package mx.events
    
    public class Request extends Event
    {
-      mx_internal static const VERSION:String = "4.1.0.16076";
+      mx_internal static const VERSION:String = "4.1.0.21490";
       
       public static const GET_PARENT_FLEX_MODULE_FACTORY_REQUEST:String = "getParentFlexModuleFactoryRequest";
       

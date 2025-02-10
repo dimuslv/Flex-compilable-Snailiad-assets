@@ -14,7 +14,7 @@ package mx.core
       
       private static var MatrixUtilClass:Class;
       
-      mx_internal static const VERSION:String = "4.1.0.16076";
+      mx_internal static const VERSION:String = "4.1.0.21490";
       
       private var layoutFeaturesClass:Class;
       
@@ -363,31 +363,31 @@ package mx.core
       
       public function invalidateLayoutDirection() : void
       {
-         var _loc1_:Boolean = false;
-         var _loc2_:DisplayObjectContainer = parent;
-         while(_loc2_)
+         var _loc2_:Boolean = false;
+         var _loc1_:DisplayObjectContainer = parent;
+         while(_loc1_)
          {
-            if(_loc2_ is ILayoutDirectionElement)
+            if(_loc1_ is ILayoutDirectionElement)
             {
-               _loc1_ = this._layoutDirection != null && this._layoutDirection != ILayoutDirectionElement(_loc2_).layoutDirection;
-               if(_loc1_ && this.layoutFeatures == null)
+               _loc2_ = this._layoutDirection != null && this._layoutDirection != ILayoutDirectionElement(_loc1_).layoutDirection;
+               if(_loc2_ && this.layoutFeatures == null)
                {
                   this.initAdvancedLayoutFeatures();
                   if(this.layoutFeatures != null)
                   {
-                     this.layoutFeatures.mirror = _loc1_;
+                     this.layoutFeatures.mirror = _loc2_;
                      this.validateTransformMatrix();
                   }
                }
-               else if(!_loc1_ && Boolean(this.layoutFeatures))
+               else if(!_loc2_ && Boolean(this.layoutFeatures))
                {
-                  this.layoutFeatures.mirror = _loc1_;
+                  this.layoutFeatures.mirror = _loc2_;
                   this.validateTransformMatrix();
                   this.layoutFeatures = null;
                }
                break;
             }
-            _loc2_ = _loc2_.parent;
+            _loc1_ = _loc1_.parent;
          }
       }
       

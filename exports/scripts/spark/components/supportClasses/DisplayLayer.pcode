@@ -1,0 +1,383 @@
+package spark.components.supportClasses
+{
+   import flash.display.DisplayObject;
+   import flash.events.EventDispatcher;
+   import mx.resources.ResourceManager;
+   import spark.events.DisplayLayerObjectExistenceEvent;
+   
+   public class DisplayLayer extends EventDispatcher
+   {
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 1
+      localcount 1
+      initscopedepth 4
+      maxscopedepth 5
+      
+      code
+      getlocal0
+      pushscope
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var _depth:Vector.<Number>;
+      
+      private var _objects:Vector.<DisplayObject>;
+      
+      public function DisplayLayer()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         constructsuper 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function get numDisplayObjects() : int
+      {
+         trait getter QName(PackageNamespace(""),"numDisplayObjects")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"int")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_objects")
+         iffalse ofs0016
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_objects")
+         getproperty QName(PackageNamespace(""),"length")
+         convert_i
+         jump ofs0018
+         ofs0016:
+         pushbyte 0
+         ofs0018:
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getDisplayObjectAt(param1:int) : DisplayObject
+      {
+         trait method QName(PackageNamespace(""),"getDisplayObjectAt")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace("flash.display"),"DisplayObject")
+         
+         body
+         maxstack 5
+         localcount 2
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_objects")
+         not
+         dup
+         iftrue ofs0011
+         pop
+         getlocal1
+         pushbyte 0
+         lessthan
+         ofs0011:
+         dup
+         iftrue ofs0020
+         pop
+         getlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_objects")
+         getproperty QName(PackageNamespace(""),"length")
+         greaterequals
+         ofs0020:
+         iffalse ofs0040
+         findpropstrict QName(PackageNamespace(""),"RangeError")
+         getlex QName(PackageNamespace("mx.resources"),"ResourceManager")
+         callproperty QName(PackageNamespace(""),"getInstance"), 0
+         pushstring "components"
+         pushstring "indexOutOfRange"
+         getlocal1
+         newarray 1
+         callproperty QName(Namespace("mx.resources:IResourceManager"),"getString"), 3
+         constructprop QName(PackageNamespace(""),"RangeError"), 1
+         throw
+         ofs0040:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_objects")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"61"),PackageNamespace(""),PrivateNamespace(null,"428"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.components.supportClasses:DisplayLayer"),StaticProtectedNs("spark.components.supportClasses:DisplayLayer"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getDisplayObjectDepth(param1:DisplayObject) : Number
+      {
+         trait method QName(PackageNamespace(""),"getDisplayObjectDepth")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.display"),"DisplayObject")
+         returns QName(PackageNamespace(""),"Number")
+         
+         body
+         maxstack 5
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_objects")
+         getlocal1
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"indexOf"), 1
+         convert_i
+         setlocal2
+         getlocal2
+         pushbyte -1
+         ifne ofs0030
+         findpropstrict QName(PackageNamespace(""),"RangeError")
+         getlex QName(PackageNamespace("mx.resources"),"ResourceManager")
+         callproperty QName(PackageNamespace(""),"getInstance"), 0
+         pushstring "components"
+         pushstring "objectNotFoundInDisplayLayer"
+         getlocal1
+         newarray 1
+         callproperty QName(Namespace("mx.resources:IResourceManager"),"getString"), 3
+         constructprop QName(PackageNamespace(""),"RangeError"), 1
+         throw
+         ofs0030:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_depth")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"61"),PackageNamespace(""),PrivateNamespace(null,"428"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.components.supportClasses:DisplayLayer"),StaticProtectedNs("spark.components.supportClasses:DisplayLayer"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function addDisplayObject(param1:DisplayObject, param2:Number = 10000) : DisplayObject
+      {
+         trait method QName(PackageNamespace(""),"addDisplayObject")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace("flash.display"),"DisplayObject")
+         param QName(PackageNamespace(""),"Number")
+         optional Integer(10000)
+         returns QName(PackageNamespace("flash.display"),"DisplayObject")
+         
+         body
+         maxstack 7
+         localcount 5
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         pushbyte 0
+         setlocal 4
+         pushbyte 0
+         setlocal3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_depth")
+         iftrue ofs002f
+         getlocal0
+         getlex Multiname("Vector",[PrivateNamespace(null,"61"),PackageNamespace(""),PrivateNamespace(null,"428"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.components.supportClasses:DisplayLayer"),StaticProtectedNs("spark.components.supportClasses:DisplayLayer"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object"),PackageNamespace("__AS3__.vec")])
+         getlex QName(PackageNamespace(""),"Number")
+         applytype 1
+         construct 0
+         initproperty QName(PrivateNamespace(null,"61"),"_depth")
+         getlocal0
+         getlex Multiname("Vector",[PrivateNamespace(null,"61"),PackageNamespace(""),PrivateNamespace(null,"428"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.components.supportClasses:DisplayLayer"),StaticProtectedNs("spark.components.supportClasses:DisplayLayer"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object"),PackageNamespace("__AS3__.vec")])
+         getlex QName(PackageNamespace("flash.display"),"DisplayObject")
+         applytype 1
+         construct 0
+         initproperty QName(PrivateNamespace(null,"61"),"_objects")
+         jump ofs0058
+         ofs002f:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_depth")
+         getproperty QName(PackageNamespace(""),"length")
+         convert_i
+         setlocal 4
+         jump ofs0051
+         ofs003d:
+         label
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_depth")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"61"),PackageNamespace(""),PrivateNamespace(null,"428"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("spark.components.supportClasses:DisplayLayer"),StaticProtectedNs("spark.components.supportClasses:DisplayLayer"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ifnlt ofs004f
+         jump ofs0058
+         ofs004f:
+         inclocal_i 3
+         ofs0051:
+         getlocal3
+         getlocal 4
+         iflt ofs003d
+         ofs0058:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_depth")
+         getlocal3
+         pushbyte 0
+         getlocal2
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"splice"), 3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_objects")
+         getlocal3
+         pushbyte 0
+         getlocal1
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"splice"), 3
+         findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+         findpropstrict QName(PackageNamespace("spark.events"),"DisplayLayerObjectExistenceEvent")
+         getlex QName(PackageNamespace("spark.events"),"DisplayLayerObjectExistenceEvent")
+         getproperty QName(PackageNamespace(""),"OBJECT_ADD")
+         pushfalse
+         pushfalse
+         getlocal1
+         getlocal3
+         constructprop QName(PackageNamespace("spark.events"),"DisplayLayerObjectExistenceEvent"), 5
+         callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+         getlocal1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function removeDisplayObject(param1:DisplayObject) : DisplayObject
+      {
+         trait method QName(PackageNamespace(""),"removeDisplayObject")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.display"),"DisplayObject")
+         returns QName(PackageNamespace("flash.display"),"DisplayObject")
+         
+         body
+         maxstack 7
+         localcount 3
+         initscopedepth 5
+         maxscopedepth 6
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_objects")
+         getlocal1
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"indexOf"), 1
+         convert_i
+         setlocal2
+         getlocal2
+         pushbyte -1
+         ifne ofs0030
+         findpropstrict QName(PackageNamespace(""),"RangeError")
+         getlex QName(PackageNamespace("mx.resources"),"ResourceManager")
+         callproperty QName(PackageNamespace(""),"getInstance"), 0
+         pushstring "components"
+         pushstring "objectNotFoundInDisplayLayer"
+         getlocal1
+         newarray 1
+         callproperty QName(Namespace("mx.resources:IResourceManager"),"getString"), 3
+         constructprop QName(PackageNamespace(""),"RangeError"), 1
+         throw
+         ofs0030:
+         findpropstrict QName(PackageNamespace(""),"dispatchEvent")
+         findpropstrict QName(PackageNamespace("spark.events"),"DisplayLayerObjectExistenceEvent")
+         getlex QName(PackageNamespace("spark.events"),"DisplayLayerObjectExistenceEvent")
+         getproperty QName(PackageNamespace(""),"OBJECT_REMOVE")
+         pushfalse
+         pushfalse
+         getlocal1
+         getlocal2
+         constructprop QName(PackageNamespace("spark.events"),"DisplayLayerObjectExistenceEvent"), 5
+         callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_depth")
+         getlocal2
+         pushbyte 1
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"splice"), 2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"61"),"_objects")
+         getlocal2
+         pushbyte 1
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"splice"), 2
+         getlocal1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 4
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("DisplayLayer",[PackageNamespace("spark.components.supportClasses")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+pushscope
+getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
+newclass 212
+popscope
+popscope
+initproperty QName(PackageNamespace("spark.components.supportClasses"),"DisplayLayer")
+returnvoid
+end ; code
+end ; body
+end ; method
+

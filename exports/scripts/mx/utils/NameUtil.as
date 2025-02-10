@@ -9,7 +9,7 @@ package mx.utils
    
    public class NameUtil
    {
-      mx_internal static const VERSION:String = "4.1.0.16076";
+      mx_internal static const VERSION:String = "4.1.0.21490";
       
       private static var counter:int = 0;
       

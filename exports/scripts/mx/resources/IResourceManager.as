@@ -32,20 +32,28 @@ package mx.resources
       
       function findResourceBundleWithResource(param1:String, param2:String) : IResourceBundle;
       
+      [Bindable("change")]
       function getObject(param1:String, param2:String, param3:String = null) : *;
       
+      [Bindable("change")]
       function getString(param1:String, param2:String, param3:Array = null, param4:String = null) : String;
       
+      [Bindable("change")]
       function getStringArray(param1:String, param2:String, param3:String = null) : Array;
       
+      [Bindable("change")]
       function getNumber(param1:String, param2:String, param3:String = null) : Number;
       
+      [Bindable("change")]
       function getInt(param1:String, param2:String, param3:String = null) : int;
       
+      [Bindable("change")]
       function getUint(param1:String, param2:String, param3:String = null) : uint;
       
+      [Bindable("change")]
       function getBoolean(param1:String, param2:String, param3:String = null) : Boolean;
       
+      [Bindable("change")]
       function getClass(param1:String, param2:String, param3:String = null) : Class;
       
       function installCompiledResourceBundles(param1:ApplicationDomain, param2:Array, param3:Array) : void;

@@ -2,7 +2,7 @@ package
 {
    import mx.core.BitmapAsset;
    
-   [Embed(source="/_assets/156_Art_ItemHiJump.png")]
+   [Embed(source="/_assets/167_Art_ItemHiJump.png")]
    public class Art_ItemHiJump extends BitmapAsset
    {
       public function Art_ItemHiJump()

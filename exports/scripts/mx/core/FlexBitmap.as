@@ -8,7 +8,7 @@ package mx.core
    
    public class FlexBitmap extends Bitmap
    {
-      mx_internal static const VERSION:String = "4.1.0.16076";
+      mx_internal static const VERSION:String = "4.1.0.21490";
       
       public function FlexBitmap(param1:BitmapData = null, param2:String = "auto", param3:Boolean = false)
       {

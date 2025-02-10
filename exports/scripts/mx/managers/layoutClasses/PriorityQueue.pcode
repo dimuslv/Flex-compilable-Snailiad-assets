@@ -1,0 +1,1063 @@
+package mx.managers.layoutClasses
+{
+   import flash.display.DisplayObject;
+   import flash.display.DisplayObjectContainer;
+   import flash.utils.Dictionary;
+   import mx.core.IChildList;
+   import mx.core.IRawChildrenContainer;
+   import mx.core.mx_internal;
+   import mx.managers.ILayoutManagerClient;
+   
+   use namespace mx_internal;
+   
+   public class PriorityQueue
+   {
+      mx_internal static const VERSION:String = "4.1.0.21490";
+      
+      method
+      name null
+      returns null
+      
+      body
+      maxstack 2
+      localcount 1
+      initscopedepth 3
+      maxscopedepth 4
+      
+      code
+      getlocal0
+      pushscope
+      findproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
+      pushstring "4.1.0.21490"
+      initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
+      returnvoid
+      end ; code
+      end ; body
+      end ; method
+      
+      private var arrayOfDictionaries:Array;
+      
+      private var minPriority:int = 0;
+      
+      private var maxPriority:int = -1;
+      
+      public var generation:int = 0;
+      
+      public function PriorityQueue()
+      {
+         method
+         name null
+         returns null
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         newarray 0
+         initproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal0
+         constructsuper 0
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function addObject(param1:Object, param2:int) : void
+      {
+         trait method QName(PackageNamespace(""),"addObject")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"Object")
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 4
+         localcount 5
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         iftrue ofs0039
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal2
+         findpropstrict QName(PackageNamespace(""),"Object")
+         constructprop QName(PackageNamespace(""),"Object"), 0
+         setproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         pushbyte 0
+         setproperty Multiname("length",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         findpropstrict QName(PackageNamespace("flash.utils"),"Dictionary")
+         pushfalse
+         constructprop QName(PackageNamespace("flash.utils"),"Dictionary"), 1
+         setproperty Multiname("items",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         ofs0039:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getproperty Multiname("items",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         pushnull
+         ifne ofs0077
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getproperty Multiname("items",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getlocal1
+         pushtrue
+         setproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         dup
+         setlocal3
+         getproperty Multiname("length",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         increment
+         setlocal 4
+         getlocal3
+         getlocal 4
+         setproperty Multiname("length",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         kill 4
+         kill 3
+         ofs0077:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         ifnlt ofs0095
+         getlocal0
+         getlocal0
+         getlocal2
+         dup
+         setlocal3
+         initproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         getlocal3
+         kill 3
+         initproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         jump ofs00b1
+         ofs0095:
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         ifnlt ofs00a3
+         getlocal0
+         getlocal2
+         initproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         ofs00a3:
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         ifngt ofs00b1
+         getlocal0
+         getlocal2
+         initproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         ofs00b1:
+         getlocal0
+         dup
+         setlocal3
+         getproperty QName(PackageNamespace(""),"generation")
+         increment_i
+         setlocal 4
+         getlocal3
+         getlocal 4
+         setproperty QName(PackageNamespace(""),"generation")
+         kill 4
+         kill 3
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function removeLargest() : Object
+      {
+         trait method QName(PackageNamespace(""),"removeLargest")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Object")
+         
+         body
+         maxstack 3
+         localcount 5
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal2
+         pushnull
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         ifnle ofs00f6
+         jump ofs003c
+         ofs001a:
+         label
+         getlocal0
+         dup
+         setlocal3
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         decrement_i
+         setlocal 4
+         getlocal3
+         getlocal 4
+         setproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         kill 4
+         kill 3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         ifnlt ofs003c
+         pushnull
+         returnvalue
+         ofs003c:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         not
+         dup
+         iftrue ofs005f
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getproperty Multiname("length",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         pushbyte 0
+         equals
+         ofs005f:
+         iftrue ofs001a
+         pushbyte 0
+         setlocal3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getproperty Multiname("items",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         coerce_a
+         setlocal 4
+         jump ofs009c
+         ofs007b:
+         label
+         getlocal 4
+         getlocal3
+         nextname
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal2
+         getlocal2
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal1
+         getlocal0
+         findpropstrict QName(PackageNamespace("mx.managers"),"ILayoutManagerClient")
+         getlocal2
+         callproperty QName(PackageNamespace("mx.managers"),"ILayoutManagerClient"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         callpropvoid QName(PackageNamespace(""),"removeChild"), 2
+         jump ofs00a3
+         ofs009c:
+         hasnext2 4, 3
+         iftrue ofs007b
+         ofs00a3:
+         kill 4
+         kill 3
+         jump ofs00cf
+         ofs00ab:
+         label
+         getlocal0
+         dup
+         setlocal3
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         decrement_i
+         setlocal 4
+         getlocal3
+         getlocal 4
+         setproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         kill 4
+         kill 3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         ifnlt ofs00cf
+         jump ofs00f6
+         ofs00cf:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         not
+         dup
+         iftrue ofs00f2
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getproperty Multiname("length",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         pushbyte 0
+         equals
+         ofs00f2:
+         iftrue ofs00ab
+         ofs00f6:
+         getlocal1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function removeLargestChild(param1:ILayoutManagerClient) : Object
+      {
+         trait method QName(PackageNamespace(""),"removeLargestChild")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("mx.managers"),"ILayoutManagerClient")
+         returns QName(PackageNamespace(""),"Object")
+         
+         body
+         maxstack 4
+         localcount 7
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal 4
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         convert_i
+         setlocal2
+         getlocal1
+         getproperty QName(Namespace("mx.managers:ILayoutManagerClient"),"nestLevel")
+         convert_i
+         setlocal3
+         jump ofs00f9
+         ofs0017:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         convert_b
+         dup
+         iffalse ofs0035
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getproperty Multiname("length",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         pushbyte 0
+         greaterthan
+         ofs0035:
+         iffalse ofs00ce
+         getlocal2
+         getlocal1
+         getproperty QName(Namespace("mx.managers:ILayoutManagerClient"),"nestLevel")
+         ifne ofs0069
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getproperty Multiname("items",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         iffalse ofs0065
+         getlocal0
+         findpropstrict QName(PackageNamespace("mx.managers"),"ILayoutManagerClient")
+         getlocal1
+         callproperty QName(PackageNamespace("mx.managers"),"ILayoutManagerClient"), 1
+         getlocal2
+         callpropvoid QName(PackageNamespace(""),"removeChild"), 2
+         getlocal1
+         returnvalue
+         ofs0065:
+         jump ofs00c7
+         ofs0069:
+         pushbyte 0
+         setlocal 5
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getproperty Multiname("items",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         coerce_a
+         setlocal 6
+         jump ofs00bc
+         ofs007f:
+         label
+         getlocal 6
+         getlocal 5
+         nextname
+         coerce QName(PackageNamespace(""),"Object")
+         dup
+         setlocal 4
+         getlex QName(PackageNamespace("flash.display"),"DisplayObject")
+         istypelate
+         dup
+         iffalse ofs00a6
+         pop
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.display"),"DisplayObject")
+         getlocal1
+         callproperty QName(PackageNamespace("flash.display"),"DisplayObject"), 1
+         findpropstrict QName(PackageNamespace("flash.display"),"DisplayObject")
+         getlocal 4
+         callproperty QName(PackageNamespace("flash.display"),"DisplayObject"), 1
+         callproperty QName(PrivateNamespace(null,"235"),"contains"), 2
+         convert_b
+         ofs00a6:
+         iffalse ofs00bc
+         getlocal0
+         findpropstrict QName(PackageNamespace("mx.managers"),"ILayoutManagerClient")
+         getlocal 4
+         callproperty QName(PackageNamespace("mx.managers"),"ILayoutManagerClient"), 1
+         getlocal2
+         callpropvoid QName(PackageNamespace(""),"removeChild"), 2
+         getlocal 4
+         returnvalue
+         ofs00bc:
+         hasnext2 6, 5
+         iftrue ofs007f
+         kill 6
+         kill 5
+         ofs00c7:
+         getlocal2
+         decrement_i
+         setlocal2
+         jump ofs00f9
+         ofs00ce:
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         ifne ofs00ec
+         getlocal0
+         dup
+         setlocal 5
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         decrement_i
+         setlocal 6
+         getlocal 5
+         getlocal 6
+         setproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         kill 6
+         kill 5
+         ofs00ec:
+         getlocal2
+         decrement_i
+         setlocal2
+         getlocal2
+         getlocal3
+         ifnlt ofs00f9
+         jump ofs00ff
+         ofs00f9:
+         getlocal3
+         getlocal2
+         ifle ofs0017
+         ofs00ff:
+         pushnull
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function removeSmallest() : Object
+      {
+         trait method QName(PackageNamespace(""),"removeSmallest")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Object")
+         
+         body
+         maxstack 3
+         localcount 5
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal2
+         pushnull
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         ifnle ofs00f6
+         jump ofs003c
+         ofs001a:
+         label
+         getlocal0
+         dup
+         setlocal3
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         increment_i
+         setlocal 4
+         getlocal3
+         getlocal 4
+         setproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         kill 4
+         kill 3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         ifngt ofs003c
+         pushnull
+         returnvalue
+         ofs003c:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         not
+         dup
+         iftrue ofs005f
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getproperty Multiname("length",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         pushbyte 0
+         equals
+         ofs005f:
+         iftrue ofs001a
+         pushbyte 0
+         setlocal3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getproperty Multiname("items",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         coerce_a
+         setlocal 4
+         jump ofs009c
+         ofs007b:
+         label
+         getlocal 4
+         getlocal3
+         nextname
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal2
+         getlocal2
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal1
+         getlocal0
+         findpropstrict QName(PackageNamespace("mx.managers"),"ILayoutManagerClient")
+         getlocal2
+         callproperty QName(PackageNamespace("mx.managers"),"ILayoutManagerClient"), 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         callpropvoid QName(PackageNamespace(""),"removeChild"), 2
+         jump ofs00a3
+         ofs009c:
+         hasnext2 4, 3
+         iftrue ofs007b
+         ofs00a3:
+         kill 4
+         kill 3
+         jump ofs00cf
+         ofs00ab:
+         label
+         getlocal0
+         dup
+         setlocal3
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         increment_i
+         setlocal 4
+         getlocal3
+         getlocal 4
+         setproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         kill 4
+         kill 3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         ifngt ofs00cf
+         jump ofs00f6
+         ofs00cf:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         not
+         dup
+         iftrue ofs00f2
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getproperty Multiname("length",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         pushbyte 0
+         equals
+         ofs00f2:
+         iftrue ofs00ab
+         ofs00f6:
+         getlocal1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function removeSmallestChild(param1:ILayoutManagerClient) : Object
+      {
+         trait method QName(PackageNamespace(""),"removeSmallestChild")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("mx.managers"),"ILayoutManagerClient")
+         returns QName(PackageNamespace(""),"Object")
+         
+         body
+         maxstack 4
+         localcount 6
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal3
+         getlocal1
+         getproperty QName(Namespace("mx.managers:ILayoutManagerClient"),"nestLevel")
+         convert_i
+         setlocal2
+         jump ofs00ef
+         ofs0010:
+         label
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         convert_b
+         dup
+         iffalse ofs002e
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getproperty Multiname("length",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         pushbyte 0
+         greaterthan
+         ofs002e:
+         iffalse ofs00c2
+         getlocal2
+         getlocal1
+         getproperty QName(Namespace("mx.managers:ILayoutManagerClient"),"nestLevel")
+         ifne ofs0062
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getproperty Multiname("items",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         iffalse ofs005e
+         getlocal0
+         findpropstrict QName(PackageNamespace("mx.managers"),"ILayoutManagerClient")
+         getlocal1
+         callproperty QName(PackageNamespace("mx.managers"),"ILayoutManagerClient"), 1
+         getlocal2
+         callpropvoid QName(PackageNamespace(""),"removeChild"), 2
+         getlocal1
+         returnvalue
+         ofs005e:
+         jump ofs00bc
+         ofs0062:
+         pushbyte 0
+         setlocal 4
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal2
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getproperty Multiname("items",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         coerce_a
+         setlocal 5
+         jump ofs00b1
+         ofs0078:
+         label
+         getlocal 5
+         getlocal 4
+         nextname
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal3
+         getlocal3
+         getlex QName(PackageNamespace("flash.display"),"DisplayObject")
+         istypelate
+         dup
+         iffalse ofs009d
+         pop
+         getlocal0
+         findpropstrict QName(PackageNamespace("flash.display"),"DisplayObject")
+         getlocal1
+         callproperty QName(PackageNamespace("flash.display"),"DisplayObject"), 1
+         findpropstrict QName(PackageNamespace("flash.display"),"DisplayObject")
+         getlocal3
+         callproperty QName(PackageNamespace("flash.display"),"DisplayObject"), 1
+         callproperty QName(PrivateNamespace(null,"235"),"contains"), 2
+         convert_b
+         ofs009d:
+         iffalse ofs00b1
+         getlocal0
+         findpropstrict QName(PackageNamespace("mx.managers"),"ILayoutManagerClient")
+         getlocal3
+         callproperty QName(PackageNamespace("mx.managers"),"ILayoutManagerClient"), 1
+         getlocal2
+         callpropvoid QName(PackageNamespace(""),"removeChild"), 2
+         getlocal3
+         returnvalue
+         ofs00b1:
+         hasnext2 5, 4
+         iftrue ofs0078
+         kill 5
+         kill 4
+         ofs00bc:
+         inclocal_i 2
+         jump ofs00ef
+         ofs00c2:
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         ifne ofs00e0
+         getlocal0
+         dup
+         setlocal 4
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         increment_i
+         setlocal 5
+         getlocal 4
+         getlocal 5
+         setproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         kill 5
+         kill 4
+         ofs00e0:
+         inclocal_i 2
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         ifngt ofs00ef
+         jump ofs00f8
+         ofs00ef:
+         getlocal2
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         ifle ofs0010
+         ofs00f8:
+         pushnull
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function removeChild(param1:ILayoutManagerClient, param2:int = -1) : Object
+      {
+         trait method QName(PackageNamespace(""),"removeChild")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace("mx.managers"),"ILayoutManagerClient")
+         param QName(PackageNamespace(""),"int")
+         optional Integer(-1)
+         returns QName(PackageNamespace(""),"Object")
+         
+         body
+         maxstack 2
+         localcount 6
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal2
+         pushbyte 0
+         ifnge ofs000f
+         getlocal2
+         convert_i
+         jump ofs0014
+         ofs000f:
+         getlocal1
+         getproperty QName(Namespace("mx.managers:ILayoutManagerClient"),"nestLevel")
+         convert_i
+         ofs0014:
+         convert_i
+         setlocal3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         convert_b
+         dup
+         iffalse ofs0037
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getproperty Multiname("items",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         pushnull
+         equals
+         not
+         ofs0037:
+         iffalse ofs007e
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getproperty Multiname("items",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         getlocal1
+         deleteproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         pop
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         getlocal3
+         getproperty MultinameL([PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         dup
+         setlocal 4
+         getproperty Multiname("length",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         decrement
+         setlocal 5
+         getlocal 4
+         getlocal 5
+         setproperty Multiname("length",[PrivateNamespace(null,"235"),PrivateNamespace(null,"525"),PackageNamespace(""),PackageNamespace("mx.managers.layoutClasses"),PackageInternalNs("mx.managers.layoutClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("mx.managers.layoutClasses:PriorityQueue"),StaticProtectedNs("Object")])
+         kill 5
+         kill 4
+         getlocal0
+         dup
+         setlocal 4
+         getproperty QName(PackageNamespace(""),"generation")
+         increment_i
+         setlocal 5
+         getlocal 4
+         getlocal 5
+         setproperty QName(PackageNamespace(""),"generation")
+         kill 5
+         kill 4
+         getlocal1
+         returnvalue
+         ofs007e:
+         pushnull
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function removeAll() : void
+      {
+         trait method QName(PackageNamespace(""),"removeAll")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"arrayOfDictionaries")
+         pushbyte 0
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"splice"), 1
+         getlocal0
+         pushbyte 0
+         initproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         getlocal0
+         pushbyte -1
+         initproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"generation")
+         pushbyte 1
+         add
+         initproperty QName(PackageNamespace(""),"generation")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function isEmpty() : Boolean
+      {
+         trait method QName(PackageNamespace(""),"isEmpty")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 2
+         localcount 1
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"minPriority")
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"235"),"maxPriority")
+         greaterthan
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      private function contains(param1:DisplayObject, param2:DisplayObject) : Boolean
+      {
+         trait method QName(PrivateNamespace(null,"235"),"contains")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace("flash.display"),"DisplayObject")
+         param QName(PackageNamespace("flash.display"),"DisplayObject")
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 2
+         localcount 4
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         pushnull
+         coerce QName(PackageNamespace("mx.core"),"IChildList")
+         setlocal3
+         getlocal1
+         getlex QName(PackageNamespace("mx.core"),"IRawChildrenContainer")
+         istypelate
+         iffalse ofs0024
+         findpropstrict QName(PackageNamespace("mx.core"),"IRawChildrenContainer")
+         getlocal1
+         callproperty QName(PackageNamespace("mx.core"),"IRawChildrenContainer"), 1
+         getproperty QName(Namespace("mx.core:IRawChildrenContainer"),"rawChildren")
+         coerce QName(PackageNamespace("mx.core"),"IChildList")
+         setlocal3
+         getlocal3
+         getlocal2
+         callproperty QName(Namespace("mx.core:IChildList"),"contains"), 1
+         returnvalue
+         ofs0024:
+         getlocal1
+         getlex QName(PackageNamespace("flash.display"),"DisplayObjectContainer")
+         istypelate
+         iffalse ofs0038
+         findpropstrict QName(PackageNamespace("flash.display"),"DisplayObjectContainer")
+         getlocal1
+         callproperty QName(PackageNamespace("flash.display"),"DisplayObjectContainer"), 1
+         getlocal2
+         callproperty QName(PackageNamespace(""),"contains"), 1
+         returnvalue
+         ofs0038:
+         getlocal1
+         getlocal2
+         equals
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+   }
+}
+
+method
+name null
+returns null
+
+body
+maxstack 2
+localcount 1
+initscopedepth 1
+maxscopedepth 3
+
+code
+getlocal0
+pushscope
+findpropstrict Multiname("PriorityQueue",[PackageNamespace("mx.managers.layoutClasses")])
+getlex QName(PackageNamespace(""),"Object")
+pushscope
+getlex QName(PackageNamespace(""),"Object")
+newclass 765
+popscope
+initproperty QName(PackageNamespace("mx.managers.layoutClasses"),"PriorityQueue")
+returnvoid
+end ; code
+end ; body
+end ; method
+

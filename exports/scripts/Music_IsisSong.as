@@ -2,7 +2,7 @@ package
 {
    import mx.core.SoundAsset;
    
-   [Embed(source="/_assets/23_isisloop_Music_IsisSong.mp3")]
+   [Embed(source="/_assets/25_isisloop_Music_IsisSong.mp3")]
    public class Music_IsisSong extends SoundAsset
    {
       public function Music_IsisSong()

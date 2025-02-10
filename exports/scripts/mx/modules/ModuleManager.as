@@ -7,7 +7,7 @@ package mx.modules
    
    public class ModuleManager
    {
-      mx_internal static const VERSION:String = "4.1.0.16076";
+      mx_internal static const VERSION:String = "4.1.0.21490";
       
       public function ModuleManager()
       {
@@ -196,10 +196,9 @@ class ModuleInfo extends EventDispatcher
       var _loc5_:URLRequest = new URLRequest(this._url);
       var _loc6_:LoaderContext = new LoaderContext();
       _loc6_.applicationDomain = !!param1 ? param1 : new ApplicationDomain(ApplicationDomain.currentDomain);
-      _loc6_.securityDomain = param2;
-      if(param2 == null && Security.sandboxType == Security.REMOTE)
+      if(param2 != null && Security.sandboxType == Security.REMOTE)
       {
-         _loc6_.securityDomain = SecurityDomain.currentDomain;
+         _loc6_.securityDomain = param2;
       }
       this.loader = new Loader();
       this.loader.contentLoaderInfo.addEventListener(Event.INIT,this.initHandler);
@@ -228,8 +227,6 @@ class ModuleInfo extends EventDispatcher
    
    public function resurrect() : void
    {
-      var _loc2_:int = 0;
-      var _loc3_:* = undefined;
       var _loc1_:Object = null;
       if(!this._ready)
       {
@@ -237,8 +234,8 @@ class ModuleInfo extends EventDispatcher
       }
       if(!this.factoryInfo && Boolean(this.limbo))
       {
-         _loc2_ = 0;
-         _loc3_ = this.limbo;
+         var _loc2_:int = 0;
+         var _loc3_:* = this.limbo;
          for(_loc1_ in _loc3_)
          {
             this.factoryInfo = _loc1_ as FactoryInfo;

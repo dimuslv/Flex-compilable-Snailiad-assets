@@ -24,7 +24,7 @@ package mx.resources
    {
       private static var instance:IResourceManager;
       
-      mx_internal static const VERSION:String = "4.1.0.16076";
+      mx_internal static const VERSION:String = "4.1.0.21490";
       
       private var localeMap:Object;
       
@@ -72,23 +72,23 @@ package mx.resources
       
       public function installCompiledResourceBundles(param1:ApplicationDomain, param2:Array, param3:Array) : void
       {
-         var _loc4_:String = null;
-         var _loc5_:int = 0;
-         var _loc6_:String = null;
-         var _loc7_:int = !!param2 ? int(param2.length) : 0;
-         var _loc8_:int = !!param3 ? int(param3.length) : 0;
-         var _loc9_:int = 0;
-         while(_loc9_ < _loc7_)
+         var _loc7_:String = null;
+         var _loc8_:int = 0;
+         var _loc9_:String = null;
+         var _loc4_:int = !!param2 ? int(param2.length) : 0;
+         var _loc5_:int = !!param3 ? int(param3.length) : 0;
+         var _loc6_:int = 0;
+         while(_loc6_ < _loc4_)
          {
-            _loc4_ = param2[_loc9_];
-            _loc5_ = 0;
-            while(_loc5_ < _loc8_)
+            _loc7_ = param2[_loc6_];
+            _loc8_ = 0;
+            while(_loc8_ < _loc5_)
             {
-               _loc6_ = param3[_loc5_];
-               this.installCompiledResourceBundle(param1,_loc4_,_loc6_);
-               _loc5_++;
+               _loc9_ = param3[_loc8_];
+               this.installCompiledResourceBundle(param1,_loc7_,_loc9_);
+               _loc8_++;
             }
-            _loc9_++;
+            _loc6_++;
          }
       }
       
@@ -173,23 +173,15 @@ package mx.resources
       
       public function loadResourceModule(param1:String, param2:Boolean = true, param3:ApplicationDomain = null, param4:SecurityDomain = null) : IEventDispatcher
       {
-         var errorHandler:Function = null;
+         var errorHandler:Function;
          var moduleInfo:IModuleInfo = null;
          var resourceEventDispatcher:ResourceEventDispatcher = null;
          var timer:Timer = null;
          var timerHandler:Function = null;
-         var url:String = null;
-         var updateFlag:Boolean = false;
-         var applicationDomain:ApplicationDomain = null;
-         var securityDomain:SecurityDomain = null;
-         moduleInfo = null;
-         resourceEventDispatcher = null;
-         timer = null;
-         timerHandler = null;
-         url = param1;
-         updateFlag = param2;
-         applicationDomain = param3;
-         securityDomain = param4;
+         var url:String = param1;
+         var updateFlag:Boolean = param2;
+         var applicationDomain:ApplicationDomain = param3;
+         var securityDomain:SecurityDomain = param4;
          moduleInfo = ModuleManager.getModule(url);
          resourceEventDispatcher = new ResourceEventDispatcher(moduleInfo);
          var readyHandler:Function = function(param1:ModuleEvent):void
@@ -204,18 +196,18 @@ package mx.resources
          moduleInfo.addEventListener(ModuleEvent.READY,readyHandler,false,0,true);
          errorHandler = function(param1:ModuleEvent):void
          {
-            var _loc2_:ResourceEvent = null;
-            var _loc3_:String = "Unable to load resource module from " + url;
+            var _loc3_:ResourceEvent = null;
+            var _loc2_:String = "Unable to load resource module from " + url;
             if(resourceEventDispatcher.willTrigger(ResourceEvent.ERROR))
             {
-               _loc2_ = new ResourceEvent(ResourceEvent.ERROR,param1.bubbles,param1.cancelable);
-               _loc2_.bytesLoaded = 0;
-               _loc2_.bytesTotal = 0;
-               _loc2_.errorText = _loc3_;
-               resourceEventDispatcher.dispatchEvent(_loc2_);
+               _loc3_ = new ResourceEvent(ResourceEvent.ERROR,param1.bubbles,param1.cancelable);
+               _loc3_.bytesLoaded = 0;
+               _loc3_.bytesTotal = 0;
+               _loc3_.errorText = _loc2_;
+               resourceEventDispatcher.dispatchEvent(_loc3_);
                return;
             }
-            throw new Error(_loc3_);
+            throw new Error(_loc2_);
          };
          moduleInfo.addEventListener(ModuleEvent.ERROR,errorHandler,false,0,true);
          this.resourceModules[url] = new ResourceModuleInfo(moduleInfo,readyHandler,errorHandler);
@@ -233,35 +225,35 @@ package mx.resources
       
       public function unloadResourceModule(param1:String, param2:Boolean = true) : void
       {
-         var _loc3_:Array = null;
-         var _loc4_:int = 0;
+         var _loc4_:Array = null;
          var _loc5_:int = 0;
-         var _loc6_:String = null;
+         var _loc6_:int = 0;
          var _loc7_:String = null;
-         var _loc8_:ResourceModuleInfo = this.resourceModules[param1];
-         if(!_loc8_)
+         var _loc8_:String = null;
+         var _loc3_:ResourceModuleInfo = this.resourceModules[param1];
+         if(!_loc3_)
          {
             return;
          }
-         if(_loc8_.resourceModule)
+         if(_loc3_.resourceModule)
          {
-            _loc3_ = _loc8_.resourceModule.resourceBundles;
-            if(_loc3_)
+            _loc4_ = _loc3_.resourceModule.resourceBundles;
+            if(_loc4_)
             {
-               _loc4_ = int(_loc3_.length);
-               _loc5_ = 0;
-               while(_loc5_ < _loc4_)
+               _loc5_ = int(_loc4_.length);
+               _loc6_ = 0;
+               while(_loc6_ < _loc5_)
                {
-                  _loc6_ = _loc3_[_loc5_].locale;
-                  _loc7_ = _loc3_[_loc5_].bundleName;
-                  this.removeResourceBundle(_loc6_,_loc7_);
-                  _loc5_++;
+                  _loc7_ = _loc4_[_loc6_].locale;
+                  _loc8_ = _loc4_[_loc6_].bundleName;
+                  this.removeResourceBundle(_loc7_,_loc8_);
+                  _loc6_++;
                }
             }
          }
          this.resourceModules[param1] = null;
          delete this.resourceModules[param1];
-         _loc8_.moduleInfo.unload();
+         _loc3_.moduleInfo.unload();
          if(param2)
          {
             this.update();
@@ -310,13 +302,13 @@ package mx.resources
       
       public function getLocales() : Array
       {
-         var _loc1_:String = null;
-         var _loc2_:Array = [];
-         for(_loc1_ in this.localeMap)
+         var _loc2_:String = null;
+         var _loc1_:Array = [];
+         for(_loc2_ in this.localeMap)
          {
-            _loc2_.push(_loc1_);
+            _loc1_.push(_loc2_);
          }
-         return _loc2_;
+         return _loc1_;
       }
       
       public function getPreferredLocaleChain() : Array
@@ -326,46 +318,47 @@ package mx.resources
       
       public function getBundleNamesForLocale(param1:String) : Array
       {
-         var _loc2_:String = null;
-         var _loc3_:Array = [];
-         for(_loc2_ in this.localeMap[param1])
+         var _loc3_:String = null;
+         var _loc2_:Array = [];
+         for(_loc3_ in this.localeMap[param1])
          {
-            _loc3_.push(_loc2_);
+            _loc2_.push(_loc3_);
          }
-         return _loc3_;
+         return _loc2_;
       }
       
       public function findResourceBundleWithResource(param1:String, param2:String) : IResourceBundle
       {
-         var _loc3_:String = null;
-         var _loc4_:Object = null;
-         var _loc5_:IResourceBundle = null;
+         var _loc5_:String = null;
+         var _loc6_:Object = null;
+         var _loc7_:IResourceBundle = null;
          if(!this._localeChain)
          {
             return null;
          }
-         var _loc6_:int = int(this._localeChain.length);
-         var _loc7_:int = 0;
-         while(_loc7_ < _loc6_)
+         var _loc3_:int = int(this._localeChain.length);
+         var _loc4_:int = 0;
+         while(_loc4_ < _loc3_)
          {
-            _loc3_ = this.localeChain[_loc7_];
-            _loc4_ = this.localeMap[_loc3_];
-            if(_loc4_)
+            _loc5_ = this.localeChain[_loc4_];
+            _loc6_ = this.localeMap[_loc5_];
+            if(_loc6_)
             {
-               _loc5_ = _loc4_[param1];
-               if(_loc5_)
+               _loc7_ = _loc6_[param1];
+               if(_loc7_)
                {
-                  if(param2 in _loc5_.content)
+                  if(param2 in _loc7_.content)
                   {
-                     return _loc5_;
+                     return _loc7_;
                   }
                }
             }
-            _loc7_++;
+            _loc4_++;
          }
          return null;
       }
       
+      [Bindable("change")]
       public function getObject(param1:String, param2:String, param3:String = null) : *
       {
          var _loc4_:IResourceBundle = this.findBundle(param1,param2,param3);
@@ -376,6 +369,7 @@ package mx.resources
          return _loc4_.content[param2];
       }
       
+      [Bindable("change")]
       public function getString(param1:String, param2:String, param3:Array = null, param4:String = null) : String
       {
          var _loc5_:IResourceBundle = this.findBundle(param1,param2,param4);
@@ -391,6 +385,7 @@ package mx.resources
          return _loc6_;
       }
       
+      [Bindable("change")]
       public function getStringArray(param1:String, param2:String, param3:String = null) : Array
       {
          var _loc4_:IResourceBundle = this.findBundle(param1,param2,param3);
@@ -410,6 +405,7 @@ package mx.resources
          return _loc6_;
       }
       
+      [Bindable("change")]
       public function getNumber(param1:String, param2:String, param3:String = null) : Number
       {
          var _loc4_:IResourceBundle = this.findBundle(param1,param2,param3);
@@ -421,6 +417,7 @@ package mx.resources
          return Number(_loc5_);
       }
       
+      [Bindable("change")]
       public function getInt(param1:String, param2:String, param3:String = null) : int
       {
          var _loc4_:IResourceBundle = this.findBundle(param1,param2,param3);
@@ -432,6 +429,7 @@ package mx.resources
          return int(_loc5_);
       }
       
+      [Bindable("change")]
       public function getUint(param1:String, param2:String, param3:String = null) : uint
       {
          var _loc4_:IResourceBundle = this.findBundle(param1,param2,param3);
@@ -443,6 +441,7 @@ package mx.resources
          return uint(_loc5_);
       }
       
+      [Bindable("change")]
       public function getBoolean(param1:String, param2:String, param3:String = null) : Boolean
       {
          var _loc4_:IResourceBundle = this.findBundle(param1,param2,param3);
@@ -454,6 +453,7 @@ package mx.resources
          return String(_loc5_).toLowerCase() == "true";
       }
       
+      [Bindable("change")]
       public function getClass(param1:String, param2:String, param3:String = null) : Class
       {
          var _loc4_:IResourceBundle = this.findBundle(param1,param2,param3);
@@ -514,6 +514,7 @@ package mx.resources
          var _loc3_:String = null;
          for each(_loc2_ in param1.resourceBundles)
          {
+            trace(_loc2_.locale,_loc2_.bundleName);
             for(_loc3_ in _loc2_.content)
             {
             }

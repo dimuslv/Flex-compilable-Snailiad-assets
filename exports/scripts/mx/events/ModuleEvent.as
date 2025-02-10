@@ -9,7 +9,7 @@ package mx.events
    
    public class ModuleEvent extends ProgressEvent
    {
-      mx_internal static const VERSION:String = "4.1.0.16076";
+      mx_internal static const VERSION:String = "4.1.0.21490";
       
       public static const ERROR:String = "error";
       

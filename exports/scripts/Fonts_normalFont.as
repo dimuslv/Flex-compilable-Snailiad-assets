@@ -2,7 +2,7 @@ package
 {
    import mx.core.FontAsset;
    
-   [Embed(source="/_assets/124_Fonts_normalFont_Snailplanes.ttf",
+   [Embed(source="/_assets/135_Fonts_normalFont_Snailplanes.ttf",
    fontName="Snailplanes",
    fontFamily="Snailplanes",
    mimeType="application/x-font",

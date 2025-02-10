@@ -33,18 +33,18 @@ package mx.utils
       
       public function drain() : String
       {
-         var _loc1_:Array = null;
-         var _loc2_:String = "";
-         var _loc3_:uint = 0;
-         while(_loc3_ < this._buffers.length)
+         var _loc3_:Array = null;
+         var _loc1_:String = "";
+         var _loc2_:uint = 0;
+         while(_loc2_ < this._buffers.length)
          {
-            _loc1_ = this._buffers[_loc3_] as Array;
-            _loc2_ += String.fromCharCode.apply(null,_loc1_);
-            _loc3_++;
+            _loc3_ = this._buffers[_loc2_] as Array;
+            _loc1_ += String.fromCharCode.apply(null,_loc3_);
+            _loc2_++;
          }
          this._buffers = [];
          this._buffers.push([]);
-         return _loc2_;
+         return _loc1_;
       }
       
       public function encode(param1:String, param2:uint = 0, param3:uint = 0) : void
