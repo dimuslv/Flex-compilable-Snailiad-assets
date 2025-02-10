@@ -100,7 +100,7 @@ package
          name null
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 6
@@ -111,10 +111,8 @@ package
          code
          getlocal0
          pushscope
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs0
@@ -154,10 +152,8 @@ package
          initproperty QName(PrivateNamespace(null,"#Boss1"),"WEAPON_SPEED")
          jump ofs2
          ofs1:
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs3
@@ -400,16 +396,16 @@ package
          kill 2
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_hand")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_hand")
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_eyes")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_eyes")
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_handThetaCur")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_handThetaCur")
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_handThetaSpeed")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_handThetaSpeed")
          getlocal0
          callsupervoid QName(PackageNamespace(""),"destroy"), 0
          returnvoid
@@ -493,14 +489,7 @@ package
          setlocal1
          pushnan
          setlocal2
-         getlex QName(PackageNamespace(""),"NaN")
-         convert_d
-         setlocal1
-         getlex QName(PackageNamespace(""),"NaN")
-         convert_d
-         setlocal2
-         getlex QName(PackageNamespace(""),"NaN")
-         convert_d
+         pushnan
          setlocal3
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"realState")
@@ -509,10 +498,8 @@ package
          ifeq ofs0
          returnvoid
          ofs0:
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs1
@@ -531,7 +518,7 @@ package
          pushdouble 1.2
          multiply
          add
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_totalElapsed")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_totalElapsed")
          jump ofs3
          ofs2:
          getlocal0
@@ -540,7 +527,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          add
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_totalElapsed")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_totalElapsed")
          ofs3:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss1"),"_createdChildren")
@@ -550,7 +537,7 @@ package
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"y")
          constructprop QName(PackageNamespace(""),"Boss1Eyes"), 2
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_eyes")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_eyes")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"enemies")
          getlocal0
@@ -558,7 +545,7 @@ package
          callpropvoid QName(PackageNamespace(""),"add"), 1
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_createdChildren")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_createdChildren")
          ofs4:
          getlocal0
          callproperty QName(PackageNamespace(""),"now"), 0
@@ -657,14 +644,14 @@ package
          callproperty QName(PackageNamespace(""),"sin"), 1
          multiply
          add
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_handRadius")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_handRadius")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss1"),"_handRadius")
          pushbyte 50
          ifnlt ofs5
          getlocal0
          pushbyte 50
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_handRadius")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_handRadius")
          ofs5:
          getlocal0
          getlocal0
@@ -672,7 +659,7 @@ package
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss1"),"_radiusMultCur")
          multiply
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_handRadius")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_handRadius")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss1"),"_radiusMultCur")
@@ -683,7 +670,7 @@ package
          pushdouble 0.1
          multiply
          add
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_radiusMultCur")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_radiusMultCur")
          pushbyte 0
          setlocal 5
          jump ofs6
@@ -905,8 +892,8 @@ package
          add
          callpropvoid QName(PackageNamespace(""),"play"), 1
          getlocal0
-         pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_radiusMultTarget")
+         pushdouble 0
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_radiusMultTarget")
          getlocal1
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss1"),"_shotTimeout")
@@ -919,7 +906,7 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss1"),"_turboMultiplier")
          multiply
          add
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_shotTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_shotTimeout")
          getlocal0
          dup
          setlocal3
@@ -990,6 +977,7 @@ package
          divide
          subtract
          callpropvoid QName(PackageNamespace(""),"shoot"), 1
+         jump ofs4
          ofs8:
          label
          jump ofs4
@@ -1042,19 +1030,19 @@ package
          add
          pushbyte 4
          modulo
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_firingPattern")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_firingPattern")
          getlocal0
          getlocal1
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss1"),"PATTERN_DELAY")
          add
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_firingPatternTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_firingPatternTimeout")
          getlocal0
          pushbyte 1
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_radiusMultTarget")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_radiusMultTarget")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_shotNum")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_shotNum")
          findpropstrict QName(PackageNamespace(""),"play")
          pushstring "normal"
          getlocal0
@@ -1205,13 +1193,13 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss1"),"_shotMax")
          pushbyte 27
          add
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_shotMax")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_shotMax")
          getlocal0
          pushdouble 0.1
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_turboMultiplier")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_turboMultiplier")
          getlocal0
          pushbyte 2
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_attackMode")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_attackMode")
          findpropstrict QName(PackageNamespace(""),"play")
          pushstring "normal2"
          callpropvoid QName(PackageNamespace(""),"play"), 1
@@ -1237,13 +1225,13 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss1"),"_shotMax")
          pushbyte 9
          add
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_shotMax")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_shotMax")
          getlocal0
          pushdouble 0.28
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_turboMultiplier")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_turboMultiplier")
          getlocal0
          pushbyte 1
-         setproperty QName(PrivateNamespace(null,"#Boss1"),"_attackMode")
+         initproperty QName(PrivateNamespace(null,"#Boss1"),"_attackMode")
          findpropstrict QName(PackageNamespace(""),"play")
          pushstring "normal1"
          callpropvoid QName(PackageNamespace(""),"play"), 1

@@ -151,8 +151,6 @@ package
       {
          var _loc1_:Number = NaN;
          var _loc2_:Number = NaN;
-         _loc1_ = NaN;
-         _loc2_ = NaN;
          var _loc3_:Number = NaN;
          if(PlayState.realState != PlayState.STATE_GAME)
          {

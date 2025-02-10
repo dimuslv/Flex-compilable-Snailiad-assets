@@ -8,7 +8,7 @@ package
       
       private const MAX_TRIGGERS:int = 250;
       
-      public function AiTriggerPool()
+      public function AiTriggerPool() : void
       {
          this.triggers = new Array();
          super();

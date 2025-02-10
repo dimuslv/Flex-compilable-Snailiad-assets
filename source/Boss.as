@@ -25,7 +25,7 @@ package
       
       protected var _noParalyze:Boolean = false;
       
-      public function Boss(param1:int, param2:int, param3:int, param4:int, param5:int, param6:Boolean = false)
+      public function Boss(param1:int, param2:int, param3:int, param4:int, param5:int, param6:Boolean = false) : void
       {
          super(param1,param2,param3,param4,param5);
          this._startTime = getTimer();
@@ -40,7 +40,7 @@ package
       
       public function resetStartTime() : void
       {
-         this._startTime = getTimer();
+         _startTime = getTimer();
       }
       
       override public function touch(param1:Player) : void
@@ -65,9 +65,9 @@ package
             _loc1_ = getTimer() - this._startTime;
             if(_loc1_ > DELAY_VULNERABLE)
             {
-               this._vulnerable = true;
+               _vulnerable = true;
                PlayState.hud.bossBarHud.makeBar(_hp);
-               this._introDone = true;
+               _introDone = true;
                if(!this._noParalyze)
                {
                   PlayState.player.paralyze(false);
@@ -83,7 +83,7 @@ package
             }
             if(_loc1_ > DELAY_START_HP_FILL)
             {
-               _loc2_ = _hp * Number(_loc1_ - DELAY_START_HP_FILL) / Number(DELAY_FINISH_HP_FILL - DELAY_START_HP_FILL);
+               _loc2_ = _hp * (Number)(_loc1_ - DELAY_START_HP_FILL) / (Number)(DELAY_FINISH_HP_FILL - DELAY_START_HP_FILL);
                if(_loc2_ < 1)
                {
                   _loc2_ = 1;

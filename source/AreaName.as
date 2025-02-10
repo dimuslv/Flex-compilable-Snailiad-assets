@@ -6,7 +6,13 @@ package
    
    public class AreaName extends FlxText
    {
-      private static var _fadeInStart:int;
+      private static const FADEIN_END:int = 700;
+      
+      private static const FADEOUT_START:int = 3300;
+      
+      private static const FADEOUT_END:int = 4000;
+	  
+	  private static var _fadeInStart:int;
       
       private static var _fadeInEnd:int;
       
@@ -14,13 +20,7 @@ package
       
       private static var _fadeOutEnd:int;
       
-      private static const FADEIN_END:int = 700;
-      
-      private static const FADEOUT_START:int = 3300;
-      
-      private static const FADEOUT_END:int = 4000;
-      
-      public function AreaName()
+      public function AreaName() : void
       {
          super(0,FlxG.height / 2 - 20,FlxG.width);
          font = Fonts.normal;
@@ -39,7 +39,7 @@ package
          _fadeOutStart = _fadeInStart + FADEOUT_START;
          _fadeOutEnd = _fadeInStart + FADEOUT_END;
          text = param1;
-         alpha = 0;
+         alpha = 0.0;
          active = true;
       }
       

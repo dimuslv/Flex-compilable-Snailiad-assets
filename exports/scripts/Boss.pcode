@@ -70,7 +70,7 @@ package
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"Boolean")
          optional False()
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 6
@@ -136,7 +136,7 @@ package
          getlocal0
          findpropstrict QName(PackageNamespace("flash.utils"),"getTimer")
          callproperty QName(PackageNamespace("flash.utils"),"getTimer"), 0
-         setproperty QName(ProtectedNamespace("Boss"),"_startTime")
+         initproperty QName(ProtectedNamespace("Boss"),"_startTime")
          returnvoid
          end ; code
          end ; body
@@ -181,7 +181,7 @@ package
          returns QName(PackageNamespace(""),"void")
          
          body
-         maxstack 4
+         maxstack 5
          localcount 3
          initscopedepth 9
          maxscopedepth 10
@@ -231,7 +231,7 @@ package
          ifngt ofs4
          getlocal0
          pushtrue
-         setproperty QName(ProtectedNamespace("Boss"),"_vulnerable")
+         initproperty QName(ProtectedNamespace("Boss"),"_vulnerable")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"hud")
          getproperty QName(PackageNamespace(""),"bossBarHud")
@@ -239,7 +239,7 @@ package
          callpropvoid QName(PackageNamespace(""),"makeBar"), 1
          getlocal0
          pushtrue
-         setproperty QName(ProtectedNamespace("Boss"),"_introDone")
+         initproperty QName(ProtectedNamespace("Boss"),"_introDone")
          getlocal0
          getproperty QName(ProtectedNamespace("Boss"),"_noParalyze")
          iftrue ofs4
@@ -272,17 +272,19 @@ package
          getlex QName(PrivateNamespace(null,"#Boss"),"DELAY_START_HP_FILL")
          ifngt ofs2
          getlex QName(ProtectedNamespace("Enemy"),"_hp")
-         findpropstrict QName(PackageNamespace(""),"Number")
+         getlex QName(PackageNamespace(""),"Number")
+         getglobalscope
          getlocal1
          getlex QName(PrivateNamespace(null,"#Boss"),"DELAY_START_HP_FILL")
          subtract
-         callproperty QName(PackageNamespace(""),"Number"), 1
+         call 1
          multiply
-         findpropstrict QName(PackageNamespace(""),"Number")
+         getlex QName(PackageNamespace(""),"Number")
+         getglobalscope
          getlex QName(PrivateNamespace(null,"#Boss"),"DELAY_FINISH_HP_FILL")
          getlex QName(PrivateNamespace(null,"#Boss"),"DELAY_START_HP_FILL")
          subtract
-         callproperty QName(PackageNamespace(""),"Number"), 1
+         call 1
          divide
          convert_i
          setlocal2
