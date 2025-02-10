@@ -144,6 +144,8 @@ package
       
       private var rsteptheta:Number = 0;
       
+	  private const TIMEOUTS:Array = [0.60153,0.48509,0.70037,0.66276,0.70802,0.79541,0.62043,0.5796,0.99605,0.15058,0.72121,0.86851,0.64371,0.76708,0.89401,0.52828,0.72309,0.15963,0.15116,0.1799,0.27829,0.40878,0.92538,0.45074,0.18865,0.59797,0.4318,0.94098,0.23463,0.29221,0.59734,0.34877,0.81676,0.57617,0.14883,0.16094,0.14123,0.57931,0.85924,0.22828,0.63834,0.10387,0.54746,0.24897,0.11105,0.49748,0.54746,0.19405,0.79792,0.36023,0.53726,0.78544,0.60425,0.83512,0.01696,0.10451,0.01513,0.78678,0.51617,0.24251];
+      
       private var lfootStompTimeout:Number = 0;
       
       private var rfootStompTimeout:Number = 0;
@@ -164,16 +166,14 @@ package
       
       private var rtheta:Number = 0;
 	  
-	  private var TIMEOUTS:Array = [0.60153,0.48509,0.70037,0.66276,0.70802,0.79541,0.62043,0.5796,0.99605,0.15058,0.72121,0.86851,0.64371,0.76708,0.89401,0.52828,0.72309,0.15963,0.15116,0.1799,0.27829,0.40878,0.92538,0.45074,0.18865,0.59797,0.4318,0.94098,0.23463,0.29221,0.59734,0.34877,0.81676,0.57617,0.14883,0.16094,0.14123,0.57931,0.85924,0.22828,0.63834,0.10387,0.54746,0.24897,0.11105,0.49748,0.54746,0.19405,0.79792,0.36023,0.53726,0.78544,0.60425,0.83512,0.01696,0.10451,0.01513,0.78678,0.51617,0.24251];
-      
-      public function Boss2(param1:int, param2:int)
+      public function Boss2(param1:int, param2:int) : void
       {
-         if(Boolean(PlayState.player) && PlayState.player._insaneMode)
+         if(PlayState.player && PlayState.player._insaneMode)
          {
             this._bossSpeed = 1;
             this.MAX_HP *= 2;
          }
-         else if(Boolean(PlayState.player) && PlayState.player._hardMode)
+         else if(PlayState.player && PlayState.player._hardMode)
          {
             this._bossSpeed = 0.9;
             this.MAX_HP *= 1.4;
@@ -216,33 +216,32 @@ package
          {
             this.cannons[_loc1_] = null;
          }
-         this.cannons = null;
-         this.lfoot = null;
-         this.rfoot = null;
-         this.leye = null;
-         this.reye = null;
+         cannons = null;
+         lfoot = null;
+         rfoot = null;
+         leye = null;
+         reye = null;
          PlayState.boss2 = null;
          super.destroy();
       }
       
       public function moveChildren() : void
       {
-         var _loc1_:Number = NaN;
          if(this.lmode == FOOTMODE_STOMP)
          {
-            this.lfootyVel += 0.2;
-            this.lfooty += this.lfootyVel;
+            lfootyVel += 0.2;
+            lfooty += this.lfootyVel;
             if(this.lfooty > 0)
             {
-               this.lfooty = 0;
-               this.lmode = FOOTMODE_WAITRAISE;
+               lfooty = 0;
+               lmode = FOOTMODE_WAITRAISE;
                if(this.mode == MODE_STEP)
                {
-                  this.lmode = FOOTMODE_STEP;
+                  lmode = FOOTMODE_STEP;
                }
-               this.lfootyVel = 0;
-               this.lfootRaiseTimeout = 50;
-               this.lfootStompTimeout = 1000000;
+               lfootyVel = 0;
+               lfootRaiseTimeout = 50;
+               lfootStompTimeout = 1000000;
                Sfx.playStomp();
                FlxG.quake.start(0.03);
             }
@@ -251,45 +250,45 @@ package
          {
             if(this.mode != MODE_STEP)
             {
-               this.lmode = FOOTMODE_RAISE;
+               lmode = FOOTMODE_RAISE;
             }
             else
             {
-               this.lmode = FOOTMODE_STEP;
+               lmode = FOOTMODE_STEP;
             }
          }
          if(this.mode > MODE_INTRO3 && this.lmode == FOOTMODE_RAISE)
          {
-            this.lfootyVel -= 0.2;
-            this.lfooty += this.lfootyVel;
+            lfootyVel -= 0.2;
+            lfooty += this.lfootyVel;
             if(this.lfooty < RAISED_Y)
             {
-               this.lfooty = RAISED_Y;
-               this.lmode = FOOTMODE_MOVE;
+               lfooty = RAISED_Y;
+               lmode = FOOTMODE_MOVE;
                this.leye.shouldAttack = true;
-               this.lfootRaiseTimeout = 1000000;
-               this.lfootStompTimeout = int(this.TIMEOUTS[++this.lfootStompTimeoutIndex % this.TIMEOUTS.length] * 360) + 60;
+               lfootRaiseTimeout = 1000000;
+               lfootStompTimeout = int(this.TIMEOUTS[++this.lfootStompTimeoutIndex % this.TIMEOUTS.length] * 360) + 60;
                if(this.mode == MODE_SYNC)
                {
-                  this.lfootStompTimeout = 10;
+                  lfootStompTimeout = 10;
                }
             }
          }
          if(this.rmode == FOOTMODE_STOMP)
          {
-            this.rfootyVel += 0.2;
-            this.rfooty += this.rfootyVel;
+            rfootyVel += 0.2;
+            rfooty += this.rfootyVel;
             if(this.rfooty > 0)
             {
-               this.rfooty = 0;
-               this.rmode = FOOTMODE_WAITRAISE;
+               rfooty = 0;
+               rmode = FOOTMODE_WAITRAISE;
                if(this.mode == MODE_STEP)
                {
-                  this.rmode = FOOTMODE_STEP;
+                  rmode = FOOTMODE_STEP;
                }
-               this.rfootyVel = 0;
-               this.rfootRaiseTimeout = 50;
-               this.rfootStompTimeout = 1000000;
+               rfootyVel = 0;
+               rfootRaiseTimeout = 50;
+               rfootStompTimeout = 1000000;
                Sfx.playStomp();
                FlxG.quake.start(0.03);
             }
@@ -298,85 +297,85 @@ package
          {
             if(this.mode != MODE_STEP)
             {
-               this.rmode = FOOTMODE_RAISE;
+               rmode = FOOTMODE_RAISE;
             }
             else
             {
-               this.rmode = FOOTMODE_STEP;
+               rmode = FOOTMODE_STEP;
             }
          }
          if(this.mode > MODE_INTRO3 && this.rmode == FOOTMODE_RAISE)
          {
-            this.rfootyVel -= 0.2;
-            this.rfooty += this.rfootyVel;
+            rfootyVel -= 0.2;
+            rfooty += this.rfootyVel;
             if(this.rfooty < RAISED_Y)
             {
-               this.rfooty = RAISED_Y;
-               this.rmode = FOOTMODE_MOVE;
+               rfooty = RAISED_Y;
+               rmode = FOOTMODE_MOVE;
                this.reye.shouldAttack = true;
-               this.rfootRaiseTimeout = 1000000;
-               this.rfootStompTimeout = int(this.TIMEOUTS[++this.lfootStompTimeoutIndex % this.TIMEOUTS.length] * 360) + 60;
+               rfootRaiseTimeout = 1000000;
+               rfootStompTimeout = int(this.TIMEOUTS[++this.lfootStompTimeoutIndex % this.TIMEOUTS.length] * 360) + 60;
                if(this.mode == MODE_SYNC)
                {
-                  this.rfootStompTimeout = 10;
+                  rfootStompTimeout = 10;
                }
             }
          }
          if(this.mode > MODE_INTRO3 && this.lmode == FOOTMODE_MOVE)
          {
-            this.ltheta += 0.2;
+            ltheta += 0.2;
             if(this.mode == MODE_HUNT)
             {
-               this.lfootxtarget = PlayState.player.x - x;
+               lfootxtarget = PlayState.player.x - x;
             }
             else
             {
-               this.lfootxtarget = Math.sin(this.ltheta / 15) * 160;
+               lfootxtarget = Math.sin(this.ltheta / 15) * 160;
             }
             if(this.rfootx - this.lfootxtarget < MIN_DIST)
             {
-               this.lfootxtarget = this.rfootx - MIN_DIST;
+               lfootxtarget = this.rfootx - MIN_DIST;
             }
             if(PlayState.player.x - x < -320)
             {
-               this.lfootxtarget = PlayState.player.x - x + 100;
+               lfootxtarget = PlayState.player.x - x + 100;
             }
-            --this.lfootStompTimeout;
-            this.lfootxvel = this.lfootxtarget - this.lfootx;
-            this.lfootx += this.lfootxvel * 0.1;
+            --lfootStompTimeout;
+            lfootxvel = this.lfootxtarget - this.lfootx;
+            lfootx += this.lfootxvel * 0.1;
             if(this.lfootStompTimeout <= 0 && this.lfooty <= RAISED_Y + 10 && this.lfootyVel < 1)
             {
-               this.lmode = FOOTMODE_STOMP;
-               this.lfootyVel = 10;
+               lmode = FOOTMODE_STOMP;
+               lfootyVel = 10;
                this.leye.shouldAttack = false;
             }
          }
          if(this.mode > MODE_INTRO3 && this.rmode == FOOTMODE_MOVE)
          {
-            this.rtheta += 0.2;
+            rtheta += 0.2;
             if(this.mode == MODE_HUNT)
             {
-               this.rfootxtarget = PlayState.player.x - x;
+               rfootxtarget = PlayState.player.x - x;
             }
             else
             {
-               this.rfootxtarget = Math.sin(this.rtheta / 15.5 + Math.PI / 3) * 160;
+               rfootxtarget = Math.sin(this.rtheta / 15.5 + Math.PI / 3) * 160;
             }
             if(this.rfootxtarget - this.lfootx < MIN_DIST)
             {
-               this.rfootxtarget = this.lfootx + MIN_DIST;
+               rfootxtarget = this.lfootx + MIN_DIST;
             }
             if(PlayState.player.x - x > 302)
             {
-               this.rfootxtarget = PlayState.player.x - x - 40;
+               rfootxtarget = PlayState.player.x - x - 40;
             }
-            this.rfootxvel = this.rfootxtarget - this.rfootx;
-            this.rfootx += this.rfootxvel * 0.1;
-            --this.rfootStompTimeout;
+            rfootxvel = this.rfootxtarget - this.rfootx;
+            rfootx += this.rfootxvel * 0.1;
+            --rfootStompTimeout;
             if(this.rfootStompTimeout <= 0 && this.rfooty <= RAISED_Y + 10 && this.rfootyVel < 1)
             {
-               this.rmode = FOOTMODE_STOMP;
-               this.rfootyVel = 10;
+               rmode = FOOTMODE_STOMP;
+               rfootyVel = 10;
                this.reye.shouldAttack = false;
             }
          }
@@ -384,67 +383,67 @@ package
          {
             if(this.lfootx < x)
             {
-               this.stepDirIsLeft = true;
-               this.lmode = FOOTMODE_STEPNOW;
-               this.rmode = FOOTMODE_STEPWAIT;
-               this.lsteptheta = 0;
-               this.rsteptheta = 0;
-               this.lsteporiginx = NO_ORIGIN;
-               this.lsteporiginy = this.lfooty;
+               stepDirIsLeft = true;
+               lmode = FOOTMODE_STEPNOW;
+               rmode = FOOTMODE_STEPWAIT;
+               lsteptheta = 0;
+               rsteptheta = 0;
+               lsteporiginx = NO_ORIGIN;
+               lsteporiginy = this.lfooty;
             }
             else
             {
-               this.stepDirIsLeft = false;
-               this.rmode = FOOTMODE_STEPNOW;
-               this.lmode = FOOTMODE_STEPWAIT;
-               this.lsteptheta = 0;
-               this.rsteptheta = 0;
-               this.rsteporiginx = NO_ORIGIN;
-               this.rsteporiginy = this.rfooty;
+               stepDirIsLeft = false;
+               rmode = FOOTMODE_STEPNOW;
+               lmode = FOOTMODE_STEPWAIT;
+               lsteptheta = 0;
+               rsteptheta = 0;
+               rsteporiginx = NO_ORIGIN;
+               rsteporiginy = this.rfooty;
             }
          }
          if(this.lmode == FOOTMODE_STEPNOW)
          {
             if(this.stepDirIsLeft && this.lsteptheta == 0 && this.lfootx < -170)
             {
-               this.stepDirIsLeft = false;
-               this.lmode = FOOTMODE_STEPWAIT;
-               this.rmode = FOOTMODE_STEPNOW;
-               this.rsteptheta = 0;
-               this.rsteporiginx = NO_ORIGIN;
-               this.rsteporiginy = this.rfooty;
+               stepDirIsLeft = false;
+               lmode = FOOTMODE_STEPWAIT;
+               rmode = FOOTMODE_STEPNOW;
+               rsteptheta = 0;
+               rsteporiginx = NO_ORIGIN;
+               rsteporiginy = this.rfooty;
             }
             else
             {
-               this.lsteptheta += 0.05;
+               lsteptheta += 0.05;
                if(this.lsteptheta >= Math.PI)
                {
-                  this.lsteptheta = Math.PI;
+                  lsteptheta = Math.PI;
                   Sfx.playStomp();
                   FlxG.quake.start();
-                  this.lmode = FOOTMODE_STEPWAIT;
-                  this.rmode = FOOTMODE_STEPNOW;
-                  this.rsteptheta = 0;
-                  this.rsteporiginx = NO_ORIGIN;
-                  this.rsteporiginy = this.rfooty;
+                  lmode = FOOTMODE_STEPWAIT;
+                  rmode = FOOTMODE_STEPNOW;
+                  rsteptheta = 0;
+                  rsteporiginx = NO_ORIGIN;
+                  rsteporiginy = this.rfooty;
                }
                if(this.stepDirIsLeft)
                {
                   if(this.lsteporiginx == NO_ORIGIN)
                   {
-                     this.lsteporiginx = this.lfootx - this.stepradius;
+                     lsteporiginx = this.lfootx - this.stepradius;
                   }
-                  this.lfootx = this.lsteporiginx + Math.cos(this.lsteptheta) * this.stepradius;
-                  this.lfooty = this.lsteporiginy - Math.sin(this.lsteptheta) * this.stepradius * 3.4;
+                  lfootx = this.lsteporiginx + Math.cos(this.lsteptheta) * this.stepradius;
+                  lfooty = this.lsteporiginy - Math.sin(this.lsteptheta) * this.stepradius * 3.4;
                }
                else
                {
                   if(this.lsteporiginx == NO_ORIGIN)
                   {
-                     this.lsteporiginx = this.lfootx + this.stepradius;
+                     lsteporiginx = this.lfootx + this.stepradius;
                   }
-                  this.lfootx = this.lsteporiginx - Math.cos(this.lsteptheta) * this.stepradius;
-                  this.lfooty = this.lsteporiginy - Math.sin(this.lsteptheta) * this.stepradius * 3.4;
+                  lfootx = this.lsteporiginx - Math.cos(this.lsteptheta) * this.stepradius;
+                  lfooty = this.lsteporiginy - Math.sin(this.lsteptheta) * this.stepradius * 3.4;
                }
             }
          }
@@ -452,62 +451,62 @@ package
          {
             if(!this.stepDirIsLeft && this.rsteptheta == 0 && this.rfootx > 170)
             {
-               this.stepDirIsLeft = true;
-               this.rmode = FOOTMODE_STEPWAIT;
-               this.lmode = FOOTMODE_STEPNOW;
-               this.lsteptheta = 0;
-               this.lsteporiginx = NO_ORIGIN;
-               this.lsteporiginy = this.lfooty;
+               stepDirIsLeft = true;
+               rmode = FOOTMODE_STEPWAIT;
+               lmode = FOOTMODE_STEPNOW;
+               lsteptheta = 0;
+               lsteporiginx = NO_ORIGIN;
+               lsteporiginy = this.lfooty;
             }
             else
             {
-               this.rsteptheta += 0.05;
+               rsteptheta += 0.05;
                if(this.rsteptheta >= Math.PI)
                {
-                  this.rsteptheta = Math.PI;
+                  rsteptheta = Math.PI;
                   Sfx.playStomp();
                   FlxG.quake.start();
-                  this.lmode = FOOTMODE_STEPNOW;
-                  this.rmode = FOOTMODE_STEPWAIT;
-                  this.lsteporiginx = NO_ORIGIN;
-                  this.lsteporiginy = this.lfooty;
-                  this.lsteptheta = 0;
+                  lmode = FOOTMODE_STEPNOW;
+                  rmode = FOOTMODE_STEPWAIT;
+                  lsteporiginx = NO_ORIGIN;
+                  lsteporiginy = this.lfooty;
+                  lsteptheta = 0;
                }
                if(this.stepDirIsLeft)
                {
                   if(this.rsteporiginx == NO_ORIGIN)
                   {
-                     this.rsteporiginx = this.rfootx - this.stepradius;
+                     rsteporiginx = this.rfootx - this.stepradius;
                   }
-                  this.rfootx = this.rsteporiginx + Math.cos(this.rsteptheta) * this.stepradius;
-                  this.rfooty = this.rsteporiginy - Math.sin(this.rsteptheta) * this.stepradius * 3.4;
+                  rfootx = this.rsteporiginx + Math.cos(this.rsteptheta) * this.stepradius;
+                  rfooty = this.rsteporiginy - Math.sin(this.rsteptheta) * this.stepradius * 3.4;
                }
                else
                {
                   if(this.rsteporiginx == NO_ORIGIN)
                   {
-                     this.rsteporiginx = this.rfootx + this.stepradius;
+                     rsteporiginx = this.rfootx + this.stepradius;
                   }
-                  this.rfootx = this.rsteporiginx - Math.cos(this.rsteptheta) * this.stepradius;
-                  this.rfooty = this.rsteporiginy - Math.sin(this.rsteptheta) * this.stepradius * 3.4;
+                  rfootx = this.rsteporiginx - Math.cos(this.rsteptheta) * this.stepradius;
+                  rfooty = this.rsteporiginy - Math.sin(this.rsteptheta) * this.stepradius * 3.4;
                }
             }
          }
          if(this.rfootx - this.lfootx < MIN_DIST)
          {
-            _loc1_ = MIN_DIST - (this.rfootx - this.lfootx);
+            var _loc1_:Number = MIN_DIST - (this.rfootx - this.lfootx);
             if(this.lmode == FOOTMODE_MOVE && this.rmode == FOOTMODE_STOMP)
             {
-               this.lfootx -= _loc1_;
+               lfootx -= _loc1_;
             }
             else if(this.rmode == FOOTMODE_MOVE && this.lmode == FOOTMODE_STOMP)
             {
-               this.rfootx += _loc1_;
+               rfootx += _loc1_;
             }
             else
             {
-               this.lfootx -= _loc1_ / 2;
-               this.rfootx += _loc1_ / 2;
+               lfootx -= _loc1_ / 2;
+               rfootx += _loc1_ / 2;
             }
          }
          this.lfoot.x = x + LFOOT_OFS_X + this.lfootx;
@@ -552,10 +551,10 @@ package
          {
             return;
          }
-         this._elapsed += FlxG.elapsed * this._bossSpeed;
+         _elapsed += FlxG.elapsed * this._bossSpeed;
          while(this._elapsed > SEC_PER_TICK)
          {
-            this._elapsed -= SEC_PER_TICK;
+            _elapsed -= SEC_PER_TICK;
             this.moveChildren();
          }
          if(_delayIntro)
@@ -565,13 +564,13 @@ package
                case MODE_INTRO1:
                   if(PlayState.player.x < x - 89)
                   {
-                     this.lmode = FOOTMODE_STOMP;
+                     lmode = FOOTMODE_STOMP;
                   }
                   if(PlayState.player.x < x - 109)
                   {
                      PlayState.player.velocity.x = PlayState.player._runSpeed.value;
                      PlayState.player.setFaceDir(Player.FACE_FLOOR_RIGHT,true);
-                     this.mode = MODE_INTRO2;
+                     mode = MODE_INTRO2;
                   }
                   else
                   {
@@ -581,13 +580,13 @@ package
                case MODE_INTRO2:
                   if(PlayState.player.x > x - 46)
                   {
-                     this.rmode = FOOTMODE_STOMP;
+                     rmode = FOOTMODE_STOMP;
                   }
                   if(PlayState.player.x > x - 38)
                   {
                      PlayState.player.setFaceDir(Player.FACE_FLOOR_LEFT,true);
                      PlayState.player.velocity.x = 0;
-                     this.mode = MODE_INTRO3;
+                     mode = MODE_INTRO3;
                      _delayIntro = false;
                      resetStartTime();
                      PlayState.hud.bossBarHud.makeBar(_hp);
@@ -599,6 +598,7 @@ package
                   {
                      PlayState.player.velocity.x = PlayState.player._runSpeed.value;
                   }
+				  break;
             }
          }
          else
@@ -608,64 +608,65 @@ package
                case MODE_INTRO3:
                   if(_introDone)
                   {
-                     this.mode = MODE_MOVESTOMP;
-                     this.stepModeTimeout = this.STEP_MODE_TIMEOUT;
+                     mode = MODE_MOVESTOMP;
+                     stepModeTimeout = this.STEP_MODE_TIMEOUT;
                   }
                   break;
                case MODE_MOVESTOMP:
-                  this.stepModeTimeout -= FlxG.elapsed * this._bossSpeed;
+                  stepModeTimeout -= FlxG.elapsed * this._bossSpeed;
                   if(this.stepModeTimeout < 0)
                   {
-                     this.mode = MODE_HUNT;
+                     mode = MODE_HUNT;
                   }
                   break;
                case MODE_HUNT:
                   if(this.rfootx - this.lfootx <= MIN_DIST + 2)
                   {
-                     this.stepModeTimeout = this.SYNC_MODE_TIMEOUT;
-                     this.mode = MODE_SYNC;
+                     stepModeTimeout = this.SYNC_MODE_TIMEOUT;
+                     mode = MODE_SYNC;
                   }
                   break;
                case MODE_SYNC:
                   if(this.lmode == FOOTMODE_MOVE && this.rmode == FOOTMODE_MOVE)
                   {
-                     this.lmode = FOOTMODE_STOMP;
-                     this.rmode = FOOTMODE_STOMP;
+                     lmode = FOOTMODE_STOMP;
+                     rmode = FOOTMODE_STOMP;
                   }
-                  this.stepModeTimeout -= FlxG.elapsed * this._bossSpeed;
+                  stepModeTimeout -= FlxG.elapsed * this._bossSpeed;
                   if(this.stepModeTimeout < 0)
                   {
-                     this.stepModeTimeout = this.STEP_MODE_TIMEOUT;
-                     this.mode = MODE_STEP;
+                     stepModeTimeout = this.STEP_MODE_TIMEOUT;
+                     mode = MODE_STEP;
                   }
                   break;
                case MODE_STEP:
                   if(this.lmode == FOOTMODE_MOVE)
                   {
-                     this.lmode = FOOTMODE_STOMP;
+                     lmode = FOOTMODE_STOMP;
                   }
                   if(this.rmode == FOOTMODE_MOVE)
                   {
-                     this.rmode = FOOTMODE_STOMP;
+                     rmode = FOOTMODE_STOMP;
                   }
-                  this.stepModeTimeout -= FlxG.elapsed * this._bossSpeed;
+                  stepModeTimeout -= FlxG.elapsed * this._bossSpeed;
                   if(this.stepModeTimeout < 0)
                   {
-                     this.stepModeTimeout = this.STEP_MODE_TIMEOUT;
-                     this.mode = MODE_MOVESTOMP;
-                     this.lmode = FOOTMODE_RAISE;
-                     this.rmode = FOOTMODE_RAISE;
-                     this.lfootRaiseTimeout = 0;
-                     this.rfootRaiseTimeout = 0;
-                     this.lfootStompTimeout = 50;
-                     this.rfootStompTimeout = 50;
+                     stepModeTimeout = this.STEP_MODE_TIMEOUT;
+                     mode = MODE_MOVESTOMP;
+                     lmode = FOOTMODE_RAISE;
+                     rmode = FOOTMODE_RAISE;
+                     lfootRaiseTimeout = 0;
+                     rfootRaiseTimeout = 0;
+                     lfootStompTimeout = 50;
+                     rfootStompTimeout = 50;
                   }
+				  break;
             }
          }
-         this._totalElapsed += FlxG.elapsed * this._bossSpeed;
+         _totalElapsed += FlxG.elapsed * this._bossSpeed;
          if(!this._createdChildren)
          {
-            this._createdChildren = true;
+            _createdChildren = true;
          }
          this.attack(this._totalElapsed);
          super.update();
@@ -701,7 +702,7 @@ package
          {
             return;
          }
-         this.beingKilled = true;
+         beingKilled = true;
          super.kill();
          PlayState.boss2 = null;
          if(_hp <= 0 && !PlayState.player.dead)
@@ -734,8 +735,8 @@ package
       {
          if(_hp <= this.MAX_HP * 0.28 && this._attackMode < 2)
          {
-            this._bossSpeed += 0.3;
-            this._attackMode = 2;
+            _bossSpeed += 0.3;
+            _attackMode = 2;
             this.leye.setMode(this._attackMode);
             this.reye.setMode(this._attackMode);
             this.lfoot.play("hurt");
@@ -743,8 +744,8 @@ package
          }
          else if(_hp <= this.MAX_HP * 0.66 && this._attackMode < 1)
          {
-            this._bossSpeed += 0.2;
-            this._attackMode = 1;
+            _bossSpeed += 0.2;
+            _attackMode = 1;
             this.leye.setMode(this._attackMode);
             this.reye.setMode(this._attackMode);
          }
