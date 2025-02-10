@@ -149,13 +149,13 @@ package
          pushscope
          getlocal1
          pushbyte 10
-         ifnlt ofs0013
+         ifnlt ofs0
          pushstring "0"
          getlocal1
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
          add
          returnvalue
-         ofs0013:
+         ofs0:
          getlocal1
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
          returnvalue
@@ -286,12 +286,12 @@ package
          getproperty QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"STATE_GAME")
-         ifeq ofs0013
+         ifeq ofs0
          returnvoid
-         ofs0013:
+         ofs0:
          getlocal0
          getproperty QName(PackageNamespace(""),"going")
-         iffalse ofs003b
+         iffalse ofs1
          getlocal0
          getproperty QName(PackageNamespace(""),"now")
          getlocal0
@@ -305,7 +305,7 @@ package
          getlocal0
          callproperty QName(PackageNamespace(""),"getTime"), 0
          initproperty QName(PackageNamespace(""),"text")
-         ofs003b:
+         ofs1:
          findproperty QName(PackageNamespace(""),"visible")
          getlocal0
          getproperty QName(PackageNamespace(""),"started")
@@ -347,7 +347,7 @@ pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxText")
 pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxText")
-newclass 105
+newclass #BossRushTimer
 popscope
 popscope
 popscope

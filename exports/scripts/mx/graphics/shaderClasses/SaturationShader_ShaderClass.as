@@ -2,7 +2,7 @@ package mx.graphics.shaderClasses
 {
    import mx.core.ByteArrayAsset;
    
-   [Embed(source="/_assets/33_mx.graphics.shaderClasses.SaturationShader_ShaderClass_mx.graphics.shaderClasses.SaturationShader_ShaderClass.bin", mimeType="application/octet-stream")]
+   [Embed]
    public class SaturationShader_ShaderClass extends ByteArrayAsset
    {
       public function SaturationShader_ShaderClass()

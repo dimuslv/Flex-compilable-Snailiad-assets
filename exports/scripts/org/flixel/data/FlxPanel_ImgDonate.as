@@ -2,7 +2,7 @@ package org.flixel.data
 {
    import mx.core.BitmapAsset;
    
-   [Embed(source="/_assets/238_org.flixel.data.FlxPanel_ImgDonate.png")]
+   [Embed]
    public class FlxPanel_ImgDonate extends BitmapAsset
    {
       public function FlxPanel_ImgDonate()

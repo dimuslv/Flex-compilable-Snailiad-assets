@@ -27,9 +27,9 @@ package
       code
       getlocal0
       pushscope
-      findproperty QName(PrivateNamespace(null,"238"),"myPageUrl")
+      findproperty QName(PrivateNamespace(null,"#main"),"myPageUrl")
       pushstring "http://auriplane.newgrounds.com/"
-      initproperty QName(PrivateNamespace(null,"238"),"myPageUrl")
+      initproperty QName(PrivateNamespace(null,"#main"),"myPageUrl")
       returnvoid
       end ; code
       end ; body
@@ -61,7 +61,7 @@ package
          setlocal3
          getlex QName(PackageNamespace(""),"Preloader")
          getproperty QName(PackageNamespace(""),"fail")
-         iftrue ofs0059
+         iftrue ofs0
          pushshort 400
          convert_u
          setlocal1
@@ -93,7 +93,7 @@ package
          findproperty QName(PackageNamespace(""),"useDefaultHotKeys")
          pushfalse
          initproperty QName(PackageNamespace(""),"useDefaultHotKeys")
-         ofs0059:
+         ofs0:
          getlocal0
          callpropvoid QName(PackageNamespace(""),"createContextMenu"), 0
          returnvoid
@@ -174,16 +174,16 @@ package
          setslot 2
          getscopeobject 1
          findpropstrict QName(PackageNamespace("flash.ui"),"ContextMenuItem")
-         getlex QName(PrivateNamespace(null,"238"),"myPageUrl")
+         getlex QName(PrivateNamespace(null,"#main"),"myPageUrl")
          constructprop QName(PackageNamespace("flash.ui"),"ContextMenuItem"), 1
          coerce QName(PackageNamespace("flash.ui"),"ContextMenuItem")
          setslot 3
          getlex QName(PackageNamespace("com.newgrounds"),"API")
          callproperty QName(PackageNamespace(""),"isNewgrounds"), 0
-         iffalse ofs008f
+         iffalse ofs0
          getscopeobject 1
          findpropstrict QName(PackageNamespace("flash.ui"),"ContextMenuItem")
-         getlex QName(PrivateNamespace(null,"238"),"myPageUrl")
+         getlex QName(PrivateNamespace(null,"#main"),"myPageUrl")
          constructprop QName(PackageNamespace("flash.ui"),"ContextMenuItem"), 1
          coerce QName(PackageNamespace("flash.ui"),"ContextMenuItem")
          setslot 3
@@ -191,8 +191,8 @@ package
          getslot 3
          pushfalse
          setproperty QName(PackageNamespace(""),"enabled")
-         jump ofs00a6
-         ofs008f:
+         jump ofs1
+         ofs0:
          getscopeobject 1
          getslot 3
          getlex QName(PackageNamespace("flash.events"),"ContextMenuEvent")
@@ -203,7 +203,7 @@ package
          getslot 3
          pushtrue
          setproperty QName(PackageNamespace(""),"enabled")
-         ofs00a6:
+         ofs1:
          getscopeobject 1
          getslot 2
          pushfalse
@@ -247,7 +247,7 @@ maxscopedepth 9
 code
 getlocal0
 pushscope
-getscopeobject 0
+findpropstrict Multiname("main",[PackageNamespace("")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
@@ -263,7 +263,7 @@ pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxGame")
 pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxGame")
-newclass 1
+newclass #main
 popscope
 popscope
 popscope

@@ -2,7 +2,7 @@ package org.flixel.data
 {
    import mx.core.BitmapAsset;
    
-   [Embed(source="/_assets/174_org.flixel.data.FlxPanel_ImgReddit.png")]
+   [Embed]
    public class FlxPanel_ImgReddit extends BitmapAsset
    {
       public function FlxPanel_ImgReddit()

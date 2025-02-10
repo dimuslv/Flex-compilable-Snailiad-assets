@@ -2,7 +2,7 @@ package
 {
    import mx.core.SoundAsset;
    
-   [Embed(source="/_assets/47_bigboom1_Sfx_EnemyKilled.mp3")]
+   [Embed]
    public class Sfx_EnemyKilled extends SoundAsset
    {
       public function Sfx_EnemyKilled()

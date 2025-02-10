@@ -99,9 +99,9 @@ package
          getproperty QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"STATE_GAME")
-         ifeq ofs0013
+         ifeq ofs0
          returnvoid
-         ofs0013:
+         ofs0:
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0
          getlex QName(PackageNamespace(""),"x")
@@ -110,7 +110,7 @@ package
          getproperty QName(PackageNamespace(""),"maxX")
          greaterthan
          dup
-         iftrue ofs003c
+         iftrue ofs1
          pop
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"width")
@@ -119,18 +119,18 @@ package
          getproperty QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"minX")
          lessthan
-         ofs003c:
+         ofs1:
          dup
-         iftrue ofs004f
+         iftrue ofs2
          pop
          getlex QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"maxY")
          greaterthan
-         ofs004f:
+         ofs2:
          dup
-         iftrue ofs0066
+         iftrue ofs3
          pop
          getlex QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"height")
@@ -139,11 +139,11 @@ package
          getproperty QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"minY")
          lessthan
-         ofs0066:
-         iffalse ofs0071
+         ofs3:
+         iffalse ofs4
          findpropstrict QName(PackageNamespace(""),"kill")
          callpropvoid QName(PackageNamespace(""),"kill"), 0
-         ofs0071:
+         ofs4:
          returnvoid
          end ; code
          end ; body
@@ -177,7 +177,7 @@ pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
 pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
-newclass 90
+newclass #Npc
 popscope
 popscope
 popscope

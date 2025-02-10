@@ -158,13 +158,13 @@ package mx.utils
          setlocal 5
          getlocal2
          pushbyte 0
-         ifne ofs0013
+         ifne ofs0
          getlocal1
          returnvalue
-         ofs0013:
+         ofs0:
          getlocal2
          pushbyte 0
-         ifnlt ofs004a
+         ifnlt ofs1
          pushbyte 100
          getlocal2
          add
@@ -197,8 +197,8 @@ package mx.utils
          multiply
          convert_d
          setlocal 5
-         jump ofs00bf
-         ofs004a:
+         jump ofs2
+         ofs1:
          getlocal2
          pushbyte 100
          divide
@@ -268,7 +268,7 @@ package mx.utils
          callproperty QName(PackageNamespace(""),"min"), 2
          convert_d
          setlocal 5
-         ofs00bf:
+         ofs2:
          getlocal3
          pushbyte 16
          lshift
@@ -388,7 +388,7 @@ findpropstrict Multiname("ColorUtil",[PackageNamespace("mx.utils")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass 157
+newclass #ColorUtil
 popscope
 initproperty QName(PackageNamespace("mx.utils"),"ColorUtil")
 returnvoid

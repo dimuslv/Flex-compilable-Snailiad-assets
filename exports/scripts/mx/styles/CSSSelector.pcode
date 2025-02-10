@@ -55,13 +55,13 @@ package mx.styles
          constructsuper 0
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"20"),"_subject")
+         initproperty QName(PrivateNamespace(null,"#CSSSelector"),"_subject")
          getlocal0
          getlocal2
-         initproperty QName(PrivateNamespace(null,"20"),"_conditions")
+         initproperty QName(PrivateNamespace(null,"#CSSSelector"),"_conditions")
          getlocal0
          getlocal3
-         initproperty QName(PrivateNamespace(null,"20"),"_ancestor")
+         initproperty QName(PrivateNamespace(null,"#CSSSelector"),"_ancestor")
          returnvoid
          end ; code
          end ; body
@@ -86,7 +86,7 @@ package mx.styles
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"20"),"_ancestor")
+         getproperty QName(PrivateNamespace(null,"#CSSSelector"),"_ancestor")
          returnvalue
          end ; code
          end ; body
@@ -111,7 +111,7 @@ package mx.styles
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"20"),"_conditions")
+         getproperty QName(PrivateNamespace(null,"#CSSSelector"),"_conditions")
          returnvalue
          end ; code
          end ; body
@@ -146,39 +146,39 @@ package mx.styles
          equals
          not
          dup
-         iffalse ofs0022
+         iffalse ofs0
          pop
          pushstring "global"
          getlocal0
          getproperty QName(PackageNamespace(""),"subject")
          equals
          not
-         ofs0022:
+         ofs0:
          dup
-         iffalse ofs0030
+         iffalse ofs1
          pop
          pushstring ""
          getlocal0
          getproperty QName(PackageNamespace(""),"subject")
          equals
          not
-         ofs0030:
-         iffalse ofs0037
+         ofs1:
+         iffalse ofs2
          pushbyte 1
          setlocal1
-         ofs0037:
+         ofs2:
          getlocal0
          getproperty QName(PackageNamespace(""),"conditions")
          pushnull
-         ifeq ofs006a
+         ifeq ofs3
          pushbyte 0
          setlocal3
          getlocal0
          getproperty QName(PackageNamespace(""),"conditions")
          coerce_a
          setlocal 4
-         jump ofs005f
-         ofs004e:
+         jump ofs4
+         ofs5:
          label
          getlocal 4
          getlocal3
@@ -191,16 +191,16 @@ package mx.styles
          add
          convert_i
          setlocal1
-         ofs005f:
+         ofs4:
          hasnext2 4, 3
-         iftrue ofs004e
+         iftrue ofs5
          kill 4
          kill 3
-         ofs006a:
+         ofs3:
          getlocal0
          getproperty QName(PackageNamespace(""),"ancestor")
          pushnull
-         ifeq ofs007e
+         ifeq ofs6
          getlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"ancestor")
@@ -208,7 +208,7 @@ package mx.styles
          add
          convert_i
          setlocal1
-         ofs007e:
+         ofs6:
          getlocal1
          returnvalue
          end ; code
@@ -234,7 +234,7 @@ package mx.styles
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"20"),"_subject")
+         getproperty QName(PrivateNamespace(null,"#CSSSelector"),"_subject")
          returnvalue
          end ; code
          end ; body
@@ -269,18 +269,18 @@ package mx.styles
          setlocal3
          getlocal0
          getproperty QName(PackageNamespace(""),"ancestor")
-         iffalse ofs00ac
+         iffalse ofs0
          getlocal0
          getproperty QName(PackageNamespace(""),"conditions")
-         iffalse ofs0051
+         iffalse ofs1
          pushbyte 0
          setlocal 5
          getlocal0
          getproperty QName(PackageNamespace(""),"conditions")
          coerce_a
          setlocal 6
-         jump ofs0046
-         ofs002d:
+         jump ofs2
+         ofs3:
          label
          getlocal 6
          getlocal 5
@@ -293,23 +293,23 @@ package mx.styles
          convert_b
          setlocal2
          getlocal2
-         iftrue ofs0046
+         iftrue ofs2
          pushfalse
          returnvalue
-         ofs0046:
+         ofs2:
          hasnext2 6, 5
-         iftrue ofs002d
+         iftrue ofs3
          kill 6
          kill 5
-         ofs0051:
+         ofs1:
          pushfalse
          setlocal2
          getlocal1
          getproperty QName(Namespace("mx.styles:IAdvancedStyleClient"),"styleParent")
          coerce QName(PackageNamespace("mx.styles"),"IAdvancedStyleClient")
          setlocal 4
-         jump ofs00a1
-         ofs005f:
+         jump ofs4
+         ofs5:
          label
          getlocal 4
          getlocal0
@@ -318,15 +318,15 @@ package mx.styles
          callproperty QName(Namespace("mx.styles:IAdvancedStyleClient"),"matchesCSSType"), 1
          convert_b
          dup
-         iftrue ofs007f
+         iftrue ofs6
          pop
          pushstring "*"
          getlocal0
          getproperty QName(PackageNamespace(""),"ancestor")
          getproperty QName(PackageNamespace(""),"subject")
          equals
-         ofs007f:
-         iffalse ofs0098
+         ofs6:
+         iffalse ofs7
          getlocal0
          getproperty QName(PackageNamespace(""),"ancestor")
          getlocal 4
@@ -334,65 +334,65 @@ package mx.styles
          convert_b
          setlocal2
          getlocal2
-         iffalse ofs0098
-         jump ofs00a8
-         ofs0098:
+         iffalse ofs7
+         jump ofs8
+         ofs7:
          getlocal 4
          getproperty QName(Namespace("mx.styles:IAdvancedStyleClient"),"styleParent")
          coerce QName(PackageNamespace("mx.styles"),"IAdvancedStyleClient")
          setlocal 4
-         ofs00a1:
+         ofs4:
          getlocal 4
          pushnull
-         ifne ofs005f
-         ofs00a8:
-         jump ofs011d
-         ofs00ac:
+         ifne ofs5
+         ofs8:
+         jump ofs9
+         ofs0:
          getlocal0
          getproperty QName(PackageNamespace(""),"subject")
          pushstring "*"
          equals
          dup
-         iftrue ofs00c1
+         iftrue ofs10
          pop
          getlocal0
          getproperty QName(PackageNamespace(""),"subject")
          pushstring ""
          equals
-         ofs00c1:
+         ofs10:
          dup
-         iftrue ofs00d1
+         iftrue ofs11
          pop
          getlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"subject")
          callproperty QName(Namespace("mx.styles:IAdvancedStyleClient"),"matchesCSSType"), 1
          convert_b
-         ofs00d1:
-         iffalse ofs00d7
+         ofs11:
+         iffalse ofs12
          pushtrue
          setlocal2
-         ofs00d7:
+         ofs12:
          getlocal2
          convert_b
          dup
-         iffalse ofs00e6
+         iffalse ofs13
          pop
          getlocal0
          getproperty QName(PackageNamespace(""),"conditions")
          pushnull
          equals
          not
-         ofs00e6:
-         iffalse ofs011d
+         ofs13:
+         iffalse ofs9
          pushbyte 0
          setlocal 5
          getlocal0
          getproperty QName(PackageNamespace(""),"conditions")
          coerce_a
          setlocal 6
-         jump ofs0112
-         ofs00f9:
+         jump ofs14
+         ofs15:
          label
          getlocal 6
          getlocal 5
@@ -405,15 +405,15 @@ package mx.styles
          convert_b
          setlocal2
          getlocal2
-         iftrue ofs0112
+         iftrue ofs14
          pushfalse
          returnvalue
-         ofs0112:
+         ofs14:
          hasnext2 6, 5
-         iftrue ofs00f9
+         iftrue ofs15
          kill 6
          kill 5
-         ofs011d:
+         ofs9:
          getlocal2
          returnvalue
          end ; code
@@ -446,15 +446,15 @@ package mx.styles
          setlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"conditions")
-         iffalse ofs004c
+         iffalse ofs0
          pushbyte 0
          setlocal3
          getlocal0
          getproperty QName(PackageNamespace(""),"conditions")
          coerce_a
          setlocal 4
-         jump ofs0041
-         ofs0020:
+         jump ofs1
+         ofs2:
          label
          getlocal 4
          getlocal3
@@ -465,19 +465,19 @@ package mx.styles
          getproperty QName(PackageNamespace(""),"kind")
          getlex QName(PackageNamespace("mx.styles"),"CSSConditionKind")
          getproperty QName(PackageNamespace(""),"PSEUDO")
-         ifne ofs0041
+         ifne ofs1
          getlocal2
          getproperty QName(PackageNamespace(""),"value")
          coerce_s
          setlocal1
-         jump ofs0048
-         ofs0041:
+         jump ofs3
+         ofs1:
          hasnext2 4, 3
-         iftrue ofs0020
-         ofs0048:
+         iftrue ofs2
+         ofs3:
          kill 4
          kill 3
-         ofs004c:
+         ofs0:
          getlocal1
          returnvalue
          end ; code
@@ -511,7 +511,7 @@ package mx.styles
          getlocal0
          getproperty QName(PackageNamespace(""),"ancestor")
          pushnull
-         ifeq ofs002a
+         ifeq ofs0
          getlocal0
          getproperty QName(PackageNamespace(""),"ancestor")
          callproperty QName(PackageNamespace(""),"toString"), 0
@@ -522,25 +522,25 @@ package mx.styles
          add
          coerce_s
          setlocal1
-         jump ofs0030
-         ofs002a:
+         jump ofs1
+         ofs0:
          getlocal0
          getproperty QName(PackageNamespace(""),"subject")
          coerce_s
          setlocal1
-         ofs0030:
+         ofs1:
          getlocal0
          getproperty QName(PackageNamespace(""),"conditions")
          pushnull
-         ifeq ofs0064
+         ifeq ofs2
          pushbyte 0
          setlocal3
          getlocal0
          getproperty QName(PackageNamespace(""),"conditions")
          coerce_a
          setlocal 4
-         jump ofs0059
-         ofs0047:
+         jump ofs3
+         ofs4:
          label
          getlocal 4
          getlocal3
@@ -553,12 +553,12 @@ package mx.styles
          add
          coerce_s
          setlocal1
-         ofs0059:
+         ofs3:
          hasnext2 4, 3
-         iftrue ofs0047
+         iftrue ofs4
          kill 4
          kill 3
-         ofs0064:
+         ofs2:
          getlocal1
          returnvalue
          end ; code
@@ -585,7 +585,7 @@ findpropstrict Multiname("CSSSelector",[PackageNamespace("mx.styles")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass 67
+newclass #CSSSelector
 popscope
 initproperty QName(PackageNamespace("mx.styles"),"CSSSelector")
 returnvoid

@@ -2,7 +2,7 @@ package org.flixel
 {
    import mx.core.BitmapAsset;
    
-   [Embed(source="/_assets/222_org.flixel.FlxTilemap_ImgAutoAlt.png")]
+   [Embed]
    public class FlxTilemap_ImgAutoAlt extends BitmapAsset
    {
       public function FlxTilemap_ImgAutoAlt()

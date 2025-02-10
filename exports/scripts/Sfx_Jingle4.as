@@ -2,7 +2,7 @@ package
 {
    import mx.core.SoundAsset;
    
-   [Embed(source="/_assets/61_Sfx_Jingle4_Sfx_Jingle4.mp3")]
+   [Embed]
    public class Sfx_Jingle4 extends SoundAsset
    {
       public function Sfx_Jingle4()

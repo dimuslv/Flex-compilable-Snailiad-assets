@@ -26,12 +26,12 @@ package
       code
       getlocal0
       pushscope
-      findproperty QName(PrivateNamespace(null,"244"),"FADEOUT_START")
+      findproperty QName(PrivateNamespace(null,"#SavingText"),"FADEOUT_START")
       pushdouble 1.8
-      initproperty QName(PrivateNamespace(null,"244"),"FADEOUT_START")
-      findproperty QName(PrivateNamespace(null,"244"),"FADEOUT_END")
+      initproperty QName(PrivateNamespace(null,"#SavingText"),"FADEOUT_START")
+      findproperty QName(PrivateNamespace(null,"#SavingText"),"FADEOUT_END")
       pushdouble 2.5
-      initproperty QName(PrivateNamespace(null,"244"),"FADEOUT_END")
+      initproperty QName(PrivateNamespace(null,"#SavingText"),"FADEOUT_END")
       returnvoid
       end ; code
       end ; body
@@ -155,12 +155,12 @@ package
          findproperty QName(PackageNamespace(""),"alpha")
          pushbyte 1
          initproperty QName(PackageNamespace(""),"alpha")
-         findproperty QName(PrivateNamespace(null,"244"),"_fadeOutStart")
-         getlex QName(PrivateNamespace(null,"244"),"FADEOUT_START")
-         setproperty QName(PrivateNamespace(null,"244"),"_fadeOutStart")
-         findproperty QName(PrivateNamespace(null,"244"),"_fadeOutEnd")
-         getlex QName(PrivateNamespace(null,"244"),"FADEOUT_END")
-         setproperty QName(PrivateNamespace(null,"244"),"_fadeOutEnd")
+         findproperty QName(PrivateNamespace(null,"#SavingText"),"_fadeOutStart")
+         getlex QName(PrivateNamespace(null,"#SavingText"),"FADEOUT_START")
+         setproperty QName(PrivateNamespace(null,"#SavingText"),"_fadeOutStart")
+         findproperty QName(PrivateNamespace(null,"#SavingText"),"_fadeOutEnd")
+         getlex QName(PrivateNamespace(null,"#SavingText"),"FADEOUT_END")
+         setproperty QName(PrivateNamespace(null,"#SavingText"),"_fadeOutEnd")
          returnvoid
          end ; code
          end ; body
@@ -189,43 +189,43 @@ package
          getproperty QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"STATE_GAME")
-         ifeq ofs0013
+         ifeq ofs0
          returnvoid
-         ofs0013:
-         findproperty QName(PrivateNamespace(null,"244"),"_fadeOutStart")
-         getlex QName(PrivateNamespace(null,"244"),"_fadeOutStart")
+         ofs0:
+         findproperty QName(PrivateNamespace(null,"#SavingText"),"_fadeOutStart")
+         getlex QName(PrivateNamespace(null,"#SavingText"),"_fadeOutStart")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"244"),"_fadeOutStart")
-         findproperty QName(PrivateNamespace(null,"244"),"_fadeOutEnd")
-         getlex QName(PrivateNamespace(null,"244"),"_fadeOutEnd")
+         setproperty QName(PrivateNamespace(null,"#SavingText"),"_fadeOutStart")
+         findproperty QName(PrivateNamespace(null,"#SavingText"),"_fadeOutEnd")
+         getlex QName(PrivateNamespace(null,"#SavingText"),"_fadeOutEnd")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"244"),"_fadeOutEnd")
-         getlex QName(PrivateNamespace(null,"244"),"_fadeOutEnd")
+         setproperty QName(PrivateNamespace(null,"#SavingText"),"_fadeOutEnd")
+         getlex QName(PrivateNamespace(null,"#SavingText"),"_fadeOutEnd")
          pushbyte 0
-         ifnlt ofs004f
+         ifnlt ofs1
          findproperty QName(PackageNamespace(""),"text")
          pushstring ""
          initproperty QName(PackageNamespace(""),"text")
          findproperty QName(PackageNamespace(""),"active")
          pushfalse
          initproperty QName(PackageNamespace(""),"active")
-         jump ofs0069
-         ofs004f:
-         getlex QName(PrivateNamespace(null,"244"),"_fadeOutStart")
+         jump ofs2
+         ofs1:
+         getlex QName(PrivateNamespace(null,"#SavingText"),"_fadeOutStart")
          pushbyte 0
-         ifnlt ofs0069
+         ifnlt ofs2
          findproperty QName(PackageNamespace(""),"alpha")
-         getlex QName(PrivateNamespace(null,"244"),"_fadeOutEnd")
-         getlex QName(PrivateNamespace(null,"244"),"FADEOUT_END")
-         getlex QName(PrivateNamespace(null,"244"),"FADEOUT_START")
+         getlex QName(PrivateNamespace(null,"#SavingText"),"_fadeOutEnd")
+         getlex QName(PrivateNamespace(null,"#SavingText"),"FADEOUT_END")
+         getlex QName(PrivateNamespace(null,"#SavingText"),"FADEOUT_START")
          subtract
          divide
          initproperty QName(PackageNamespace(""),"alpha")
-         ofs0069:
+         ofs2:
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0
          returnvoid
@@ -263,7 +263,7 @@ pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxText")
 pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxText")
-newclass 110
+newclass #SavingText
 popscope
 popscope
 popscope

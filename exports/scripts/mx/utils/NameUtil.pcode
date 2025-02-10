@@ -29,9 +29,9 @@ package mx.utils
       findproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
       pushstring "4.1.0.21490"
       initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
-      findproperty QName(PrivateNamespace(null,"28"),"counter")
+      findproperty QName(PrivateNamespace(null,"#NameUtil"),"counter")
       pushbyte 0
-      setproperty QName(PrivateNamespace(null,"28"),"counter")
+      setproperty QName(PrivateNamespace(null,"#NameUtil"),"counter")
       returnvoid
       end ; code
       end ; body
@@ -80,10 +80,10 @@ package mx.utils
          getlocal0
          pushscope
          getlocal1
-         iftrue ofs0009
+         iftrue ofs0
          pushnull
          returnvalue
-         ofs0009:
+         ofs0:
          findpropstrict QName(PackageNamespace("flash.utils"),"getQualifiedClassName")
          getlocal1
          callproperty QName(PackageNamespace("flash.utils"),"getQualifiedClassName"), 1
@@ -96,7 +96,7 @@ package mx.utils
          setlocal3
          getlocal3
          pushbyte -1
-         ifeq ofs002f
+         ifeq ofs1
          getlocal2
          getlocal3
          pushbyte 2
@@ -104,7 +104,7 @@ package mx.utils
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"substr"), 1
          coerce_s
          setlocal2
-         ofs002f:
+         ofs1:
          getlocal2
          getlocal2
          getproperty QName(PackageNamespace(""),"length")
@@ -116,29 +116,29 @@ package mx.utils
          pushbyte 48
          greaterequals
          dup
-         iffalse ofs004b
+         iffalse ofs2
          pop
          getlocal 4
          pushbyte 57
          lessequals
-         ofs004b:
-         iffalse ofs0055
+         ofs2:
+         iffalse ofs3
          getlocal2
          pushstring "_"
          add
          setlocal2
-         ofs0055:
+         ofs3:
          getlocal2
-         findpropstrict QName(PrivateNamespace(null,"28"),"counter")
+         findpropstrict QName(PrivateNamespace(null,"#NameUtil"),"counter")
          dup
          setlocal 5
-         getproperty QName(PrivateNamespace(null,"28"),"counter")
+         getproperty QName(PrivateNamespace(null,"#NameUtil"),"counter")
          dup
          increment_i
          setlocal 6
          getlocal 5
          getlocal 6
-         setproperty QName(PrivateNamespace(null,"28"),"counter")
+         setproperty QName(PrivateNamespace(null,"#NameUtil"),"counter")
          kill 6
          kill 5
          add
@@ -211,14 +211,14 @@ package mx.utils
          getscopeobject 1
          getlocal1
          setslot 1
-         ofs0025:
+         ofs0:
          getscopeobject 1
          getscopeobject 1
          getslot 1
          coerce QName(PackageNamespace("flash.display"),"DisplayObject")
          setslot 3
-         jump ofs0117
-         ofs0033:
+         jump ofs1
+         ofs2:
          label
          getscopeobject 1
          getslot 3
@@ -226,16 +226,16 @@ package mx.utils
          coerce_a
          convert_b
          dup
-         iffalse ofs004c
+         iffalse ofs3
          pop
          getscopeobject 1
          getslot 3
          getproperty QName(PackageNamespace(""),"stage")
          coerce_a
          convert_b
-         ofs004c:
+         ofs3:
          dup
-         iffalse ofs0061
+         iffalse ofs4
          pop
          getscopeobject 1
          getslot 3
@@ -244,44 +244,44 @@ package mx.utils
          getslot 3
          getproperty QName(PackageNamespace(""),"stage")
          equals
-         ofs0061:
-         iffalse ofs0069
-         jump ofs0120
-         ofs0069:
+         ofs4:
+         iffalse ofs5
+         jump ofs6
+         ofs5:
          getscopeobject 1
          pushstring "id"
          getscopeobject 1
          getslot 3
          in
          dup
-         iffalse ofs0084
+         iffalse ofs7
          pop
          getscopeobject 1
          getslot 3
          pushstring "id"
-         getproperty MultinameL([PrivateNamespace(null,"28"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace(""),PrivateNamespace(null,"45"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:NameUtil"),StaticProtectedNs("mx.utils:NameUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#NameUtil"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace(""),PrivateNamespace(null,"#NameUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:NameUtil"),StaticProtectedNs("mx.utils:NameUtil"),StaticProtectedNs("Object")])
          convert_b
-         ofs0084:
-         iffalse ofs0097
+         ofs7:
+         iffalse ofs8
          getscopeobject 1
          getslot 3
          pushstring "id"
-         getproperty MultinameL([PrivateNamespace(null,"28"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace(""),PrivateNamespace(null,"45"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:NameUtil"),StaticProtectedNs("mx.utils:NameUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#NameUtil"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace(""),PrivateNamespace(null,"#NameUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:NameUtil"),StaticProtectedNs("mx.utils:NameUtil"),StaticProtectedNs("Object")])
          coerce_s
-         jump ofs009f
-         ofs0097:
+         jump ofs9
+         ofs8:
          getscopeobject 1
          getslot 3
          getproperty QName(PackageNamespace(""),"name")
          coerce_s
-         ofs009f:
+         ofs9:
          coerce_s
          setslot 4
          getscopeobject 1
          getslot 3
          getlex QName(PackageNamespace("mx.core"),"IRepeaterClient")
          istypelate
-         iffalse ofs00e4
+         iffalse ofs10
          getscopeobject 1
          findpropstrict QName(PackageNamespace("mx.core"),"IRepeaterClient")
          getscopeobject 1
@@ -292,7 +292,7 @@ package mx.utils
          setslot 5
          getscopeobject 1
          getslot 5
-         iffalse ofs00e4
+         iffalse ofs10
          getscopeobject 1
          getscopeobject 1
          getslot 4
@@ -307,18 +307,18 @@ package mx.utils
          add
          coerce_s
          setslot 4
-         ofs00e4:
+         ofs10:
          getscopeobject 1
          getscopeobject 1
          getslot 2
          pushnull
          equals
-         iffalse ofs00f9
+         iffalse ofs11
          getscopeobject 1
          getslot 4
          coerce_s
-         jump ofs0107
-         ofs00f9:
+         jump ofs12
+         ofs11:
          getscopeobject 1
          getslot 4
          pushstring "."
@@ -327,7 +327,7 @@ package mx.utils
          getslot 2
          add
          coerce_s
-         ofs0107:
+         ofs12:
          coerce_s
          setslot 2
          getscopeobject 1
@@ -336,14 +336,14 @@ package mx.utils
          getproperty QName(PackageNamespace(""),"parent")
          coerce QName(PackageNamespace("flash.display"),"DisplayObject")
          setslot 3
-         ofs0117:
+         ofs1:
          getscopeobject 1
          getslot 3
          pushnull
-         ifne ofs0033
-         ofs0120:
-         jump ofs0134
-         ofs0124:
+         ifne ofs2
+         ofs6:
+         jump ofs13
+         ofs14:
          getlocal0
          pushscope
          getlocal2
@@ -357,12 +357,12 @@ package mx.utils
          setslot 1
          popscope
          kill 3
-         ofs0134:
+         ofs13:
          getscopeobject 1
          getslot 2
          returnvalue
          end ; code
-         try from ofs0025 to ofs0120 target ofs0124 type QName(PackageNamespace(""),"SecurityError") name QName(PackageNamespace(""),"e") end
+         try from ofs0 to ofs6 target ofs14 type QName(PackageNamespace(""),"SecurityError") name QName(PackageNamespace(""),"e") end
          end ; body
          end ; method
       }
@@ -392,20 +392,20 @@ package mx.utils
          getlocal1
          getlex QName(PackageNamespace(""),"String")
          istypelate
-         iffalse ofs0017
+         iffalse ofs0
          getlocal1
          getlex QName(PackageNamespace(""),"String")
          astypelate
          coerce_s
          setlocal2
-         jump ofs0021
-         ofs0017:
+         jump ofs1
+         ofs0:
          findpropstrict QName(PackageNamespace("flash.utils"),"getQualifiedClassName")
          getlocal1
          callproperty QName(PackageNamespace("flash.utils"),"getQualifiedClassName"), 1
          coerce_s
          setlocal2
-         ofs0021:
+         ofs1:
          getlocal2
          pushstring "::"
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"indexOf"), 1
@@ -413,7 +413,7 @@ package mx.utils
          setlocal3
          getlocal3
          pushbyte -1
-         ifeq ofs003d
+         ifeq ofs2
          getlocal2
          getlocal3
          pushbyte 2
@@ -421,7 +421,7 @@ package mx.utils
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"substr"), 1
          coerce_s
          setlocal2
-         ofs003d:
+         ofs2:
          getlocal2
          returnvalue
          end ; code
@@ -448,7 +448,7 @@ findpropstrict Multiname("NameUtil",[PackageNamespace("mx.utils")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass 30
+newclass #NameUtil
 popscope
 initproperty QName(PackageNamespace("mx.utils"),"NameUtil")
 returnvoid

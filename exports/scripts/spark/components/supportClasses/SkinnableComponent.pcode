@@ -81,7 +81,7 @@ package spark.components.supportClasses
          constructsuper 0
          getlocal0
          pushtrue
-         initproperty QName(PrivateNamespace(null,"60"),"skinStateIsDirty")
+         initproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"skinStateIsDirty")
          returnvoid
          end ; code
          end ; body
@@ -111,7 +111,7 @@ package spark.components.supportClasses
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"_skin")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"_skin")
          returnvalue
          end ; code
          end ; body
@@ -120,7 +120,7 @@ package spark.components.supportClasses
       
       private function setSkin(param1:UIComponent) : void
       {
-         trait method QName(PrivateNamespace(null,"60"),"setSkin")
+         trait method QName(PrivateNamespace(null,"#SkinnableComponent"),"setSkin")
          dispid 0
          method
          name null
@@ -138,13 +138,13 @@ package spark.components.supportClasses
          pushscope
          getlocal1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"_skin")
-         ifstrictne ofs000c
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"_skin")
+         ifstrictne ofs0
          returnvoid
-         ofs000c:
+         ofs0:
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"60"),"_skin")
+         initproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"_skin")
          findpropstrict QName(PackageNamespace(""),"dispatchEvent")
          findpropstrict QName(PackageNamespace("flash.events"),"Event")
          pushstring "skinChanged"
@@ -200,10 +200,10 @@ package spark.components.supportClasses
          pushscope
          findpropstrict QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"validateBaselinePosition")
          callproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"validateBaselinePosition"), 0
-         iftrue ofs0011
+         iftrue ofs0
          getlex QName(PackageNamespace(""),"NaN")
          returnvalue
-         ofs0011:
+         ofs0:
          getlex QName(PackageNamespace("spark.utils"),"FTETextUtil")
          getlocal0
          getlex QName(PackageNamespace(""),"height")
@@ -267,25 +267,25 @@ package spark.components.supportClasses
          callpropvoid QName(PackageNamespace(""),"invalidateSkinState"), 0
          getlocal0
          getlocal1
-         iffalse ofs001b
+         iffalse ofs0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"_explicitMouseChildren")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"_explicitMouseChildren")
          convert_b
-         jump ofs001c
-         ofs001b:
+         jump ofs1
+         ofs0:
          pushfalse
-         ofs001c:
+         ofs1:
          setsuper QName(PackageNamespace(""),"mouseChildren")
          getlocal0
          getlocal1
-         iffalse ofs002e
+         iffalse ofs2
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"_explicitMouseEnabled")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"_explicitMouseEnabled")
          convert_b
-         jump ofs002f
-         ofs002e:
+         jump ofs3
+         ofs2:
          pushfalse
-         ofs002f:
+         ofs3:
          setsuper QName(PackageNamespace(""),"mouseEnabled")
          returnvoid
          end ; code
@@ -317,7 +317,7 @@ package spark.components.supportClasses
          setsuper QName(PackageNamespace(""),"errorString")
          getlocal0
          pushtrue
-         initproperty QName(PrivateNamespace(null,"60"),"errorStringChanged")
+         initproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"errorStringChanged")
          findpropstrict QName(PackageNamespace(""),"invalidateProperties")
          callpropvoid QName(PackageNamespace(""),"invalidateProperties"), 0
          returnvoid
@@ -346,14 +346,14 @@ package spark.components.supportClasses
          getlocal0
          pushscope
          getlex QName(PackageNamespace(""),"enabled")
-         iffalse ofs000e
+         iffalse ofs0
          getlocal0
          getlocal1
          setsuper QName(PackageNamespace(""),"mouseEnabled")
-         ofs000e:
+         ofs0:
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"60"),"_explicitMouseEnabled")
+         initproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"_explicitMouseEnabled")
          returnvoid
          end ; code
          end ; body
@@ -380,14 +380,14 @@ package spark.components.supportClasses
          getlocal0
          pushscope
          getlex QName(PackageNamespace(""),"enabled")
-         iffalse ofs000e
+         iffalse ofs0
          getlocal0
          getlocal1
          setsuper QName(PackageNamespace(""),"mouseChildren")
-         ofs000e:
+         ofs0:
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"60"),"_explicitMouseChildren")
+         initproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"_explicitMouseChildren")
          returnvoid
          end ; code
          end ; body
@@ -418,12 +418,12 @@ package spark.components.supportClasses
          getlocal1
          equals
          dup
-         iftrue ofs0014
+         iftrue ofs0
          pop
          getlex QName(PackageNamespace(""),"currentState")
          getlocal1
          equals
-         ofs0014:
+         ofs0:
          returnvalue
          end ; code
          end ; body
@@ -451,10 +451,10 @@ package spark.components.supportClasses
          getlocal0
          callsupervoid QName(ProtectedNamespace("mx.core:UIComponent"),"createChildren"), 0
          getlex QName(PackageNamespace(""),"moduleFactory")
-         iffalse ofs0013
+         iffalse ofs0
          getlocal0
-         callpropvoid QName(PrivateNamespace(null,"60"),"validateSkinChange"), 0
-         ofs0013:
+         callpropvoid QName(PrivateNamespace(null,"#SkinnableComponent"),"validateSkinChange"), 0
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -463,7 +463,7 @@ package spark.components.supportClasses
       
       private function validateSkinChange() : void
       {
-         trait method QName(PrivateNamespace(null,"60"),"validateSkinChange")
+         trait method QName(PrivateNamespace(null,"#SkinnableComponent"),"validateSkinChange")
          dispid 0
          method
          name null
@@ -487,21 +487,21 @@ package spark.components.supportClasses
          pushfalse
          setlocal1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"_skin")
-         iffalse ofs0060
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"_skin")
+         iffalse ofs0
          findpropstrict QName(PackageNamespace(""),"getStyle")
          pushstring "skinFactory"
          callproperty QName(PackageNamespace(""),"getStyle"), 1
          coerce QName(PackageNamespace(""),"Object")
          setlocal2
          getlocal2
-         iffalse ofs0030
+         iffalse ofs1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"skinFactoryStyleChanged")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"skinFactoryStyleChanged")
          not
          setlocal1
-         jump ofs005b
-         ofs0030:
+         jump ofs2
+         ofs1:
          findpropstrict QName(PackageNamespace(""),"getStyle")
          pushstring "skinClass"
          callproperty QName(PackageNamespace(""),"getStyle"), 1
@@ -510,35 +510,35 @@ package spark.components.supportClasses
          getlocal3
          convert_b
          dup
-         iffalse ofs0059
+         iffalse ofs3
          pop
          findpropstrict QName(PackageNamespace("flash.utils"),"getQualifiedClassName")
          getlocal3
          callproperty QName(PackageNamespace("flash.utils"),"getQualifiedClassName"), 1
          findpropstrict QName(PackageNamespace("flash.utils"),"getQualifiedClassName")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"_skin")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"_skin")
          callproperty QName(PackageNamespace("flash.utils"),"getQualifiedClassName"), 1
          equals
-         ofs0059:
+         ofs3:
          convert_b
          setlocal1
-         ofs005b:
+         ofs2:
          getlocal0
          pushfalse
-         initproperty QName(PrivateNamespace(null,"60"),"skinFactoryStyleChanged")
-         ofs0060:
+         initproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"skinFactoryStyleChanged")
+         ofs0:
          getlocal1
-         iftrue ofs0077
+         iftrue ofs4
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
-         iffalse ofs0072
+         iffalse ofs5
          getlocal0
          callpropvoid QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"detachSkin"), 0
-         ofs0072:
+         ofs5:
          getlocal0
          callpropvoid QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"attachSkin"), 0
-         ofs0077:
+         ofs4:
          returnvoid
          end ; code
          end ; body
@@ -569,17 +569,17 @@ package spark.components.supportClasses
          getlocal0
          callsupervoid QName(ProtectedNamespace("mx.core:UIComponent"),"commitProperties"), 0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"skinChanged")
-         iffalse ofs001c
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"skinChanged")
+         iffalse ofs0
          getlocal0
          pushfalse
-         initproperty QName(PrivateNamespace(null,"60"),"skinChanged")
+         initproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"skinChanged")
          getlocal0
-         callpropvoid QName(PrivateNamespace(null,"60"),"validateSkinChange"), 0
-         ofs001c:
+         callpropvoid QName(PrivateNamespace(null,"#SkinnableComponent"),"validateSkinChange"), 0
+         ofs0:
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"skinStateIsDirty")
-         iffalse ofs0048
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"skinStateIsDirty")
+         iffalse ofs1
          getlocal0
          callproperty QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"getCurrentSkinState"), 0
          coerce_s
@@ -597,17 +597,17 @@ package spark.components.supportClasses
          setproperty QName(PackageNamespace(""),"currentState")
          getlocal0
          pushfalse
-         initproperty QName(PrivateNamespace(null,"60"),"skinStateIsDirty")
-         ofs0048:
+         initproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"skinStateIsDirty")
+         ofs1:
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"errorStringChanged")
-         iffalse ofs005a
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"errorStringChanged")
+         iffalse ofs2
          getlocal0
          callpropvoid QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"updateErrorSkin"), 0
          getlocal0
          pushfalse
-         initproperty QName(PrivateNamespace(null,"60"),"errorStringChanged")
-         ofs005a:
+         initproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"errorStringChanged")
+         ofs2:
          returnvoid
          end ; code
          end ; body
@@ -634,7 +634,7 @@ package spark.components.supportClasses
          pushscope
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
-         iffalse ofs007e
+         iffalse ofs0
          findproperty QName(PackageNamespace(""),"measuredWidth")
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
@@ -651,18 +651,18 @@ package spark.components.supportClasses
          getproperty QName(PackageNamespace(""),"skin")
          getproperty QName(PackageNamespace(""),"explicitWidth")
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iffalse ofs0047
+         iffalse ofs1
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
          getproperty QName(PackageNamespace(""),"minWidth")
          convert_d
-         jump ofs004f
-         ofs0047:
+         jump ofs2
+         ofs1:
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
          getproperty QName(PackageNamespace(""),"explicitWidth")
          convert_d
-         ofs004f:
+         ofs2:
          initproperty QName(PackageNamespace(""),"measuredMinWidth")
          findproperty QName(PackageNamespace(""),"measuredMinHeight")
          findpropstrict QName(PackageNamespace(""),"isNaN")
@@ -670,20 +670,20 @@ package spark.components.supportClasses
          getproperty QName(PackageNamespace(""),"skin")
          getproperty QName(PackageNamespace(""),"explicitHeight")
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iffalse ofs0073
+         iffalse ofs3
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
          getproperty QName(PackageNamespace(""),"minHeight")
          convert_d
-         jump ofs007b
-         ofs0073:
+         jump ofs4
+         ofs3:
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
          getproperty QName(PackageNamespace(""),"explicitHeight")
          convert_d
-         ofs007b:
+         ofs4:
          initproperty QName(PackageNamespace(""),"measuredMinHeight")
-         ofs007e:
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -712,13 +712,13 @@ package spark.components.supportClasses
          pushscope
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
-         iffalse ofs0014
+         iffalse ofs0
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
          getlocal1
          getlocal2
          callpropvoid QName(PackageNamespace(""),"setActualSize"), 2
-         ofs0014:
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -748,43 +748,43 @@ package spark.components.supportClasses
          pushnull
          equals
          dup
-         iftrue ofs0010
+         iftrue ofs0
          pop
          getlocal1
          pushstring "styleName"
          equals
-         ofs0010:
+         ofs0:
          convert_b
          setlocal2
          getlocal2
          convert_b
          dup
-         iftrue ofs001f
+         iftrue ofs1
          pop
          getlocal1
          pushstring "skinClass"
          equals
-         ofs001f:
+         ofs1:
          dup
-         iftrue ofs002a
+         iftrue ofs2
          pop
          getlocal1
          pushstring "skinFactory"
          equals
-         ofs002a:
-         iffalse ofs0047
+         ofs2:
+         iffalse ofs3
          getlocal0
          pushtrue
-         initproperty QName(PrivateNamespace(null,"60"),"skinChanged")
+         initproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"skinChanged")
          findpropstrict QName(PackageNamespace(""),"invalidateProperties")
          callpropvoid QName(PackageNamespace(""),"invalidateProperties"), 0
          getlocal1
          pushstring "skinFactory"
-         ifne ofs0047
+         ifne ofs3
          getlocal0
          pushtrue
-         initproperty QName(PrivateNamespace(null,"60"),"skinFactoryStyleChanged")
-         ofs0047:
+         initproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"skinFactoryStyleChanged")
+         ofs3:
          getlocal0
          getlocal1
          callsupervoid QName(PackageNamespace(""),"styleChanged"), 1
@@ -817,78 +817,78 @@ package spark.components.supportClasses
          coerce QName(PackageNamespace(""),"Class")
          setlocal2
          getlocal1
-         iffalse ofs007f
+         iffalse ofs0
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"drawFocusAnyway")
          not
          dup
-         iffalse ofs0020
+         iffalse ofs1
          pop
          getlex QName(PackageNamespace(""),"focusManager")
          callproperty QName(Namespace("mx.managers:IFocusManager"),"getFocus"), 0
          getlocal0
          equals
          not
-         ofs0020:
-         iffalse ofs0025
+         ofs1:
+         iffalse ofs2
          returnvoid
-         ofs0025:
+         ofs2:
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"focusObj")
-         iftrue ofs0059
+         iftrue ofs3
          findpropstrict QName(PackageNamespace(""),"getStyle")
          pushstring "focusSkin"
          callproperty QName(PackageNamespace(""),"getStyle"), 1
          coerce QName(PackageNamespace(""),"Class")
          setlocal2
          getlocal2
-         iffalse ofs0046
+         iffalse ofs4
          getlocal0
          getlocal2
          construct 0
          initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"focusObj")
-         ofs0046:
+         ofs4:
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"focusObj")
-         iffalse ofs0059
+         iffalse ofs3
          getlocal0
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"focusObj")
          pushbyte 0
          callsupervoid QName(PackageNamespace(""),"addChildAt"), 2
-         ofs0059:
+         ofs3:
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"focusObj")
          convert_b
          dup
-         iffalse ofs006c
+         iffalse ofs5
          pop
          pushstring "target"
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"focusObj")
          in
-         ofs006c:
-         iffalse ofs007b
+         ofs5:
+         iffalse ofs6
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"focusObj")
          pushstring "target"
          getlocal0
-         setproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         ofs007b:
-         jump ofs0095
-         ofs007f:
+         setproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs6:
+         jump ofs7
+         ofs0:
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"focusObj")
-         iffalse ofs0090
+         iffalse ofs8
          getlocal0
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"focusObj")
          callsupervoid QName(PackageNamespace(""),"removeChild"), 1
-         ofs0090:
+         ofs8:
          getlocal0
          pushnull
          initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"focusObj")
-         ofs0095:
+         ofs7:
          returnvoid
          end ; code
          end ; body
@@ -937,13 +937,13 @@ package spark.components.supportClasses
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"skinStateIsDirty")
-         iffalse ofs000b
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"skinStateIsDirty")
+         iffalse ofs0
          returnvoid
-         ofs000b:
+         ofs0:
          getlocal0
          pushtrue
-         initproperty QName(PrivateNamespace(null,"60"),"skinStateIsDirty")
+         initproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"skinStateIsDirty")
          findpropstrict QName(PackageNamespace(""),"invalidateProperties")
          callpropvoid QName(PackageNamespace(""),"invalidateProperties"), 0
          returnvoid
@@ -996,18 +996,18 @@ package spark.components.supportClasses
          setslot 1
          getscopeobject 1
          getslot 1
-         iffalse ofs003a
+         iffalse ofs0
          getlocal0
          getscopeobject 1
          getslot 1
          callproperty QName(Namespace("mx.core:IFactory"),"newInstance"), 0
          getlex QName(PackageNamespace("mx.core"),"UIComponent")
          astypelate
-         callpropvoid QName(PrivateNamespace(null,"60"),"setSkin"), 1
-         ofs003a:
+         callpropvoid QName(PrivateNamespace(null,"#SkinnableComponent"),"setSkin"), 1
+         ofs0:
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
-         iftrue ofs0068
+         iftrue ofs1
          getscopeobject 1
          findpropstrict QName(PackageNamespace(""),"getStyle")
          pushstring "skinClass"
@@ -1018,16 +1018,16 @@ package spark.components.supportClasses
          setslot 2
          getscopeobject 1
          getslot 2
-         iffalse ofs0068
+         iffalse ofs1
          getlocal0
          getscopeobject 1
          getslot 2
          construct 0
-         callpropvoid QName(PrivateNamespace(null,"60"),"setSkin"), 1
-         ofs0068:
+         callpropvoid QName(PrivateNamespace(null,"#SkinnableComponent"),"setSkin"), 1
+         ofs1:
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
-         iffalse ofs00cb
+         iffalse ofs2
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
          getlocal0
@@ -1036,17 +1036,17 @@ package spark.components.supportClasses
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
          in
-         iffalse ofs00a5
-         ofs0084:
+         iffalse ofs3
+         ofs4:
          findpropstrict QName(PackageNamespace(""),"Object")
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
          callproperty QName(PackageNamespace(""),"Object"), 1
          getlocal0
-         setproperty Multiname("hostComponent",[PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         ofs0091:
-         jump ofs00a5
-         ofs0095:
+         setproperty Multiname("hostComponent",[PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs5:
+         jump ofs3
+         ofs6:
          getlocal0
          pushscope
          getlocal1
@@ -1060,7 +1060,7 @@ package spark.components.supportClasses
          setslot 1
          popscope
          kill 2
-         ofs00a5:
+         ofs3:
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
          getlocal0
@@ -1074,10 +1074,10 @@ package spark.components.supportClasses
          getlex QName(PackageNamespace("mx.events"),"PropertyChangeEvent")
          getproperty QName(PackageNamespace(""),"PROPERTY_CHANGE")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"skin_propertyChangeHandler")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"skin_propertyChangeHandler")
          callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
-         jump ofs00e3
-         ofs00cb:
+         jump ofs7
+         ofs2:
          findpropstrict QName(PackageNamespace(""),"Error")
          getlex QName(ProtectedNamespace("mx.core:UIComponent"),"resourceManager")
          pushstring "components"
@@ -1087,14 +1087,14 @@ package spark.components.supportClasses
          callproperty QName(Namespace("mx.resources:IResourceManager"),"getString"), 3
          constructprop QName(PackageNamespace(""),"Error"), 1
          throw
-         ofs00e3:
+         ofs7:
          getlocal0
          callpropvoid QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"findSkinParts"), 0
          getlocal0
          callpropvoid QName(PackageNamespace(""),"invalidateSkinState"), 0
          returnvoid
          end ; code
-         try from ofs0084 to ofs0091 target ofs0095 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"err") end
+         try from ofs4 to ofs5 target ofs6 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"err") end
          end ; body
          end ; method
       }
@@ -1121,15 +1121,15 @@ package spark.components.supportClasses
          setlocal1
          getlocal0
          getproperty QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"skinParts")
-         iffalse ofs0098
+         iffalse ofs0
          pushbyte 0
          setlocal2
          getlocal0
          getproperty QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"skinParts")
          coerce_a
          setlocal3
-         jump ofs008d
-         ofs001a:
+         jump ofs1
+         ofs2:
          label
          getlocal3
          getlocal2
@@ -1139,14 +1139,14 @@ package spark.components.supportClasses
          getlocal0
          getproperty QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"skinParts")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pushtrue
-         ifne ofs004f
+         ifne ofs3
          getlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
          in
-         iftrue ofs004f
+         iftrue ofs3
          findpropstrict QName(PackageNamespace(""),"Error")
          getlex QName(ProtectedNamespace("mx.core:UIComponent"),"resourceManager")
          pushstring "components"
@@ -1156,48 +1156,48 @@ package spark.components.supportClasses
          callproperty QName(Namespace("mx.resources:IResourceManager"),"getString"), 3
          constructprop QName(PackageNamespace(""),"Error"), 1
          throw
-         ofs004f:
+         ofs3:
          getlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
          in
-         iffalse ofs008d
+         iffalse ofs1
          getlocal0
          getlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         setproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlocal0
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pushnull
          equals
          not
          dup
-         iffalse ofs007e
+         iffalse ofs4
          pop
          getlocal0
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace("mx.core"),"IFactory")
          istypelate
          not
-         ofs007e:
-         iffalse ofs008d
+         ofs4:
+         iffalse ofs1
          getlocal0
          getlocal1
          getlocal0
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          callpropvoid QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"partAdded"), 2
-         ofs008d:
+         ofs1:
          hasnext2 3, 2
-         iftrue ofs001a
+         iftrue ofs2
          kill 3
          kill 2
-         ofs0098:
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -1230,15 +1230,15 @@ package spark.components.supportClasses
          setlocal3
          getlocal0
          getproperty QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"skinParts")
-         iffalse ofs0086
+         iffalse ofs0
          pushbyte 0
          setlocal 4
          getlocal0
          getproperty QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"skinParts")
          coerce_a
          setlocal 5
-         jump ofs007b
-         ofs0022:
+         jump ofs1
+         ofs2:
          label
          getlocal 5
          getlocal 4
@@ -1247,23 +1247,23 @@ package spark.components.supportClasses
          setlocal1
          getlocal0
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pushnull
-         ifeq ofs0075
+         ifeq ofs3
          getlocal0
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace("mx.core"),"IFactory")
          istypelate
-         iftrue ofs0050
+         iftrue ofs4
          getlocal0
          getlocal1
          getlocal0
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          callpropvoid QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"partRemoved"), 2
-         jump ofs0075
-         ofs0050:
+         jump ofs3
+         ofs4:
          getlocal0
          getlocal1
          callproperty QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"numDynamicParts"), 1
@@ -1271,8 +1271,8 @@ package spark.components.supportClasses
          setlocal2
          pushbyte 0
          setlocal3
-         jump ofs006f
-         ofs005f:
+         jump ofs5
+         ofs6:
          label
          getlocal0
          getlocal1
@@ -1282,21 +1282,21 @@ package spark.components.supportClasses
          callproperty QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"getDynamicPartAt"), 2
          callpropvoid QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"removeDynamicPartInstance"), 2
          inclocal_i 3
-         ofs006f:
+         ofs5:
          getlocal3
          getlocal2
-         iflt ofs005f
-         ofs0075:
+         iflt ofs6
+         ofs3:
          getlocal0
          getlocal1
          pushnull
-         setproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         ofs007b:
+         setproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs1:
          hasnext2 5, 4
-         iftrue ofs0022
+         iftrue ofs2
          kill 5
          kill 4
-         ofs0086:
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -1325,7 +1325,7 @@ package spark.components.supportClasses
          getlex QName(PackageNamespace("mx.events"),"PropertyChangeEvent")
          getproperty QName(PackageNamespace(""),"PROPERTY_CHANGE")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"skin_propertyChangeHandler")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"skin_propertyChangeHandler")
          callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
          getlocal0
          getproperty QName(PackageNamespace(""),"skin")
@@ -1339,7 +1339,7 @@ package spark.components.supportClasses
          callsupervoid QName(PackageNamespace(""),"removeChild"), 1
          getlocal0
          pushnull
-         callpropvoid QName(PrivateNamespace(null,"60"),"setSkin"), 1
+         callpropvoid QName(PrivateNamespace(null,"#SkinnableComponent"),"setSkin"), 1
          returnvoid
          end ; code
          end ; body
@@ -1371,62 +1371,62 @@ package spark.components.supportClasses
          equals
          not
          dup
-         iffalse ofs0019
+         iffalse ofs0
          pop
          getlex QName(PackageNamespace(""),"errorString")
          pushstring ""
          equals
          not
-         ofs0019:
-         iffalse ofs006a
+         ofs0:
+         iffalse ofs1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"errorObj")
-         iftrue ofs0066
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"errorObj")
+         iftrue ofs2
          findpropstrict QName(PackageNamespace(""),"getStyle")
          pushstring "errorSkin"
          callproperty QName(PackageNamespace(""),"getStyle"), 1
          coerce QName(PackageNamespace(""),"Class")
          setlocal1
          getlocal1
-         iffalse ofs003e
+         iffalse ofs3
          getlocal0
          getlocal1
          construct 0
-         initproperty QName(PrivateNamespace(null,"60"),"errorObj")
-         ofs003e:
+         initproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"errorObj")
+         ofs3:
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"errorObj")
-         iffalse ofs0066
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"errorObj")
+         iffalse ofs2
          pushstring "target"
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"errorObj")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"errorObj")
          in
-         iffalse ofs005d
+         iffalse ofs4
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"errorObj")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"errorObj")
          pushstring "target"
          getlocal0
-         setproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         ofs005d:
+         setproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs4:
          getlocal0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"errorObj")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"errorObj")
          callsupervoid QName(PackageNamespace(""),"addChild"), 1
-         ofs0066:
-         jump ofs0080
-         ofs006a:
+         ofs2:
+         jump ofs5
+         ofs1:
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"errorObj")
-         iffalse ofs007b
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"errorObj")
+         iffalse ofs6
          getlocal0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"errorObj")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"errorObj")
          callsupervoid QName(PackageNamespace(""),"removeChild"), 1
-         ofs007b:
+         ofs6:
          getlocal0
          pushnull
-         initproperty QName(PrivateNamespace(null,"60"),"errorObj")
-         ofs0080:
+         initproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"errorObj")
+         ofs5:
          returnvoid
          end ; code
          end ; body
@@ -1536,48 +1536,48 @@ package spark.components.supportClasses
          setlocal3
          getlocal0
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("mx.core"),"IFactory")
          setlocal2
          getlocal2
-         iffalse ofs005a
+         iffalse ofs0
          getlocal2
          callproperty QName(Namespace("mx.core:IFactory"),"newInstance"), 0
          coerce_a
          setlocal3
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"dynamicPartsCache")
-         iftrue ofs002b
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"dynamicPartsCache")
+         iftrue ofs1
          getlocal0
          findpropstrict QName(PackageNamespace(""),"Object")
          constructprop QName(PackageNamespace(""),"Object"), 0
-         initproperty QName(PrivateNamespace(null,"60"),"dynamicPartsCache")
-         ofs002b:
+         initproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"dynamicPartsCache")
+         ofs1:
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"dynamicPartsCache")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"dynamicPartsCache")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         iftrue ofs0044
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         iftrue ofs2
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"dynamicPartsCache")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"dynamicPartsCache")
          getlocal1
          findpropstrict QName(PackageNamespace(""),"Array")
          constructprop QName(PackageNamespace(""),"Array"), 0
-         setproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         ofs0044:
+         setproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs2:
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"dynamicPartsCache")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"dynamicPartsCache")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlocal3
-         callpropvoid Multiname("push",[PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
+         callpropvoid Multiname("push",[PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
          getlocal0
          getlocal1
          getlocal3
          callpropvoid QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"partAdded"), 2
          getlocal3
          returnvalue
-         ofs005a:
+         ofs0:
          pushnull
          returnvalue
          end ; code
@@ -1609,9 +1609,9 @@ package spark.components.supportClasses
          getlocal2
          callpropvoid QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"partRemoved"), 2
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"dynamicPartsCache")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"dynamicPartsCache")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace(""),"Array")
          astypelate
          coerce QName(PackageNamespace(""),"Array")
@@ -1647,25 +1647,25 @@ package spark.components.supportClasses
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"dynamicPartsCache")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"dynamicPartsCache")
          convert_b
          dup
-         iffalse ofs0016
+         iffalse ofs0
          pop
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"dynamicPartsCache")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"dynamicPartsCache")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          convert_b
-         ofs0016:
-         iffalse ofs0026
+         ofs0:
+         iffalse ofs1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"dynamicPartsCache")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"dynamicPartsCache")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         getproperty Multiname("length",[PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("length",[PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          returnvalue
-         ofs0026:
+         ofs1:
          pushbyte 0
          returnvalue
          end ; code
@@ -1693,26 +1693,26 @@ package spark.components.supportClasses
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"dynamicPartsCache")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"dynamicPartsCache")
          convert_b
          dup
-         iffalse ofs0016
+         iffalse ofs0
          pop
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"dynamicPartsCache")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"dynamicPartsCache")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          convert_b
-         ofs0016:
-         iffalse ofs0027
+         ofs0:
+         iffalse ofs1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"60"),"dynamicPartsCache")
+         getproperty QName(PrivateNamespace(null,"#SkinnableComponent"),"dynamicPartsCache")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlocal2
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          returnvalue
-         ofs0027:
+         ofs1:
          pushnull
          returnvalue
          end ; code
@@ -1741,20 +1741,20 @@ package spark.components.supportClasses
          getlocal1
          not
          dup
-         iftrue ofs000f
+         iftrue ofs0
          pop
          getlocal1
          getproperty QName(Namespace("mx.core:IVisualElement"),"parent")
          not
-         ofs000f:
-         iffalse ofs0021
+         ofs0:
+         iffalse ofs1
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          pushbyte 0
          dup
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          coerce QName(PackageNamespace("flash.geom"),"Point")
-         jump ofs0049
-         ofs0021:
+         jump ofs2
+         ofs1:
          findpropstrict QName(PackageNamespace(""),"globalToLocal")
          getlocal1
          getproperty QName(Namespace("mx.core:IVisualElement"),"parent")
@@ -1771,7 +1771,7 @@ package spark.components.supportClasses
          callproperty QName(PackageNamespace(""),"localToGlobal"), 1
          callproperty QName(PackageNamespace(""),"globalToLocal"), 1
          coerce QName(PackageNamespace("flash.geom"),"Point")
-         ofs0049:
+         ofs2:
          returnvalue
          end ; code
          end ; body
@@ -1799,17 +1799,17 @@ package spark.components.supportClasses
          getlocal1
          not
          dup
-         iftrue ofs0012
+         iftrue ofs0
          pop
          findpropstrict QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"validateBaselinePosition")
          callproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"validateBaselinePosition"), 0
          not
-         ofs0012:
-         iffalse ofs001b
+         ofs0:
+         iffalse ofs1
          getlocal0
          getsuper QName(PackageNamespace(""),"baselinePosition")
          returnvalue
-         ofs001b:
+         ofs1:
          getlocal0
          getlocal1
          callproperty QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"getSkinPartPosition"), 1
@@ -1825,7 +1825,7 @@ package spark.components.supportClasses
       
       private function skin_propertyChangeHandler(param1:PropertyChangeEvent) : void
       {
-         trait method QName(PrivateNamespace(null,"60"),"skin_propertyChangeHandler")
+         trait method QName(PrivateNamespace(null,"#SkinnableComponent"),"skin_propertyChangeHandler")
          dispid 0
          method
          name null
@@ -1846,7 +1846,7 @@ package spark.components.supportClasses
          setlocal2
          getlocal0
          getproperty QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"skinParts")
-         iffalse ofs0072
+         iffalse ofs0
          getlocal1
          getproperty QName(PackageNamespace(""),"property")
          getlex QName(PackageNamespace(""),"String")
@@ -1856,51 +1856,51 @@ package spark.components.supportClasses
          getlocal0
          getproperty QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"skinParts")
          getlocal2
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pushnull
-         ifeq ofs0072
+         ifeq ofs0
          getlocal1
          getproperty QName(PackageNamespace(""),"newValue")
          pushnull
-         ifne ofs0051
+         ifne ofs1
          getlocal0
          getlocal2
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace("mx.core"),"IFactory")
          istypelate
-         iftrue ofs0044
+         iftrue ofs2
          getlocal0
          getlocal2
          getlocal0
          getlocal2
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          callpropvoid QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"partRemoved"), 2
-         ofs0044:
+         ofs2:
          getlocal0
          getlocal2
          getlocal1
          getproperty QName(PackageNamespace(""),"newValue")
-         setproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         jump ofs0072
-         ofs0051:
+         setproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         jump ofs0
+         ofs1:
          getlocal0
          getlocal2
          getlocal1
          getproperty QName(PackageNamespace(""),"newValue")
-         setproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlocal0
          getlocal2
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace("mx.core"),"IFactory")
          istypelate
-         iftrue ofs0072
+         iftrue ofs0
          getlocal0
          getlocal2
          getlocal0
          getlocal2
-         getproperty MultinameL([PrivateNamespace(null,"60"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"427"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#SkinnableComponent"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),PackageNamespace("flash.utils"),PrivateNamespace(null,"#SkinnableComponent/1"),PackageNamespace("spark.components.supportClasses"),PackageInternalNs("spark.components.supportClasses"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("spark.components.supportClasses:SkinnableComponent"),StaticProtectedNs("mx.core:UIComponent"),StaticProtectedNs("mx.core:FlexSprite"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          callpropvoid QName(ProtectedNamespace("spark.components.supportClasses:SkinnableComponent"),"partAdded"), 2
-         ofs0072:
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -2161,7 +2161,7 @@ pushscope
 getlex QName(PackageNamespace("mx.core"),"UIComponent")
 pushscope
 getlex QName(PackageNamespace("mx.core"),"UIComponent")
-newclass 207
+newclass #SkinnableComponent
 popscope
 popscope
 popscope

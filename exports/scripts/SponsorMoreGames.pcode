@@ -24,12 +24,12 @@ package
       code
       getlocal0
       pushscope
-      findproperty QName(PrivateNamespace(null,"150"),"IMG_WIDTH")
+      findproperty QName(PrivateNamespace(null,"#SponsorMoreGames"),"IMG_WIDTH")
       pushbyte 80
-      initproperty QName(PrivateNamespace(null,"150"),"IMG_WIDTH")
-      findproperty QName(PrivateNamespace(null,"150"),"IMG_HEIGHT")
+      initproperty QName(PrivateNamespace(null,"#SponsorMoreGames"),"IMG_WIDTH")
+      findproperty QName(PrivateNamespace(null,"#SponsorMoreGames"),"IMG_HEIGHT")
       pushbyte 104
-      initproperty QName(PrivateNamespace(null,"150"),"IMG_HEIGHT")
+      initproperty QName(PrivateNamespace(null,"#SponsorMoreGames"),"IMG_HEIGHT")
       returnvoid
       end ; code
       end ; body
@@ -57,13 +57,13 @@ package
          findproperty QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"width")
-         getlex QName(PrivateNamespace(null,"150"),"IMG_WIDTH")
+         getlex QName(PrivateNamespace(null,"#SponsorMoreGames"),"IMG_WIDTH")
          subtract
          initproperty QName(PackageNamespace(""),"x")
          findproperty QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"height")
-         getlex QName(PrivateNamespace(null,"150"),"IMG_HEIGHT")
+         getlex QName(PrivateNamespace(null,"#SponsorMoreGames"),"IMG_HEIGHT")
          subtract
          initproperty QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"scrollFactor")
@@ -80,8 +80,8 @@ package
          getproperty QName(PackageNamespace(""),"SponsorMoreGames")
          pushfalse
          pushfalse
-         getlex QName(PrivateNamespace(null,"150"),"IMG_WIDTH")
-         getlex QName(PrivateNamespace(null,"150"),"IMG_HEIGHT")
+         getlex QName(PrivateNamespace(null,"#SponsorMoreGames"),"IMG_WIDTH")
+         getlex QName(PrivateNamespace(null,"#SponsorMoreGames"),"IMG_HEIGHT")
          callpropvoid QName(PackageNamespace(""),"loadGraphic"), 5
          findpropstrict QName(PackageNamespace(""),"addAnimation")
          pushstring "normal"
@@ -118,7 +118,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"stage")
          pushnull
-         ifeq ofs0020
+         ifeq ofs0
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"stage")
          getlex QName(PackageNamespace("flash.events"),"MouseEvent")
@@ -126,7 +126,7 @@ package
          getlocal0
          getproperty QName(ProtectedNamespace("SponsorMoreGames"),"onMouseUp")
          callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
-         ofs0020:
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -154,35 +154,35 @@ package
          getlex QName(PackageNamespace(""),"exists")
          not
          dup
-         iftrue ofs0010
+         iftrue ofs0
          pop
          getlex QName(PackageNamespace(""),"visible")
          not
-         ofs0010:
+         ofs0:
          dup
-         iftrue ofs001a
+         iftrue ofs1
          pop
          getlex QName(PackageNamespace(""),"active")
          not
-         ofs001a:
+         ofs1:
          dup
-         iftrue ofs002b
+         iftrue ofs2
          pop
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"mouse")
          callproperty QName(PackageNamespace(""),"justReleased"), 0
          not
-         ofs002b:
+         ofs2:
          dup
-         iftrue ofs0038
+         iftrue ofs3
          pop
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"pause")
          convert_b
-         ofs0038:
-         iffalse ofs003d
+         ofs3:
+         iffalse ofs4
          returnvoid
-         ofs003d:
+         ofs4:
          findpropstrict QName(PackageNamespace(""),"overlapsPoint")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"mouse")
@@ -191,22 +191,22 @@ package
          getproperty QName(PackageNamespace(""),"mouse")
          getproperty QName(PackageNamespace(""),"y")
          callproperty QName(PackageNamespace(""),"overlapsPoint"), 2
-         iftrue ofs005b
+         iftrue ofs5
          returnvoid
-         ofs005b:
+         ofs5:
          getlex QName(PackageNamespace(""),"dead")
          not
          dup
-         iffalse ofs006b
+         iffalse ofs6
          pop
          getlex QName(PackageNamespace(""),"alpha")
          pushbyte 1
          equals
-         ofs006b:
-         iffalse ofs0076
+         ofs6:
+         iffalse ofs7
          getlex QName(PackageNamespace("com.newgrounds"),"API")
          callpropvoid QName(PackageNamespace(""),"loadNewgrounds"), 0
-         ofs0076:
+         ofs7:
          returnvoid
          end ; code
          end ; body
@@ -290,12 +290,12 @@ package
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"150"),"_initialized")
-         iftrue ofs002d
+         getproperty QName(PrivateNamespace(null,"#SponsorMoreGames"),"_initialized")
+         iftrue ofs0
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"stage")
          pushnull
-         ifeq ofs002d
+         ifeq ofs0
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"stage")
          getlex QName(PackageNamespace("flash.events"),"MouseEvent")
@@ -305,8 +305,8 @@ package
          callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"150"),"_initialized")
-         ofs002d:
+         setproperty QName(PrivateNamespace(null,"#SponsorMoreGames"),"_initialized")
+         ofs0:
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0
          returnvoid
@@ -342,7 +342,7 @@ pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
 pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
-newclass 361
+newclass #SponsorMoreGames
 popscope
 popscope
 popscope

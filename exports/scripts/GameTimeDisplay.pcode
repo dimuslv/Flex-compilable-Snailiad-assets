@@ -117,13 +117,13 @@ package
          pushscope
          getlocal1
          pushbyte 10
-         ifnlt ofs0013
+         ifnlt ofs0
          pushstring "0"
          getlocal1
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
          add
          returnvalue
-         ofs0013:
+         ofs0:
          getlocal1
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
          returnvalue
@@ -155,7 +155,7 @@ package
          pushbyte 60
          dup
          multiply
-         ifngt ofs0047
+         ifngt ofs0
          findpropstrict QName(PackageNamespace(""),"int")
          getlocal1
          pushshort 3600
@@ -185,7 +185,7 @@ package
          callproperty QName(PackageNamespace(""),"padZero"), 1
          add
          returnvalue
-         ofs0047:
+         ofs0:
          findpropstrict QName(PackageNamespace(""),"int")
          getlocal1
          pushbyte 60
@@ -231,7 +231,7 @@ package
          pushbyte 60
          dup
          multiply
-         ifngt ofs005f
+         ifngt ofs0
          findpropstrict QName(PackageNamespace(""),"int")
          getlocal1
          pushshort 3600
@@ -273,7 +273,7 @@ package
          callproperty QName(PackageNamespace(""),"padZero"), 1
          add
          returnvalue
-         ofs005f:
+         ofs0:
          findpropstrict QName(PackageNamespace(""),"int")
          getlocal1
          pushbyte 60
@@ -332,19 +332,19 @@ package
          setlocal1
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
-         iftrue ofs001b
+         iftrue ofs0
          findproperty QName(PackageNamespace(""),"text")
          pushstring ""
          initproperty QName(PackageNamespace(""),"text")
          returnvoid
-         ofs001b:
+         ofs0:
          findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"miniMap")
          callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
-         iffalse ofs003c
+         iffalse ofs1
          pop
          findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
@@ -352,31 +352,31 @@ package
          getproperty QName(PackageNamespace(""),"subscreen")
          callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
-         ofs003c:
-         iffalse ofs005a
+         ofs1:
+         iffalse ofs2
          findproperty QName(PackageNamespace(""),"y")
          getlocal0
          getproperty QName(PackageNamespace(""),"relY")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"miniMap")
          getproperty QName(PackageNamespace(""),"subscreen")
-         getproperty Multiname("panel",[PrivateNamespace(null,"382"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace(""),PrivateNamespace(null,"383"),PackageInternalNs(""),ProtectedNamespace("GameTimeDisplay"),StaticProtectedNs("GameTimeDisplay"),StaticProtectedNs("org.flixel:FlxText"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
-         getproperty Multiname("y",[PrivateNamespace(null,"382"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace(""),PrivateNamespace(null,"383"),PackageInternalNs(""),ProtectedNamespace("GameTimeDisplay"),StaticProtectedNs("GameTimeDisplay"),StaticProtectedNs("org.flixel:FlxText"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("panel",[PrivateNamespace(null,"#GameTimeDisplay/1"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace(""),PrivateNamespace(null,"#GameTimeDisplay/2"),PackageInternalNs(""),ProtectedNamespace("GameTimeDisplay"),StaticProtectedNs("GameTimeDisplay"),StaticProtectedNs("org.flixel:FlxText"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("y",[PrivateNamespace(null,"#GameTimeDisplay/1"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace(""),PrivateNamespace(null,"#GameTimeDisplay/2"),PackageInternalNs(""),ProtectedNamespace("GameTimeDisplay"),StaticProtectedNs("GameTimeDisplay"),StaticProtectedNs("org.flixel:FlxText"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          add
          initproperty QName(PackageNamespace(""),"y")
-         ofs005a:
+         ofs2:
          findpropstrict QName(PackageNamespace(""),"int")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"gameTime")
-         getproperty Multiname("value",[PrivateNamespace(null,"382"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace(""),PrivateNamespace(null,"383"),PackageInternalNs(""),ProtectedNamespace("GameTimeDisplay"),StaticProtectedNs("GameTimeDisplay"),StaticProtectedNs("org.flixel:FlxText"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("value",[PrivateNamespace(null,"#GameTimeDisplay/1"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace(""),PrivateNamespace(null,"#GameTimeDisplay/2"),PackageInternalNs(""),ProtectedNamespace("GameTimeDisplay"),StaticProtectedNs("GameTimeDisplay"),StaticProtectedNs("org.flixel:FlxText"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          callproperty QName(PackageNamespace(""),"int"), 1
          convert_i
          setlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"oldTime")
          getlocal1
-         ifeq ofs008d
+         ifeq ofs3
          findproperty QName(PackageNamespace(""),"text")
          pushstring "TIME\n"
          findpropstrict QName(PackageNamespace(""),"format")
@@ -387,7 +387,7 @@ package
          getlocal0
          getlocal1
          setproperty QName(PackageNamespace(""),"oldTime")
-         ofs008d:
+         ofs3:
          returnvoid
          end ; code
          end ; body
@@ -423,7 +423,7 @@ pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxText")
 pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxText")
-newclass 91
+newclass #GameTimeDisplay
 popscope
 popscope
 popscope

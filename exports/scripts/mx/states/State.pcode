@@ -75,8 +75,8 @@ package mx.states
          getlocal1
          coerce_a
          setlocal 4
-         jump ofs0030
-         ofs001f:
+         jump ofs0
+         ofs1:
          label
          getlocal 4
          getlocal3
@@ -87,11 +87,11 @@ package mx.states
          getlocal2
          getlocal1
          getlocal2
-         getproperty MultinameL([PrivateNamespace(null,"55"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PrivateNamespace(null,"419"),PackageNamespace("mx.states"),PackageInternalNs("mx.states"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.states:State"),StaticProtectedNs("mx.states:State"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         initproperty MultinameL([PrivateNamespace(null,"55"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PrivateNamespace(null,"419"),PackageNamespace("mx.states"),PackageInternalNs("mx.states"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.states:State"),StaticProtectedNs("mx.states:State"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         ofs0030:
+         getproperty MultinameL([PrivateNamespace(null,"#State"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PrivateNamespace(null,"#State/1"),PackageNamespace("mx.states"),PackageInternalNs("mx.states"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.states:State"),StaticProtectedNs("mx.states:State"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         initproperty MultinameL([PrivateNamespace(null,"#State"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PrivateNamespace(null,"#State/1"),PackageNamespace("mx.states"),PackageInternalNs("mx.states"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.states:State"),StaticProtectedNs("mx.states:State"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs0:
          hasnext2 4, 3
-         iftrue ofs001f
+         iftrue ofs1
          kill 4
          kill 3
          returnvoid
@@ -120,31 +120,31 @@ package mx.states
          pushbyte 0
          setlocal1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"55"),"initialized")
-         iftrue ofs003b
+         getproperty QName(PrivateNamespace(null,"#State"),"initialized")
+         iftrue ofs0
          getlocal0
          pushtrue
-         initproperty QName(PrivateNamespace(null,"55"),"initialized")
+         initproperty QName(PrivateNamespace(null,"#State"),"initialized")
          pushbyte 0
          setlocal1
-         jump ofs002f
-         ofs0019:
+         jump ofs1
+         ofs2:
          label
          findpropstrict QName(PackageNamespace("mx.states"),"IOverride")
          getlocal0
          getproperty QName(PackageNamespace(""),"overrides")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"55"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PrivateNamespace(null,"419"),PackageNamespace("mx.states"),PackageInternalNs("mx.states"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.states:State"),StaticProtectedNs("mx.states:State"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#State"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PrivateNamespace(null,"#State/1"),PackageNamespace("mx.states"),PackageInternalNs("mx.states"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.states:State"),StaticProtectedNs("mx.states:State"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          callproperty QName(PackageNamespace("mx.states"),"IOverride"), 1
          callpropvoid QName(Namespace("mx.states:IOverride"),"initialize"), 0
          inclocal_i 1
-         ofs002f:
+         ofs1:
          getlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"overrides")
          getproperty QName(PackageNamespace(""),"length")
-         iflt ofs0019
-         ofs003b:
+         iflt ofs2
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -172,14 +172,14 @@ package mx.states
          getlex QName(PackageNamespace("mx.events"),"FlexEvent")
          getproperty QName(PackageNamespace(""),"ENTER_STATE")
          callproperty QName(PackageNamespace(""),"hasEventListener"), 1
-         iffalse ofs0023
+         iffalse ofs0
          findpropstrict QName(PackageNamespace(""),"dispatchEvent")
          findpropstrict QName(PackageNamespace("mx.events"),"FlexEvent")
          getlex QName(PackageNamespace("mx.events"),"FlexEvent")
          getproperty QName(PackageNamespace(""),"ENTER_STATE")
          constructprop QName(PackageNamespace("mx.events"),"FlexEvent"), 1
          callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
-         ofs0023:
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -207,14 +207,14 @@ package mx.states
          getlex QName(PackageNamespace("mx.events"),"FlexEvent")
          getproperty QName(PackageNamespace(""),"EXIT_STATE")
          callproperty QName(PackageNamespace(""),"hasEventListener"), 1
-         iffalse ofs0023
+         iffalse ofs0
          findpropstrict QName(PackageNamespace(""),"dispatchEvent")
          findpropstrict QName(PackageNamespace("mx.events"),"FlexEvent")
          getlex QName(PackageNamespace("mx.events"),"FlexEvent")
          getproperty QName(PackageNamespace(""),"EXIT_STATE")
          constructprop QName(PackageNamespace("mx.events"),"FlexEvent"), 1
          callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
-         ofs0023:
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -242,7 +242,7 @@ pushscope
 getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
 pushscope
 getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
-newclass 167
+newclass #State
 popscope
 popscope
 initproperty QName(PackageNamespace("mx.states"),"State")

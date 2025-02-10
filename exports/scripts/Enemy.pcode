@@ -21,9 +21,9 @@ package
       code
       getlocal0
       pushscope
-      findproperty QName(PrivateNamespace(null,"34"),"HURT_TIMEOUT")
+      findproperty QName(PrivateNamespace(null,"#Enemy"),"HURT_TIMEOUT")
       pushdouble 0.025
-      initproperty QName(PrivateNamespace(null,"34"),"HURT_TIMEOUT")
+      initproperty QName(PrivateNamespace(null,"#Enemy"),"HURT_TIMEOUT")
       returnvoid
       end ; code
       end ; body
@@ -85,7 +85,7 @@ package
          initproperty QName(ProtectedNamespace("Enemy"),"_offense")
          getlocal0
          getlocal 6
-         initproperty QName(PrivateNamespace(null,"34"),"_noBoundsChecking")
+         initproperty QName(PrivateNamespace(null,"#Enemy"),"_noBoundsChecking")
          getlocal0
          pushbyte 0
          initproperty QName(ProtectedNamespace("Enemy"),"_hurtTimeout")
@@ -116,12 +116,12 @@ package
          getlocal0
          getproperty QName(ProtectedNamespace("Enemy"),"_offense")
          pushbyte 0
-         ifngt ofs0015
+         ifngt ofs0
          getlocal1
          getlocal0
          getproperty QName(ProtectedNamespace("Enemy"),"_offense")
          callpropvoid QName(PackageNamespace(""),"hurt"), 1
-         ofs0015:
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -174,21 +174,21 @@ package
          getproperty QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"STATE_GAME")
-         ifeq ofs0013
+         ifeq ofs0
          returnvoid
-         ofs0013:
+         ofs0:
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"34"),"_noBoundsChecking")
-         iftrue ofs0079
+         getproperty QName(PrivateNamespace(null,"#Enemy"),"_noBoundsChecking")
+         iftrue ofs1
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"maxX")
          greaterthan
          dup
-         iftrue ofs0044
+         iftrue ofs2
          pop
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"width")
@@ -197,18 +197,18 @@ package
          getproperty QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"minX")
          lessthan
-         ofs0044:
+         ofs2:
          dup
-         iftrue ofs0057
+         iftrue ofs3
          pop
          getlex QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"maxY")
          greaterthan
-         ofs0057:
+         ofs3:
          dup
-         iftrue ofs006e
+         iftrue ofs4
          pop
          getlex QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"height")
@@ -217,11 +217,11 @@ package
          getproperty QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"minY")
          lessthan
-         ofs006e:
-         iffalse ofs0079
+         ofs4:
+         iffalse ofs1
          findpropstrict QName(PackageNamespace(""),"kill")
          callpropvoid QName(PackageNamespace(""),"kill"), 0
-         ofs0079:
+         ofs1:
          getlocal0
          getlocal0
          getproperty QName(ProtectedNamespace("Enemy"),"_hurtTimeout")
@@ -242,10 +242,10 @@ package
          kill 2
          kill 1
          pushbyte 0
-         ifne ofs00a7
+         ifne ofs5
          findpropstrict QName(PackageNamespace(""),"unFlashColor")
          callpropvoid QName(PackageNamespace(""),"unFlashColor"), 0
-         ofs00a7:
+         ofs5:
          returnvoid
          end ; code
          end ; body
@@ -270,65 +270,65 @@ package
          code
          getlocal0
          pushscope
-         jump ofs002f
-         ofs0006:
+         jump ofs0
+         ofs1:
          label
          getlocal0
          callpropvoid QName(PackageNamespace(""),"triggerAi1"), 0
-         jump ofs0087
-         ofs0010:
+         jump ofs2
+         ofs3:
          label
          getlocal0
          callpropvoid QName(PackageNamespace(""),"triggerAi2"), 0
-         jump ofs0087
-         ofs001a:
+         jump ofs2
+         ofs4:
          label
          getlocal0
          callpropvoid QName(PackageNamespace(""),"triggerAi3"), 0
-         jump ofs0087
-         ofs0024:
+         jump ofs2
+         ofs5:
          label
          getlocal0
          callpropvoid QName(PackageNamespace(""),"triggerAi4"), 0
-         ofs002a:
+         ofs6:
          label
-         jump ofs0087
-         ofs002f:
+         jump ofs2
+         ofs0:
          getlocal1
          setlocal2
          pushbyte 1
          getlocal2
-         ifstrictne ofs003e
+         ifstrictne ofs7
          pushbyte 0
-         jump ofs0071
-         ofs003e:
+         jump ofs8
+         ofs7:
          pushbyte 2
          getlocal2
-         ifstrictne ofs004b
+         ifstrictne ofs9
          pushbyte 1
-         jump ofs0071
-         ofs004b:
+         jump ofs8
+         ofs9:
          pushbyte 3
          getlocal2
-         ifstrictne ofs0058
+         ifstrictne ofs10
          pushbyte 2
-         jump ofs0071
-         ofs0058:
+         jump ofs8
+         ofs10:
          pushbyte 4
          getlocal2
-         ifstrictne ofs0065
+         ifstrictne ofs11
          pushbyte 3
-         jump ofs0071
-         ofs0065:
-         jump ofs006f
+         jump ofs8
+         ofs11:
+         jump ofs12
          pushbyte 4
-         jump ofs006f
-         ofs006f:
+         jump ofs12
+         ofs12:
          pushbyte 4
-         ofs0071:
+         ofs8:
          kill 2
-         lookupswitch ofs002a, [ofs0006, ofs0010, ofs001a, ofs0024, ofs002a]
-         ofs0087:
+         lookupswitch ofs6, [ofs1, ofs3, ofs4, ofs5, ofs6]
+         ofs2:
          returnvoid
          end ; code
          end ; body
@@ -474,9 +474,9 @@ package
          getlocal0
          getproperty QName(ProtectedNamespace("Enemy"),"_hurtTimeout")
          pushbyte 0
-         ifngt ofs000d
+         ifngt ofs0
          returnvoid
-         ofs000d:
+         ofs0:
          getlocal1
          getlocal0
          getproperty QName(ProtectedNamespace("Enemy"),"_defense")
@@ -485,15 +485,15 @@ package
          setlocal1
          getlocal1
          pushbyte 0
-         ifnlt ofs0020
+         ifnlt ofs1
          pushbyte 0
          convert_d
          setlocal1
-         ofs0020:
+         ofs1:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"cheatsEnabled")
-         iffalse ofs005e
+         iffalse ofs2
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"damageNumberPool")
          getlex QName(PackageNamespace(""),"x")
@@ -516,17 +516,17 @@ package
          pushbyte 2
          divide
          callpropvoid QName(PackageNamespace(""),"makeText"), 6
-         ofs005e:
+         ofs2:
          getlocal1
          pushbyte 0
-         ifnle ofs0077
+         ifnle ofs3
          getlex QName(PackageNamespace(""),"Sfx")
          callpropvoid QName(PackageNamespace(""),"playEnemyPingOffArmor"), 0
          getlocal0
-         getlex QName(PrivateNamespace(null,"34"),"HURT_TIMEOUT")
+         getlex QName(PrivateNamespace(null,"#Enemy"),"HURT_TIMEOUT")
          setproperty QName(ProtectedNamespace("Enemy"),"_hurtTimeout")
-         jump ofs00db
-         ofs0077:
+         jump ofs4
+         ofs3:
          getlocal0
          getlocal0
          getproperty QName(ProtectedNamespace("Enemy"),"_hp")
@@ -536,7 +536,7 @@ package
          getlocal0
          getproperty QName(ProtectedNamespace("Enemy"),"_hp")
          pushbyte 0
-         ifnle ofs00be
+         ifnle ofs5
          getlex QName(PackageNamespace(""),"Sfx")
          callpropvoid QName(PackageNamespace(""),"playEnemyKilled"), 0
          getlex QName(PackageNamespace(""),"PlayState")
@@ -554,8 +554,8 @@ package
          callpropvoid QName(PackageNamespace(""),"boom"), 5
          findpropstrict QName(PackageNamespace(""),"kill")
          callpropvoid QName(PackageNamespace(""),"kill"), 0
-         jump ofs00db
-         ofs00be:
+         jump ofs4
+         ofs5:
          getlex QName(PackageNamespace(""),"Sfx")
          callpropvoid QName(PackageNamespace(""),"playRandomExplode"), 0
          findpropstrict QName(PackageNamespace(""),"flashColor")
@@ -565,9 +565,9 @@ package
          pushbyte 1
          setproperty QName(ProtectedNamespace("Enemy"),"_justFlashed")
          getlocal0
-         getlex QName(PrivateNamespace(null,"34"),"HURT_TIMEOUT")
+         getlex QName(PrivateNamespace(null,"#Enemy"),"HURT_TIMEOUT")
          setproperty QName(ProtectedNamespace("Enemy"),"_hurtTimeout")
-         ofs00db:
+         ofs4:
          returnvoid
          end ; code
          end ; body
@@ -601,7 +601,7 @@ pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
 pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
-newclass 103
+newclass #Enemy
 popscope
 popscope
 popscope

@@ -2,7 +2,7 @@ package
 {
    import mx.core.BitmapAsset;
    
-   [Embed(source="/_assets/228_Art_ItemIceSnail.png")]
+   [Embed]
    public class Art_ItemIceSnail extends BitmapAsset
    {
       public function Art_ItemIceSnail()

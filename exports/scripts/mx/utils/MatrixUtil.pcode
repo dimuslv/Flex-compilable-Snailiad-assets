@@ -47,16 +47,16 @@ package mx.utils
       findproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
       pushstring "4.1.0.21490"
       initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"VERSION")
-      findproperty QName(PrivateNamespace(null,"252"),"RADIANS_PER_DEGREES")
+      findproperty QName(PrivateNamespace(null,"#MatrixUtil"),"RADIANS_PER_DEGREES")
       getlex QName(PackageNamespace(""),"Math")
       getproperty QName(PackageNamespace(""),"PI")
       pushshort 180
       divide
-      initproperty QName(PrivateNamespace(null,"252"),"RADIANS_PER_DEGREES")
-      findproperty QName(PrivateNamespace(null,"252"),"staticPoint")
+      initproperty QName(PrivateNamespace(null,"#MatrixUtil"),"RADIANS_PER_DEGREES")
+      findproperty QName(PrivateNamespace(null,"#MatrixUtil"),"staticPoint")
       findpropstrict QName(PackageNamespace("flash.geom"),"Point")
       constructprop QName(PackageNamespace("flash.geom"),"Point"), 0
-      setproperty QName(PrivateNamespace(null,"252"),"staticPoint")
+      setproperty QName(PrivateNamespace(null,"#MatrixUtil"),"staticPoint")
       returnvoid
       end ; code
       end ; body
@@ -108,13 +108,13 @@ package mx.utils
          pushshort 180
          greaterthan
          dup
-         iftrue ofs0015
+         iftrue ofs0
          pop
          getlocal1
          pushshort -180
          lessthan
-         ofs0015:
-         iffalse ofs0045
+         ofs0:
+         iffalse ofs1
          getlocal1
          pushshort 360
          modulo
@@ -122,23 +122,23 @@ package mx.utils
          setlocal1
          getlocal1
          pushshort 180
-         ifngt ofs0033
+         ifngt ofs2
          getlocal1
          pushshort 360
          subtract
          convert_d
          setlocal1
-         jump ofs0045
-         ofs0033:
+         jump ofs1
+         ofs2:
          getlocal1
          pushshort -180
-         ifnlt ofs0045
+         ifnlt ofs1
          getlocal1
          pushshort 360
          add
          convert_d
          setlocal1
-         ofs0045:
+         ofs1:
          getlocal1
          returnvalue
          end ; code
@@ -168,17 +168,17 @@ package mx.utils
          getlocal0
          pushscope
          getlocal3
-         iftrue ofs0019
-         getlex QName(PrivateNamespace(null,"252"),"staticPoint")
+         iftrue ofs0
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"staticPoint")
          getlocal1
          setproperty QName(PackageNamespace(""),"x")
-         getlex QName(PrivateNamespace(null,"252"),"staticPoint")
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"staticPoint")
          getlocal2
          setproperty QName(PackageNamespace(""),"y")
-         getlex QName(PrivateNamespace(null,"252"),"staticPoint")
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"staticPoint")
          returnvalue
-         ofs0019:
-         getlex QName(PrivateNamespace(null,"252"),"staticPoint")
+         ofs0:
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"staticPoint")
          getlocal3
          getproperty QName(PackageNamespace(""),"a")
          getlocal1
@@ -192,7 +192,7 @@ package mx.utils
          getproperty QName(PackageNamespace(""),"tx")
          add
          setproperty QName(PackageNamespace(""),"x")
-         getlex QName(PrivateNamespace(null,"252"),"staticPoint")
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"staticPoint")
          getlocal3
          getproperty QName(PackageNamespace(""),"b")
          getlocal1
@@ -206,7 +206,7 @@ package mx.utils
          getproperty QName(PackageNamespace(""),"ty")
          add
          setproperty QName(PackageNamespace(""),"y")
-         getlex QName(PrivateNamespace(null,"252"),"staticPoint")
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"staticPoint")
          returnvalue
          end ; code
          end ; body
@@ -262,7 +262,7 @@ package mx.utils
          callpropvoid QName(PackageNamespace(""),"scale"), 2
          getlocal 5
          pushbyte 0
-         ifeq ofs003a
+         ifeq ofs0
          getlocal 8
          getlocal 5
          pushshort 180
@@ -271,7 +271,7 @@ package mx.utils
          getproperty QName(PackageNamespace(""),"PI")
          multiply
          callpropvoid QName(PackageNamespace(""),"rotate"), 1
-         ofs003a:
+         ofs0:
          getlocal 8
          getlocal 6
          getlocal1
@@ -342,7 +342,7 @@ package mx.utils
          multiply
          add
          callproperty QName(PackageNamespace(""),"sqrt"), 1
-         setproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal2
          getproperty QName(PackageNamespace(""),"c")
          convert_d
@@ -362,7 +362,7 @@ package mx.utils
          multiply
          add
          callproperty QName(PackageNamespace(""),"sqrt"), 1
-         setproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 5
          getlocal 8
          multiply
@@ -374,14 +374,14 @@ package mx.utils
          dup
          setlocal 9
          pushbyte 0
-         ifnlt ofs008d
+         ifnlt ofs0
          getlocal1
          pushbyte 4
          getlocal1
          pushbyte 4
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          negate
-         setproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 7
          negate
          convert_d
@@ -390,29 +390,29 @@ package mx.utils
          negate
          convert_d
          setlocal 8
-         ofs008d:
+         ofs0:
          getlocal1
          pushbyte 2
          getlex QName(PackageNamespace(""),"Math")
          getlocal 6
          getlocal 5
          callproperty QName(PackageNamespace(""),"atan2"), 2
-         getlex QName(PrivateNamespace(null,"252"),"RADIANS_PER_DEGREES")
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"RADIANS_PER_DEGREES")
          divide
-         setproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal3
          pushbyte 0
          equals
          not
          dup
-         iftrue ofs00b3
+         iftrue ofs1
          pop
          getlocal 4
          pushbyte 0
          equals
          not
-         ofs00b3:
-         iffalse ofs00e7
+         ofs1:
+         iffalse ofs2
          getlocal2
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          getlocal3
@@ -427,27 +427,27 @@ package mx.utils
          getproperty QName(PackageNamespace(""),"x")
          getlocal3
          subtract
-         setproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal1
          pushbyte 1
          getlocal 10
          getproperty QName(PackageNamespace(""),"y")
          getlocal 4
          subtract
-         setproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
-         jump ofs00fb
-         ofs00e7:
+         setproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         jump ofs3
+         ofs2:
          getlocal1
          pushbyte 0
          getlocal2
          getproperty QName(PackageNamespace(""),"tx")
-         setproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal1
          pushbyte 1
          getlocal2
          getproperty QName(PackageNamespace(""),"ty")
-         setproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
-         ofs00fb:
+         setproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         ofs3:
          returnvoid
          end ; code
          end ; body
@@ -478,7 +478,7 @@ package mx.utils
          getlocal0
          pushscope
          getlocal 5
-         iftrue ofs0017
+         iftrue ofs0
          findpropstrict QName(PackageNamespace("flash.geom"),"Rectangle")
          getlocal1
          getlocal2
@@ -490,7 +490,7 @@ package mx.utils
          subtract
          constructprop QName(PackageNamespace("flash.geom"),"Rectangle"), 4
          returnvalue
-         ofs0017:
+         ofs0:
          getlex QName(PackageNamespace(""),"Math")
          getlocal 5
          getproperty QName(PackageNamespace(""),"left")
@@ -595,13 +595,13 @@ package mx.utils
          pushbyte 0
          equals
          dup
-         iffalse ofs003c
+         iffalse ofs0
          pop
          getlocal 4
          pushbyte 0
          equals
-         ofs003c:
-         iffalse ofs0075
+         ofs0:
+         iffalse ofs1
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          getlocal1
          getlocal2
@@ -625,20 +625,20 @@ package mx.utils
          getlocal 6
          callproperty QName(PackageNamespace(""),"rectUnion"), 5
          returnvalue
-         ofs0075:
+         ofs1:
          getlocal 7
          getlocal3
          multiply
          pushbyte 0
-         ifne ofs008f
+         ifne ofs2
          getlex QName(PackageNamespace(""),"Math")
          getproperty QName(PackageNamespace(""),"PI")
          pushbyte 2
          divide
          convert_d
          setlocal 11
-         jump ofs00a3
-         ofs008f:
+         jump ofs3
+         ofs2:
          getlex QName(PackageNamespace(""),"Math")
          getlocal 9
          getlocal 4
@@ -650,20 +650,20 @@ package mx.utils
          callproperty QName(PackageNamespace(""),"atan"), 1
          convert_d
          setlocal 11
-         ofs00a3:
+         ofs3:
          getlocal 8
          getlocal3
          multiply
          pushbyte 0
-         ifne ofs00bd
+         ifne ofs4
          getlex QName(PackageNamespace(""),"Math")
          getproperty QName(PackageNamespace(""),"PI")
          pushbyte 2
          divide
          convert_d
          setlocal 12
-         jump ofs00d1
-         ofs00bd:
+         jump ofs5
+         ofs4:
          getlex QName(PackageNamespace(""),"Math")
          getlocal 10
          getlocal 4
@@ -675,7 +675,7 @@ package mx.utils
          callproperty QName(PackageNamespace(""),"atan"), 1
          convert_d
          setlocal 12
-         ofs00d1:
+         ofs5:
          getlocal 7
          getlex QName(PackageNamespace(""),"Math")
          getlocal 11
@@ -930,7 +930,7 @@ package mx.utils
          dup
          setlocal 16
          pushbyte 0
-         ifeq ofs0126
+         ifeq ofs0
          getlocal1
          getlocal3
          subtract
@@ -942,13 +942,13 @@ package mx.utils
          getlocal 18
          lessequals
          dup
-         iffalse ofs00df
+         iffalse ofs1
          pop
          getlocal 18
          pushbyte 1
          lessequals
-         ofs00df:
-         iffalse ofs0126
+         ofs1:
+         iffalse ofs0
          pushbyte 1
          getlocal 18
          subtract
@@ -988,7 +988,7 @@ package mx.utils
          callproperty QName(PackageNamespace(""),"max"), 2
          convert_d
          setlocal 13
-         ofs0126:
+         ofs0:
          getlocal2
          pushbyte 2
          getlocal 4
@@ -1000,7 +1000,7 @@ package mx.utils
          dup
          setlocal 17
          pushbyte 0
-         ifeq ofs019c
+         ifeq ofs2
          getlocal2
          getlocal 4
          subtract
@@ -1012,13 +1012,13 @@ package mx.utils
          getlocal 20
          lessequals
          dup
-         iffalse ofs0154
+         iffalse ofs3
          pop
          getlocal 20
          pushbyte 1
          lessequals
-         ofs0154:
-         iffalse ofs019c
+         ofs3:
+         iffalse ofs2
          pushbyte 1
          getlocal 20
          subtract
@@ -1058,7 +1058,7 @@ package mx.utils
          callproperty QName(PackageNamespace(""),"max"), 2
          convert_d
          setlocal 15
-         ofs019c:
+         ofs2:
          findpropstrict QName(PackageNamespace(""),"rectUnion")
          getlocal 12
          getlocal 14
@@ -1193,17 +1193,17 @@ package mx.utils
          callproperty QName(PackageNamespace(""),"max"), 2
          convert_d
          setlocal 19
-         getlex QName(PrivateNamespace(null,"252"),"staticPoint")
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"staticPoint")
          getlocal 17
          getlocal 16
          subtract
          setproperty QName(PackageNamespace(""),"x")
-         getlex QName(PrivateNamespace(null,"252"),"staticPoint")
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"staticPoint")
          getlocal 19
          getlocal 18
          subtract
          setproperty QName(PackageNamespace(""),"y")
-         getlex QName(PrivateNamespace(null,"252"),"staticPoint")
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"staticPoint")
          returnvalue
          end ; code
          end ; body
@@ -1342,18 +1342,18 @@ package mx.utils
          callproperty QName(PackageNamespace(""),"max"), 2
          convert_d
          setlocal 20
-         getlex QName(PrivateNamespace(null,"252"),"staticPoint")
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"staticPoint")
          getlocal 18
          getlocal 17
          subtract
          setproperty QName(PackageNamespace(""),"x")
-         getlex QName(PrivateNamespace(null,"252"),"staticPoint")
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"staticPoint")
          getlocal 20
          getlocal 19
          subtract
          setproperty QName(PackageNamespace(""),"y")
          getlocal 4
-         iffalse ofs0146
+         iffalse ofs0
          getlocal3
          getproperty QName(PackageNamespace(""),"tx")
          convert_d
@@ -1396,8 +1396,8 @@ package mx.utils
          getlocal 22
          add
          setproperty QName(PackageNamespace(""),"y")
-         ofs0146:
-         getlex QName(PrivateNamespace(null,"252"),"staticPoint")
+         ofs0:
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"staticPoint")
          returnvalue
          end ; code
          end ; body
@@ -1622,29 +1622,29 @@ package mx.utils
          pushbyte 1
          equals
          dup
-         iffalse ofs0016
+         iffalse ofs0
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"d")
          pushbyte 1
          equals
-         ofs0016:
+         ofs0:
          dup
-         iffalse ofs0023
+         iffalse ofs1
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"b")
          pushbyte 0
          equals
-         ofs0023:
+         ofs1:
          dup
-         iffalse ofs0030
+         iffalse ofs2
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"c")
          pushbyte 0
          equals
-         ofs0030:
+         ofs2:
          returnvalue
          end ; code
          end ; body
@@ -1686,33 +1686,33 @@ package mx.utils
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          convert_b
          dup
-         iffalse ofs001f
+         iffalse ofs0
          pop
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal2
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          convert_b
-         ofs001f:
-         iffalse ofs002d
+         ofs0:
+         iffalse ofs1
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          getlocal 4
          getlocal 5
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          returnvalue
-         ofs002d:
+         ofs1:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal1
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
          dup
-         iffalse ofs0045
+         iffalse ofs2
          pop
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal2
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
-         ofs0045:
-         iffalse ofs00e8
+         ofs2:
+         iffalse ofs3
          findpropstrict QName(PackageNamespace(""),"calcUBoundsToFitTBounds")
          getlocal1
          getlocal2
@@ -1725,7 +1725,7 @@ package mx.utils
          coerce QName(PackageNamespace("flash.geom"),"Point")
          dup
          setlocal 10
-         iftrue ofs00e1
+         iftrue ofs4
          findpropstrict QName(PackageNamespace(""),"calcUBoundsToFitTBoundsWidth")
          getlocal1
          getlocal3
@@ -1741,7 +1741,7 @@ package mx.utils
          setlocal 10
          convert_b
          dup
-         iffalse ofs009c
+         iffalse ofs5
          pop
          findpropstrict QName(PackageNamespace(""),"transformSize")
          getlocal 10
@@ -1753,8 +1753,8 @@ package mx.utils
          getproperty QName(PackageNamespace(""),"y")
          getlocal2
          greaterthan
-         ofs009c:
-         iffalse ofs00e1
+         ofs5:
+         iffalse ofs4
          findpropstrict QName(PackageNamespace(""),"calcUBoundsToFitTBoundsHeight")
          getlocal2
          getlocal3
@@ -1770,7 +1770,7 @@ package mx.utils
          setlocal 10
          convert_b
          dup
-         iffalse ofs00d8
+         iffalse ofs6
          pop
          findpropstrict QName(PackageNamespace(""),"transformSize")
          getlocal 10
@@ -1782,20 +1782,20 @@ package mx.utils
          getproperty QName(PackageNamespace(""),"x")
          getlocal1
          greaterthan
-         ofs00d8:
-         iffalse ofs00e1
+         ofs6:
+         iffalse ofs4
          pushnull
          coerce QName(PackageNamespace("flash.geom"),"Point")
          setlocal 10
-         ofs00e1:
+         ofs4:
          getlocal 10
          returnvalue
-         jump ofs00e8
-         ofs00e8:
+         jump ofs3
+         ofs3:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal1
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iftrue ofs010a
+         iftrue ofs7
          findpropstrict QName(PackageNamespace(""),"calcUBoundsToFitTBoundsWidth")
          getlocal1
          getlocal3
@@ -1807,7 +1807,7 @@ package mx.utils
          getlocal 9
          callproperty QName(PackageNamespace(""),"calcUBoundsToFitTBoundsWidth"), 8
          returnvalue
-         ofs010a:
+         ofs7:
          findpropstrict QName(PackageNamespace(""),"calcUBoundsToFitTBoundsHeight")
          getlocal2
          getlocal3
@@ -1895,35 +1895,35 @@ package mx.utils
          getlocal 9
          lessthan
          dup
-         iffalse ofs0065
+         iffalse ofs0
          pop
          getlocal 9
          pushdouble 1e-9
          lessthan
-         ofs0065:
-         iffalse ofs006e
+         ofs0:
+         iffalse ofs1
          pushbyte 0
          convert_d
          setlocal 9
-         ofs006e:
+         ofs1:
          pushdouble -1e-9
          getlocal 10
          lessthan
          dup
-         iffalse ofs0080
+         iffalse ofs2
          pop
          getlocal 10
          pushdouble 1e-9
          lessthan
-         ofs0080:
-         iffalse ofs0089
+         ofs2:
+         iffalse ofs3
          pushbyte 0
          convert_d
          setlocal 10
-         ofs0089:
+         ofs3:
          getlocal 9
          pushbyte 0
-         ifne ofs00a3
+         ifne ofs4
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          getlocal3
          getlocal1
@@ -1933,10 +1933,10 @@ package mx.utils
          divide
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          returnvalue
-         ofs00a3:
+         ofs4:
          getlocal 10
          pushbyte 0
-         ifne ofs00be
+         ifne ofs5
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          getlocal1
          getlex QName(PackageNamespace(""),"Math")
@@ -1946,25 +1946,25 @@ package mx.utils
          getlocal 4
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          returnvalue
-         ofs00be:
+         ofs5:
          getlocal 9
          getlocal 10
          multiply
          pushbyte 0
-         ifnge ofs00d0
+         ifnge ofs6
          getlocal 10
          convert_d
-         jump ofs00d4
-         ofs00d0:
+         jump ofs7
+         ofs6:
          getlocal 10
          negate
          convert_d
-         ofs00d4:
+         ofs7:
          convert_d
          dup
          setlocal 11
          pushbyte 0
-         ifeq ofs01a1
+         ifeq ofs8
          pushbyte 1
          getlocal 11
          divide
@@ -1986,14 +1986,14 @@ package mx.utils
          getlocal 14
          lessequals
          dup
-         iffalse ofs0107
+         iffalse ofs9
          pop
          getlocal 14
          getlocal 8
          lessequals
-         ofs0107:
+         ofs9:
          dup
-         iffalse ofs011b
+         iffalse ofs10
          pop
          getlocal 9
          getlocal 13
@@ -2004,15 +2004,15 @@ package mx.utils
          add
          pushbyte 0
          greaterequals
-         ofs011b:
-         iffalse ofs012c
+         ofs10:
+         iffalse ofs11
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          getlocal 13
          getlocal 14
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          coerce QName(PackageNamespace("flash.geom"),"Point")
          setlocal 12
-         ofs012c:
+         ofs11:
          getlocal1
          negate
          getlocal 9
@@ -2027,14 +2027,14 @@ package mx.utils
          getlocal 14
          lessequals
          dup
-         iffalse ofs014a
+         iffalse ofs12
          pop
          getlocal 14
          getlocal 8
          lessequals
-         ofs014a:
+         ofs12:
          dup
-         iffalse ofs015e
+         iffalse ofs13
          pop
          getlocal 9
          getlocal 13
@@ -2045,12 +2045,12 @@ package mx.utils
          add
          pushbyte 0
          lessthan
-         ofs015e:
-         iffalse ofs01a1
+         ofs13:
+         iffalse ofs8
          getlocal 12
          not
          dup
-         iftrue ofs0190
+         iftrue ofs14
          pop
          findpropstrict QName(PackageNamespace(""),"transformSize")
          getlocal 12
@@ -2067,18 +2067,18 @@ package mx.utils
          callproperty QName(PackageNamespace(""),"transformSize"), 3
          getproperty QName(PackageNamespace(""),"x")
          greaterthan
-         ofs0190:
-         iffalse ofs01a1
+         ofs14:
+         iffalse ofs8
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          getlocal 13
          getlocal 14
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          coerce QName(PackageNamespace("flash.geom"),"Point")
          setlocal 12
-         ofs01a1:
+         ofs8:
          getlocal 9
          pushbyte 0
-         ifeq ofs029f
+         ifeq ofs15
          pushbyte 1
          getlocal 9
          divide
@@ -2100,14 +2100,14 @@ package mx.utils
          getlocal 13
          lessequals
          dup
-         iffalse ofs01d3
+         iffalse ofs16
          pop
          getlocal 13
          getlocal 7
          lessequals
-         ofs01d3:
+         ofs16:
          dup
-         iffalse ofs01e7
+         iffalse ofs17
          pop
          getlocal 9
          getlocal 13
@@ -2118,12 +2118,12 @@ package mx.utils
          add
          pushbyte 0
          greaterequals
-         ofs01e7:
-         iffalse ofs022a
+         ofs17:
+         iffalse ofs18
          getlocal 12
          not
          dup
-         iftrue ofs0219
+         iftrue ofs19
          pop
          findpropstrict QName(PackageNamespace(""),"transformSize")
          getlocal 12
@@ -2140,15 +2140,15 @@ package mx.utils
          callproperty QName(PackageNamespace(""),"transformSize"), 3
          getproperty QName(PackageNamespace(""),"x")
          greaterthan
-         ofs0219:
-         iffalse ofs022a
+         ofs19:
+         iffalse ofs18
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          getlocal 13
          getlocal 14
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          coerce QName(PackageNamespace("flash.geom"),"Point")
          setlocal 12
-         ofs022a:
+         ofs18:
          getlocal1
          negate
          getlocal 11
@@ -2163,14 +2163,14 @@ package mx.utils
          getlocal 13
          lessequals
          dup
-         iffalse ofs0248
+         iffalse ofs20
          pop
          getlocal 13
          getlocal 7
          lessequals
-         ofs0248:
+         ofs20:
          dup
-         iffalse ofs025c
+         iffalse ofs21
          pop
          getlocal 9
          getlocal 13
@@ -2181,12 +2181,12 @@ package mx.utils
          add
          pushbyte 0
          lessthan
-         ofs025c:
-         iffalse ofs029f
+         ofs21:
+         iffalse ofs15
          getlocal 12
          not
          dup
-         iftrue ofs028e
+         iftrue ofs22
          pop
          findpropstrict QName(PackageNamespace(""),"transformSize")
          getlocal 12
@@ -2203,20 +2203,20 @@ package mx.utils
          callproperty QName(PackageNamespace(""),"transformSize"), 3
          getproperty QName(PackageNamespace(""),"x")
          greaterthan
-         ofs028e:
-         iffalse ofs029f
+         ofs22:
+         iffalse ofs15
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          getlocal 13
          getlocal 14
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          coerce QName(PackageNamespace("flash.geom"),"Point")
          setlocal 12
-         ofs029f:
+         ofs15:
          getlocal 12
-         iffalse ofs02a8
+         iffalse ofs23
          getlocal 12
          returnvalue
-         ofs02a8:
+         ofs23:
          getlocal2
          getproperty QName(PackageNamespace(""),"a")
          convert_d
@@ -2229,18 +2229,18 @@ package mx.utils
          getlocal 16
          multiply
          pushbyte 0
-         ifnge ofs02c8
+         ifnge ofs24
          getlocal 16
          convert_d
-         jump ofs02cc
-         ofs02c8:
+         jump ofs25
+         ofs24:
          getlocal 16
          negate
          convert_d
-         ofs02cc:
+         ofs25:
          convert_d
          setlocal 17
-         findpropstrict QName(PrivateNamespace(null,"252"),"solveEquation")
+         findpropstrict QName(PrivateNamespace(null,"#MatrixUtil"),"solveEquation")
          getlocal 9
          getlocal 11
          getlocal1
@@ -2250,7 +2250,7 @@ package mx.utils
          getlocal 8
          getlocal 15
          getlocal 17
-         callproperty QName(PrivateNamespace(null,"252"),"solveEquation"), 9
+         callproperty QName(PrivateNamespace(null,"#MatrixUtil"),"solveEquation"), 9
          returnvalue
          end ; code
          end ; body
@@ -2328,35 +2328,35 @@ package mx.utils
          getlocal 9
          lessthan
          dup
-         iffalse ofs0065
+         iffalse ofs0
          pop
          getlocal 9
          pushdouble 1e-9
          lessthan
-         ofs0065:
-         iffalse ofs006e
+         ofs0:
+         iffalse ofs1
          pushbyte 0
          convert_d
          setlocal 9
-         ofs006e:
+         ofs1:
          pushdouble -1e-9
          getlocal 10
          lessthan
          dup
-         iffalse ofs0080
+         iffalse ofs2
          pop
          getlocal 10
          pushdouble 1e-9
          lessthan
-         ofs0080:
-         iffalse ofs0089
+         ofs2:
+         iffalse ofs3
          pushbyte 0
          convert_d
          setlocal 10
-         ofs0089:
+         ofs3:
          getlocal 9
          pushbyte 0
-         ifne ofs00a3
+         ifne ofs4
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          getlocal3
          getlocal1
@@ -2366,10 +2366,10 @@ package mx.utils
          divide
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          returnvalue
-         ofs00a3:
+         ofs4:
          getlocal 10
          pushbyte 0
-         ifne ofs00be
+         ifne ofs5
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          getlocal1
          getlex QName(PackageNamespace(""),"Math")
@@ -2379,25 +2379,25 @@ package mx.utils
          getlocal 4
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          returnvalue
-         ofs00be:
+         ofs5:
          getlocal 9
          getlocal 10
          multiply
          pushbyte 0
-         ifnge ofs00d0
+         ifnge ofs6
          getlocal 10
          convert_d
-         jump ofs00d4
-         ofs00d0:
+         jump ofs7
+         ofs6:
          getlocal 10
          negate
          convert_d
-         ofs00d4:
+         ofs7:
          convert_d
          dup
          setlocal 11
          pushbyte 0
-         ifeq ofs01a1
+         ifeq ofs8
          pushbyte 1
          getlocal 11
          divide
@@ -2419,14 +2419,14 @@ package mx.utils
          getlocal 14
          lessequals
          dup
-         iffalse ofs0107
+         iffalse ofs9
          pop
          getlocal 14
          getlocal 8
          lessequals
-         ofs0107:
+         ofs9:
          dup
-         iffalse ofs011b
+         iffalse ofs10
          pop
          getlocal 9
          getlocal 13
@@ -2437,15 +2437,15 @@ package mx.utils
          add
          pushbyte 0
          greaterequals
-         ofs011b:
-         iffalse ofs012c
+         ofs10:
+         iffalse ofs11
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          getlocal 13
          getlocal 14
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          coerce QName(PackageNamespace("flash.geom"),"Point")
          setlocal 12
-         ofs012c:
+         ofs11:
          getlocal1
          negate
          getlocal 9
@@ -2460,14 +2460,14 @@ package mx.utils
          getlocal 14
          lessequals
          dup
-         iffalse ofs014a
+         iffalse ofs12
          pop
          getlocal 14
          getlocal 8
          lessequals
-         ofs014a:
+         ofs12:
          dup
-         iffalse ofs015e
+         iffalse ofs13
          pop
          getlocal 9
          getlocal 13
@@ -2478,12 +2478,12 @@ package mx.utils
          add
          pushbyte 0
          lessthan
-         ofs015e:
-         iffalse ofs01a1
+         ofs13:
+         iffalse ofs8
          getlocal 12
          not
          dup
-         iftrue ofs0190
+         iftrue ofs14
          pop
          findpropstrict QName(PackageNamespace(""),"transformSize")
          getlocal 12
@@ -2500,18 +2500,18 @@ package mx.utils
          callproperty QName(PackageNamespace(""),"transformSize"), 3
          getproperty QName(PackageNamespace(""),"y")
          greaterthan
-         ofs0190:
-         iffalse ofs01a1
+         ofs14:
+         iffalse ofs8
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          getlocal 13
          getlocal 14
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          coerce QName(PackageNamespace("flash.geom"),"Point")
          setlocal 12
-         ofs01a1:
+         ofs8:
          getlocal 9
          pushbyte 0
-         ifeq ofs029f
+         ifeq ofs15
          pushbyte 1
          getlocal 9
          divide
@@ -2533,14 +2533,14 @@ package mx.utils
          getlocal 13
          lessequals
          dup
-         iffalse ofs01d3
+         iffalse ofs16
          pop
          getlocal 13
          getlocal 7
          lessequals
-         ofs01d3:
+         ofs16:
          dup
-         iffalse ofs01e7
+         iffalse ofs17
          pop
          getlocal 9
          getlocal 13
@@ -2551,12 +2551,12 @@ package mx.utils
          add
          pushbyte 0
          greaterequals
-         ofs01e7:
-         iffalse ofs022a
+         ofs17:
+         iffalse ofs18
          getlocal 12
          not
          dup
-         iftrue ofs0219
+         iftrue ofs19
          pop
          findpropstrict QName(PackageNamespace(""),"transformSize")
          getlocal 12
@@ -2573,15 +2573,15 @@ package mx.utils
          callproperty QName(PackageNamespace(""),"transformSize"), 3
          getproperty QName(PackageNamespace(""),"y")
          greaterthan
-         ofs0219:
-         iffalse ofs022a
+         ofs19:
+         iffalse ofs18
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          getlocal 13
          getlocal 14
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          coerce QName(PackageNamespace("flash.geom"),"Point")
          setlocal 12
-         ofs022a:
+         ofs18:
          getlocal1
          negate
          getlocal 11
@@ -2596,14 +2596,14 @@ package mx.utils
          getlocal 13
          lessequals
          dup
-         iffalse ofs0248
+         iffalse ofs20
          pop
          getlocal 13
          getlocal 7
          lessequals
-         ofs0248:
+         ofs20:
          dup
-         iffalse ofs025c
+         iffalse ofs21
          pop
          getlocal 9
          getlocal 13
@@ -2614,12 +2614,12 @@ package mx.utils
          add
          pushbyte 0
          lessthan
-         ofs025c:
-         iffalse ofs029f
+         ofs21:
+         iffalse ofs15
          getlocal 12
          not
          dup
-         iftrue ofs028e
+         iftrue ofs22
          pop
          findpropstrict QName(PackageNamespace(""),"transformSize")
          getlocal 12
@@ -2636,20 +2636,20 @@ package mx.utils
          callproperty QName(PackageNamespace(""),"transformSize"), 3
          getproperty QName(PackageNamespace(""),"y")
          greaterthan
-         ofs028e:
-         iffalse ofs029f
+         ofs22:
+         iffalse ofs15
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          getlocal 13
          getlocal 14
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          coerce QName(PackageNamespace("flash.geom"),"Point")
          setlocal 12
-         ofs029f:
+         ofs15:
          getlocal 12
-         iffalse ofs02a8
+         iffalse ofs23
          getlocal 12
          returnvalue
-         ofs02a8:
+         ofs23:
          getlocal2
          getproperty QName(PackageNamespace(""),"b")
          convert_d
@@ -2662,18 +2662,18 @@ package mx.utils
          getlocal 16
          multiply
          pushbyte 0
-         ifnge ofs02c8
+         ifnge ofs24
          getlocal 16
          convert_d
-         jump ofs02cc
-         ofs02c8:
+         jump ofs25
+         ofs24:
          getlocal 16
          negate
          convert_d
-         ofs02cc:
+         ofs25:
          convert_d
          setlocal 17
-         findpropstrict QName(PrivateNamespace(null,"252"),"solveEquation")
+         findpropstrict QName(PrivateNamespace(null,"#MatrixUtil"),"solveEquation")
          getlocal 9
          getlocal 11
          getlocal1
@@ -2683,7 +2683,7 @@ package mx.utils
          getlocal 8
          getlocal 15
          getlocal 17
-         callproperty QName(PrivateNamespace(null,"252"),"solveEquation"), 9
+         callproperty QName(PrivateNamespace(null,"#MatrixUtil"),"solveEquation"), 9
          returnvalue
          end ; code
          end ; body
@@ -2692,7 +2692,7 @@ package mx.utils
       
       private static function solveEquation(param1:Number, param2:Number, param3:Number, param4:Number, param5:Number, param6:Number, param7:Number, param8:Number, param9:Number) : Point
       {
-         trait method QName(PrivateNamespace(null,"252"),"solveEquation")
+         trait method QName(PrivateNamespace(null,"#MatrixUtil"),"solveEquation")
          flag FINAL
          dispid 17
          method
@@ -2728,16 +2728,16 @@ package mx.utils
          pushbyte 0
          equals
          dup
-         iftrue ofs001b
+         iftrue ofs0
          pop
          getlocal2
          pushbyte 0
          equals
-         ofs001b:
-         iffalse ofs0021
+         ofs0:
+         iffalse ofs1
          pushnull
          returnvalue
-         ofs0021:
+         ofs1:
          getlocal3
          getlocal 4
          getlocal1
@@ -2785,12 +2785,12 @@ package mx.utils
          setlocal 17
          getlocal 15
          getlocal 16
-         ifnle ofs00cb
+         ifnle ofs2
          getlex QName(PackageNamespace(""),"Math")
          getlocal 17
          callproperty QName(PackageNamespace(""),"abs"), 1
          pushdouble 1e-9
-         ifnlt ofs0095
+         ifnlt ofs3
          getlocal3
          getlocal1
          getlocal2
@@ -2798,8 +2798,8 @@ package mx.utils
          divide
          convert_d
          setlocal 11
-         jump ofs009f
-         ofs0095:
+         jump ofs4
+         ofs3:
          getlocal 8
          getlocal3
          multiply
@@ -2807,7 +2807,7 @@ package mx.utils
          divide
          convert_d
          setlocal 11
-         ofs009f:
+         ofs4:
          getlex QName(PackageNamespace(""),"Math")
          getlocal 15
          getlex QName(PackageNamespace(""),"Math")
@@ -2831,7 +2831,7 @@ package mx.utils
          getlocal 11
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          returnvalue
-         ofs00cb:
+         ofs2:
          getlocal 4
          getlocal1
          multiply
@@ -2872,12 +2872,12 @@ package mx.utils
          setlocal 16
          getlocal 15
          getlocal 16
-         ifnle ofs016e
+         ifnle ofs5
          getlex QName(PackageNamespace(""),"Math")
          getlocal 17
          callproperty QName(PackageNamespace(""),"abs"), 1
          pushdouble 1e-9
-         ifnlt ofs0136
+         ifnlt ofs6
          getlocal3
          negate
          getlocal1
@@ -2886,8 +2886,8 @@ package mx.utils
          divide
          convert_d
          setlocal 11
-         jump ofs0141
-         ofs0136:
+         jump ofs7
+         ofs6:
          getlocal 8
          negate
          getlocal3
@@ -2896,7 +2896,7 @@ package mx.utils
          divide
          convert_d
          setlocal 11
-         ofs0141:
+         ofs7:
          getlex QName(PackageNamespace(""),"Math")
          getlocal 15
          getlex QName(PackageNamespace(""),"Math")
@@ -2921,7 +2921,7 @@ package mx.utils
          getlocal 11
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          returnvalue
-         ofs016e:
+         ofs5:
          pushnull
          returnvalue
          end ; code
@@ -2977,87 +2977,87 @@ package mx.utils
          getlocal 8
          lessthan
          dup
-         iffalse ofs0035
+         iffalse ofs0
          pop
          getlocal 8
          pushdouble 1e-9
          lessthan
-         ofs0035:
-         iffalse ofs003e
+         ofs0:
+         iffalse ofs1
          pushbyte 0
          convert_d
          setlocal 8
-         ofs003e:
+         ofs1:
          pushdouble -1e-9
          getlocal 9
          lessthan
          dup
-         iffalse ofs0050
+         iffalse ofs2
          pop
          getlocal 9
          pushdouble 1e-9
          lessthan
-         ofs0050:
-         iffalse ofs0059
+         ofs2:
+         iffalse ofs3
          pushbyte 0
          convert_d
          setlocal 9
-         ofs0059:
+         ofs3:
          pushdouble -1e-9
          getlocal 10
          lessthan
          dup
-         iffalse ofs006b
+         iffalse ofs4
          pop
          getlocal 10
          pushdouble 1e-9
          lessthan
-         ofs006b:
-         iffalse ofs0074
+         ofs4:
+         iffalse ofs5
          pushbyte 0
          convert_d
          setlocal 10
-         ofs0074:
+         ofs5:
          pushdouble -1e-9
          getlocal 11
          lessthan
          dup
-         iffalse ofs0086
+         iffalse ofs6
          pop
          getlocal 11
          pushdouble 1e-9
          lessthan
-         ofs0086:
-         iffalse ofs008f
+         ofs6:
+         iffalse ofs7
          pushbyte 0
          convert_d
          setlocal 11
-         ofs008f:
+         ofs7:
          getlocal 9
          pushbyte 0
          equals
          dup
-         iffalse ofs009f
+         iffalse ofs8
          pop
          getlocal 10
          pushbyte 0
          equals
-         ofs009f:
-         iffalse ofs00d5
+         ofs8:
+         iffalse ofs9
          getlocal 8
          pushbyte 0
          equals
          dup
-         iftrue ofs00b3
+         iftrue ofs10
          pop
          getlocal 11
          pushbyte 0
          equals
-         ofs00b3:
-         iffalse ofs00b9
+         ofs10:
+         iffalse ofs11
          pushnull
          returnvalue
-         ofs00b9:
+         ofs11:
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          getlocal1
          getlex QName(PackageNamespace(""),"Math")
@@ -3071,32 +3071,32 @@ package mx.utils
          divide
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          returnvalue
-         ofs00d5:
+         ofs9:
          getlocal 8
          pushbyte 0
          equals
          dup
-         iffalse ofs00e5
+         iffalse ofs12
          pop
          getlocal 11
          pushbyte 0
          equals
-         ofs00e5:
-         iffalse ofs011b
+         ofs12:
+         iffalse ofs13
          getlocal 9
          pushbyte 0
          equals
          dup
-         iftrue ofs00f9
+         iftrue ofs14
          pop
          getlocal 10
          pushbyte 0
          equals
-         ofs00f9:
-         iffalse ofs00ff
+         ofs14:
+         iffalse ofs15
          pushnull
          returnvalue
-         ofs00ff:
+         ofs15:
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
          getlocal2
          getlex QName(PackageNamespace(""),"Math")
@@ -3110,35 +3110,35 @@ package mx.utils
          divide
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          returnvalue
-         ofs011b:
+         ofs13:
          getlocal 8
          getlocal 10
          multiply
          pushbyte 0
-         ifnge ofs012d
+         ifnge ofs16
          getlocal 10
          convert_d
-         jump ofs0131
-         ofs012d:
+         jump ofs17
+         ofs16:
          getlocal 10
          negate
          convert_d
-         ofs0131:
+         ofs17:
          convert_d
          setlocal 12
          getlocal 9
          getlocal 11
          multiply
          pushbyte 0
-         ifnge ofs0146
+         ifnge ofs18
          getlocal 11
          convert_d
-         jump ofs014a
-         ofs0146:
+         jump ofs19
+         ofs18:
          getlocal 11
          negate
          convert_d
-         ofs014a:
+         ofs19:
          convert_d
          setlocal 13
          getlocal 8
@@ -3154,29 +3154,29 @@ package mx.utils
          getlocal 14
          callproperty QName(PackageNamespace(""),"abs"), 1
          pushdouble 1e-9
-         ifnlt ofs01c6
+         ifnlt ofs20
          getlocal 12
          pushbyte 0
          equals
          dup
-         iftrue ofs017b
+         iftrue ofs21
          pop
          getlocal 8
          pushbyte 0
          equals
-         ofs017b:
+         ofs21:
          dup
-         iftrue ofs0187
+         iftrue ofs22
          pop
          getlocal 8
          getlocal 12
          negate
          equals
-         ofs0187:
-         iffalse ofs018d
+         ofs22:
+         iffalse ofs23
          pushnull
          returnvalue
-         ofs018d:
+         ofs23:
          getlex QName(PackageNamespace(""),"Math")
          getlocal 8
          getlocal2
@@ -3189,11 +3189,11 @@ package mx.utils
          callproperty QName(PackageNamespace(""),"abs"), 1
          subtract
          pushdouble 1e-9
-         ifngt ofs01ad
+         ifngt ofs24
          pushnull
          returnvalue
-         ofs01ad:
-         findpropstrict QName(PrivateNamespace(null,"252"),"solveEquation")
+         ofs24:
+         findpropstrict QName(PrivateNamespace(null,"#MatrixUtil"),"solveEquation")
          getlocal 8
          getlocal 12
          getlocal1
@@ -3203,9 +3203,9 @@ package mx.utils
          getlocal 7
          getlocal 9
          getlocal 13
-         callproperty QName(PrivateNamespace(null,"252"),"solveEquation"), 9
+         callproperty QName(PrivateNamespace(null,"#MatrixUtil"),"solveEquation"), 9
          returnvalue
-         ofs01c6:
+         ofs20:
          pushbyte 1
          getlocal 14
          divide
@@ -3221,61 +3221,61 @@ package mx.utils
          multiply
          convert_d
          setlocal2
-         findpropstrict QName(PrivateNamespace(null,"252"),"solveSystem")
+         findpropstrict QName(PrivateNamespace(null,"#MatrixUtil"),"solveSystem")
          getlocal 8
          getlocal 12
          getlocal 9
          getlocal 13
          getlocal1
          getlocal2
-         callproperty QName(PrivateNamespace(null,"252"),"solveSystem"), 6
+         callproperty QName(PrivateNamespace(null,"#MatrixUtil"),"solveSystem"), 6
          coerce QName(PackageNamespace("flash.geom"),"Point")
          dup
          setlocal 16
          coerce_a
          dup
-         iffalse ofs0200
+         iffalse ofs25
          pop
          getlocal 4
          getlocal 16
          getproperty QName(PackageNamespace(""),"x")
          lessequals
          coerce_a
-         ofs0200:
+         ofs25:
          coerce_a
          dup
-         iffalse ofs0210
+         iffalse ofs26
          pop
          getlocal 16
          getproperty QName(PackageNamespace(""),"x")
          getlocal 6
          lessequals
          coerce_a
-         ofs0210:
+         ofs26:
          coerce_a
          dup
-         iffalse ofs0220
+         iffalse ofs27
          pop
          getlocal 5
          getlocal 16
          getproperty QName(PackageNamespace(""),"y")
          lessequals
          coerce_a
-         ofs0220:
+         ofs27:
          coerce_a
          dup
-         iffalse ofs0230
+         iffalse ofs28
          pop
          getlocal 16
          getproperty QName(PackageNamespace(""),"y")
          getlocal 7
          lessequals
          coerce_a
-         ofs0230:
+         ofs28:
          coerce_a
          convert_b
          dup
-         iffalse ofs024e
+         iffalse ofs29
          pop
          getlocal 8
          getlocal 16
@@ -3290,9 +3290,9 @@ package mx.utils
          greaterequals
          coerce_a
          convert_b
-         ofs024e:
+         ofs29:
          dup
-         iffalse ofs0268
+         iffalse ofs30
          pop
          getlocal 9
          getlocal 16
@@ -3305,12 +3305,12 @@ package mx.utils
          add
          pushbyte 0
          greaterequals
-         ofs0268:
-         iffalse ofs026f
+         ofs30:
+         iffalse ofs31
          getlocal 16
          returnvalue
-         ofs026f:
-         findpropstrict QName(PrivateNamespace(null,"252"),"solveSystem")
+         ofs31:
+         findpropstrict QName(PrivateNamespace(null,"#MatrixUtil"),"solveSystem")
          getlocal 8
          getlocal 12
          getlocal 9
@@ -3318,54 +3318,54 @@ package mx.utils
          getlocal1
          getlocal2
          negate
-         callproperty QName(PrivateNamespace(null,"252"),"solveSystem"), 6
+         callproperty QName(PrivateNamespace(null,"#MatrixUtil"),"solveSystem"), 6
          coerce QName(PackageNamespace("flash.geom"),"Point")
          dup
          setlocal 16
          coerce_a
          dup
-         iffalse ofs0296
+         iffalse ofs32
          pop
          getlocal 4
          getlocal 16
          getproperty QName(PackageNamespace(""),"x")
          lessequals
          coerce_a
-         ofs0296:
+         ofs32:
          coerce_a
          dup
-         iffalse ofs02a6
+         iffalse ofs33
          pop
          getlocal 16
          getproperty QName(PackageNamespace(""),"x")
          getlocal 6
          lessequals
          coerce_a
-         ofs02a6:
+         ofs33:
          coerce_a
          dup
-         iffalse ofs02b6
+         iffalse ofs34
          pop
          getlocal 5
          getlocal 16
          getproperty QName(PackageNamespace(""),"y")
          lessequals
          coerce_a
-         ofs02b6:
+         ofs34:
          coerce_a
          dup
-         iffalse ofs02c6
+         iffalse ofs35
          pop
          getlocal 16
          getproperty QName(PackageNamespace(""),"y")
          getlocal 7
          lessequals
          coerce_a
-         ofs02c6:
+         ofs35:
          coerce_a
          convert_b
          dup
-         iffalse ofs02e4
+         iffalse ofs36
          pop
          getlocal 8
          getlocal 16
@@ -3380,9 +3380,9 @@ package mx.utils
          greaterequals
          coerce_a
          convert_b
-         ofs02e4:
+         ofs36:
          dup
-         iffalse ofs02fe
+         iffalse ofs37
          pop
          getlocal 9
          getlocal 16
@@ -3395,12 +3395,12 @@ package mx.utils
          add
          pushbyte 0
          lessthan
-         ofs02fe:
-         iffalse ofs0305
+         ofs37:
+         iffalse ofs38
          getlocal 16
          returnvalue
-         ofs0305:
-         findpropstrict QName(PrivateNamespace(null,"252"),"solveSystem")
+         ofs38:
+         findpropstrict QName(PrivateNamespace(null,"#MatrixUtil"),"solveSystem")
          getlocal 8
          getlocal 12
          getlocal 9
@@ -3408,54 +3408,54 @@ package mx.utils
          getlocal1
          negate
          getlocal2
-         callproperty QName(PrivateNamespace(null,"252"),"solveSystem"), 6
+         callproperty QName(PrivateNamespace(null,"#MatrixUtil"),"solveSystem"), 6
          coerce QName(PackageNamespace("flash.geom"),"Point")
          dup
          setlocal 16
          coerce_a
          dup
-         iffalse ofs032c
+         iffalse ofs39
          pop
          getlocal 4
          getlocal 16
          getproperty QName(PackageNamespace(""),"x")
          lessequals
          coerce_a
-         ofs032c:
+         ofs39:
          coerce_a
          dup
-         iffalse ofs033c
+         iffalse ofs40
          pop
          getlocal 16
          getproperty QName(PackageNamespace(""),"x")
          getlocal 6
          lessequals
          coerce_a
-         ofs033c:
+         ofs40:
          coerce_a
          dup
-         iffalse ofs034c
+         iffalse ofs41
          pop
          getlocal 5
          getlocal 16
          getproperty QName(PackageNamespace(""),"y")
          lessequals
          coerce_a
-         ofs034c:
+         ofs41:
          coerce_a
          dup
-         iffalse ofs035c
+         iffalse ofs42
          pop
          getlocal 16
          getproperty QName(PackageNamespace(""),"y")
          getlocal 7
          lessequals
          coerce_a
-         ofs035c:
+         ofs42:
          coerce_a
          convert_b
          dup
-         iffalse ofs037a
+         iffalse ofs43
          pop
          getlocal 8
          getlocal 16
@@ -3470,9 +3470,9 @@ package mx.utils
          lessthan
          coerce_a
          convert_b
-         ofs037a:
+         ofs43:
          dup
-         iffalse ofs0394
+         iffalse ofs44
          pop
          getlocal 9
          getlocal 16
@@ -3485,12 +3485,12 @@ package mx.utils
          add
          pushbyte 0
          greaterequals
-         ofs0394:
-         iffalse ofs039b
+         ofs44:
+         iffalse ofs45
          getlocal 16
          returnvalue
-         ofs039b:
-         findpropstrict QName(PrivateNamespace(null,"252"),"solveSystem")
+         ofs45:
+         findpropstrict QName(PrivateNamespace(null,"#MatrixUtil"),"solveSystem")
          getlocal 8
          getlocal 12
          getlocal 9
@@ -3499,54 +3499,54 @@ package mx.utils
          negate
          getlocal2
          negate
-         callproperty QName(PrivateNamespace(null,"252"),"solveSystem"), 6
+         callproperty QName(PrivateNamespace(null,"#MatrixUtil"),"solveSystem"), 6
          coerce QName(PackageNamespace("flash.geom"),"Point")
          dup
          setlocal 16
          coerce_a
          dup
-         iffalse ofs03c3
+         iffalse ofs46
          pop
          getlocal 4
          getlocal 16
          getproperty QName(PackageNamespace(""),"x")
          lessequals
          coerce_a
-         ofs03c3:
+         ofs46:
          coerce_a
          dup
-         iffalse ofs03d3
+         iffalse ofs47
          pop
          getlocal 16
          getproperty QName(PackageNamespace(""),"x")
          getlocal 6
          lessequals
          coerce_a
-         ofs03d3:
+         ofs47:
          coerce_a
          dup
-         iffalse ofs03e3
+         iffalse ofs48
          pop
          getlocal 5
          getlocal 16
          getproperty QName(PackageNamespace(""),"y")
          lessequals
          coerce_a
-         ofs03e3:
+         ofs48:
          coerce_a
          dup
-         iffalse ofs03f3
+         iffalse ofs49
          pop
          getlocal 16
          getproperty QName(PackageNamespace(""),"y")
          getlocal 7
          lessequals
          coerce_a
-         ofs03f3:
+         ofs49:
          coerce_a
          convert_b
          dup
-         iffalse ofs0411
+         iffalse ofs50
          pop
          getlocal 8
          getlocal 16
@@ -3561,9 +3561,9 @@ package mx.utils
          lessthan
          coerce_a
          convert_b
-         ofs0411:
+         ofs50:
          dup
-         iffalse ofs042b
+         iffalse ofs51
          pop
          getlocal 9
          getlocal 16
@@ -3576,11 +3576,11 @@ package mx.utils
          add
          pushbyte 0
          lessthan
-         ofs042b:
-         iffalse ofs0432
+         ofs51:
+         iffalse ofs52
          getlocal 16
          returnvalue
-         ofs0432:
+         ofs52:
          pushnull
          returnvalue
          end ; code
@@ -3610,13 +3610,13 @@ package mx.utils
          pushscope
          getlocal1
          dup
-         iffalse ofs000a
+         iffalse ofs0
          pop
          getlocal2
-         ofs000a:
+         ofs0:
          coerce_a
          dup
-         iffalse ofs001b
+         iffalse ofs1
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"a")
@@ -3624,10 +3624,10 @@ package mx.utils
          getproperty QName(PackageNamespace(""),"a")
          equals
          coerce_a
-         ofs001b:
+         ofs1:
          coerce_a
          dup
-         iffalse ofs002c
+         iffalse ofs2
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"b")
@@ -3635,10 +3635,10 @@ package mx.utils
          getproperty QName(PackageNamespace(""),"b")
          equals
          coerce_a
-         ofs002c:
+         ofs2:
          coerce_a
          dup
-         iffalse ofs003d
+         iffalse ofs3
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"c")
@@ -3646,10 +3646,10 @@ package mx.utils
          getproperty QName(PackageNamespace(""),"c")
          equals
          coerce_a
-         ofs003d:
+         ofs3:
          coerce_a
          dup
-         iffalse ofs004e
+         iffalse ofs4
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"d")
@@ -3657,10 +3657,10 @@ package mx.utils
          getproperty QName(PackageNamespace(""),"d")
          equals
          coerce_a
-         ofs004e:
+         ofs4:
          coerce_a
          dup
-         iffalse ofs005f
+         iffalse ofs5
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"tx")
@@ -3668,28 +3668,28 @@ package mx.utils
          getproperty QName(PackageNamespace(""),"tx")
          equals
          coerce_a
-         ofs005f:
+         ofs5:
          convert_b
          dup
-         iffalse ofs006f
+         iffalse ofs6
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"ty")
          getlocal2
          getproperty QName(PackageNamespace(""),"ty")
          equals
-         ofs006f:
+         ofs6:
          dup
-         iftrue ofs007f
+         iftrue ofs7
          pop
          getlocal1
          not
          dup
-         iffalse ofs007f
+         iffalse ofs7
          pop
          getlocal2
          not
-         ofs007f:
+         ofs7:
          returnvalue
          end ; code
          end ; body
@@ -3725,13 +3725,13 @@ package mx.utils
          getlocal1
          convert_b
          dup
-         iffalse ofs0015
+         iffalse ofs0
          pop
          getlocal2
          convert_b
-         ofs0015:
+         ofs0:
          dup
-         iffalse ofs002a
+         iffalse ofs1
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"rawData")
@@ -3740,8 +3740,8 @@ package mx.utils
          getproperty QName(PackageNamespace(""),"rawData")
          getproperty QName(PackageNamespace(""),"length")
          equals
-         ofs002a:
-         iffalse ofs0178
+         ofs1:
+         iffalse ofs2
          getlocal1
          getproperty QName(PackageNamespace(""),"rawData")
          coerce TypeName(QName(PackageNamespace("__AS3__.vec"),"Vector")<QName(PackageNamespace(""),"Number")>)
@@ -3752,186 +3752,186 @@ package mx.utils
          setlocal 4
          getlocal3
          pushbyte 0
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 4
          pushbyte 0
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          equals
          dup
-         iffalse ofs005f
+         iffalse ofs3
          pop
          getlocal3
          pushbyte 1
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 4
          pushbyte 1
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          equals
-         ofs005f:
+         ofs3:
          dup
-         iffalse ofs0073
+         iffalse ofs4
          pop
          getlocal3
          pushbyte 2
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 4
          pushbyte 2
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          equals
-         ofs0073:
+         ofs4:
          dup
-         iffalse ofs0087
+         iffalse ofs5
          pop
          getlocal3
          pushbyte 3
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 4
          pushbyte 3
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          equals
-         ofs0087:
+         ofs5:
          dup
-         iffalse ofs009b
+         iffalse ofs6
          pop
          getlocal3
          pushbyte 4
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 4
          pushbyte 4
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          equals
-         ofs009b:
+         ofs6:
          dup
-         iffalse ofs00af
+         iffalse ofs7
          pop
          getlocal3
          pushbyte 5
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 4
          pushbyte 5
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          equals
-         ofs00af:
+         ofs7:
          dup
-         iffalse ofs00c3
+         iffalse ofs8
          pop
          getlocal3
          pushbyte 6
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 4
          pushbyte 6
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          equals
-         ofs00c3:
+         ofs8:
          dup
-         iffalse ofs00d7
+         iffalse ofs9
          pop
          getlocal3
          pushbyte 7
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 4
          pushbyte 7
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          equals
-         ofs00d7:
+         ofs9:
          dup
-         iffalse ofs00eb
+         iffalse ofs10
          pop
          getlocal3
          pushbyte 8
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 4
          pushbyte 8
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          equals
-         ofs00eb:
+         ofs10:
          dup
-         iffalse ofs00ff
+         iffalse ofs11
          pop
          getlocal3
          pushbyte 9
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 4
          pushbyte 9
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          equals
-         ofs00ff:
+         ofs11:
          dup
-         iffalse ofs0113
+         iffalse ofs12
          pop
          getlocal3
          pushbyte 10
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 4
          pushbyte 10
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          equals
-         ofs0113:
+         ofs12:
          dup
-         iffalse ofs0127
+         iffalse ofs13
          pop
          getlocal3
          pushbyte 11
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 4
          pushbyte 11
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          equals
-         ofs0127:
+         ofs13:
          dup
-         iffalse ofs013b
+         iffalse ofs14
          pop
          getlocal3
          pushbyte 12
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 4
          pushbyte 12
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          equals
-         ofs013b:
+         ofs14:
          dup
-         iffalse ofs014f
+         iffalse ofs15
          pop
          getlocal3
          pushbyte 13
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 4
          pushbyte 13
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          equals
-         ofs014f:
+         ofs15:
          dup
-         iffalse ofs0163
+         iffalse ofs16
          pop
          getlocal3
          pushbyte 14
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 4
          pushbyte 14
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          equals
-         ofs0163:
+         ofs16:
          dup
-         iffalse ofs0177
+         iffalse ofs17
          pop
          getlocal3
          pushbyte 15
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 4
          pushbyte 15
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          equals
-         ofs0177:
+         ofs17:
          returnvalue
-         ofs0178:
+         ofs2:
          getlocal1
          not
          dup
-         iffalse ofs0182
+         iffalse ofs18
          pop
          getlocal2
          not
-         ofs0182:
+         ofs18:
          returnvalue
          end ; code
          end ; body
@@ -3940,7 +3940,7 @@ package mx.utils
       
       private static function solveSystem(param1:Number, param2:Number, param3:Number, param4:Number, param5:Number, param6:Number) : Point
       {
-         trait method QName(PrivateNamespace(null,"252"),"solveSystem")
+         trait method QName(PrivateNamespace(null,"#MatrixUtil"),"solveSystem")
          flag FINAL
          dispid 21
          method
@@ -4003,10 +4003,10 @@ package mx.utils
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"252"),"getConcatenatedMatrixHelper")
+         findpropstrict QName(PrivateNamespace(null,"#MatrixUtil"),"getConcatenatedMatrixHelper")
          getlocal1
          pushfalse
-         callproperty QName(PrivateNamespace(null,"252"),"getConcatenatedMatrixHelper"), 2
+         callproperty QName(PrivateNamespace(null,"#MatrixUtil"),"getConcatenatedMatrixHelper"), 2
          returnvalue
          end ; code
          end ; body
@@ -4032,10 +4032,10 @@ package mx.utils
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"252"),"getConcatenatedMatrixHelper")
+         findpropstrict QName(PrivateNamespace(null,"#MatrixUtil"),"getConcatenatedMatrixHelper")
          getlocal1
          pushtrue
-         callproperty QName(PrivateNamespace(null,"252"),"getConcatenatedMatrixHelper"), 2
+         callproperty QName(PrivateNamespace(null,"#MatrixUtil"),"getConcatenatedMatrixHelper"), 2
          returnvalue
          end ; code
          end ; body
@@ -4044,7 +4044,7 @@ package mx.utils
       
       private static function getConcatenatedMatrixHelper(param1:DisplayObject, param2:Boolean) : Matrix
       {
-         trait method QName(PrivateNamespace(null,"252"),"getConcatenatedMatrixHelper")
+         trait method QName(PrivateNamespace(null,"#MatrixUtil"),"getConcatenatedMatrixHelper")
          flag FINAL
          dispid 24
          method
@@ -4077,65 +4077,65 @@ package mx.utils
          constructprop QName(PackageNamespace("flash.geom"),"Matrix"), 0
          coerce QName(PackageNamespace("flash.geom"),"Matrix")
          setlocal3
-         getlex QName(PrivateNamespace(null,"252"),"usesMarshalling")
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"usesMarshalling")
          pushnull
-         ifne ofs0068
-         findproperty QName(PrivateNamespace(null,"252"),"usesMarshalling")
+         ifne ofs0
+         findproperty QName(PrivateNamespace(null,"#MatrixUtil"),"usesMarshalling")
          getlex QName(PackageNamespace("flash.system"),"ApplicationDomain")
          getproperty QName(PackageNamespace(""),"currentDomain")
          pushstring "mx.managers.systemClasses.MarshallingSupport"
          callproperty QName(PackageNamespace(""),"hasDefinition"), 1
-         setproperty QName(PrivateNamespace(null,"252"),"usesMarshalling")
-         getlex QName(PrivateNamespace(null,"252"),"usesMarshalling")
+         setproperty QName(PrivateNamespace(null,"#MatrixUtil"),"usesMarshalling")
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"usesMarshalling")
          not
          dup
-         iffalse ofs004d
+         iffalse ofs1
          pop
          getlex QName(PackageNamespace("flash.system"),"ApplicationDomain")
          getproperty QName(PackageNamespace(""),"currentDomain")
          pushstring "mx.core.UIComponent"
          callproperty QName(PackageNamespace(""),"hasDefinition"), 1
          convert_b
-         ofs004d:
-         iffalse ofs0068
-         findproperty QName(PrivateNamespace(null,"252"),"uiComponentClass")
+         ofs1:
+         iffalse ofs0
+         findproperty QName(PrivateNamespace(null,"#MatrixUtil"),"uiComponentClass")
          findpropstrict QName(PackageNamespace(""),"Class")
          getlex QName(PackageNamespace("flash.system"),"ApplicationDomain")
          getproperty QName(PackageNamespace(""),"currentDomain")
          pushstring "mx.core.UIComponent"
          callproperty QName(PackageNamespace(""),"getDefinition"), 1
          callproperty QName(PackageNamespace(""),"Class"), 1
-         setproperty QName(PrivateNamespace(null,"252"),"uiComponentClass")
-         ofs0068:
-         getlex QName(PrivateNamespace(null,"252"),"fakeDollarParent")
+         setproperty QName(PrivateNamespace(null,"#MatrixUtil"),"uiComponentClass")
+         ofs0:
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"fakeDollarParent")
          pushnull
-         ifne ofs0081
-         findproperty QName(PrivateNamespace(null,"252"),"fakeDollarParent")
+         ifne ofs2
+         findproperty QName(PrivateNamespace(null,"#MatrixUtil"),"fakeDollarParent")
          findpropstrict QName(PackageNamespace(""),"QName")
          getlex QName(PackageNamespace("mx.core"),"mx_internal")
          pushstring "$parent"
          constructprop QName(PackageNamespace(""),"QName"), 2
-         setproperty QName(PrivateNamespace(null,"252"),"fakeDollarParent")
-         ofs0081:
+         setproperty QName(PrivateNamespace(null,"#MatrixUtil"),"fakeDollarParent")
+         ofs2:
          getlocal2
          convert_b
          dup
-         iffalse ofs008e
+         iffalse ofs3
          pop
-         getlex QName(PrivateNamespace(null,"252"),"computedMatrixProperty")
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"computedMatrixProperty")
          pushnull
          equals
-         ofs008e:
-         iffalse ofs00a3
-         findproperty QName(PrivateNamespace(null,"252"),"computedMatrixProperty")
+         ofs3:
+         iffalse ofs4
+         findproperty QName(PrivateNamespace(null,"#MatrixUtil"),"computedMatrixProperty")
          findpropstrict QName(PackageNamespace(""),"QName")
          getlex QName(PackageNamespace("mx.core"),"mx_internal")
          pushstring "computedMatrix"
          constructprop QName(PackageNamespace(""),"QName"), 2
-         setproperty QName(PrivateNamespace(null,"252"),"computedMatrixProperty")
-         ofs00a3:
-         jump ofs01b2
-         ofs00a7:
+         setproperty QName(PrivateNamespace(null,"#MatrixUtil"),"computedMatrixProperty")
+         ofs4:
+         jump ofs5
+         ofs6:
          label
          getlocal1
          getproperty QName(PackageNamespace(""),"scrollRect")
@@ -4143,7 +4143,7 @@ package mx.utils
          dup
          setlocal 4
          pushnull
-         ifeq ofs00c7
+         ifeq ofs7
          getlocal3
          getlocal 4
          getproperty QName(PackageNamespace(""),"x")
@@ -4152,140 +4152,140 @@ package mx.utils
          getproperty QName(PackageNamespace(""),"y")
          negate
          callpropvoid QName(PackageNamespace(""),"translate"), 2
-         ofs00c7:
-         getlex QName(PrivateNamespace(null,"252"),"usesMarshalling")
+         ofs7:
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"usesMarshalling")
          convert_b
          dup
-         iffalse ofs00d6
+         iffalse ofs8
          pop
          pushstring "moduleFactory"
          getlocal1
          in
-         ofs00d6:
-         iffalse ofs0154
+         ofs8:
+         iffalse ofs9
          getlocal1
          pushstring "moduleFactory"
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace(""),"Object")
          dup
          setlocal 6
          coerce_a
          convert_b
          dup
-         iffalse ofs00f7
+         iffalse ofs10
          pop
          getlocal 6
-         getlex QName(PrivateNamespace(null,"252"),"lastModuleFactory")
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"lastModuleFactory")
          strictequals
          not
          coerce_a
          convert_b
-         ofs00f7:
+         ofs10:
          dup
-         iffalse ofs0103
+         iffalse ofs11
          pop
          pushstring "info"
          getlocal 6
          in
-         ofs0103:
-         iffalse ofs0154
+         ofs11:
+         iffalse ofs9
          getlocal 6
          dup
          setlocal 8
          pushstring "info"
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlocal 8
          call 0
          kill 8
          pushstring "currentDomain"
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("flash.system"),"ApplicationDomain")
          dup
          setlocal 7
          convert_b
          dup
-         iffalse ofs0134
+         iffalse ofs12
          pop
          getlocal 7
          pushstring "mx.core.UIComponent"
          callproperty QName(PackageNamespace(""),"hasDefinition"), 1
          convert_b
-         ofs0134:
-         iffalse ofs014c
-         findproperty QName(PrivateNamespace(null,"252"),"uiComponentClass")
+         ofs12:
+         iffalse ofs13
+         findproperty QName(PrivateNamespace(null,"#MatrixUtil"),"uiComponentClass")
          findpropstrict QName(PackageNamespace(""),"Class")
          getlocal 7
          pushstring "mx.core.UIComponent"
          callproperty QName(PackageNamespace(""),"getDefinition"), 1
          callproperty QName(PackageNamespace(""),"Class"), 1
-         setproperty QName(PrivateNamespace(null,"252"),"uiComponentClass")
-         ofs014c:
-         findproperty QName(PrivateNamespace(null,"252"),"lastModuleFactory")
+         setproperty QName(PrivateNamespace(null,"#MatrixUtil"),"uiComponentClass")
+         ofs13:
+         findproperty QName(PrivateNamespace(null,"#MatrixUtil"),"lastModuleFactory")
          getlocal 6
-         setproperty QName(PrivateNamespace(null,"252"),"lastModuleFactory")
-         ofs0154:
-         getlex QName(PrivateNamespace(null,"252"),"uiComponentClass")
+         setproperty QName(PrivateNamespace(null,"#MatrixUtil"),"lastModuleFactory")
+         ofs9:
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"uiComponentClass")
          convert_b
          dup
-         iffalse ofs0163
+         iffalse ofs14
          pop
          getlocal1
-         getlex QName(PrivateNamespace(null,"252"),"uiComponentClass")
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"uiComponentClass")
          istypelate
-         ofs0163:
+         ofs14:
          convert_b
          setlocal 5
          getlocal2
          convert_b
          dup
-         iffalse ofs0171
+         iffalse ofs15
          pop
          getlocal 5
          convert_b
-         ofs0171:
-         iffalse ofs0185
+         ofs15:
+         iffalse ofs16
          getlocal3
          getlocal1
-         getlex QName(PrivateNamespace(null,"252"),"computedMatrixProperty")
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"computedMatrixProperty")
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          callpropvoid QName(PackageNamespace(""),"concat"), 1
-         jump ofs0191
-         ofs0185:
+         jump ofs17
+         ofs16:
          getlocal3
          getlocal1
          getproperty QName(PackageNamespace(""),"transform")
          getproperty QName(PackageNamespace(""),"matrix")
          callpropvoid QName(PackageNamespace(""),"concat"), 1
-         ofs0191:
+         ofs17:
          getlocal 5
-         iffalse ofs01a8
+         iffalse ofs18
          getlocal1
-         getlex QName(PrivateNamespace(null,"252"),"fakeDollarParent")
-         getproperty MultinameL([PrivateNamespace(null,"252"),PackageNamespace(""),PrivateNamespace(null,"415"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
+         getlex QName(PrivateNamespace(null,"#MatrixUtil"),"fakeDollarParent")
+         getproperty MultinameL([PrivateNamespace(null,"#MatrixUtil"),PackageNamespace(""),PrivateNamespace(null,"#MatrixUtil/1"),PackageNamespace("mx.utils"),PackageInternalNs("mx.utils"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("mx.utils:MatrixUtil"),StaticProtectedNs("mx.utils:MatrixUtil"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace("flash.display"),"DisplayObject")
          astypelate
          coerce QName(PackageNamespace("flash.display"),"DisplayObject")
          setlocal1
-         jump ofs01b2
-         ofs01a8:
+         jump ofs5
+         ofs18:
          getlocal1
          getproperty QName(PackageNamespace(""),"parent")
          getlex QName(PackageNamespace("flash.display"),"DisplayObject")
          astypelate
          coerce QName(PackageNamespace("flash.display"),"DisplayObject")
          setlocal1
-         ofs01b2:
+         ofs5:
          getlocal1
          convert_b
          dup
-         iffalse ofs01c2
+         iffalse ofs19
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"transform")
          getproperty QName(PackageNamespace(""),"matrix")
          convert_b
-         ofs01c2:
-         iftrue ofs00a7
+         ofs19:
+         iftrue ofs6
          getlocal3
          returnvalue
          end ; code
@@ -4312,7 +4312,7 @@ findpropstrict Multiname("MatrixUtil",[PackageNamespace("mx.utils")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass 146
+newclass #MatrixUtil
 popscope
 initproperty QName(PackageNamespace("mx.utils"),"MatrixUtil")
 returnvoid

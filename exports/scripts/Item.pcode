@@ -22,12 +22,12 @@ package
       code
       getlocal0
       pushscope
-      findproperty QName(PrivateNamespace(null,"32"),"DISAPPEAR_TIME")
+      findproperty QName(PrivateNamespace(null,"#Item"),"DISAPPEAR_TIME")
       pushshort 15000
-      initproperty QName(PrivateNamespace(null,"32"),"DISAPPEAR_TIME")
-      findproperty QName(PrivateNamespace(null,"32"),"FLICKER_TIME")
+      initproperty QName(PrivateNamespace(null,"#Item"),"DISAPPEAR_TIME")
+      findproperty QName(PrivateNamespace(null,"#Item"),"FLICKER_TIME")
       pushshort 5000
-      initproperty QName(PrivateNamespace(null,"32"),"FLICKER_TIME")
+      initproperty QName(PrivateNamespace(null,"#Item"),"FLICKER_TIME")
       returnvoid
       end ; code
       end ; body
@@ -68,17 +68,17 @@ package
          getlocal2
          initproperty QName(PackageNamespace(""),"y")
          getlocal3
-         iffalse ofs002b
+         iffalse ofs0
          getlocal0
-         getlex QName(PrivateNamespace(null,"32"),"DISAPPEAR_TIME")
-         initproperty QName(PrivateNamespace(null,"32"),"_disappearTime")
+         getlex QName(PrivateNamespace(null,"#Item"),"DISAPPEAR_TIME")
+         initproperty QName(PrivateNamespace(null,"#Item"),"_disappearTime")
          getlocal0
-         getlex QName(PrivateNamespace(null,"32"),"FLICKER_TIME")
-         initproperty QName(PrivateNamespace(null,"32"),"_flickerTime")
+         getlex QName(PrivateNamespace(null,"#Item"),"FLICKER_TIME")
+         initproperty QName(PrivateNamespace(null,"#Item"),"_flickerTime")
          getlocal0
          pushtrue
-         initproperty QName(PrivateNamespace(null,"32"),"_willThisDisappear")
-         ofs002b:
+         initproperty QName(PrivateNamespace(null,"#Item"),"_willThisDisappear")
+         ofs0:
          findproperty QName(PackageNamespace(""),"fixed")
          pushtrue
          initproperty QName(PackageNamespace(""),"fixed")
@@ -134,50 +134,50 @@ package
          getproperty QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"STATE_GAME")
-         ifeq ofs0013
+         ifeq ofs0
          returnvoid
-         ofs0013:
+         ofs0:
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"32"),"_willThisDisappear")
-         iffalse ofs0064
+         getproperty QName(PrivateNamespace(null,"#Item"),"_willThisDisappear")
+         iffalse ofs1
          getlocal0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"32"),"_disappearTime")
+         getproperty QName(PrivateNamespace(null,"#Item"),"_disappearTime")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"32"),"_disappearTime")
+         setproperty QName(PrivateNamespace(null,"#Item"),"_disappearTime")
          getlocal0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"32"),"_flickerTime")
+         getproperty QName(PrivateNamespace(null,"#Item"),"_flickerTime")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"32"),"_flickerTime")
+         setproperty QName(PrivateNamespace(null,"#Item"),"_flickerTime")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"32"),"_disappearTime")
+         getproperty QName(PrivateNamespace(null,"#Item"),"_disappearTime")
          pushbyte 0
-         ifnle ofs0053
+         ifnle ofs2
          findpropstrict QName(PackageNamespace(""),"kill")
          callpropvoid QName(PackageNamespace(""),"kill"), 0
-         jump ofs0064
-         ofs0053:
+         jump ofs1
+         ofs2:
          getlocal0
-         getproperty QName(PrivateNamespace(null,"32"),"_flickerTime")
+         getproperty QName(PrivateNamespace(null,"#Item"),"_flickerTime")
          pushbyte 0
-         ifnle ofs0064
+         ifnle ofs1
          findpropstrict QName(PackageNamespace(""),"flicker")
          callpropvoid QName(PackageNamespace(""),"flicker"), 0
-         ofs0064:
+         ofs1:
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"maxX")
          greaterthan
          dup
-         iftrue ofs0088
+         iftrue ofs3
          pop
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"width")
@@ -186,18 +186,18 @@ package
          getproperty QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"minX")
          lessthan
-         ofs0088:
+         ofs3:
          dup
-         iftrue ofs009b
+         iftrue ofs4
          pop
          getlex QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"maxY")
          greaterthan
-         ofs009b:
+         ofs4:
          dup
-         iftrue ofs00b2
+         iftrue ofs5
          pop
          getlex QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"height")
@@ -206,11 +206,11 @@ package
          getproperty QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"minY")
          lessthan
-         ofs00b2:
-         iffalse ofs00bd
+         ofs5:
+         iffalse ofs6
          findpropstrict QName(PackageNamespace(""),"kill")
          callpropvoid QName(PackageNamespace(""),"kill"), 0
-         ofs00bd:
+         ofs6:
          returnvoid
          end ; code
          end ; body
@@ -235,65 +235,65 @@ package
          code
          getlocal0
          pushscope
-         jump ofs002f
-         ofs0006:
+         jump ofs0
+         ofs1:
          label
          getlocal0
          callpropvoid QName(PackageNamespace(""),"triggerAi1"), 0
-         jump ofs0087
-         ofs0010:
+         jump ofs2
+         ofs3:
          label
          getlocal0
          callpropvoid QName(PackageNamespace(""),"triggerAi2"), 0
-         jump ofs0087
-         ofs001a:
+         jump ofs2
+         ofs4:
          label
          getlocal0
          callpropvoid QName(PackageNamespace(""),"triggerAi3"), 0
-         jump ofs0087
-         ofs0024:
+         jump ofs2
+         ofs5:
          label
          getlocal0
          callpropvoid QName(PackageNamespace(""),"triggerAi4"), 0
-         ofs002a:
+         ofs6:
          label
-         jump ofs0087
-         ofs002f:
+         jump ofs2
+         ofs0:
          getlocal1
          setlocal2
          pushbyte 1
          getlocal2
-         ifstrictne ofs003e
+         ifstrictne ofs7
          pushbyte 0
-         jump ofs0071
-         ofs003e:
+         jump ofs8
+         ofs7:
          pushbyte 2
          getlocal2
-         ifstrictne ofs004b
+         ifstrictne ofs9
          pushbyte 1
-         jump ofs0071
-         ofs004b:
+         jump ofs8
+         ofs9:
          pushbyte 3
          getlocal2
-         ifstrictne ofs0058
+         ifstrictne ofs10
          pushbyte 2
-         jump ofs0071
-         ofs0058:
+         jump ofs8
+         ofs10:
          pushbyte 4
          getlocal2
-         ifstrictne ofs0065
+         ifstrictne ofs11
          pushbyte 3
-         jump ofs0071
-         ofs0065:
-         jump ofs006f
+         jump ofs8
+         ofs11:
+         jump ofs12
          pushbyte 4
-         jump ofs006f
-         ofs006f:
+         jump ofs12
+         ofs12:
          pushbyte 4
-         ofs0071:
+         ofs8:
          kill 2
-         lookupswitch ofs002a, [ofs0006, ofs0010, ofs001a, ofs0024, ofs002a]
-         ofs0087:
+         lookupswitch ofs6, [ofs1, ofs3, ofs4, ofs5, ofs6]
+         ofs2:
          returnvoid
          end ; code
          end ; body
@@ -419,7 +419,7 @@ pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
 pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
-newclass 101
+newclass #Item
 popscope
 popscope
 popscope

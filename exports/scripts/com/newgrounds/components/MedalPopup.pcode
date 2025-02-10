@@ -12,7 +12,7 @@ package com.newgrounds.components
    import flash.utils.Timer;
    import flash.utils.getQualifiedClassName;
    
-   [Embed(source="/_assets/assets.swf", symbol="symbol15")]
+   [Embed]
    public class MedalPopup extends MovieClip
    {
       method
@@ -66,13 +66,13 @@ package com.newgrounds.components
          pushscope
          getlocal0
          newarray 0
-         initproperty QName(PrivateNamespace(null,"4"),"_medalQueue")
+         initproperty QName(PrivateNamespace(null,"#MedalPopup"),"_medalQueue")
          getlocal0
          findpropstrict QName(PackageNamespace("flash.utils"),"Timer")
          pushshort 3000
          pushbyte 1
          constructprop QName(PackageNamespace("flash.utils"),"Timer"), 2
-         initproperty QName(PrivateNamespace(null,"4"),"_popDelay")
+         initproperty QName(PrivateNamespace(null,"#MedalPopup"),"_popDelay")
          getlocal0
          constructsuper 0
          findpropstrict QName(PackageNamespace(""),"addFrameScript")
@@ -91,17 +91,17 @@ package com.newgrounds.components
          equals
          not
          dup
-         iffalse ofs0047
+         iffalse ofs0
          pop
          findpropstrict QName(PackageNamespace("flash.utils"),"getQualifiedClassName")
          getlex QName(PackageNamespace(""),"parent")
          callproperty QName(PackageNamespace("flash.utils"),"getQualifiedClassName"), 1
          pushstring "fl.livepreview::LivePreviewParent"
          equals
-         ofs0047:
-         iffalse ofs004c
+         ofs0:
+         iffalse ofs1
          returnvoid
-         ofs004c:
+         ofs1:
          findproperty QName(PackageNamespace(""),"visible")
          pushfalse
          initproperty QName(PackageNamespace(""),"visible")
@@ -109,7 +109,7 @@ package com.newgrounds.components
          getlex QName(PackageNamespace("flash.events"),"Event")
          getproperty QName(PackageNamespace(""),"ENTER_FRAME")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"enterFrameHandler")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"enterFrameHandler")
          callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
          findpropstrict QName(PackageNamespace(""),"stop")
          callpropvoid QName(PackageNamespace(""),"stop"), 0
@@ -117,17 +117,17 @@ package com.newgrounds.components
          getlex QName(PackageNamespace("com.newgrounds"),"APIEvent")
          getproperty QName(PackageNamespace(""),"MEDAL_UNLOCKED")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"onMedalUnlocked")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"onMedalUnlocked")
          pushfalse
          pushbyte 0
          pushtrue
          callpropvoid QName(PackageNamespace(""),"addEventListener"), 5
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_popDelay")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_popDelay")
          getlex QName(PackageNamespace("flash.events"),"TimerEvent")
          getproperty QName(PackageNamespace(""),"TIMER")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"timerHandler")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"timerHandler")
          callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
          returnvoid
          end ; code
@@ -153,7 +153,7 @@ package com.newgrounds.components
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_popDelay")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_popDelay")
          getproperty QName(PackageNamespace(""),"delay")
          pushshort 1000
          divide
@@ -184,13 +184,13 @@ package com.newgrounds.components
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal1
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iffalse ofs0012
+         iffalse ofs0
          pushbyte 3
          convert_d
          setlocal1
-         ofs0012:
+         ofs0:
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_popDelay")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_popDelay")
          getlocal1
          pushshort 1000
          multiply
@@ -203,7 +203,7 @@ package com.newgrounds.components
       
       private function enterFrameHandler(param1:Event) : void
       {
-         trait method QName(PrivateNamespace(null,"4"),"enterFrameHandler")
+         trait method QName(PrivateNamespace(null,"#MedalPopup"),"enterFrameHandler")
          dispid 0
          method
          name null
@@ -258,24 +258,24 @@ package com.newgrounds.components
          setslot 4
          findpropstrict QName(PackageNamespace(""),"Boolean")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_medalQueue")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_medalQueue")
          getproperty QName(PackageNamespace(""),"length")
          callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
-         iffalse ofs0039
+         iffalse ofs0
          pop
          getlex QName(PackageNamespace(""),"visible")
          not
-         ofs0039:
-         iffalse ofs005f
+         ofs0:
+         iffalse ofs1
          getlocal0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_medalQueue")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_medalQueue")
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"pop"), 0
-         setproperty QName(PrivateNamespace(null,"4"),"_medal")
+         setproperty QName(PrivateNamespace(null,"#MedalPopup"),"_medal")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_popDelay")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_popDelay")
          callpropvoid QName(PackageNamespace(""),"start"), 0
          findpropstrict QName(PackageNamespace(""),"gotoAndPlay")
          pushstring "medal_show"
@@ -283,19 +283,19 @@ package com.newgrounds.components
          findproperty QName(PackageNamespace(""),"visible")
          pushtrue
          initproperty QName(PackageNamespace(""),"visible")
-         ofs005f:
+         ofs1:
          getlex QName(PackageNamespace(""),"visible")
          convert_b
          dup
-         iffalse ofs0072
+         iffalse ofs2
          pop
          findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"parent")
          callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
-         ofs0072:
-         iffalse ofs00c5
-         ofs0076:
+         ofs2:
+         iffalse ofs3
+         ofs4:
          getscopeobject 1
          findpropstrict QName(PackageNamespace(""),"uint")
          getlex QName(PackageNamespace(""),"parent")
@@ -316,15 +316,15 @@ package com.newgrounds.components
          getslot 2
          getscopeobject 1
          getslot 3
-         ifeq ofs00b1
+         ifeq ofs5
          getlex QName(PackageNamespace(""),"parent")
          getlocal0
          getscopeobject 1
          getslot 3
          callpropvoid QName(PackageNamespace(""),"setChildIndex"), 2
-         ofs00b1:
-         jump ofs00c5
-         ofs00b5:
+         ofs5:
+         jump ofs3
+         ofs6:
          getlocal0
          pushscope
          getlocal2
@@ -338,17 +338,17 @@ package com.newgrounds.components
          setslot 1
          popscope
          kill 3
-         ofs00c5:
+         ofs3:
          returnvoid
          end ; code
-         try from ofs0076 to ofs00b1 target ofs00b5 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"error") end
+         try from ofs4 to ofs5 target ofs6 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"error") end
          end ; body
          end ; method
       }
       
       private function onMedalUnlocked(param1:APIEvent) : void
       {
-         trait method QName(PrivateNamespace(null,"4"),"onMedalUnlocked")
+         trait method QName(PrivateNamespace(null,"#MedalPopup"),"onMedalUnlocked")
          dispid 0
          method
          name null
@@ -369,32 +369,32 @@ package com.newgrounds.components
          coerce_a
          convert_b
          dup
-         iffalse ofs0012
+         iffalse ofs0
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"data")
          coerce_a
          convert_b
-         ofs0012:
+         ofs0:
          dup
-         iffalse ofs0021
+         iffalse ofs1
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"data")
-         getproperty Multiname("medal",[PrivateNamespace(null,"4"),PackageNamespace(""),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),ProtectedNamespace("com.newgrounds.components:MedalPopup"),StaticProtectedNs("com.newgrounds.components:MedalPopup"),StaticProtectedNs("flash.display:MovieClip"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("medal",[PrivateNamespace(null,"#MedalPopup"),PackageNamespace(""),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"#MedalPopup/1"),PackageNamespace("com.newgrounds.components"),ProtectedNamespace("com.newgrounds.components:MedalPopup"),StaticProtectedNs("com.newgrounds.components:MedalPopup"),StaticProtectedNs("flash.display:MovieClip"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace("com.newgrounds"),"Medal")
          istypelate
-         ofs0021:
-         iffalse ofs0037
+         ofs1:
+         iffalse ofs2
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_medalQueue")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_medalQueue")
          findpropstrict QName(PackageNamespace("com.newgrounds"),"Medal")
          getlocal1
          getproperty QName(PackageNamespace(""),"data")
-         getproperty Multiname("medal",[PrivateNamespace(null,"4"),PackageNamespace(""),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"32"),PackageNamespace("com.newgrounds.components"),ProtectedNamespace("com.newgrounds.components:MedalPopup"),StaticProtectedNs("com.newgrounds.components:MedalPopup"),StaticProtectedNs("flash.display:MovieClip"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("medal",[PrivateNamespace(null,"#MedalPopup"),PackageNamespace(""),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"#MedalPopup/1"),PackageNamespace("com.newgrounds.components"),ProtectedNamespace("com.newgrounds.components:MedalPopup"),StaticProtectedNs("com.newgrounds.components:MedalPopup"),StaticProtectedNs("flash.display:MovieClip"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          callproperty QName(PackageNamespace("com.newgrounds"),"Medal"), 1
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         ofs0037:
+         ofs2:
          returnvoid
          end ; code
          end ; body
@@ -403,7 +403,7 @@ package com.newgrounds.components
       
       private function showMedalInfo() : void
       {
-         trait method QName(PrivateNamespace(null,"4"),"showMedalInfo")
+         trait method QName(PrivateNamespace(null,"#MedalPopup"),"showMedalInfo")
          dispid 0
          method
          name null
@@ -419,49 +419,49 @@ package com.newgrounds.components
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_medal")
-         iftrue ofs000a
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_medal")
+         iftrue ofs0
          returnvoid
-         ofs000a:
+         ofs0:
          getlocal0
          getproperty QName(PackageNamespace(""),"medalContainer")
-         iffalse ofs0025
+         iffalse ofs1
          getlocal0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_medal")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_medal")
          callproperty QName(PackageNamespace(""),"createIconBitmap"), 0
-         setproperty QName(PrivateNamespace(null,"4"),"_medalIcon")
+         setproperty QName(PrivateNamespace(null,"#MedalPopup"),"_medalIcon")
          getlocal0
          getproperty QName(PackageNamespace(""),"medalContainer")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_medalIcon")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_medalIcon")
          callpropvoid QName(PackageNamespace(""),"addChild"), 1
-         ofs0025:
+         ofs1:
          getlocal0
          getproperty QName(PackageNamespace(""),"medalNameText")
-         iffalse ofs0038
+         iffalse ofs2
          getlocal0
          getproperty QName(PackageNamespace(""),"medalNameText")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_medal")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_medal")
          getproperty QName(PackageNamespace(""),"name")
          setproperty QName(PackageNamespace(""),"text")
-         ofs0038:
+         ofs2:
          getlocal0
          getproperty QName(PackageNamespace(""),"medalValueText")
-         iffalse ofs0053
+         iffalse ofs3
          getlocal0
          getproperty QName(PackageNamespace(""),"medalValueText")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_medal")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_medal")
          getproperty QName(PackageNamespace(""),"value")
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
          pushstring "pts"
          add
          setproperty QName(PackageNamespace(""),"text")
-         ofs0053:
+         ofs3:
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_popDelay")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_popDelay")
          callpropvoid QName(PackageNamespace(""),"start"), 0
          findpropstrict QName(PackageNamespace(""),"stop")
          callpropvoid QName(PackageNamespace(""),"stop"), 0
@@ -473,7 +473,7 @@ package com.newgrounds.components
       
       private function timerHandler(param1:TimerEvent) : void
       {
-         trait method QName(PrivateNamespace(null,"4"),"timerHandler")
+         trait method QName(PrivateNamespace(null,"#MedalPopup"),"timerHandler")
          dispid 0
          method
          name null
@@ -491,35 +491,35 @@ package com.newgrounds.components
          pushscope
          findpropstrict QName(PackageNamespace(""),"Boolean")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_medalIcon")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_medalIcon")
          callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
-         iffalse ofs001d
+         iffalse ofs0
          pop
          findpropstrict QName(PackageNamespace(""),"Boolean")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_medalIcon")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_medalIcon")
          getproperty QName(PackageNamespace(""),"parent")
          callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
-         ofs001d:
-         iffalse ofs0032
+         ofs0:
+         iffalse ofs1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_medalIcon")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_medalIcon")
          getproperty QName(PackageNamespace(""),"parent")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_medalIcon")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_medalIcon")
          callpropvoid QName(PackageNamespace(""),"removeChild"), 1
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"4"),"_medalIcon")
-         ofs0032:
+         setproperty QName(PrivateNamespace(null,"#MedalPopup"),"_medalIcon")
+         ofs1:
          findpropstrict QName(PackageNamespace(""),"gotoAndPlay")
          pushstring "medal_hide"
          callpropvoid QName(PackageNamespace(""),"gotoAndPlay"), 1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"4"),"_popDelay")
+         getproperty QName(PrivateNamespace(null,"#MedalPopup"),"_popDelay")
          callpropvoid QName(PackageNamespace(""),"stop"), 0
          returnvoid
          end ; code
@@ -570,7 +570,7 @@ package com.newgrounds.components
          getlocal0
          pushscope
          getlocal0
-         callpropvoid QName(PrivateNamespace(null,"4"),"showMedalInfo"), 0
+         callpropvoid QName(PrivateNamespace(null,"#MedalPopup"),"showMedalInfo"), 0
          findpropstrict QName(PackageNamespace(""),"stop")
          callpropvoid QName(PackageNamespace(""),"stop"), 0
          returnvoid
@@ -638,7 +638,7 @@ pushscope
 getlex QName(PackageNamespace("flash.display"),"MovieClip")
 pushscope
 getlex QName(PackageNamespace("flash.display"),"MovieClip")
-newclass 7
+newclass #MedalPopup
 popscope
 popscope
 popscope

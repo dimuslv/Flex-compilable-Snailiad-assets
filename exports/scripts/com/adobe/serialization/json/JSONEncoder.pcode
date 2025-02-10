@@ -45,8 +45,8 @@ package com.adobe.serialization.json
          getlocal0
          getlocal0
          getlocal1
-         callproperty QName(PrivateNamespace(null,"19"),"convertToString"), 1
-         initproperty QName(PrivateNamespace(null,"19"),"jsonString")
+         callproperty QName(PrivateNamespace(null,"#JSONEncoder"),"convertToString"), 1
+         initproperty QName(PrivateNamespace(null,"#JSONEncoder"),"jsonString")
          returnvoid
          end ; code
          end ; body
@@ -71,7 +71,7 @@ package com.adobe.serialization.json
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"19"),"jsonString")
+         getproperty QName(PrivateNamespace(null,"#JSONEncoder"),"jsonString")
          returnvalue
          end ; code
          end ; body
@@ -80,7 +80,7 @@ package com.adobe.serialization.json
       
       private function convertToString(param1:*) : String
       {
-         trait method QName(PrivateNamespace(null,"19"),"convertToString")
+         trait method QName(PrivateNamespace(null,"#JSONEncoder"),"convertToString")
          dispid 0
          method
          name null
@@ -99,75 +99,75 @@ package com.adobe.serialization.json
          getlocal1
          getlex QName(PackageNamespace(""),"String")
          istypelate
-         iffalse ofs0014
+         iffalse ofs0
          getlocal0
          getlocal1
          getlex QName(PackageNamespace(""),"String")
          astypelate
-         callproperty QName(PrivateNamespace(null,"19"),"escapeString"), 1
+         callproperty QName(PrivateNamespace(null,"#JSONEncoder"),"escapeString"), 1
          returnvalue
-         ofs0014:
+         ofs0:
          getlocal1
          getlex QName(PackageNamespace(""),"Number")
          istypelate
-         iffalse ofs0039
+         iffalse ofs1
          findpropstrict QName(PackageNamespace(""),"isFinite")
          getlocal1
          getlex QName(PackageNamespace(""),"Number")
          astypelate
          callproperty QName(PackageNamespace(""),"isFinite"), 1
-         iffalse ofs0035
+         iffalse ofs2
          getlocal1
-         callproperty Multiname("toString",[PrivateNamespace(null,"19"),PackageNamespace(""),PrivateNamespace(null,"47"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")]), 0
+         callproperty Multiname("toString",[PrivateNamespace(null,"#JSONEncoder"),PackageNamespace(""),PrivateNamespace(null,"#JSONEncoder/1"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")]), 0
          coerce_s
-         jump ofs0038
-         ofs0035:
+         jump ofs3
+         ofs2:
          pushstring "null"
-         ofs0038:
+         ofs3:
          returnvalue
-         ofs0039:
+         ofs1:
          getlocal1
          getlex QName(PackageNamespace(""),"Boolean")
          istypelate
-         iffalse ofs0052
+         iffalse ofs4
          getlocal1
          not
-         iftrue ofs004e
+         iftrue ofs5
          pushstring "true"
-         jump ofs0051
-         ofs004e:
+         jump ofs6
+         ofs5:
          pushstring "false"
-         ofs0051:
+         ofs6:
          returnvalue
-         ofs0052:
+         ofs4:
          getlocal1
          getlex QName(PackageNamespace(""),"Array")
          istypelate
-         iffalse ofs0064
+         iffalse ofs7
          getlocal0
          getlocal1
          getlex QName(PackageNamespace(""),"Array")
          astypelate
-         callproperty QName(PrivateNamespace(null,"19"),"arrayToString"), 1
+         callproperty QName(PrivateNamespace(null,"#JSONEncoder"),"arrayToString"), 1
          returnvalue
-         ofs0064:
+         ofs7:
          getlocal1
          getlex QName(PackageNamespace(""),"Object")
          istypelate
          dup
-         iffalse ofs0072
+         iffalse ofs8
          pop
          getlocal1
          pushnull
          equals
          not
-         ofs0072:
-         iffalse ofs007d
+         ofs8:
+         iffalse ofs9
          getlocal0
          getlocal1
-         callproperty QName(PrivateNamespace(null,"19"),"objectToString"), 1
+         callproperty QName(PrivateNamespace(null,"#JSONEncoder"),"objectToString"), 1
          returnvalue
-         ofs007d:
+         ofs9:
          pushstring "null"
          returnvalue
          end ; code
@@ -177,7 +177,7 @@ package com.adobe.serialization.json
       
       private function escapeString(param1:String) : String
       {
-         trait method QName(PrivateNamespace(null,"19"),"escapeString")
+         trait method QName(PrivateNamespace(null,"#JSONEncoder"),"escapeString")
          dispid 0
          method
          name null
@@ -211,76 +211,76 @@ package com.adobe.serialization.json
          setlocal 6
          pushbyte 0
          setlocal 7
-         jump ofs017a
-         ofs0020:
+         jump ofs0
+         ofs1:
          label
          getlocal1
          getlocal 7
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charAt"), 1
          coerce_s
          setlocal2
-         jump ofs00e1
-         ofs002e:
+         jump ofs2
+         ofs3:
          label
          getlocal 5
          pushstring "\\\""
          add
          coerce_a
          setlocal 5
-         jump ofs0178
-         ofs003c:
+         jump ofs4
+         ofs5:
          label
          getlocal 5
          pushstring "\\\\"
          add
          coerce_a
          setlocal 5
-         jump ofs0178
-         ofs004a:
+         jump ofs4
+         ofs6:
          label
          getlocal 5
          pushstring "\\b"
          add
          coerce_a
          setlocal 5
-         jump ofs0178
-         ofs0058:
+         jump ofs4
+         ofs7:
          label
          getlocal 5
          pushstring "\\f"
          add
          coerce_a
          setlocal 5
-         jump ofs0178
-         ofs0066:
+         jump ofs4
+         ofs8:
          label
          getlocal 5
          pushstring "\\n"
          add
          coerce_a
          setlocal 5
-         jump ofs0178
-         ofs0074:
+         jump ofs4
+         ofs9:
          label
          getlocal 5
          pushstring "\\r"
          add
          coerce_a
          setlocal 5
-         jump ofs0178
-         ofs0082:
+         jump ofs4
+         ofs10:
          label
          getlocal 5
          pushstring "\\t"
          add
          coerce_a
          setlocal 5
-         jump ofs0178
-         ofs0090:
+         jump ofs4
+         ofs11:
          label
          getlocal2
          pushstring " "
-         ifnlt ofs00d2
+         ifnlt ofs12
          getlocal2
          pushbyte 0
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charCodeAt"), 1
@@ -292,12 +292,12 @@ package com.adobe.serialization.json
          getproperty QName(PackageNamespace(""),"length")
          pushbyte 2
          equals
-         iffalse ofs00ba
+         iffalse ofs13
          pushstring "00"
-         jump ofs00bd
-         ofs00ba:
+         jump ofs14
+         ofs13:
          pushstring "000"
-         ofs00bd:
+         ofs14:
          coerce_s
          setlocal 4
          getlocal 5
@@ -309,75 +309,75 @@ package com.adobe.serialization.json
          add
          coerce_a
          setlocal 5
-         jump ofs00d9
-         ofs00d2:
+         jump ofs15
+         ofs12:
          getlocal 5
          getlocal2
          add
          coerce_a
          setlocal 5
-         ofs00d9:
-         jump ofs0178
-         jump ofs00e1
-         ofs00e1:
+         ofs15:
+         jump ofs4
+         jump ofs2
+         ofs2:
          getlocal2
          setlocal 8
          pushstring "\""
          getlocal 8
-         ifstrictne ofs00f3
+         ifstrictne ofs16
          pushbyte 0
-         jump ofs0159
-         ofs00f3:
+         jump ofs17
+         ofs16:
          pushstring "\\"
          getlocal 8
-         ifstrictne ofs0102
+         ifstrictne ofs18
          pushbyte 1
-         jump ofs0159
-         ofs0102:
+         jump ofs17
+         ofs18:
          pushstring "\b"
          getlocal 8
-         ifstrictne ofs0111
+         ifstrictne ofs19
          pushbyte 2
-         jump ofs0159
-         ofs0111:
+         jump ofs17
+         ofs19:
          pushstring "\f"
          getlocal 8
-         ifstrictne ofs0120
+         ifstrictne ofs20
          pushbyte 3
-         jump ofs0159
-         ofs0120:
+         jump ofs17
+         ofs20:
          pushstring "\n"
          getlocal 8
-         ifstrictne ofs012f
+         ifstrictne ofs21
          pushbyte 4
-         jump ofs0159
-         ofs012f:
+         jump ofs17
+         ofs21:
          pushstring "\r"
          getlocal 8
-         ifstrictne ofs013e
+         ifstrictne ofs22
          pushbyte 5
-         jump ofs0159
-         ofs013e:
+         jump ofs17
+         ofs22:
          pushstring "\t"
          getlocal 8
-         ifstrictne ofs014d
+         ifstrictne ofs23
          pushbyte 6
-         jump ofs0159
-         ofs014d:
-         jump ofs0157
+         jump ofs17
+         ofs23:
+         jump ofs24
          pushbyte 7
-         jump ofs0157
-         ofs0157:
+         jump ofs24
+         ofs24:
          pushbyte 7
-         ofs0159:
+         ofs17:
          kill 8
-         lookupswitch ofs0090, [ofs002e, ofs003c, ofs004a, ofs0058, ofs0066, ofs0074, ofs0082, ofs0090]
-         ofs0178:
+         lookupswitch ofs11, [ofs3, ofs5, ofs6, ofs7, ofs8, ofs9, ofs10, ofs11]
+         ofs4:
          inclocal_i 7
-         ofs017a:
+         ofs0:
          getlocal 7
          getlocal 6
-         iflt ofs0020
+         iflt ofs1
          pushstring "\""
          getlocal 5
          add
@@ -391,7 +391,7 @@ package com.adobe.serialization.json
       
       private function arrayToString(param1:Array) : String
       {
-         trait method QName(PrivateNamespace(null,"19"),"arrayToString")
+         trait method QName(PrivateNamespace(null,"#JSONEncoder"),"arrayToString")
          dispid 0
          method
          name null
@@ -412,34 +412,34 @@ package com.adobe.serialization.json
          setlocal2
          pushbyte 0
          setlocal3
-         jump ofs002f
-         ofs000d:
+         jump ofs0
+         ofs1:
          label
          getlocal2
-         getproperty Multiname("length",[PrivateNamespace(null,"19"),PackageNamespace(""),PrivateNamespace(null,"47"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
+         getproperty Multiname("length",[PrivateNamespace(null,"#JSONEncoder"),PackageNamespace(""),PrivateNamespace(null,"#JSONEncoder/1"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
          pushbyte 0
-         ifngt ofs001f
+         ifngt ofs2
          getlocal2
          pushstring ","
          add
          coerce_a
          setlocal2
-         ofs001f:
+         ofs2:
          getlocal2
          getlocal0
          getlocal1
          getlocal3
-         getproperty MultinameL([PrivateNamespace(null,"19"),PackageNamespace(""),PrivateNamespace(null,"47"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
-         callproperty QName(PrivateNamespace(null,"19"),"convertToString"), 1
+         getproperty MultinameL([PrivateNamespace(null,"#JSONEncoder"),PackageNamespace(""),PrivateNamespace(null,"#JSONEncoder/1"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
+         callproperty QName(PrivateNamespace(null,"#JSONEncoder"),"convertToString"), 1
          add
          coerce_a
          setlocal2
          inclocal_i 3
-         ofs002f:
+         ofs0:
          getlocal3
          getlocal1
          getproperty QName(PackageNamespace(""),"length")
-         iflt ofs000d
+         iflt ofs1
          pushstring "["
          getlocal2
          add
@@ -453,7 +453,7 @@ package com.adobe.serialization.json
       
       private function objectToString(param1:Object) : String
       {
-         trait method QName(PrivateNamespace(null,"19"),"objectToString")
+         trait method QName(PrivateNamespace(null,"#JSONEncoder"),"objectToString")
          dispid 0
          method
          name null
@@ -534,18 +534,18 @@ package com.adobe.serialization.json
          setslot 7
          getscopeobject 1
          getslot 7
-         getproperty MultinameA("name",[PrivateNamespace(null,"19"),PackageNamespace(""),PrivateNamespace(null,"47"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
-         callproperty Multiname("toString",[PrivateNamespace(null,"19"),PackageNamespace(""),PrivateNamespace(null,"47"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")]), 0
+         getproperty MultinameA("name",[PrivateNamespace(null,"#JSONEncoder"),PackageNamespace(""),PrivateNamespace(null,"#JSONEncoder/1"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
+         callproperty Multiname("toString",[PrivateNamespace(null,"#JSONEncoder"),PackageNamespace(""),PrivateNamespace(null,"#JSONEncoder/1"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")]), 0
          pushstring "Object"
-         ifne ofs00d0
+         ifne ofs0
          pushbyte 0
          setlocal3
          getscopeobject 1
          getslot 5
          coerce_a
          setlocal 4
-         jump ofs00c1
-         ofs0061:
+         jump ofs1
+         ofs2:
          label
          getscopeobject 1
          getlocal 4
@@ -558,57 +558,57 @@ package com.adobe.serialization.json
          getslot 5
          getscopeobject 1
          getslot 3
-         getproperty MultinameL([PrivateNamespace(null,"19"),PackageNamespace(""),PrivateNamespace(null,"47"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#JSONEncoder"),PackageNamespace(""),PrivateNamespace(null,"#JSONEncoder/1"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace(""),"Object")
          setslot 2
          getscopeobject 1
          getslot 2
          getlex QName(PackageNamespace(""),"Function")
          istypelate
-         iftrue ofs00c1
+         iftrue ofs1
          getscopeobject 1
          getslot 6
          getproperty QName(PackageNamespace(""),"length")
          pushbyte 0
-         ifngt ofs00a0
+         ifngt ofs3
          getscopeobject 1
          getscopeobject 1
          getslot 6
          pushstring ","
          add
          setslot 6
-         ofs00a0:
+         ofs3:
          getscopeobject 1
          getscopeobject 1
          getslot 6
          getlocal0
          getscopeobject 1
          getslot 3
-         callproperty QName(PrivateNamespace(null,"19"),"escapeString"), 1
+         callproperty QName(PrivateNamespace(null,"#JSONEncoder"),"escapeString"), 1
          pushstring ":"
          add
          getlocal0
          getscopeobject 1
          getslot 2
-         callproperty QName(PrivateNamespace(null,"19"),"convertToString"), 1
+         callproperty QName(PrivateNamespace(null,"#JSONEncoder"),"convertToString"), 1
          add
          add
          coerce_s
          setslot 6
-         ofs00c1:
+         ofs1:
          hasnext2 4, 3
-         iftrue ofs0061
+         iftrue ofs2
          kill 4
          kill 3
-         jump ofs01a2
-         ofs00d0:
+         jump ofs4
+         ofs0:
          pushbyte 0
          setlocal3
          pushbyte 0
          setlocal 6
          getscopeobject 1
          getslot 7
-         getdescendants Multiname(null,[PrivateNamespace(null,"19"),PackageNamespace(""),PrivateNamespace(null,"47"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
+         getdescendants Multiname(null,[PrivateNamespace(null,"#JSONEncoder"),PackageNamespace(""),PrivateNamespace(null,"#JSONEncoder/1"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
          checkfilter
          coerce_a
          setlocal 7
@@ -616,8 +616,8 @@ package com.adobe.serialization.json
          pushstring ""
          construct 1
          setlocal 5
-         jump ofs012a
-         ofs00ef:
+         jump ofs5
+         ofs6:
          label
          getlocal 7
          getlocal 6
@@ -627,38 +627,38 @@ package com.adobe.serialization.json
          dup
          setlocal 9
          pushwith
-         findpropstrict Multiname("name",[PrivateNamespace(null,"19"),PackageNamespace(""),PrivateNamespace(null,"47"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
-         callproperty Multiname("name",[PrivateNamespace(null,"19"),PackageNamespace(""),PrivateNamespace(null,"47"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")]), 0
+         findpropstrict Multiname("name",[PrivateNamespace(null,"#JSONEncoder"),PackageNamespace(""),PrivateNamespace(null,"#JSONEncoder/1"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
+         callproperty Multiname("name",[PrivateNamespace(null,"#JSONEncoder"),PackageNamespace(""),PrivateNamespace(null,"#JSONEncoder/1"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")]), 0
          pushstring "variable"
          equals
          dup
-         iftrue ofs0118
+         iftrue ofs7
          pop
-         findpropstrict Multiname("name",[PrivateNamespace(null,"19"),PackageNamespace(""),PrivateNamespace(null,"47"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
-         callproperty Multiname("name",[PrivateNamespace(null,"19"),PackageNamespace(""),PrivateNamespace(null,"47"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")]), 0
+         findpropstrict Multiname("name",[PrivateNamespace(null,"#JSONEncoder"),PackageNamespace(""),PrivateNamespace(null,"#JSONEncoder/1"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
+         callproperty Multiname("name",[PrivateNamespace(null,"#JSONEncoder"),PackageNamespace(""),PrivateNamespace(null,"#JSONEncoder/1"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")]), 0
          pushstring "accessor"
          equals
-         ofs0118:
-         iffalse ofs0125
+         ofs7:
+         iffalse ofs8
          getlocal 5
          getlocal 6
          getlocal 8
-         setproperty MultinameL([PrivateNamespace(null,"19"),PackageNamespace(""),PrivateNamespace(null,"47"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
-         ofs0125:
+         setproperty MultinameL([PrivateNamespace(null,"#JSONEncoder"),PackageNamespace(""),PrivateNamespace(null,"#JSONEncoder/1"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
+         ofs8:
          popscope
          kill 9
          kill 8
-         ofs012a:
+         ofs5:
          hasnext2 7, 6
-         iftrue ofs00ef
+         iftrue ofs6
          kill 7
          kill 6
          getlocal 5
          kill 5
          coerce_a
          setlocal 4
-         jump ofs0197
-         ofs0140:
+         jump ofs9
+         ofs10:
          label
          getscopeobject 1
          getlocal 4
@@ -670,23 +670,23 @@ package com.adobe.serialization.json
          getslot 6
          getproperty QName(PackageNamespace(""),"length")
          pushbyte 0
-         ifngt ofs0165
+         ifngt ofs11
          getscopeobject 1
          getscopeobject 1
          getslot 6
          pushstring ","
          add
          setslot 6
-         ofs0165:
+         ofs11:
          getscopeobject 1
          getscopeobject 1
          getslot 6
          getlocal0
          getscopeobject 1
          getslot 4
-         getproperty MultinameA("name",[PrivateNamespace(null,"19"),PackageNamespace(""),PrivateNamespace(null,"47"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
-         callproperty Multiname("toString",[PrivateNamespace(null,"19"),PackageNamespace(""),PrivateNamespace(null,"47"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")]), 0
-         callproperty QName(PrivateNamespace(null,"19"),"escapeString"), 1
+         getproperty MultinameA("name",[PrivateNamespace(null,"#JSONEncoder"),PackageNamespace(""),PrivateNamespace(null,"#JSONEncoder/1"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
+         callproperty Multiname("toString",[PrivateNamespace(null,"#JSONEncoder"),PackageNamespace(""),PrivateNamespace(null,"#JSONEncoder/1"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")]), 0
+         callproperty QName(PrivateNamespace(null,"#JSONEncoder"),"escapeString"), 1
          pushstring ":"
          add
          getlocal0
@@ -694,19 +694,19 @@ package com.adobe.serialization.json
          getslot 5
          getscopeobject 1
          getslot 4
-         getproperty MultinameA("name",[PrivateNamespace(null,"19"),PackageNamespace(""),PrivateNamespace(null,"47"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
-         getproperty MultinameL([PrivateNamespace(null,"19"),PackageNamespace(""),PrivateNamespace(null,"47"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
-         callproperty QName(PrivateNamespace(null,"19"),"convertToString"), 1
+         getproperty MultinameA("name",[PrivateNamespace(null,"#JSONEncoder"),PackageNamespace(""),PrivateNamespace(null,"#JSONEncoder/1"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#JSONEncoder"),PackageNamespace(""),PrivateNamespace(null,"#JSONEncoder/1"),PackageNamespace("com.adobe.serialization.json"),PackageInternalNs("com.adobe.serialization.json"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("com.adobe.serialization.json:JSONEncoder"),StaticProtectedNs("Object")])
+         callproperty QName(PrivateNamespace(null,"#JSONEncoder"),"convertToString"), 1
          add
          add
          coerce_s
          setslot 6
-         ofs0197:
+         ofs9:
          hasnext2 4, 3
-         iftrue ofs0140
+         iftrue ofs10
          kill 4
          kill 3
-         ofs01a2:
+         ofs4:
          pushstring "{"
          getscopeobject 1
          getslot 6
@@ -738,7 +738,7 @@ findpropstrict Multiname("JSONEncoder",[PackageNamespace("com.adobe.serializatio
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass 36
+newclass #JSONEncoder
 popscope
 initproperty QName(PackageNamespace("com.adobe.serialization.json"),"JSONEncoder")
 returnvoid

@@ -2,7 +2,7 @@ package
 {
    import mx.core.BitmapAsset;
    
-   [Embed(source="/_assets/107_Art_Platform4b.png")]
+   [Embed]
    public class Art_Platform4b extends BitmapAsset
    {
       public function Art_Platform4b()

@@ -67,15 +67,15 @@ package mx.core
       findproperty QName(PackageNamespace(""),"VERSION_ALREADY_READ")
       pushstring "versionAlreadyRead"
       initproperty QName(PackageNamespace(""),"VERSION_ALREADY_READ")
-      findproperty QName(PrivateNamespace(null,"268"),"_compatibilityVersion")
+      findproperty QName(PrivateNamespace(null,"#FlexVersion"),"_compatibilityVersion")
       getlex QName(PackageNamespace(""),"CURRENT_VERSION")
-      setproperty QName(PrivateNamespace(null,"268"),"_compatibilityVersion")
-      findproperty QName(PrivateNamespace(null,"268"),"compatibilityVersionChanged")
+      setproperty QName(PrivateNamespace(null,"#FlexVersion"),"_compatibilityVersion")
+      findproperty QName(PrivateNamespace(null,"#FlexVersion"),"compatibilityVersionChanged")
       pushfalse
-      setproperty QName(PrivateNamespace(null,"268"),"compatibilityVersionChanged")
-      findproperty QName(PrivateNamespace(null,"268"),"compatibilityVersionRead")
+      setproperty QName(PrivateNamespace(null,"#FlexVersion"),"compatibilityVersionChanged")
+      findproperty QName(PrivateNamespace(null,"#FlexVersion"),"compatibilityVersionRead")
       pushfalse
-      setproperty QName(PrivateNamespace(null,"268"),"compatibilityVersionRead")
+      setproperty QName(PrivateNamespace(null,"#FlexVersion"),"compatibilityVersionRead")
       returnvoid
       end ; code
       end ; body
@@ -122,7 +122,7 @@ package mx.core
          code
          getlocal0
          pushscope
-         getlex QName(PrivateNamespace(null,"268"),"_compatibilityErrorFunction")
+         getlex QName(PrivateNamespace(null,"#FlexVersion"),"_compatibilityErrorFunction")
          returnvalue
          end ; code
          end ; body
@@ -148,9 +148,9 @@ package mx.core
          code
          getlocal0
          pushscope
-         findproperty QName(PrivateNamespace(null,"268"),"_compatibilityErrorFunction")
+         findproperty QName(PrivateNamespace(null,"#FlexVersion"),"_compatibilityErrorFunction")
          getlocal1
-         setproperty QName(PrivateNamespace(null,"268"),"_compatibilityErrorFunction")
+         setproperty QName(PrivateNamespace(null,"#FlexVersion"),"_compatibilityErrorFunction")
          returnvoid
          end ; code
          end ; body
@@ -175,10 +175,10 @@ package mx.core
          code
          getlocal0
          pushscope
-         findproperty QName(PrivateNamespace(null,"268"),"compatibilityVersionRead")
+         findproperty QName(PrivateNamespace(null,"#FlexVersion"),"compatibilityVersionRead")
          pushtrue
-         setproperty QName(PrivateNamespace(null,"268"),"compatibilityVersionRead")
-         getlex QName(PrivateNamespace(null,"268"),"_compatibilityVersion")
+         setproperty QName(PrivateNamespace(null,"#FlexVersion"),"compatibilityVersionRead")
+         getlex QName(PrivateNamespace(null,"#FlexVersion"),"_compatibilityVersion")
          returnvalue
          end ; code
          end ; body
@@ -208,15 +208,15 @@ package mx.core
          coerce_s
          setlocal2
          getlocal1
-         getlex QName(PrivateNamespace(null,"268"),"_compatibilityVersion")
-         ifne ofs000e
+         getlex QName(PrivateNamespace(null,"#FlexVersion"),"_compatibilityVersion")
+         ifne ofs0
          returnvoid
-         ofs000e:
-         getlex QName(PrivateNamespace(null,"268"),"compatibilityVersionChanged")
-         iffalse ofs0044
+         ofs0:
+         getlex QName(PrivateNamespace(null,"#FlexVersion"),"compatibilityVersionChanged")
+         iffalse ofs1
          getlex QName(PackageNamespace(""),"compatibilityErrorFunction")
          pushnull
-         ifne ofs0039
+         ifne ofs2
          getlex QName(PackageNamespace("mx.resources"),"ResourceManager")
          callproperty QName(PackageNamespace(""),"getInstance"), 0
          pushstring "core"
@@ -228,17 +228,17 @@ package mx.core
          getlocal2
          constructprop QName(PackageNamespace(""),"Error"), 1
          throw
-         ofs0039:
+         ofs2:
          findpropstrict QName(PackageNamespace(""),"compatibilityErrorFunction")
          getlocal1
          getlex QName(PackageNamespace(""),"VERSION_ALREADY_SET")
          callpropvoid QName(PackageNamespace(""),"compatibilityErrorFunction"), 2
-         ofs0044:
-         getlex QName(PrivateNamespace(null,"268"),"compatibilityVersionRead")
-         iffalse ofs007a
+         ofs1:
+         getlex QName(PrivateNamespace(null,"#FlexVersion"),"compatibilityVersionRead")
+         iffalse ofs3
          getlex QName(PackageNamespace(""),"compatibilityErrorFunction")
          pushnull
-         ifne ofs006f
+         ifne ofs4
          getlex QName(PackageNamespace("mx.resources"),"ResourceManager")
          callproperty QName(PackageNamespace(""),"getInstance"), 0
          pushstring "core"
@@ -250,18 +250,18 @@ package mx.core
          getlocal2
          constructprop QName(PackageNamespace(""),"Error"), 1
          throw
-         ofs006f:
+         ofs4:
          findpropstrict QName(PackageNamespace(""),"compatibilityErrorFunction")
          getlocal1
          getlex QName(PackageNamespace(""),"VERSION_ALREADY_READ")
          callpropvoid QName(PackageNamespace(""),"compatibilityErrorFunction"), 2
-         ofs007a:
-         findproperty QName(PrivateNamespace(null,"268"),"_compatibilityVersion")
+         ofs3:
+         findproperty QName(PrivateNamespace(null,"#FlexVersion"),"_compatibilityVersion")
          getlocal1
-         setproperty QName(PrivateNamespace(null,"268"),"_compatibilityVersion")
-         findproperty QName(PrivateNamespace(null,"268"),"compatibilityVersionChanged")
+         setproperty QName(PrivateNamespace(null,"#FlexVersion"),"_compatibilityVersion")
+         findproperty QName(PrivateNamespace(null,"#FlexVersion"),"compatibilityVersionChanged")
          pushtrue
-         setproperty QName(PrivateNamespace(null,"268"),"compatibilityVersionChanged")
+         setproperty QName(PrivateNamespace(null,"#FlexVersion"),"compatibilityVersionChanged")
          returnvoid
          end ; code
          end ; body
@@ -350,21 +350,21 @@ package mx.core
          findpropstrict QName(PackageNamespace(""),"parseInt")
          getlocal2
          pushbyte 0
-         getproperty MultinameL([PrivateNamespace(null,"268"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"426"),PackageNamespace("mx.core"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:FlexVersion"),StaticProtectedNs("mx.core:FlexVersion"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlexVersion"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"#FlexVersion/1"),PackageNamespace("mx.core"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:FlexVersion"),StaticProtectedNs("mx.core:FlexVersion"),StaticProtectedNs("Object")])
          callproperty QName(PackageNamespace(""),"parseInt"), 1
          convert_u
          setlocal3
          findpropstrict QName(PackageNamespace(""),"parseInt")
          getlocal2
          pushbyte 1
-         getproperty MultinameL([PrivateNamespace(null,"268"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"426"),PackageNamespace("mx.core"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:FlexVersion"),StaticProtectedNs("mx.core:FlexVersion"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlexVersion"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"#FlexVersion/1"),PackageNamespace("mx.core"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:FlexVersion"),StaticProtectedNs("mx.core:FlexVersion"),StaticProtectedNs("Object")])
          callproperty QName(PackageNamespace(""),"parseInt"), 1
          convert_u
          setlocal 4
          findpropstrict QName(PackageNamespace(""),"parseInt")
          getlocal2
          pushbyte 2
-         getproperty MultinameL([PrivateNamespace(null,"268"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"426"),PackageNamespace("mx.core"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:FlexVersion"),StaticProtectedNs("mx.core:FlexVersion"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlexVersion"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"#FlexVersion/1"),PackageNamespace("mx.core"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:FlexVersion"),StaticProtectedNs("mx.core:FlexVersion"),StaticProtectedNs("Object")])
          callproperty QName(PackageNamespace(""),"parseInt"), 1
          convert_u
          setlocal 5
@@ -412,25 +412,25 @@ package mx.core
          findpropstrict QName(PackageNamespace(""),"parseInt")
          getlocal2
          pushbyte 0
-         getproperty MultinameL([PrivateNamespace(null,"268"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"426"),PackageNamespace("mx.core"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:FlexVersion"),StaticProtectedNs("mx.core:FlexVersion"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlexVersion"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"#FlexVersion/1"),PackageNamespace("mx.core"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:FlexVersion"),StaticProtectedNs("mx.core:FlexVersion"),StaticProtectedNs("Object")])
          callproperty QName(PackageNamespace(""),"parseInt"), 1
          convert_u
          setlocal3
          findpropstrict QName(PackageNamespace(""),"parseInt")
          getlocal2
          pushbyte 1
-         getproperty MultinameL([PrivateNamespace(null,"268"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"426"),PackageNamespace("mx.core"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:FlexVersion"),StaticProtectedNs("mx.core:FlexVersion"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlexVersion"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"#FlexVersion/1"),PackageNamespace("mx.core"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:FlexVersion"),StaticProtectedNs("mx.core:FlexVersion"),StaticProtectedNs("Object")])
          callproperty QName(PackageNamespace(""),"parseInt"), 1
          convert_u
          setlocal 4
          findpropstrict QName(PackageNamespace(""),"parseInt")
          getlocal2
          pushbyte 2
-         getproperty MultinameL([PrivateNamespace(null,"268"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"426"),PackageNamespace("mx.core"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:FlexVersion"),StaticProtectedNs("mx.core:FlexVersion"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlexVersion"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"#FlexVersion/1"),PackageNamespace("mx.core"),PackageInternalNs("mx.core"),ProtectedNamespace("mx.core:FlexVersion"),StaticProtectedNs("mx.core:FlexVersion"),StaticProtectedNs("Object")])
          callproperty QName(PackageNamespace(""),"parseInt"), 1
          convert_u
          setlocal 5
-         findproperty QName(PrivateNamespace(null,"268"),"_compatibilityVersion")
+         findproperty QName(PrivateNamespace(null,"#FlexVersion"),"_compatibilityVersion")
          getlocal3
          pushbyte 24
          lshift
@@ -440,7 +440,7 @@ package mx.core
          add
          getlocal 5
          add
-         setproperty QName(PrivateNamespace(null,"268"),"_compatibilityVersion")
+         setproperty QName(PrivateNamespace(null,"#FlexVersion"),"_compatibilityVersion")
          returnvoid
          end ; code
          end ; body
@@ -466,7 +466,7 @@ findpropstrict Multiname("FlexVersion",[PackageNamespace("mx.core")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass 204
+newclass #FlexVersion
 popscope
 initproperty QName(PackageNamespace("mx.core"),"FlexVersion")
 returnvoid

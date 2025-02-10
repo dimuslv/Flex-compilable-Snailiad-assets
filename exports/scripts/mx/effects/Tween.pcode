@@ -41,12 +41,12 @@ package mx.effects
       findproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"activeTweens")
       newarray 0
       setproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"activeTweens")
-      findproperty QName(PrivateNamespace(null,"236"),"interval")
+      findproperty QName(PrivateNamespace(null,"#Tween"),"interval")
       pushbyte 10
-      setproperty QName(PrivateNamespace(null,"236"),"interval")
-      findproperty QName(PrivateNamespace(null,"236"),"timer")
+      setproperty QName(PrivateNamespace(null,"#Tween"),"interval")
+      findproperty QName(PrivateNamespace(null,"#Tween"),"timer")
       pushnull
-      setproperty QName(PrivateNamespace(null,"236"),"timer")
+      setproperty QName(PrivateNamespace(null,"#Tween"),"timer")
       findproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"intervalTime")
       getlex QName(PackageNamespace(""),"NaN")
       setproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"intervalTime")
@@ -122,87 +122,87 @@ package mx.effects
          pushscope
          getlocal0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"defaultEasingFunction")
-         initproperty QName(PrivateNamespace(null,"236"),"userEquation")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"defaultEasingFunction")
+         initproperty QName(PrivateNamespace(null,"#Tween"),"userEquation")
          getlocal0
          constructsuper 0
          getlocal1
-         iftrue ofs0013
+         iftrue ofs0
          returnvoid
-         ofs0013:
+         ofs0:
          getlocal2
          getlex QName(PackageNamespace(""),"Array")
          istypelate
-         iffalse ofs0020
+         iffalse ofs1
          getlocal0
          pushtrue
-         initproperty QName(PrivateNamespace(null,"236"),"arrayMode")
-         ofs0020:
+         initproperty QName(PrivateNamespace(null,"#Tween"),"arrayMode")
+         ofs1:
          getlocal0
          getlocal1
          initproperty QName(PackageNamespace(""),"listener")
          getlocal0
          getlocal2
-         initproperty QName(PrivateNamespace(null,"236"),"startValue")
+         initproperty QName(PrivateNamespace(null,"#Tween"),"startValue")
          getlocal0
          getlocal3
-         initproperty QName(PrivateNamespace(null,"236"),"endValue")
+         initproperty QName(PrivateNamespace(null,"#Tween"),"endValue")
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 4
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
          dup
-         iffalse ofs0045
+         iffalse ofs2
          pop
          getlocal 4
          pushbyte -1
          equals
          not
-         ofs0045:
-         iffalse ofs004f
+         ofs2:
+         iffalse ofs3
          getlocal0
          getlocal 4
          initproperty QName(PackageNamespace(""),"duration")
-         ofs004f:
+         ofs3:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal 5
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
          dup
-         iffalse ofs0065
+         iffalse ofs4
          pop
          getlocal 5
          pushbyte -1
          equals
          not
-         ofs0065:
-         iffalse ofs0073
+         ofs4:
+         iffalse ofs5
          getlocal0
          pushshort 1000
          getlocal 5
          divide
-         initproperty QName(PrivateNamespace(null,"236"),"maxDelay")
-         ofs0073:
+         initproperty QName(PrivateNamespace(null,"#Tween"),"maxDelay")
+         ofs5:
          getlocal0
          getlocal 6
-         initproperty QName(PrivateNamespace(null,"236"),"updateFunction")
+         initproperty QName(PrivateNamespace(null,"#Tween"),"updateFunction")
          getlocal0
          getlocal 7
-         initproperty QName(PrivateNamespace(null,"236"),"endFunction")
+         initproperty QName(PrivateNamespace(null,"#Tween"),"endFunction")
          getlocal 4
          pushbyte 0
-         ifne ofs0096
+         ifne ofs6
          getlocal0
          pushbyte -1
-         initproperty QName(PrivateNamespace(null,"236"),"id")
+         initproperty QName(PrivateNamespace(null,"#Tween"),"id")
          getlocal0
          callpropvoid QName(PackageNamespace(""),"endTween"), 0
-         jump ofs009e
-         ofs0096:
+         jump ofs7
+         ofs6:
          getlex QName(PackageNamespace("mx.effects"),"Tween")
          getlocal0
-         callpropvoid QName(PrivateNamespace(null,"236"),"addTween"), 1
-         ofs009e:
+         callpropvoid QName(PrivateNamespace(null,"#Tween"),"addTween"), 1
+         ofs7:
          returnvoid
          end ; code
          end ; body
@@ -211,7 +211,7 @@ package mx.effects
       
       private static function addTween(param1:Tween) : void
       {
-         trait method QName(PrivateNamespace(null,"236"),"addTween")
+         trait method QName(PrivateNamespace(null,"#Tween"),"addTween")
          flag FINAL
          dispid 3
          method
@@ -231,44 +231,44 @@ package mx.effects
          getlocal1
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"activeTweens")
          getproperty QName(PackageNamespace(""),"length")
-         setproperty QName(PrivateNamespace(null,"236"),"id")
+         setproperty QName(PrivateNamespace(null,"#Tween"),"id")
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"activeTweens")
          getlocal1
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         getlex QName(PrivateNamespace(null,"236"),"timer")
-         iftrue ofs0046
-         findproperty QName(PrivateNamespace(null,"236"),"timer")
+         getlex QName(PrivateNamespace(null,"#Tween"),"timer")
+         iftrue ofs0
+         findproperty QName(PrivateNamespace(null,"#Tween"),"timer")
          findpropstrict QName(PackageNamespace("flash.utils"),"Timer")
-         getlex QName(PrivateNamespace(null,"236"),"interval")
+         getlex QName(PrivateNamespace(null,"#Tween"),"interval")
          constructprop QName(PackageNamespace("flash.utils"),"Timer"), 1
-         setproperty QName(PrivateNamespace(null,"236"),"timer")
-         getlex QName(PrivateNamespace(null,"236"),"timer")
+         setproperty QName(PrivateNamespace(null,"#Tween"),"timer")
+         getlex QName(PrivateNamespace(null,"#Tween"),"timer")
          getlex QName(PackageNamespace("flash.events"),"TimerEvent")
          getproperty QName(PackageNamespace(""),"TIMER")
-         getlex QName(PrivateNamespace(null,"236"),"timerHandler")
+         getlex QName(PrivateNamespace(null,"#Tween"),"timerHandler")
          callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
-         getlex QName(PrivateNamespace(null,"236"),"timer")
+         getlex QName(PrivateNamespace(null,"#Tween"),"timer")
          callpropvoid QName(PackageNamespace(""),"start"), 0
-         jump ofs004d
-         ofs0046:
-         getlex QName(PrivateNamespace(null,"236"),"timer")
+         jump ofs1
+         ofs0:
+         getlex QName(PrivateNamespace(null,"#Tween"),"timer")
          callpropvoid QName(PackageNamespace(""),"start"), 0
-         ofs004d:
+         ofs1:
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"intervalTime")
          callproperty QName(PackageNamespace(""),"isNaN"), 1
-         iffalse ofs0068
+         iffalse ofs2
          findproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"intervalTime")
          findpropstrict QName(PackageNamespace("flash.utils"),"getTimer")
          callproperty QName(PackageNamespace("flash.utils"),"getTimer"), 0
          setproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"intervalTime")
-         ofs0068:
+         ofs2:
          getlocal1
          getlocal1
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"intervalTime")
          dup
          setlocal2
-         setproperty QName(PrivateNamespace(null,"236"),"previousUpdateTime")
+         setproperty QName(PrivateNamespace(null,"#Tween"),"previousUpdateTime")
          getlocal2
          kill 2
          setproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"startTime")
@@ -280,7 +280,7 @@ package mx.effects
       
       private static function removeTweenAt(param1:int) : void
       {
-         trait method QName(PrivateNamespace(null,"236"),"removeTweenAt")
+         trait method QName(PrivateNamespace(null,"#Tween"),"removeTweenAt")
          flag FINAL
          dispid 4
          method
@@ -305,15 +305,15 @@ package mx.effects
          getproperty QName(PackageNamespace(""),"length")
          greaterequals
          dup
-         iftrue ofs001a
+         iftrue ofs0
          pop
          getlocal1
          pushbyte 0
          lessthan
-         ofs001a:
-         iffalse ofs001f
+         ofs0:
+         iffalse ofs1
          returnvoid
-         ofs001f:
+         ofs1:
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"activeTweens")
          getlocal1
          pushbyte 1
@@ -325,42 +325,42 @@ package mx.effects
          getlocal1
          convert_i
          setlocal3
-         jump ofs0061
-         ofs0038:
+         jump ofs2
+         ofs3:
          label
          getlocal0
          getscopeobject 0
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"activeTweens")
          getlocal3
-         getproperty MultinameL([PrivateNamespace(null,"236"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"526"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Tween"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"#Tween/1"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          call 1
          coerce QName(PackageNamespace("mx.effects"),"Tween")
          dup
          setlocal 4
          dup
          setlocal 5
-         getproperty QName(PrivateNamespace(null,"236"),"id")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"id")
          decrement_i
          setlocal 6
          getlocal 5
          getlocal 6
-         setproperty QName(PrivateNamespace(null,"236"),"id")
+         setproperty QName(PrivateNamespace(null,"#Tween"),"id")
          kill 6
          kill 5
          inclocal_i 3
-         ofs0061:
+         ofs2:
          getlocal3
          getlocal2
-         iflt ofs0038
+         iflt ofs3
          getlocal2
          pushbyte 0
-         ifne ofs007e
+         ifne ofs4
          findproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"intervalTime")
          getlex QName(PackageNamespace(""),"NaN")
          setproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"intervalTime")
-         getlex QName(PrivateNamespace(null,"236"),"timer")
+         getlex QName(PrivateNamespace(null,"#Tween"),"timer")
          callpropvoid QName(PackageNamespace(""),"reset"), 0
-         ofs007e:
+         ofs4:
          returnvoid
          end ; code
          end ; body
@@ -386,10 +386,10 @@ package mx.effects
          code
          getlocal0
          pushscope
-         findpropstrict QName(PrivateNamespace(null,"236"),"removeTweenAt")
+         findpropstrict QName(PrivateNamespace(null,"#Tween"),"removeTweenAt")
          getlocal1
-         getproperty QName(PrivateNamespace(null,"236"),"id")
-         callpropvoid QName(PrivateNamespace(null,"236"),"removeTweenAt"), 1
+         getproperty QName(PrivateNamespace(null,"#Tween"),"id")
+         callpropvoid QName(PrivateNamespace(null,"#Tween"),"removeTweenAt"), 1
          returnvoid
          end ; code
          end ; body
@@ -398,7 +398,7 @@ package mx.effects
       
       private static function timerHandler(param1:TimerEvent) : void
       {
-         trait method QName(PrivateNamespace(null,"236"),"timerHandler")
+         trait method QName(PrivateNamespace(null,"#Tween"),"timerHandler")
          flag FINAL
          dispid 6
          method
@@ -434,19 +434,19 @@ package mx.effects
          setlocal 4
          convert_i
          setlocal 5
-         jump ofs0061
-         ofs002d:
+         jump ofs0
+         ofs1:
          label
          getlocal0
          getscopeobject 0
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"activeTweens")
          getlocal 5
-         getproperty MultinameL([PrivateNamespace(null,"236"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"526"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Tween"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"#Tween/1"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          call 1
          coerce QName(PackageNamespace("mx.effects"),"Tween")
          dup
          setlocal 6
-         iffalse ofs005c
+         iffalse ofs2
          getlocal 6
          pushfalse
          setproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"needToLayout")
@@ -454,23 +454,23 @@ package mx.effects
          callpropvoid QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"doInterval"), 0
          getlocal 6
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"needToLayout")
-         iffalse ofs005c
+         iffalse ofs2
          pushtrue
          setlocal2
-         ofs005c:
+         ofs2:
          getlocal 5
          decrement_i
          setlocal 5
-         ofs0061:
+         ofs0:
          getlocal 5
          pushbyte 0
-         ifge ofs002d
+         ifge ofs1
          getlocal2
-         iffalse ofs0078
+         iffalse ofs3
          getlex QName(PackageNamespace("mx.core"),"UIComponentGlobals")
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"layoutManager")
          callpropvoid QName(Namespace("mx.managers:ILayoutManager"),"validateNow"), 0
-         ofs0078:
+         ofs3:
          getlocal1
          callpropvoid QName(PackageNamespace(""),"updateAfterEvent"), 0
          returnvoid
@@ -497,7 +497,7 @@ package mx.effects
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"_playheadTime")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"_playheadTime")
          returnvalue
          end ; code
          end ; body
@@ -522,7 +522,7 @@ package mx.effects
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"_invertValues")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"_invertValues")
          returnvalue
          end ; code
          end ; body
@@ -549,7 +549,7 @@ package mx.effects
          pushscope
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"236"),"_invertValues")
+         initproperty QName(PrivateNamespace(null,"#Tween"),"_invertValues")
          returnvoid
          end ; code
          end ; body
@@ -577,10 +577,10 @@ package mx.effects
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"236"),"updateFunction")
+         setproperty QName(PrivateNamespace(null,"#Tween"),"updateFunction")
          getlocal0
          getlocal2
-         setproperty QName(PrivateNamespace(null,"236"),"endFunction")
+         setproperty QName(PrivateNamespace(null,"#Tween"),"endFunction")
          returnvoid
          end ; code
          end ; body
@@ -607,7 +607,7 @@ package mx.effects
          pushscope
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"236"),"userEquation")
+         initproperty QName(PrivateNamespace(null,"#Tween"),"userEquation")
          returnvoid
          end ; code
          end ; body
@@ -650,28 +650,28 @@ package mx.effects
          getlocal1
          callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"endFunction")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"endFunction")
          pushnull
-         ifeq ofs003f
+         ifeq ofs0
          getlocal0
          getlocal2
-         callpropvoid QName(PrivateNamespace(null,"236"),"endFunction"), 1
-         jump ofs0048
-         ofs003f:
+         callpropvoid QName(PrivateNamespace(null,"#Tween"),"endFunction"), 1
+         jump ofs1
+         ofs0:
          getlocal0
          getproperty QName(PackageNamespace(""),"listener")
          getlocal2
-         callpropvoid Multiname("onTweenEnd",[PrivateNamespace(null,"236"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"526"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
-         ofs0048:
+         callpropvoid Multiname("onTweenEnd",[PrivateNamespace(null,"#Tween"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"#Tween/1"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
+         ofs1:
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"id")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"id")
          pushbyte 0
-         ifnge ofs005d
+         ifnge ofs2
          getlex QName(PackageNamespace("mx.effects"),"Tween")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"id")
-         callpropvoid QName(PrivateNamespace(null,"236"),"removeTweenAt"), 1
-         ofs005d:
+         getproperty QName(PrivateNamespace(null,"#Tween"),"id")
+         callpropvoid QName(PrivateNamespace(null,"#Tween"),"removeTweenAt"), 1
+         ofs2:
          returnvoid
          end ; code
          end ; body
@@ -710,18 +710,18 @@ package mx.effects
          setlocal1
          getlocal0
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"intervalTime")
-         initproperty QName(PrivateNamespace(null,"236"),"previousUpdateTime")
+         initproperty QName(PrivateNamespace(null,"#Tween"),"previousUpdateTime")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"_isPlaying")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"_isPlaying")
          convert_b
          dup
-         iftrue ofs002d
+         iftrue ofs0
          pop
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"_doSeek")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"_doSeek")
          convert_b
-         ofs002d:
-         iffalse ofs00d2
+         ofs0:
+         iffalse ofs1
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"intervalTime")
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"startTime")
@@ -730,7 +730,7 @@ package mx.effects
          setlocal2
          getlocal0
          getlocal2
-         initproperty QName(PrivateNamespace(null,"236"),"_playheadTime")
+         initproperty QName(PrivateNamespace(null,"#Tween"),"_playheadTime")
          getlocal0
          getlocal2
          callproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"getCurrentValue"), 1
@@ -741,22 +741,22 @@ package mx.effects
          getproperty QName(PackageNamespace(""),"duration")
          greaterequals
          dup
-         iffalse ofs005a
+         iffalse ofs2
          pop
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"_doSeek")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"_doSeek")
          not
-         ofs005a:
-         iffalse ofs0069
+         ofs2:
+         iffalse ofs3
          getlocal0
          callpropvoid QName(PackageNamespace(""),"endTween"), 0
          pushtrue
          setlocal1
-         jump ofs00cd
-         ofs0069:
+         jump ofs4
+         ofs3:
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"started")
-         iftrue ofs0091
+         getproperty QName(PrivateNamespace(null,"#Tween"),"started")
+         iftrue ofs5
          findpropstrict QName(PackageNamespace("mx.events"),"TweenEvent")
          getlex QName(PackageNamespace("mx.events"),"TweenEvent")
          getproperty QName(PackageNamespace(""),"TWEEN_START")
@@ -768,8 +768,8 @@ package mx.effects
          callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
          getlocal0
          pushtrue
-         initproperty QName(PrivateNamespace(null,"236"),"started")
-         ofs0091:
+         initproperty QName(PrivateNamespace(null,"#Tween"),"started")
+         ofs5:
          findpropstrict QName(PackageNamespace("mx.events"),"TweenEvent")
          getlex QName(PackageNamespace("mx.events"),"TweenEvent")
          getproperty QName(PackageNamespace(""),"TWEEN_UPDATE")
@@ -783,23 +783,23 @@ package mx.effects
          getlocal 4
          callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"updateFunction")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"updateFunction")
          pushnull
-         ifeq ofs00c4
+         ifeq ofs6
          getlocal0
          getlocal3
-         callpropvoid QName(PrivateNamespace(null,"236"),"updateFunction"), 1
-         jump ofs00cd
-         ofs00c4:
+         callpropvoid QName(PrivateNamespace(null,"#Tween"),"updateFunction"), 1
+         jump ofs4
+         ofs6:
          getlocal0
          getproperty QName(PackageNamespace(""),"listener")
          getlocal3
-         callpropvoid Multiname("onTweenUpdate",[PrivateNamespace(null,"236"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"526"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
-         ofs00cd:
+         callpropvoid Multiname("onTweenUpdate",[PrivateNamespace(null,"#Tween"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"#Tween/1"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
+         ofs4:
          getlocal0
          pushfalse
-         initproperty QName(PrivateNamespace(null,"236"),"_doSeek")
-         ofs00d2:
+         initproperty QName(PrivateNamespace(null,"#Tween"),"_doSeek")
+         ofs1:
          getlocal1
          returnvalue
          end ; code
@@ -835,83 +835,83 @@ package mx.effects
          getlocal0
          getproperty QName(PackageNamespace(""),"duration")
          pushbyte 0
-         ifne ofs001c
+         ifne ofs0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"endValue")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"endValue")
          returnvalue
-         ofs001c:
+         ofs0:
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"_invertValues")
-         iffalse ofs002c
+         getproperty QName(PrivateNamespace(null,"#Tween"),"_invertValues")
+         iffalse ofs1
          getlocal0
          getproperty QName(PackageNamespace(""),"duration")
          getlocal1
          subtract
          convert_d
          setlocal1
-         ofs002c:
+         ofs1:
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"arrayMode")
-         iffalse ofs0086
+         getproperty QName(PrivateNamespace(null,"#Tween"),"arrayMode")
+         iffalse ofs2
          newarray 0
          coerce QName(PackageNamespace(""),"Array")
          setlocal2
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"startValue")
-         getproperty Multiname("length",[PrivateNamespace(null,"236"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"526"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty QName(PrivateNamespace(null,"#Tween"),"startValue")
+         getproperty Multiname("length",[PrivateNamespace(null,"#Tween"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"#Tween/1"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          convert_i
          setlocal3
          pushbyte 0
          setlocal 4
-         jump ofs0079
-         ofs004a:
+         jump ofs3
+         ofs4:
          label
          getlocal2
          getlocal 4
          getlocal0
          getlocal1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"startValue")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"startValue")
          getlocal 4
-         getproperty MultinameL([PrivateNamespace(null,"236"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"526"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Tween"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"#Tween/1"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"endValue")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"endValue")
          getlocal 4
-         getproperty MultinameL([PrivateNamespace(null,"236"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"526"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Tween"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"#Tween/1"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"startValue")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"startValue")
          getlocal 4
-         getproperty MultinameL([PrivateNamespace(null,"236"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"526"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#Tween"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"#Tween/1"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          subtract
          getlocal0
          getproperty QName(PackageNamespace(""),"duration")
-         callproperty QName(PrivateNamespace(null,"236"),"userEquation"), 4
-         setproperty MultinameL([PrivateNamespace(null,"236"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"526"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         callproperty QName(PrivateNamespace(null,"#Tween"),"userEquation"), 4
+         setproperty MultinameL([PrivateNamespace(null,"#Tween"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.effects"),PrivateNamespace(null,"#Tween/1"),PackageInternalNs("mx.effects"),ProtectedNamespace("mx.effects:Tween"),StaticProtectedNs("mx.effects:Tween"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          inclocal_i 4
-         ofs0079:
+         ofs3:
          getlocal 4
          getlocal3
-         iflt ofs004a
+         iflt ofs4
          getlocal2
          returnvalue
-         jump ofs0086
-         ofs0086:
+         jump ofs2
+         ofs2:
          getlocal0
          getlocal1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"startValue")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"startValue")
          findpropstrict QName(PackageNamespace(""),"Number")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"endValue")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"endValue")
          callproperty QName(PackageNamespace(""),"Number"), 1
          findpropstrict QName(PackageNamespace(""),"Number")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"startValue")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"startValue")
          callproperty QName(PackageNamespace(""),"Number"), 1
          subtract
          getlocal0
          getproperty QName(PackageNamespace(""),"duration")
-         callproperty QName(PrivateNamespace(null,"236"),"userEquation"), 4
+         callproperty QName(PrivateNamespace(null,"#Tween"),"userEquation"), 4
          returnvalue
          end ; code
          end ; body
@@ -920,7 +920,7 @@ package mx.effects
       
       private function defaultEasingFunction(param1:Number, param2:Number, param3:Number, param4:Number) : Number
       {
-         trait method QName(PrivateNamespace(null,"236"),"defaultEasingFunction")
+         trait method QName(PrivateNamespace(null,"#Tween"),"defaultEasingFunction")
          dispid 0
          method
          name null
@@ -986,7 +986,7 @@ package mx.effects
          setlocal2
          getlocal0
          getlocal2
-         initproperty QName(PrivateNamespace(null,"236"),"previousUpdateTime")
+         initproperty QName(PrivateNamespace(null,"#Tween"),"previousUpdateTime")
          getlocal0
          getlocal2
          getlocal1
@@ -994,7 +994,7 @@ package mx.effects
          initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"startTime")
          getlocal0
          pushtrue
-         initproperty QName(PrivateNamespace(null,"236"),"_doSeek")
+         initproperty QName(PrivateNamespace(null,"#Tween"),"_doSeek")
          getlocal0
          callpropvoid QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"doInterval"), 0
          returnvoid
@@ -1021,31 +1021,31 @@ package mx.effects
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"_isPlaying")
-         iffalse ofs002a
+         getproperty QName(PrivateNamespace(null,"#Tween"),"_isPlaying")
+         iffalse ofs0
          getlocal0
          pushfalse
-         initproperty QName(PrivateNamespace(null,"236"),"_doReverse")
+         initproperty QName(PrivateNamespace(null,"#Tween"),"_doReverse")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"duration")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"_playheadTime")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"_playheadTime")
          subtract
          callpropvoid QName(PackageNamespace(""),"seek"), 1
          getlocal0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"_invertValues")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"_invertValues")
          not
-         initproperty QName(PrivateNamespace(null,"236"),"_invertValues")
-         jump ofs0033
-         ofs002a:
+         initproperty QName(PrivateNamespace(null,"#Tween"),"_invertValues")
+         jump ofs1
+         ofs0:
          getlocal0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"_doReverse")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"_doReverse")
          not
-         initproperty QName(PrivateNamespace(null,"236"),"_doReverse")
-         ofs0033:
+         initproperty QName(PrivateNamespace(null,"#Tween"),"_doReverse")
+         ofs1:
          returnvoid
          end ; code
          end ; body
@@ -1071,7 +1071,7 @@ package mx.effects
          pushscope
          getlocal0
          pushfalse
-         initproperty QName(PrivateNamespace(null,"236"),"_isPlaying")
+         initproperty QName(PrivateNamespace(null,"#Tween"),"_isPlaying")
          returnvoid
          end ; code
          end ; body
@@ -1096,14 +1096,14 @@ package mx.effects
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"id")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"id")
          pushbyte 0
-         ifnge ofs0017
+         ifnge ofs0
          getlex QName(PackageNamespace("mx.effects"),"Tween")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"id")
-         callpropvoid QName(PrivateNamespace(null,"236"),"removeTweenAt"), 1
-         ofs0017:
+         getproperty QName(PrivateNamespace(null,"#Tween"),"id")
+         callpropvoid QName(PrivateNamespace(null,"#Tween"),"removeTweenAt"), 1
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -1129,22 +1129,22 @@ package mx.effects
          pushscope
          getlocal0
          pushtrue
-         initproperty QName(PrivateNamespace(null,"236"),"_isPlaying")
+         initproperty QName(PrivateNamespace(null,"#Tween"),"_isPlaying")
          getlocal0
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"intervalTime")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"_playheadTime")
+         getproperty QName(PrivateNamespace(null,"#Tween"),"_playheadTime")
          subtract
          initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"startTime")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"236"),"_doReverse")
-         iffalse ofs0025
+         getproperty QName(PrivateNamespace(null,"#Tween"),"_doReverse")
+         iffalse ofs0
          getlocal0
          callpropvoid QName(PackageNamespace(""),"reverse"), 0
          getlocal0
          pushfalse
-         initproperty QName(PrivateNamespace(null,"236"),"_doReverse")
-         ofs0025:
+         initproperty QName(PrivateNamespace(null,"#Tween"),"_doReverse")
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -1172,7 +1172,7 @@ pushscope
 getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
 pushscope
 getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
-newclass 766
+newclass #Tween
 popscope
 popscope
 initproperty QName(PackageNamespace("mx.effects"),"Tween")

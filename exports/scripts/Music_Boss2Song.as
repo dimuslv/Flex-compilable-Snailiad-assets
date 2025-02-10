@@ -2,7 +2,7 @@ package
 {
    import mx.core.SoundAsset;
    
-   [Embed(source="/_assets/30_moonsnail1loop_Music_Boss2Song.mp3")]
+   [Embed]
    public class Music_Boss2Song extends SoundAsset
    {
       public function Music_Boss2Song()

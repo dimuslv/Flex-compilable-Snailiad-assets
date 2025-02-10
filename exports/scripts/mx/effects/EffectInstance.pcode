@@ -130,7 +130,7 @@ package mx.effects
          getlocal0
          getproperty QName(PackageNamespace(""),"repeatCount")
          pushbyte 0
-         ifngt ofs002c
+         ifngt ofs0
          getlocal0
          getproperty QName(PackageNamespace(""),"duration")
          getlocal0
@@ -148,7 +148,7 @@ package mx.effects
          add
          convert_d
          setlocal1
-         ofs002c:
+         ofs0:
          getlocal1
          returnvalue
          end ; code
@@ -203,20 +203,20 @@ package mx.effects
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"durationExplicitlySet")
          not
          dup
-         iffalse ofs0012
+         iffalse ofs0
          pop
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"parentCompositeEffectInstance")
          convert_b
-         ofs0012:
-         iffalse ofs001e
+         ofs0:
+         iffalse ofs1
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"parentCompositeEffectInstance")
          getproperty QName(PackageNamespace(""),"duration")
          returnvalue
-         ofs001e:
+         ofs1:
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"_duration")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"_duration")
          returnvalue
          end ; code
          end ; body
@@ -246,7 +246,7 @@ package mx.effects
          initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"durationExplicitlySet")
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"188"),"_duration")
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"_duration")
          returnvoid
          end ; code
          end ; body
@@ -271,7 +271,7 @@ package mx.effects
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"_effect")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"_effect")
          returnvalue
          end ; code
          end ; body
@@ -298,7 +298,7 @@ package mx.effects
          pushscope
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"188"),"_effect")
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"_effect")
          returnvoid
          end ; code
          end ; body
@@ -323,7 +323,7 @@ package mx.effects
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"_effectTargetHost")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"_effectTargetHost")
          returnvalue
          end ; code
          end ; body
@@ -350,7 +350,7 @@ package mx.effects
          pushscope
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"188"),"_effectTargetHost")
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"_effectTargetHost")
          returnvoid
          end ; code
          end ; body
@@ -375,7 +375,7 @@ package mx.effects
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"_hideFocusRing")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"_hideFocusRing")
          returnvalue
          end ; code
          end ; body
@@ -402,7 +402,7 @@ package mx.effects
          pushscope
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"188"),"_hideFocusRing")
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"_hideFocusRing")
          returnvoid
          end ; code
          end ; body
@@ -440,15 +440,15 @@ package mx.effects
          multiply
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"playReversed")
-         iffalse ofs0029
+         iffalse ofs0
          pushbyte 0
          coerce_a
-         jump ofs002e
-         ofs0029:
+         jump ofs1
+         ofs0:
          getlocal0
          getproperty QName(PackageNamespace(""),"startDelay")
          coerce_a
-         ofs002e:
+         ofs1:
          add
          returnvalue
          end ; code
@@ -478,21 +478,21 @@ package mx.effects
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
          convert_b
          dup
-         iffalse ofs0015
+         iffalse ofs0
          pop
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
          getproperty QName(PackageNamespace(""),"running")
          convert_b
-         ofs0015:
-         iffalse ofs0071
+         ofs0:
+         iffalse ofs1
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
          callpropvoid QName(PackageNamespace(""),"reset"), 0
          getlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"startDelay")
-         ifnlt ofs0066
+         ifnlt ofs2
          getlocal0
          findpropstrict QName(PackageNamespace("flash.utils"),"Timer")
          getlocal0
@@ -505,25 +505,25 @@ package mx.effects
          getlocal0
          findpropstrict QName(PackageNamespace("flash.utils"),"getTimer")
          callproperty QName(PackageNamespace("flash.utils"),"getTimer"), 0
-         initproperty QName(PrivateNamespace(null,"188"),"delayStartTime")
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"delayStartTime")
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
          getlex QName(PackageNamespace("flash.events"),"TimerEvent")
          getproperty QName(PackageNamespace(""),"TIMER")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"delayTimerHandler")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"delayTimerHandler")
          callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
          callpropvoid QName(PackageNamespace(""),"start"), 0
-         jump ofs0071
-         ofs0066:
+         jump ofs1
+         ofs2:
          getlocal0
          pushbyte 0
          initproperty QName(ProtectedNamespace("mx.effects:EffectInstance"),"playCount")
          getlocal0
          callpropvoid QName(PackageNamespace(""),"play"), 0
-         ofs0071:
+         ofs1:
          returnvoid
          end ; code
          end ; body
@@ -548,7 +548,7 @@ package mx.effects
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"_playReversed")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"_playReversed")
          returnvalue
          end ; code
          end ; body
@@ -575,7 +575,7 @@ package mx.effects
          pushscope
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"188"),"_playReversed")
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"_playReversed")
          returnvoid
          end ; code
          end ; body
@@ -600,7 +600,7 @@ package mx.effects
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"_propertyChanges")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"_propertyChanges")
          returnvalue
          end ; code
          end ; body
@@ -627,7 +627,7 @@ package mx.effects
          pushscope
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"188"),"_propertyChanges")
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"_propertyChanges")
          returnvoid
          end ; code
          end ; body
@@ -652,7 +652,7 @@ package mx.effects
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"_repeatCount")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"_repeatCount")
          returnvalue
          end ; code
          end ; body
@@ -679,7 +679,7 @@ package mx.effects
          pushscope
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"188"),"_repeatCount")
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"_repeatCount")
          returnvoid
          end ; code
          end ; body
@@ -704,7 +704,7 @@ package mx.effects
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"_repeatDelay")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"_repeatDelay")
          returnvalue
          end ; code
          end ; body
@@ -731,7 +731,7 @@ package mx.effects
          pushscope
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"188"),"_repeatDelay")
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"_repeatDelay")
          returnvoid
          end ; code
          end ; body
@@ -756,7 +756,7 @@ package mx.effects
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"_startDelay")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"_startDelay")
          returnvalue
          end ; code
          end ; body
@@ -783,7 +783,7 @@ package mx.effects
          pushscope
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"188"),"_startDelay")
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"_startDelay")
          returnvoid
          end ; code
          end ; body
@@ -808,7 +808,7 @@ package mx.effects
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"_suspendBackgroundProcessing")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"_suspendBackgroundProcessing")
          returnvalue
          end ; code
          end ; body
@@ -835,7 +835,7 @@ package mx.effects
          pushscope
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"188"),"_suspendBackgroundProcessing")
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"_suspendBackgroundProcessing")
          returnvoid
          end ; code
          end ; body
@@ -860,7 +860,7 @@ package mx.effects
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"_target")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"_target")
          returnvalue
          end ; code
          end ; body
@@ -887,7 +887,7 @@ package mx.effects
          pushscope
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"188"),"_target")
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"_target")
          returnvoid
          end ; code
          end ; body
@@ -912,7 +912,7 @@ package mx.effects
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"_triggerEvent")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"_triggerEvent")
          returnvalue
          end ; code
          end ; body
@@ -939,7 +939,7 @@ package mx.effects
          pushscope
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"188"),"_triggerEvent")
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"_triggerEvent")
          returnvoid
          end ; code
          end ; body
@@ -967,24 +967,24 @@ package mx.effects
          getlocal0
          getlocal1
          initproperty QName(PackageNamespace(""),"triggerEvent")
-         jump ofs0049
-         ofs000b:
+         jump ofs0
+         ofs1:
          label
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"durationExplicitlySet")
-         iftrue ofs001b
+         iftrue ofs2
          getlocal0
          pushshort 250
          initproperty QName(PackageNamespace(""),"duration")
-         ofs001b:
-         jump ofs0099
-         ofs001f:
+         ofs2:
+         jump ofs3
+         ofs4:
          label
          getlocal0
          getproperty QName(PackageNamespace(""),"target")
          pushtrue
          pushtrue
-         callpropvoid Multiname("setVisible",[PrivateNamespace(null,"188"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.effects"),ProtectedNamespace("mx.effects:EffectInstance"),PrivateNamespace(null,"495"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("mx.effects:EffectInstance"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 2
+         callpropvoid Multiname("setVisible",[PrivateNamespace(null,"#EffectInstance"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.effects"),ProtectedNamespace("mx.effects:EffectInstance"),PrivateNamespace(null,"#EffectInstance/1"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("mx.effects:EffectInstance"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 2
          getlocal0
          pushtrue
          initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"hideOnEffectEnd")
@@ -994,43 +994,43 @@ package mx.effects
          getproperty QName(PackageNamespace(""),"SHOW")
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"eventHandler")
-         callpropvoid Multiname("addEventListener",[PrivateNamespace(null,"188"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.effects"),ProtectedNamespace("mx.effects:EffectInstance"),PrivateNamespace(null,"495"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("mx.effects:EffectInstance"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 2
-         jump ofs0099
-         ofs0044:
+         callpropvoid Multiname("addEventListener",[PrivateNamespace(null,"#EffectInstance"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.effects"),ProtectedNamespace("mx.effects:EffectInstance"),PrivateNamespace(null,"#EffectInstance/1"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("mx.effects:EffectInstance"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 2
+         jump ofs3
+         ofs5:
          label
-         jump ofs0099
-         ofs0049:
+         jump ofs3
+         ofs0:
          getlocal1
          getproperty QName(PackageNamespace(""),"type")
          setlocal2
          pushstring "resizeStart"
          getlocal2
-         ifstrictne ofs005c
+         ifstrictne ofs6
          pushbyte 0
-         jump ofs0086
-         ofs005c:
+         jump ofs7
+         ofs6:
          pushstring "resizeEnd"
          getlocal2
-         ifstrictne ofs006a
+         ifstrictne ofs8
          pushbyte 1
-         jump ofs0086
-         ofs006a:
+         jump ofs7
+         ofs8:
          getlex QName(PackageNamespace("mx.events"),"FlexEvent")
          getproperty QName(PackageNamespace(""),"HIDE")
          getlocal2
-         ifstrictne ofs007a
+         ifstrictne ofs9
          pushbyte 2
-         jump ofs0086
-         ofs007a:
-         jump ofs0084
+         jump ofs7
+         ofs9:
+         jump ofs10
          pushbyte 3
-         jump ofs0084
-         ofs0084:
+         jump ofs10
+         ofs10:
          pushbyte 3
-         ofs0086:
+         ofs7:
          kill 2
-         lookupswitch ofs0044, [ofs000b, ofs000b, ofs001f, ofs0044]
-         ofs0099:
+         lookupswitch ofs5, [ofs1, ofs1, ofs4, ofs5]
+         ofs3:
          returnvoid
          end ; code
          end ; body
@@ -1061,26 +1061,26 @@ package mx.effects
          getproperty QName(PackageNamespace(""),"target")
          getlex QName(PackageNamespace("mx.core"),"UIComponent")
          istypelate
-         iffalse ofs0023
+         iffalse ofs0
          findpropstrict QName(PackageNamespace("mx.core"),"UIComponent")
          getlocal0
          getproperty QName(PackageNamespace(""),"target")
          callproperty QName(PackageNamespace("mx.core"),"UIComponent"), 1
          getlocal0
          callpropvoid QName(PackageNamespace(""),"effectStarted"), 1
-         ofs0023:
+         ofs0:
          getlocal0
          getproperty QName(PackageNamespace(""),"startDelay")
          pushbyte 0
          greaterthan
          dup
-         iffalse ofs0035
+         iffalse ofs1
          pop
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"playReversed")
          not
-         ofs0035:
-         iffalse ofs0073
+         ofs1:
+         iffalse ofs2
          getlocal0
          findpropstrict QName(PackageNamespace("flash.utils"),"Timer")
          getlocal0
@@ -1091,22 +1091,22 @@ package mx.effects
          getlocal0
          findpropstrict QName(PackageNamespace("flash.utils"),"getTimer")
          callproperty QName(PackageNamespace("flash.utils"),"getTimer"), 0
-         initproperty QName(PrivateNamespace(null,"188"),"delayStartTime")
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"delayStartTime")
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
          getlex QName(PackageNamespace("flash.events"),"TimerEvent")
          getproperty QName(PackageNamespace(""),"TIMER")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"delayTimerHandler")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"delayTimerHandler")
          callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
          callpropvoid QName(PackageNamespace(""),"start"), 0
-         jump ofs0078
-         ofs0073:
+         jump ofs3
+         ofs2:
          getlocal0
          callpropvoid QName(PackageNamespace(""),"play"), 0
-         ofs0078:
+         ofs3:
          returnvoid
          end ; code
          end ; body
@@ -1154,14 +1154,14 @@ package mx.effects
          getproperty QName(PackageNamespace(""),"target")
          convert_b
          dup
-         iffalse ofs0039
+         iffalse ofs0
          pop
          getlocal0
          getproperty QName(PackageNamespace(""),"target")
          getlex QName(PackageNamespace("flash.events"),"IEventDispatcher")
          istypelate
-         ofs0039:
-         iffalse ofs0052
+         ofs0:
+         iffalse ofs1
          getlocal0
          getproperty QName(PackageNamespace(""),"target")
          findpropstrict QName(PackageNamespace("mx.events"),"EffectEvent")
@@ -1171,8 +1171,8 @@ package mx.effects
          pushfalse
          getlocal0
          constructprop QName(PackageNamespace("mx.events"),"EffectEvent"), 4
-         callpropvoid Multiname("dispatchEvent",[PrivateNamespace(null,"188"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.effects"),ProtectedNamespace("mx.effects:EffectInstance"),PrivateNamespace(null,"495"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("mx.effects:EffectInstance"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
-         ofs0052:
+         callpropvoid Multiname("dispatchEvent",[PrivateNamespace(null,"#EffectInstance"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.effects"),ProtectedNamespace("mx.effects:EffectInstance"),PrivateNamespace(null,"#EffectInstance/1"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("mx.effects:EffectInstance"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
+         ofs1:
          returnvoid
          end ; code
          end ; body
@@ -1201,24 +1201,24 @@ package mx.effects
          coerce_a
          convert_b
          dup
-         iffalse ofs0017
+         iffalse ofs0
          pop
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
          getproperty QName(PackageNamespace(""),"running")
          coerce_a
          convert_b
-         ofs0017:
+         ofs0:
          dup
-         iffalse ofs0029
+         iffalse ofs1
          pop
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"delayStartTime")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"delayStartTime")
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
-         ofs0029:
-         iffalse ofs0045
+         ofs1:
+         iffalse ofs2
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
          callpropvoid QName(PackageNamespace(""),"stop"), 0
@@ -1226,10 +1226,10 @@ package mx.effects
          findpropstrict QName(PackageNamespace("flash.utils"),"getTimer")
          callproperty QName(PackageNamespace("flash.utils"),"getTimer"), 0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"delayStartTime")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"delayStartTime")
          subtract
-         initproperty QName(PrivateNamespace(null,"188"),"delayElapsedTime")
-         ofs0045:
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"delayElapsedTime")
+         ofs2:
          returnvoid
          end ; code
          end ; body
@@ -1255,11 +1255,11 @@ package mx.effects
          pushscope
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
-         iffalse ofs0012
+         iffalse ofs0
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
          callpropvoid QName(PackageNamespace(""),"reset"), 0
-         ofs0012:
+         ofs0:
          getlocal0
          pushtrue
          initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"stopRepeat")
@@ -1276,14 +1276,14 @@ package mx.effects
          getproperty QName(PackageNamespace(""),"target")
          convert_b
          dup
-         iffalse ofs003d
+         iffalse ofs1
          pop
          getlocal0
          getproperty QName(PackageNamespace(""),"target")
          getlex QName(PackageNamespace("flash.events"),"IEventDispatcher")
          istypelate
-         ofs003d:
-         iffalse ofs0056
+         ofs1:
+         iffalse ofs2
          getlocal0
          getproperty QName(PackageNamespace(""),"target")
          findpropstrict QName(PackageNamespace("mx.events"),"EffectEvent")
@@ -1293,8 +1293,8 @@ package mx.effects
          pushfalse
          getlocal0
          constructprop QName(PackageNamespace("mx.events"),"EffectEvent"), 4
-         callpropvoid Multiname("dispatchEvent",[PrivateNamespace(null,"188"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.effects"),ProtectedNamespace("mx.effects:EffectInstance"),PrivateNamespace(null,"495"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("mx.effects:EffectInstance"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
-         ofs0056:
+         callpropvoid Multiname("dispatchEvent",[PrivateNamespace(null,"#EffectInstance"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.effects"),ProtectedNamespace("mx.effects:EffectInstance"),PrivateNamespace(null,"#EffectInstance/1"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("mx.effects:EffectInstance"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
+         ofs2:
          getlocal0
          callpropvoid QName(PackageNamespace(""),"finishEffect"), 0
          returnvoid
@@ -1325,7 +1325,7 @@ package mx.effects
          coerce_a
          convert_b
          dup
-         iffalse ofs0018
+         iffalse ofs0
          pop
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
@@ -1333,40 +1333,40 @@ package mx.effects
          not
          coerce_a
          convert_b
-         ofs0018:
+         ofs0:
          dup
-         iffalse ofs002a
+         iffalse ofs1
          pop
          findpropstrict QName(PackageNamespace(""),"isNaN")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"delayElapsedTime")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"delayElapsedTime")
          callproperty QName(PackageNamespace(""),"isNaN"), 1
          not
-         ofs002a:
-         iffalse ofs005b
+         ofs1:
+         iffalse ofs2
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"playReversed")
-         iftrue ofs004b
+         iftrue ofs3
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
          getproperty QName(PackageNamespace(""),"delay")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"delayElapsedTime")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"delayElapsedTime")
          subtract
          convert_d
-         jump ofs0050
-         ofs004b:
+         jump ofs4
+         ofs3:
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"delayElapsedTime")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"delayElapsedTime")
          convert_d
-         ofs0050:
+         ofs4:
          setproperty QName(PackageNamespace(""),"delay")
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
          callpropvoid QName(PackageNamespace(""),"start"), 0
-         ofs005b:
+         ofs2:
          returnvoid
          end ; code
          end ; body
@@ -1393,7 +1393,7 @@ package mx.effects
          getlocal0
          getproperty QName(PackageNamespace(""),"repeatCount")
          pushbyte 0
-         ifngt ofs001c
+         ifngt ofs0
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"repeatCount")
@@ -1403,7 +1403,7 @@ package mx.effects
          pushbyte 1
          add
          initproperty QName(ProtectedNamespace("mx.effects:EffectInstance"),"playCount")
-         ofs001c:
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -1429,11 +1429,11 @@ package mx.effects
          pushscope
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
-         iffalse ofs0012
+         iffalse ofs0
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
          callpropvoid QName(PackageNamespace(""),"reset"), 0
-         ofs0012:
+         ofs0:
          getlocal0
          pushtrue
          initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"stopRepeat")
@@ -1478,14 +1478,14 @@ package mx.effects
          getproperty QName(PackageNamespace(""),"target")
          convert_b
          dup
-         iffalse ofs002e
+         iffalse ofs0
          pop
          getlocal0
          getproperty QName(PackageNamespace(""),"target")
          getlex QName(PackageNamespace("flash.events"),"IEventDispatcher")
          istypelate
-         ofs002e:
-         iffalse ofs0047
+         ofs0:
+         iffalse ofs1
          getlocal0
          getproperty QName(PackageNamespace(""),"target")
          findpropstrict QName(PackageNamespace("mx.events"),"EffectEvent")
@@ -1495,20 +1495,20 @@ package mx.effects
          pushfalse
          getlocal0
          constructprop QName(PackageNamespace("mx.events"),"EffectEvent"), 4
-         callpropvoid Multiname("dispatchEvent",[PrivateNamespace(null,"188"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.effects"),ProtectedNamespace("mx.effects:EffectInstance"),PrivateNamespace(null,"495"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("mx.effects:EffectInstance"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
-         ofs0047:
+         callpropvoid Multiname("dispatchEvent",[PrivateNamespace(null,"#EffectInstance"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.effects"),ProtectedNamespace("mx.effects:EffectInstance"),PrivateNamespace(null,"#EffectInstance/1"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("mx.effects:EffectInstance"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
+         ofs1:
          getlocal0
          getproperty QName(PackageNamespace(""),"target")
          getlex QName(PackageNamespace("mx.core"),"UIComponent")
          istypelate
-         iffalse ofs0060
+         iffalse ofs2
          findpropstrict QName(PackageNamespace("mx.core"),"UIComponent")
          getlocal0
          getproperty QName(PackageNamespace(""),"target")
          callproperty QName(PackageNamespace("mx.core"),"UIComponent"), 1
          getlocal0
          callpropvoid QName(PackageNamespace(""),"effectFinished"), 1
-         ofs0060:
+         ofs2:
          getlex QName(PackageNamespace("mx.effects"),"EffectManager")
          getlocal0
          callpropvoid QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"effectFinished"), 1
@@ -1539,16 +1539,16 @@ package mx.effects
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"stopRepeat")
          not
          dup
-         iffalse ofs0015
+         iffalse ofs0
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("mx.effects:EffectInstance"),"playCount")
          pushbyte 0
          equals
          not
-         ofs0015:
+         ofs0:
          dup
-         iffalse ofs0031
+         iffalse ofs1
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("mx.effects:EffectInstance"),"playCount")
@@ -1556,18 +1556,18 @@ package mx.effects
          getproperty QName(PackageNamespace(""),"repeatCount")
          lessthan
          dup
-         iftrue ofs0031
+         iftrue ofs1
          pop
          getlocal0
          getproperty QName(PackageNamespace(""),"repeatCount")
          pushbyte 0
          equals
-         ofs0031:
-         iffalse ofs0082
+         ofs1:
+         iffalse ofs2
          getlocal0
          getproperty QName(PackageNamespace(""),"repeatDelay")
          pushbyte 0
-         ifngt ofs0079
+         ifngt ofs3
          getlocal0
          findpropstrict QName(PackageNamespace("flash.utils"),"Timer")
          getlocal0
@@ -1578,27 +1578,27 @@ package mx.effects
          getlocal0
          findpropstrict QName(PackageNamespace("flash.utils"),"getTimer")
          callproperty QName(PackageNamespace("flash.utils"),"getTimer"), 0
-         initproperty QName(PrivateNamespace(null,"188"),"delayStartTime")
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"delayStartTime")
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
          getlex QName(PackageNamespace("flash.events"),"TimerEvent")
          getproperty QName(PackageNamespace(""),"TIMER")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"188"),"delayTimerHandler")
+         getproperty QName(PrivateNamespace(null,"#EffectInstance"),"delayTimerHandler")
          callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"delayTimer")
          callpropvoid QName(PackageNamespace(""),"start"), 0
-         jump ofs007e
-         ofs0079:
+         jump ofs4
+         ofs3:
          getlocal0
          callpropvoid QName(PackageNamespace(""),"play"), 0
-         ofs007e:
-         jump ofs0087
-         ofs0082:
+         ofs4:
+         jump ofs5
+         ofs2:
          getlocal0
          callpropvoid QName(PackageNamespace(""),"finishEffect"), 0
-         ofs0087:
+         ofs5:
          returnvoid
          end ; code
          end ; body
@@ -1666,14 +1666,14 @@ package mx.effects
          getproperty QName(PackageNamespace(""),"SHOW")
          equals
          dup
-         iffalse ofs0018
+         iffalse ofs0
          pop
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"hideOnEffectEnd")
          pushtrue
          equals
-         ofs0018:
-         iffalse ofs0032
+         ofs0:
+         iffalse ofs1
          getlocal0
          pushfalse
          initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"hideOnEffectEnd")
@@ -1683,8 +1683,8 @@ package mx.effects
          getproperty QName(PackageNamespace(""),"SHOW")
          getlocal0
          getproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"eventHandler")
-         callpropvoid Multiname("removeEventListener",[PrivateNamespace(null,"188"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.effects"),ProtectedNamespace("mx.effects:EffectInstance"),PrivateNamespace(null,"495"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("mx.effects:EffectInstance"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 2
-         ofs0032:
+         callpropvoid Multiname("removeEventListener",[PrivateNamespace(null,"#EffectInstance"),Namespace("http://www.adobe.com/2006/flex/mx/internal"),PackageNamespace(""),PackageNamespace("mx.effects"),ProtectedNamespace("mx.effects:EffectInstance"),PrivateNamespace(null,"#EffectInstance/1"),PackageInternalNs("mx.effects"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("mx.effects:EffectInstance"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 2
+         ofs1:
          returnvoid
          end ; code
          end ; body
@@ -1693,7 +1693,7 @@ package mx.effects
       
       private function delayTimerHandler(param1:TimerEvent) : void
       {
-         trait method QName(PrivateNamespace(null,"188"),"delayTimerHandler")
+         trait method QName(PrivateNamespace(null,"#EffectInstance"),"delayTimerHandler")
          dispid 0
          method
          name null
@@ -1714,10 +1714,10 @@ package mx.effects
          callpropvoid QName(PackageNamespace(""),"reset"), 0
          getlocal0
          getlex QName(PackageNamespace(""),"NaN")
-         initproperty QName(PrivateNamespace(null,"188"),"delayStartTime")
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"delayStartTime")
          getlocal0
          getlex QName(PackageNamespace(""),"NaN")
-         initproperty QName(PrivateNamespace(null,"188"),"delayElapsedTime")
+         initproperty QName(PrivateNamespace(null,"#EffectInstance"),"delayElapsedTime")
          getlocal0
          callpropvoid QName(PackageNamespace(""),"play"), 0
          returnvoid
@@ -1747,7 +1747,7 @@ pushscope
 getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
 pushscope
 getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
-newclass 460
+newclass #EffectInstance
 popscope
 popscope
 initproperty QName(PackageNamespace("mx.effects"),"EffectInstance")

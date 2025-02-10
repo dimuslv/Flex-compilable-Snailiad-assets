@@ -2,7 +2,7 @@ package mx.graphics.shaderClasses
 {
    import mx.core.ByteArrayAsset;
    
-   [Embed(source="/_assets/40_mx.graphics.shaderClasses.LuminosityMaskShader_ShaderClass_mx.graphics.shaderClasses.LuminosityMaskShader_ShaderClass.bin", mimeType="application/octet-stream")]
+   [Embed]
    public class LuminosityMaskShader_ShaderClass extends ByteArrayAsset
    {
       public function LuminosityMaskShader_ShaderClass()

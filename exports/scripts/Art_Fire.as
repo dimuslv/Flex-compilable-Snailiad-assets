@@ -2,7 +2,7 @@ package
 {
    import mx.core.BitmapAsset;
    
-   [Embed(source="/_assets/171_Art_Fire.png")]
+   [Embed]
    public class Art_Fire extends BitmapAsset
    {
       public function Art_Fire()

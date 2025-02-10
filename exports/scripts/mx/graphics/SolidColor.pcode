@@ -95,7 +95,7 @@ package mx.graphics
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"68"),"_alpha")
+         getproperty QName(PrivateNamespace(null,"#SolidColor"),"_alpha")
          returnvalue
          end ; code
          end ; body
@@ -121,21 +121,21 @@ package mx.graphics
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"68"),"_alpha")
+         getproperty QName(PrivateNamespace(null,"#SolidColor"),"_alpha")
          convert_d
          setlocal2
          getlocal1
          getlocal2
-         ifeq ofs001d
+         ifeq ofs0
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"68"),"_alpha")
+         initproperty QName(PrivateNamespace(null,"#SolidColor"),"_alpha")
          getlocal0
          pushstring "alpha"
          getlocal2
          getlocal1
-         callpropvoid QName(PrivateNamespace(null,"68"),"dispatchFillChangedEvent"), 3
-         ofs001d:
+         callpropvoid QName(PrivateNamespace(null,"#SolidColor"),"dispatchFillChangedEvent"), 3
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -165,7 +165,7 @@ package mx.graphics
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"68"),"_color")
+         getproperty QName(PrivateNamespace(null,"#SolidColor"),"_color")
          returnvalue
          end ; code
          end ; body
@@ -191,21 +191,21 @@ package mx.graphics
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(PrivateNamespace(null,"68"),"_color")
+         getproperty QName(PrivateNamespace(null,"#SolidColor"),"_color")
          convert_u
          setlocal2
          getlocal1
          getlocal2
-         ifeq ofs001d
+         ifeq ofs0
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"68"),"_color")
+         initproperty QName(PrivateNamespace(null,"#SolidColor"),"_color")
          getlocal0
          pushstring "color"
          getlocal2
          getlocal1
-         callpropvoid QName(PrivateNamespace(null,"68"),"dispatchFillChangedEvent"), 3
-         ofs001d:
+         callpropvoid QName(PrivateNamespace(null,"#SolidColor"),"dispatchFillChangedEvent"), 3
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -272,7 +272,7 @@ package mx.graphics
       
       private function dispatchFillChangedEvent(param1:String, param2:*, param3:*) : void
       {
-         trait method QName(PrivateNamespace(null,"68"),"dispatchFillChangedEvent")
+         trait method QName(PrivateNamespace(null,"#SolidColor"),"dispatchFillChangedEvent")
          dispid 0
          method
          name null
@@ -293,7 +293,7 @@ package mx.graphics
          findpropstrict QName(PackageNamespace(""),"hasEventListener")
          pushstring "propertyChange"
          callproperty QName(PackageNamespace(""),"hasEventListener"), 1
-         iffalse ofs0021
+         iffalse ofs0
          findpropstrict QName(PackageNamespace(""),"dispatchEvent")
          getlex QName(PackageNamespace("mx.events"),"PropertyChangeEvent")
          getlocal0
@@ -302,7 +302,7 @@ package mx.graphics
          getlocal3
          callproperty QName(PackageNamespace(""),"createUpdateEvent"), 4
          callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
-         ofs0021:
+         ofs0:
          returnvoid
          end ; code
          end ; body
@@ -324,13 +324,13 @@ maxscopedepth 4
 code
 getlocal0
 pushscope
-getscopeobject 0
+findpropstrict Multiname("SolidColor",[PackageNamespace("mx.graphics")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
 pushscope
 getlex QName(PackageNamespace("flash.events"),"EventDispatcher")
-newclass 229
+newclass #SolidColor
 popscope
 popscope
 initproperty QName(PackageNamespace("mx.graphics"),"SolidColor")

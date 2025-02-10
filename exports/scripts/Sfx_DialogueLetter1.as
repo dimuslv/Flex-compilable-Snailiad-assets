@@ -2,7 +2,7 @@ package
 {
    import mx.core.SoundAsset;
    
-   [Embed(source="/_assets/74_dialogueletter1_Sfx_DialogueLetter1.mp3")]
+   [Embed]
    public class Sfx_DialogueLetter1 extends SoundAsset
    {
       public function Sfx_DialogueLetter1()
