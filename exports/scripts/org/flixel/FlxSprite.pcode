@@ -207,7 +207,7 @@ package org.flixel
          initproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_callback")
          getlex QName(StaticProtectedNs("org.flixel:FlxSprite"),"_gfxSprite")
          pushnull
-         ifne ofs0
+         ifne ofs00b8
          findproperty QName(StaticProtectedNs("org.flixel:FlxSprite"),"_gfxSprite")
          findpropstrict QName(PackageNamespace("flash.display"),"Sprite")
          constructprop QName(PackageNamespace("flash.display"),"Sprite"), 0
@@ -216,20 +216,20 @@ package org.flixel
          getlex QName(StaticProtectedNs("org.flixel:FlxSprite"),"_gfxSprite")
          getproperty QName(PackageNamespace(""),"graphics")
          setproperty QName(StaticProtectedNs("org.flixel:FlxSprite"),"_gfx")
-         ofs0:
+         ofs00b8:
          getlocal3
          pushnull
-         ifne ofs1
+         ifne ofs00ca
          getlocal0
          pushbyte 8
          dup
          callpropvoid QName(PackageNamespace(""),"createGraphic"), 2
-         jump ofs2
-         ofs1:
+         jump ofs00d0
+         ofs00ca:
          getlocal0
          getlocal3
          callpropvoid QName(PackageNamespace(""),"loadGraphic"), 1
-         ofs2:
+         ofs00d0:
          returnvoid
          end ; code
          end ; body
@@ -276,7 +276,7 @@ package org.flixel
          callproperty QName(PackageNamespace(""),"addBitmap"), 3
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_pixels")
          getlocal3
-         iffalse ofs0
+         iffalse ofs002e
          getlocal0
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_pixels")
@@ -284,17 +284,17 @@ package org.flixel
          pushbyte 1
          rshift
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_flipped")
-         jump ofs1
-         ofs0:
+         jump ofs0034
+         ofs002e:
          getlocal0
          pushbyte 0
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_flipped")
-         ofs1:
+         ofs0034:
          getlocal 4
          pushbyte 0
-         ifne ofs2
+         ifne ofs007e
          getlocal2
-         iffalse ofs3
+         iffalse ofs0054
          findpropstrict QName(PackageNamespace(""),"uint")
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_pixels")
@@ -302,12 +302,12 @@ package org.flixel
          callproperty QName(PackageNamespace(""),"uint"), 1
          convert_u
          setlocal 4
-         jump ofs2
-         ofs3:
+         jump ofs007e
+         ofs0054:
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_flipped")
          pushbyte 0
-         ifngt ofs4
+         ifngt ofs006f
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_pixels")
          getproperty QName(PackageNamespace(""),"width")
@@ -315,8 +315,8 @@ package org.flixel
          multiply
          convert_u
          setlocal 4
-         jump ofs2
-         ofs4:
+         jump ofs007e
+         ofs006f:
          findpropstrict QName(PackageNamespace(""),"uint")
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_pixels")
@@ -324,7 +324,7 @@ package org.flixel
          callproperty QName(PackageNamespace(""),"uint"), 1
          convert_u
          setlocal 4
-         ofs2:
+         ofs007e:
          findproperty QName(PackageNamespace(""),"width")
          getlocal0
          getlocal 4
@@ -336,14 +336,14 @@ package org.flixel
          initproperty QName(PackageNamespace(""),"width")
          getlocal 5
          pushbyte 0
-         ifne ofs5
+         ifne ofs00b7
          getlocal2
-         iffalse ofs6
+         iffalse ofs00a8
          getlex QName(PackageNamespace(""),"width")
          convert_u
          setlocal 5
-         jump ofs5
-         ofs6:
+         jump ofs00b7
+         ofs00a8:
          findpropstrict QName(PackageNamespace(""),"uint")
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_pixels")
@@ -351,7 +351,7 @@ package org.flixel
          callproperty QName(PackageNamespace(""),"uint"), 1
          convert_u
          setlocal 5
-         ofs5:
+         ofs00b7:
          findproperty QName(PackageNamespace(""),"height")
          getlocal0
          getlocal 5
@@ -447,7 +447,7 @@ package org.flixel
          setlocal 18
          getlocal3
          pushbyte 0
-         ifnge ofs0
+         ifnge ofs00f7
          getlocal 18
          coerce QName(PackageNamespace("flash.display"),"BitmapData")
          setlocal 6
@@ -478,7 +478,7 @@ package org.flixel
          setlocal 9
          getlocal 7
          getlocal 9
-         ifnge ofs1
+         ifnge ofs00bd
          findpropstrict QName(PackageNamespace(""),"uint")
          getlocal 7
          getlocal 9
@@ -494,7 +494,7 @@ package org.flixel
          modulo
          convert_u
          setlocal 7
-         ofs1:
+         ofs00bd:
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_flashRect")
          getlocal 7
@@ -520,7 +520,7 @@ package org.flixel
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_flashPointZero")
          callpropvoid QName(PackageNamespace(""),"copyPixels"), 3
-         ofs0:
+         ofs00f7:
          findpropstrict QName(PackageNamespace(""),"uint")
          getlocal 18
          getproperty QName(PackageNamespace(""),"width")
@@ -530,22 +530,22 @@ package org.flixel
          getlocal 18
          getproperty QName(PackageNamespace(""),"height")
          getlocal 19
-         ifngt ofs2
+         ifngt ofs011c
          findpropstrict QName(PackageNamespace(""),"uint")
          getlocal 18
          getproperty QName(PackageNamespace(""),"height")
          callproperty QName(PackageNamespace(""),"uint"), 1
          convert_u
          setlocal 19
-         ofs2:
+         ofs011c:
          getlocal 5
-         iffalse ofs3
+         iffalse ofs012a
          getlocal 19
          pushdouble 1.5
          multiply
          convert_u
          setlocal 19
-         ofs3:
+         ofs012a:
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
          getlocal2
          getlocal 17
@@ -622,7 +622,7 @@ package org.flixel
          divide
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_bakedRotation")
          getlocal 22
-         iftrue ofs4
+         iftrue ofs0283
          pushbyte 0
          convert_u
          setlocal 10
@@ -651,14 +651,14 @@ package org.flixel
          multiply
          convert_u
          setlocal 16
-         jump ofs5
-         ofs6:
+         jump ofs027b
+         ofs0202:
          label
          pushbyte 0
          convert_u
          setlocal 11
-         jump ofs7
-         ofs8:
+         jump ofs0265
+         ofs020c:
          label
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_mtx")
@@ -705,10 +705,10 @@ package org.flixel
          increment
          convert_u
          setlocal 11
-         ofs7:
+         ofs0265:
          getlocal 11
          getlocal 20
-         iflt ofs8
+         iflt ofs020c
          getlocal 16
          getlocal 19
          add
@@ -718,11 +718,11 @@ package org.flixel
          increment
          convert_u
          setlocal 10
-         ofs5:
+         ofs027b:
          getlocal 10
          getlocal 17
-         iflt ofs6
-         ofs4:
+         iflt ofs0202
+         ofs0283:
          getlocal0
          getlocal0
          findproperty QName(PackageNamespace(""),"width")
@@ -961,7 +961,7 @@ package org.flixel
          pushnull
          equals
          dup
-         iftrue ofs0
+         iftrue ofs0075
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_framePixels")
@@ -969,9 +969,9 @@ package org.flixel
          getlex QName(PackageNamespace(""),"width")
          equals
          not
-         ofs0:
+         ofs0075:
          dup
-         iftrue ofs1
+         iftrue ofs0087
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_framePixels")
@@ -979,21 +979,21 @@ package org.flixel
          getlex QName(PackageNamespace(""),"height")
          equals
          not
-         ofs1:
-         iffalse ofs2
+         ofs0087:
+         iffalse ofs009a
          getlocal0
          findpropstrict QName(PackageNamespace("flash.display"),"BitmapData")
          getlex QName(PackageNamespace(""),"width")
          getlex QName(PackageNamespace(""),"height")
          constructprop QName(PackageNamespace("flash.display"),"BitmapData"), 2
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_framePixels")
-         ofs2:
+         ofs009a:
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_bbb")
          pushnull
          equals
          dup
-         iftrue ofs3
+         iftrue ofs00b2
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_bbb")
@@ -1001,9 +1001,9 @@ package org.flixel
          getlex QName(PackageNamespace(""),"width")
          equals
          not
-         ofs3:
+         ofs00b2:
          dup
-         iftrue ofs4
+         iftrue ofs00c4
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_bbb")
@@ -1011,15 +1011,15 @@ package org.flixel
          getlex QName(PackageNamespace(""),"height")
          equals
          not
-         ofs4:
-         iffalse ofs5
+         ofs00c4:
+         iffalse ofs00d7
          getlocal0
          findpropstrict QName(PackageNamespace("flash.display"),"BitmapData")
          getlex QName(PackageNamespace(""),"width")
          getlex QName(PackageNamespace(""),"height")
          constructprop QName(PackageNamespace("flash.display"),"BitmapData"), 2
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_bbb")
-         ofs5:
+         ofs00d7:
          getlex QName(PackageNamespace(""),"origin")
          getlocal0
          getproperty QName(PackageNamespace(""),"frameWidth")
@@ -1061,7 +1061,7 @@ package org.flixel
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_ct")
          pushnull
-         ifeq ofs6
+         ifeq ofs0141
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_framePixels")
          getlocal0
@@ -1069,13 +1069,13 @@ package org.flixel
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_ct")
          callpropvoid QName(PackageNamespace(""),"colorTransform"), 2
-         ofs6:
+         ofs0141:
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"showBounds")
-         iffalse ofs7
+         iffalse ofs0150
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxSprite"),"drawBounds"), 0
-         ofs7:
+         ofs0150:
          getlocal0
          pushbyte 0
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_caf")
@@ -1117,16 +1117,16 @@ package org.flixel
          equals
          not
          dup
-         iffalse ofs0
+         iffalse ofs0021
          pop
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"showBounds")
          convert_b
-         ofs0:
-         iffalse ofs1
+         ofs0021:
+         iffalse ofs002a
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxSprite"),"calcFrame"), 0
-         ofs1:
+         ofs002a:
          returnvoid
          end ; code
          end ; body
@@ -1163,16 +1163,16 @@ package org.flixel
          equals
          not
          dup
-         iffalse ofs0
+         iffalse ofs0021
          pop
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"showBounds")
          convert_b
-         ofs0:
-         iffalse ofs1
+         ofs0021:
+         iffalse ofs002a
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxSprite"),"calcFrame"), 0
-         ofs1:
+         ofs002a:
          returnvoid
          end ; code
          end ; body
@@ -1233,10 +1233,10 @@ package org.flixel
          getlocal1
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_facing")
          getlocal2
-         iffalse ofs0
+         iffalse ofs001a
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxSprite"),"calcFrame"), 0
-         ofs0:
+         ofs001a:
          returnvoid
          end ; code
          end ; body
@@ -1288,24 +1288,24 @@ package org.flixel
          pushscope
          getlocal1
          pushbyte 1
-         ifngt ofs0
+         ifngt ofs000d
          pushbyte 1
          convert_d
          setlocal1
-         ofs0:
+         ofs000d:
          getlocal1
          pushbyte 0
-         ifnlt ofs1
+         ifnlt ofs0018
          pushbyte 0
          convert_d
          setlocal1
-         ofs1:
+         ofs0018:
          getlocal1
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_alpha")
-         ifne ofs2
+         ifne ofs0022
          returnvoid
-         ofs2:
+         ofs0022:
          getlocal0
          getlocal1
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_alpha")
@@ -1315,15 +1315,15 @@ package org.flixel
          equals
          not
          dup
-         iftrue ofs3
+         iftrue ofs003d
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_color")
          pushint 16777215
          equals
          not
-         ofs3:
-         iffalse ofs4
+         ofs003d:
+         iffalse ofs0075
          getlocal0
          findpropstrict QName(PackageNamespace("flash.geom"),"ColorTransform")
          getlocal0
@@ -1350,12 +1350,12 @@ package org.flixel
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_alpha")
          constructprop QName(PackageNamespace("flash.geom"),"ColorTransform"), 4
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_ct")
-         jump ofs5
-         ofs4:
+         jump ofs007a
+         ofs0075:
          getlocal0
          pushnull
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_ct")
-         ofs5:
+         ofs007a:
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxSprite"),"calcFrame"), 0
          returnvoid
@@ -1415,9 +1415,9 @@ package org.flixel
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_color")
          getlocal1
-         ifne ofs0
+         ifne ofs0012
          returnvoid
-         ofs0:
+         ofs0012:
          getlocal0
          getlocal1
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_color")
@@ -1427,15 +1427,15 @@ package org.flixel
          equals
          not
          dup
-         iftrue ofs1
+         iftrue ofs002d
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_color")
          pushint 16777215
          equals
          not
-         ofs1:
-         iffalse ofs2
+         ofs002d:
+         iffalse ofs0065
          getlocal0
          findpropstrict QName(PackageNamespace("flash.geom"),"ColorTransform")
          getlocal0
@@ -1462,12 +1462,12 @@ package org.flixel
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_alpha")
          constructprop QName(PackageNamespace("flash.geom"),"ColorTransform"), 4
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_ct")
-         jump ofs3
-         ofs2:
+         jump ofs006a
+         ofs0065:
          getlocal0
          pushnull
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_ct")
-         ofs3:
+         ofs006a:
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxSprite"),"calcFrame"), 0
          returnvoid
@@ -1570,40 +1570,40 @@ package org.flixel
          pushbyte 0
          equals
          dup
-         iftrue ofs0
+         iftrue ofs001e
          pop
          getlocal1
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_bakedRotation")
          pushbyte 0
          greaterthan
-         ofs0:
+         ofs001e:
          dup
-         iffalse ofs1
+         iffalse ofs002e
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"scale")
          getproperty QName(PackageNamespace(""),"x")
          pushbyte 1
          equals
-         ofs1:
+         ofs002e:
          dup
-         iffalse ofs2
+         iffalse ofs003e
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"scale")
          getproperty QName(PackageNamespace(""),"y")
          pushbyte 1
          equals
-         ofs2:
+         ofs003e:
          dup
-         iffalse ofs3
+         iffalse ofs004a
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"blend")
          pushnull
          equals
-         ofs3:
-         iffalse ofs4
+         ofs004a:
+         iffalse ofs00aa
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_flashPoint")
          getlocal2
          setproperty QName(PackageNamespace(""),"x")
@@ -1645,7 +1645,7 @@ package org.flixel
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxSprite"),"calcFrame"), 0
          returnvoid
-         ofs4:
+         ofs00aa:
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_mtx")
          callpropvoid QName(PackageNamespace(""),"identity"), 0
@@ -1672,7 +1672,7 @@ package org.flixel
          getlocal1
          getproperty QName(PackageNamespace(""),"angle")
          pushbyte 0
-         ifeq ofs5
+         ifeq ofs00f9
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_mtx")
          getlocal1
@@ -1680,7 +1680,7 @@ package org.flixel
          pushdouble 0.017453293
          multiply
          callpropvoid QName(PackageNamespace(""),"rotate"), 1
-         ofs5:
+         ofs00f9:
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_mtx")
          getlocal2
@@ -1793,10 +1793,10 @@ package org.flixel
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_pixels")
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_framePixels")
-         ifeq ofs0
+         ifeq ofs0020
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxSprite"),"calcFrame"), 0
-         ofs0:
+         ofs0020:
          returnvoid
          end ; code
          end ; body
@@ -1827,7 +1827,7 @@ package org.flixel
          setlocal2
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_bakedRotation")
-         iffalse ofs0
+         iffalse ofs0047
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_caf")
          convert_u
@@ -1839,13 +1839,13 @@ package org.flixel
          setlocal2
          getlocal2
          pushbyte 0
-         ifnlt ofs1
+         ifnlt ofs002e
          getlocal2
          pushshort 360
          add
          convert_i
          setlocal2
-         ofs1:
+         ofs002e:
          getlocal0
          getlocal2
          getlocal0
@@ -1855,41 +1855,41 @@ package org.flixel
          getlocal1
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_caf")
-         ifeq ofs2
+         ifeq ofs0046
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxSprite"),"calcFrame"), 0
-         ofs2:
+         ofs0046:
          returnvoid
-         ofs0:
+         ofs0047:
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curAnim")
          pushnull
          equals
          not
          dup
-         iffalse ofs3
+         iffalse ofs005e
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curAnim")
          getproperty QName(PackageNamespace(""),"delay")
          pushbyte 0
          greaterthan
-         ofs3:
+         ofs005e:
          dup
-         iffalse ofs4
+         iffalse ofs0077
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curAnim")
          getproperty QName(PackageNamespace(""),"looped")
          convert_b
          dup
-         iftrue ofs4
+         iftrue ofs0077
          pop
          getlocal0
          getproperty QName(PackageNamespace(""),"finished")
          not
-         ofs4:
-         iffalse ofs5
+         ofs0077:
+         iffalse ofs0105
          getlocal0
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_frameTimer")
@@ -1897,8 +1897,8 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"elapsed")
          add
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_frameTimer")
-         jump ofs6
-         ofs7:
+         jump ofs00f6
+         ofs008e:
          label
          getlocal0
          getlocal0
@@ -1915,20 +1915,20 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"frames")
          getproperty QName(PackageNamespace(""),"length")
          decrement
-         ifne ofs8
+         ifne ofs00cc
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curAnim")
          getproperty QName(PackageNamespace(""),"looped")
-         iffalse ofs9
+         iffalse ofs00c3
          getlocal0
          pushbyte 0
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curFrame")
-         ofs9:
+         ofs00c3:
          getlocal0
          pushtrue
          setproperty QName(PackageNamespace(""),"finished")
-         jump ofs10
-         ofs8:
+         jump ofs00df
+         ofs00cc:
          getlocal0
          dup
          setlocal3
@@ -1940,25 +1940,25 @@ package org.flixel
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curFrame")
          kill 4
          kill 3
-         ofs10:
+         ofs00df:
          getlocal0
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curAnim")
          getproperty QName(PackageNamespace(""),"frames")
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curFrame")
-         getproperty MultinameL([PrivateNamespace(null,"#FlxSprite/1"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSprite"),PackageNamespace("org.flixel"),StaticProtectedNs("org.flixel:FlxSprite"),PrivateNamespace(null,"#FlxSprite/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"373"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSprite"),PackageNamespace("org.flixel"),StaticProtectedNs("org.flixel:FlxSprite"),PrivateNamespace(null,"374"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_caf")
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxSprite"),"calcFrame"), 0
-         ofs6:
+         ofs00f6:
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_frameTimer")
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curAnim")
          getproperty QName(PackageNamespace(""),"delay")
-         ifgt ofs7
-         ofs5:
+         ifgt ofs008e
+         ofs0105:
          returnvoid
          end ; code
          end ; body
@@ -2016,10 +2016,10 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"showBounds")
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_boundsVisible")
-         ifeq ofs0
+         ifeq ofs0015
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxSprite"),"calcFrame"), 0
-         ofs0:
+         ofs0015:
          getlocal0
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_point")
          callpropvoid QName(PackageNamespace(""),"getScreenXY"), 1
@@ -2035,40 +2035,40 @@ package org.flixel
          pushbyte 0
          equals
          dup
-         iftrue ofs1
+         iftrue ofs0048
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_bakedRotation")
          pushbyte 0
          greaterthan
-         ofs1:
+         ofs0048:
          dup
-         iffalse ofs2
+         iffalse ofs0058
          pop
          getlocal0
          getproperty QName(PackageNamespace(""),"scale")
          getproperty QName(PackageNamespace(""),"x")
          pushbyte 1
          equals
-         ofs2:
+         ofs0058:
          dup
-         iffalse ofs3
+         iffalse ofs0068
          pop
          getlocal0
          getproperty QName(PackageNamespace(""),"scale")
          getproperty QName(PackageNamespace(""),"y")
          pushbyte 1
          equals
-         ofs3:
+         ofs0068:
          dup
-         iffalse ofs4
+         iffalse ofs0074
          pop
          getlocal0
          getproperty QName(PackageNamespace(""),"blend")
          pushnull
          equals
-         ofs4:
-         iffalse ofs5
+         ofs0074:
+         iffalse ofs0091
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"buffer")
          getlocal0
@@ -2081,7 +2081,7 @@ package org.flixel
          pushtrue
          callpropvoid QName(PackageNamespace(""),"copyPixels"), 6
          returnvoid
-         ofs5:
+         ofs0091:
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_mtx")
          callpropvoid QName(PackageNamespace(""),"identity"), 0
@@ -2105,14 +2105,14 @@ package org.flixel
          callpropvoid QName(PackageNamespace(""),"scale"), 2
          getlex QName(PackageNamespace(""),"angle")
          pushbyte 0
-         ifeq ofs6
+         ifeq ofs00dc
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_mtx")
          getlex QName(PackageNamespace(""),"angle")
          pushdouble 0.017453293
          multiply
          callpropvoid QName(PackageNamespace(""),"rotate"), 1
-         ofs6:
+         ofs00dc:
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_mtx")
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_point")
@@ -2216,7 +2216,7 @@ package org.flixel
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_point")
          callpropvoid QName(PackageNamespace(""),"getScreenXY"), 1
          getlocal3
-         iffalse ofs0
+         iffalse ofs0060
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_framePixels")
          findpropstrict QName(PackageNamespace("flash.geom"),"Point")
@@ -2236,13 +2236,13 @@ package org.flixel
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          callproperty QName(PackageNamespace(""),"hitTest"), 3
          returnvalue
-         ofs0:
+         ofs0060:
          getlocal1
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_point")
          getproperty QName(PackageNamespace(""),"x")
          lessequals
          dup
-         iftrue ofs1
+         iftrue ofs007b
          pop
          getlocal1
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_point")
@@ -2251,17 +2251,17 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"frameWidth")
          add
          greaterequals
-         ofs1:
+         ofs007b:
          dup
-         iftrue ofs2
+         iftrue ofs0089
          pop
          getlocal2
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_point")
          getproperty QName(PackageNamespace(""),"y")
          lessequals
-         ofs2:
+         ofs0089:
          dup
-         iftrue ofs3
+         iftrue ofs009c
          pop
          getlocal2
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_point")
@@ -2270,11 +2270,11 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"frameHeight")
          add
          greaterequals
-         ofs3:
-         iffalse ofs4
+         ofs009c:
+         iffalse ofs00a2
          pushfalse
          returnvalue
-         ofs4:
+         ofs00a2:
          pushtrue
          returnvalue
          end ; code
@@ -2395,40 +2395,40 @@ package org.flixel
          getlocal2
          not
          dup
-         iffalse ofs0
+         iffalse ofs0011
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curAnim")
          pushnull
          equals
          not
-         ofs0:
+         ofs0011:
          dup
-         iffalse ofs1
+         iffalse ofs0020
          pop
          getlocal1
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curAnim")
          getproperty QName(PackageNamespace(""),"name")
          equals
-         ofs1:
+         ofs0020:
          dup
-         iffalse ofs2
+         iffalse ofs0039
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curAnim")
          getproperty QName(PackageNamespace(""),"looped")
          convert_b
          dup
-         iftrue ofs2
+         iftrue ofs0039
          pop
          getlocal0
          getproperty QName(PackageNamespace(""),"finished")
          not
-         ofs2:
-         iffalse ofs3
+         ofs0039:
+         iffalse ofs003e
          returnvoid
-         ofs3:
+         ofs003e:
          getlocal0
          pushbyte 0
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curFrame")
@@ -2446,56 +2446,56 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"length")
          convert_u
          setlocal 4
-         jump ofs4
-         ofs5:
+         jump ofs00b6
+         ofs0062:
          label
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_animations")
          getlocal3
-         getproperty MultinameL([PrivateNamespace(null,"#FlxSprite/1"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSprite"),PackageNamespace("org.flixel"),StaticProtectedNs("org.flixel:FlxSprite"),PrivateNamespace(null,"#FlxSprite/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
-         getproperty Multiname("name",[PrivateNamespace(null,"#FlxSprite/1"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSprite"),PackageNamespace("org.flixel"),StaticProtectedNs("org.flixel:FlxSprite"),PrivateNamespace(null,"#FlxSprite/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"373"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSprite"),PackageNamespace("org.flixel"),StaticProtectedNs("org.flixel:FlxSprite"),PrivateNamespace(null,"374"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("name",[PrivateNamespace(null,"373"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSprite"),PackageNamespace("org.flixel"),StaticProtectedNs("org.flixel:FlxSprite"),PrivateNamespace(null,"374"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          getlocal1
-         ifne ofs6
+         ifne ofs00b2
          getlocal0
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_animations")
          getlocal3
-         getproperty MultinameL([PrivateNamespace(null,"#FlxSprite/1"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSprite"),PackageNamespace("org.flixel"),StaticProtectedNs("org.flixel:FlxSprite"),PrivateNamespace(null,"#FlxSprite/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"373"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSprite"),PackageNamespace("org.flixel"),StaticProtectedNs("org.flixel:FlxSprite"),PrivateNamespace(null,"374"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curAnim")
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curAnim")
          getproperty QName(PackageNamespace(""),"delay")
          pushbyte 0
-         ifnle ofs7
+         ifnle ofs0095
          getlocal0
          pushtrue
          setproperty QName(PackageNamespace(""),"finished")
-         jump ofs8
-         ofs7:
+         jump ofs009a
+         ofs0095:
          getlocal0
          pushfalse
          setproperty QName(PackageNamespace(""),"finished")
-         ofs8:
+         ofs009a:
          getlocal0
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curAnim")
          getproperty QName(PackageNamespace(""),"frames")
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curFrame")
-         getproperty MultinameL([PrivateNamespace(null,"#FlxSprite/1"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSprite"),PackageNamespace("org.flixel"),StaticProtectedNs("org.flixel:FlxSprite"),PrivateNamespace(null,"#FlxSprite/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"373"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSprite"),PackageNamespace("org.flixel"),StaticProtectedNs("org.flixel:FlxSprite"),PrivateNamespace(null,"374"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_caf")
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxSprite"),"calcFrame"), 0
          returnvoid
-         ofs6:
+         ofs00b2:
          getlocal3
          increment
          convert_u
          setlocal3
-         ofs4:
+         ofs00b6:
          getlocal3
          getlocal 4
-         iflt ofs5
+         iflt ofs0062
          returnvoid
          end ; code
          end ; body
@@ -2623,12 +2623,12 @@ package org.flixel
          pushscope
          getlocal1
          pushnull
-         ifne ofs0
+         ifne ofs0010
          findpropstrict QName(PackageNamespace("org.flixel"),"FlxPoint")
          constructprop QName(PackageNamespace("org.flixel"),"FlxPoint"), 0
          coerce QName(PackageNamespace("org.flixel"),"FlxPoint")
          setlocal1
-         ofs0:
+         ofs0010:
          getlocal1
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
          getlex QName(PackageNamespace(""),"x")
@@ -2711,24 +2711,24 @@ package org.flixel
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_flipped")
          not
-         iftrue ofs0
+         iftrue ofs0028
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_flipped")
          convert_u
-         jump ofs1
-         ofs0:
+         jump ofs0035
+         ofs0028:
          findpropstrict QName(PackageNamespace(""),"uint")
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_pixels")
          getproperty QName(PackageNamespace(""),"width")
          callproperty QName(PackageNamespace(""),"uint"), 1
          convert_u
-         ofs1:
+         ofs0035:
          convert_u
          setlocal3
          getlocal1
          getlocal3
-         ifnge ofs2
+         ifnge ofs0051
          findpropstrict QName(PackageNamespace(""),"uint")
          getlocal1
          getlocal3
@@ -2744,21 +2744,21 @@ package org.flixel
          modulo
          convert_u
          setlocal1
-         ofs2:
+         ofs0051:
          findpropstrict QName(PackageNamespace(""),"Boolean")
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_flipped")
          callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
-         iffalse ofs3
+         iffalse ofs0069
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_facing")
          getlex QName(PackageNamespace(""),"LEFT")
          equals
-         ofs3:
-         iffalse ofs4
+         ofs0069:
+         iffalse ofs0082
          findpropstrict QName(PackageNamespace(""),"uint")
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_flipped")
@@ -2772,7 +2772,7 @@ package org.flixel
          callproperty QName(PackageNamespace(""),"uint"), 1
          convert_u
          setlocal1
-         ofs4:
+         ofs0082:
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_flashRect")
          getlocal1
@@ -2804,7 +2804,7 @@ package org.flixel
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_ct")
          pushnull
-         ifeq ofs5
+         ifeq ofs00d6
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_framePixels")
          getlocal0
@@ -2812,17 +2812,17 @@ package org.flixel
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_ct")
          callpropvoid QName(PackageNamespace(""),"colorTransform"), 2
-         ofs5:
+         ofs00d6:
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"showBounds")
-         iffalse ofs6
+         iffalse ofs00e5
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxSprite"),"drawBounds"), 0
-         ofs6:
+         ofs00e5:
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_callback")
          pushnull
-         ifeq ofs7
+         ifeq ofs0102
          getlocal0
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_curAnim")
@@ -2832,7 +2832,7 @@ package org.flixel
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_caf")
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxSprite"),"_callback"), 3
-         ofs7:
+         ofs0102:
          returnvoid
          end ; code
          end ; body
@@ -2864,7 +2864,7 @@ package org.flixel
          pushnull
          equals
          dup
-         iftrue ofs0
+         iftrue ofs001f
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_bbb")
@@ -2872,9 +2872,9 @@ package org.flixel
          getlex QName(PackageNamespace(""),"width")
          equals
          not
-         ofs0:
+         ofs001f:
          dup
-         iftrue ofs1
+         iftrue ofs0031
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_bbb")
@@ -2882,15 +2882,15 @@ package org.flixel
          getlex QName(PackageNamespace(""),"height")
          equals
          not
-         ofs1:
-         iffalse ofs2
+         ofs0031:
+         iffalse ofs0044
          getlocal0
          findpropstrict QName(PackageNamespace("flash.display"),"BitmapData")
          getlex QName(PackageNamespace(""),"width")
          getlex QName(PackageNamespace(""),"height")
          constructprop QName(PackageNamespace("flash.display"),"BitmapData"), 2
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_bbb")
-         ofs2:
+         ofs0044:
          findpropstrict QName(PackageNamespace(""),"getBoundingColor")
          callproperty QName(PackageNamespace(""),"getBoundingColor"), 0
          convert_u
@@ -3112,21 +3112,21 @@ package org.flixel
          setproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_mtx")
          pushbyte 0
          setlocal1
-         jump ofs0
-         ofs1:
+         jump ofs006d
+         ofs0061:
          label
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_animations")
          getlocal1
          pushnull
-         setproperty MultinameL([PrivateNamespace(null,"#FlxSprite/1"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSprite"),PackageNamespace("org.flixel"),StaticProtectedNs("org.flixel:FlxSprite"),PrivateNamespace(null,"#FlxSprite/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"373"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxSprite"),PackageNamespace("org.flixel"),StaticProtectedNs("org.flixel:FlxSprite"),PrivateNamespace(null,"374"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          inclocal_i 1
-         ofs0:
+         ofs006d:
          getlocal1
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_animations")
          getproperty QName(PackageNamespace(""),"length")
-         iflt ofs1
+         iflt ofs0061
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSprite"),"_animations")
          pushbyte 0
@@ -3165,7 +3165,7 @@ pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxObject")
 pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxObject")
-newclass #FlxSprite
+newclass 72
 popscope
 popscope
 popscope

@@ -289,7 +289,7 @@ package
          getlocal0
          pushscope
          getlex QName(PackageNamespace(""),"player")
-         iffalse ofs0
+         iffalse ofs003e
          findpropstrict QName(PackageNamespace("flash.utils"),"clearInterval")
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"deathFadeInterval")
@@ -308,7 +308,7 @@ package
          getlex QName(PackageNamespace(""),"player")
          pushtrue
          setproperty QName(PackageNamespace(""),"dead")
-         ofs0:
+         ofs003e:
          getlex QName(PackageNamespace(""),"This")
          getproperty QName(PackageNamespace(""),"defaultGroup")
          callpropvoid QName(PackageNamespace(""),"kill"), 0
@@ -395,11 +395,11 @@ package
          getlocal0
          pushscope
          getlex QName(PackageNamespace(""),"player")
-         iffalse ofs0
+         iffalse ofs0010
          getlex QName(PackageNamespace(""),"player")
          pushtrue
          setproperty QName(PackageNamespace(""),"dead")
-         ofs0:
+         ofs0010:
          getlex QName(PackageNamespace(""),"This")
          getproperty QName(PackageNamespace(""),"defaultGroup")
          callpropvoid QName(PackageNamespace(""),"kill"), 0
@@ -654,16 +654,16 @@ package
          getlocal0
          pushscope
          getlex QName(PackageNamespace(""),"endingFromMenu")
-         iffalse ofs0
+         iffalse ofs0016
          findproperty QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"STATE_MENU")
          setproperty QName(PackageNamespace(""),"realState")
-         jump ofs1
-         ofs0:
+         jump ofs001f
+         ofs0016:
          findproperty QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"STATE_GAME")
          setproperty QName(PackageNamespace(""),"realState")
-         ofs1:
+         ofs001f:
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"flash")
          pushdouble 4278190080
@@ -784,30 +784,30 @@ package
          constructprop QName(PackageNamespace(""),"Configurable"), 0
          setproperty QName(PackageNamespace(""),"config")
          getlex QName(PackageNamespace(""),"saveData")
-         iftrue ofs0
+         iftrue ofs0023
          findproperty QName(PackageNamespace(""),"saveData")
          findpropstrict QName(PackageNamespace(""),"SaveData")
          constructprop QName(PackageNamespace(""),"SaveData"), 0
          setproperty QName(PackageNamespace(""),"saveData")
-         ofs0:
+         ofs0023:
          findproperty QName(PackageNamespace(""),"bossesKilled")
          findpropstrict QName(PackageNamespace(""),"Array")
          constructprop QName(PackageNamespace(""),"Array"), 0
          setproperty QName(PackageNamespace(""),"bossesKilled")
          pushbyte 0
          setlocal1
-         jump ofs1
-         ofs2:
+         jump ofs0040
+         ofs0035:
          label
          getlex QName(PackageNamespace(""),"bossesKilled")
          getlocal1
          pushfalse
-         setproperty MultinameL([PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          inclocal_i 1
-         ofs1:
+         ofs0040:
          getlocal1
          pushbyte 5
-         iflt ofs2
+         iflt ofs0035
          getlex QName(PackageNamespace(""),"This")
          findpropstrict QName(PackageNamespace("org.flixel"),"FlxGroup")
          constructprop QName(PackageNamespace("org.flixel"),"FlxGroup"), 0
@@ -1025,16 +1025,16 @@ package
          getlex QName(PackageNamespace(""),"menuHideable")
          callpropvoid QName(PackageNamespace(""),"add"), 1
          getlex QName(PackageNamespace(""),"bossRush")
-         iftrue ofs3
+         iftrue ofs031a
          getlex QName(PackageNamespace(""),"menuHideable")
          getlex QName(PackageNamespace(""),"miniMap")
          callpropvoid QName(PackageNamespace(""),"add"), 1
-         jump ofs4
-         ofs3:
+         jump ofs0324
+         ofs031a:
          getlex QName(PackageNamespace(""),"menuHideable")
          getlex QName(PackageNamespace(""),"bossRushTimer")
          callpropvoid QName(PackageNamespace(""),"add"), 1
-         ofs4:
+         ofs0324:
          getlex QName(PackageNamespace(""),"menuHideable")
          getlex QName(PackageNamespace(""),"damageNumberPool")
          callpropvoid QName(PackageNamespace(""),"add"), 1
@@ -1057,30 +1057,30 @@ package
          getlex QName(PackageNamespace(""),"savingText")
          callpropvoid QName(PackageNamespace(""),"add"), 1
          getlex QName(PackageNamespace(""),"bossRush")
-         iftrue ofs5
+         iftrue ofs0397
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"hasSeenHelp")
          not
          dup
-         iffalse ofs6
+         iffalse ofs0385
          pop
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"_hardMode")
          not
-         ofs6:
-         iffalse ofs5
+         ofs0385:
+         iffalse ofs0397
          getlex QName(PackageNamespace(""),"controlHelp")
          callpropvoid QName(PackageNamespace(""),"show"), 0
          getlex QName(PackageNamespace(""),"player")
          pushtrue
          setproperty QName(PackageNamespace(""),"hasSeenHelp")
-         ofs5:
+         ofs0397:
          getlex QName(PackageNamespace(""),"bossRush")
-         iffalse ofs7
+         iffalse ofs03a7
          findpropstrict QName(PackageNamespace(""),"setArea")
          pushbyte 7
          callpropvoid QName(PackageNamespace(""),"setArea"), 1
-         ofs7:
+         ofs03a7:
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getlex QName(PackageNamespace(""),"player")
          pushbyte 5
@@ -1128,7 +1128,7 @@ package
          pushscope
          getlex QName(PackageNamespace(""),"bossesKilled")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          returnvalue
          end ; code
          end ; body
@@ -1157,7 +1157,7 @@ package
          getlex QName(PackageNamespace(""),"bossesKilled")
          getlocal1
          pushtrue
-         setproperty MultinameL([PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          returnvoid
          end ; code
          end ; body
@@ -1194,18 +1194,18 @@ package
          setlocal1
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"bossRush")
-         iffalse ofs0
+         iffalse ofs002a
          pushbyte 2
          setlocal1
-         ofs0:
+         ofs002a:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          callproperty QName(PackageNamespace(""),"getPercentComplete"), 0
          pushbyte 100
-         ifne ofs1
+         ifne ofs003d
          pushbyte 3
          setlocal1
-         ofs1:
+         ofs003d:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"gameTime")
@@ -1213,26 +1213,26 @@ package
          pushbyte 30
          pushbyte 60
          multiply
-         ifnlt ofs2
+         ifnlt ofs005c
          getlex QName(PackageNamespace(""),"NgMedal")
          callpropvoid QName(PackageNamespace(""),"unlockSpeedrunner"), 0
          pushbyte 4
          setlocal1
-         ofs2:
+         ofs005c:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"_hardMode")
-         iffalse ofs3
+         iffalse ofs006c
          pushbyte 5
          setlocal1
-         ofs3:
+         ofs006c:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"_easyMode")
-         iffalse ofs4
+         iffalse ofs007c
          pushbyte 1
          setlocal1
-         ofs4:
+         ofs007c:
          getlex QName(PackageNamespace(""),"PlayState")
          getlocal1
          callpropvoid QName(PackageNamespace(""),"startEnding"), 1
@@ -1265,10 +1265,10 @@ package
          setlocal1
          getlocal1
          pushbyte 6
-         ifnge ofs0
+         ifnge ofs0011
          pushbyte 5
          setlocal1
-         ofs0:
+         ofs0011:
          pushbyte 9
          pushbyte 12
          pushbyte 10
@@ -1281,7 +1281,7 @@ package
          findpropstrict QName(PackageNamespace(""),"int")
          getlocal2
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          callproperty QName(PackageNamespace(""),"int"), 1
          convert_i
          setlocal3
@@ -1289,17 +1289,17 @@ package
          pushbyte 1
          equals
          dup
-         iffalse ofs1
+         iffalse ofs003f
          pop
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"_slugMode")
          convert_b
-         ofs1:
-         iffalse ofs2
+         ofs003f:
+         iffalse ofs0046
          getlocal3
          decrement_i
          setlocal3
-         ofs2:
+         ofs0046:
          getlocal3
          returnvalue
          end ; code
@@ -1331,23 +1331,23 @@ package
          pushshort 476
          equals
          dup
-         iffalse ofs0
+         iffalse ofs0011
          pop
          getlocal2
          pushbyte 56
          equals
-         ofs0:
+         ofs0011:
          dup
-         iffalse ofs1
+         iffalse ofs001e
          pop
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"_slugMode")
          convert_b
-         ofs1:
-         iffalse ofs2
+         ofs001e:
+         iffalse ofs0025
          pushbyte 0
          returnvalue
-         ofs2:
+         ofs0025:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"spmap")
@@ -1355,12 +1355,12 @@ package
          getlocal2
          callproperty QName(PackageNamespace(""),"getTile"), 2
          not
-         iftrue ofs3
+         iftrue ofs003f
          pushbyte 1
-         jump ofs4
-         ofs3:
+         jump ofs0041
+         ofs003f:
          pushbyte 0
-         ofs4:
+         ofs0041:
          returnvalue
          end ; code
          end ; body
@@ -1419,14 +1419,14 @@ package
          setlocal1
          getlocal1
          pushbyte 6
-         ifnge ofs0
+         ifnge ofs0011
          pushbyte 5
          setlocal1
-         ofs0:
+         ofs0011:
          pushbyte 0
          setlocal2
-         jump ofs1
-         ofs2:
+         jump ofs037a
+         ofs0018:
          label
          getlocal2
          findpropstrict QName(PackageNamespace(""),"numOfItemsAt")
@@ -1500,8 +1500,8 @@ package
          add
          convert_i
          setlocal2
-         jump ofs3
-         ofs4:
+         jump ofs03f2
+         ofs00b4:
          label
          getlocal2
          findpropstrict QName(PackageNamespace(""),"numOfItemsAt")
@@ -1599,8 +1599,8 @@ package
          add
          convert_i
          setlocal2
-         jump ofs3
-         ofs5:
+         jump ofs03f2
+         ofs017c:
          label
          getlocal2
          findpropstrict QName(PackageNamespace(""),"numOfItemsAt")
@@ -1682,8 +1682,8 @@ package
          add
          convert_i
          setlocal2
-         jump ofs3
-         ofs6:
+         jump ofs03f2
+         ofs0229:
          label
          getlocal2
          findpropstrict QName(PackageNamespace(""),"numOfItemsAt")
@@ -1773,8 +1773,8 @@ package
          add
          convert_i
          setlocal2
-         jump ofs3
-         ofs7:
+         jump ofs03f2
+         ofs02df:
          label
          getlocal2
          findpropstrict QName(PackageNamespace(""),"numOfItemsAt")
@@ -1840,8 +1840,8 @@ package
          add
          convert_i
          setlocal2
-         jump ofs3
-         ofs8:
+         jump ofs03f2
+         ofs0363:
          label
          getlocal2
          findpropstrict QName(PackageNamespace(""),"numOfItemsAt")
@@ -1851,57 +1851,57 @@ package
          add
          convert_i
          setlocal2
-         ofs9:
+         ofs0375:
          label
-         jump ofs3
-         ofs1:
+         jump ofs03f2
+         ofs037a:
          getlocal1
          setlocal3
          pushbyte 0
          getlocal3
-         ifstrictne ofs10
+         ifstrictne ofs0389
          pushbyte 0
-         jump ofs11
-         ofs10:
+         jump ofs03d6
+         ofs0389:
          pushbyte 1
          getlocal3
-         ifstrictne ofs12
+         ifstrictne ofs0396
          pushbyte 1
-         jump ofs11
-         ofs12:
+         jump ofs03d6
+         ofs0396:
          pushbyte 2
          getlocal3
-         ifstrictne ofs13
+         ifstrictne ofs03a3
          pushbyte 2
-         jump ofs11
-         ofs13:
+         jump ofs03d6
+         ofs03a3:
          pushbyte 3
          getlocal3
-         ifstrictne ofs14
+         ifstrictne ofs03b0
          pushbyte 3
-         jump ofs11
-         ofs14:
+         jump ofs03d6
+         ofs03b0:
          pushbyte 4
          getlocal3
-         ifstrictne ofs15
+         ifstrictne ofs03bd
          pushbyte 4
-         jump ofs11
-         ofs15:
+         jump ofs03d6
+         ofs03bd:
          pushbyte 5
          getlocal3
-         ifstrictne ofs16
+         ifstrictne ofs03ca
          pushbyte 5
-         jump ofs11
-         ofs16:
-         jump ofs17
+         jump ofs03d6
+         ofs03ca:
+         jump ofs03d4
          pushbyte 6
-         jump ofs17
-         ofs17:
+         jump ofs03d4
+         ofs03d4:
          pushbyte 6
-         ofs11:
+         ofs03d6:
          kill 3
-         lookupswitch ofs9, [ofs2, ofs4, ofs5, ofs6, ofs7, ofs8, ofs9]
-         ofs3:
+         lookupswitch ofs0375, [ofs0018, ofs00b4, ofs017c, ofs0229, ofs02df, ofs0363, ofs0375]
+         ofs03f2:
          getlocal2
          returnvalue
          end ; code
@@ -1928,112 +1928,112 @@ package
          code
          getlocal0
          pushscope
-         jump ofs0
-         ofs1:
+         jump ofs0067
+         ofs0006:
          label
          getlex QName(PackageNamespace(""),"Music")
          callpropvoid QName(PackageNamespace(""),"playTown"), 0
-         jump ofs2
-         ofs3:
+         jump ofs00ff
+         ofs0012:
          label
          getlex QName(PackageNamespace(""),"Music")
          callpropvoid QName(PackageNamespace(""),"playArea1"), 0
-         jump ofs2
-         ofs4:
+         jump ofs00ff
+         ofs001e:
          label
          getlex QName(PackageNamespace(""),"Music")
          callpropvoid QName(PackageNamespace(""),"playArea2"), 0
-         jump ofs2
-         ofs5:
+         jump ofs00ff
+         ofs002a:
          label
          getlex QName(PackageNamespace(""),"Music")
          callpropvoid QName(PackageNamespace(""),"playArea3"), 0
-         jump ofs2
-         ofs6:
+         jump ofs00ff
+         ofs0036:
          label
          getlex QName(PackageNamespace(""),"Music")
          callpropvoid QName(PackageNamespace(""),"playArea4"), 0
-         jump ofs2
-         ofs7:
+         jump ofs00ff
+         ofs0042:
          label
          getlex QName(PackageNamespace(""),"Music")
          callpropvoid QName(PackageNamespace(""),"playIsis"), 0
-         jump ofs2
-         ofs8:
+         jump ofs00ff
+         ofs004e:
          label
          getlex QName(PackageNamespace(""),"Music")
          callpropvoid QName(PackageNamespace(""),"playIsis"), 0
-         jump ofs2
-         ofs9:
+         jump ofs00ff
+         ofs005a:
          label
          getlex QName(PackageNamespace(""),"Music")
          callpropvoid QName(PackageNamespace(""),"playBoss1"), 0
-         ofs10:
+         ofs0062:
          label
-         jump ofs2
-         ofs0:
+         jump ofs00ff
+         ofs0067:
          getlocal1
          setlocal3
          pushbyte 0
          getlocal3
-         ifstrictne ofs11
+         ifstrictne ofs0076
          pushbyte 0
-         jump ofs12
-         ofs11:
+         jump ofs00dd
+         ofs0076:
          pushbyte 1
          getlocal3
-         ifstrictne ofs13
+         ifstrictne ofs0083
          pushbyte 1
-         jump ofs12
-         ofs13:
+         jump ofs00dd
+         ofs0083:
          pushbyte 2
          getlocal3
-         ifstrictne ofs14
+         ifstrictne ofs0090
          pushbyte 2
-         jump ofs12
-         ofs14:
+         jump ofs00dd
+         ofs0090:
          pushbyte 3
          getlocal3
-         ifstrictne ofs15
+         ifstrictne ofs009d
          pushbyte 3
-         jump ofs12
-         ofs15:
+         jump ofs00dd
+         ofs009d:
          pushbyte 4
          getlocal3
-         ifstrictne ofs16
+         ifstrictne ofs00aa
          pushbyte 4
-         jump ofs12
-         ofs16:
+         jump ofs00dd
+         ofs00aa:
          pushbyte 5
          getlocal3
-         ifstrictne ofs17
+         ifstrictne ofs00b7
          pushbyte 5
-         jump ofs12
-         ofs17:
+         jump ofs00dd
+         ofs00b7:
          pushbyte 6
          getlocal3
-         ifstrictne ofs18
+         ifstrictne ofs00c4
          pushbyte 6
-         jump ofs12
-         ofs18:
+         jump ofs00dd
+         ofs00c4:
          pushbyte 7
          getlocal3
-         ifstrictne ofs19
+         ifstrictne ofs00d1
          pushbyte 7
-         jump ofs12
-         ofs19:
-         jump ofs20
+         jump ofs00dd
+         ofs00d1:
+         jump ofs00db
          pushbyte 8
-         jump ofs20
-         ofs20:
+         jump ofs00db
+         ofs00db:
          pushbyte 8
-         ofs12:
+         ofs00dd:
          kill 3
-         lookupswitch ofs10, [ofs1, ofs3, ofs4, ofs5, ofs6, ofs7, ofs8, ofs9, ofs10]
-         ofs2:
+         lookupswitch ofs0062, [ofs0006, ofs0012, ofs001e, ofs002a, ofs0036, ofs0042, ofs004e, ofs005a, ofs0062]
+         ofs00ff:
          getlocal1
          pushbyte 6
-         ifne ofs21
+         ifne ofs0155
          getlex QName(PackageNamespace(""),"player")
          pushtrue
          setproperty QName(PackageNamespace(""),"hasSeenIsis")
@@ -2044,20 +2044,20 @@ package
          callproperty QName(PackageNamespace(""),"isBossDead"), 1
          convert_b
          dup
-         iffalse ofs22
+         iffalse ofs0128
          pop
          getlex QName(PackageNamespace(""),"hasGoodEnding")
          not
-         ofs22:
+         ofs0128:
          dup
-         iffalse ofs23
+         iffalse ofs0138
          pop
          getlex QName(PackageNamespace(""),"player")
          callproperty QName(PackageNamespace(""),"getHelixFragments"), 0
          pushbyte 30
          equals
-         ofs23:
-         iffalse ofs21
+         ofs0138:
+         iffalse ofs0155
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"bestInsaneTime")
          getlex QName(PackageNamespace(""),"player")
@@ -2066,25 +2066,25 @@ package
          setproperty QName(PackageNamespace(""),"value")
          findpropstrict QName(PackageNamespace(""),"triggerEnding")
          callpropvoid QName(PackageNamespace(""),"triggerEnding"), 0
-         ofs21:
+         ofs0155:
          getlex QName(PackageNamespace(""),"area")
          getlocal1
-         ifne ofs24
+         ifne ofs015e
          returnvoid
-         ofs24:
+         ofs015e:
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"hasSeenIsis")
          convert_b
          dup
-         iffalse ofs25
+         iffalse ofs016f
          pop
          getlocal1
          pushbyte 5
          equals
-         ofs25:
-         iffalse ofs26
+         ofs016f:
+         iffalse ofs0174
          returnvoid
-         ofs26:
+         ofs0174:
          findproperty QName(PackageNamespace(""),"area")
          getlocal1
          setproperty QName(PackageNamespace(""),"area")
@@ -2103,7 +2103,7 @@ package
          getproperty QName(PackageNamespace(""),"areaName")
          getlocal2
          getlex QName(PackageNamespace(""),"area")
-         getproperty MultinameL([PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          callpropvoid QName(PackageNamespace(""),"setArea"), 1
          getlex QName(PackageNamespace(""),"hud")
          getproperty QName(PackageNamespace(""),"radar")
@@ -2146,39 +2146,39 @@ package
          setlocal3
          getlocal3
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlocal2
-         iffalse ofs0
+         iffalse ofs0028
          pushstring " DEFEATED!"
          coerce_a
-         jump ofs1
-         ofs0:
+         jump ofs002b
+         ofs0028:
          pushstring ""
          coerce_a
-         ofs1:
+         ofs002b:
          add
          coerce_a
          setlocal 4
          getlocal2
          convert_b
          dup
-         iffalse ofs2
+         iffalse ofs003b
          pop
          getlocal1
          pushbyte 4
          equals
-         ofs2:
-         iffalse ofs3
+         ofs003b:
+         iffalse ofs0273
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"_insaneMode")
-         iffalse ofs4
+         iffalse ofs00a9
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"bestInsaneTime")
          getproperty QName(PackageNamespace(""),"value")
          pushbyte 0
          equals
          dup
-         iftrue ofs5
+         iftrue ofs006e
          pop
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"bestInsaneTime")
@@ -2187,8 +2187,8 @@ package
          getproperty QName(PackageNamespace(""),"gameTime")
          getproperty QName(PackageNamespace(""),"value")
          greaterthan
-         ofs5:
-         iffalse ofs6
+         ofs006e:
+         iffalse ofs00a5
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"bestInsaneTime")
          getlex QName(PackageNamespace(""),"player")
@@ -2209,19 +2209,19 @@ package
          getlex QName(PackageNamespace(""),"player")
          pushtrue
          setproperty QName(PackageNamespace(""),"hasWonInsaneMode")
-         ofs6:
-         jump ofs3
-         ofs4:
+         ofs00a5:
+         jump ofs0273
+         ofs00a9:
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"_hardMode")
-         iffalse ofs7
+         iffalse ofs0171
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"bestHardTime")
          getproperty QName(PackageNamespace(""),"value")
          pushbyte 0
          equals
          dup
-         iftrue ofs8
+         iftrue ofs00d8
          pop
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"bestHardTime")
@@ -2230,8 +2230,8 @@ package
          getproperty QName(PackageNamespace(""),"gameTime")
          getproperty QName(PackageNamespace(""),"value")
          greaterthan
-         ofs8:
-         iffalse ofs9
+         ofs00d8:
+         iffalse ofs0108
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"bestHardTime")
          getlex QName(PackageNamespace(""),"player")
@@ -2249,14 +2249,14 @@ package
          add
          coerce_a
          setlocal 4
-         ofs9:
+         ofs0108:
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"bestInsaneTime")
          getproperty QName(PackageNamespace(""),"value")
          pushbyte 0
          equals
          dup
-         iftrue ofs10
+         iftrue ofs012d
          pop
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"bestInsaneTime")
@@ -2265,16 +2265,16 @@ package
          getproperty QName(PackageNamespace(""),"gameTime")
          getproperty QName(PackageNamespace(""),"value")
          greaterthan
-         ofs10:
+         ofs012d:
          dup
-         iffalse ofs11
+         iffalse ofs013d
          pop
          getlex QName(PackageNamespace(""),"player")
          callproperty QName(PackageNamespace(""),"getPercentComplete"), 0
          pushbyte 100
          equals
-         ofs11:
-         iffalse ofs12
+         ofs013d:
+         iffalse ofs016d
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"bestInsaneTime")
          getlex QName(PackageNamespace(""),"player")
@@ -2292,37 +2292,37 @@ package
          add
          coerce_a
          setlocal 4
-         ofs12:
-         jump ofs3
-         ofs7:
+         ofs016d:
+         jump ofs0273
+         ofs0171:
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"_easyMode")
-         iffalse ofs13
+         iffalse ofs019f
          getlex QName(PackageNamespace(""),"hud")
          getproperty QName(PackageNamespace(""),"areaName")
          getlocal3
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlocal2
-         iffalse ofs14
+         iffalse ofs0193
          pushstring " DEFEATED!"
          coerce_a
-         jump ofs15
-         ofs14:
+         jump ofs0196
+         ofs0193:
          pushstring ""
          coerce_a
-         ofs15:
+         ofs0196:
          add
          callpropvoid QName(PackageNamespace(""),"setArea"), 1
-         jump ofs3
-         ofs13:
+         jump ofs0273
+         ofs019f:
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"bestMainTime")
          getproperty QName(PackageNamespace(""),"value")
          pushbyte 0
          equals
          dup
-         iftrue ofs16
+         iftrue ofs01c4
          pop
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"bestMainTime")
@@ -2331,8 +2331,8 @@ package
          getproperty QName(PackageNamespace(""),"gameTime")
          getproperty QName(PackageNamespace(""),"value")
          greaterthan
-         ofs16:
-         iffalse ofs17
+         ofs01c4:
+         iffalse ofs01f4
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"bestMainTime")
          getlex QName(PackageNamespace(""),"player")
@@ -2350,14 +2350,14 @@ package
          add
          coerce_a
          setlocal 4
-         ofs17:
+         ofs01f4:
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"bestInsaneTime")
          getproperty QName(PackageNamespace(""),"value")
          pushbyte 0
          equals
          dup
-         iftrue ofs18
+         iftrue ofs0219
          pop
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"bestInsaneTime")
@@ -2366,16 +2366,16 @@ package
          getproperty QName(PackageNamespace(""),"gameTime")
          getproperty QName(PackageNamespace(""),"value")
          greaterthan
-         ofs18:
+         ofs0219:
          dup
-         iffalse ofs19
+         iffalse ofs0229
          pop
          getlex QName(PackageNamespace(""),"player")
          callproperty QName(PackageNamespace(""),"getPercentComplete"), 0
          pushbyte 100
          equals
-         ofs19:
-         iffalse ofs20
+         ofs0229:
+         iffalse ofs0259
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"bestInsaneTime")
          getlex QName(PackageNamespace(""),"player")
@@ -2393,10 +2393,10 @@ package
          add
          coerce_a
          setlocal 4
-         ofs20:
+         ofs0259:
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"hasWonGame")
-         iftrue ofs3
+         iftrue ofs0273
          getlocal 4
          pushstring "\nBOSS RUSH UNLOCKED!"
          add
@@ -2405,7 +2405,7 @@ package
          getlex QName(PackageNamespace(""),"player")
          pushtrue
          setproperty QName(PackageNamespace(""),"hasWonGame")
-         ofs3:
+         ofs0273:
          getlex QName(PackageNamespace(""),"hud")
          getproperty QName(PackageNamespace(""),"areaName")
          getlocal 4
@@ -2450,16 +2450,16 @@ package
          getproperty QName(PackageNamespace(""),"areaName")
          getlocal3
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlocal2
-         iffalse ofs0
+         iffalse ofs002e
          pushstring " DEFEATED!"
          coerce_a
-         jump ofs1
-         ofs0:
+         jump ofs0031
+         ofs002e:
          pushstring ""
          coerce_a
-         ofs1:
+         ofs0031:
          add
          callpropvoid QName(PackageNamespace(""),"setArea"), 1
          returnvoid
@@ -2501,19 +2501,19 @@ package
          getlocal1
          pushstring "hasWonBossRush"
          callproperty QName(PackageNamespace(""),"isVarTrue"), 1
-         iftrue ofs0
+         iftrue ofs0072
          getlocal1
          getproperty QName(PackageNamespace(""),"xml")
-         getproperty Multiname("vars",[PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         deleteproperty Multiname("hasWonBossRush",[PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("vars",[PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         deleteproperty Multiname("hasWonBossRush",[PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"xml")
-         getproperty Multiname("vars",[PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("vars",[PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace(""),"XML")
          pushstring "<hasWonBossRush>true</hasWonBossRush>"
          construct 1
-         callpropvoid Multiname("appendChild",[PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
+         callpropvoid Multiname("appendChild",[PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
          getlex QName(PackageNamespace(""),"hud")
          getproperty QName(PackageNamespace(""),"areaName")
          pushstring "BOSS RUSH COMPLETE - "
@@ -2527,8 +2527,8 @@ package
          getproperty QName(PackageNamespace(""),"areaName")
          pushbyte 5
          callpropvoid QName(PackageNamespace(""),"increaseTimer"), 1
-         jump ofs1
-         ofs0:
+         jump ofs0087
+         ofs0072:
          getlex QName(PackageNamespace(""),"hud")
          getproperty QName(PackageNamespace(""),"areaName")
          pushstring "BOSS RUSH COMPLETE - "
@@ -2536,36 +2536,36 @@ package
          callproperty QName(PackageNamespace(""),"getTimeExact"), 0
          add
          callpropvoid QName(PackageNamespace(""),"setArea"), 1
-         ofs1:
+         ofs0087:
          getlocal1
          getproperty QName(PackageNamespace(""),"xml")
-         getproperty Multiname("vars",[PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         getproperty Multiname("bestBossRushTime",[PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("vars",[PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("bestBossRushTime",[PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pushbyte 0
          equals
          dup
-         iftrue ofs2
+         iftrue ofs00b1
          pop
          getlocal1
          getproperty QName(PackageNamespace(""),"xml")
-         getproperty Multiname("vars",[PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         getproperty Multiname("bestBossRushTime",[PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("vars",[PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("bestBossRushTime",[PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"bossRushTimer")
          getproperty QName(PackageNamespace(""),"now")
          getproperty QName(PackageNamespace(""),"value")
          greaterthan
-         ofs2:
-         iffalse ofs3
+         ofs00b1:
+         iffalse ofs00cb
          getlocal1
          getproperty QName(PackageNamespace(""),"xml")
-         getproperty Multiname("vars",[PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty Multiname("vars",[PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"bossRushTimer")
          getproperty QName(PackageNamespace(""),"now")
          getproperty QName(PackageNamespace(""),"value")
-         setproperty Multiname("bestBossRushTime",[PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         ofs3:
+         setproperty Multiname("bestBossRushTime",[PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         ofs00cb:
          getlocal1
          callpropvoid QName(PackageNamespace(""),"saveAll"), 0
          getlex QName(PackageNamespace(""),"PlayState")
@@ -2707,25 +2707,25 @@ package
          pushfalse
          setproperty QName(PackageNamespace(""),"isBossRushComplete")
          getlex QName(PackageNamespace(""),"config")
-         iffalse ofs0
+         iffalse ofs0113
          getlex QName(PackageNamespace(""),"config")
          callpropvoid QName(PackageNamespace(""),"destroy"), 0
-         ofs0:
+         ofs0113:
          getlex QName(PackageNamespace(""),"uniqueBlocks")
-         iffalse ofs1
+         iffalse ofs0121
          getlex QName(PackageNamespace(""),"uniqueBlocks")
          callpropvoid QName(PackageNamespace(""),"destroy"), 0
-         ofs1:
+         ofs0121:
          getlex QName(PackageNamespace(""),"worldMap")
-         iffalse ofs2
+         iffalse ofs012f
          getlex QName(PackageNamespace(""),"worldMap")
          callpropvoid QName(PackageNamespace(""),"destroy"), 0
-         ofs2:
+         ofs012f:
          getlex QName(PackageNamespace(""),"fixBlocks")
-         iffalse ofs3
+         iffalse ofs013d
          getlex QName(PackageNamespace(""),"fixBlocks")
          callpropvoid QName(PackageNamespace(""),"destroy"), 0
-         ofs3:
+         ofs013d:
          findproperty QName(PackageNamespace(""),"config")
          pushnull
          setproperty QName(PackageNamespace(""),"config")
@@ -2797,9 +2797,9 @@ package
          callsupervoid QName(PackageNamespace(""),"update"), 0
          getlex QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"STATE_SPLASH")
-         ifne ofs0
+         ifne ofs0058
          getlex QName(PackageNamespace(""),"splashLayer")
-         iftrue ofs1
+         iftrue ofs0033
          findproperty QName(PackageNamespace(""),"splashLayer")
          findpropstrict QName(PackageNamespace(""),"SplashLayer")
          constructprop QName(PackageNamespace(""),"SplashLayer"), 0
@@ -2807,11 +2807,11 @@ package
          findpropstrict QName(PackageNamespace(""),"add")
          getlex QName(PackageNamespace(""),"splashLayer")
          callpropvoid QName(PackageNamespace(""),"add"), 1
-         jump ofs2
-         ofs1:
+         jump ofs0057
+         ofs0033:
          getlex QName(PackageNamespace(""),"splashLayer")
          getproperty QName(PackageNamespace(""),"dead")
-         iffalse ofs2
+         iffalse ofs0057
          findproperty QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"STATE_MENU")
          setproperty QName(PackageNamespace(""),"realState")
@@ -2822,54 +2822,54 @@ package
          getproperty QName(PackageNamespace(""),"bg")
          pushfalse
          setproperty QName(PackageNamespace(""),"visible")
-         ofs2:
+         ofs0057:
          returnvoid
-         ofs0:
+         ofs0058:
          getlex QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"STATE_MENU")
-         ifne ofs3
+         ifne ofs00e0
          getlex QName(PackageNamespace(""),"menuHideable")
-         iffalse ofs4
+         iffalse ofs0070
          getlex QName(PackageNamespace(""),"menuHideable")
          pushfalse
          setproperty QName(PackageNamespace(""),"visible")
-         ofs4:
+         ofs0070:
          findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"mainMenu")
          callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
-         iffalse ofs5
+         iffalse ofs0086
          pop
          getlex QName(PackageNamespace(""),"mainMenu")
          getproperty QName(PackageNamespace(""),"endingShow")
          convert_b
-         ofs5:
-         iffalse ofs6
+         ofs0086:
+         iffalse ofs0098
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"mouse")
          callpropvoid QName(PackageNamespace(""),"hide"), 0
-         jump ofs7
-         ofs6:
+         jump ofs00a2
+         ofs0098:
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"mouse")
          callpropvoid QName(PackageNamespace(""),"show"), 0
-         ofs7:
+         ofs00a2:
          getlex QName(PackageNamespace(""),"startedGame")
-         iftrue ofs8
+         iftrue ofs00b0
          findpropstrict QName(PackageNamespace(""),"addTitleScreen")
          callpropvoid QName(PackageNamespace(""),"addTitleScreen"), 0
-         ofs8:
+         ofs00b0:
          getlex QName(PackageNamespace(""),"mainMenu")
          not
          dup
-         iftrue ofs9
+         iftrue ofs00c1
          pop
          getlex QName(PackageNamespace(""),"mainMenu")
          getproperty QName(PackageNamespace(""),"active")
          not
-         ofs9:
-         iffalse ofs10
+         ofs00c1:
+         iffalse ofs00dc
          findproperty QName(PackageNamespace(""),"mainMenu")
          findpropstrict QName(PackageNamespace(""),"MainMenu")
          constructprop QName(PackageNamespace(""),"MainMenu"), 0
@@ -2877,25 +2877,25 @@ package
          findpropstrict QName(PackageNamespace(""),"add")
          getlex QName(PackageNamespace(""),"mainMenu")
          callpropvoid QName(PackageNamespace(""),"add"), 1
-         ofs10:
-         jump ofs11
-         ofs3:
+         ofs00dc:
+         jump ofs04e2
+         ofs00e0:
          getlex QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"STATE_ENDING")
-         ifne ofs12
+         ifne ofs0124
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"mouse")
          callpropvoid QName(PackageNamespace(""),"hide"), 0
          getlex QName(PackageNamespace(""),"ending")
          not
          dup
-         iftrue ofs13
+         iftrue ofs0105
          pop
          getlex QName(PackageNamespace(""),"ending")
          getproperty QName(PackageNamespace(""),"active")
          not
-         ofs13:
-         iffalse ofs14
+         ofs0105:
+         iffalse ofs0120
          findproperty QName(PackageNamespace(""),"ending")
          findpropstrict QName(PackageNamespace(""),"Ending")
          constructprop QName(PackageNamespace(""),"Ending"), 0
@@ -2903,25 +2903,25 @@ package
          findpropstrict QName(PackageNamespace(""),"add")
          getlex QName(PackageNamespace(""),"ending")
          callpropvoid QName(PackageNamespace(""),"add"), 1
-         ofs14:
-         jump ofs11
-         ofs12:
+         ofs0120:
+         jump ofs04e2
+         ofs0124:
          getlex QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"STATE_INTRO")
-         ifne ofs15
+         ifne ofs0168
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"mouse")
          callpropvoid QName(PackageNamespace(""),"hide"), 0
          getlex QName(PackageNamespace(""),"intro")
          not
          dup
-         iftrue ofs16
+         iftrue ofs0149
          pop
          getlex QName(PackageNamespace(""),"intro")
          getproperty QName(PackageNamespace(""),"active")
          not
-         ofs16:
-         iffalse ofs17
+         ofs0149:
+         iffalse ofs0164
          findproperty QName(PackageNamespace(""),"intro")
          findpropstrict QName(PackageNamespace(""),"Intro")
          constructprop QName(PackageNamespace(""),"Intro"), 0
@@ -2929,12 +2929,12 @@ package
          findpropstrict QName(PackageNamespace(""),"add")
          getlex QName(PackageNamespace(""),"intro")
          callpropvoid QName(PackageNamespace(""),"add"), 1
-         ofs17:
-         jump ofs11
-         ofs15:
+         ofs0164:
+         jump ofs04e2
+         ofs0168:
          getlex QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"STATE_SUBSCREEN")
-         ifne ofs18
+         ifne ofs0191
          getlex QName(PackageNamespace(""),"dialogue")
          pushfalse
          setproperty QName(PackageNamespace(""),"visible")
@@ -2946,11 +2946,11 @@ package
          getproperty QName(PackageNamespace(""),"radar")
          pushfalse
          setproperty QName(PackageNamespace(""),"visible")
-         jump ofs11
-         ofs18:
+         jump ofs04e2
+         ofs0191:
          getlex QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"STATE_GAME")
-         ifne ofs11
+         ifne ofs04e2
          getlex QName(PackageNamespace(""),"menuHideable")
          pushtrue
          setproperty QName(PackageNamespace(""),"visible")
@@ -2969,7 +2969,7 @@ package
          getproperty QName(PackageNamespace(""),"mouse")
          callpropvoid QName(PackageNamespace(""),"hide"), 0
          getlex QName(PackageNamespace(""),"mainMenu")
-         iffalse ofs19
+         iffalse ofs01ea
          getlex QName(PackageNamespace(""),"mainMenu")
          pushfalse
          setproperty QName(PackageNamespace(""),"exists")
@@ -2981,9 +2981,9 @@ package
          findproperty QName(PackageNamespace(""),"mainMenu")
          pushnull
          setproperty QName(PackageNamespace(""),"mainMenu")
-         ofs19:
+         ofs01ea:
          getlex QName(PackageNamespace(""),"ending")
-         iffalse ofs20
+         iffalse ofs0217
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"fade")
          callpropvoid QName(PackageNamespace(""),"stop"), 0
@@ -2998,9 +2998,9 @@ package
          findproperty QName(PackageNamespace(""),"ending")
          pushnull
          setproperty QName(PackageNamespace(""),"ending")
-         ofs20:
+         ofs0217:
          getlex QName(PackageNamespace(""),"intro")
-         iffalse ofs21
+         iffalse ofs023a
          getlex QName(PackageNamespace(""),"intro")
          pushfalse
          setproperty QName(PackageNamespace(""),"exists")
@@ -3012,14 +3012,14 @@ package
          findproperty QName(PackageNamespace(""),"intro")
          pushnull
          setproperty QName(PackageNamespace(""),"intro")
-         ofs21:
+         ofs023a:
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
          getlex QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"bgmap")
          getlex QName(PackageNamespace(""),"playerBulletGroups")
          getproperty QName(PackageNamespace(""),"groups")
          pushbyte 0
-         getproperty MultinameL([PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          callpropvoid QName(PackageNamespace(""),"collide"), 2
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
          getlex QName(PackageNamespace(""),"worldMap")
@@ -3027,17 +3027,17 @@ package
          getlex QName(PackageNamespace(""),"enemyBulletPool")
          getproperty QName(PackageNamespace(""),"groups")
          pushbyte 1
-         getproperty MultinameL([PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"355"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"356"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          callpropvoid QName(PackageNamespace(""),"collide"), 2
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"noCollide")
-         iftrue ofs22
+         iftrue ofs0284
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
          getlex QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"bgmap")
          getlex QName(PackageNamespace(""),"player")
          callpropvoid QName(PackageNamespace(""),"collide"), 2
-         ofs22:
+         ofs0284:
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
          getlex QName(PackageNamespace(""),"worldMap")
          getproperty QName(PackageNamespace(""),"bgmap")
@@ -3050,7 +3050,7 @@ package
          callpropvoid QName(PackageNamespace(""),"collide"), 2
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"noCollide")
-         iftrue ofs23
+         iftrue ofs02ff
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
          getlex QName(PackageNamespace(""),"player")
          getlex QName(PackageNamespace(""),"items")
@@ -3079,7 +3079,7 @@ package
          getlex QName(PackageNamespace(""),"player")
          getlex QName(PackageNamespace(""),"solidItems")
          callpropvoid QName(PackageNamespace(""),"collide"), 2
-         ofs23:
+         ofs02ff:
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
          getlex QName(PackageNamespace(""),"enemies")
          getlex QName(PackageNamespace(""),"solidItems")
@@ -3139,27 +3139,27 @@ package
          callpropvoid QName(PackageNamespace(""),"collide"), 2
          getlex QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"dead")
-         iftrue ofs24
+         iftrue ofs03b8
          getlex QName(PackageNamespace(""),"worldMap")
          getlex QName(PackageNamespace(""),"player")
          callpropvoid QName(PackageNamespace(""),"checkRoomBounds"), 1
-         ofs24:
+         ofs03b8:
          getlex QName(PackageNamespace(""),"player")
          callproperty QName(PackageNamespace(""),"pressedJump"), 0
-         iffalse ofs25
+         iffalse ofs03ca
          findproperty QName(PackageNamespace(""),"hasJumped")
          pushtrue
          setproperty QName(PackageNamespace(""),"hasJumped")
-         ofs25:
+         ofs03ca:
          getlex QName(PackageNamespace(""),"bossRush")
          convert_b
          dup
-         iffalse ofs26
+         iffalse ofs03d8
          pop
          getlex QName(PackageNamespace(""),"isBossRushComplete")
          convert_b
-         ofs26:
-         iffalse ofs27
+         ofs03d8:
+         iffalse ofs0462
          findproperty QName(PackageNamespace(""),"bossRushCompleteTimeout")
          getlex QName(PackageNamespace(""),"bossRushCompleteTimeout")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
@@ -3170,12 +3170,12 @@ package
          pushdouble 0.4
          lessequals
          dup
-         iffalse ofs28
+         iffalse ofs03fc
          pop
          getlex QName(PackageNamespace(""),"bossRushFade")
          not
-         ofs28:
-         iffalse ofs29
+         ofs03fc:
+         iffalse ofs041c
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"fade")
          pushdouble 4278190080
@@ -3186,10 +3186,10 @@ package
          setproperty QName(PackageNamespace(""),"bossRushFade")
          getlex QName(PackageNamespace(""),"NgMedal")
          callpropvoid QName(PackageNamespace(""),"unlockTheGauntlet"), 0
-         ofs29:
+         ofs041c:
          getlex QName(PackageNamespace(""),"bossRushCompleteTimeout")
          pushbyte 0
-         ifnle ofs27
+         ifnle ofs0462
          findproperty QName(PackageNamespace(""),"startedGame")
          pushfalse
          setproperty QName(PackageNamespace(""),"startedGame")
@@ -3213,16 +3213,16 @@ package
          findproperty QName(PackageNamespace(""),"bossRush")
          pushfalse
          setproperty QName(PackageNamespace(""),"bossRush")
-         ofs27:
+         ofs0462:
          getlex QName(PackageNamespace(""),"bossRush")
          not
          dup
-         iffalse ofs30
+         iffalse ofs0470
          pop
          getlex QName(PackageNamespace(""),"isGameComplete")
          convert_b
-         ofs30:
-         iffalse ofs11
+         ofs0470:
+         iffalse ofs04e2
          findproperty QName(PackageNamespace(""),"gameCompleteTimeout")
          getlex QName(PackageNamespace(""),"gameCompleteTimeout")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
@@ -3233,12 +3233,12 @@ package
          pushdouble 2.8
          lessequals
          dup
-         iffalse ofs31
+         iffalse ofs0494
          pop
          getlex QName(PackageNamespace(""),"gameFade")
          not
-         ofs31:
-         iffalse ofs32
+         ofs0494:
+         iffalse ofs04c2
          getlex QName(PackageNamespace(""),"NgMedal")
          callpropvoid QName(PackageNamespace(""),"unlockVictory"), 0
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
@@ -3253,10 +3253,10 @@ package
          findproperty QName(PackageNamespace(""),"gameFade")
          pushtrue
          setproperty QName(PackageNamespace(""),"gameFade")
-         ofs32:
+         ofs04c2:
          getlex QName(PackageNamespace(""),"gameCompleteTimeout")
          pushbyte 0
-         ifnle ofs11
+         ifnle ofs04e2
          findproperty QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"STATE_ENDING")
          setproperty QName(PackageNamespace(""),"realState")
@@ -3266,7 +3266,7 @@ package
          findproperty QName(PackageNamespace(""),"isGameComplete")
          pushfalse
          setproperty QName(PackageNamespace(""),"isGameComplete")
-         ofs11:
+         ofs04e2:
          returnvoid
          end ; code
          end ; body
@@ -3302,13 +3302,13 @@ package
          getlex QName(PackageNamespace(""),"Player")
          istypelate
          dup
-         iffalse ofs0
+         iffalse ofs001b
          pop
          getlocal2
          getlex QName(PackageNamespace(""),"Npc")
          istypelate
-         ofs0:
-         iffalse ofs1
+         ofs001b:
+         iffalse ofs0036
          getlocal1
          getlex QName(PackageNamespace(""),"Player")
          astypelate
@@ -3322,7 +3322,7 @@ package
          setlocal 4
          getlocal3
          callpropvoid QName(PackageNamespace(""),"touch"), 1
-         ofs1:
+         ofs0036:
          returnvoid
          end ; code
          end ; body
@@ -3358,13 +3358,13 @@ package
          getlex QName(PackageNamespace(""),"Player")
          istypelate
          dup
-         iffalse ofs0
+         iffalse ofs0019
          pop
          getlocal2
          getlex QName(PackageNamespace(""),"Item")
          istypelate
-         ofs0:
-         iffalse ofs1
+         ofs0019:
+         iffalse ofs0032
          getlocal1
          getlex QName(PackageNamespace(""),"Player")
          astypelate
@@ -3378,7 +3378,7 @@ package
          setlocal 4
          getlocal3
          callpropvoid QName(PackageNamespace(""),"touch"), 1
-         ofs1:
+         ofs0032:
          returnvoid
          end ; code
          end ; body
@@ -3414,13 +3414,13 @@ package
          getlex QName(PackageNamespace(""),"PlayerBullet")
          istypelate
          dup
-         iffalse ofs0
+         iffalse ofs0019
          pop
          getlocal2
          getlex QName(PackageNamespace(""),"Enemy")
          istypelate
-         ofs0:
-         iffalse ofs1
+         ofs0019:
+         iffalse ofs0033
          getlocal1
          getlex QName(PackageNamespace(""),"PlayerBullet")
          astypelate
@@ -3434,7 +3434,7 @@ package
          getlocal3
          getlocal 4
          callpropvoid QName(PackageNamespace(""),"hitEnemy"), 1
-         ofs1:
+         ofs0033:
          returnvoid
          end ; code
          end ; body
@@ -3470,13 +3470,13 @@ package
          getlex QName(PackageNamespace(""),"EnemyBullet")
          istypelate
          dup
-         iffalse ofs0
+         iffalse ofs0019
          pop
          getlocal2
          getlex QName(PackageNamespace(""),"Player")
          istypelate
-         ofs0:
-         iffalse ofs1
+         ofs0019:
+         iffalse ofs0033
          getlocal1
          getlex QName(PackageNamespace(""),"EnemyBullet")
          astypelate
@@ -3490,7 +3490,7 @@ package
          getlocal3
          getlocal 4
          callpropvoid QName(PackageNamespace(""),"hitPlayer"), 1
-         ofs1:
+         ofs0033:
          returnvoid
          end ; code
          end ; body
@@ -3526,13 +3526,13 @@ package
          getlex QName(PackageNamespace(""),"Player")
          istypelate
          dup
-         iffalse ofs0
+         iffalse ofs0019
          pop
          getlocal2
          getlex QName(PackageNamespace(""),"Enemy")
          istypelate
-         ofs0:
-         iffalse ofs1
+         ofs0019:
+         iffalse ofs0032
          getlocal1
          getlex QName(PackageNamespace(""),"Player")
          astypelate
@@ -3546,7 +3546,7 @@ package
          setlocal 4
          getlocal3
          callpropvoid QName(PackageNamespace(""),"touch"), 1
-         ofs1:
+         ofs0032:
          returnvoid
          end ; code
          end ; body
@@ -3582,13 +3582,13 @@ package
          getlex QName(PackageNamespace(""),"PlayerBullet")
          istypelate
          dup
-         iffalse ofs0
+         iffalse ofs0019
          pop
          getlocal2
          getlex QName(PackageNamespace(""),"Item")
          istypelate
-         ofs0:
-         iffalse ofs1
+         ofs0019:
+         iffalse ofs0033
          getlocal1
          getlex QName(PackageNamespace(""),"PlayerBullet")
          astypelate
@@ -3602,7 +3602,7 @@ package
          getlocal3
          getlocal 4
          callpropvoid QName(PackageNamespace(""),"hitItem"), 1
-         ofs1:
+         ofs0033:
          returnvoid
          end ; code
          end ; body
@@ -3638,13 +3638,13 @@ package
          getlex QName(PackageNamespace(""),"AiTrigger")
          istypelate
          dup
-         iffalse ofs0
+         iffalse ofs001b
          pop
          getlocal2
          getlex QName(PackageNamespace(""),"Enemy")
          istypelate
-         ofs0:
-         iffalse ofs1
+         ofs001b:
+         iffalse ofs003a
          getlocal1
          getlex QName(PackageNamespace(""),"AiTrigger")
          astypelate
@@ -3659,7 +3659,7 @@ package
          getlocal3
          callproperty QName(PackageNamespace(""),"getNumber"), 0
          callpropvoid QName(PackageNamespace(""),"triggerAi"), 1
-         ofs1:
+         ofs003a:
          returnvoid
          end ; code
          end ; body
@@ -3695,13 +3695,13 @@ package
          getlex QName(PackageNamespace(""),"AiTrigger")
          istypelate
          dup
-         iffalse ofs0
+         iffalse ofs001b
          pop
          getlocal2
          getlex QName(PackageNamespace(""),"Item")
          istypelate
-         ofs0:
-         iffalse ofs1
+         ofs001b:
+         iffalse ofs003a
          getlocal1
          getlex QName(PackageNamespace(""),"AiTrigger")
          astypelate
@@ -3716,7 +3716,7 @@ package
          getlocal3
          callproperty QName(PackageNamespace(""),"getNumber"), 0
          callpropvoid QName(PackageNamespace(""),"triggerAi"), 1
-         ofs1:
+         ofs003a:
          returnvoid
          end ; code
          end ; body
@@ -3754,7 +3754,7 @@ pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxState")
 pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxState")
-newclass #PlayState
+newclass 14
 popscope
 popscope
 popscope

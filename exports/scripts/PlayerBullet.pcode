@@ -21,9 +21,9 @@ package
       code
       getlocal0
       pushscope
-      findproperty QName(PrivateNamespace(null,"#PlayerBullet"),"DEFAULT_LIFETIME")
+      findproperty QName(PrivateNamespace(null,"42"),"DEFAULT_LIFETIME")
       pushbyte 4
-      initproperty QName(PrivateNamespace(null,"#PlayerBullet"),"DEFAULT_LIFETIME")
+      initproperty QName(PrivateNamespace(null,"42"),"DEFAULT_LIFETIME")
       returnvoid
       end ; code
       end ; body
@@ -68,7 +68,7 @@ package
          setproperty QName(PackageNamespace(""),"y")
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"#PlayerBullet"),"_firepower")
+         initproperty QName(PrivateNamespace(null,"42"),"_firepower")
          returnvoid
          end ; code
          end ; body
@@ -127,8 +127,8 @@ package
          getlocal 4
          setproperty QName(PackageNamespace(""),"y")
          getlocal0
-         getlex QName(PrivateNamespace(null,"#PlayerBullet"),"DEFAULT_LIFETIME")
-         setproperty QName(PrivateNamespace(null,"#PlayerBullet"),"_lifetime")
+         getlex QName(PrivateNamespace(null,"42"),"DEFAULT_LIFETIME")
+         setproperty QName(PrivateNamespace(null,"42"),"_lifetime")
          returnvoid
          end ; code
          end ; body
@@ -155,30 +155,30 @@ package
          pushscope
          getlocal1
          callproperty QName(PackageNamespace(""),"onScreen"), 0
-         iftrue ofs0
+         iftrue ofs000c
          returnvoid
-         ofs0:
+         ofs000c:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"_superattack")
-         iffalse ofs1
+         iffalse ofs0025
          getlocal1
          pushshort 9999
          callpropvoid QName(PackageNamespace(""),"hurt"), 1
-         jump ofs2
-         ofs1:
+         jump ofs002e
+         ofs0025:
          getlocal1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"#PlayerBullet"),"_firepower")
+         getproperty QName(PrivateNamespace(null,"42"),"_firepower")
          callpropvoid QName(PackageNamespace(""),"hurt"), 1
-         ofs2:
+         ofs002e:
          getlocal1
          callproperty QName(PackageNamespace(""),"getDefense"), 0
          pushshort 200
-         ifnge ofs3
+         ifnge ofs003f
          getlocal0
          callpropvoid QName(PackageNamespace(""),"kill"), 0
-         ofs3:
+         ofs003f:
          returnvoid
          end ; code
          end ; body
@@ -205,7 +205,7 @@ package
          pushscope
          getlocal1
          getlocal0
-         getproperty QName(PrivateNamespace(null,"#PlayerBullet"),"_firepower")
+         getproperty QName(PrivateNamespace(null,"42"),"_firepower")
          callpropvoid QName(PackageNamespace(""),"hurt"), 1
          returnvoid
          end ; code
@@ -235,32 +235,32 @@ package
          getproperty QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"STATE_GAME")
-         ifeq ofs0
+         ifeq ofs0013
          returnvoid
-         ofs0:
+         ofs0013:
          getlex QName(PackageNamespace(""),"dead")
-         iffalse ofs1
+         iffalse ofs0022
          findproperty QName(PackageNamespace(""),"exists")
          pushfalse
          initproperty QName(PackageNamespace(""),"exists")
          returnvoid
-         ofs1:
+         ofs0022:
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0
          getlocal0
          getlocal0
-         getproperty QName(PrivateNamespace(null,"#PlayerBullet"),"_lifetime")
+         getproperty QName(PrivateNamespace(null,"42"),"_lifetime")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#PlayerBullet"),"_lifetime")
+         setproperty QName(PrivateNamespace(null,"42"),"_lifetime")
          getlocal0
-         getproperty QName(PrivateNamespace(null,"#PlayerBullet"),"_lifetime")
+         getproperty QName(PrivateNamespace(null,"42"),"_lifetime")
          pushbyte 0
-         ifnle ofs2
+         ifnle ofs0045
          getlocal0
          callpropvoid QName(PackageNamespace(""),"kill"), 0
-         ofs2:
+         ofs0045:
          returnvoid
          end ; code
          end ; body
@@ -370,9 +370,9 @@ package
          getlocal0
          pushscope
          getlex QName(PackageNamespace(""),"dead")
-         iffalse ofs0
+         iffalse ofs000a
          returnvoid
-         ofs0:
+         ofs000a:
          getlex QName(PackageNamespace(""),"velocity")
          pushbyte 0
          setproperty QName(PackageNamespace(""),"x")
@@ -421,7 +421,7 @@ pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
 pushscope
 getlex QName(PackageNamespace("org.flixel"),"FlxSprite")
-newclass #PlayerBullet
+newclass 117
 popscope
 popscope
 popscope

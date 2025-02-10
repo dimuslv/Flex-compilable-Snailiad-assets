@@ -74,7 +74,7 @@ package spark.utils
       
       private static function get embeddedFontRegistry() : IEmbeddedFontRegistry
       {
-         trait getter QName(PrivateNamespace(null,"#FTETextUtil"),"embeddedFontRegistry")
+         trait getter QName(PrivateNamespace(null,"269"),"embeddedFontRegistry")
          flag FINAL
          dispid 3
          method
@@ -95,26 +95,26 @@ package spark.utils
          dup
          setlocal1
          pushscope
-         getlex QName(PrivateNamespace(null,"#FTETextUtil"),"_embeddedFontRegistry")
+         getlex QName(PrivateNamespace(null,"269"),"_embeddedFontRegistry")
          not
          dup
-         iffalse ofs0
+         iffalse ofs0014
          pop
-         getlex QName(PrivateNamespace(null,"#FTETextUtil"),"noEmbeddedFonts")
+         getlex QName(PrivateNamespace(null,"269"),"noEmbeddedFonts")
          not
-         ofs0:
-         iffalse ofs1
-         ofs2:
-         findproperty QName(PrivateNamespace(null,"#FTETextUtil"),"_embeddedFontRegistry")
+         ofs0014:
+         iffalse ofs0048
+         ofs0018:
+         findproperty QName(PrivateNamespace(null,"269"),"_embeddedFontRegistry")
          findpropstrict QName(PackageNamespace("mx.core"),"IEmbeddedFontRegistry")
          getlex QName(PackageNamespace("mx.core"),"Singleton")
          pushstring "mx.core::IEmbeddedFontRegistry"
          callproperty QName(PackageNamespace(""),"getInstance"), 1
          callproperty QName(PackageNamespace("mx.core"),"IEmbeddedFontRegistry"), 1
-         setproperty QName(PrivateNamespace(null,"#FTETextUtil"),"_embeddedFontRegistry")
-         ofs3:
-         jump ofs1
-         ofs4:
+         setproperty QName(PrivateNamespace(null,"269"),"_embeddedFontRegistry")
+         ofs002d:
+         jump ofs0048
+         ofs0031:
          getlocal0
          pushscope
          getlocal1
@@ -126,16 +126,16 @@ package spark.utils
          pushscope
          swap
          setslot 1
-         findproperty QName(PrivateNamespace(null,"#FTETextUtil"),"noEmbeddedFonts")
+         findproperty QName(PrivateNamespace(null,"269"),"noEmbeddedFonts")
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#FTETextUtil"),"noEmbeddedFonts")
+         setproperty QName(PrivateNamespace(null,"269"),"noEmbeddedFonts")
          popscope
          kill 2
-         ofs1:
-         getlex QName(PrivateNamespace(null,"#FTETextUtil"),"_embeddedFontRegistry")
+         ofs0048:
+         getlex QName(PrivateNamespace(null,"269"),"_embeddedFontRegistry")
          returnvalue
          end ; code
-         try from ofs2 to ofs3 target ofs4 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
+         try from ofs0018 to ofs002d target ofs0031 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
          end ; body
          end ; method
       }
@@ -184,11 +184,11 @@ package spark.utils
          dup
          setlocal 6
          pushnull
-         ifeq ofs0
+         ifeq ofs003b
          getlocal 4
          getlocal 6
          setproperty QName(PackageNamespace(""),"cffHinting")
-         ofs0:
+         ofs003b:
          getlocal1
          pushstring "fontFamily"
          callproperty QName(Namespace("mx.styles:IStyleClient"),"getStyle"), 1
@@ -196,11 +196,11 @@ package spark.utils
          dup
          setlocal 6
          pushnull
-         ifeq ofs1
+         ifeq ofs0053
          getlocal 4
          getlocal 6
          setproperty QName(PackageNamespace(""),"fontName")
-         ofs1:
+         ofs0053:
          getlocal1
          pushstring "fontLookup"
          callproperty QName(Namespace("mx.styles:IStyleClient"),"getStyle"), 1
@@ -208,34 +208,34 @@ package spark.utils
          dup
          setlocal 6
          pushnull
-         ifeq ofs2
+         ifeq ofs009b
          getlocal 6
          pushstring "auto"
-         ifne ofs3
-         findpropstrict QName(PrivateNamespace(null,"#FTETextUtil"),"getEmbeddedFontContext")
+         ifne ofs0094
+         findpropstrict QName(PrivateNamespace(null,"269"),"getEmbeddedFontContext")
          getlocal1
          getlocal3
-         callproperty QName(PrivateNamespace(null,"#FTETextUtil"),"getEmbeddedFontContext"), 2
+         callproperty QName(PrivateNamespace(null,"269"),"getEmbeddedFontContext"), 2
          coerce QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
          dup
          setlocal 5
-         iffalse ofs4
+         iffalse ofs008a
          getlex QName(PackageNamespace("flash.text.engine"),"FontLookup")
          getproperty QName(PackageNamespace(""),"EMBEDDED_CFF")
          coerce_s
-         jump ofs5
-         ofs4:
+         jump ofs0091
+         ofs008a:
          getlex QName(PackageNamespace("flash.text.engine"),"FontLookup")
          getproperty QName(PackageNamespace(""),"DEVICE")
          coerce_s
-         ofs5:
+         ofs0091:
          coerce_s
          setlocal 6
-         ofs3:
+         ofs0094:
          getlocal 4
          getlocal 6
          setproperty QName(PackageNamespace(""),"fontLookup")
-         ofs2:
+         ofs009b:
          getlocal1
          pushstring "fontStyle"
          callproperty QName(Namespace("mx.styles:IStyleClient"),"getStyle"), 1
@@ -243,11 +243,11 @@ package spark.utils
          dup
          setlocal 6
          pushnull
-         ifeq ofs6
+         ifeq ofs00b3
          getlocal 4
          getlocal 6
          setproperty QName(PackageNamespace(""),"fontPosture")
-         ofs6:
+         ofs00b3:
          getlocal1
          pushstring "fontWeight"
          callproperty QName(Namespace("mx.styles:IStyleClient"),"getStyle"), 1
@@ -255,11 +255,11 @@ package spark.utils
          dup
          setlocal 6
          pushnull
-         ifeq ofs7
+         ifeq ofs00cb
          getlocal 4
          getlocal 6
          setproperty QName(PackageNamespace(""),"fontWeight")
-         ofs7:
+         ofs00cb:
          findpropstrict QName(PackageNamespace("flash.text.engine"),"ElementFormat")
          constructprop QName(PackageNamespace("flash.text.engine"),"ElementFormat"), 0
          coerce QName(PackageNamespace("flash.text.engine"),"ElementFormat")
@@ -290,7 +290,7 @@ package spark.utils
          getlocal 8
          setproperty QName(PackageNamespace(""),"content")
          getlocal 5
-         iffalse ofs8
+         iffalse ofs0145
          findpropstrict QName(PackageNamespace("flashx.textLayout.compose"),"ISWFContext")
          getlocal 5
          callproperty QName(PackageNamespace("flashx.textLayout.compose"),"ISWFContext"), 1
@@ -306,15 +306,15 @@ package spark.utils
          callproperty QName(Namespace("flashx.textLayout.compose:ISWFContext"),"callInContext"), 3
          coerce QName(PackageNamespace("flash.text.engine"),"TextLine")
          setlocal 10
-         jump ofs9
-         ofs8:
+         jump ofs0154
+         ofs0145:
          getlocal 9
          pushnull
          pushshort 1000
          callproperty QName(PackageNamespace(""),"createTextLine"), 2
          coerce QName(PackageNamespace("flash.text.engine"),"TextLine")
          setlocal 10
-         ofs9:
+         ofs0154:
          getlocal2
          pushbyte 2
          getlocal 10
@@ -322,7 +322,7 @@ package spark.utils
          add
          pushbyte 2
          add
-         ifnlt ofs10
+         ifnlt ofs0176
          findpropstrict QName(PackageNamespace(""),"int")
          getlocal2
          getlocal 10
@@ -334,7 +334,7 @@ package spark.utils
          add
          callproperty QName(PackageNamespace(""),"int"), 1
          returnvalue
-         ofs10:
+         ofs0176:
          pushbyte 2
          getlocal 10
          getproperty QName(PackageNamespace(""),"ascent")
@@ -347,7 +347,7 @@ package spark.utils
       
       private static function getEmbeddedFontContext(param1:IStyleClient, param2:IFlexModuleFactory) : IFlexModuleFactory
       {
-         trait method QName(PrivateNamespace(null,"#FTETextUtil"),"getEmbeddedFontContext")
+         trait method QName(PrivateNamespace(null,"269"),"getEmbeddedFontContext")
          flag FINAL
          dispid 5
          method
@@ -389,7 +389,7 @@ package spark.utils
          setlocal 4
          getlex QName(PackageNamespace("flash.text.engine"),"FontLookup")
          getproperty QName(PackageNamespace(""),"DEVICE")
-         ifeq ofs0
+         ifeq ofs00ba
          getlocal1
          pushstring "fontFamily"
          callproperty QName(Namespace("mx.styles:IStyleClient"),"getStyle"), 1
@@ -412,24 +412,24 @@ package spark.utils
          equals
          not
          dup
-         iffalse ofs1
+         iffalse ofs0065
          pop
          getlocal2
          getlex QName(PackageNamespace("mx.managers"),"ISystemManager")
          istypelate
-         ofs1:
-         iffalse ofs2
+         ofs0065:
+         iffalse ofs0077
          findpropstrict QName(PackageNamespace("mx.managers"),"ISystemManager")
          getlocal2
          callproperty QName(PackageNamespace("mx.managers"),"ISystemManager"), 1
          coerce QName(PackageNamespace("mx.managers"),"ISystemManager")
          setlocal 8
-         jump ofs3
-         ofs2:
+         jump ofs00a5
+         ofs0077:
          getlocal1
          getlex QName(PackageNamespace("mx.core"),"IUIComponent")
          istypelate
-         iffalse ofs3
+         iffalse ofs00a5
          findpropstrict QName(PackageNamespace("mx.core"),"IUIComponent")
          getlocal1
          callproperty QName(PackageNamespace("mx.core"),"IUIComponent"), 1
@@ -439,7 +439,7 @@ package spark.utils
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"parent")
          getlex QName(PackageNamespace("mx.core"),"IUIComponent")
          istypelate
-         iffalse ofs3
+         iffalse ofs00a5
          findpropstrict QName(PackageNamespace("mx.core"),"IUIComponent")
          getlocal 9
          getproperty QName(Namespace("mx.core:IFlexDisplayObject"),"parent")
@@ -447,8 +447,8 @@ package spark.utils
          getproperty QName(Namespace("mx.core:IUIComponent"),"systemManager")
          coerce QName(PackageNamespace("mx.managers"),"ISystemManager")
          setlocal 8
-         ofs3:
-         getlex QName(PrivateNamespace(null,"#FTETextUtil"),"embeddedFontRegistry")
+         ofs00a5:
+         getlex QName(PrivateNamespace(null,"269"),"embeddedFontRegistry")
          getlocal 5
          getlocal 6
          getlocal 7
@@ -459,22 +459,22 @@ package spark.utils
          callproperty QName(Namespace("mx.core:IEmbeddedFontRegistry"),"getAssociatedModuleFactory"), 7
          coerce QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
          setlocal3
-         ofs0:
+         ofs00ba:
          getlocal3
          not
          dup
-         iffalse ofs4
+         iffalse ofs00cb
          pop
          getlocal 4
          getlex QName(PackageNamespace("flash.text.engine"),"FontLookup")
          getproperty QName(PackageNamespace(""),"EMBEDDED_CFF")
          equals
-         ofs4:
-         iffalse ofs5
+         ofs00cb:
+         iffalse ofs00d3
          getlocal2
          coerce QName(PackageNamespace("mx.core"),"IFlexModuleFactory")
          setlocal3
-         ofs5:
+         ofs00d3:
          getlocal3
          returnvalue
          end ; code
@@ -501,7 +501,7 @@ findpropstrict Multiname("FTETextUtil",[PackageNamespace("spark.utils")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass #FTETextUtil
+newclass 209
 popscope
 initproperty QName(PackageNamespace("spark.utils"),"FTETextUtil")
 returnvoid

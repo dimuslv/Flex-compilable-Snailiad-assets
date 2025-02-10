@@ -28,21 +28,21 @@ package
       code
       getlocal0
       pushscope
-      findproperty QName(PrivateNamespace(null,"#Boss"),"DELAY_START_FOCUS")
+      findproperty QName(PrivateNamespace(null,"243"),"DELAY_START_FOCUS")
       pushshort 500
-      initproperty QName(PrivateNamespace(null,"#Boss"),"DELAY_START_FOCUS")
-      findproperty QName(PrivateNamespace(null,"#Boss"),"DELAY_START_HP_FILL")
+      initproperty QName(PrivateNamespace(null,"243"),"DELAY_START_FOCUS")
+      findproperty QName(PrivateNamespace(null,"243"),"DELAY_START_HP_FILL")
       pushshort 1000
-      initproperty QName(PrivateNamespace(null,"#Boss"),"DELAY_START_HP_FILL")
-      findproperty QName(PrivateNamespace(null,"#Boss"),"DELAY_FINISH_HP_FILL")
+      initproperty QName(PrivateNamespace(null,"243"),"DELAY_START_HP_FILL")
+      findproperty QName(PrivateNamespace(null,"243"),"DELAY_FINISH_HP_FILL")
       pushshort 2500
-      initproperty QName(PrivateNamespace(null,"#Boss"),"DELAY_FINISH_HP_FILL")
-      findproperty QName(PrivateNamespace(null,"#Boss"),"DELAY_STOP_FOCUS")
+      initproperty QName(PrivateNamespace(null,"243"),"DELAY_FINISH_HP_FILL")
+      findproperty QName(PrivateNamespace(null,"243"),"DELAY_STOP_FOCUS")
       pushshort 2700
-      initproperty QName(PrivateNamespace(null,"#Boss"),"DELAY_STOP_FOCUS")
-      findproperty QName(PrivateNamespace(null,"#Boss"),"DELAY_VULNERABLE")
+      initproperty QName(PrivateNamespace(null,"243"),"DELAY_STOP_FOCUS")
+      findproperty QName(PrivateNamespace(null,"243"),"DELAY_VULNERABLE")
       pushshort 2900
-      initproperty QName(PrivateNamespace(null,"#Boss"),"DELAY_VULNERABLE")
+      initproperty QName(PrivateNamespace(null,"243"),"DELAY_VULNERABLE")
       returnvoid
       end ; code
       end ; body
@@ -100,7 +100,7 @@ package
          initproperty QName(ProtectedNamespace("Boss"),"_delayIntro")
          getlocal0
          getproperty QName(ProtectedNamespace("Boss"),"_delayIntro")
-         iftrue ofs0
+         iftrue ofs0042
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"hud")
          getproperty QName(PackageNamespace(""),"bossBarHud")
@@ -109,7 +109,7 @@ package
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"miniMap")
          callpropvoid QName(PackageNamespace(""),"setMapLittle"), 0
-         ofs0:
+         ofs0042:
          returnvoid
          end ; code
          end ; body
@@ -197,28 +197,28 @@ package
          getproperty QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"STATE_GAME")
-         ifeq ofs0
+         ifeq ofs0019
          returnvoid
-         ofs0:
+         ofs0019:
          getlocal0
          getproperty QName(ProtectedNamespace("Boss"),"_introDone")
          not
          dup
-         iffalse ofs1
+         iffalse ofs0029
          pop
          getlocal0
          getproperty QName(ProtectedNamespace("Boss"),"_delayIntro")
          not
-         ofs1:
-         iffalse ofs2
+         ofs0029:
+         iffalse ofs010b
          getlocal0
          getproperty QName(ProtectedNamespace("Boss"),"_noParalyze")
-         iftrue ofs3
+         iftrue ofs0040
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          pushtrue
          callpropvoid QName(PackageNamespace(""),"paralyze"), 1
-         ofs3:
+         ofs0040:
          findpropstrict QName(PackageNamespace("flash.utils"),"getTimer")
          callproperty QName(PackageNamespace("flash.utils"),"getTimer"), 0
          getlocal0
@@ -227,8 +227,8 @@ package
          convert_i
          setlocal1
          getlocal1
-         getlex QName(PrivateNamespace(null,"#Boss"),"DELAY_VULNERABLE")
-         ifngt ofs4
+         getlex QName(PrivateNamespace(null,"243"),"DELAY_VULNERABLE")
+         ifngt ofs0083
          getlocal0
          pushtrue
          setproperty QName(ProtectedNamespace("Boss"),"_vulnerable")
@@ -242,45 +242,45 @@ package
          setproperty QName(ProtectedNamespace("Boss"),"_introDone")
          getlocal0
          getproperty QName(ProtectedNamespace("Boss"),"_noParalyze")
-         iftrue ofs4
+         iftrue ofs0083
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          pushfalse
          callpropvoid QName(PackageNamespace(""),"paralyze"), 1
-         ofs4:
+         ofs0083:
          getlocal1
-         getlex QName(PrivateNamespace(null,"#Boss"),"DELAY_STOP_FOCUS")
-         ifngt ofs5
+         getlex QName(PrivateNamespace(null,"243"),"DELAY_STOP_FOCUS")
+         ifngt ofs009f
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          pushbyte 5
          pushfalse
          callpropvoid QName(PackageNamespace(""),"follow"), 3
-         jump ofs6
-         ofs5:
+         jump ofs00b2
+         ofs009f:
          getlocal1
-         getlex QName(PrivateNamespace(null,"#Boss"),"DELAY_START_FOCUS")
-         ifngt ofs6
+         getlex QName(PrivateNamespace(null,"243"),"DELAY_START_FOCUS")
+         ifngt ofs00b2
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getlocal0
          pushbyte 5
          pushfalse
          callpropvoid QName(PackageNamespace(""),"follow"), 3
-         ofs6:
+         ofs00b2:
          getlocal1
-         getlex QName(PrivateNamespace(null,"#Boss"),"DELAY_START_HP_FILL")
-         ifngt ofs2
+         getlex QName(PrivateNamespace(null,"243"),"DELAY_START_HP_FILL")
+         ifngt ofs010b
          getlex QName(ProtectedNamespace("Enemy"),"_hp")
          findpropstrict QName(PackageNamespace(""),"Number")
          getlocal1
-         getlex QName(PrivateNamespace(null,"#Boss"),"DELAY_START_HP_FILL")
+         getlex QName(PrivateNamespace(null,"243"),"DELAY_START_HP_FILL")
          subtract
          callproperty QName(PackageNamespace(""),"Number"), 1
          multiply
          findpropstrict QName(PackageNamespace(""),"Number")
-         getlex QName(PrivateNamespace(null,"#Boss"),"DELAY_FINISH_HP_FILL")
-         getlex QName(PrivateNamespace(null,"#Boss"),"DELAY_START_HP_FILL")
+         getlex QName(PrivateNamespace(null,"243"),"DELAY_FINISH_HP_FILL")
+         getlex QName(PrivateNamespace(null,"243"),"DELAY_START_HP_FILL")
          subtract
          callproperty QName(PackageNamespace(""),"Number"), 1
          divide
@@ -288,17 +288,17 @@ package
          setlocal2
          getlocal2
          pushbyte 1
-         ifnlt ofs7
+         ifnlt ofs00e1
          pushbyte 1
          setlocal2
-         ofs7:
+         ofs00e1:
          getlocal2
          getlex QName(ProtectedNamespace("Enemy"),"_hp")
-         ifngt ofs8
+         ifngt ofs00ee
          getlex QName(ProtectedNamespace("Enemy"),"_hp")
          convert_i
          setlocal2
-         ofs8:
+         ofs00ee:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"hud")
          getproperty QName(PackageNamespace(""),"bossBarHud")
@@ -306,10 +306,10 @@ package
          callpropvoid QName(PackageNamespace(""),"setCurHp"), 1
          getlocal2
          getlex QName(ProtectedNamespace("Enemy"),"_hp")
-         ifeq ofs2
+         ifeq ofs010b
          getlex QName(PackageNamespace(""),"Sfx")
          callpropvoid QName(PackageNamespace(""),"playBossHpBleep"), 0
-         ofs2:
+         ofs010b:
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0
          returnvoid
@@ -369,15 +369,15 @@ package
          pushscope
          getlocal0
          getproperty QName(ProtectedNamespace("Boss"),"_vulnerable")
-         iftrue ofs0
+         iftrue ofs0018
          pushbyte -10
          convert_d
          setlocal1
          getlocal0
          getlocal1
          callsupervoid QName(PackageNamespace(""),"hurt"), 1
-         jump ofs1
-         ofs0:
+         jump ofs002e
+         ofs0018:
          getlocal0
          getlocal1
          callsupervoid QName(PackageNamespace(""),"hurt"), 1
@@ -386,7 +386,7 @@ package
          getproperty QName(PackageNamespace(""),"bossBarHud")
          getlex QName(ProtectedNamespace("Enemy"),"_hp")
          callpropvoid QName(PackageNamespace(""),"setCurHp"), 1
-         ofs1:
+         ofs002e:
          returnvoid
          end ; code
          end ; body
@@ -422,7 +422,7 @@ pushscope
 getlex QName(PackageNamespace(""),"Enemy")
 pushscope
 getlex QName(PackageNamespace(""),"Enemy")
-newclass #Boss
+newclass 104
 popscope
 popscope
 popscope

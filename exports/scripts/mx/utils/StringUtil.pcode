@@ -73,44 +73,44 @@ package mx.utils
          pushscope
          getlocal1
          pushnull
-         ifne ofs0
+         ifne ofs000b
          pushstring ""
          returnvalue
-         ofs0:
+         ofs000b:
          pushbyte 0
          setlocal2
-         jump ofs1
-         ofs2:
+         jump ofs0015
+         ofs0012:
          label
          inclocal_i 2
-         ofs1:
+         ofs0015:
          findpropstrict QName(PackageNamespace(""),"isWhitespace")
          getlocal1
          getlocal2
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charAt"), 1
          callproperty QName(PackageNamespace(""),"isWhitespace"), 1
-         iftrue ofs2
+         iftrue ofs0012
          getlocal1
          getproperty QName(PackageNamespace(""),"length")
          decrement
          convert_i
          setlocal3
-         jump ofs3
-         ofs4:
+         jump ofs0035
+         ofs0031:
          label
          getlocal3
          decrement_i
          setlocal3
-         ofs3:
+         ofs0035:
          findpropstrict QName(PackageNamespace(""),"isWhitespace")
          getlocal1
          getlocal3
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charAt"), 1
          callproperty QName(PackageNamespace(""),"isWhitespace"), 1
-         iftrue ofs4
+         iftrue ofs0031
          getlocal3
          getlocal2
-         ifnge ofs5
+         ifnge ofs0057
          getlocal1
          getlocal2
          getlocal3
@@ -118,7 +118,7 @@ package mx.utils
          add
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"slice"), 2
          returnvalue
-         ofs5:
+         ofs0057:
          pushstring ""
          returnvalue
          end ; code
@@ -158,14 +158,14 @@ package mx.utils
          equals
          not
          dup
-         iffalse ofs0
+         iffalse ofs001d
          pop
          getlocal1
          pushnull
          equals
          not
-         ofs0:
-         iffalse ofs1
+         ofs001d:
+         iffalse ofs0067
          getlocal1
          getlocal2
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"split"), 1
@@ -177,31 +177,31 @@ package mx.utils
          setlocal 4
          pushbyte 0
          setlocal 5
-         jump ofs2
-         ofs3:
+         jump ofs004f
+         ofs0039:
          label
          getlocal3
          getlocal 5
          getlex QName(PackageNamespace("mx.utils"),"StringUtil")
          getlocal3
          getlocal 5
-         getproperty MultinameL([PrivateNamespace(null,"#StringUtil"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.utils"),PrivateNamespace(null,"#StringUtil/1"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:StringUtil"),StaticProtectedNs("mx.utils:StringUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"256"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.utils"),PrivateNamespace(null,"418"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:StringUtil"),StaticProtectedNs("mx.utils:StringUtil"),StaticProtectedNs("Object")])
          callproperty QName(PackageNamespace(""),"trim"), 1
-         setproperty MultinameL([PrivateNamespace(null,"#StringUtil"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.utils"),PrivateNamespace(null,"#StringUtil/1"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:StringUtil"),StaticProtectedNs("mx.utils:StringUtil"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"256"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.utils"),PrivateNamespace(null,"418"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:StringUtil"),StaticProtectedNs("mx.utils:StringUtil"),StaticProtectedNs("Object")])
          inclocal_i 5
-         ofs2:
+         ofs004f:
          getlocal 5
          getlocal 4
-         iflt ofs3
+         iflt ofs0039
          getlocal 4
          pushbyte 0
-         ifngt ofs1
+         ifngt ofs0067
          getlocal3
          getlocal2
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"join"), 1
          coerce_s
          setlocal1
-         ofs1:
+         ofs0067:
          getlocal1
          returnvalue
          end ; code
@@ -228,57 +228,57 @@ package mx.utils
          code
          getlocal0
          pushscope
-         jump ofs0
-         ofs1:
+         jump ofs0010
+         ofs0006:
          label
          pushtrue
          returnvalue
-         ofs2:
+         ofs0009:
          label
          pushfalse
          returnvalue
-         jump ofs0
-         ofs0:
+         jump ofs0010
+         ofs0010:
          getlocal1
          setlocal2
          pushstring " "
          getlocal2
-         ifstrictne ofs3
+         ifstrictne ofs0020
          pushbyte 0
-         jump ofs4
-         ofs3:
+         jump ofs0064
+         ofs0020:
          pushstring "\t"
          getlocal2
-         ifstrictne ofs5
+         ifstrictne ofs002e
          pushbyte 1
-         jump ofs4
-         ofs5:
+         jump ofs0064
+         ofs002e:
          pushstring "\r"
          getlocal2
-         ifstrictne ofs6
+         ifstrictne ofs003c
          pushbyte 2
-         jump ofs4
-         ofs6:
+         jump ofs0064
+         ofs003c:
          pushstring "\n"
          getlocal2
-         ifstrictne ofs7
+         ifstrictne ofs004a
          pushbyte 3
-         jump ofs4
-         ofs7:
+         jump ofs0064
+         ofs004a:
          pushstring "\f"
          getlocal2
-         ifstrictne ofs8
+         ifstrictne ofs0058
          pushbyte 4
-         jump ofs4
-         ofs8:
-         jump ofs9
+         jump ofs0064
+         ofs0058:
+         jump ofs0062
          pushbyte 5
-         jump ofs9
-         ofs9:
+         jump ofs0062
+         ofs0062:
          pushbyte 5
-         ofs4:
+         ofs0064:
          kill 2
-         lookupswitch ofs2, [ofs1, ofs1, ofs1, ofs1, ofs1, ofs2]
+         lookupswitch ofs0009, [ofs0006, ofs0006, ofs0006, ofs0006, ofs0006, ofs0009]
          end ; code
          end ; body
          end ; method
@@ -309,10 +309,10 @@ package mx.utils
          setlocal 4
          getlocal1
          pushnull
-         ifne ofs0
+         ifne ofs0010
          pushstring ""
          returnvalue
-         ofs0:
+         ofs0010:
          getlocal2
          getproperty QName(PackageNamespace(""),"length")
          convert_u
@@ -321,18 +321,18 @@ package mx.utils
          pushbyte 1
          equals
          dup
-         iffalse ofs1
+         iffalse ofs0029
          pop
          getlocal2
          pushbyte 0
-         getproperty MultinameL([PrivateNamespace(null,"#StringUtil"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.utils"),PrivateNamespace(null,"#StringUtil/1"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:StringUtil"),StaticProtectedNs("mx.utils:StringUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"256"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.utils"),PrivateNamespace(null,"418"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:StringUtil"),StaticProtectedNs("mx.utils:StringUtil"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace(""),"Array")
          istypelate
-         ofs1:
-         iffalse ofs2
+         ofs0029:
+         iffalse ofs0044
          getlocal2
          pushbyte 0
-         getproperty MultinameL([PrivateNamespace(null,"#StringUtil"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.utils"),PrivateNamespace(null,"#StringUtil/1"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:StringUtil"),StaticProtectedNs("mx.utils:StringUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"256"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.utils"),PrivateNamespace(null,"418"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:StringUtil"),StaticProtectedNs("mx.utils:StringUtil"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace(""),"Array")
          astypelate
          coerce QName(PackageNamespace(""),"Array")
@@ -341,16 +341,16 @@ package mx.utils
          getproperty QName(PackageNamespace(""),"length")
          convert_u
          setlocal3
-         jump ofs3
-         ofs2:
+         jump ofs0049
+         ofs0044:
          getlocal2
          coerce QName(PackageNamespace(""),"Array")
          setlocal 4
-         ofs3:
+         ofs0049:
          pushbyte 0
          setlocal 5
-         jump ofs4
-         ofs5:
+         jump ofs0076
+         ofs0051:
          label
          getlocal1
          findpropstrict QName(PackageNamespace(""),"RegExp")
@@ -363,15 +363,15 @@ package mx.utils
          constructprop QName(PackageNamespace(""),"RegExp"), 2
          getlocal 4
          getlocal 5
-         getproperty MultinameL([PrivateNamespace(null,"#StringUtil"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.utils"),PrivateNamespace(null,"#StringUtil/1"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:StringUtil"),StaticProtectedNs("mx.utils:StringUtil"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"256"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("mx.utils"),PrivateNamespace(null,"418"),PackageInternalNs("mx.utils"),ProtectedNamespace("mx.utils:StringUtil"),StaticProtectedNs("mx.utils:StringUtil"),StaticProtectedNs("Object")])
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"replace"), 2
          coerce_s
          setlocal1
          inclocal_i 5
-         ofs4:
+         ofs0076:
          getlocal 5
          getlocal3
-         iflt ofs5
+         iflt ofs0051
          getlocal1
          returnvalue
          end ; code
@@ -401,17 +401,17 @@ package mx.utils
          pushscope
          getlocal2
          pushbyte 0
-         ifne ofs0
+         ifne ofs000c
          pushstring ""
          returnvalue
-         ofs0:
+         ofs000c:
          getlocal1
          coerce_s
          setlocal3
          pushbyte 1
          setlocal 4
-         jump ofs1
-         ofs2:
+         jump ofs001f
+         ofs0017:
          label
          getlocal3
          getlocal1
@@ -419,10 +419,10 @@ package mx.utils
          coerce_s
          setlocal3
          inclocal_i 4
-         ofs1:
+         ofs001f:
          getlocal 4
          getlocal2
-         iflt ofs2
+         iflt ofs0017
          getlocal3
          returnvalue
          end ; code
@@ -455,16 +455,16 @@ package mx.utils
          setlocal 6
          getlocal2
          pushnull
-         ifne ofs0
+         ifne ofs000f
          getlocal1
          returnvalue
-         ofs0:
+         ofs000f:
          getlocal2
          pushstring ""
-         ifne ofs1
+         ifne ofs0019
          pushstring ""
          returnvalue
-         ofs1:
+         ofs0019:
          newarray 0
          coerce QName(PackageNamespace(""),"Array")
          setlocal3
@@ -474,28 +474,28 @@ package mx.utils
          setlocal 4
          pushbyte 0
          setlocal 5
-         jump ofs2
-         ofs3:
+         jump ofs004f
+         ofs002d:
          label
          getlocal1
          getlocal 5
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charCodeAt"), 1
          convert_u
          setlocal 6
-         findpropstrict QName(PrivateNamespace(null,"#StringUtil"),"testCharacter")
+         findpropstrict QName(PrivateNamespace(null,"256"),"testCharacter")
          getlocal 6
          getlocal2
-         callproperty QName(PrivateNamespace(null,"#StringUtil"),"testCharacter"), 2
-         iffalse ofs4
+         callproperty QName(PrivateNamespace(null,"256"),"testCharacter"), 2
+         iffalse ofs004d
          getlocal3
          getlocal 6
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
-         ofs4:
+         ofs004d:
          inclocal_i 5
-         ofs2:
+         ofs004f:
          getlocal 5
          getlocal 4
-         iflt ofs3
+         iflt ofs002d
          getlex QName(PackageNamespace(""),"String")
          getproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"fromCharCode")
          pushnull
@@ -509,7 +509,7 @@ package mx.utils
       
       private static function testCharacter(param1:uint, param2:String) : Boolean
       {
-         trait method QName(PrivateNamespace(null,"#StringUtil"),"testCharacter")
+         trait method QName(PrivateNamespace(null,"256"),"testCharacter")
          flag FINAL
          dispid 9
          method
@@ -549,7 +549,7 @@ package mx.utils
          dup
          setlocal 8
          pushbyte 0
-         ifngt ofs0
+         ifngt ofs003b
          getlocal2
          pushbyte 0
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charCodeAt"), 1
@@ -557,14 +557,14 @@ package mx.utils
          dup
          setlocal 9
          pushbyte 94
-         ifne ofs0
+         ifne ofs003b
          pushtrue
          setlocal3
-         ofs0:
+         ofs003b:
          pushbyte 0
          setlocal 10
-         jump ofs1
-         ofs2:
+         jump ofs00d3
+         ofs0043:
          label
          getlocal2
          getlocal 10
@@ -574,81 +574,81 @@ package mx.utils
          pushfalse
          setlocal 11
          getlocal 4
-         iftrue ofs3
+         iftrue ofs008d
          getlocal 9
          pushbyte 45
-         ifne ofs4
+         ifne ofs0066
          pushtrue
          setlocal 5
-         jump ofs5
-         ofs4:
+         jump ofs0089
+         ofs0066:
          getlocal 9
          pushbyte 94
-         ifne ofs6
+         ifne ofs0077
          getlocal 6
          not
          setlocal 6
-         jump ofs5
-         ofs6:
+         jump ofs0089
+         ofs0077:
          getlocal 9
          pushbyte 92
-         ifne ofs7
+         ifne ofs0086
          pushtrue
          setlocal 4
-         jump ofs5
-         ofs7:
+         jump ofs0089
+         ofs0086:
          pushtrue
          setlocal 11
-         ofs5:
-         jump ofs8
-         ofs3:
+         ofs0089:
+         jump ofs0093
+         ofs008d:
          pushtrue
          setlocal 11
          pushfalse
          setlocal 4
-         ofs8:
+         ofs0093:
          getlocal 11
-         iffalse ofs9
+         iffalse ofs00d1
          getlocal 5
-         iffalse ofs10
+         iffalse ofs00c1
          getlocal 7
          getlocal1
          lessequals
          dup
-         iffalse ofs11
+         iffalse ofs00ad
          pop
          getlocal1
          getlocal 9
          lessequals
-         ofs11:
-         iffalse ofs12
+         ofs00ad:
+         iffalse ofs00b5
          getlocal 6
          convert_b
          setlocal3
-         ofs12:
+         ofs00b5:
          pushfalse
          setlocal 5
          pushbyte 0
          convert_u
          setlocal 7
-         jump ofs9
-         ofs10:
+         jump ofs00d1
+         ofs00c1:
          getlocal1
          getlocal 9
-         ifne ofs13
+         ifne ofs00cc
          getlocal 6
          convert_b
          setlocal3
-         ofs13:
+         ofs00cc:
          getlocal 9
          convert_u
          setlocal 7
-         ofs9:
+         ofs00d1:
          inclocal_i 10
-         ofs1:
+         ofs00d3:
          getlocal 10
          getlocal 8
-         iflt ofs2
+         iflt ofs0043
          getlocal3
          returnvalue
          end ; code
@@ -675,7 +675,7 @@ findpropstrict Multiname("StringUtil",[PackageNamespace("mx.utils")])
 getlex QName(PackageNamespace(""),"Object")
 pushscope
 getlex QName(PackageNamespace(""),"Object")
-newclass #StringUtil
+newclass 166
 popscope
 initproperty QName(PackageNamespace("mx.utils"),"StringUtil")
 returnvoid

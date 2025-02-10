@@ -124,14 +124,14 @@ package spark.primitives.supportClasses
          coerce QName(PackageNamespace("flash.events"),"EventDispatcher")
          setlocal2
          getlocal2
-         iffalse ofs0
+         iffalse ofs002e
          getlocal2
          getlex QName(PackageNamespace("mx.events"),"PropertyChangeEvent")
          getproperty QName(PackageNamespace(""),"PROPERTY_CHANGE")
          getlocal0
          getproperty QName(ProtectedNamespace("spark.primitives.supportClasses:StrokedElement"),"stroke_propertyChangeHandler")
          callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
-         ofs0:
+         ofs002e:
          getlocal0
          getlocal1
          initproperty QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_stroke")
@@ -142,14 +142,14 @@ package spark.primitives.supportClasses
          coerce QName(PackageNamespace("flash.events"),"EventDispatcher")
          setlocal2
          getlocal2
-         iffalse ofs1
+         iffalse ofs0052
          getlocal2
          getlex QName(PackageNamespace("mx.events"),"PropertyChangeEvent")
          getproperty QName(PackageNamespace(""),"PROPERTY_CHANGE")
          getlocal0
          getproperty QName(ProtectedNamespace("spark.primitives.supportClasses:StrokedElement"),"stroke_propertyChangeHandler")
          callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
-         ofs1:
+         ofs0052:
          findpropstrict QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"dispatchPropertyChangeEvent")
          pushstring "stroke"
          getlocal3
@@ -189,16 +189,16 @@ package spark.primitives.supportClasses
          getlex QName(ProtectedNamespace("spark.primitives.supportClasses:GraphicElement"),"drawnDisplayObject")
          not
          dup
-         iftrue ofs0
+         iftrue ofs0013
          pop
          getlex QName(ProtectedNamespace("spark.primitives.supportClasses:GraphicElement"),"drawnDisplayObject")
          getlex QName(PackageNamespace("flash.display"),"Sprite")
          istypelate
          not
-         ofs0:
-         iffalse ofs1
+         ofs0013:
+         iffalse ofs0018
          returnvoid
-         ofs1:
+         ofs0018:
          getlex QName(ProtectedNamespace("spark.primitives.supportClasses:GraphicElement"),"drawnDisplayObject")
          getlex QName(PackageNamespace("flash.display"),"Sprite")
          astypelate
@@ -243,7 +243,7 @@ package spark.primitives.supportClasses
          setlocal2
          getlocal0
          getproperty QName(PackageNamespace(""),"stroke")
-         iffalse ofs0
+         iffalse ofs003a
          getlocal0
          callproperty QName(ProtectedNamespace("spark.primitives.supportClasses:StrokedElement"),"getStrokeBounds"), 0
          coerce QName(PackageNamespace("flash.geom"),"Rectangle")
@@ -261,11 +261,11 @@ package spark.primitives.supportClasses
          getlex QName(ProtectedNamespace("spark.primitives.supportClasses:GraphicElement"),"drawY")
          constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
          callpropvoid QName(Namespace("mx.graphics:IStroke"),"apply"), 3
-         jump ofs1
-         ofs0:
+         jump ofs003f
+         ofs003a:
          getlocal1
          callpropvoid QName(PackageNamespace(""),"lineStyle"), 0
-         ofs1:
+         ofs003f:
          getlocal1
          pushbyte 0
          dup
@@ -402,7 +402,7 @@ package spark.primitives.supportClasses
          pushscope
          getlocal0
          getproperty QName(PackageNamespace(""),"stroke")
-         iftrue ofs0
+         iftrue ofs002e
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_strokeExtents")
          pushbyte 0
          setproperty QName(PackageNamespace(""),"x")
@@ -417,7 +417,7 @@ package spark.primitives.supportClasses
          setproperty QName(PackageNamespace(""),"height")
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_strokeExtents")
          returnvalue
-         ofs0:
+         ofs002e:
          getlocal0
          getproperty QName(PackageNamespace(""),"stroke")
          getproperty QName(Namespace("mx.graphics:IStroke"),"weight")
@@ -425,7 +425,7 @@ package spark.primitives.supportClasses
          setlocal2
          getlocal2
          pushbyte 0
-         ifne ofs1
+         ifne ofs0062
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_strokeExtents")
          pushbyte 1
          setproperty QName(PackageNamespace(""),"width")
@@ -440,7 +440,7 @@ package spark.primitives.supportClasses
          setproperty QName(PackageNamespace(""),"y")
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_strokeExtents")
          returnvalue
-         ofs1:
+         ofs0062:
          getlocal0
          getproperty QName(PackageNamespace(""),"stroke")
          getproperty QName(Namespace("mx.graphics:IStroke"),"scaleMode")
@@ -449,20 +449,20 @@ package spark.primitives.supportClasses
          getlocal3
          not
          dup
-         iftrue ofs2
+         iftrue ofs007b
          pop
          getlocal3
          getlex QName(PackageNamespace("flash.display"),"LineScaleMode")
          getproperty QName(PackageNamespace(""),"NONE")
          equals
-         ofs2:
+         ofs007b:
          dup
-         iftrue ofs3
+         iftrue ofs0083
          pop
          getlocal1
          not
-         ofs3:
-         iffalse ofs4
+         ofs0083:
+         iffalse ofs00af
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_strokeExtents")
          getlocal2
          setproperty QName(PackageNamespace(""),"width")
@@ -483,7 +483,7 @@ package spark.primitives.supportClasses
          setproperty QName(PackageNamespace(""),"y")
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_strokeExtents")
          returnvalue
-         ofs4:
+         ofs00af:
          getlex QName(PackageNamespace(""),"scaleX")
          convert_d
          setlocal 4
@@ -493,17 +493,17 @@ package spark.primitives.supportClasses
          getlocal3
          getlex QName(PackageNamespace("flash.display"),"LineScaleMode")
          getproperty QName(PackageNamespace(""),"NORMAL")
-         ifne ofs5
+         ifne ofs011b
          getlocal 4
          getlocal 5
-         ifne ofs6
+         ifne ofs00d8
          getlocal2
          getlocal 4
          multiply
          convert_d
          setlocal2
-         jump ofs7
-         ofs6:
+         jump ofs00f1
+         ofs00d8:
          getlocal2
          getlex QName(PackageNamespace(""),"Math")
          pushdouble 0.5
@@ -519,7 +519,7 @@ package spark.primitives.supportClasses
          multiply
          convert_d
          setlocal2
-         ofs7:
+         ofs00f1:
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_strokeExtents")
          getlocal2
          setproperty QName(PackageNamespace(""),"width")
@@ -538,12 +538,12 @@ package spark.primitives.supportClasses
          setproperty QName(PackageNamespace(""),"y")
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_strokeExtents")
          returnvalue
-         jump ofs5
-         ofs5:
+         jump ofs011b
+         ofs011b:
          getlocal3
          getlex QName(PackageNamespace("flash.display"),"LineScaleMode")
          getproperty QName(PackageNamespace(""),"HORIZONTAL")
-         ifne ofs8
+         ifne ofs0152
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_strokeExtents")
          getlocal2
          getlocal 4
@@ -566,11 +566,11 @@ package spark.primitives.supportClasses
          setproperty QName(PackageNamespace(""),"y")
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_strokeExtents")
          returnvalue
-         ofs8:
+         ofs0152:
          getlocal3
          getlex QName(PackageNamespace("flash.display"),"LineScaleMode")
          getproperty QName(PackageNamespace(""),"VERTICAL")
-         ifne ofs9
+         ifne ofs0189
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_strokeExtents")
          getlocal2
          setproperty QName(PackageNamespace(""),"width")
@@ -593,7 +593,7 @@ package spark.primitives.supportClasses
          setproperty QName(PackageNamespace(""),"y")
          getlex QName(Namespace("http://www.adobe.com/2006/flex/mx/internal"),"_strokeExtents")
          returnvalue
-         ofs9:
+         ofs0189:
          pushnull
          returnvalue
          end ; code
@@ -621,40 +621,40 @@ package spark.primitives.supportClasses
          pushscope
          findpropstrict QName(PackageNamespace(""),"invalidateDisplayList")
          callpropvoid QName(PackageNamespace(""),"invalidateDisplayList"), 0
-         jump ofs0
-         ofs1:
+         jump ofs001e
+         ofs000d:
          label
          findpropstrict QName(ProtectedNamespace("spark.primitives.supportClasses:GraphicElement"),"invalidateParentSizeAndDisplayList")
          callpropvoid QName(ProtectedNamespace("spark.primitives.supportClasses:GraphicElement"),"invalidateParentSizeAndDisplayList"), 0
-         jump ofs2
-         ofs3:
+         jump ofs005b
+         ofs0019:
          label
-         jump ofs2
-         ofs0:
+         jump ofs005b
+         ofs001e:
          getlocal1
          getproperty QName(PackageNamespace(""),"property")
          setlocal2
          pushstring "weight"
          getlocal2
-         ifstrictne ofs4
+         ifstrictne ofs0031
          pushbyte 0
-         jump ofs5
-         ofs4:
+         jump ofs004b
+         ofs0031:
          pushstring "scaleMode"
          getlocal2
-         ifstrictne ofs6
+         ifstrictne ofs003f
          pushbyte 1
-         jump ofs5
-         ofs6:
-         jump ofs7
+         jump ofs004b
+         ofs003f:
+         jump ofs0049
          pushbyte 2
-         jump ofs7
-         ofs7:
+         jump ofs0049
+         ofs0049:
          pushbyte 2
-         ofs5:
+         ofs004b:
          kill 2
-         lookupswitch ofs3, [ofs1, ofs1, ofs3]
-         ofs2:
+         lookupswitch ofs0019, [ofs000d, ofs000d, ofs0019]
+         ofs005b:
          returnvoid
          end ; code
          end ; body
@@ -684,7 +684,7 @@ pushscope
 getlex QName(PackageNamespace("spark.primitives.supportClasses"),"GraphicElement")
 pushscope
 getlex QName(PackageNamespace("spark.primitives.supportClasses"),"GraphicElement")
-newclass #StrokedElement
+newclass 230
 popscope
 popscope
 popscope
