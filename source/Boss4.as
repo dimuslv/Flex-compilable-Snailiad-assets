@@ -244,6 +244,34 @@ package
       
       private var _mostRecentLeftRight:int = 1;
       
+      public function setMode(param1:int, param2:Boolean = false) : void
+      {
+         _attackMode = param1;
+         _modeElapsed = 0;
+         _modeInitialized = false;
+         _isAttacking = false;
+         _actionTimeout = this.ACTION_TIMEOUT;
+         var _loc3_:int = 0;
+         while(_loc3_ < this._shadowBall.length)
+         {
+            this._shadowBall[_loc3_].visible = false;
+            _loc3_++;
+         }
+         visible = true;
+         solid = true;
+         this.releaseUp();
+         this.releaseDown();
+         this.releaseLeft();
+         this.releaseRight();
+         this.releaseJump();
+         _attackStopTimeout = ATTACK_STOP_TIMEOUT;
+         _attackStartTimeout = ATTACK_START_TIMEOUT;
+         if(param2)
+         {
+            this.checkFireRings();
+         }
+      }
+      
       public function Boss4(param1:int, param2:int) : void
       {
          this._hasWeapon = [true,true,true];
@@ -291,34 +319,6 @@ package
          PlayState.player.x -= 40;
          Music.playBoss1();
          PlayState.player.setFaceDir(Player.FACE_FLOOR_LEFT);
-      }
-      
-      public function setMode(param1:int, param2:Boolean = false) : void
-      {
-         _attackMode = param1;
-         _modeElapsed = 0;
-         _modeInitialized = false;
-         _isAttacking = false;
-         _actionTimeout = this.ACTION_TIMEOUT;
-         var _loc3_:int = 0;
-         while(_loc3_ < this._shadowBall.length)
-         {
-            this._shadowBall[_loc3_].visible = false;
-            _loc3_++;
-         }
-         visible = true;
-         solid = true;
-         this.releaseUp();
-         this.releaseDown();
-         this.releaseLeft();
-         this.releaseRight();
-         this.releaseJump();
-         _attackStopTimeout = ATTACK_STOP_TIMEOUT;
-         _attackStartTimeout = ATTACK_START_TIMEOUT;
-         if(param2)
-         {
-            this.checkFireRings();
-         }
       }
       
       public function checkFireRings() : void
