@@ -1458,9 +1458,10 @@ package
          if(_loc1_)
          {
             var _loc2_:int = -1;
+			var _loc3_:Array;
             if(this._jumping)
             {
-               var _loc3_:Array = [1,1,1,1,1,1,1,1];
+               _loc3_ = [1,1,1,1,1,1,1,1];
             }
             else if(this._currentWeapon == WEAPON_PEA_SHOOTER)
             {

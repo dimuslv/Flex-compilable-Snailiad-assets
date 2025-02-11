@@ -1436,11 +1436,11 @@ package
       {
          var _loc2_:int = 0;
          var _loc3_:Array = null;
-         var _loc4_:int = 0;
+         var _loc4_:Array = null;
          var _loc5_:int = 0;
          var _loc6_:int = 0;
          var _loc7_:int = 0;
-         var _loc8_:Array = null;
+         var _loc8_:int = 0;
          this._weaponTimeout -= FlxG.elapsed;
          if(this._weaponTimeout > 0)
          {
@@ -1460,58 +1460,58 @@ package
             _loc2_ = -1;
             if(this._jumping)
             {
-               _loc8_ = [1,1,1,1,1,1,1,1];
+               _loc3_ = [1,1,1,1,1,1,1,1];
             }
             else if(this._currentWeapon == WEAPON_PEA_SHOOTER)
             {
                switch(this._gravityDir)
                {
                   case GRAV_LEFT:
-                     _loc8_ = [1,1,1,0,0,0,1,1];
+                     _loc3_ = [1,1,1,0,0,0,1,1];
                      break;
                   case GRAV_RIGHT:
-                     _loc8_ = [0,0,1,1,1,1,1,0];
+                     _loc3_ = [0,0,1,1,1,1,1,0];
                      break;
                   case GRAV_UP:
-                     _loc8_ = [1,0,0,0,1,1,1,1];
+                     _loc3_ = [1,0,0,0,1,1,1,1];
                      break;
                   case GRAV_DOWN:
-                     _loc8_ = [1,1,1,1,1,0,0,0];
+                     _loc3_ = [1,1,1,1,1,0,0,0];
                }
             }
             else
             {
-               _loc8_ = [1,1,1,1,1,1,1,1];
+               _loc3_ = [1,1,1,1,1,1,1,1];
             }
-            if(this.pressedUp() && this.pressedLeft() && Boolean(_loc8_[3]))
+            if(this.pressedUp() && this.pressedLeft() && Boolean(_loc3_[3]))
             {
                _loc2_ = 3;
             }
-            else if(this.pressedUp() && this.pressedRight() && Boolean(_loc8_[1]))
+            else if(this.pressedUp() && this.pressedRight() && Boolean(_loc3_[1]))
             {
                _loc2_ = 1;
             }
-            else if(this.pressedDown() && this.pressedLeft() && Boolean(_loc8_[5]))
+            else if(this.pressedDown() && this.pressedLeft() && Boolean(_loc3_[5]))
             {
                _loc2_ = 5;
             }
-            else if(this.pressedDown() && this.pressedRight() && Boolean(_loc8_[7]))
+            else if(this.pressedDown() && this.pressedRight() && Boolean(_loc3_[7]))
             {
                _loc2_ = 7;
             }
-            else if(this.pressedUp() && Boolean(_loc8_[2]))
+            else if(this.pressedUp() && Boolean(_loc3_[2]))
             {
                _loc2_ = 2;
             }
-            else if(this.pressedDown() && Boolean(_loc8_[6]))
+            else if(this.pressedDown() && Boolean(_loc3_[6]))
             {
                _loc2_ = 6;
             }
-            else if(this.pressedLeft() && Boolean(_loc8_[4]))
+            else if(this.pressedLeft() && Boolean(_loc3_[4]))
             {
                _loc2_ = 4;
             }
-            else if(this.pressedRight() && Boolean(_loc8_[0]))
+            else if(this.pressedRight() && Boolean(_loc3_[0]))
             {
                _loc2_ = 0;
             }
@@ -1544,12 +1544,12 @@ package
                      _loc2_ = 6;
                }
             }
-            _loc3_ = [0,40,90,140,180,-140,-90,-40];
-            _loc4_ = int(_loc3_[_loc2_]);
-            _loc5_ = WEAPON_SPEED[this._currentWeapon] / this._turboMultiplier;
-            _loc6_ = Math.cos(_loc4_ * Math.PI / 180) * _loc5_;
-            _loc7_ = -Math.sin(_loc4_ * Math.PI / 180) * _loc5_;
-            _loc1_.shoot(x + width / 2,y + height / 2,_loc6_,_loc7_);
+            _loc4_ = [0,40,90,140,180,-140,-90,-40];
+            _loc5_ = int(_loc4_[_loc2_]);
+            _loc6_ = WEAPON_SPEED[this._currentWeapon] / this._turboMultiplier;
+            _loc7_ = Math.cos(_loc5_ * Math.PI / 180) * _loc6_;
+            _loc8_ = -Math.sin(_loc5_ * Math.PI / 180) * _loc6_;
+            _loc1_.shoot(x + width / 2,y + height / 2,_loc7_,_loc8_);
             this._weaponTimeout = WEAPON_TIMEOUTS[this._currentWeapon] * this._turboMultiplier;
          }
       }
