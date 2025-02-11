@@ -102,7 +102,7 @@ package
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"Boolean")
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 7
@@ -187,10 +187,10 @@ package
          pushscope
          getlocal0
          pushnull
-         setproperty QName(PackageNamespace(""),"eyelid")
+         initproperty QName(PackageNamespace(""),"eyelid")
          getlocal0
          pushnull
-         setproperty QName(PackageNamespace(""),"pupil")
+         initproperty QName(PackageNamespace(""),"pupil")
          getlocal0
          callsupervoid QName(PackageNamespace(""),"destroy"), 0
          returnvoid
@@ -219,7 +219,7 @@ package
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"mode")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"mode")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"isOpen")
          iffalse ofs0
@@ -360,9 +360,8 @@ package
          code
          getlocal0
          pushscope
-         getlex QName(PackageNamespace(""),"NaN")
-         convert_d
-         setlocal1
+         pushnan
+         setlocal2
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"realState")
          getlex QName(PackageNamespace(""),"PlayState")
@@ -378,7 +377,7 @@ package
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"y")
          constructprop QName(PackageNamespace(""),"Boss2RushPupil"), 2
-         setproperty QName(PackageNamespace(""),"pupil")
+         initproperty QName(PackageNamespace(""),"pupil")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"enemies")
          getlocal0
@@ -389,7 +388,7 @@ package
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"y")
          constructprop QName(PackageNamespace(""),"Boss2RushEyelid"), 2
-         setproperty QName(PackageNamespace(""),"eyelid")
+         initproperty QName(PackageNamespace(""),"eyelid")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"enemies")
          getlocal0
@@ -397,7 +396,7 @@ package
          callpropvoid QName(PackageNamespace(""),"add"), 1
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_addedChildren")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_addedChildren")
          ofs1:
          getlex QName(PackageNamespace(""),"Math")
          getlex QName(PackageNamespace(""),"PlayState")
@@ -414,12 +413,12 @@ package
          subtract
          callproperty QName(PackageNamespace(""),"atan2"), 2
          convert_d
-         setlocal2
+         setlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"pupil")
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"Math")
-         getlocal2
+         getlocal1
          callproperty QName(PackageNamespace(""),"cos"), 1
          pushbyte 20
          multiply
@@ -429,7 +428,7 @@ package
          getproperty QName(PackageNamespace(""),"pupil")
          getlex QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"Math")
-         getlocal2
+         getlocal1
          callproperty QName(PackageNamespace(""),"sin"), 1
          pushbyte 10
          multiply
@@ -444,23 +443,23 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_clusterTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_clusterTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_clusterTimeout")
          pushbyte 0
          ifnlt ofs3
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2RushEye"),"CLUSTER_TIMEOUT")
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_clusterTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_clusterTimeout")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2RushEye"),"SHOT_TIMEOUT")
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_shotTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_shotTimeout")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2RushEye"),"SHOT_NUM")
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_shots")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_shots")
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_shooting")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_shooting")
          ofs3:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_shooting")
@@ -471,14 +470,14 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_shotTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_shotTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_shotTimeout")
          pushbyte 0
          ifnlt ofs2
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2RushEye"),"SHOT_TIMEOUT")
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_shotTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_shotTimeout")
          getlocal0
          dup
          setlocal3
@@ -496,7 +495,7 @@ package
          ifne ofs4
          getlocal0
          pushfalse
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_shooting")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_shooting")
          ofs4:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_isLeft")
@@ -510,7 +509,7 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_shots")
          multiply
          convert_d
-         setlocal1
+         setlocal2
          jump ofs6
          ofs5:
          getlex QName(PackageNamespace(""),"Math")
@@ -524,7 +523,7 @@ package
          subtract
          multiply
          convert_d
-         setlocal1
+         setlocal2
          ofs6:
          getlocal0
          getlocal0
@@ -533,7 +532,7 @@ package
          getlocal0
          getproperty QName(PackageNamespace(""),"pupil")
          getproperty QName(PackageNamespace(""),"y")
-         getlocal1
+         getlocal2
          callpropvoid QName(PackageNamespace(""),"shoot"), 3
          ofs2:
          getlocal0
@@ -553,7 +552,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_blinkTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_blinkTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_blinkTimeout")
          pushbyte 0
@@ -565,7 +564,7 @@ package
          multiply
          pushbyte 1
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_blinkTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_blinkTimeout")
          getlocal0
          getproperty QName(PackageNamespace(""),"eyelid")
          getlocal0
@@ -581,17 +580,17 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_closeTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_closeTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_closeTimeout")
          pushbyte 0
          ifnlt ofs9
          getlocal0
          pushfalse
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_willClose")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_willClose")
          getlocal0
          pushfalse
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"isOpen")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"isOpen")
          getlocal0
          getproperty QName(PackageNamespace(""),"eyelid")
          getlocal0
@@ -599,7 +598,7 @@ package
          callpropvoid QName(PackageNamespace(""),"playClose"), 1
          getlocal0
          pushdouble 0.8
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_openTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_openTimeout")
          ofs9:
          jump ofs10
          ofs7:
@@ -609,14 +608,14 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_openTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_openTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_openTimeout")
          pushbyte 0
          ifnlt ofs10
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"isOpen")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"isOpen")
          getlocal0
          getproperty QName(PackageNamespace(""),"eyelid")
          getlocal0
@@ -735,10 +734,10 @@ package
          iftrue ofs2
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_willClose")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_willClose")
          getlocal0
          pushdouble 0.3
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_closeTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_closeTimeout")
          ofs2:
          getlocal0
          dup
@@ -796,12 +795,10 @@ package
          initproperty QName(ProtectedNamespace("Enemy"),"_justFlashed")
          getlocal0
          pushbyte 3
-         setproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_lastFlashed")
+         initproperty QName(PrivateNamespace(null,"#Boss2RushEye"),"_lastFlashed")
          ofs1:
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"boss2rush")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs6

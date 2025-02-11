@@ -12,7 +12,7 @@ package
       
       private static const OFFENSE:int = 0;
       
-      public function Boss2RushPupil(param1:int, param2:int)
+      public function Boss2RushPupil(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE,true);
          loadGraphic(Art.Boss2Pupil,true,true,IMG_WIDTH,IMG_HEIGHT);

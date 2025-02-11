@@ -14,7 +14,7 @@ package
       
       private var _isLeftFoot:Boolean;
       
-      public function Boss2RushFoot(param1:int, param2:int, param3:Boolean)
+      public function Boss2RushFoot(param1:int, param2:int, param3:Boolean) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE,true);
          loadGraphic(Art.Boss2RushFoot,true,true,IMG_WIDTH,IMG_HEIGHT);
