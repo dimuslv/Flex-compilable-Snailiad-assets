@@ -504,47 +504,47 @@ package
       
       public function updateAiTeleport() : void
       {
-         var _loc2_:int = 0;
+         var _loc2_:Number = NaN;
          var _loc3_:Number = NaN;
-         var _loc4_:Number = NaN;
+         var _loc4_:int = 0;
          if(!this._modeInitialized)
          {
             this._modeInitialized = true;
             this.pickTeleTarget();
             visible = false;
             solid = false;
-            _loc2_ = 0;
-            while(_loc2_ < this._shadowBall.length)
+            _loc4_ = 0;
+            while(_loc4_ < this._shadowBall.length)
             {
-               this._shadowBall[_loc2_].x = this._teleStartX;
-               this._shadowBall[_loc2_].y = this._teleStartY;
-               this._shadowBall[_loc2_].visible = true;
-               _loc2_++;
+               this._shadowBall[_loc4_].x = this._teleStartX;
+               this._shadowBall[_loc4_].y = this._teleStartY;
+               this._shadowBall[_loc4_].visible = true;
+               _loc4_++;
             }
          }
          var _loc1_:Number = this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME);
          if(_loc1_ <= 0.5)
          {
-            _loc3_ = this.SHADOW_BALL_RADIUS * this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME * 2);
+            _loc2_ = this.SHADOW_BALL_RADIUS * this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME * 2);
          }
          else
          {
-            _loc3_ = this.SHADOW_BALL_RADIUS * this.normalizedSigmoid((1 - this._modeElapsed / TELEPORT_TIME) * 2);
+            _loc2_ = this.SHADOW_BALL_RADIUS * this.normalizedSigmoid((1 - this._modeElapsed / TELEPORT_TIME) * 2);
          }
          if(_loc1_ <= 0.5)
          {
-            _loc4_ = Math.PI * 2 * this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME * 2);
+            _loc3_ = Math.PI * 2 * this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME * 2);
          }
          else
          {
-            _loc4_ = Math.PI * 2 * this.normalizedSigmoid((1 - this._modeElapsed / TELEPORT_TIME) * 2);
+            _loc3_ = Math.PI * 2 * this.normalizedSigmoid((1 - this._modeElapsed / TELEPORT_TIME) * 2);
          }
-         _loc2_ = 0;
-         while(_loc2_ < this._shadowBall.length)
+         _loc4_ = 0;
+         while(_loc4_ < this._shadowBall.length)
          {
-            this._shadowBall[_loc2_].x = this._teleStartX * (1 - _loc1_) + this._teleEndX * _loc1_ + Math.cos(_loc4_ + Math.PI * 2 / this._shadowBall.length * _loc2_) * _loc3_;
-            this._shadowBall[_loc2_].y = this._teleStartY * (1 - _loc1_) + this._teleEndY * _loc1_ - Math.sin(_loc4_ + Math.PI * 2 / this._shadowBall.length * _loc2_) * _loc3_;
-            _loc2_++;
+            this._shadowBall[_loc4_].x = this._teleStartX * (1 - _loc1_) + this._teleEndX * _loc1_ + Math.cos(_loc3_ + Math.PI * 2 / this._shadowBall.length * _loc4_) * _loc2_;
+            this._shadowBall[_loc4_].y = this._teleStartY * (1 - _loc1_) + this._teleEndY * _loc1_ - Math.sin(_loc3_ + Math.PI * 2 / this._shadowBall.length * _loc4_) * _loc2_;
+            _loc4_++;
          }
          velocity.x = 0;
          velocity.y = 0;

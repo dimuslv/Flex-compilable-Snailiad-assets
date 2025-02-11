@@ -518,9 +518,11 @@ package
             }
          }
          var _loc1_:Number = this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME);
+		 var _loc2_:Number;
+		 var _loc3_:Number;
          if(_loc1_ <= 0.5)
          {
-            var _loc2_:Number = this.SHADOW_BALL_RADIUS * this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME * 2);
+            _loc2_ = this.SHADOW_BALL_RADIUS * this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME * 2);
          }
          else
          {
@@ -528,13 +530,13 @@ package
          }
          if(_loc1_ <= 0.5)
          {
-            var _loc3_:Number = Math.PI * 2 * this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME * 2);
+            _loc3_ = Math.PI * 2 * this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME * 2);
          }
          else
          {
             _loc3_ = Math.PI * 2 * this.normalizedSigmoid((1 - this._modeElapsed / TELEPORT_TIME) * 2);
          }
-         for(var i:int = 0; i < this._shadowBall.length; i++)
+         for(i = 0; i < this._shadowBall.length; i++)
          {
             this._shadowBall[i].x = this._teleStartX * (1 - _loc1_) + this._teleEndX * _loc1_ + Math.cos(_loc3_ + Math.PI * 2 / this._shadowBall.length * i) * _loc2_;
             this._shadowBall[i].y = this._teleStartY * (1 - _loc1_) + this._teleEndY * _loc1_ - Math.sin(_loc3_ + Math.PI * 2 / this._shadowBall.length * i) * _loc2_;
