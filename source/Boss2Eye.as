@@ -53,14 +53,14 @@ package
       
       private var SHOT_NUM:Number = 2;
       
-      public function Boss2Eye(param1:int, param2:int, param3:Boolean)
+      public function Boss2Eye(param1:int, param2:int, param3:Boolean) : void
       {
-         if(Boolean(PlayState.player) && PlayState.player._insaneMode)
+         if(PlayState.player && PlayState.player._insaneMode)
          {
             this.SHOT_TIMEOUT /= 2;
             this.SHOT_NUM *= 2;
          }
-         else if(Boolean(PlayState.player) && PlayState.player._hardMode)
+         else if(PlayState.player && PlayState.player._hardMode)
          {
             this.SHOT_TIMEOUT /= 3;
             this.SHOT_NUM *= 3;
@@ -81,14 +81,14 @@ package
       
       override public function destroy() : void
       {
-         this.eyelid = null;
-         this.pupil = null;
+         eyelid = null;
+         pupil = null;
          super.destroy();
       }
       
       public function setMode(param1:int) : void
       {
-         this.mode = param1;
+         mode = param1;
          if(this.isOpen)
          {
             this.eyelid.playOpen(this.mode);
@@ -118,46 +118,45 @@ package
       
       override public function update() : void
       {
-         var _loc2_:Number = NaN;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
          }
          if(!this._addedChildren)
          {
-            this.pupil = new Boss2Pupil(x,y);
+            pupil = new Boss2Pupil(x,y);
             PlayState.enemies.add(this.pupil);
-            this.eyelid = new Boss2Eyelid(x,y);
+            eyelid = new Boss2Eyelid(x,y);
             PlayState.enemies.add(this.eyelid);
-            this._addedChildren = true;
+            _addedChildren = true;
          }
          var _loc1_:Number = Math.atan2(PlayState.player.y - (y - 20),PlayState.player.x - x);
          this.pupil.x = x + Math.cos(_loc1_) * 20;
          this.pupil.y = y + Math.sin(_loc1_) * 10;
          if(this.shouldAttack)
          {
-            this._clusterTimeout -= FlxG.elapsed;
+            _clusterTimeout -= FlxG.elapsed;
             if(this._clusterTimeout < 0)
             {
-               this._clusterTimeout = CLUSTER_TIMEOUT;
-               this._shotTimeout = this.SHOT_TIMEOUT;
-               this._shots = this.SHOT_NUM;
-               this._shooting = true;
+               _clusterTimeout = CLUSTER_TIMEOUT;
+               _shotTimeout = this.SHOT_TIMEOUT;
+               _shots = this.SHOT_NUM;
+               _shooting = true;
             }
             if(this._shooting)
             {
-               this._shotTimeout -= FlxG.elapsed;
+               _shotTimeout -= FlxG.elapsed;
                if(this._shotTimeout < 0)
                {
-                  this._shotTimeout = this.SHOT_TIMEOUT;
+                  _shotTimeout = this.SHOT_TIMEOUT;
                   --this._shots;
                   if(this._shots == 0)
                   {
-                     this._shooting = false;
+                     _shooting = false;
                   }
                   if(this._isLeft)
                   {
-                     _loc2_ = -Math.PI / this.SHOT_NUM * this._shots;
+                     var _loc2_:Number = -Math.PI / this.SHOT_NUM * this._shots;
                   }
                   else
                   {
@@ -171,30 +170,30 @@ package
          this.eyelid.y = y;
          if(this.isOpen)
          {
-            this._blinkTimeout -= FlxG.elapsed;
+            _blinkTimeout -= FlxG.elapsed;
             if(this._blinkTimeout < 0)
             {
-               this._blinkTimeout = FlxU.random() * 8 + 1;
+               _blinkTimeout = FlxU.random() * 8 + 1;
                this.eyelid.playBlink(this.mode);
             }
             if(this._willClose)
             {
-               this._closeTimeout -= FlxG.elapsed;
+               _closeTimeout -= FlxG.elapsed;
                if(this._closeTimeout < 0)
                {
-                  this._willClose = false;
-                  this.isOpen = false;
+                  _willClose = false;
+                  isOpen = false;
                   this.eyelid.playClose(this.mode);
-                  this._openTimeout = 0.8;
+                  _openTimeout = 0.8;
                }
             }
          }
          else
          {
-            this._openTimeout -= FlxG.elapsed;
+            _openTimeout -= FlxG.elapsed;
             if(this._openTimeout < 0)
             {
-               this.isOpen = true;
+               isOpen = true;
                this.eyelid.playOpen(this.mode);
             }
          }
@@ -231,8 +230,8 @@ package
          {
             if(!this._willClose)
             {
-               this._willClose = true;
-               this._closeTimeout = 0.3;
+               _willClose = true;
+               _closeTimeout = 0.3;
             }
             if(--this._lastFlashed <= 0 && param1 > Boss2.DEFENSE)
             {
@@ -247,10 +246,10 @@ package
                   (PlayState.boss2 as Boss2).rfoot.flashColor(16777215);
                }
                _justFlashed = 1;
-               this._lastFlashed = 3;
+               _lastFlashed = 3;
             }
          }
-         if(Boolean(PlayState.boss2) && param1 > 0)
+         if(PlayState.boss2 && param1 > 0)
          {
             PlayState.boss2.hurt(param1);
          }

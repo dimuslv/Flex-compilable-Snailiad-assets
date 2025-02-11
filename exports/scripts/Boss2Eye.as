@@ -118,7 +118,7 @@ package
       
       override public function update() : void
       {
-         var _loc1_:Number = NaN;
+         var _loc2_:Number = NaN;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
@@ -131,9 +131,9 @@ package
             PlayState.enemies.add(this.eyelid);
             this._addedChildren = true;
          }
-         var _loc2_:Number = Math.atan2(PlayState.player.y - (y - 20),PlayState.player.x - x);
-         this.pupil.x = x + Math.cos(_loc2_) * 20;
-         this.pupil.y = y + Math.sin(_loc2_) * 10;
+         var _loc1_:Number = Math.atan2(PlayState.player.y - (y - 20),PlayState.player.x - x);
+         this.pupil.x = x + Math.cos(_loc1_) * 20;
+         this.pupil.y = y + Math.sin(_loc1_) * 10;
          if(this.shouldAttack)
          {
             this._clusterTimeout -= FlxG.elapsed;
@@ -157,13 +157,13 @@ package
                   }
                   if(this._isLeft)
                   {
-                     _loc1_ = -Math.PI / this.SHOT_NUM * this._shots;
+                     _loc2_ = -Math.PI / this.SHOT_NUM * this._shots;
                   }
                   else
                   {
-                     _loc1_ = -Math.PI / this.SHOT_NUM * (this.SHOT_NUM - this._shots);
+                     _loc2_ = -Math.PI / this.SHOT_NUM * (this.SHOT_NUM - this._shots);
                   }
-                  this.shoot(this.pupil.x,this.pupil.y,_loc1_);
+                  this.shoot(this.pupil.x,this.pupil.y,_loc2_);
                }
             }
          }

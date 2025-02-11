@@ -249,6 +249,8 @@ package
       
       private var rsteptheta:Number = 0;
       
+      private const TIMEOUTS:Array;
+      
       private var lfootStompTimeout:Number = 0;
       
       private var rfootStompTimeout:Number = 0;
@@ -269,15 +271,13 @@ package
       
       private var rtheta:Number = 0;
       
-      private var TIMEOUTS:Array;
-      
       public function Boss2Rush(param1:int, param2:int)
       {
          method
          name null
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 61
@@ -351,10 +351,8 @@ package
          pushdouble 0.24251
          newarray 60
          initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"TIMEOUTS")
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs0
@@ -715,19 +713,19 @@ package
          kill 2
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"cannons")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"cannons")
          getlocal0
          pushnull
-         setproperty QName(PackageNamespace(""),"lfoot")
+         initproperty QName(PackageNamespace(""),"lfoot")
          getlocal0
          pushnull
-         setproperty QName(PackageNamespace(""),"rfoot")
+         initproperty QName(PackageNamespace(""),"rfoot")
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"leye")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"leye")
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"reye")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"reye")
          getlex QName(PackageNamespace(""),"PlayState")
          pushnull
          setproperty QName(PackageNamespace(""),"boss2rush")
@@ -756,8 +754,7 @@ package
          code
          getlocal0
          pushscope
-         getlex QName(PackageNamespace(""),"NaN")
-         convert_d
+         pushnan
          setlocal1
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
@@ -768,41 +765,41 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootyVel")
          pushdouble 0.2
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootyVel")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootyVel")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootyVel")
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
          pushbyte 0
          ifngt ofs1
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_WAITRAISE")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_STEP")
          ifne ofs2
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STEP")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
          ofs2:
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootyVel")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootyVel")
          getlocal0
          pushbyte 50
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootRaiseTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootRaiseTimeout")
          getlocal0
          pushint 1000000
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootStompTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootStompTimeout")
          getlex QName(PackageNamespace(""),"Sfx")
          callpropvoid QName(PackageNamespace(""),"playStomp"), 0
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
@@ -849,12 +846,12 @@ package
          ifeq ofs6
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_RAISE")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
          jump ofs3
          ofs6:
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STEP")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
          ofs3:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
@@ -874,31 +871,31 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootyVel")
          pushdouble 0.2
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootyVel")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootyVel")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootyVel")
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"RAISED_Y")
          ifnlt ofs8
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"RAISED_Y")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_MOVE")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"leye")
          pushtrue
          setproperty QName(PackageNamespace(""),"shouldAttack")
          getlocal0
          pushint 1000000
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootRaiseTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootRaiseTimeout")
          getlocal0
          findpropstrict QName(PackageNamespace(""),"int")
          getlocal0
@@ -925,14 +922,14 @@ package
          callproperty QName(PackageNamespace(""),"int"), 1
          pushbyte 60
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootStompTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootStompTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_SYNC")
          ifne ofs8
          getlocal0
          pushbyte 10
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootStompTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootStompTimeout")
          ofs8:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
@@ -943,41 +940,41 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootyVel")
          pushdouble 0.2
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootyVel")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootyVel")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootyVel")
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
          pushbyte 0
          ifngt ofs10
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_WAITRAISE")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_STEP")
          ifne ofs11
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STEP")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
          ofs11:
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootyVel")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootyVel")
          getlocal0
          pushbyte 50
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootRaiseTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootRaiseTimeout")
          getlocal0
          pushint 1000000
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootStompTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootStompTimeout")
          getlex QName(PackageNamespace(""),"Sfx")
          callpropvoid QName(PackageNamespace(""),"playStomp"), 0
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
@@ -1024,12 +1021,12 @@ package
          ifeq ofs15
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_RAISE")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
          jump ofs12
          ofs15:
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STEP")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
          ofs12:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
@@ -1049,31 +1046,31 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootyVel")
          pushdouble 0.2
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootyVel")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootyVel")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootyVel")
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"RAISED_Y")
          ifnlt ofs17
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"RAISED_Y")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_MOVE")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"reye")
          pushtrue
          setproperty QName(PackageNamespace(""),"shouldAttack")
          getlocal0
          pushint 1000000
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootRaiseTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootRaiseTimeout")
          getlocal0
          findpropstrict QName(PackageNamespace(""),"int")
          getlocal0
@@ -1100,14 +1097,14 @@ package
          callproperty QName(PackageNamespace(""),"int"), 1
          pushbyte 60
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootStompTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootStompTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_SYNC")
          ifne ofs17
          getlocal0
          pushbyte 10
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootStompTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootStompTimeout")
          ofs17:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
@@ -1127,7 +1124,7 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"ltheta")
          pushdouble 0.2
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"ltheta")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"ltheta")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_HUNT")
@@ -1138,7 +1135,7 @@ package
          getproperty QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"x")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootxtarget")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootxtarget")
          jump ofs21
          ofs20:
          getlocal0
@@ -1150,7 +1147,7 @@ package
          callproperty QName(PackageNamespace(""),"cos"), 1
          pushshort 160
          multiply
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootxtarget")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootxtarget")
          ofs21:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
@@ -1164,7 +1161,7 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MIN_DIST")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootxtarget")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootxtarget")
          ofs22:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
@@ -1181,26 +1178,20 @@ package
          subtract
          pushbyte 100
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootxtarget")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootxtarget")
          ofs23:
          getlocal0
-         dup
-         setlocal2
+         getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootStompTimeout")
          decrement
-         setlocal3
-         getlocal2
-         getlocal3
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootStompTimeout")
-         kill 3
-         kill 2
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootStompTimeout")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootxtarget")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootx")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootxvel")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootxvel")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootx")
@@ -1209,7 +1200,7 @@ package
          pushdouble 0.1
          multiply
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootx")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootStompTimeout")
          pushbyte 0
@@ -1235,10 +1226,10 @@ package
          iffalse ofs19
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STOMP")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
          getlocal0
          pushbyte 10
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootyVel")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootyVel")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"leye")
          pushfalse
@@ -1262,7 +1253,7 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rtheta")
          pushdouble 0.2
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rtheta")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rtheta")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_HUNT")
@@ -1273,7 +1264,7 @@ package
          getproperty QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"x")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootxtarget")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootxtarget")
          jump ofs29
          ofs28:
          getlocal0
@@ -1290,7 +1281,7 @@ package
          callproperty QName(PackageNamespace(""),"cos"), 1
          pushshort 160
          multiply
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootxtarget")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootxtarget")
          ofs29:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootxtarget")
@@ -1304,7 +1295,7 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootx")
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MIN_DIST")
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootxtarget")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootxtarget")
          ofs30:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
@@ -1321,7 +1312,7 @@ package
          subtract
          pushbyte 40
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootxtarget")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootxtarget")
          ofs31:
          getlocal0
          getlocal0
@@ -1329,7 +1320,7 @@ package
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootxvel")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootxvel")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
@@ -1338,18 +1329,12 @@ package
          pushdouble 0.1
          multiply
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
          getlocal0
-         dup
-         setlocal2
+         getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootStompTimeout")
          decrement
-         setlocal3
-         getlocal2
-         getlocal3
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootStompTimeout")
-         kill 3
-         kill 2
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootStompTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootStompTimeout")
          pushbyte 0
@@ -1375,10 +1360,10 @@ package
          iffalse ofs27
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STOMP")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
          getlocal0
          pushbyte 10
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootyVel")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootyVel")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"reye")
          pushfalse
@@ -1403,50 +1388,50 @@ package
          ifnlt ofs36
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepDirIsLeft")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepDirIsLeft")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STEPNOW")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STEPWAIT")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteptheta")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteptheta")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteptheta")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteptheta")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"NO_ORIGIN")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginx")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginy")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginy")
          jump ofs35
          ofs36:
          getlocal0
          pushfalse
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepDirIsLeft")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepDirIsLeft")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STEPNOW")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STEPWAIT")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteptheta")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteptheta")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteptheta")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteptheta")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"NO_ORIGIN")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginx")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginy")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginy")
          ofs35:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
@@ -1474,23 +1459,23 @@ package
          iffalse ofs40
          getlocal0
          pushfalse
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepDirIsLeft")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepDirIsLeft")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STEPWAIT")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STEPNOW")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteptheta")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteptheta")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"NO_ORIGIN")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginx")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginy")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginy")
          jump ofs41
          ofs40:
          getlocal0
@@ -1498,7 +1483,7 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteptheta")
          pushdouble 0.05
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteptheta")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteptheta")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteptheta")
          getlex QName(PackageNamespace(""),"Math")
@@ -1507,7 +1492,7 @@ package
          getlocal0
          getlex QName(PackageNamespace(""),"Math")
          getproperty QName(PackageNamespace(""),"PI")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteptheta")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteptheta")
          getlex QName(PackageNamespace(""),"Sfx")
          callpropvoid QName(PackageNamespace(""),"playStomp"), 0
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
@@ -1515,20 +1500,20 @@ package
          callpropvoid QName(PackageNamespace(""),"start"), 0
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STEPWAIT")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STEPNOW")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteptheta")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteptheta")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"NO_ORIGIN")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginx")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginy")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginy")
          ofs42:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepDirIsLeft")
@@ -1543,7 +1528,7 @@ package
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepradius")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginx")
          ofs44:
          getlocal0
          getlocal0
@@ -1556,7 +1541,7 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepradius")
          multiply
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootx")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginy")
@@ -1570,7 +1555,7 @@ package
          pushdouble 3.4
          multiply
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
          jump ofs41
          ofs43:
          getlocal0
@@ -1583,7 +1568,7 @@ package
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepradius")
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginx")
          ofs45:
          getlocal0
          getlocal0
@@ -1596,7 +1581,7 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepradius")
          multiply
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootx")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginy")
@@ -1610,7 +1595,7 @@ package
          pushdouble 3.4
          multiply
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
          ofs41:
          jump ofs46
          ofs37:
@@ -1640,23 +1625,23 @@ package
          iffalse ofs49
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepDirIsLeft")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepDirIsLeft")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STEPWAIT")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STEPNOW")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteptheta")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteptheta")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"NO_ORIGIN")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginx")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginy")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginy")
          jump ofs46
          ofs49:
          getlocal0
@@ -1664,7 +1649,7 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteptheta")
          pushdouble 0.05
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteptheta")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteptheta")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteptheta")
          getlex QName(PackageNamespace(""),"Math")
@@ -1673,7 +1658,7 @@ package
          getlocal0
          getlex QName(PackageNamespace(""),"Math")
          getproperty QName(PackageNamespace(""),"PI")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteptheta")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteptheta")
          getlex QName(PackageNamespace(""),"Sfx")
          callpropvoid QName(PackageNamespace(""),"playStomp"), 0
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
@@ -1681,20 +1666,20 @@ package
          callpropvoid QName(PackageNamespace(""),"start"), 0
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STEPNOW")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STEPWAIT")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"NO_ORIGIN")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginx")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfooty")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginy")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteporiginy")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteptheta")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lsteptheta")
          ofs50:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepDirIsLeft")
@@ -1709,7 +1694,7 @@ package
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepradius")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginx")
          ofs52:
          getlocal0
          getlocal0
@@ -1722,7 +1707,7 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepradius")
          multiply
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginy")
@@ -1736,7 +1721,7 @@ package
          pushdouble 3.4
          multiply
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
          jump ofs46
          ofs51:
          getlocal0
@@ -1749,7 +1734,7 @@ package
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepradius")
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginx")
          ofs53:
          getlocal0
          getlocal0
@@ -1762,7 +1747,7 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepradius")
          multiply
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rsteporiginy")
@@ -1776,7 +1761,7 @@ package
          pushdouble 3.4
          multiply
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfooty")
          ofs46:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
@@ -1812,7 +1797,7 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootx")
          getlocal1
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootx")
          jump ofs54
          ofs56:
          getlocal0
@@ -1833,7 +1818,7 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
          getlocal1
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
          jump ofs54
          ofs58:
          getlocal0
@@ -1843,7 +1828,7 @@ package
          pushbyte 2
          divide
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootx")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
@@ -1851,7 +1836,7 @@ package
          pushbyte 2
          divide
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
          ofs54:
          getlocal0
          getproperty QName(PackageNamespace(""),"lfoot")
@@ -2033,7 +2018,7 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_bossSpeed")
          multiply
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_elapsed")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_elapsed")
          jump ofs1
          ofs2:
          label
@@ -2042,7 +2027,7 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_elapsed")
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"SEC_PER_TICK")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_elapsed")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_elapsed")
          getlocal0
          callpropvoid QName(PackageNamespace(""),"moveChildren"), 0
          ofs1:
@@ -2064,7 +2049,7 @@ package
          ifnlt ofs6
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STOMP")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
          ofs6:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
@@ -2089,7 +2074,7 @@ package
          callpropvoid QName(PackageNamespace(""),"setFaceDir"), 2
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_INTRO2")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
          jump ofs8
          ofs7:
          getlex QName(PackageNamespace(""),"PlayState")
@@ -2114,7 +2099,7 @@ package
          ifngt ofs11
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STOMP")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
          ofs11:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
@@ -2136,7 +2121,7 @@ package
          setproperty QName(PackageNamespace(""),"x")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_INTRO3")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
          findproperty QName(ProtectedNamespace("Boss"),"_delayIntro")
          pushfalse
          initproperty QName(ProtectedNamespace("Boss"),"_delayIntro")
@@ -2161,6 +2146,8 @@ package
          getproperty QName(PackageNamespace(""),"value")
          setproperty QName(PackageNamespace(""),"x")
          ofs13:
+         jump ofs9
+         ofs14:
          label
          jump ofs9
          ofs4:
@@ -2169,42 +2156,42 @@ package
          setlocal1
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_INTRO1")
          getlocal1
-         ifstrictne ofs14
+         ifstrictne ofs15
          pushbyte 0
-         jump ofs15
-         ofs14:
+         jump ofs16
+         ofs15:
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_INTRO2")
          getlocal1
-         ifstrictne ofs16
+         ifstrictne ofs17
          pushbyte 1
-         jump ofs15
-         ofs16:
-         jump ofs17
-         pushbyte 2
-         jump ofs17
+         jump ofs16
          ofs17:
-         pushbyte 2
-         ofs15:
-         kill 1
-         lookupswitch ofs13, [ofs5, ofs10, ofs13]
-         ofs9:
          jump ofs18
-         ofs3:
+         pushbyte 2
+         jump ofs18
+         ofs18:
+         pushbyte 2
+         ofs16:
+         kill 1
+         lookupswitch ofs14, [ofs5, ofs10, ofs14]
+         ofs9:
          jump ofs19
-         ofs20:
+         ofs3:
+         jump ofs20
+         ofs21:
          label
          getlex QName(ProtectedNamespace("Boss"),"_introDone")
-         iffalse ofs21
+         iffalse ofs22
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_MOVESTOMP")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"STEP_MODE_TIMEOUT")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
-         ofs21:
-         jump ofs18
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
          ofs22:
+         jump ofs19
+         ofs23:
          label
          getlocal0
          getlocal0
@@ -2215,17 +2202,17 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_bossSpeed")
          multiply
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
          pushbyte 0
-         ifnlt ofs23
+         ifnlt ofs24
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_HUNT")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
-         ofs23:
-         jump ofs18
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
          ofs24:
+         jump ofs19
+         ofs25:
          label
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootx")
@@ -2235,38 +2222,38 @@ package
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MIN_DIST")
          pushbyte 2
          add
-         ifnle ofs25
+         ifnle ofs26
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"SYNC_MODE_TIMEOUT")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_SYNC")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
-         ofs25:
-         jump ofs18
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
          ofs26:
+         jump ofs19
+         ofs27:
          label
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_MOVE")
          equals
          dup
-         iffalse ofs27
+         iffalse ofs28
          pop
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_MOVE")
          equals
-         ofs27:
-         iffalse ofs28
-         getlocal0
-         getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STOMP")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
-         getlocal0
-         getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STOMP")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
          ofs28:
+         iffalse ofs29
+         getlocal0
+         getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STOMP")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
+         getlocal0
+         getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STOMP")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         ofs29:
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
@@ -2276,38 +2263,38 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_bossSpeed")
          multiply
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
          pushbyte 0
-         ifnlt ofs29
+         ifnlt ofs30
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"STEP_MODE_TIMEOUT")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_STEP")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
-         ofs29:
-         jump ofs18
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
          ofs30:
+         jump ofs19
+         ofs31:
          label
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_MOVE")
-         ifne ofs31
-         getlocal0
-         getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STOMP")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
-         ofs31:
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
-         getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_MOVE")
          ifne ofs32
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STOMP")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
          ofs32:
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_MOVE")
+         ifne ofs33
+         getlocal0
+         getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_STOMP")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         ofs33:
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
@@ -2317,82 +2304,84 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_bossSpeed")
          multiply
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
          pushbyte 0
-         ifnlt ofs33
+         ifnlt ofs34
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"STEP_MODE_TIMEOUT")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"stepModeTimeout")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_MOVESTOMP")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_RAISE")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lmode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"FOOTMODE_RAISE")
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rmode")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootRaiseTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootRaiseTimeout")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootRaiseTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootRaiseTimeout")
          getlocal0
          pushbyte 50
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootStompTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"lfootStompTimeout")
          getlocal0
          pushbyte 50
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootStompTimeout")
-         ofs33:
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"rfootStompTimeout")
+         ofs34:
+         jump ofs19
+         ofs35:
          label
-         jump ofs18
-         ofs19:
+         jump ofs19
+         ofs20:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"mode")
          setlocal1
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_INTRO3")
          getlocal1
-         ifstrictne ofs34
+         ifstrictne ofs36
          pushbyte 0
-         jump ofs35
-         ofs34:
+         jump ofs37
+         ofs36:
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_MOVESTOMP")
          getlocal1
-         ifstrictne ofs36
+         ifstrictne ofs38
          pushbyte 1
-         jump ofs35
-         ofs36:
+         jump ofs37
+         ofs38:
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_HUNT")
          getlocal1
-         ifstrictne ofs37
+         ifstrictne ofs39
          pushbyte 2
-         jump ofs35
-         ofs37:
+         jump ofs37
+         ofs39:
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_SYNC")
          getlocal1
-         ifstrictne ofs38
+         ifstrictne ofs40
          pushbyte 3
-         jump ofs35
-         ofs38:
+         jump ofs37
+         ofs40:
          getlex QName(PrivateNamespace(null,"#Boss2Rush"),"MODE_STEP")
          getlocal1
-         ifstrictne ofs39
+         ifstrictne ofs41
          pushbyte 4
-         jump ofs35
-         ofs39:
-         jump ofs40
+         jump ofs37
+         ofs41:
+         jump ofs42
          pushbyte 5
-         jump ofs40
-         ofs40:
+         jump ofs42
+         ofs42:
          pushbyte 5
-         ofs35:
+         ofs37:
          kill 1
-         lookupswitch ofs33, [ofs20, ofs22, ofs24, ofs26, ofs30, ofs33]
-         ofs18:
+         lookupswitch ofs35, [ofs21, ofs23, ofs25, ofs27, ofs31, ofs35]
+         ofs19:
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_totalElapsed")
@@ -2402,14 +2391,14 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_bossSpeed")
          multiply
          add
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_totalElapsed")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_totalElapsed")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_createdChildren")
-         iftrue ofs41
+         iftrue ofs43
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_createdChildren")
-         ofs41:
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_createdChildren")
+         ofs43:
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_totalElapsed")
@@ -2418,7 +2407,7 @@ package
          callsupervoid QName(PackageNamespace(""),"update"), 0
          getlex QName(ProtectedNamespace("Enemy"),"_justFlashed")
          pushbyte 0
-         ifnle ofs42
+         ifnle ofs44
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"leye")
          getproperty QName(PackageNamespace(""),"eyelid")
@@ -2427,7 +2416,7 @@ package
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"reye")
          getproperty QName(PackageNamespace(""),"eyelid")
          callpropvoid QName(PackageNamespace(""),"unFlashColor"), 0
-         ofs42:
+         ofs44:
          returnvoid
          end ; code
          end ; body
@@ -2551,7 +2540,7 @@ package
          ofs0:
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"beingKilled")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"beingKilled")
          getlocal0
          callsupervoid QName(PackageNamespace(""),"kill"), 0
          getlex QName(PackageNamespace(""),"PlayState")
@@ -2732,10 +2721,10 @@ package
          iffalse ofs1
          getlocal0
          pushdouble 1.4
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_bossSpeed")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_bossSpeed")
          getlocal0
          pushbyte 2
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_attackMode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_attackMode")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"leye")
          getlocal0
@@ -2773,10 +2762,10 @@ package
          iffalse ofs2
          getlocal0
          pushdouble 1.3
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_bossSpeed")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_bossSpeed")
          getlocal0
          pushbyte 1
-         setproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_attackMode")
+         initproperty QName(PrivateNamespace(null,"#Boss2Rush"),"_attackMode")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss2Rush"),"leye")
          getlocal0
