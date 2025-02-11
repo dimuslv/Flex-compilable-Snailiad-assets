@@ -8,7 +8,7 @@ package mx.states
    
    public class State extends EventDispatcher
    {
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       private var initialized:Boolean = false;
       

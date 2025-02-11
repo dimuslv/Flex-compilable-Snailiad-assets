@@ -11,7 +11,7 @@ package mx.utils
    
    public class UIDUtil
    {
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       private static const ALPHA_CHAR_CODES:Array = [48,49,50,51,52,53,54,55,56,57,65,66,67,68,69,70];
       

@@ -7,7 +7,7 @@ package mx.events
    
    public dynamic class DynamicEvent extends Event
    {
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       public function DynamicEvent(param1:String, param2:Boolean = false, param3:Boolean = false)
       {

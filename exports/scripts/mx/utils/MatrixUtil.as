@@ -25,7 +25,7 @@ package mx.utils
       
       private static var computedMatrixProperty:QName;
       
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       private static const RADIANS_PER_DEGREES:Number = Math.PI / 180;
       

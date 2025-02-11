@@ -7,7 +7,7 @@ package mx.modules
    
    public class ModuleManager
    {
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       public function ModuleManager()
       {
@@ -196,9 +196,10 @@ class ModuleInfo extends EventDispatcher
       var _loc5_:URLRequest = new URLRequest(this._url);
       var _loc6_:LoaderContext = new LoaderContext();
       _loc6_.applicationDomain = !!param1 ? param1 : new ApplicationDomain(ApplicationDomain.currentDomain);
-      if(param2 != null && Security.sandboxType == Security.REMOTE)
+      _loc6_.securityDomain = param2;
+      if(param2 == null && Security.sandboxType == Security.REMOTE)
       {
-         _loc6_.securityDomain = param2;
+         _loc6_.securityDomain = SecurityDomain.currentDomain;
       }
       this.loader = new Loader();
       this.loader.contentLoaderInfo.addEventListener(Event.INIT,this.initHandler);

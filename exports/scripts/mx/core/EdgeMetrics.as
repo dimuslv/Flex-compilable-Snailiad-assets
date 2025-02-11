@@ -4,7 +4,7 @@ package mx.core
    
    public class EdgeMetrics
    {
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       public static const EMPTY:EdgeMetrics = new EdgeMetrics(0,0,0,0);
       

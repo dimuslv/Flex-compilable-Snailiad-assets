@@ -6,7 +6,7 @@ package mx.validators
    
    public class ValidationResult
    {
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       public var errorCode:String;
       

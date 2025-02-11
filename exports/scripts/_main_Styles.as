@@ -17,7 +17,7 @@ package
    
    public class _main_Styles
    {
-      private static var _embed_css_Assets_swf_mx_skins_cursor_BusyCursor_1565917771:Class = _main_Styles__embed_css_Assets_swf_mx_skins_cursor_BusyCursor_1565917771;
+      private static var _embed_css_Assets_swf_mx_skins_cursor_BusyCursor_337556046:Class = _main_Styles__embed_css_Assets_swf_mx_skins_cursor_BusyCursor_337556046;
       
       public function _main_Styles()
       {
@@ -377,7 +377,7 @@ package
             style.defaultFactory = function():void
             {
                this.busyCursor = BusyCursor;
-               this.busyCursorBackground = _embed_css_Assets_swf_mx_skins_cursor_BusyCursor_1565917771;
+               this.busyCursorBackground = _embed_css_Assets_swf_mx_skins_cursor_BusyCursor_337556046;
             };
          }
          if(mergedStyle != null && (mergedStyle.defaultFactory == null || ObjectUtil.compare(new style.defaultFactory(),new mergedStyle.defaultFactory())))

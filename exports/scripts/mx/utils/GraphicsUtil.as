@@ -7,7 +7,7 @@ package mx.utils
    
    public class GraphicsUtil
    {
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       public function GraphicsUtil()
       {

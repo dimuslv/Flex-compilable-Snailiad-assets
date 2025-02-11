@@ -33,7 +33,7 @@ package mx.managers
       
       public static var mixins:Array;
       
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       mx_internal var initialized:Boolean = false;
       

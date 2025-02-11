@@ -34,7 +34,7 @@ package mx.core
       
       private static var _embeddedFontRegistry:IEmbeddedFontRegistry;
       
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       mx_internal static const TEXT_WIDTH_PADDING:int = 5;
       

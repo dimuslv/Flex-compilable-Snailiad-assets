@@ -16,7 +16,7 @@ package mx.styles
       
       private static var _impl:IStyleManager2;
       
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       public static const NOT_A_COLOR:uint = 4294967295;
       

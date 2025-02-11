@@ -8,7 +8,7 @@ package mx.skins
    
    public class Border extends ProgrammaticSkin implements IBorder
    {
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       public function Border()
       {

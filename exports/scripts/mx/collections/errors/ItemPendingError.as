@@ -7,7 +7,7 @@ package mx.collections.errors
    
    public class ItemPendingError extends Error
    {
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       private var _responders:Array;
       

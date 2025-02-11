@@ -46,7 +46,7 @@ package mx.managers
    
    public class SystemManager extends MovieClip implements IChildList, IFlexDisplayObject, IFlexModuleFactory, ISystemManager
    {
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       private static const IDLE_THRESHOLD:Number = 1000;
       

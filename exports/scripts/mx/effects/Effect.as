@@ -17,7 +17,7 @@ package mx.effects
    
    public class Effect extends EventDispatcher implements IEffect
    {
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       mx_internal var applyEndValuesWhenDone:Boolean = false;
       

@@ -33,7 +33,7 @@ package mx.managers
       
       public static var mixins:Array;
       
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       private var nextCursorID:int = 1;
       
@@ -596,7 +596,7 @@ use namespace mx_internal;
 
 class CursorQueueItem
 {
-   mx_internal static const VERSION:String = "4.1.0.21490";
+   mx_internal static const VERSION:String = "4.1.0.16076";
    
    public var cursorID:int = 0;
    

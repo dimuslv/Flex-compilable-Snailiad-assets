@@ -7,7 +7,7 @@ package mx.styles
    
    public class CSSMergedStyleDeclaration extends CSSStyleDeclaration
    {
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       private var style:CSSStyleDeclaration;
       

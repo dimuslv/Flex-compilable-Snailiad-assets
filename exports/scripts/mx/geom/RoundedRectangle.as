@@ -7,7 +7,7 @@ package mx.geom
    
    public class RoundedRectangle extends Rectangle
    {
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       public var cornerRadius:Number = 0;
       

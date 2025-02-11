@@ -8,7 +8,7 @@ package mx.core
    
    public class LayoutElementUIComponentUtils
    {
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       private static const DEFAULT_MAX_WIDTH:Number = 10000;
       

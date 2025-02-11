@@ -13,7 +13,7 @@ package mx.styles
    
    public class CSSStyleDeclaration extends EventDispatcher
    {
-      mx_internal static const VERSION:String = "4.1.0.21490";
+      mx_internal static const VERSION:String = "4.1.0.16076";
       
       private static const NOT_A_COLOR:uint = 4294967295;
       
