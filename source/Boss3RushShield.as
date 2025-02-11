@@ -12,7 +12,7 @@ package
       
       private static const OFFENSE:int = 3;
       
-      public function Boss3RushShield()
+      public function Boss3RushShield() : void
       {
          super(0,0,MAX_HP,DEFENSE,OFFENSE,true);
          loadGraphic(Art.Boss3RushShield,true,true,IMG_WIDTH,IMG_HEIGHT);

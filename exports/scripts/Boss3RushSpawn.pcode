@@ -106,7 +106,7 @@ package
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"Boolean")
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 6
@@ -254,13 +254,13 @@ package
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_mode")
-         setproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_lastMode")
+         initproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_lastMode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss3RushSpawn"),"MODE_WAIT")
-         setproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_mode")
+         initproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_mode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss3RushSpawn"),"MODE_TIMEOUT")
-         setproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_modeTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_modeTimeout")
          returnvoid
          end ; code
          end ; body
@@ -289,7 +289,7 @@ package
          callpropvoid QName(PackageNamespace(""),"play"), 1
          getlocal0
          pushshort 500
-         setproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"ACCEL")
+         initproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"ACCEL")
          returnvoid
          end ; code
          end ; body
@@ -428,10 +428,10 @@ package
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_mode")
-         setproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_lastMode")
+         initproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_lastMode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss3RushSpawn"),"MODE_UP")
-         setproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_mode")
+         initproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_mode")
          getlex QName(PackageNamespace(""),"acceleration")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"ACCEL")
@@ -463,10 +463,10 @@ package
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_mode")
-         setproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_lastMode")
+         initproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_lastMode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss3RushSpawn"),"MODE_DOWN")
-         setproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_mode")
+         initproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_mode")
          getlex QName(PackageNamespace(""),"acceleration")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"ACCEL")
@@ -497,10 +497,10 @@ package
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_mode")
-         setproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_lastMode")
+         initproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_lastMode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss3RushSpawn"),"MODE_LEFT")
-         setproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_mode")
+         initproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_mode")
          getlex QName(PackageNamespace(""),"acceleration")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"ACCEL")
@@ -532,10 +532,10 @@ package
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_mode")
-         setproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_lastMode")
+         initproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_lastMode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Boss3RushSpawn"),"MODE_RIGHT")
-         setproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_mode")
+         initproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_mode")
          getlex QName(PackageNamespace(""),"acceleration")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"ACCEL")
@@ -569,7 +569,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_modeTimeout")
+         initproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_modeTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss3RushSpawn"),"_mode")
          getlex QName(PrivateNamespace(null,"#Boss3RushSpawn"),"MODE_WAIT")
@@ -613,6 +613,8 @@ package
          getlocal0
          callpropvoid QName(PackageNamespace(""),"attackRight"), 0
          ofs8:
+         jump ofs1
+         ofs9:
          label
          jump ofs1
          ofs2:
@@ -621,42 +623,42 @@ package
          setlocal1
          getlex QName(PrivateNamespace(null,"#Boss3RushSpawn"),"MODE_WAIT")
          getlocal1
-         ifstrictne ofs9
+         ifstrictne ofs10
          pushbyte 0
-         jump ofs10
-         ofs9:
+         jump ofs11
+         ofs10:
          getlex QName(PrivateNamespace(null,"#Boss3RushSpawn"),"MODE_RIGHT")
          getlocal1
-         ifstrictne ofs11
+         ifstrictne ofs12
          pushbyte 1
-         jump ofs10
-         ofs11:
+         jump ofs11
+         ofs12:
          getlex QName(PrivateNamespace(null,"#Boss3RushSpawn"),"MODE_LEFT")
          getlocal1
-         ifstrictne ofs12
+         ifstrictne ofs13
          pushbyte 2
-         jump ofs10
-         ofs12:
+         jump ofs11
+         ofs13:
          getlex QName(PrivateNamespace(null,"#Boss3RushSpawn"),"MODE_UP")
          getlocal1
-         ifstrictne ofs13
+         ifstrictne ofs14
          pushbyte 3
-         jump ofs10
-         ofs13:
+         jump ofs11
+         ofs14:
          getlex QName(PrivateNamespace(null,"#Boss3RushSpawn"),"MODE_DOWN")
          getlocal1
-         ifstrictne ofs14
+         ifstrictne ofs15
          pushbyte 4
-         jump ofs10
-         ofs14:
-         jump ofs15
-         pushbyte 5
-         jump ofs15
+         jump ofs11
          ofs15:
+         jump ofs16
          pushbyte 5
-         ofs10:
+         jump ofs16
+         ofs16:
+         pushbyte 5
+         ofs11:
          kill 1
-         lookupswitch ofs8, [ofs3, ofs3, ofs3, ofs6, ofs6, ofs8]
+         lookupswitch ofs9, [ofs3, ofs3, ofs3, ofs6, ofs6, ofs9]
          ofs1:
          returnvoid
          end ; code

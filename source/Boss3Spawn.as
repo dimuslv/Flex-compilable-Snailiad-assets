@@ -41,7 +41,7 @@ package
       
       private var ACCEL:Number = 400;
       
-      public function Boss3Spawn(param1:int, param2:int, param3:int, param4:Boolean)
+      public function Boss3Spawn(param1:int, param2:int, param3:int, param4:Boolean) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          this._attackMode = param3;
@@ -77,15 +77,15 @@ package
          acceleration.y = 0;
          velocity.x = 0;
          velocity.y = 0;
-         this._lastMode = this._mode;
-         this._mode = MODE_WAIT;
-         this._modeTimeout = MODE_TIMEOUT;
+         _lastMode = this._mode;
+         _mode = MODE_WAIT;
+         _modeTimeout = MODE_TIMEOUT;
       }
       
       public function makeBlue() : void
       {
          play("stay1");
-         this.ACCEL = 500;
+         ACCEL = 500;
       }
       
       override public function hitSide(param1:FlxObject, param2:Number) : void
@@ -110,35 +110,35 @@ package
       
       public function attackUp() : void
       {
-         this._lastMode = this._mode;
-         this._mode = MODE_UP;
+         _lastMode = this._mode;
+         _mode = MODE_UP;
          acceleration.y = -this.ACCEL;
       }
       
       public function attackDown() : void
       {
-         this._lastMode = this._mode;
-         this._mode = MODE_DOWN;
+         _lastMode = this._mode;
+         _mode = MODE_DOWN;
          acceleration.y = this.ACCEL;
       }
       
       public function attackLeft() : void
       {
-         this._lastMode = this._mode;
-         this._mode = MODE_LEFT;
+         _lastMode = this._mode;
+         _mode = MODE_LEFT;
          acceleration.x = -this.ACCEL;
       }
       
       public function attackRight() : void
       {
-         this._lastMode = this._mode;
-         this._mode = MODE_RIGHT;
+         _lastMode = this._mode;
+         _mode = MODE_RIGHT;
          acceleration.x = this.ACCEL;
       }
       
       public function checkMode() : void
       {
-         this._modeTimeout -= FlxG.elapsed;
+         _modeTimeout -= FlxG.elapsed;
          if(this._mode == MODE_WAIT && this._modeTimeout < 0)
          {
             switch(this._lastMode)
@@ -165,6 +165,7 @@ package
                   {
                      this.attackRight();
                   }
+				  break;
             }
          }
       }

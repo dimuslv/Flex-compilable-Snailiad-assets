@@ -229,34 +229,34 @@ package
       
       public function updateShieldPositions() : void
       {
-         var _loc1_:Number = NaN;
          var _loc2_:Number = NaN;
-         var _loc3_:int = 0;
-         while(_loc3_ < SHIELDS_REALMAX)
+         var _loc3_:Number = NaN;
+         var _loc1_:int = 0;
+         while(_loc1_ < SHIELDS_REALMAX)
          {
-            _loc1_ = (this._elapsed / SHIELDS_PERIOD % 1 * SHIELDS_MAX + 17 * _loc3_ % SHIELDS_REALMAX) % SHIELDS_MAX;
-            _loc2_ = _loc1_ % 9;
-            if(_loc1_ < 9)
+            _loc2_ = (this._elapsed / SHIELDS_PERIOD % 1 * SHIELDS_MAX + 17 * _loc1_ % SHIELDS_REALMAX) % SHIELDS_MAX;
+            _loc3_ = _loc2_ % 9;
+            if(_loc2_ < 9)
             {
-               this._shields[_loc3_].x = x - 16 + 16 * _loc2_;
-               this._shields[_loc3_].y = y - 16;
+               this._shields[_loc1_].x = x - 16 + 16 * _loc3_;
+               this._shields[_loc1_].y = y - 16;
             }
-            else if(_loc1_ < 18)
+            else if(_loc2_ < 18)
             {
-               this._shields[_loc3_].x = x - 16 + 16 * 9;
-               this._shields[_loc3_].y = y - 16 + 16 * _loc2_;
+               this._shields[_loc1_].x = x - 16 + 16 * 9;
+               this._shields[_loc1_].y = y - 16 + 16 * _loc3_;
             }
-            else if(_loc1_ < 27)
+            else if(_loc2_ < 27)
             {
-               this._shields[_loc3_].x = x - 16 + 16 * 9 - 16 * _loc2_;
-               this._shields[_loc3_].y = y - 16 + 16 * 9;
+               this._shields[_loc1_].x = x - 16 + 16 * 9 - 16 * _loc3_;
+               this._shields[_loc1_].y = y - 16 + 16 * 9;
             }
             else
             {
-               this._shields[_loc3_].x = x - 16;
-               this._shields[_loc3_].y = y - 16 + 16 * 9 - 16 * _loc2_;
+               this._shields[_loc1_].x = x - 16;
+               this._shields[_loc1_].y = y - 16 + 16 * 9 - 16 * _loc3_;
             }
-            _loc3_++;
+            _loc1_++;
          }
       }
       
