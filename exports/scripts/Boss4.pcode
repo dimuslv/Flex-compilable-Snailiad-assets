@@ -3570,8 +3570,6 @@ package
          code
          getlocal0
          pushscope
-         pushbyte 0
-         setlocal3
          getlocal2
          convert_i
          setlocal3
@@ -7157,52 +7155,54 @@ package
          callproperty QName(PrivateNamespace(null,"#Boss4"),"pressedRight"), 0
          convert_b
          ofs37:
-         iftrue ofs34
+         iffalse ofs38
+         jump ofs34
+         ofs38:
          getlocal0
          callproperty QName(PrivateNamespace(null,"#Boss4"),"pressedDown"), 0
          not
          dup
-         iffalse ofs38
+         iffalse ofs39
          pop
          getlocal0
          callproperty QName(PrivateNamespace(null,"#Boss4"),"pressedUp"), 0
          not
-         ofs38:
+         ofs39:
          dup
-         iftrue ofs39
+         iftrue ofs40
          pop
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss4"),"_mostRecentDir")
          getlex QName(PackageNamespace(""),"DIR_LEFT")
          equals
-         ofs39:
+         ofs40:
          dup
-         iffalse ofs40
+         iffalse ofs41
          pop
          getlocal0
          callproperty QName(PrivateNamespace(null,"#Boss4"),"pressedLeft"), 0
          convert_b
-         ofs40:
-         iffalse ofs41
+         ofs41:
+         iffalse ofs42
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss4"),"_faceDir")
          getlex QName(PackageNamespace(""),"FACE_RWALL_UP")
          equals
-         iffalse ofs42
+         iffalse ofs43
          getlex QName(PackageNamespace(""),"FACE_LWALL_UP")
          convert_i
-         jump ofs43
-         ofs42:
+         jump ofs44
+         ofs43:
          getlex QName(PackageNamespace(""),"FACE_LWALL_DOWN")
          convert_i
-         ofs43:
+         ofs44:
          callpropvoid QName(PackageNamespace(""),"setFaceDir"), 1
          getlocal0
          getlex QName(PackageNamespace(""),"GRAV_LEFT")
          initproperty QName(PrivateNamespace(null,"#Boss4"),"_desiredGravity")
          jump ofs34
-         ofs41:
+         ofs42:
          getlocal0
          getlex QName(PackageNamespace(""),"FACE_FLOOR_RIGHT")
          callpropvoid QName(PackageNamespace(""),"setFaceDir"), 1
@@ -7211,122 +7211,124 @@ package
          initproperty QName(PrivateNamespace(null,"#Boss4"),"_desiredGravity")
          ofs34:
          jump ofs16
-         ofs44:
+         ofs45:
          label
          getlocal0
          callproperty QName(PrivateNamespace(null,"#Boss4"),"pressedLeft"), 0
          not
          dup
-         iffalse ofs45
+         iffalse ofs46
          pop
          getlocal0
          callproperty QName(PrivateNamespace(null,"#Boss4"),"pressedRight"), 0
          not
-         ofs45:
+         ofs46:
          dup
-         iftrue ofs46
+         iftrue ofs47
          pop
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss4"),"_mostRecentDir")
          getlex QName(PackageNamespace(""),"DIR_UP")
          equals
-         ofs46:
+         ofs47:
          dup
-         iffalse ofs47
+         iffalse ofs48
          pop
          getlocal0
          callproperty QName(PrivateNamespace(null,"#Boss4"),"pressedUp"), 0
          convert_b
-         ofs47:
-         iffalse ofs48
+         ofs48:
+         iffalse ofs49
          getlocal0
          getlex QName(PackageNamespace(""),"FACE_CEIL_LEFT")
          callpropvoid QName(PackageNamespace(""),"setFaceDir"), 1
          getlocal0
          getlex QName(PackageNamespace(""),"GRAV_UP")
          initproperty QName(PrivateNamespace(null,"#Boss4"),"_desiredGravity")
-         jump ofs49
-         ofs48:
+         jump ofs50
+         ofs49:
          getlocal0
          callproperty QName(PrivateNamespace(null,"#Boss4"),"pressedDown"), 0
          not
          dup
-         iffalse ofs50
+         iffalse ofs51
          pop
          getlocal0
          callproperty QName(PrivateNamespace(null,"#Boss4"),"pressedUp"), 0
          not
-         ofs50:
+         ofs51:
          dup
-         iftrue ofs51
+         iftrue ofs52
          pop
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss4"),"_mostRecentDir")
          getlex QName(PackageNamespace(""),"DIR_LEFT")
          equals
-         ofs51:
-         dup
-         iffalse ofs52
-         pop
-         getlocal0
-         callproperty QName(PrivateNamespace(null,"#Boss4"),"pressedLeft"), 0
-         convert_b
          ofs52:
-         iftrue ofs49
-         getlocal0
-         callproperty QName(PrivateNamespace(null,"#Boss4"),"pressedDown"), 0
-         not
          dup
          iffalse ofs53
          pop
          getlocal0
+         callproperty QName(PrivateNamespace(null,"#Boss4"),"pressedLeft"), 0
+         convert_b
+         ofs53:
+         iffalse ofs54
+         jump ofs50
+         ofs54:
+         getlocal0
+         callproperty QName(PrivateNamespace(null,"#Boss4"),"pressedDown"), 0
+         not
+         dup
+         iffalse ofs55
+         pop
+         getlocal0
          callproperty QName(PrivateNamespace(null,"#Boss4"),"pressedUp"), 0
          not
-         ofs53:
+         ofs55:
          dup
-         iftrue ofs54
+         iftrue ofs56
          pop
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss4"),"_mostRecentDir")
          getlex QName(PackageNamespace(""),"DIR_RIGHT")
          equals
-         ofs54:
+         ofs56:
          dup
-         iffalse ofs55
+         iffalse ofs57
          pop
          getlocal0
          callproperty QName(PrivateNamespace(null,"#Boss4"),"pressedRight"), 0
          convert_b
-         ofs55:
-         iffalse ofs56
+         ofs57:
+         iffalse ofs58
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Boss4"),"_faceDir")
          getlex QName(PackageNamespace(""),"FACE_LWALL_UP")
          equals
-         iffalse ofs57
+         iffalse ofs59
          getlex QName(PackageNamespace(""),"FACE_RWALL_UP")
          convert_i
-         jump ofs58
-         ofs57:
+         jump ofs60
+         ofs59:
          getlex QName(PackageNamespace(""),"FACE_RWALL_DOWN")
          convert_i
-         ofs58:
+         ofs60:
          callpropvoid QName(PackageNamespace(""),"setFaceDir"), 1
          getlocal0
          getlex QName(PackageNamespace(""),"GRAV_RIGHT")
          initproperty QName(PrivateNamespace(null,"#Boss4"),"_desiredGravity")
-         jump ofs49
-         ofs56:
+         jump ofs50
+         ofs58:
          getlocal0
          getlex QName(PackageNamespace(""),"FACE_FLOOR_LEFT")
          callpropvoid QName(PackageNamespace(""),"setFaceDir"), 1
          getlocal0
          getlex QName(PackageNamespace(""),"GRAV_DOWN")
          initproperty QName(PrivateNamespace(null,"#Boss4"),"_desiredGravity")
-         ofs49:
+         ofs50:
          jump ofs16
-         ofs59:
+         ofs61:
          label
          jump ofs16
          ofs0:
@@ -7335,36 +7337,36 @@ package
          setlocal1
          getlex QName(PackageNamespace(""),"GRAV_DOWN")
          getlocal1
-         ifstrictne ofs60
+         ifstrictne ofs62
          pushbyte 0
-         jump ofs61
-         ofs60:
+         jump ofs63
+         ofs62:
          getlex QName(PackageNamespace(""),"GRAV_UP")
          getlocal1
-         ifstrictne ofs62
+         ifstrictne ofs64
          pushbyte 1
-         jump ofs61
-         ofs62:
+         jump ofs63
+         ofs64:
          getlex QName(PackageNamespace(""),"GRAV_RIGHT")
          getlocal1
-         ifstrictne ofs63
+         ifstrictne ofs65
          pushbyte 2
-         jump ofs61
-         ofs63:
+         jump ofs63
+         ofs65:
          getlex QName(PackageNamespace(""),"GRAV_LEFT")
          getlocal1
-         ifstrictne ofs64
+         ifstrictne ofs66
          pushbyte 3
-         jump ofs61
-         ofs64:
-         jump ofs65
+         jump ofs63
+         ofs66:
+         jump ofs67
          pushbyte 4
-         jump ofs65
-         ofs65:
+         jump ofs67
+         ofs67:
          pushbyte 4
-         ofs61:
+         ofs63:
          kill 1
-         lookupswitch ofs59, [ofs1, ofs17, ofs29, ofs44, ofs59]
+         lookupswitch ofs61, [ofs1, ofs17, ofs29, ofs45, ofs61]
          ofs16:
          getlocal0
          getlex QName(PackageNamespace(""),"GRAV_DOWN")

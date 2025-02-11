@@ -939,8 +939,7 @@ package
       
       public function moveSnailCheckBounds(param1:int, param2:int) : void
       {
-         var _loc3_:int = 0;
-         _loc3_ = param2;
+         var _loc3_:int = param2;
          if(param2 < 0)
          {
             param2 = PlayState.worldMap.findFirstNotSolidTop(x,y,width,height,param2);

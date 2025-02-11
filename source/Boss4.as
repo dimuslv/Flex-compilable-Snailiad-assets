@@ -272,55 +272,6 @@ package
          }
       }
       
-      public function Boss4(param1:int, param2:int) : void
-      {
-         this._hasWeapon = [true,true,true];
-         super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
-         this._originX = param1;
-         this._originY = param2;
-         this._decisionTableIndex = PlayState.player.getMaxHp() + PlayState.player.getPercentComplete();
-         this._decisionTableIndex %= DECISION_TABLE.length;
-         loadGraphic(Art.Boss4,true,true,IMG_WIDTH,IMG_HEIGHT);
-         var _loc3_:int = 0;
-         while(_loc3_ < 2)
-         {
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_floor_right_move",[0 + _loc3_ * 20,1 + _loc3_ * 20],3,true);
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_floor_right_hide",[3 + _loc3_ * 20],9,false);
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_rwall_up_move",[4 + _loc3_ * 20,5 + _loc3_ * 20],3,true);
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_rwall_up_hide",[7 + _loc3_ * 20],9,false);
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_rwall_down_move",[8 + _loc3_ * 20,9 + _loc3_ * 20],3,true);
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_rwall_down_hide",[11 + _loc3_ * 20],9,false);
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_ceil_right_move",[12 + _loc3_ * 20,13 + _loc3_ * 20],3,true);
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_ceil_right_hide",[15 + _loc3_ * 20],9,false);
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_death",[16 + _loc3_ * 20,17 + _loc3_ * 20,18 + _loc3_ * 20,19 + _loc3_ * 20],30,true);
-            _loc3_++;
-         }
-         this._runSpeed = 370;
-         this._maxSpeed = 600;
-         this._gravity = 1200;
-         if(PlayState.player._slugMode)
-         {
-            this._bossSpeed += 0.1;
-         }
-         maxVelocity.x = this._maxSpeed;
-         maxVelocity.y = this._maxSpeed;
-         this._shadowBall = new Array();
-         _loc3_ = 0;
-         while(_loc3_ < this.SHADOW_BALL_NUM)
-         {
-            this._shadowBall[_loc3_] = new Boss4ShadowBall();
-            PlayState.enemies.add(this._shadowBall[_loc3_]);
-            _loc3_++;
-         }
-         this.setGravityDir(GRAV_DOWN);
-         this.setFaceDir(FACE_FLOOR_RIGHT,true);
-         this.playAnim("floor_right_move");
-         this._bulletGroups = PlayState.boss4BulletGroups;
-         PlayState.player.x -= 40;
-         Music.playBoss1();
-         PlayState.player.setFaceDir(Player.FACE_FLOOR_LEFT);
-      }
-      
       public function checkFireRings() : void
       {
          if(this._ringTimeout <= 0)
@@ -1656,8 +1607,11 @@ package
                   this.setFaceDir(FACE_CEIL_RIGHT);
                   _desiredGravity = GRAV_UP;
                }
-               else if(!((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_RIGHT) && this.pressedRight()))
+               else if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_RIGHT) && this.pressedRight())
                {
+			   }
+			   else
+			   {
                   if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_LEFT) && this.pressedLeft())
                   {
                      this.setFaceDir(this._faceDir == FACE_RWALL_UP ? FACE_LWALL_UP : FACE_LWALL_DOWN);
@@ -1676,8 +1630,11 @@ package
                   this.setFaceDir(FACE_CEIL_LEFT);
                   _desiredGravity = GRAV_UP;
                }
-               else if(!((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_LEFT) && this.pressedLeft()))
+               else if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_LEFT) && this.pressedLeft())
                {
+			   }
+			   else
+			   {
                   if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_RIGHT) && this.pressedRight())
                   {
                      this.setFaceDir(this._faceDir == FACE_LWALL_UP ? FACE_RWALL_UP : FACE_RWALL_DOWN);
@@ -1850,6 +1807,55 @@ package
             this.playAnim(this._lastAnim);
          }
          super.hurt(param1);
+      }
+      
+      public function Boss4(param1:int, param2:int) : void
+      {
+         this._hasWeapon = [true,true,true];
+         super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
+         this._originX = param1;
+         this._originY = param2;
+         this._decisionTableIndex = PlayState.player.getMaxHp() + PlayState.player.getPercentComplete();
+         this._decisionTableIndex %= DECISION_TABLE.length;
+         loadGraphic(Art.Boss4,true,true,IMG_WIDTH,IMG_HEIGHT);
+         var _loc3_:int = 0;
+         while(_loc3_ < 2)
+         {
+            addAnimation("snail" + (_loc3_ + 1).toString() + "_floor_right_move",[0 + _loc3_ * 20,1 + _loc3_ * 20],3,true);
+            addAnimation("snail" + (_loc3_ + 1).toString() + "_floor_right_hide",[3 + _loc3_ * 20],9,false);
+            addAnimation("snail" + (_loc3_ + 1).toString() + "_rwall_up_move",[4 + _loc3_ * 20,5 + _loc3_ * 20],3,true);
+            addAnimation("snail" + (_loc3_ + 1).toString() + "_rwall_up_hide",[7 + _loc3_ * 20],9,false);
+            addAnimation("snail" + (_loc3_ + 1).toString() + "_rwall_down_move",[8 + _loc3_ * 20,9 + _loc3_ * 20],3,true);
+            addAnimation("snail" + (_loc3_ + 1).toString() + "_rwall_down_hide",[11 + _loc3_ * 20],9,false);
+            addAnimation("snail" + (_loc3_ + 1).toString() + "_ceil_right_move",[12 + _loc3_ * 20,13 + _loc3_ * 20],3,true);
+            addAnimation("snail" + (_loc3_ + 1).toString() + "_ceil_right_hide",[15 + _loc3_ * 20],9,false);
+            addAnimation("snail" + (_loc3_ + 1).toString() + "_death",[16 + _loc3_ * 20,17 + _loc3_ * 20,18 + _loc3_ * 20,19 + _loc3_ * 20],30,true);
+            _loc3_++;
+         }
+         this._runSpeed = 370;
+         this._maxSpeed = 600;
+         this._gravity = 1200;
+         if(PlayState.player._slugMode)
+         {
+            this._bossSpeed += 0.1;
+         }
+         maxVelocity.x = this._maxSpeed;
+         maxVelocity.y = this._maxSpeed;
+         this._shadowBall = new Array();
+         _loc3_ = 0;
+         while(_loc3_ < this.SHADOW_BALL_NUM)
+         {
+            this._shadowBall[_loc3_] = new Boss4ShadowBall();
+            PlayState.enemies.add(this._shadowBall[_loc3_]);
+            _loc3_++;
+         }
+         this.setGravityDir(GRAV_DOWN);
+         this.setFaceDir(FACE_FLOOR_RIGHT,true);
+         this.playAnim("floor_right_move");
+         this._bulletGroups = PlayState.boss4BulletGroups;
+         PlayState.player.x -= 40;
+         Music.playBoss1();
+         PlayState.player.setFaceDir(Player.FACE_FLOOR_LEFT);
       }
    }
 }
