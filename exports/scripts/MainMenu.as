@@ -1612,6 +1612,7 @@ package
       
       public function miniGame_aimBall() : void
       {
+         var _loc3_:Number = NaN;
          var _loc1_:* = false;
          var _loc2_:Boolean = true;
          if(this.miniGame_ball.velocity.y == 0 || _loc2_)
@@ -1622,7 +1623,7 @@ package
          {
             _loc1_ = this.miniGame_ball.velocity.y < 0;
          }
-         var _loc3_:Number = this.miniGame_getBallSpeed();
+         _loc3_ = this.miniGame_getBallSpeed();
          var _loc4_:int = this.miniGame_getBallBounces();
          var _loc5_:int = this.miniGame_right ? int(FlxG.width * 2 - this.miniGame_targetX) : 0 - this.miniGame_targetX;
          var _loc6_:int = _loc4_ % 2 == 1 ? FlxG.height - this.miniGame_targetY : 0 + this.miniGame_targetY;
