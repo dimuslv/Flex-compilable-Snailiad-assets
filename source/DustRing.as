@@ -22,7 +22,7 @@ package
       
       private var repeats:int = 0;
       
-      public function DustRing(param1:int, param2:int, param3:int = 0, param4:Number = 1)
+      public function DustRing(param1:int, param2:int, param3:int = 0, param4:Number = 1.0) : void
       {
          super();
          this.originX = param1;
@@ -40,10 +40,10 @@ package
       
       override public function update() : void
       {
-         this.originX = PlayState.player.x;
-         this.originY = PlayState.player.y;
-         this.elapsed += FlxG.elapsed;
-         this.radius -= FlxG.elapsed * this.INWARD_SPEED;
+         originX = PlayState.player.x;
+         originY = PlayState.player.y;
+         elapsed += FlxG.elapsed;
+         radius -= FlxG.elapsed * this.INWARD_SPEED;
          if(this.radius <= 0)
          {
             --this.repeats;
@@ -52,7 +52,7 @@ package
                kill();
                return;
             }
-            this.radius = RADIUS;
+            radius = RADIUS;
          }
          this.updatePositions();
          super.update();
@@ -60,11 +60,10 @@ package
       
       public function updatePositions() : void
       {
-         var _loc2_:Number = NaN;
          var _loc1_:int = 0;
          while(_loc1_ < DUST_NUM)
          {
-            _loc2_ = Math.PI * 2 / DUST_NUM * _loc1_ + this.elapsed * SPIN_SPEED;
+            var _loc2_:Number = Math.PI * 2 / DUST_NUM * _loc1_ + this.elapsed * SPIN_SPEED;
             members[_loc1_].x = this.originX + Math.cos(_loc2_) * this.radius;
             members[_loc1_].y = this.originY + Math.sin(_loc2_) * this.radius;
             _loc1_++;

@@ -62,8 +62,8 @@ package
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"Number")
          optional Integer(0)
-         optional Integer(1)
-         returns null
+         optional Double(1)
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 3
@@ -137,19 +137,19 @@ package
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"x")
-         setproperty QName(PrivateNamespace(null,"#DustRing"),"originX")
+         initproperty QName(PrivateNamespace(null,"#DustRing"),"originX")
          getlocal0
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"y")
-         setproperty QName(PrivateNamespace(null,"#DustRing"),"originY")
+         initproperty QName(PrivateNamespace(null,"#DustRing"),"originY")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#DustRing"),"elapsed")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          add
-         setproperty QName(PrivateNamespace(null,"#DustRing"),"elapsed")
+         initproperty QName(PrivateNamespace(null,"#DustRing"),"elapsed")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#DustRing"),"radius")
@@ -159,7 +159,7 @@ package
          getproperty QName(PrivateNamespace(null,"#DustRing"),"INWARD_SPEED")
          multiply
          subtract
-         setproperty QName(PrivateNamespace(null,"#DustRing"),"radius")
+         initproperty QName(PrivateNamespace(null,"#DustRing"),"radius")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#DustRing"),"radius")
          pushbyte 0
@@ -185,7 +185,7 @@ package
          ofs1:
          getlocal0
          getlex QName(PrivateNamespace(null,"#DustRing"),"RADIUS")
-         setproperty QName(PrivateNamespace(null,"#DustRing"),"radius")
+         initproperty QName(PrivateNamespace(null,"#DustRing"),"radius")
          ofs0:
          getlocal0
          callpropvoid QName(PackageNamespace(""),"updatePositions"), 0
@@ -214,11 +214,10 @@ package
          code
          getlocal0
          pushscope
-         getlex QName(PackageNamespace(""),"NaN")
-         convert_d
-         setlocal1
-         pushbyte 0
+         pushnan
          setlocal2
+         pushbyte 0
+         setlocal1
          jump ofs0
          ofs1:
          label
@@ -228,7 +227,7 @@ package
          multiply
          getlex QName(PrivateNamespace(null,"#DustRing"),"DUST_NUM")
          divide
-         getlocal2
+         getlocal1
          multiply
          getlocal0
          getproperty QName(PrivateNamespace(null,"#DustRing"),"elapsed")
@@ -236,14 +235,14 @@ package
          multiply
          add
          convert_d
-         setlocal1
+         setlocal2
          getlex QName(PackageNamespace(""),"members")
-         getlocal2
+         getlocal1
          getproperty MultinameL([PrivateNamespace(null,"#DustRing"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#DustRing/1"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("DustRing"),StaticProtectedNs("DustRing"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          getlocal0
          getproperty QName(PrivateNamespace(null,"#DustRing"),"originX")
          getlex QName(PackageNamespace(""),"Math")
-         getlocal1
+         getlocal2
          callproperty QName(PackageNamespace(""),"cos"), 1
          getlocal0
          getproperty QName(PrivateNamespace(null,"#DustRing"),"radius")
@@ -251,21 +250,21 @@ package
          add
          setproperty Multiname("x",[PrivateNamespace(null,"#DustRing"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#DustRing/1"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("DustRing"),StaticProtectedNs("DustRing"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace(""),"members")
-         getlocal2
+         getlocal1
          getproperty MultinameL([PrivateNamespace(null,"#DustRing"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#DustRing/1"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("DustRing"),StaticProtectedNs("DustRing"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          getlocal0
          getproperty QName(PrivateNamespace(null,"#DustRing"),"originY")
          getlex QName(PackageNamespace(""),"Math")
-         getlocal1
+         getlocal2
          callproperty QName(PackageNamespace(""),"sin"), 1
          getlocal0
          getproperty QName(PrivateNamespace(null,"#DustRing"),"radius")
          multiply
          add
          setproperty Multiname("y",[PrivateNamespace(null,"#DustRing"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#DustRing/1"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("DustRing"),StaticProtectedNs("DustRing"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
-         inclocal_i 2
+         inclocal_i 1
          ofs0:
-         getlocal2
+         getlocal1
          getlex QName(PrivateNamespace(null,"#DustRing"),"DUST_NUM")
          iflt ofs1
          returnvoid

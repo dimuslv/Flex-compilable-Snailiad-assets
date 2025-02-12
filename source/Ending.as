@@ -62,7 +62,21 @@ package
       
       private var _ending1SongPlaying:Boolean = false;
       
-      public function Ending()
+      override public function destroy() : void
+      {
+         bg = null;
+         pictureLayer = null;
+         _targetAlpha = null;
+         _moonSprite = null;
+         _dialogueLayer = null;
+         _sunSnailSprite = null;
+         _credits = null;
+         _zzz = null;
+         _finalText = null;
+         super.destroy();
+      }
+      
+      public function Ending() : void
       {
          super();
          FlxG.mouse.hide();
@@ -88,25 +102,11 @@ package
          }
       }
       
-      override public function destroy() : void
-      {
-         this.bg = null;
-         this.pictureLayer = null;
-         this._targetAlpha = null;
-         this._moonSprite = null;
-         this._dialogueLayer = null;
-         this._sunSnailSprite = null;
-         this._credits = null;
-         this._zzz = null;
-         this._finalText = null;
-         super.destroy();
-      }
-      
       public function setMode(param1:int) : void
       {
-         this._mode = param1;
-         this._modeElapsed = 0;
-         this._modeInitialized = false;
+         _mode = param1;
+         _modeElapsed = 0;
+         _modeInitialized = false;
       }
       
       public function updateEndingWaitStart() : void
@@ -129,7 +129,7 @@ package
          FlxG.fade.stop();
          FlxG.flash.start(4294967295,1.4);
          this.bg.setTargetRgb(228,0,96);
-         this._sunSnailSprite = new EndingSunSnail(264,140);
+         _sunSnailSprite = new EndingSunSnail(264,140);
          add(this._sunSnailSprite);
       }
       
@@ -138,7 +138,7 @@ package
          var _loc1_:int = 0;
          if(!this._modeInitialized)
          {
-            this._modeInitialized = true;
+            _modeInitialized = true;
             FlxG.fade.stop();
             FlxG.flash.start(4278190080,1.4);
             this.bg.setRgb(0,0,0);
@@ -151,7 +151,7 @@ package
                this.bg.setTargetRgb(0,48,48);
             }
             this.bg.fadeIn();
-            this._dialogueMode = 0;
+            _dialogueMode = 0;
             _loc1_ = 0;
             while(_loc1_ < 4)
             {
@@ -163,7 +163,7 @@ package
          if(this._modeElapsed > 0.9 && !this._ending1SongPlaying)
          {
             Sfx.playEnding1();
-            this._ending1SongPlaying = true;
+            _ending1SongPlaying = true;
          }
          if(this._modeElapsed < 5)
          {
@@ -185,7 +185,7 @@ package
             {
                if(!this._hasSunSnailAppeared)
                {
-                  this._hasSunSnailAppeared = true;
+                  _hasSunSnailAppeared = true;
                   FlxG.fade.start(4294967295,0.6,this.makeSunSnail);
                }
             }
@@ -195,7 +195,7 @@ package
                this._moonSprite[3].setTargetAlpha(1);
                if(this._moonSprite[3].alpha == 1 && !this._zzz)
                {
-                  this._zzz = new EndingZzz(277,155);
+                  _zzz = new EndingZzz(277,155);
                   this._zzz.scrollFactor.x = this._zzz.scrollFactor.y = 0;
                   add(this._zzz);
                }
@@ -205,7 +205,7 @@ package
          {
             if(this._dialogueMode < 1)
             {
-               this._dialogueMode = 1;
+               _dialogueMode = 1;
                this._dialogueLayer.start("     AND SO...\n");
             }
          }
@@ -217,7 +217,7 @@ package
          {
             if(this._dialogueMode < 2)
             {
-               this._dialogueMode = 2;
+               _dialogueMode = 2;
                if(PlayState.player.getHelixFragments() == 30)
                {
                   this._dialogueLayer.start("   MOON SNAIL ONCE AGAIN\n" + "     REGAINED HIS LIGHT\n");
@@ -236,7 +236,7 @@ package
          {
             if(this._dialogueMode < 3)
             {
-               this._dialogueMode = 3;
+               _dialogueMode = 3;
                if(PlayState.player.getHelixFragments() == 30)
                {
                   this._dialogueLayer.start("     AND BECAME THE\n" + "  LEGENDARY SUN SNAIL\n");
@@ -272,7 +272,7 @@ package
       {
          if(!this._modeInitialized)
          {
-            this._modeInitialized = true;
+            _modeInitialized = true;
             FlxG.fade.start(4278190080,1.9);
          }
          if(this._modeElapsed > 2)
@@ -287,7 +287,7 @@ package
          var _loc2_:int = 0;
          if(!this._modeInitialized)
          {
-            this._modeInitialized = true;
+            _modeInitialized = true;
             Music.playEnding2();
             _loc1_ = new StarLayer();
             _loc1_.makeStars();
@@ -312,20 +312,20 @@ package
             if(this._zzz)
             {
                remove(this._zzz);
-               this._zzz = null;
+               _zzz = null;
             }
-            this._credits = new EndingCredits();
+            _credits = new EndingCredits();
             add(this._credits);
-            this._creditsDoneTimer = CREDITS_DONE_TIME;
+            _creditsDoneTimer = CREDITS_DONE_TIME;
          }
          if(FlxG.keys.justPressed("ESCAPE"))
          {
             this._credits.scrollDone = true;
-            this._creditsDoneTimer = 0;
+            _creditsDoneTimer = 0;
          }
          if(this._credits.scrollDone)
          {
-            this._creditsDoneTimer -= FlxG.elapsed;
+            _creditsDoneTimer -= FlxG.elapsed;
             if(this._creditsDoneTimer < 0)
             {
                this.setMode(MODE_WAIT_PICTURE);
@@ -337,7 +337,7 @@ package
       {
          if(!this._modeInitialized)
          {
-            this._modeInitialized = true;
+            _modeInitialized = true;
             FlxG.fade.start(4278190080,1.9);
          }
          if(this._modeElapsed > 2)
@@ -348,23 +348,22 @@ package
       
       public function updateEndingPicture() : void
       {
-         var _loc1_:Number = NaN;
          if(!this._modeInitialized)
          {
-            this._modeInitialized = true;
+            _modeInitialized = true;
             if(this._credits)
             {
                remove(this._credits);
-               this._credits = null;
+               _credits = null;
             }
-            this.pictureLayer = new EndingGroup(PlayState.endingNum);
+            pictureLayer = new EndingGroup(PlayState.endingNum);
             add(this.pictureLayer);
             FlxG.fade.stop();
             FlxG.flash.start(4278190080,1.4);
          }
          if(this._modeElapsed > 3 && !this._finalText)
          {
-            this._finalText = new FlxText(-4,FlxG.height / 2 - 30,FlxG.width);
+            _finalText = new FlxText(-4,FlxG.height / 2 - 30,FlxG.width);
             this._finalText.font = Fonts.normal;
             this._finalText.size = 20;
             this._finalText.color = 16777215;
@@ -381,7 +380,7 @@ package
          }
          if(this._finalText)
          {
-            _loc1_ = this._modeElapsed - 3;
+            var _loc1_:Number = this._modeElapsed - 3;
             if(_loc1_ > 1)
             {
                _loc1_ = 1;
@@ -399,12 +398,12 @@ package
          if(!this._modeInitialized)
          {
             PauseLayer.hideMe = false;
-            this._modeInitialized = true;
-            this.endingFadeTimeout = ENDING_FADE_TIMEOUT;
+            _modeInitialized = true;
+            endingFadeTimeout = ENDING_FADE_TIMEOUT;
             FlxG.fade.start(4278190080,ENDING_FADE_TIMEOUT);
             FlxG.music.fadeOut(ENDING_FADE_TIMEOUT);
          }
-         this.endingFadeTimeout -= FlxG.elapsed;
+         endingFadeTimeout -= FlxG.elapsed;
          if(this.endingFadeTimeout < 0)
          {
             FlxG.noPause = false;
@@ -414,8 +413,8 @@ package
       
       override public function update() : void
       {
-         this.elapsed += FlxG.elapsed;
-         this._modeElapsed += FlxG.elapsed;
+         elapsed += FlxG.elapsed;
+         _modeElapsed += FlxG.elapsed;
          switch(this._mode)
          {
             case MODE_NONE:
@@ -441,6 +440,7 @@ package
                break;
             case MODE_END:
                this.updateEndingEnd();
+			   break;
          }
          super.update();
       }

@@ -60,14 +60,14 @@ package
       
       public function updatePositions() : void
       {
-         var _loc1_:Number = NaN;
-         var _loc2_:int = 0;
-         while(_loc2_ < DUST_NUM)
+         var _loc2_:Number = NaN;
+         var _loc1_:int = 0;
+         while(_loc1_ < DUST_NUM)
          {
-            _loc1_ = Math.PI * 2 / DUST_NUM * _loc2_ + this.elapsed * SPIN_SPEED;
-            members[_loc2_].x = this.originX + Math.cos(_loc1_) * this.radius;
-            members[_loc2_].y = this.originY + Math.sin(_loc1_) * this.radius;
-            _loc2_++;
+            _loc2_ = Math.PI * 2 / DUST_NUM * _loc1_ + this.elapsed * SPIN_SPEED;
+            members[_loc1_].x = this.originX + Math.cos(_loc2_) * this.radius;
+            members[_loc1_].y = this.originY + Math.sin(_loc2_) * this.radius;
+            _loc1_++;
          }
       }
    }

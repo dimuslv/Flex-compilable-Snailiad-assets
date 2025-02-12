@@ -8,7 +8,7 @@ package
       
       private static const IMG_HEIGHT:int = 16;
       
-      public function Dust()
+      public function Dust() : void
       {
          super();
          loadGraphic(Art.Dust,true,true,IMG_WIDTH,IMG_HEIGHT);
