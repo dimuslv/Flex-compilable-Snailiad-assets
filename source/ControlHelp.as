@@ -62,7 +62,33 @@ package
       
       public var menuHelp:Boolean = false;
       
-      public function ControlHelp(param1:Boolean = false)
+      public function updateLetterGraphics() : void
+      {
+         this.letters[TEXT_JUMP1].play(Player.JUMP_KEY);
+         this.letters[TEXT_UP1].play(Player.UP_KEY);
+         this.letters[TEXT_DOWN1].play(Player.DOWN_KEY);
+         this.letters[TEXT_LEFT1].play(Player.LEFT_KEY);
+         this.letters[TEXT_RIGHT1].play(Player.RIGHT_KEY);
+         this.letters[TEXT_UP2].play(Player.ALT_UP_KEY);
+         this.letters[TEXT_DOWN2].play(Player.ALT_DOWN_KEY);
+         this.letters[TEXT_LEFT2].play(Player.ALT_LEFT_KEY);
+         this.letters[TEXT_RIGHT2].play(Player.ALT_RIGHT_KEY);
+         this.letters[TEXT_JUMP2].play(Player.ALT_JUMP_KEY);
+         this.letters[TEXT_SHOOT1].play(Player.SHOOT_KEY);
+         this.letters[TEXT_SHOOT2].play(Player.ALT_SHOOT_KEY);
+         if(PlayState.player && PlayState.player.hasAnyWeapon())
+         {
+            this.letters[TEXT_SHOOT1].visible = true;
+            this.letters[TEXT_SHOOT2].visible = true;
+         }
+         else
+         {
+            this.letters[TEXT_SHOOT1].visible = false;
+            this.letters[TEXT_SHOOT2].visible = false;
+         }
+      }
+      
+      public function ControlHelp(param1:Boolean = false) : void
       {
          this.targetX = -IMG_WIDTH;
          super();
@@ -83,32 +109,6 @@ package
          this.createAndAddAllLetters();
       }
       
-      public function updateLetterGraphics() : void
-      {
-         this.letters[TEXT_JUMP1].play(Player.JUMP_KEY);
-         this.letters[TEXT_UP1].play(Player.UP_KEY);
-         this.letters[TEXT_DOWN1].play(Player.DOWN_KEY);
-         this.letters[TEXT_LEFT1].play(Player.LEFT_KEY);
-         this.letters[TEXT_RIGHT1].play(Player.RIGHT_KEY);
-         this.letters[TEXT_UP2].play(Player.ALT_UP_KEY);
-         this.letters[TEXT_DOWN2].play(Player.ALT_DOWN_KEY);
-         this.letters[TEXT_LEFT2].play(Player.ALT_LEFT_KEY);
-         this.letters[TEXT_RIGHT2].play(Player.ALT_RIGHT_KEY);
-         this.letters[TEXT_JUMP2].play(Player.ALT_JUMP_KEY);
-         this.letters[TEXT_SHOOT1].play(Player.SHOOT_KEY);
-         this.letters[TEXT_SHOOT2].play(Player.ALT_SHOOT_KEY);
-         if(Boolean(PlayState.player) && PlayState.player.hasAnyWeapon())
-         {
-            this.letters[TEXT_SHOOT1].visible = true;
-            this.letters[TEXT_SHOOT2].visible = true;
-         }
-         else
-         {
-            this.letters[TEXT_SHOOT1].visible = false;
-            this.letters[TEXT_SHOOT2].visible = false;
-         }
-      }
-      
       public function updateLetterPositions() : void
       {
          var _loc1_:int = 0;
@@ -121,10 +121,9 @@ package
       
       private function createAndAddSingleLetter(param1:int, param2:int, param3:int) : void
       {
-         var _loc4_:FlxSprite = null;
          this.textX[param1] = param2 * TEXTPOS_SPACING + TEXTPOS_BASE;
          this.textY[param1] = param3 * TEXTPOS_SPACING + TEXTPOS_BASE;
-         _loc4_ = new FlxSprite();
+         var _loc4_:FlxSprite = new FlxSprite();
          _loc4_.loadGraphic(Art.ControlHelpLetters,false,false,IMG_LETTER_WIDTH,IMG_LETTER_HEIGHT);
          _loc4_.width = IMG_WIDTH;
          _loc4_.height = IMG_HEIGHT;
@@ -194,9 +193,9 @@ package
       
       private function createAndAddAllLetters() : void
       {
-         this.letters = new Array();
-         this.textX = new Array();
-         this.textY = new Array();
+         letters = new Array();
+         textX = new Array();
+         textY = new Array();
          this.createAndAddSingleLetter(TEXT_JUMP1,0,1);
          this.createAndAddSingleLetter(TEXT_SHOOT1,1,1);
          this.createAndAddSingleLetter(TEXT_UP1,5,0);
@@ -220,9 +219,9 @@ package
             this.letters[_loc1_] = null;
             _loc1_++;
          }
-         this.letters = null;
-         this.textX = null;
-         this.textY = null;
+         letters = null;
+         textX = null;
+         textY = null;
          super.destroy();
       }
       
@@ -252,23 +251,23 @@ package
          {
             this.bg.x = -this.bg.width;
          }
-         this.targetX = FlxG.width / 2 - this.bg.width / 2;
-         this.xv = 0;
+         targetX = FlxG.width / 2 - this.bg.width / 2;
+         xv = 0;
          this.updateLetterGraphics();
-         this.hideTimer = 11;
+         hideTimer = 11;
       }
       
       public function hide() : void
       {
          if(this.bg.x > this.bg.width + 1)
          {
-            this.targetX = FlxG.width + 300;
+            targetX = FlxG.width + 300;
          }
          else
          {
-            this.targetX = -this.bg.width;
+            targetX = -this.bg.width;
          }
-         this.hideTimer = -1;
+         hideTimer = -1;
       }
       
       override public function update() : void
@@ -277,21 +276,21 @@ package
          {
             return;
          }
-         this.hideTimer -= FlxG.elapsed;
+         hideTimer -= FlxG.elapsed;
          if(this.hideTimer <= 0)
          {
             this.hide();
          }
          this.updateLetterPositions();
-         this.targetXv = (this.targetX - this.bg.x) * FlxG.elapsed * 4;
+         targetXv = (this.targetX - this.bg.x) * FlxG.elapsed * 4;
          if(this.targetXv > 10)
          {
-            this.targetXv = 10;
+            targetXv = 10;
          }
-         this.xv = (this.xv * 81 + this.targetXv * 19) / 100;
+         xv = (this.xv * 81 + this.targetXv * 19) / 100;
          if(this.xv < 0.05 && this.xv > -0.05)
          {
-            this.xv = 0;
+            xv = 0;
          }
          this.bg.x += this.xv;
       }

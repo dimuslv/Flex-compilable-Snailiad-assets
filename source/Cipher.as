@@ -69,10 +69,10 @@ package
          var _loc3_:int = -271733879;
          var _loc4_:int = -1732584194;
          var _loc5_:int = 271733878;
-		 var _loc6_:int = 0;
-		 var _loc7_:int = 0;
-		 var _loc8_:int = 0;
-		 var _loc9_:int = 0;
+		 var _loc6_:int;
+		 var _loc7_:int;
+		 var _loc8_:int;
+		 var _loc9_:int;
          var _loc10_:Array = createBlocks(param1);
          var _loc11_:int = _loc10_.length;
          var _loc12_:int = 0;

@@ -21,7 +21,7 @@ package
       
       private var _value:int;
       
-      public function CipherInt(param1:int = 0)
+      public function CipherInt(param1:int = 0) : void
       {
          super();
          if(_globalCipherIndex == -1)
@@ -43,12 +43,12 @@ package
       
       public function set value(param1:int) : void
       {
-         this._localCipherIndex += 67;
-         this._localCipherIndex %= NOISE.length;
-         this._value = param1 ^ NOISE[this._localCipherIndex];
-         this._localHashIndex += 113;
-         this._localHashIndex %= NOISE.length;
-         this._hash = this._value ^ NOISE[this._localHashIndex];
+         _localCipherIndex += 67;
+         _localCipherIndex %= NOISE.length;
+         _value = param1 ^ NOISE[this._localCipherIndex];
+         _localHashIndex += 113;
+         _localHashIndex %= NOISE.length;
+         _hash = this._value ^ NOISE[this._localHashIndex];
       }
       
       public function get value() : int

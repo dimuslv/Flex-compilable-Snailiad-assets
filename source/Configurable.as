@@ -19,26 +19,28 @@ package
       
       public function destroy() : void
       {
-         this._xml = null;
-         this.configXmlFile = null;
+         _xml = null;
+         configXmlFile = null;
       }
       
-      public function getPlayerStartX(param1:int = 0) : int
+      public function getPlayerStartX(areaNum:int=0):int
       {
-         if(PlayState.bossRush)
-         {
-            return 246;
-         }
-         return 299;
+          if (PlayState.bossRush)
+              return 246;
+          else
+              return 299;
+          
+		  return _xml.PLAYERSTART.X;  // <-- this code is very sad because it can never be reached
       }
-      
-      public function getPlayerStartY(param1:int = 0) : int
+
+      public function getPlayerStartY(areaNum:int=0):int
       {
-         if(PlayState.bossRush)
-         {
-            return 329;
-         }
-         return 166;
+          if (PlayState.bossRush)
+              return 329;
+          else
+              return 166;
+          
+		  return _xml.PLAYERSTART.Y;  // <-- this code is also very sad ):
       }
    }
 }

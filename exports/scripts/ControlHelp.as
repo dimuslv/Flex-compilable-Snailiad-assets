@@ -122,7 +122,6 @@ package
       private function createAndAddSingleLetter(param1:int, param2:int, param3:int) : void
       {
          var _loc4_:FlxSprite = null;
-         _loc4_ = null;
          this.textX[param1] = param2 * TEXTPOS_SPACING + TEXTPOS_BASE;
          this.textY[param1] = param3 * TEXTPOS_SPACING + TEXTPOS_BASE;
          _loc4_ = new FlxSprite();
