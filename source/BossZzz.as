@@ -30,7 +30,7 @@ package
       
       private var _attackTimeout:Number = 3;
       
-      public function BossZzz(param1:int, param2:int, param3:int, param4:int)
+      public function BossZzz(param1:int, param2:int, param3:int, param4:int) : void
       {
          super(param1,param2,100,0,6,true);
          this._originX = param1;
@@ -48,18 +48,18 @@ package
          {
             return;
          }
-         this._theta += FlxG.elapsed;
+         _theta += FlxG.elapsed;
          if(acceleration.x == 0 && acceleration.y == 0)
          {
-            this._originX = Utility.integrate(this._originX,this._targetX,2,FlxG.elapsed);
-            this._originY = Utility.integrate(this._originY,this._targetY,2,FlxG.elapsed);
+            _originX = Utility.integrate(this._originX,this._targetX,2,FlxG.elapsed);
+            _originY = Utility.integrate(this._originY,this._targetY,2,FlxG.elapsed);
             x = this._originX;
             y = this._originY + 14 * Math.sin(this._theta * Math.PI * 2);
          }
-         this._attackTimeout -= FlxG.elapsed;
+         _attackTimeout -= FlxG.elapsed;
          if(this._attackTimeout < 0)
          {
-            this._attackTimeout = 999999999;
+            _attackTimeout = 999999999;
             this.shootAtPlayer();
          }
          if(x > FlxG.MaxX + 100 || x + width < FlxG.MinX - 100 || y > FlxG.MaxY + 100 || y + height < FlxG.MinY - 100)
@@ -71,8 +71,7 @@ package
       
       public function shootAtPlayer() : void
       {
-         var _loc1_:Number = NaN;
-         _loc1_ = Math.atan2(PlayState.player.y - (y + height / 2),PlayState.player.x - (x + width / 2));
+         var _loc1_:Number = Math.atan2(PlayState.player.y - (y + height / 2),PlayState.player.x - (x + width / 2));
          acceleration.x = 2200 * Math.cos(_loc1_);
          acceleration.y = 2200 * Math.sin(_loc1_);
       }

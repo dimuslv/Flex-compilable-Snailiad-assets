@@ -12,7 +12,7 @@ package
       
       public var fgtile:int;
       
-      public function BrokenBlock(param1:int, param2:int, param3:int, param4:int)
+      public function BrokenBlock(param1:int, param2:int, param3:int, param4:int) : void
       {
          super();
          this.X = param1;

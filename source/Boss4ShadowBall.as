@@ -16,7 +16,7 @@ package
       
       private static const OFFENSE:int = 0;
       
-      public function Boss4ShadowBall()
+      public function Boss4ShadowBall() : void
       {
          super(0,0,MAX_HP,DEFENSE,OFFENSE,true);
          loadGraphic(Art.Boss4ShadowBall,true,true,IMG_WIDTH,IMG_HEIGHT);

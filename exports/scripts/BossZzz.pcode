@@ -77,7 +77,7 @@ package
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 7
@@ -161,7 +161,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          add
-         setproperty QName(PrivateNamespace(null,"#BossZzz"),"_theta")
+         initproperty QName(PrivateNamespace(null,"#BossZzz"),"_theta")
          getlex QName(PackageNamespace(""),"acceleration")
          getproperty QName(PackageNamespace(""),"x")
          pushbyte 0
@@ -185,7 +185,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          callproperty QName(PackageNamespace(""),"integrate"), 4
-         setproperty QName(PrivateNamespace(null,"#BossZzz"),"_originX")
+         initproperty QName(PrivateNamespace(null,"#BossZzz"),"_originX")
          getlocal0
          getlex QName(PackageNamespace(""),"Utility")
          getlocal0
@@ -196,7 +196,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          callproperty QName(PackageNamespace(""),"integrate"), 4
-         setproperty QName(PrivateNamespace(null,"#BossZzz"),"_originY")
+         initproperty QName(PrivateNamespace(null,"#BossZzz"),"_originY")
          findproperty QName(PackageNamespace(""),"x")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#BossZzz"),"_originX")
@@ -224,14 +224,14 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#BossZzz"),"_attackTimeout")
+         initproperty QName(PrivateNamespace(null,"#BossZzz"),"_attackTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#BossZzz"),"_attackTimeout")
          pushbyte 0
          ifnlt ofs3
          getlocal0
          pushint 999999999
-         setproperty QName(PrivateNamespace(null,"#BossZzz"),"_attackTimeout")
+         initproperty QName(PrivateNamespace(null,"#BossZzz"),"_attackTimeout")
          getlocal0
          callpropvoid QName(PackageNamespace(""),"shootAtPlayer"), 0
          ofs3:
@@ -304,8 +304,7 @@ package
          code
          getlocal0
          pushscope
-         getlex QName(PackageNamespace(""),"NaN")
-         convert_d
+         pushnan
          setlocal1
          getlex QName(PackageNamespace(""),"Math")
          getlex QName(PackageNamespace(""),"PlayState")

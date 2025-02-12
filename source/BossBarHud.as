@@ -28,7 +28,7 @@ package
       
       private var _shown:Boolean = false;
       
-      public function BossBarHud()
+      public function BossBarHud() : void
       {
          super();
          this._border = new FlxSprite();
@@ -41,18 +41,18 @@ package
       
       override public function destroy() : void
       {
-         this._border = null;
-         this._bg = null;
-         this._bar = null;
-         this._leftSide = null;
+         _border = null;
+         _bg = null;
+         _bar = null;
+         _leftSide = null;
          super.destroy();
       }
       
       public function makeBar(param1:int) : void
       {
-         this._maxHp = param1;
-         this._pixelsPerHp = this.X_WIDTH / param1;
-         this._pxWidth = int(param1 / 2 * this._pixelsPerHp);
+         _maxHp = param1;
+         _pixelsPerHp = this.X_WIDTH / param1;
+         _pxWidth = (int)(param1 / 2 * this._pixelsPerHp);
          this._border.y = this.Y_POS - 1;
          this._border.x = FlxG.width / 2 - this._pxWidth - 1;
          this._border.createGraphic(param1 * this._pixelsPerHp + 2,10,1073741823);
@@ -70,12 +70,12 @@ package
          this._bar.x = FlxG.width / 2 - this._pxWidth;
          this._bar.createGraphic(param1 * this._pixelsPerHp,8,4294736124);
          this._bar.scrollFactor.x = this._bar.scrollFactor.y = 0;
-         this._bar.scale.x = 0;
+         this._bar.scale.x = 0.0;
          this._border.visible = true;
          this._bg.visible = true;
          this._bar.visible = true;
          this._leftSide.visible = true;
-         this._shown = true;
+         _shown = true;
       }
       
       public function isShown() : Boolean
@@ -89,14 +89,14 @@ package
          this._bg.visible = false;
          this._border.visible = false;
          this._leftSide.visible = false;
-         this._shown = false;
+         _shown = false;
       }
       
       public function setCurHp(param1:int) : void
       {
          this._bar.x = FlxG.width / 2 - this._maxHp / 2 * this._pixelsPerHp * (1 + (1 - param1 / this._maxHp));
-         this._bar.scale.x = int(this._pxWidth * param1 / this._maxHp) / this._pxWidth;
-         this._justFlashed = 1;
+         this._bar.scale.x = (int)(this._pxWidth * param1 / this._maxHp) / this._pxWidth;
+         _justFlashed = 1;
          if(param1 <= 0)
          {
             this.removeBar();

@@ -11,7 +11,7 @@ package
       
       public var going:Boolean = false;
       
-      public function BossRushTimer()
+      public function BossRushTimer() : void
       {
          super(0,4,FlxG.width - 4);
          this.now = new ShadowNumber();
@@ -29,7 +29,7 @@ package
       
       override public function destroy() : void
       {
-         this.now = null;
+         now = null;
          super.destroy();
       }
       

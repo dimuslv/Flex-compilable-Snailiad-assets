@@ -10,7 +10,7 @@ package
       
       private var _silent:Boolean = false;
       
-      public function Breakable(param1:int, param2:int, param3:int, param4:Boolean = false)
+      public function Breakable(param1:int, param2:int, param3:int, param4:Boolean = false) : void
       {
          var _loc5_:int = 1;
          var _loc6_:int = 0;
@@ -24,6 +24,7 @@ package
                break;
             case 2:
                _loc6_ = 35;
+			   break;
          }
          super(param1,param2,_loc5_,_loc6_,0);
          this._silent = param4;

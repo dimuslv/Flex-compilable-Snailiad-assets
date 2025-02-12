@@ -50,7 +50,7 @@ package
       {
          method
          name null
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 2
@@ -113,16 +113,16 @@ package
          pushscope
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#BossBarHud"),"_border")
+         initproperty QName(PrivateNamespace(null,"#BossBarHud"),"_border")
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#BossBarHud"),"_bg")
+         initproperty QName(PrivateNamespace(null,"#BossBarHud"),"_bg")
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#BossBarHud"),"_bar")
+         initproperty QName(PrivateNamespace(null,"#BossBarHud"),"_bar")
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#BossBarHud"),"_leftSide")
+         initproperty QName(PrivateNamespace(null,"#BossBarHud"),"_leftSide")
          getlocal0
          callsupervoid QName(PackageNamespace(""),"destroy"), 0
          returnvoid
@@ -141,7 +141,7 @@ package
          returns QName(PackageNamespace(""),"void")
          
          body
-         maxstack 4
+         maxstack 5
          localcount 3
          initscopedepth 8
          maxscopedepth 9
@@ -151,23 +151,24 @@ package
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#BossBarHud"),"_maxHp")
+         initproperty QName(PrivateNamespace(null,"#BossBarHud"),"_maxHp")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#BossBarHud"),"X_WIDTH")
          getlocal1
          divide
-         setproperty QName(PrivateNamespace(null,"#BossBarHud"),"_pixelsPerHp")
+         initproperty QName(PrivateNamespace(null,"#BossBarHud"),"_pixelsPerHp")
          getlocal0
-         findpropstrict QName(PackageNamespace(""),"int")
+         getlex QName(PackageNamespace(""),"int")
+         getglobalscope
          getlocal1
          pushbyte 2
          divide
          getlocal0
          getproperty QName(PrivateNamespace(null,"#BossBarHud"),"_pixelsPerHp")
          multiply
-         callproperty QName(PackageNamespace(""),"int"), 1
-         setproperty QName(PrivateNamespace(null,"#BossBarHud"),"_pxWidth")
+         call 1
+         initproperty QName(PrivateNamespace(null,"#BossBarHud"),"_pxWidth")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#BossBarHud"),"_border")
          getlocal0
@@ -327,7 +328,7 @@ package
          getlocal0
          getproperty QName(PrivateNamespace(null,"#BossBarHud"),"_bar")
          getproperty QName(PackageNamespace(""),"scale")
-         pushbyte 0
+         pushdouble 0
          setproperty QName(PackageNamespace(""),"x")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#BossBarHud"),"_border")
@@ -347,7 +348,7 @@ package
          setproperty QName(PackageNamespace(""),"visible")
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#BossBarHud"),"_shown")
+         initproperty QName(PrivateNamespace(null,"#BossBarHud"),"_shown")
          returnvoid
          end ; code
          end ; body
@@ -414,7 +415,7 @@ package
          setproperty QName(PackageNamespace(""),"visible")
          getlocal0
          pushfalse
-         setproperty QName(PrivateNamespace(null,"#BossBarHud"),"_shown")
+         initproperty QName(PrivateNamespace(null,"#BossBarHud"),"_shown")
          returnvoid
          end ; code
          end ; body
@@ -466,7 +467,8 @@ package
          getlocal0
          getproperty QName(PrivateNamespace(null,"#BossBarHud"),"_bar")
          getproperty QName(PackageNamespace(""),"scale")
-         findpropstrict QName(PackageNamespace(""),"int")
+         getlex QName(PackageNamespace(""),"int")
+         getglobalscope
          getlocal0
          getproperty QName(PrivateNamespace(null,"#BossBarHud"),"_pxWidth")
          getlocal1
@@ -474,14 +476,14 @@ package
          getlocal0
          getproperty QName(PrivateNamespace(null,"#BossBarHud"),"_maxHp")
          divide
-         callproperty QName(PackageNamespace(""),"int"), 1
+         call 1
          getlocal0
          getproperty QName(PrivateNamespace(null,"#BossBarHud"),"_pxWidth")
          divide
          setproperty QName(PackageNamespace(""),"x")
          getlocal0
          pushbyte 1
-         setproperty QName(PrivateNamespace(null,"#BossBarHud"),"_justFlashed")
+         initproperty QName(PrivateNamespace(null,"#BossBarHud"),"_justFlashed")
          getlocal1
          pushbyte 0
          ifnle ofs0
