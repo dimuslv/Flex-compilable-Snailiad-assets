@@ -792,11 +792,10 @@ package org.flixel
       
       public function ray(param1:Number, param2:Number, param3:Number, param4:Number, param5:FlxPoint, param6:Number = 1) : Boolean
       {
-         var _loc10_:Number = NaN;
          var _loc7_:uint = 0;
          var _loc8_:uint = 0;
          var _loc9_:Number = NaN;
-         _loc10_ = NaN;
+         var _loc10_:Number = NaN;
          var _loc11_:Number = NaN;
          var _loc12_:Number = NaN;
          var _loc13_:Number = NaN;

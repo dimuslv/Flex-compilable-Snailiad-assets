@@ -52,11 +52,10 @@ package
       
       public function destroyAll() : void
       {
-         var _loc2_:int = 0;
          var _loc1_:int = 0;
          while(_loc1_ < MAX_WEAPON)
          {
-            _loc2_ = 0;
+            var _loc2_:int = 0;
             while(_loc2_ < MAX_BULLET[_loc1_])
             {
                this.bulletLists[_loc1_][_loc2_].kill();

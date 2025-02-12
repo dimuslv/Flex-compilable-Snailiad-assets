@@ -244,7 +244,35 @@ package
       
       private var _mostRecentLeftRight:int = 1;
       
-      public function Boss4Rush(param1:int, param2:int)
+      public function setMode(param1:int, param2:Boolean = false) : void
+      {
+         _attackMode = param1;
+         _modeElapsed = 0;
+         _modeInitialized = false;
+         _isAttacking = false;
+         _actionTimeout = this.ACTION_TIMEOUT;
+         var _loc3_:int = 0;
+         while(_loc3_ < this._shadowBall.length)
+         {
+            this._shadowBall[_loc3_].visible = false;
+            _loc3_++;
+         }
+         visible = true;
+         solid = true;
+         this.releaseUp();
+         this.releaseDown();
+         this.releaseLeft();
+         this.releaseRight();
+         this.releaseJump();
+         _attackStopTimeout = ATTACK_STOP_TIMEOUT;
+         _attackStartTimeout = ATTACK_START_TIMEOUT;
+         if(param2)
+         {
+            this.checkFireRings();
+         }
+      }
+      
+      public function Boss4Rush(param1:int, param2:int) : void
       {
          this._hasWeapon = [true,true,true];
          if(PlayState.player._slugMode)
@@ -293,39 +321,11 @@ package
          PlayState.player.setFaceDir(Player.FACE_FLOOR_LEFT);
       }
       
-      public function setMode(param1:int, param2:Boolean = false) : void
-      {
-         this._attackMode = param1;
-         this._modeElapsed = 0;
-         this._modeInitialized = false;
-         this._isAttacking = false;
-         this._actionTimeout = this.ACTION_TIMEOUT;
-         var _loc3_:int = 0;
-         while(_loc3_ < this._shadowBall.length)
-         {
-            this._shadowBall[_loc3_].visible = false;
-            _loc3_++;
-         }
-         visible = true;
-         solid = true;
-         this.releaseUp();
-         this.releaseDown();
-         this.releaseLeft();
-         this.releaseRight();
-         this.releaseJump();
-         this._attackStopTimeout = ATTACK_STOP_TIMEOUT;
-         this._attackStartTimeout = ATTACK_START_TIMEOUT;
-         if(param2)
-         {
-            this.checkFireRings();
-         }
-      }
-      
       public function checkFireRings() : void
       {
          if(this._ringTimeout <= 0)
          {
-            this._ringTimeout = RING_TIMEOUT;
+            _ringTimeout = RING_TIMEOUT;
             PlayState.enemiesNoCollide.add(new Boss4RingCenter(x,y));
          }
       }
@@ -333,44 +333,44 @@ package
       public function pickMoveTarget() : void
       {
          var _loc1_:int = 0;
-         this._moveStartX = x;
-         this._moveStartY = y;
-         this._moveEndX = x;
-         this._moveEndY = y;
+         _moveStartX = x;
+         _moveStartY = y;
+         _moveEndX = x;
+         _moveEndY = y;
          while(Utility.dist(this._moveEndX,this._moveEndY,x,y) < 60)
          {
             _loc1_ = this.getDecision() * 6;
             switch(_loc1_)
             {
                case 0:
-                  this._moveEndX = this._originX + 16 * 1;
-                  this._moveEndY = this._originY + 16 * 4;
-                  this._targetGravity = GRAV_DOWN;
+                  _moveEndX = this._originX + 16 * 1;
+                  _moveEndY = this._originY + 16 * 4;
+                  _targetGravity = GRAV_DOWN;
                   break;
                case 1:
-                  this._moveEndX = this._originX + 16 * 14;
-                  this._moveEndY = this._originY + 16 * 4;
-                  this._targetGravity = GRAV_DOWN;
+                  _moveEndX = this._originX + 16 * 14;
+                  _moveEndY = this._originY + 16 * 4;
+                  _targetGravity = GRAV_DOWN;
                   break;
                case 2:
-                  this._moveEndX = this._originX + 16 * 1;
-                  this._moveEndY = this._originY + 16 * -8;
-                  this._targetGravity = GRAV_UP;
+                  _moveEndX = this._originX + 16 * 1;
+                  _moveEndY = this._originY + 16 * -8;
+                  _targetGravity = GRAV_UP;
                   break;
                case 3:
-                  this._moveEndX = this._originX + 16 * 14;
-                  this._moveEndY = this._originY + 16 * -8;
-                  this._targetGravity = GRAV_UP;
+                  _moveEndX = this._originX + 16 * 14;
+                  _moveEndY = this._originY + 16 * -8;
+                  _targetGravity = GRAV_UP;
                   break;
                case 4:
-                  this._moveEndX = this._originX + 16 * -3;
-                  this._moveEndY = this._originY + 16 * -2;
-                  this._targetGravity = GRAV_LEFT;
+                  _moveEndX = this._originX + 16 * -3;
+                  _moveEndY = this._originY + 16 * -2;
+                  _targetGravity = GRAV_LEFT;
                   break;
                case 5:
-                  this._moveEndX = this._originX + 16 * 18;
-                  this._moveEndY = this._originY + 16 * -2;
-                  this._targetGravity = GRAV_RIGHT;
+                  _moveEndX = this._originX + 16 * 18;
+                  _moveEndY = this._originY + 16 * -2;
+                  _targetGravity = GRAV_RIGHT;
                   break;
             }
          }
@@ -379,48 +379,48 @@ package
       public function pickTeleTarget() : void
       {
          var _loc1_:int = 0;
-         this._teleStartX = x;
-         this._teleStartY = y;
-         this._teleEndX = x;
-         this._teleEndY = y;
+         _teleStartX = x;
+         _teleStartY = y;
+         _teleEndX = x;
+         _teleEndY = y;
          while(Utility.dist(this._teleEndX,this._teleEndY,x,y) < 60)
          {
             _loc1_ = this.getDecision() * 6;
             switch(_loc1_)
             {
                case 0:
-                  this._teleEndX = this._originX + 16 * 1;
-                  this._teleEndY = this._originY + 16 * 4;
+                  _teleEndX = this._originX + 16 * 1;
+                  _teleEndY = this._originY + 16 * 4;
                   this.setGravityDir(GRAV_DOWN);
                   this.setFaceDir(FACE_FLOOR_RIGHT);
                   break;
                case 1:
-                  this._teleEndX = this._originX + 16 * 14;
-                  this._teleEndY = this._originY + 16 * 4;
+                  _teleEndX = this._originX + 16 * 14;
+                  _teleEndY = this._originY + 16 * 4;
                   this.setGravityDir(GRAV_DOWN);
                   this.setFaceDir(FACE_FLOOR_LEFT);
                   break;
                case 2:
-                  this._teleEndX = this._originX + 16 * 1;
-                  this._teleEndY = this._originY + 16 * -8;
+                  _teleEndX = this._originX + 16 * 1;
+                  _teleEndY = this._originY + 16 * -8;
                   this.setGravityDir(GRAV_UP);
                   this.setFaceDir(FACE_CEIL_RIGHT);
                   break;
                case 3:
-                  this._teleEndX = this._originX + 16 * 14;
-                  this._teleEndY = this._originY + 16 * -8;
+                  _teleEndX = this._originX + 16 * 14;
+                  _teleEndY = this._originY + 16 * -8;
                   this.setGravityDir(GRAV_UP);
                   this.setFaceDir(FACE_CEIL_LEFT);
                   break;
                case 4:
-                  this._teleEndX = this._originX + 16 * -3;
-                  this._teleEndY = this._originY + 16 * -2;
+                  _teleEndX = this._originX + 16 * -3;
+                  _teleEndY = this._originY + 16 * -2;
                   this.setGravityDir(GRAV_LEFT);
                   this.setFaceDir(FACE_LWALL_UP);
                   break;
                case 5:
-                  this._teleEndX = this._originX + 16 * 19;
-                  this._teleEndY = this._originY + 16 * -2;
+                  _teleEndX = this._originX + 16 * 19;
+                  _teleEndY = this._originY + 16 * -2;
                   this.setGravityDir(GRAV_RIGHT);
                   this.setFaceDir(FACE_RWALL_UP);
                   break;
@@ -432,9 +432,9 @@ package
       {
          if(!this._modeInitialized)
          {
-            this._modeInitialized = true;
+            _modeInitialized = true;
             this.pickMoveTarget();
-            this._currentWeapon = 1;
+            _currentWeapon = 1;
             this.releaseUp();
             this.releaseDown();
             this.releaseLeft();
@@ -442,7 +442,7 @@ package
          }
          if(this._attackPhase >= 1 || PlayState.player._slugMode)
          {
-            this._isAttacking = true;
+            _isAttacking = true;
          }
          if((this._gravityDir == GRAV_DOWN || this._gravityDir == GRAV_UP) && Math.abs(this._moveEndX - x) > 10)
          {
@@ -504,16 +504,13 @@ package
       
       public function updateAiTeleport() : void
       {
-         var _loc2_:Number = NaN;
-         var _loc3_:Number = NaN;
-         var _loc4_:int = 0;
          if(!this._modeInitialized)
          {
-            this._modeInitialized = true;
+            _modeInitialized = true;
             this.pickTeleTarget();
             visible = false;
             solid = false;
-            _loc4_ = 0;
+            var _loc4_:int = 0;
             while(_loc4_ < this._shadowBall.length)
             {
                this._shadowBall[_loc4_].x = this._teleStartX;
@@ -523,6 +520,8 @@ package
             }
          }
          var _loc1_:Number = this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME);
+         var _loc2_:Number;
+         var _loc3_:Number;
          if(_loc1_ <= 0.5)
          {
             _loc2_ = this.SHADOW_BALL_RADIUS * this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME * 2);
@@ -591,6 +590,7 @@ package
                {
                   this.tapDown();
                }
+			   break;
          }
       }
       
@@ -601,8 +601,8 @@ package
             return;
          }
          this.pressJump();
-         this._releaseJumpTimeout = param2;
-         this._gravJumpDir = param1;
+         _releaseJumpTimeout = param2;
+         _gravJumpDir = param1;
       }
       
       public function updateAiAttack() : void
@@ -610,26 +610,26 @@ package
          this.facePlayer();
          if(!this._isAttacking)
          {
-            this._attackStartTimeout -= FlxG.elapsed * this._bossSpeed;
+            _attackStartTimeout -= FlxG.elapsed * this._bossSpeed;
             if(this._attackStartTimeout < 0)
             {
-               this._attackStopTimeout = ATTACK_STOP_TIMEOUT;
-               this._isAttacking = true;
+               _attackStopTimeout = ATTACK_STOP_TIMEOUT;
+               _isAttacking = true;
             }
          }
          else
          {
-            this._attackStopTimeout -= FlxG.elapsed * this._bossSpeed;
+            _attackStopTimeout -= FlxG.elapsed * this._bossSpeed;
             if(this._attackStopTimeout < 0)
             {
-               this._attackStartTimeout = ATTACK_START_TIMEOUT;
-               this._isAttacking = false;
+               _attackStartTimeout = ATTACK_START_TIMEOUT;
+               _isAttacking = false;
             }
          }
-         this._currentWeapon = 2;
+         _currentWeapon = 2;
          if(this._actionTimeout <= 0)
          {
-            this._actionTimeout = this.ACTION_TIMEOUT;
+            _actionTimeout = this.ACTION_TIMEOUT;
             if(this.getDecision() < 0.2)
             {
                switch(this._gravityDir)
@@ -645,6 +645,7 @@ package
                      break;
                   case GRAV_DOWN:
                      this.aiJump(GRAV_UP);
+					 break;
                }
             }
             else if(this.getDecision() < 0.4)
@@ -707,6 +708,7 @@ package
                   {
                      this.releaseDown();
                   }
+				  break;
             }
          }
       }
@@ -718,29 +720,29 @@ package
       
       public function updateAi() : void
       {
-         this._ringTimeout -= FlxG.elapsed * this._bossSpeed;
+         _ringTimeout -= FlxG.elapsed * this._bossSpeed;
          if(this.tappedUp)
          {
-            this.tappedUp = false;
+            tappedUp = false;
             this.releaseUp();
          }
          if(this.tappedDown)
          {
-            this.tappedDown = false;
+            tappedDown = false;
             this.releaseDown();
          }
          if(this.tappedRight)
          {
-            this.tappedRight = false;
+            tappedRight = false;
             this.releaseRight();
          }
          if(this.tappedLeft)
          {
-            this.tappedLeft = false;
+            tappedLeft = false;
             this.releaseLeft();
          }
-         this._modeElapsed += FlxG.elapsed * this._bossSpeed;
-         this._actionTimeout -= FlxG.elapsed * this._bossSpeed;
+         _modeElapsed += FlxG.elapsed * this._bossSpeed;
+         _actionTimeout -= FlxG.elapsed * this._bossSpeed;
          switch(this._attackMode)
          {
             case MODE_INTRO:
@@ -756,8 +758,9 @@ package
                this.updateAiTeleport();
                break;
             case MODE_STRAFE:
+			   break;
          }
-         this._releaseJumpTimeout -= FlxG.elapsed;
+         _releaseJumpTimeout -= FlxG.elapsed;
          if(this._releaseJumpTimeout <= 0 && this.pressedJump())
          {
             this.releaseJump();
@@ -780,6 +783,7 @@ package
                   case GRAV_DOWN:
                      this.tapDown();
                      this.aiJump(GRAV_NONE,0.1);
+					 break;
                }
             }
          }
@@ -788,86 +792,86 @@ package
       public function getDecision() : Number
       {
          ++this._decisionTableIndex;
-         this._decisionTableIndex %= DECISION_TABLE.length;
+         _decisionTableIndex %= DECISION_TABLE.length;
          return DECISION_TABLE[this._decisionTableIndex];
       }
       
       public function pressRight() : void
       {
-         this.framesRight = 1;
-         this.framesLeft = -1;
+         framesRight = 1;
+         framesLeft = -1;
       }
       
       public function releaseRight() : void
       {
-         this.framesRight = -1;
+         framesRight = -1;
       }
       
       public function pressLeft() : void
       {
-         this.framesLeft = 1;
-         this.framesRight = -1;
+         framesLeft = 1;
+         framesRight = -1;
       }
       
       public function releaseLeft() : void
       {
-         this.framesLeft = -1;
+         framesLeft = -1;
       }
       
       public function pressDown() : void
       {
-         this.framesDown = 1;
-         this.framesUp = -1;
+         framesDown = 1;
+         framesUp = -1;
       }
       
       public function releaseDown() : void
       {
-         this.framesDown = -1;
+         framesDown = -1;
       }
       
       public function pressUp() : void
       {
-         this.framesUp = 1;
-         this.framesDown = -1;
+         framesUp = 1;
+         framesDown = -1;
       }
       
       public function releaseUp() : void
       {
-         this.framesUp = -1;
+         framesUp = -1;
       }
       
       public function pressJump() : void
       {
-         this.framesJump = 1;
+         framesJump = 1;
       }
       
       public function releaseJump() : void
       {
-         this.framesJump = -1;
+         framesJump = -1;
       }
       
       public function tapUp() : void
       {
          this.pressUp();
-         this.tappedUp = true;
+         tappedUp = true;
       }
       
       public function tapDown() : void
       {
          this.pressDown();
-         this.tappedDown = true;
+         tappedDown = true;
       }
       
       public function tapRight() : void
       {
          this.pressRight();
-         this.tappedRight = true;
+         tappedRight = true;
       }
       
       public function tapLeft() : void
       {
          this.pressLeft();
-         this.tappedLeft = true;
+         tappedLeft = true;
       }
       
       override public function update() : void
@@ -880,7 +884,7 @@ package
          {
             this.updateAi();
          }
-         this.elapsed += FlxG.elapsed;
+         elapsed += FlxG.elapsed;
          this.fixGravity();
          if(this.justPressedJump() && this._jumping)
          {
@@ -927,13 +931,13 @@ package
       
       override public function hitLeft(param1:FlxObject, param2:Number) : void
       {
-         this._justHitHeadOrWall = true;
+         _justHitHeadOrWall = true;
          super.hitLeft(param1,param2);
       }
       
       override public function hitRight(param1:FlxObject, param2:Number) : void
       {
-         this._justHitHeadOrWall = true;
+         _justHitHeadOrWall = true;
          super.hitRight(param1,param2);
       }
       
@@ -972,26 +976,26 @@ package
       
       override public function hitBottom(param1:FlxObject, param2:Number) : void
       {
-         this._justHitHeadOrWall = false;
+         _justHitHeadOrWall = false;
          super.hitBottom(param1,param2);
       }
       
       override public function hitTop(param1:FlxObject, param2:Number) : void
       {
-         this._justHitHeadOrWall = true;
+         _justHitHeadOrWall = true;
          super.hitTop(param1,param2);
       }
       
       override public function destroy() : void
       {
          var _loc1_:String = null;
-         this._bulletGroups = null;
-         this._hasWeapon = null;
+         _bulletGroups = null;
+         _hasWeapon = null;
          for(_loc1_ in this._shadowBall)
          {
             this._shadowBall[_loc1_] = null;
          }
-         this._shadowBall = null;
+         _shadowBall = null;
          super.destroy();
       }
       
@@ -1009,7 +1013,7 @@ package
       
       public function setGravityDir(param1:int) : void
       {
-         this._gravityDir = param1;
+         _gravityDir = param1;
          switch(this._gravityDir)
          {
             case GRAV_DOWN:
@@ -1035,12 +1039,13 @@ package
                acceleration.y = 0;
                drag.y = this._runSpeed * 200;
                drag.x = 0;
+			   break;
          }
       }
       
       public function hideInShell(param1:Boolean) : void
       {
-         this._hidingInShell = param1;
+         _hidingInShell = param1;
          this.setFaceDir(this._faceDir,true);
       }
       
@@ -1061,14 +1066,14 @@ package
          switch(this._gravityDir)
          {
             case GRAV_UP:
-               this._jumping = velocity.y != 0;
+               _jumping = velocity.y != 0;
                if(this._jumping)
                {
                   ++this._fallFrames;
                }
                else
                {
-                  this._fallFrames = 0;
+                  _fallFrames = 0;
                }
                if(!this._hasGravityJump && this._fallFrames == 1)
                {
@@ -1077,12 +1082,12 @@ package
                else if(this._hasGravityJump && this._fallFrames == 1 && this.pressedUp() && this.pressedRight())
                {
                   this.setFaceDir(FACE_LWALL_UP);
-                  --y;
+                  y -= 1;
                }
                else if(this._hasGravityJump && this._fallFrames == 1 && this.pressedUp() && this.pressedLeft())
                {
                   this.setFaceDir(FACE_RWALL_UP);
-                  --y;
+                  y -= 1;
                   x += 12;
                }
                else if(this._hasGravityJump && !this.pressedJump() && this._fallFrames == 1 && !this.pressedUp())
@@ -1100,6 +1105,7 @@ package
                         break;
                      case GRAV_RIGHT:
                         this.setFaceDir(this._mostRecentUpDown == DIR_UP ? FACE_RWALL_UP : FACE_RWALL_DOWN);
+						break;
                   }
                }
                break;
@@ -1121,14 +1127,14 @@ package
                   }
                   break;
                }
-               this._jumping = velocity.y != 0;
+               _jumping = velocity.y != 0;
                if(this._jumping)
                {
                   ++this._fallFrames;
                }
                else
                {
-                  this._fallFrames = 0;
+                  _fallFrames = 0;
                }
                if(this._fallFrames == 1)
                {
@@ -1136,14 +1142,14 @@ package
                }
                break;
             case GRAV_LEFT:
-               this._jumping = velocity.x != 0;
+               _jumping = velocity.x != 0;
                if(this._jumping)
                {
                   ++this._fallFrames;
                }
                else
                {
-                  this._fallFrames = 0;
+                  _fallFrames = 0;
                }
                if(!this._hasGravityJump && this._fallFrames == 1)
                {
@@ -1175,18 +1181,19 @@ package
                         break;
                      case GRAV_RIGHT:
                         this.setFaceDir(this._mostRecentUpDown == DIR_UP ? FACE_RWALL_UP : FACE_RWALL_DOWN);
+						break;
                   }
                }
                break;
             case GRAV_RIGHT:
-               this._jumping = velocity.x != 0;
+               _jumping = velocity.x != 0;
                if(this._jumping)
                {
                   ++this._fallFrames;
                }
                else
                {
-                  this._fallFrames = 0;
+                  _fallFrames = 0;
                }
                if(!this._hasGravityJump && this._jumping)
                {
@@ -1208,7 +1215,7 @@ package
                }
                else if(this._hasGravityJump && !this.pressedJump() && this._fallFrames == 1 && !this.pressedRight())
                {
-                  this._desiredGravity = GRAV_RIGHT;
+                  _desiredGravity = GRAV_RIGHT;
                   switch(this._desiredGravity)
                   {
                      case GRAV_DOWN:
@@ -1222,8 +1229,10 @@ package
                         break;
                      case GRAV_RIGHT:
                         this.setFaceDir(this._mostRecentUpDown == DIR_UP ? FACE_RWALL_UP : FACE_RWALL_DOWN);
+						break;
                   }
                }
+			   break;
          }
       }
       
@@ -1249,6 +1258,7 @@ package
                break;
             case GRAV_RIGHT:
                velocity.x = -this._jumpPower;
+			   break;
          }
       }
       
@@ -1263,9 +1273,9 @@ package
                height = 16 - 6;
                this.setGravityDir(GRAV_DOWN);
                this.playAnim("floor_right_hide");
-               this._hideOfsX = 9;
+               _hideOfsX = 9;
                x += this._hideOfsX;
-               this._hideOfsY = 4;
+               _hideOfsY = 4;
                y += this._hideOfsY;
                break;
             case FACE_FLOOR_RIGHT:
@@ -1274,9 +1284,9 @@ package
                offset.y = 16 + 6;
                height = 16 - 6;
                this.setGravityDir(GRAV_DOWN);
-               this._hideOfsX = 3;
+               _hideOfsX = 3;
                x += this._hideOfsX;
-               this._hideOfsY = 4;
+               _hideOfsY = 4;
                y += this._hideOfsY;
                this.playAnim("floor_right_hide");
                break;
@@ -1287,7 +1297,7 @@ package
                height = 16 - 6;
                this.setGravityDir(GRAV_UP);
                this.playAnim("ceil_right_hide");
-               this._hideOfsX = 9;
+               _hideOfsX = 9;
                x += this._hideOfsX;
                break;
             case FACE_CEIL_RIGHT:
@@ -1297,7 +1307,7 @@ package
                height = 16 - 6;
                this.setGravityDir(GRAV_UP);
                this.playAnim("ceil_right_hide");
-               this._hideOfsX = 3;
+               _hideOfsX = 3;
                x += this._hideOfsX;
                break;
             case FACE_RWALL_UP:
@@ -1308,9 +1318,9 @@ package
                this.setGravityDir(GRAV_RIGHT);
                this.playAnim("rwall_up_hide");
                facing = RIGHT;
-               this._hideOfsY = 9;
+               _hideOfsY = 9;
                y += this._hideOfsY;
-               this._hideOfsX = 3;
+               _hideOfsX = 3;
                x += this._hideOfsX;
                break;
             case FACE_RWALL_DOWN:
@@ -1321,9 +1331,9 @@ package
                this.setGravityDir(GRAV_RIGHT);
                this.playAnim("rwall_down_hide");
                facing = RIGHT;
-               this._hideOfsY = 3;
+               _hideOfsY = 3;
                y += this._hideOfsY;
-               this._hideOfsX = 3;
+               _hideOfsX = 3;
                x += this._hideOfsX;
                break;
             case FACE_LWALL_UP:
@@ -1334,7 +1344,7 @@ package
                this.setGravityDir(GRAV_LEFT);
                this.playAnim("rwall_up_hide");
                facing = LEFT;
-               this._hideOfsY = 9;
+               _hideOfsY = 9;
                y += this._hideOfsY;
                break;
             case FACE_LWALL_DOWN:
@@ -1345,8 +1355,9 @@ package
                this.setGravityDir(GRAV_LEFT);
                this.playAnim("rwall_down_hide");
                facing = LEFT;
-               this._hideOfsY = 3;
+               _hideOfsY = 3;
                y += this._hideOfsY;
+			   break;
          }
       }
       
@@ -1407,6 +1418,7 @@ package
                this.setGravityDir(GRAV_LEFT);
                this.playAnim("rwall_down_move");
                facing = LEFT;
+			   break;
          }
       }
       
@@ -1416,11 +1428,11 @@ package
          {
             return;
          }
-         this._faceDir = param1;
+         _faceDir = param1;
          x -= this._hideOfsX;
-         this._hideOfsX = 0;
+         _hideOfsX = 0;
          y -= this._hideOfsY;
-         this._hideOfsY = 0;
+         _hideOfsY = 0;
          if(this._hidingInShell)
          {
             this.setFaceDirHiding(this._faceDir);
@@ -1433,13 +1445,6 @@ package
       
       public function attack() : void
       {
-         var _loc2_:int = 0;
-         var _loc3_:Array = null;
-         var _loc4_:Array = null;
-         var _loc5_:int = 0;
-         var _loc6_:int = 0;
-         var _loc7_:int = 0;
-         var _loc8_:int = 0;
          this._weaponTimeout -= FlxG.elapsed;
          if(this._weaponTimeout > 0)
          {
@@ -1456,7 +1461,8 @@ package
          var _loc1_:Boss4Bullet = this._bulletGroups.getBullet(this._currentWeapon);
          if(_loc1_)
          {
-            _loc2_ = -1;
+            var _loc2_:int = -1;
+			var _loc3_:Array;
             if(this._jumping)
             {
                _loc3_ = [1,1,1,1,1,1,1,1];
@@ -1482,35 +1488,35 @@ package
             {
                _loc3_ = [1,1,1,1,1,1,1,1];
             }
-            if(this.pressedUp() && this.pressedLeft() && Boolean(_loc3_[3]))
+            if(this.pressedUp() && this.pressedLeft() && _loc3_[3])
             {
                _loc2_ = 3;
             }
-            else if(this.pressedUp() && this.pressedRight() && Boolean(_loc3_[1]))
+            else if(this.pressedUp() && this.pressedRight() && _loc3_[1])
             {
                _loc2_ = 1;
             }
-            else if(this.pressedDown() && this.pressedLeft() && Boolean(_loc3_[5]))
+            else if(this.pressedDown() && this.pressedLeft() && _loc3_[5])
             {
                _loc2_ = 5;
             }
-            else if(this.pressedDown() && this.pressedRight() && Boolean(_loc3_[7]))
+            else if(this.pressedDown() && this.pressedRight() && _loc3_[7])
             {
                _loc2_ = 7;
             }
-            else if(this.pressedUp() && Boolean(_loc3_[2]))
+            else if(this.pressedUp() && _loc3_[2])
             {
                _loc2_ = 2;
             }
-            else if(this.pressedDown() && Boolean(_loc3_[6]))
+            else if(this.pressedDown() && _loc3_[6])
             {
                _loc2_ = 6;
             }
-            else if(this.pressedLeft() && Boolean(_loc3_[4]))
+            else if(this.pressedLeft() && _loc3_[4])
             {
                _loc2_ = 4;
             }
-            else if(this.pressedRight() && Boolean(_loc3_[0]))
+            else if(this.pressedRight() && _loc3_[0])
             {
                _loc2_ = 0;
             }
@@ -1543,13 +1549,13 @@ package
                      _loc2_ = 6;
                }
             }
-            _loc4_ = [0,40,90,140,180,-140,-90,-40];
-            _loc5_ = int(_loc4_[_loc2_]);
-            _loc6_ = WEAPON_SPEED[this._currentWeapon] / this._turboMultiplier;
-            _loc7_ = Math.cos(_loc5_ * Math.PI / 180) * _loc6_;
-            _loc8_ = -Math.sin(_loc5_ * Math.PI / 180) * _loc6_;
+            var _loc4_:Array = [0,40,90,140,180,-140,-90,-40];
+            var _loc5_:int = _loc4_[_loc2_];
+            var _loc6_:int = WEAPON_SPEED[this._currentWeapon] / this._turboMultiplier;
+            var _loc7_:int = Math.cos(_loc5_ * Math.PI / 180) * _loc6_;
+            var _loc8_:int = -Math.sin(_loc5_ * Math.PI / 180) * _loc6_;
             _loc1_.shoot(x + width / 2,y + height / 2,_loc7_,_loc8_);
-            this._weaponTimeout = WEAPON_TIMEOUTS[this._currentWeapon] * this._turboMultiplier;
+            _weaponTimeout = WEAPON_TIMEOUTS[this._currentWeapon] * this._turboMultiplier;
          }
       }
       
@@ -1616,53 +1622,56 @@ package
                if((!this.pressedLeft() && !this.pressedRight() || this._mostRecentDir == DIR_UP) && this.pressedUp())
                {
                   this.setFaceDir(facing == RIGHT ? FACE_CEIL_RIGHT : FACE_CEIL_LEFT);
-                  this._desiredGravity = GRAV_UP;
+                  _desiredGravity = GRAV_UP;
                }
                else if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_RIGHT) && this.pressedRight())
                {
                   this.setFaceDir(FACE_RWALL_UP);
-                  this._desiredGravity = GRAV_RIGHT;
+                  _desiredGravity = GRAV_RIGHT;
                }
                else if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_LEFT) && this.pressedLeft())
                {
                   this.setFaceDir(FACE_LWALL_UP);
-                  this._desiredGravity = GRAV_LEFT;
+                  _desiredGravity = GRAV_LEFT;
                }
                break;
             case GRAV_UP:
                if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_RIGHT) && this.pressedRight())
                {
                   this.setFaceDir(FACE_RWALL_DOWN);
-                  this._desiredGravity = GRAV_RIGHT;
+                  _desiredGravity = GRAV_RIGHT;
                }
                else if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_LEFT) && this.pressedLeft())
                {
                   this.setFaceDir(FACE_LWALL_DOWN);
-                  this._desiredGravity = GRAV_LEFT;
+                  _desiredGravity = GRAV_LEFT;
                }
                else if(this.pressedDown())
                {
                   this.setFaceDir(facing == RIGHT ? FACE_FLOOR_RIGHT : FACE_FLOOR_LEFT);
-                  this._desiredGravity = GRAV_DOWN;
+                  _desiredGravity = GRAV_DOWN;
                }
                break;
             case GRAV_RIGHT:
                if((!this.pressedLeft() && !this.pressedRight() || this._mostRecentDir == DIR_UP) && this.pressedUp())
                {
                   this.setFaceDir(FACE_CEIL_RIGHT);
-                  this._desiredGravity = GRAV_UP;
+                  _desiredGravity = GRAV_UP;
                }
-               else if(!((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_RIGHT) && this.pressedRight()))
+               else if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_RIGHT) && this.pressedRight())
+			   {
+			   }
+			   else
                {
                   if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_LEFT) && this.pressedLeft())
                   {
                      this.setFaceDir(this._faceDir == FACE_RWALL_UP ? FACE_LWALL_UP : FACE_LWALL_DOWN);
-                     this._desiredGravity = GRAV_LEFT;
+                     _desiredGravity = GRAV_LEFT;
                   }
                   else
                   {
                      this.setFaceDir(FACE_FLOOR_RIGHT);
-                     this._desiredGravity = GRAV_DOWN;
+                     _desiredGravity = GRAV_DOWN;
                   }
                }
                break;
@@ -1670,46 +1679,50 @@ package
                if((!this.pressedLeft() && !this.pressedRight() || this._mostRecentDir == DIR_UP) && this.pressedUp())
                {
                   this.setFaceDir(FACE_CEIL_LEFT);
-                  this._desiredGravity = GRAV_UP;
+                  _desiredGravity = GRAV_UP;
                }
-               else if(!((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_LEFT) && this.pressedLeft()))
+               else if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_LEFT) && this.pressedLeft())
+			   {
+			   }
+			   else
                {
                   if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_RIGHT) && this.pressedRight())
                   {
                      this.setFaceDir(this._faceDir == FACE_LWALL_UP ? FACE_RWALL_UP : FACE_RWALL_DOWN);
-                     this._desiredGravity = GRAV_RIGHT;
+                     _desiredGravity = GRAV_RIGHT;
                   }
                   else
                   {
                      this.setFaceDir(FACE_FLOOR_LEFT);
-                     this._desiredGravity = GRAV_DOWN;
+                     _desiredGravity = GRAV_DOWN;
                   }
                }
+			   break;
          }
-         this._desiredGravity = GRAV_DOWN;
+         _desiredGravity = GRAV_DOWN;
       }
       
       private function checkInput_move() : void
       {
          if(this.justPressedUp())
          {
-            this._mostRecentDir = DIR_UP;
-            this._mostRecentUpDown = DIR_UP;
+            _mostRecentDir = DIR_UP;
+            _mostRecentUpDown = DIR_UP;
          }
          if(this.justPressedDown())
          {
-            this._mostRecentDir = DIR_DOWN;
-            this._mostRecentUpDown = DIR_DOWN;
+            _mostRecentDir = DIR_DOWN;
+            _mostRecentUpDown = DIR_DOWN;
          }
          if(this.justPressedLeft())
          {
-            this._mostRecentDir = DIR_LEFT;
-            this._mostRecentLeftRight = DIR_LEFT;
+            _mostRecentDir = DIR_LEFT;
+            _mostRecentLeftRight = DIR_LEFT;
          }
          if(this.justPressedRight())
          {
-            this._mostRecentDir = DIR_RIGHT;
-            this._mostRecentLeftRight = DIR_RIGHT;
+            _mostRecentDir = DIR_RIGHT;
+            _mostRecentLeftRight = DIR_RIGHT;
          }
          var _loc1_:Boolean = this._hidingInShell && !this._jumping && !this._hasRoll;
          switch(this._gravityDir)
@@ -1805,12 +1818,13 @@ package
                   facing = RIGHT;
                   this.setFaceDir(FACE_RWALL_DOWN);
                }
+			   break;
          }
       }
       
       private function playAnim(param1:String) : void
       {
-         this._lastAnim = param1;
+         _lastAnim = param1;
          play(this._snailTypePrefix + param1);
       }
       
@@ -1838,9 +1852,9 @@ package
       {
          if(_hp <= this.MAX_HP * 0.4 && this._attackPhase < 1)
          {
-            this._bossSpeed += 0.2;
-            this._attackPhase = 1;
-            this._snailTypePrefix = "snail2_";
+            _bossSpeed += 0.2;
+            _attackPhase = 1;
+            _snailTypePrefix = "snail2_";
             this.playAnim(this._lastAnim);
          }
          super.hurt(param1);

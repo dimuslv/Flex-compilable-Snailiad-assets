@@ -26,7 +26,19 @@ package
       
       private var _ringTheta:Number = 0;
       
-      public function Boss4RingCenter(param1:int, param2:int)
+      override public function destroy() : void
+      {
+         var _loc1_:int = 0;
+         while(_loc1_ < RING_NUM)
+         {
+            this._rings[_loc1_] = null;
+            _loc1_++;
+         }
+         _rings = null;
+         super.destroy();
+      }
+      
+      public function Boss4RingCenter(param1:int, param2:int) : void
       {
          super(param1,param2,99999,0,0,true);
          this._rings = new Array();
@@ -48,18 +60,6 @@ package
          }
          visible = false;
          this.updateRingPos();
-      }
-      
-      override public function destroy() : void
-      {
-         var _loc1_:int = 0;
-         while(_loc1_ < RING_NUM)
-         {
-            this._rings[_loc1_] = null;
-            _loc1_++;
-         }
-         this._rings = null;
-         super.destroy();
       }
       
       public function updateRingPos() : void
@@ -87,7 +87,7 @@ package
          }
          if(_loc2_ > 0)
          {
-            this._theta += Math.PI * FlxG.elapsed * this.TURN_SPEED;
+            _theta += Math.PI * FlxG.elapsed * this.TURN_SPEED;
          }
       }
       
@@ -97,9 +97,9 @@ package
          {
             return;
          }
-         this._radius += this.RADIUS_VEL * FlxG.elapsed;
-         this._ringTheta += FlxG.elapsed * Math.PI * RING_THETA_VEL;
-         this._velocity += this._acceleration * FlxG.elapsed;
+         _radius += this.RADIUS_VEL * FlxG.elapsed;
+         _ringTheta += FlxG.elapsed * Math.PI * RING_THETA_VEL;
+         _velocity += this._acceleration * FlxG.elapsed;
          velocity.x = this._velocity * Math.cos(this._theta);
          velocity.y = this._velocity * Math.sin(this._theta);
          this.updateRingPos();

@@ -504,47 +504,47 @@ package
       
       public function updateAiTeleport() : void
       {
-         var _loc1_:Number = NaN;
          var _loc2_:Number = NaN;
-         var _loc3_:int = 0;
+         var _loc3_:Number = NaN;
+         var _loc4_:int = 0;
          if(!this._modeInitialized)
          {
             this._modeInitialized = true;
             this.pickTeleTarget();
             visible = false;
             solid = false;
-            _loc3_ = 0;
-            while(_loc3_ < this._shadowBall.length)
+            _loc4_ = 0;
+            while(_loc4_ < this._shadowBall.length)
             {
-               this._shadowBall[_loc3_].x = this._teleStartX;
-               this._shadowBall[_loc3_].y = this._teleStartY;
-               this._shadowBall[_loc3_].visible = true;
-               _loc3_++;
+               this._shadowBall[_loc4_].x = this._teleStartX;
+               this._shadowBall[_loc4_].y = this._teleStartY;
+               this._shadowBall[_loc4_].visible = true;
+               _loc4_++;
             }
          }
-         var _loc4_:Number = this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME);
-         if(_loc4_ <= 0.5)
+         var _loc1_:Number = this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME);
+         if(_loc1_ <= 0.5)
          {
-            _loc1_ = this.SHADOW_BALL_RADIUS * this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME * 2);
+            _loc2_ = this.SHADOW_BALL_RADIUS * this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME * 2);
          }
          else
          {
-            _loc1_ = this.SHADOW_BALL_RADIUS * this.normalizedSigmoid((1 - this._modeElapsed / TELEPORT_TIME) * 2);
+            _loc2_ = this.SHADOW_BALL_RADIUS * this.normalizedSigmoid((1 - this._modeElapsed / TELEPORT_TIME) * 2);
          }
-         if(_loc4_ <= 0.5)
+         if(_loc1_ <= 0.5)
          {
-            _loc2_ = Math.PI * 2 * this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME * 2);
+            _loc3_ = Math.PI * 2 * this.normalizedSigmoid(this._modeElapsed / TELEPORT_TIME * 2);
          }
          else
          {
-            _loc2_ = Math.PI * 2 * this.normalizedSigmoid((1 - this._modeElapsed / TELEPORT_TIME) * 2);
+            _loc3_ = Math.PI * 2 * this.normalizedSigmoid((1 - this._modeElapsed / TELEPORT_TIME) * 2);
          }
-         _loc3_ = 0;
-         while(_loc3_ < this._shadowBall.length)
+         _loc4_ = 0;
+         while(_loc4_ < this._shadowBall.length)
          {
-            this._shadowBall[_loc3_].x = this._teleStartX * (1 - _loc4_) + this._teleEndX * _loc4_ + Math.cos(_loc2_ + Math.PI * 2 / this._shadowBall.length * _loc3_) * _loc1_;
-            this._shadowBall[_loc3_].y = this._teleStartY * (1 - _loc4_) + this._teleEndY * _loc4_ - Math.sin(_loc2_ + Math.PI * 2 / this._shadowBall.length * _loc3_) * _loc1_;
-            _loc3_++;
+            this._shadowBall[_loc4_].x = this._teleStartX * (1 - _loc1_) + this._teleEndX * _loc1_ + Math.cos(_loc3_ + Math.PI * 2 / this._shadowBall.length * _loc4_) * _loc2_;
+            this._shadowBall[_loc4_].y = this._teleStartY * (1 - _loc1_) + this._teleEndY * _loc1_ - Math.sin(_loc3_ + Math.PI * 2 / this._shadowBall.length * _loc4_) * _loc2_;
+            _loc4_++;
          }
          velocity.x = 0;
          velocity.y = 0;
@@ -939,7 +939,8 @@ package
       
       public function moveSnailCheckBounds(param1:int, param2:int) : void
       {
-         var _loc3_:int = param2;
+         var _loc3_:int = 0;
+         _loc3_ = param2;
          if(param2 < 0)
          {
             param2 = PlayState.worldMap.findFirstNotSolidTop(x,y,width,height,param2);
@@ -1433,13 +1434,13 @@ package
       
       public function attack() : void
       {
-         var _loc1_:int = 0;
-         var _loc2_:Array = null;
+         var _loc2_:int = 0;
          var _loc3_:Array = null;
-         var _loc4_:int = 0;
+         var _loc4_:Array = null;
          var _loc5_:int = 0;
          var _loc6_:int = 0;
          var _loc7_:int = 0;
+         var _loc8_:int = 0;
          this._weaponTimeout -= FlxG.elapsed;
          if(this._weaponTimeout > 0)
          {
@@ -1453,102 +1454,102 @@ package
          {
             this.hideInShell(false);
          }
-         var _loc8_:Boss4Bullet = this._bulletGroups.getBullet(this._currentWeapon);
-         if(_loc8_)
+         var _loc1_:Boss4Bullet = this._bulletGroups.getBullet(this._currentWeapon);
+         if(_loc1_)
          {
-            _loc1_ = -1;
+            _loc2_ = -1;
             if(this._jumping)
             {
-               _loc2_ = [1,1,1,1,1,1,1,1];
+               _loc3_ = [1,1,1,1,1,1,1,1];
             }
             else if(this._currentWeapon == WEAPON_PEA_SHOOTER)
             {
                switch(this._gravityDir)
                {
                   case GRAV_LEFT:
-                     _loc2_ = [1,1,1,0,0,0,1,1];
+                     _loc3_ = [1,1,1,0,0,0,1,1];
                      break;
                   case GRAV_RIGHT:
-                     _loc2_ = [0,0,1,1,1,1,1,0];
+                     _loc3_ = [0,0,1,1,1,1,1,0];
                      break;
                   case GRAV_UP:
-                     _loc2_ = [1,0,0,0,1,1,1,1];
+                     _loc3_ = [1,0,0,0,1,1,1,1];
                      break;
                   case GRAV_DOWN:
-                     _loc2_ = [1,1,1,1,1,0,0,0];
+                     _loc3_ = [1,1,1,1,1,0,0,0];
                }
             }
             else
             {
-               _loc2_ = [1,1,1,1,1,1,1,1];
+               _loc3_ = [1,1,1,1,1,1,1,1];
             }
-            if(this.pressedUp() && this.pressedLeft() && Boolean(_loc2_[3]))
+            if(this.pressedUp() && this.pressedLeft() && Boolean(_loc3_[3]))
             {
-               _loc1_ = 3;
+               _loc2_ = 3;
             }
-            else if(this.pressedUp() && this.pressedRight() && Boolean(_loc2_[1]))
+            else if(this.pressedUp() && this.pressedRight() && Boolean(_loc3_[1]))
             {
-               _loc1_ = 1;
+               _loc2_ = 1;
             }
-            else if(this.pressedDown() && this.pressedLeft() && Boolean(_loc2_[5]))
+            else if(this.pressedDown() && this.pressedLeft() && Boolean(_loc3_[5]))
             {
-               _loc1_ = 5;
+               _loc2_ = 5;
             }
-            else if(this.pressedDown() && this.pressedRight() && Boolean(_loc2_[7]))
+            else if(this.pressedDown() && this.pressedRight() && Boolean(_loc3_[7]))
             {
-               _loc1_ = 7;
+               _loc2_ = 7;
             }
-            else if(this.pressedUp() && Boolean(_loc2_[2]))
+            else if(this.pressedUp() && Boolean(_loc3_[2]))
             {
-               _loc1_ = 2;
+               _loc2_ = 2;
             }
-            else if(this.pressedDown() && Boolean(_loc2_[6]))
+            else if(this.pressedDown() && Boolean(_loc3_[6]))
             {
-               _loc1_ = 6;
+               _loc2_ = 6;
             }
-            else if(this.pressedLeft() && Boolean(_loc2_[4]))
+            else if(this.pressedLeft() && Boolean(_loc3_[4]))
             {
-               _loc1_ = 4;
+               _loc2_ = 4;
             }
-            else if(this.pressedRight() && Boolean(_loc2_[0]))
+            else if(this.pressedRight() && Boolean(_loc3_[0]))
             {
-               _loc1_ = 0;
+               _loc2_ = 0;
             }
-            if(_loc1_ == -1)
+            if(_loc2_ == -1)
             {
                switch(this._faceDir)
                {
                   case FACE_FLOOR_LEFT:
-                     _loc1_ = 4;
+                     _loc2_ = 4;
                      break;
                   case FACE_CEIL_LEFT:
-                     _loc1_ = 4;
+                     _loc2_ = 4;
                      break;
                   case FACE_FLOOR_RIGHT:
-                     _loc1_ = 0;
+                     _loc2_ = 0;
                      break;
                   case FACE_CEIL_RIGHT:
-                     _loc1_ = 0;
+                     _loc2_ = 0;
                      break;
                   case FACE_RWALL_UP:
-                     _loc1_ = 2;
+                     _loc2_ = 2;
                      break;
                   case FACE_LWALL_UP:
-                     _loc1_ = 2;
+                     _loc2_ = 2;
                      break;
                   case FACE_RWALL_DOWN:
-                     _loc1_ = 6;
+                     _loc2_ = 6;
                      break;
                   case FACE_LWALL_DOWN:
-                     _loc1_ = 6;
+                     _loc2_ = 6;
                }
             }
-            _loc3_ = [0,40,90,140,180,-140,-90,-40];
-            _loc4_ = int(_loc3_[_loc1_]);
-            _loc5_ = WEAPON_SPEED[this._currentWeapon] / this._turboMultiplier;
-            _loc6_ = Math.cos(_loc4_ * Math.PI / 180) * _loc5_;
-            _loc7_ = -Math.sin(_loc4_ * Math.PI / 180) * _loc5_;
-            _loc8_.shoot(x + width / 2,y + height / 2,_loc6_,_loc7_);
+            _loc4_ = [0,40,90,140,180,-140,-90,-40];
+            _loc5_ = int(_loc4_[_loc2_]);
+            _loc6_ = WEAPON_SPEED[this._currentWeapon] / this._turboMultiplier;
+            _loc7_ = Math.cos(_loc5_ * Math.PI / 180) * _loc6_;
+            _loc8_ = -Math.sin(_loc5_ * Math.PI / 180) * _loc6_;
+            _loc1_.shoot(x + width / 2,y + height / 2,_loc7_,_loc8_);
             this._weaponTimeout = WEAPON_TIMEOUTS[this._currentWeapon] * this._turboMultiplier;
          }
       }

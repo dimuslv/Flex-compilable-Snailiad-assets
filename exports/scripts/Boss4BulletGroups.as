@@ -53,17 +53,17 @@ package
       
       public function destroyAll() : void
       {
-         var _loc1_:int = 0;
          var _loc2_:int = 0;
-         while(_loc2_ < MAX_WEAPON)
+         var _loc1_:int = 0;
+         while(_loc1_ < MAX_WEAPON)
          {
-            _loc1_ = 0;
-            while(_loc1_ < MAX_BULLET[_loc2_])
+            _loc2_ = 0;
+            while(_loc2_ < MAX_BULLET[_loc1_])
             {
-               this.bulletLists[_loc2_][_loc1_].kill();
-               _loc1_++;
+               this.bulletLists[_loc1_][_loc2_].kill();
+               _loc2_++;
             }
-            _loc2_++;
+            _loc1_++;
          }
       }
       
