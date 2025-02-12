@@ -11,7 +11,7 @@ package
       
       public var elapsed:Number = 0;
       
-      public function EndingGroup(param1:int)
+      public function EndingGroup(param1:int) : void
       {
          super();
          this.picture = new EndingPicture(param1);
@@ -25,14 +25,13 @@ package
       override public function destroy() : void
       {
          super.destroy();
-         this.picture = null;
-         this.bg = null;
+         picture = null;
+         bg = null;
       }
       
       public function updatePositions() : void
       {
-         var _loc1_:int = 0;
-         _loc1_ = -30 + this.elapsed * 10;
+         var _loc1_:int = -30 + this.elapsed * 10;
          if(_loc1_ > 0)
          {
             _loc1_ = 0;
@@ -48,7 +47,7 @@ package
       
       override public function update() : void
       {
-         this.elapsed += FlxG.elapsed;
+         elapsed += FlxG.elapsed;
          this.updatePositions();
          super.update();
       }

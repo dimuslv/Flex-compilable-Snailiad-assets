@@ -13,7 +13,7 @@ package
       
       private var _targetAlpha:Number = 0;
       
-      public function EndingMoonSnail(param1:int, param2:int, param3:int)
+      public function EndingMoonSnail(param1:int, param2:int, param3:int) : void
       {
          super(param1,param2);
          loadGraphic(Art.SleepyMoonSnail,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -28,7 +28,7 @@ package
       
       public function setTargetAlpha(param1:Number) : void
       {
-         this._targetAlpha = param1;
+         _targetAlpha = param1;
       }
       
       override public function update() : void

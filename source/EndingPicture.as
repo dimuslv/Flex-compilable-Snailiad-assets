@@ -8,7 +8,7 @@ package
       
       private static const IMG_HEIGHT:int = 240;
       
-      public function EndingPicture(param1:int)
+      public function EndingPicture(param1:int) : void
       {
          super();
          x = 0;
@@ -29,6 +29,7 @@ package
                break;
             case 5:
                loadGraphic(Art.EndingPicture5,false,false,IMG_WIDTH,IMG_HEIGHT);
+			   break;
          }
          addAnimation("normal",[0]);
          scrollFactor.x = scrollFactor.y = 0;

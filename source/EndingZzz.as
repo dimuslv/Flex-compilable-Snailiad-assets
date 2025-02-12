@@ -13,7 +13,7 @@ package
       
       private var _targetAlpha:Number = 1;
       
-      public function EndingZzz(param1:Number, param2:Number)
+      public function EndingZzz(param1:Number, param2:Number) : void
       {
          super(param1,param2);
          loadGraphic(Art.Zzz,true,true,IMG_WIDTH,IMG_HEIGHT);

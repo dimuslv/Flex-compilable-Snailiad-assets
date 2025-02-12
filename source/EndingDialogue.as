@@ -32,7 +32,7 @@ package
       
       private var _speed:Number = 1;
       
-      public function EndingDialogue()
+      public function EndingDialogue() : void
       {
          super();
          this._active = false;
@@ -54,26 +54,26 @@ package
       
       override public function destroy() : void
       {
-         this._msg = null;
+         _msg = null;
          super.destroy();
       }
       
-      public function start(param1:String, param2:int = 1, param3:Number = 1) : void
+      public function start(param1:String, param2:int = 1, param3:Number = 1.0) : void
       {
          this._msg.alpha = 1;
          this._msg.text = "";
-         this._fullMsg = param1;
-         this._active = true;
+         _fullMsg = param1;
+         _active = true;
          this._msg.visible = true;
-         this._oldLetters = 0;
-         this._voice = param2;
-         this._elapsed = 0;
-         this._speed = param3;
+         _oldLetters = 0;
+         _voice = param2;
+         _elapsed = 0;
+         _speed = param3;
       }
       
       public function stop() : void
       {
-         this._active = false;
+         _active = false;
          this._msg.visible = false;
       }
       
@@ -81,7 +81,7 @@ package
       {
          var _loc1_:int = 0;
          var _loc2_:String = null;
-         this._elapsed += FlxG.elapsed;
+         _elapsed += FlxG.elapsed;
          super.update();
          if(this._active)
          {
@@ -96,7 +96,7 @@ package
                      Sfx.playDialogueLetter(this._voice);
                   }
                }
-               this._oldLetters = _loc1_;
+               _oldLetters = _loc1_;
             }
             this._msg.text = this._fullMsg.substr(0,_loc1_);
          }

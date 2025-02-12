@@ -32,7 +32,6 @@ package
       public function updatePositions() : void
       {
          var _loc1_:int = 0;
-         _loc1_ = 0;
          _loc1_ = -30 + this.elapsed * 10;
          if(_loc1_ > 0)
          {

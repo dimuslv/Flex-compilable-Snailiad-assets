@@ -19,7 +19,7 @@ package
       
       public var scrollDone:Boolean = false;
       
-      public function EndingCredits()
+      public function EndingCredits() : void
       {
          this.createY = FlxG.height + 4;
          super();
@@ -116,7 +116,7 @@ package
       
       override public function destroy() : void
       {
-         this._theEnd = null;
+         _theEnd = null;
          super.destroy();
       }
       
@@ -131,8 +131,8 @@ package
          {
             return _loc4_;
          }
-         this.createY += _loc4_.height;
-         this.createY += SPACING_Y_MINOR;
+         createY += _loc4_.height;
+         createY += SPACING_Y_MINOR;
          _loc5_ = new FlxText(-4,this.createY,FlxG.width);
          _loc5_.font = Fonts.normal;
          _loc5_.size = 20;
@@ -144,8 +144,8 @@ package
          _loc5_.scrollFactor.x = _loc5_.scrollFactor.y = 0;
          _loc5_.velocity.y = VELOCITY_Y;
          add(_loc5_);
-         this.createY += _loc5_.realHeight;
-         this.createY += SPACING_Y_MAJOR;
+         createY += _loc5_.realHeight;
+         createY += SPACING_Y_MAJOR;
          return _loc5_;
       }
       
@@ -155,7 +155,7 @@ package
          {
             this._theEnd.y = FlxG.height / 2 - this._theEnd.height / 2;
             this._theEnd.velocity.y = 0;
-            this.scrollDone = true;
+            scrollDone = true;
          }
          super.update();
       }

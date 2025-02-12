@@ -8,7 +8,7 @@ package
       
       private static const IMG_HEIGHT:int = 240;
       
-      public function EndingBg()
+      public function EndingBg() : void
       {
          super();
          x = 0;

@@ -11,7 +11,7 @@ package
       
       private var _elapsed:Number = 0;
       
-      public function EndingSunSnail(param1:int, param2:int)
+      public function EndingSunSnail(param1:int, param2:int) : void
       {
          super(param1,param2);
          loadGraphic(Art.SnailNpc,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -25,7 +25,7 @@ package
       
       override public function update() : void
       {
-         this._elapsed += FlxG.elapsed;
+         _elapsed += FlxG.elapsed;
          offset.y = Math.sin(this._elapsed * 2) * 3;
          super.update();
       }

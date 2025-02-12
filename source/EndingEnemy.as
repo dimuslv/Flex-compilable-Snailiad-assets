@@ -141,7 +141,7 @@ package
       
       private var _type:int;
       
-      public function EndingEnemy(param1:int, param2:int, param3:int)
+      public function EndingEnemy(param1:int, param2:int, param3:int) : void
       {
          super(param1,param2);
          active = true;
@@ -424,6 +424,7 @@ package
             case TYPE_THE_END:
                loadGraphic(Art.TheEnd,true,true,194,122);
                addAnimation("normal",[0]);
+			   break;
          }
          play("normal");
          x = FlxG.width / 2 - width / 2 + param1;
@@ -441,23 +442,23 @@ package
          }
          if(this._hand)
          {
-            this._handTheta += FlxG.elapsed * 4;
+            _handTheta += FlxG.elapsed * 4;
             offset.x = 48 * Math.cos(this._handTheta);
             offset.y = 48 * Math.sin(this._handTheta);
          }
          if(this._type == TYPE_FLOATSPIKE)
          {
-            this._handTheta += FlxG.elapsed * 0.8;
+            _handTheta += FlxG.elapsed * 0.8;
             offset.y = 2 * Math.sin(this._handTheta);
          }
          if(this._type == TYPE_FLOATSPIKE2)
          {
-            this._handTheta += FlxG.elapsed * 0.85;
+            _handTheta += FlxG.elapsed * 0.85;
             offset.y = 2 * Math.cos(this._handTheta);
          }
          if(this._type == TYPE_DANDELION || this._type == TYPE_BALLOON)
          {
-            this._handTheta += FlxG.elapsed * 0.8;
+            _handTheta += FlxG.elapsed * 0.8;
             offset.x = 36 * Math.cos(this._handTheta);
          }
          super.update();
