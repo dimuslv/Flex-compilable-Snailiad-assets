@@ -21,7 +21,7 @@ package
       
       private var _value:int;
       
-      public function CheckBool(param1:Boolean = false)
+      public function CheckBool(param1:Boolean = false) : void
       {
          super();
          if(_globalCipherIndex == -1)
@@ -43,12 +43,12 @@ package
       
       public function set value(param1:Boolean) : void
       {
-         this._localCipherIndex += 67;
-         this._localCipherIndex %= NOISE.length;
-         this._value = NOISE[(this._localCipherIndex + (param1 ? 409 : 0)) % NOISE.length];
-         this._localHashIndex += 113;
-         this._localHashIndex %= NOISE.length;
-         this._hash = this._value ^ NOISE[this._localHashIndex];
+         _localCipherIndex += 67;
+         _localCipherIndex %= NOISE.length;
+         _value = NOISE[(this._localCipherIndex + (param1 ? 409 : 0)) % NOISE.length];
+         _localHashIndex += 113;
+         _localHashIndex %= NOISE.length;
+         _hash = this._value ^ NOISE[this._localHashIndex];
       }
       
       public function get value() : Boolean

@@ -1,8 +1,8 @@
 package
 {
    import flash.utils.ByteArray;
-   import mx.utils.*;
    import org.flixel.*;
+   import mx.utils.*;
    
    public class Cipher
    {
@@ -34,13 +34,11 @@ package
          return _loc3_.toString();
       }
       
-      public static function uncompress(param1:String) : String
+      public static function uncompress(s:String) : String
       {
-         var ba:ByteArray;
-         var s:String = param1;
          var dec:Base64Decoder = new Base64Decoder();
          dec.decode(s);
-         ba = dec.toByteArray();
+         var ba:ByteArray = dec.toByteArray();
          try
          {
             ba.uncompress();
@@ -66,17 +64,17 @@ package
       
       public static function MD5(param1:String) : String
       {
-         var _loc6_:int = 0;
-         var _loc7_:int = 0;
-         var _loc8_:int = 0;
-         var _loc9_:int = 0;
          param1 += "_@_v";
          var _loc2_:int = 1732584193;
          var _loc3_:int = -271733879;
          var _loc4_:int = -1732584194;
          var _loc5_:int = 271733878;
+		 var _loc6_:int = 0;
+		 var _loc7_:int = 0;
+		 var _loc8_:int = 0;
+		 var _loc9_:int = 0;
          var _loc10_:Array = createBlocks(param1);
-         var _loc11_:int = int(_loc10_.length);
+         var _loc11_:int = _loc10_.length;
          var _loc12_:int = 0;
          while(_loc12_ < _loc11_)
          {
@@ -226,13 +224,11 @@ package
       
       private static function toHex(param1:int, param2:Boolean = false) : String
       {
-         var _loc5_:int = 0;
-         var _loc6_:int = 0;
          var _loc3_:String = "";
          var _loc4_:String = "0123456789abcdef";
          if(param2)
          {
-            _loc5_ = 0;
+            var _loc5_:int = 0;
             while(_loc5_ < 4)
             {
                _loc3_ += _loc4_.charAt(param1 >> (3 - _loc5_) * 8 + 4 & 0x0F) + _loc4_.charAt(param1 >> (3 - _loc5_) * 8 & 0x0F);
@@ -241,7 +237,7 @@ package
          }
          else
          {
-            _loc6_ = 0;
+            var _loc6_:int = 0;
             while(_loc6_ < 4)
             {
                _loc3_ += _loc4_.charAt(param1 >> _loc6_ * 8 + 4 & 0x0F) + _loc4_.charAt(param1 >> _loc6_ * 8 & 0x0F);
