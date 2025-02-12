@@ -32,7 +32,7 @@ package
       
       public var bgColorSpeed:Number = 0.5;
       
-      public function Boss4SecondFormBg()
+      public function Boss4SecondFormBg() : void
       {
          super();
          this._bg = new FlxSprite();
@@ -65,13 +65,13 @@ package
          {
             param1 = 1;
          }
-         if(param1 < 0)
+         if(param1 < 0.0)
          {
-            param1 = 0;
+            param1 = 0.0;
          }
          this._bg.alpha = param1;
          this._stars.setAlpha(param1);
-         this._oldAlpha = param1;
+         _oldAlpha = param1;
          var _loc2_:int = 0;
          while(_loc2_ < PlayState.doors.length)
          {
@@ -82,15 +82,15 @@ package
       
       public function fadeOut() : void
       {
-         this._fadingOut = true;
-         this._fade = 1;
+         _fadingOut = true;
+         _fade = 1;
       }
       
       public function setTargetRgb(param1:int, param2:int, param3:int) : void
       {
-         this.targetR = param1;
-         this.targetG = param2;
-         this.targetB = param3;
+         targetR = param1;
+         targetG = param2;
+         targetB = param3;
       }
       
       public function setRgb(param1:uint, param2:uint, param3:uint) : void
@@ -139,28 +139,28 @@ package
          }
          if(this._fadingOut)
          {
-            this._fade -= FlxG.elapsed * FADE_SPEED;
+            _fade -= FlxG.elapsed * FADE_SPEED;
             if(this._fade < 0)
             {
-               this._fade = 0;
+               _fade = 0;
             }
             this.setAlpha(this._fade);
          }
          else if(this._fading)
          {
-            this._fade += FlxG.elapsed * FADE_SPEED;
+            _fade += FlxG.elapsed * FADE_SPEED;
             if(this._fade >= 1)
             {
-               this._fade = 1;
-               this._fading = false;
+               _fade = 1;
+               _fading = false;
             }
             this.setAlpha(this._fade);
          }
          else
          {
-            this.r = Utility.integrate(this.r,this.targetR,this.bgColorSpeed,FlxG.elapsed);
-            this.g = Utility.integrate(this.g,this.targetG,this.bgColorSpeed,FlxG.elapsed);
-            this.b = Utility.integrate(this.b,this.targetB,this.bgColorSpeed,FlxG.elapsed);
+            r = Utility.integrate(this.r,this.targetR,this.bgColorSpeed,FlxG.elapsed);
+            g = Utility.integrate(this.g,this.targetG,this.bgColorSpeed,FlxG.elapsed);
+            b = Utility.integrate(this.b,this.targetB,this.bgColorSpeed,FlxG.elapsed);
             this.setRgb(this.r,this.g,this.b);
          }
          super.update();
@@ -168,8 +168,8 @@ package
       
       override public function destroy() : void
       {
-         this._bg = null;
-         this._stars = null;
+         _bg = null;
+         _stars = null;
          super.destroy();
       }
    }

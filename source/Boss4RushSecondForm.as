@@ -146,7 +146,7 @@ package
       
       private var _zzzNum:Number = 0;
       
-      public function Boss4RushSecondForm(param1:int, param2:int)
+      public function Boss4RushSecondForm(param1:int, param2:int) : void
       {
          this._healAmount = PlayState.player.hpPerHeart() / 2;
          this._healNum = PlayState.player.getMaxHp() / this._healAmount;
@@ -187,22 +187,22 @@ package
       
       override public function destroy() : void
       {
-         this.bg = null;
-         this._bulletGroups = null;
-         this._zzz = null;
+         bg = null;
+         _bulletGroups = null;
+         _zzz = null;
          super.destroy();
       }
       
       public function getDecision() : Number
       {
          ++this._decisionTableIndex;
-         this._decisionTableIndex %= DECISION_TABLE.length;
+         _decisionTableIndex %= DECISION_TABLE.length;
          return DECISION_TABLE[this._decisionTableIndex];
       }
       
       override public function hitLeft(param1:FlxObject, param2:Number) : void
       {
-         this._lastHitDir = HIT_LEFT;
+         _lastHitDir = HIT_LEFT;
          if(this._mode == MODE_STOMP)
          {
             velocity.x *= -1;
@@ -223,7 +223,7 @@ package
       
       override public function hitRight(param1:FlxObject, param2:Number) : void
       {
-         this._lastHitDir = HIT_RIGHT;
+         _lastHitDir = HIT_RIGHT;
          if(this._mode == MODE_STOMP)
          {
             velocity.x *= -1;
@@ -254,21 +254,21 @@ package
          {
             FlxG.quake.start(0.02);
             Sfx.playStomp();
-            this._stompTimeout = this.STOMP_TIMEOUT;
+            _stompTimeout = this.STOMP_TIMEOUT;
          }
-         this._stomped = true;
-         this._gravJumpTimeout = 999999;
+         _stomped = true;
+         _gravJumpTimeout = 999999;
       }
       
       override public function hitBottom(param1:FlxObject, param2:Number) : void
       {
-         this._lastHitDir = HIT_BOTTOM;
+         _lastHitDir = HIT_BOTTOM;
          this.stomp();
       }
       
       override public function hitTop(param1:FlxObject, param2:Number) : void
       {
-         this._lastHitDir = HIT_TOP;
+         _lastHitDir = HIT_TOP;
          this.stomp();
       }
       
@@ -298,17 +298,16 @@ package
             offset.x = 0;
          }
          play(param1 + this._attackPhase.toString());
-         this._lastAnim = param1;
+         _lastAnim = param1;
       }
       
       public function shootWave() : void
       {
-         var _loc2_:Number = NaN;
          if(this._waveTimeout > 0)
          {
             return;
          }
-         this._waveTimeout = this.WAVE_TIMEOUT;
+         _waveTimeout = this.WAVE_TIMEOUT;
          var _loc1_:Boss4Bullet = this._bulletGroups.getBullet(1);
          if(!_loc1_)
          {
@@ -316,7 +315,7 @@ package
          }
          if(PlayState.player.x < x)
          {
-            _loc2_ = -this.WAVE_SPEED;
+            var _loc2_:Number = -this.WAVE_SPEED;
          }
          else
          {
@@ -329,7 +328,7 @@ package
       {
          if(param1 == MODE_STOMP)
          {
-            this._lastStomp = 0;
+            _lastStomp = 0;
          }
          else
          {
@@ -338,19 +337,19 @@ package
          if(this._lastStomp >= 4)
          {
             param1 = MODE_STOMP;
-            this._lastStomp = 0;
+            _lastStomp = 0;
          }
-         this._lastMode = this._mode;
-         this._mode = param1;
-         this._modeInitialized = false;
-         this._stomped = false;
+         _lastMode = this._mode;
+         _mode = param1;
+         _modeInitialized = false;
+         _stomped = false;
          acceleration.x = 0;
          acceleration.y = 0;
          velocity.x = 0;
          velocity.y = 0;
          this.playAnim("shell");
-         this._modeElapsed = 0;
-         this._waitingToJump = false;
+         _modeElapsed = 0;
+         _waitingToJump = false;
       }
       
       public function overlapPlayerBulletBoss4Bullet(param1:FlxObject, param2:FlxObject) : void
@@ -393,44 +392,44 @@ package
       private function pickStompTarget() : void
       {
          var _loc1_:int = 0;
-         this._targetX = x;
-         this._targetY = y;
+         _targetX = x;
+         _targetY = y;
          do
          {
             _loc1_ = this.getDecision() * 8;
             switch(_loc1_)
             {
                case 0:
-                  this._targetX = this._originX + 16 * 7;
-                  this._targetY = this._originY + 16 * 5;
+                  _targetX = this._originX + 16 * 7;
+                  _targetY = this._originY + 16 * 5;
                   break;
                case 1:
-                  this._targetX = this._originX + 16 * -7;
-                  this._targetY = this._originY + 16 * 5;
+                  _targetX = this._originX + 16 * -7;
+                  _targetY = this._originY + 16 * 5;
                   break;
                case 2:
-                  this._targetX = this._originX + 16 * 7;
-                  this._targetY = this._originY + 16 * -5;
+                  _targetX = this._originX + 16 * 7;
+                  _targetY = this._originY + 16 * -5;
                   break;
                case 3:
-                  this._targetX = this._originX + 16 * -7;
-                  this._targetY = this._originY + 16 * -5;
+                  _targetX = this._originX + 16 * -7;
+                  _targetY = this._originY + 16 * -5;
                   break;
                case 4:
-                  this._targetX = this._originX + 16 * 7;
-                  this._targetY = this._originY;
+                  _targetX = this._originX + 16 * 7;
+                  _targetY = this._originY;
                   break;
                case 5:
-                  this._targetX = this._originX + 16 * -7;
-                  this._targetY = this._originY;
+                  _targetX = this._originX + 16 * -7;
+                  _targetY = this._originY;
                   break;
                case 6:
-                  this._targetX = this._originX;
-                  this._targetY = this._originY + 16 * -5;
+                  _targetX = this._originX;
+                  _targetY = this._originY + 16 * -5;
                   break;
                case 7:
-                  this._targetX = this._originX;
-                  this._targetY = this._originY + 16 * -5;
+                  _targetX = this._originX;
+                  _targetY = this._originY + 16 * -5;
                   break;
             }
          }
@@ -447,27 +446,27 @@ package
                this.setMode(MODE_STOMP);
                return;
             }
-            this._modeInitialized = true;
+            _modeInitialized = true;
             this.bg.setTargetRgb(176,174,0);
-            this._modeTimeout = 6.2;
+            _modeTimeout = 6.2;
             this.bg.bgColorSpeed = 3;
             this.playAnim("sleep");
-            this._zzzNum = 0;
-            this._zzzTimeout = ZZZ_TIMEOUT;
+            _zzzNum = 0;
+            _zzzTimeout = ZZZ_TIMEOUT;
             if(PlayState.player._slugMode)
             {
-               this.ZZZ_MAX = 6;
+               ZZZ_MAX = 6;
             }
             acceleration.y = 900;
             Sfx.playShell();
          }
          if(this._stomped)
          {
-            this._zzzTimeout -= FlxG.elapsed * this._bossSpeed;
+            _zzzTimeout -= FlxG.elapsed * this._bossSpeed;
             if(this._zzzTimeout < 0 && this._zzzNum < this.ZZZ_MAX)
             {
                PlayState.enemiesNoCollide.add(new BossZzz(x + width / 2,y,x + width + 24 * this._zzzNum,y));
-               this._zzzTimeout = ZZZ_TIMEOUT;
+               _zzzTimeout = ZZZ_TIMEOUT;
                ++this._zzzNum;
             }
             acceleration.y = 0;
@@ -489,9 +488,9 @@ package
       {
          if(!this._modeInitialized)
          {
-            this._modeInitialized = true;
+            _modeInitialized = true;
             this.bg.setTargetRgb(0,48,0);
-            this._modeTimeout = 6;
+            _modeTimeout = 6;
             this.bg.bgColorSpeed = 3;
             this.pickStompTarget();
          }
@@ -520,14 +519,14 @@ package
             {
                if(!this._waitingToJump)
                {
-                  this._waitingToJump = true;
-                  this._jumpTimeout = JUMP_TIMEOUT;
+                  _waitingToJump = true;
+                  _jumpTimeout = JUMP_TIMEOUT;
                }
-               this._jumpTimeout -= FlxG.elapsed * this._bossSpeed;
+               _jumpTimeout -= FlxG.elapsed * this._bossSpeed;
                if(this._waitingToJump && this._jumpTimeout <= 0)
                {
-                  this._waitingToJump = false;
-                  this._stomped = false;
+                  _waitingToJump = false;
+                  _stomped = false;
                   if(acceleration.y < 0)
                   {
                      velocity.y = JUMP_POWER;
@@ -544,12 +543,12 @@ package
                   {
                      velocity.x = WALK_SPEED;
                   }
-                  this._gravJumpTimeout = GRAV_JUMP_TIMEOUT;
-                  this._jumpTimeout = 99999;
+                  _gravJumpTimeout = GRAV_JUMP_TIMEOUT;
+                  _jumpTimeout = 99999;
                }
                else if(velocity.y != 0)
                {
-                  this._gravJumpTimeout -= FlxG.elapsed;
+                  _gravJumpTimeout -= FlxG.elapsed;
                   if(this._gravJumpTimeout < 0)
                   {
                      if(this.getDecision() > 0.66)
@@ -565,7 +564,7 @@ package
                            this.playAnim("ceil");
                         }
                      }
-                     this._gravJumpTimeout = 999999;
+                     _gravJumpTimeout = 999999;
                   }
                }
             }
@@ -614,23 +613,23 @@ package
       private function aimStrafe() : void
       {
          var _loc1_:Number = Math.atan2(PlayState.player.y - (y + height / 2),PlayState.player.x - (x + width / 2));
-         this._strafeNum = 2.3 + 5 * Number(MAX_HP - _hp) / MAX_HP;
+         _strafeNum = 2.3 + 5 * Number(MAX_HP - _hp) / MAX_HP;
          if(this._strafeNum < 4)
          {
-            this._strafeNum = 4;
+            _strafeNum = 4;
          }
          if(this._strafeNum > 7)
          {
-            this._strafeNum = 7;
+            _strafeNum = 7;
          }
-         this._strafeTheta = _loc1_ - Math.PI / this._strafeNum;
+         _strafeTheta = _loc1_ - Math.PI / this._strafeNum;
       }
       
       private function updateAiShellStrafe() : void
       {
          if(!this._modeInitialized)
          {
-            this._modeInitialized = true;
+            _modeInitialized = true;
             if(this._attackPhase < 1)
             {
                this.bg.setTargetRgb(48,0,48);
@@ -640,11 +639,11 @@ package
                this.bg.setTargetRgb(0,48,48);
             }
             this.bg.bgColorSpeed = 3;
-            this._modeTimeout = 5.2;
+            _modeTimeout = 5.2;
             this.playAnim("shell");
-            this._targetX = this._originX;
-            this._targetY = this._originY;
-            this._aimed = false;
+            _targetX = this._originX;
+            _targetY = this._originY;
+            _aimed = false;
          }
          x = Utility.integrate(x,this._targetX,1.7,FlxG.elapsed * this._bossSpeed);
          y = Utility.integrate(y,this._targetY,1.7,FlxG.elapsed * this._bossSpeed);
@@ -653,32 +652,32 @@ package
             this.aimStrafe();
             if(this.getDecision() > 0.5)
             {
-               this._strafeThetaVel = Math.PI / 8;
+               _strafeThetaVel = Math.PI / 8;
             }
             else
             {
-               this._strafeThetaVel = -Math.PI / 8;
+               _strafeThetaVel = -Math.PI / 8;
             }
             if(this.getDecision() > 0.5)
             {
-               this._strafeThetaAcc = -this._strafeThetaVel * 1.3;
+               _strafeThetaAcc = -this._strafeThetaVel * 1.3;
             }
-            this._aimed = true;
+            _aimed = true;
             if(PlayState.player._slugMode)
             {
-               this._strafeThetaVel *= 1.6;
+               _strafeThetaVel *= 1.6;
             }
          }
          if(this._strafeThetaVel < -Math.PI / 5)
          {
-            this._strafeThetaVel = -Math.PI / 5;
+            _strafeThetaVel = -Math.PI / 5;
          }
          if(this._strafeThetaVel > Math.PI / 5)
          {
-            this._strafeThetaVel = Math.PI / 5;
+            _strafeThetaVel = Math.PI / 5;
          }
-         this._strafeTheta += this._strafeThetaVel * FlxG.elapsed * this._bossSpeed;
-         this._strafeThetaVel += this._strafeThetaAcc * FlxG.elapsed * this._bossSpeed;
+         _strafeTheta += this._strafeThetaVel * FlxG.elapsed * this._bossSpeed;
+         _strafeThetaVel += this._strafeThetaAcc * FlxG.elapsed * this._bossSpeed;
          if(this._modeElapsed > START_ATTACK_TIME && this._aimed)
          {
             this.shootStrafeMultiWay();
@@ -718,7 +717,7 @@ package
          {
             return;
          }
-         this._strafeTimeout = this.STRAFE_TIMEOUT;
+         _strafeTimeout = this.STRAFE_TIMEOUT;
          var _loc1_:int = 0;
          while(_loc1_ < this._strafeNum)
          {
@@ -760,16 +759,16 @@ package
       {
          if(!this._modeInitialized)
          {
-            this._modeInitialized = true;
+            _modeInitialized = true;
             this.bg.setTargetRgb(48,0,0);
             this.bg.bgColorSpeed = 3;
-            this._modeTimeout = 6;
+            _modeTimeout = 6;
             this.playAnim("shell");
             this.pickSmashDir();
          }
          if(this._stomped)
          {
-            this._stomped = false;
+            _stomped = false;
             if(this.getDecision() > 0.7 || this._attackPhase == 1)
             {
                this.pickSmashDir(true);
@@ -804,24 +803,24 @@ package
          }
          if(this._healNum > 0)
          {
-            this._healTimeout -= FlxG.elapsed;
+            _healTimeout -= FlxG.elapsed;
             if(this._healTimeout < 0)
             {
-               this._healTimeout = this.HEAL_TIMEOUT;
+               _healTimeout = this.HEAL_TIMEOUT;
                --this._healNum;
                PlayState.player.heal(this._healAmount);
                Sfx.playPickup4();
                if(PlayState.player.getCurHp() == PlayState.player.getMaxHp())
                {
-                  this._healNum = -1;
+                  _healNum = -1;
                }
             }
          }
-         this._waveTimeout -= FlxG.elapsed * this._bossSpeed;
-         this._modeTimeout -= FlxG.elapsed * this._bossSpeed;
-         this._strafeTimeout -= FlxG.elapsed * this._bossSpeed;
-         this._stompTimeout -= FlxG.elapsed * this._bossSpeed;
-         this._modeElapsed += FlxG.elapsed * this._bossSpeed;
+         _waveTimeout -= FlxG.elapsed * this._bossSpeed;
+         _modeTimeout -= FlxG.elapsed * this._bossSpeed;
+         _strafeTimeout -= FlxG.elapsed * this._bossSpeed;
+         _stompTimeout -= FlxG.elapsed * this._bossSpeed;
+         _modeElapsed += FlxG.elapsed * this._bossSpeed;
          switch(this._mode)
          {
             case MODE_INTRO:
@@ -838,10 +837,11 @@ package
                break;
             case MODE_SLEEP:
                this.updateAiSleep();
+			   break;
          }
          FlxU.overlap(PlayState.playerBulletGroups,this._bulletGroups,this.overlapPlayerBulletBoss4Bullet);
          FlxU.overlap(PlayState.player,this._bulletGroups,this.overlapPlayerBoss4Bullet);
-         this._elapsed += FlxG.elapsed;
+         _elapsed += FlxG.elapsed;
          super.update();
          PlayState.player.paralyze(false);
       }
@@ -889,8 +889,8 @@ package
          }
          if(_hp <= MAX_HP * 0.4 && this._attackPhase < 1)
          {
-            this._bossSpeed += 0.3;
-            this._attackPhase = 1;
+            _bossSpeed += 0.3;
+            _attackPhase = 1;
             this.playAnim(this._lastAnim);
          }
          super.hurt(param1);

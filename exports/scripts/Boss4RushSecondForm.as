@@ -303,26 +303,26 @@ package
       
       public function shootWave() : void
       {
-         var _loc1_:Number = NaN;
+         var _loc2_:Number = NaN;
          if(this._waveTimeout > 0)
          {
             return;
          }
          this._waveTimeout = this.WAVE_TIMEOUT;
-         var _loc2_:Boss4Bullet = this._bulletGroups.getBullet(1);
-         if(!_loc2_)
+         var _loc1_:Boss4Bullet = this._bulletGroups.getBullet(1);
+         if(!_loc1_)
          {
             return;
          }
          if(PlayState.player.x < x)
          {
-            _loc1_ = -this.WAVE_SPEED;
+            _loc2_ = -this.WAVE_SPEED;
          }
          else
          {
-            _loc1_ = this.WAVE_SPEED;
+            _loc2_ = this.WAVE_SPEED;
          }
-         _loc2_.shoot(x + width / 2,y,_loc1_,0);
+         _loc1_.shoot(x + width / 2,y,_loc2_,0);
       }
       
       public function setMode(param1:int) : void

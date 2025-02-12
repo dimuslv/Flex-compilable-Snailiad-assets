@@ -12,29 +12,6 @@ package
       
       public var bulletLists:Array;
       
-      public function Boss4SecondFormBulletGroups()
-      {
-         var _loc2_:int = 0;
-         this.groups = new Array();
-         this.bulletLists = new Array();
-         super();
-         var _loc1_:int = 0;
-         while(_loc1_ < MAX_WEAPON)
-         {
-            this.groups[_loc1_] = new FlxGroup();
-            this.bulletLists[_loc1_] = new Array();
-            _loc2_ = 0;
-            while(_loc2_ < MAX_BULLET[_loc1_])
-            {
-               this.bulletLists[_loc1_][_loc2_] = this.makeBullet(_loc1_);
-               this.groups[_loc1_].add(this.bulletLists[_loc1_][_loc2_]);
-               _loc2_++;
-            }
-            add(this.groups[_loc1_]);
-            _loc1_++;
-         }
-      }
-      
       override public function destroy() : void
       {
          var _loc1_:String = null;
@@ -47,17 +24,38 @@ package
          {
             this.bulletLists[_loc1_] = null;
          }
-         this.groups = null;
-         this.bulletLists = null;
+         groups = null;
+         bulletLists = null;
+      }
+      
+      public function Boss4SecondFormBulletGroups() : void
+      {
+         this.groups = new Array();
+         this.bulletLists = new Array();
+         super();
+         var _loc1_:int = 0;
+         while(_loc1_ < MAX_WEAPON)
+         {
+            this.groups[_loc1_] = new FlxGroup();
+            this.bulletLists[_loc1_] = new Array();
+            var _loc2_:int = 0;
+            while(_loc2_ < MAX_BULLET[_loc1_])
+            {
+               this.bulletLists[_loc1_][_loc2_] = this.makeBullet(_loc1_);
+               this.groups[_loc1_].add(this.bulletLists[_loc1_][_loc2_]);
+               _loc2_++;
+            }
+            add(this.groups[_loc1_]);
+            _loc1_++;
+         }
       }
       
       public function destroyAll() : void
       {
-         var _loc2_:int = 0;
          var _loc1_:int = 0;
          while(_loc1_ < MAX_WEAPON)
          {
-            _loc2_ = 0;
+            var _loc2_:int = 0;
             while(_loc2_ < MAX_BULLET[_loc1_])
             {
                this.bulletLists[_loc1_][_loc2_].kill();
@@ -75,9 +73,8 @@ package
                return new Boss4Bullet4();
             case 1:
                return new Boss4Bullet7();
-            default:
-               throw new Error("Unknown bullet type: " + param1.toString());
          }
+		 throw new Error("Unknown bullet type: " + param1.toString());
       }
       
       public function getBullet(param1:int) : Boss4Bullet
