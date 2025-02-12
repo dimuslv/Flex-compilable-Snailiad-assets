@@ -14,24 +14,24 @@ package
       
       public function Boss4BulletGroups()
       {
-         var _loc1_:int = 0;
+         var _loc2_:int = 0;
          this.groups = new Array();
          this.bulletLists = new Array();
          super();
-         var _loc2_:int = 0;
-         while(_loc2_ < MAX_WEAPON)
+         var _loc1_:int = 0;
+         while(_loc1_ < MAX_WEAPON)
          {
-            this.groups[_loc2_] = new FlxGroup();
-            this.bulletLists[_loc2_] = new Array();
-            _loc1_ = 0;
-            while(_loc1_ < MAX_BULLET[_loc2_])
+            this.groups[_loc1_] = new FlxGroup();
+            this.bulletLists[_loc1_] = new Array();
+            _loc2_ = 0;
+            while(_loc2_ < MAX_BULLET[_loc1_])
             {
-               this.bulletLists[_loc2_][_loc1_] = this.makeBullet(_loc2_);
-               this.groups[_loc2_].add(this.bulletLists[_loc2_][_loc1_]);
-               _loc1_++;
+               this.bulletLists[_loc1_][_loc2_] = this.makeBullet(_loc1_);
+               this.groups[_loc1_].add(this.bulletLists[_loc1_][_loc2_]);
+               _loc2_++;
             }
-            add(this.groups[_loc2_]);
-            _loc2_++;
+            add(this.groups[_loc1_]);
+            _loc1_++;
          }
       }
       

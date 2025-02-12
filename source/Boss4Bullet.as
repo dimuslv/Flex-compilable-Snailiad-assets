@@ -6,7 +6,7 @@ package
    {
       private static const DEFAULT_LIFETIME:Number = 2;
       
-      public function Boss4Bullet(param1:int)
+      public function Boss4Bullet(param1:int) : void
       {
          super(param1);
       }

@@ -50,7 +50,7 @@ package
       {
          method
          name null
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 8
@@ -65,11 +65,9 @@ package
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"bossRush")
          iffalse ofs0
-         findpropstrict QName(PackageNamespace(""),"int")
          getlex QName(PrivateNamespace(null,"#Boss4Bullet4"),"FIREPOWER")
          pushbyte 3
          divide
-         callproperty QName(PackageNamespace(""),"int"), 1
          convert_i
          jump ofs1
          ofs0:
@@ -134,7 +132,7 @@ package
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"Number")
-         optional Integer(2)
+         optional Double(2)
          returns QName(PackageNamespace(""),"void")
          
          body
@@ -164,10 +162,10 @@ package
          callpropvoid QName(PackageNamespace(""),"play"), 1
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#Boss4Bullet4"),"startx")
+         initproperty QName(PrivateNamespace(null,"#Boss4Bullet4"),"startx")
          getlocal0
          getlocal2
-         setproperty QName(PrivateNamespace(null,"#Boss4Bullet4"),"starty")
+         initproperty QName(PrivateNamespace(null,"#Boss4Bullet4"),"starty")
          returnvoid
          end ; code
          end ; body

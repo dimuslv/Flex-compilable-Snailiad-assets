@@ -16,9 +16,9 @@ package
       
       private var starty:int = 0;
       
-      public function Boss4Bullet4()
+      public function Boss4Bullet4() : void
       {
-         super(PlayState.bossRush ? int(FIREPOWER / 3) : FIREPOWER);
+         super(PlayState.bossRush ? FIREPOWER / 3 : FIREPOWER);
          loadGraphic(Art.PlayerBullet4,true,true,WIDTH,HEIGHT);
          width = WIDTH;
          height = HEIGHT;
@@ -29,13 +29,13 @@ package
          addAnimation("normal",[0,1,2,3,4,5],45,true);
       }
       
-      override public function shoot(param1:int, param2:int, param3:int, param4:int, param5:Number = 2) : void
+      override public function shoot(param1:int, param2:int, param3:int, param4:int, param5:Number = 2.0) : void
       {
          super.shoot(param1,param2,param3 * 1.5,param4 * 1.5,param5);
          Sfx.playShot1b();
          play("normal");
-         this.startx = param1;
-         this.starty = param2;
+         startx = param1;
+         starty = param2;
       }
       
       override public function hitPlayer(param1:Player) : void

@@ -12,9 +12,9 @@ package
       
       private static const FIREPOWER:int = 12;
       
-      public function Boss4Bullet7()
+      public function Boss4Bullet7() : void
       {
-         super(PlayState.bossRush ? int(FIREPOWER / 6) : FIREPOWER);
+         super(PlayState.bossRush ? FIREPOWER / 6 : FIREPOWER);
          loadGraphic(Art.Boss4Bullet7,true,true,WIDTH,HEIGHT);
          width = WIDTH;
          height = HEIGHT;
@@ -30,7 +30,7 @@ package
          }
       }
       
-      override public function shoot(param1:int, param2:int, param3:int, param4:int, param5:Number = 2) : void
+      override public function shoot(param1:int, param2:int, param3:int, param4:int, param5:Number = 2.0) : void
       {
          super.shoot(param1,param2,param3,param4,param5);
          acceleration.x = param3 * 18;
