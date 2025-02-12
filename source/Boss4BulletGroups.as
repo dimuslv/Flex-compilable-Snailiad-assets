@@ -75,9 +75,8 @@ package
                return new Boss4Bullet5();
             case 2:
                return new Boss4Bullet6();
-            default:
-               throw new Error("Unknown bullet type: " + param1.toString());
          }
+		 throw new Error("Unknown bullet type: " + param1.toString());
       }
       
       public function getBullet(param1:int) : Boss4Bullet

@@ -305,6 +305,37 @@ package
          returnvalue
          ofs4:
          label
+         jump ofs5
+         ofs0:
+         getlocal1
+         setlocal2
+         pushbyte 0
+         getlocal2
+         ifstrictne ofs6
+         pushbyte 0
+         jump ofs7
+         ofs6:
+         pushbyte 1
+         getlocal2
+         ifstrictne ofs8
+         pushbyte 1
+         jump ofs7
+         ofs8:
+         pushbyte 2
+         getlocal2
+         ifstrictne ofs9
+         pushbyte 2
+         jump ofs7
+         ofs9:
+         jump ofs10
+         pushbyte 3
+         jump ofs10
+         ofs10:
+         pushbyte 3
+         ofs7:
+         kill 2
+         lookupswitch ofs4, [ofs1, ofs2, ofs3, ofs4]
+         ofs5:
          findpropstrict QName(PackageNamespace(""),"Error")
          pushstring "Unknown bullet type: "
          getlocal1
@@ -312,36 +343,6 @@ package
          add
          constructprop QName(PackageNamespace(""),"Error"), 1
          throw
-         jump ofs0
-         ofs0:
-         getlocal1
-         setlocal2
-         pushbyte 0
-         getlocal2
-         ifstrictne ofs5
-         pushbyte 0
-         jump ofs6
-         ofs5:
-         pushbyte 1
-         getlocal2
-         ifstrictne ofs7
-         pushbyte 1
-         jump ofs6
-         ofs7:
-         pushbyte 2
-         getlocal2
-         ifstrictne ofs8
-         pushbyte 2
-         jump ofs6
-         ofs8:
-         jump ofs9
-         pushbyte 3
-         jump ofs9
-         ofs9:
-         pushbyte 3
-         ofs6:
-         kill 2
-         lookupswitch ofs4, [ofs1, ofs2, ofs3, ofs4]
          end ; code
          end ; body
          end ; method
