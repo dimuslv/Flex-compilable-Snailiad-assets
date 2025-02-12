@@ -37,7 +37,7 @@ package
       
       public var _diaNum:int = 0;
       
-      public function Dialogue()
+      public function Dialogue() : void
       {
          super();
          this._active = false;
@@ -63,29 +63,29 @@ package
       
       override public function destroy() : void
       {
-         this._bg = null;
-         this._msg = null;
+         _bg = null;
+         _msg = null;
          super.destroy();
       }
       
-      public function start(param1:String, param2:int, param3:Boolean = false, param4:Number = 1, param5:int = 0) : void
+      public function start(param1:String, param2:int, param3:Boolean = false, param4:Number = 1.0, param5:int = 0) : void
       {
          if(this._active)
          {
             return;
          }
-         this._diaNum = param5;
+         _diaNum = param5;
          this._bg.play(param3 ? "alt" : "normal");
          this._msg.text = "";
-         this._fullMsg = param1;
-         this._active = true;
+         _fullMsg = param1;
+         _active = true;
          this.moveWindow(true);
          this._msg.visible = true;
          this._bg.visible = true;
-         this._oldLetters = 0;
-         this._voice = param2;
-         this._elapsed = 0;
-         this._speed = param4;
+         _oldLetters = 0;
+         _voice = param2;
+         _elapsed = 0;
+         _speed = param4;
       }
       
       public function moveWindow(param1:Boolean) : void
@@ -116,7 +116,7 @@ package
          {
             return;
          }
-         this._active = false;
+         _active = false;
          this._msg.visible = false;
          this._bg.visible = false;
       }
@@ -129,7 +129,7 @@ package
          {
             return;
          }
-         this._elapsed += FlxG.elapsed;
+         _elapsed += FlxG.elapsed;
          super.update();
          if(this._active)
          {
@@ -142,7 +142,7 @@ package
                {
                   Sfx.playDialogueLetter(this._voice);
                }
-               this._oldLetters = _loc1_;
+               _oldLetters = _loc1_;
             }
             this._msg.text = this._fullMsg.substr(0,_loc1_);
          }

@@ -115,7 +115,7 @@ package
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
          optional Integer(0)
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 9
@@ -127,13 +127,13 @@ package
          getlocal0
          pushscope
          pushbyte 0
-         setlocal 9
-         pushbyte 0
          setlocal 6
          pushbyte 0
          setlocal 7
          pushbyte 0
          setlocal 8
+         pushbyte 0
+         setlocal 9
          getlocal0
          getlocal1
          getlocal2
@@ -211,6 +211,7 @@ package
          getlocal0
          pushbyte 44
          initproperty QName(PrivateNamespace(null,"#Door"),"_defense")
+         jump ofs4
          ofs9:
          label
          jump ofs4
@@ -276,7 +277,7 @@ package
          pushbyte 0
          setlocal 6
          pushbyte 0
-         setlocal 9
+         setlocal 7
          jump ofs19
          ofs20:
          label
@@ -344,7 +345,7 @@ package
          convert_i
          setlocal 6
          pushbyte 10
-         setlocal 9
+         setlocal 7
          jump ofs22
          ofs23:
          label
@@ -425,7 +426,7 @@ package
          convert_i
          setlocal 6
          pushbyte 10
-         setlocal 9
+         setlocal 7
          jump ofs22
          ofs26:
          label
@@ -462,7 +463,7 @@ package
          convert_i
          setlocal 6
          pushbyte 1
-         setlocal 9
+         setlocal 7
          jump ofs22
          ofs27:
          label
@@ -497,7 +498,7 @@ package
          convert_i
          setlocal 6
          pushbyte 1
-         setlocal 9
+         setlocal 7
          jump ofs22
          ofs28:
          label
@@ -554,7 +555,7 @@ package
          findpropstrict QName(PackageNamespace(""),"addAnimation")
          pushstring "normal"
          pushbyte 0
-         getlocal 9
+         getlocal 7
          multiply
          getlocal 6
          add
@@ -563,27 +564,27 @@ package
          findpropstrict QName(PackageNamespace(""),"addAnimation")
          pushstring "open"
          pushbyte 1
-         getlocal 9
+         getlocal 7
          multiply
          getlocal 6
          add
          pushbyte 2
-         getlocal 9
+         getlocal 7
          multiply
          getlocal 6
          add
          pushbyte 3
-         getlocal 9
+         getlocal 7
          multiply
          getlocal 6
          add
          pushbyte 4
-         getlocal 9
+         getlocal 7
          multiply
          getlocal 6
          add
          pushbyte 5
-         getlocal 9
+         getlocal 7
          multiply
          getlocal 6
          add
@@ -594,32 +595,32 @@ package
          findpropstrict QName(PackageNamespace(""),"addAnimation")
          pushstring "close"
          pushbyte 5
-         getlocal 9
+         getlocal 7
          multiply
          getlocal 6
          add
          pushbyte 4
-         getlocal 9
+         getlocal 7
          multiply
          getlocal 6
          add
          pushbyte 3
-         getlocal 9
+         getlocal 7
          multiply
          getlocal 6
          add
          pushbyte 2
-         getlocal 9
+         getlocal 7
          multiply
          getlocal 6
          add
          pushbyte 1
-         getlocal 9
+         getlocal 7
          multiply
          getlocal 6
          add
          pushbyte 0
-         getlocal 9
+         getlocal 7
          multiply
          getlocal 6
          add
@@ -645,19 +646,19 @@ package
          getlocal1
          subtract
          convert_i
-         setlocal 7
+         setlocal 8
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"y")
          getlocal2
          subtract
          convert_i
-         setlocal 8
-         getlocal 7
-         getlocal 7
+         setlocal 9
+         getlocal 8
+         getlocal 8
          multiply
-         getlocal 8
-         getlocal 8
+         getlocal 9
+         getlocal 9
          multiply
          add
          pushbyte 50
@@ -765,7 +766,7 @@ package
          pushscope
          getlocal0
          pushnull
-         setproperty QName(PackageNamespace(""),"fixBlocks")
+         initproperty QName(PackageNamespace(""),"fixBlocks")
          getlocal0
          callsupervoid QName(PackageNamespace(""),"destroy"), 0
          returnvoid
@@ -856,17 +857,17 @@ package
          iffalse ofs3
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Door"),"_doorType")
+         initproperty QName(PrivateNamespace(null,"#Door"),"_doorType")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#Door"),"_bossNum")
+         initproperty QName(PrivateNamespace(null,"#Door"),"_bossNum")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Door"),"BOSSDOOR_OPEN_DELAY")
-         setproperty QName(PrivateNamespace(null,"#Door"),"_openTime")
+         initproperty QName(PrivateNamespace(null,"#Door"),"_openTime")
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#Door"),"_willOpen")
+         initproperty QName(PrivateNamespace(null,"#Door"),"_willOpen")
          ofs3:
          getlocal0
          getlocal0
@@ -874,7 +875,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Door"),"_openTime")
+         initproperty QName(PrivateNamespace(null,"#Door"),"_openTime")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Door"),"_willOpen")
          convert_b
@@ -895,7 +896,7 @@ package
          callpropvoid QName(PackageNamespace(""),"hurt"), 1
          getlocal0
          pushfalse
-         setproperty QName(PrivateNamespace(null,"#Door"),"_willOpen")
+         initproperty QName(PrivateNamespace(null,"#Door"),"_willOpen")
          ofs5:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Door"),"_waiting")
@@ -945,7 +946,7 @@ package
          initproperty QName(PackageNamespace(""),"visible")
          getlocal0
          pushfalse
-         setproperty QName(PrivateNamespace(null,"#Door"),"_waiting")
+         initproperty QName(PrivateNamespace(null,"#Door"),"_waiting")
          getlex QName(PackageNamespace(""),"Sfx")
          callpropvoid QName(PackageNamespace(""),"playCloseDoor"), 0
          ofs8:

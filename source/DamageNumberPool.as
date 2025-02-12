@@ -7,7 +7,7 @@ package
    {
       private const MAX_NUMBER:int = 80;
       
-      public function DamageNumberPool()
+      public function DamageNumberPool() : void
       {
          super();
          var _loc1_:int = 0;

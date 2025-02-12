@@ -49,10 +49,10 @@ package
       
       public function Door(param1:int, param2:int, param3:int, param4:int, param5:int = 0)
       {
-         var _loc9_:int = 0;
          var _loc6_:int = 0;
          var _loc7_:int = 0;
          var _loc8_:int = 0;
+         var _loc9_:int = 0;
          super(param1,param2,false);
          this._doorType = param4;
          this.fixBlocks = new FixBlocks();
@@ -87,7 +87,7 @@ package
             this.BOSSDOOR_OPEN_DELAY = 11.3;
          }
          _loc6_ = 0;
-         _loc9_ = 0;
+         _loc7_ = 0;
          switch(param3)
          {
             case SIDE_RIGHT:
@@ -103,7 +103,7 @@ package
                   this.blank(param1 / 16,param2 / 16 + 2);
                }
                _loc6_ = this._doorType * 2;
-               _loc9_ = 10;
+               _loc7_ = 10;
                break;
             case SIDE_LEFT:
                loadGraphic(Art.DoorVert,true,true,LEFTRIGHTDOOR_WIDTH,LEFTRIGHTDOOR_HEIGHT);
@@ -118,7 +118,7 @@ package
                   this.blank(param1 / 16,param2 / 16 + 2);
                }
                _loc6_ = this._doorType * 2 + 1;
-               _loc9_ = 10;
+               _loc7_ = 10;
                break;
             case SIDE_TOP:
                loadGraphic(Art.DoorHoriz,true,true,TOPBOTTOMDOOR_WIDTH,TOPBOTTOMDOOR_HEIGHT);
@@ -127,7 +127,7 @@ package
                param1 -= TOPBOTTOMDOOR_OFS_X;
                param2 -= TOPBOTTOMDOOR_OFS_Y;
                _loc6_ = this._doorType * 12 + 6;
-               _loc9_ = 1;
+               _loc7_ = 1;
                break;
             case SIDE_BOTTOM:
                loadGraphic(Art.DoorHoriz,true,true,TOPBOTTOMDOOR_WIDTH,TOPBOTTOMDOOR_HEIGHT);
@@ -136,24 +136,24 @@ package
                param1 -= TOPBOTTOMDOOR_OFS_X;
                param2 -= TOPBOTTOMDOOR_OFS_Y;
                _loc6_ = this._doorType * 12;
-               _loc9_ = 1;
+               _loc7_ = 1;
                break;
             default:
                throw new Error("Unknown door direction: " + param3.toString());
          }
          x = param1;
          y = param2;
-         addAnimation("normal",[0 * _loc9_ + _loc6_]);
-         addAnimation("open",[1 * _loc9_ + _loc6_,2 * _loc9_ + _loc6_,3 * _loc9_ + _loc6_,4 * _loc9_ + _loc6_,5 * _loc9_ + _loc6_],30,false);
-         addAnimation("close",[5 * _loc9_ + _loc6_,4 * _loc9_ + _loc6_,3 * _loc9_ + _loc6_,2 * _loc9_ + _loc6_,1 * _loc9_ + _loc6_,0 * _loc9_ + _loc6_],30,false);
+         addAnimation("normal",[0 * _loc7_ + _loc6_]);
+         addAnimation("open",[1 * _loc7_ + _loc6_,2 * _loc7_ + _loc6_,3 * _loc7_ + _loc6_,4 * _loc7_ + _loc6_,5 * _loc7_ + _loc6_],30,false);
+         addAnimation("close",[5 * _loc7_ + _loc6_,4 * _loc7_ + _loc6_,3 * _loc7_ + _loc6_,2 * _loc7_ + _loc6_,1 * _loc7_ + _loc6_,0 * _loc7_ + _loc6_],30,false);
          fixed = true;
          solid = true;
          this._waiting = false;
          if(PlayState.player)
          {
-            _loc7_ = PlayState.player.x - param1;
-            _loc8_ = PlayState.player.y - param2;
-            if(_loc7_ * _loc7_ + _loc8_ * _loc8_ < 50 * 50)
+            _loc8_ = PlayState.player.x - param1;
+            _loc9_ = PlayState.player.y - param2;
+            if(_loc8_ * _loc8_ + _loc9_ * _loc9_ < 50 * 50)
             {
                visible = false;
                solid = false;

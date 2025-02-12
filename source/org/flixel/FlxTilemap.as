@@ -84,34 +84,6 @@ package org.flixel
       
       public var _wrapCenterOffsetY:uint;
       
-      public function FlxTilemap()
-      {
-         this.getTile = this.getTileNoWrap;
-         this.setTile = this.setTileNoWrap;
-         super();
-         this.auto = OFF;
-         this.collideIndex = 1;
-         this.startingIndex = 0;
-         this.drawIndex = 1;
-         this.widthInTiles = 0;
-         this.heightInTiles = 0;
-         this.totalTiles = 0;
-         this._buffer = null;
-         this._bufferLoc = new FlxPoint();
-         this._flashRect2 = new Rectangle();
-         this._flashRect = this._flashRect2;
-         this._data = null;
-         this._tileWidth = 0;
-         this._tileHeight = 0;
-         this._rects = null;
-         this._pixels = null;
-         this._block = new FlxObject();
-         this._block.width = this._block.height = 0;
-         this._block.fixed = true;
-         this._callbacks = new Array();
-         this.fixed = true;
-      }
-      
       public static function arrayToCSV(param1:Array, param2:int) : String
       {
          var _loc4_:uint = 0;
@@ -956,6 +928,34 @@ package org.flixel
          this._rects = null;
          this._callbacks.length = 0;
          this._callbacks = null;
+      }
+      
+      public function FlxTilemap()
+      {
+         this.getTile = this.getTileNoWrap;
+         this.setTile = this.setTileNoWrap;
+         super();
+         this.auto = OFF;
+         this.collideIndex = 1;
+         this.startingIndex = 0;
+         this.drawIndex = 1;
+         this.widthInTiles = 0;
+         this.heightInTiles = 0;
+         this.totalTiles = 0;
+         this._buffer = null;
+         this._bufferLoc = new FlxPoint();
+         this._flashRect2 = new Rectangle();
+         this._flashRect = this._flashRect2;
+         this._data = null;
+         this._tileWidth = 0;
+         this._tileHeight = 0;
+         this._rects = null;
+         this._pixels = null;
+         this._block = new FlxObject();
+         this._block.width = this._block.height = 0;
+         this._block.fixed = true;
+         this._callbacks = new Array();
+         this.fixed = true;
       }
    }
 }

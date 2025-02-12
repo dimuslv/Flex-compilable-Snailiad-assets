@@ -15,7 +15,7 @@ package
       
       private var _elapsed:Number = 0;
       
-      public function DamageNumber()
+      public function DamageNumber() : void
       {
          super(0,FlxG.height - 54,FlxG.width - 7);
          font = Fonts.normal;
@@ -33,12 +33,12 @@ package
       {
          size = param4 * 10;
          text = param3;
-         this._originX = param1;
-         this._originY = param2;
+         _originX = param1;
+         _originY = param2;
          velocity.y = 0;
-         this._lifetime = DEFAULT_LIFETIME;
+         _lifetime = DEFAULT_LIFETIME;
          this.updatePosition();
-         this._elapsed = 0;
+         _elapsed = 0;
          visible = true;
          exists = true;
          dead = false;
@@ -60,9 +60,9 @@ package
       {
          if(!dead)
          {
-            this._elapsed += FlxG.elapsed;
+            _elapsed += FlxG.elapsed;
             this.updatePosition();
-            this._lifetime -= FlxG.elapsed;
+            _lifetime -= FlxG.elapsed;
             if(this._lifetime <= 0)
             {
                kill();

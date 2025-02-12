@@ -10,7 +10,7 @@ package
       
       private static const IMG_OFS_Y:int = 48;
       
-      public function Devastator(param1:int, param2:int)
+      public function Devastator(param1:int, param2:int) : void
       {
          super(param1,param2,false);
          x -= IMG_OFS_X;

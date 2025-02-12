@@ -164,7 +164,6 @@ package org.flixel
       
       public function loadRotatedGraphic(param1:Class, param2:uint = 16, param3:int = -1, param4:Boolean = false, param5:Boolean = false) : FlxSprite
       {
-         var _loc17_:uint = 0;
          var _loc22_:Boolean = false;
          var _loc6_:BitmapData = null;
          var _loc7_:uint = 0;
@@ -177,7 +176,7 @@ package org.flixel
          var _loc14_:uint = 0;
          var _loc15_:uint = 0;
          var _loc16_:uint = 0;
-         _loc17_ = Math.sqrt(param2);
+         var _loc17_:uint = Math.sqrt(param2);
          var _loc18_:BitmapData = FlxG.addBitmap(param1);
          if(param3 >= 0)
          {

@@ -46,11 +46,110 @@ package
       
       public var fixBlocks:FixBlocks;
       
-      public function Door(param1:int, param2:int, param3:int, param4:int, param5:int = 0)
+      public function blank(param1:int, param2:int) : void
       {
-         var _loc6_:int = 0;
-         var _loc8_:int = 0;
-         var _loc9_:int = 0;
+         if(PlayState.worldMap.bgmap.getTile(param1,param2) == SOLIDBLANK)
+         {
+            return;
+         }
+         this.fixBlocks.rememberBlock(param1,param2,PlayState.worldMap.bgmap.getTile(param1,param2),PlayState.worldMap.fgmap.getTile(param1,param2));
+         PlayState.worldMap.bgmap.setTile(param1,param2,SOLIDBLANK);
+      }
+      
+      override public function destroy() : void
+      {
+         fixBlocks = null;
+         super.destroy();
+      }
+      
+      override public function touch(param1:Player) : void
+      {
+         super.touch(param1);
+      }
+      
+      override public function update() : void
+      {
+         var _loc1_:int = 0;
+         var _loc2_:int = 0;
+         if(PlayState.realState != PlayState.STATE_GAME)
+         {
+            return;
+         }
+         if(this._bossNum != 0 && PlayState.isBossDead(this._bossNum) && this._doorType == 3)
+         {
+            _doorType = 0;
+            _bossNum = 0;
+            _openTime = this.BOSSDOOR_OPEN_DELAY;
+            _willOpen = true;
+         }
+         _openTime -= FlxG.elapsed;
+         if(this._willOpen && this._openTime <= 0)
+         {
+            this.fixBlocks.repairAll();
+            this.hurt(2000);
+            _willOpen = false;
+         }
+         if(this._waiting)
+         {
+            _loc1_ = PlayState.player.x - x;
+            _loc2_ = PlayState.player.y - y;
+            if(_loc1_ * _loc1_ + _loc2_ * _loc2_ > 70 * 70 || PlayState.player.isParalyzed())
+            {
+               play("close");
+               solid = true;
+               visible = true;
+               _waiting = false;
+               Sfx.playCloseDoor();
+            }
+         }
+         else if(dead && finished)
+         {
+            exists = false;
+            visible = false;
+            solid = false;
+            return;
+         }
+         super.update();
+      }
+      
+      override public function hitRight(param1:FlxObject, param2:Number) : void
+      {
+         if(param1 is Player)
+         {
+            PlayState.player.x = int(PlayState.player.x);
+         }
+         super.hitRight(param1,param2);
+      }
+      
+      override public function kill() : void
+      {
+         this.fixBlocks.repairAll();
+         super.kill();
+      }
+      
+      override public function hurt(param1:Number) : void
+      {
+         if(this._waiting)
+         {
+            return;
+         }
+         if(param1 <= this._defense)
+         {
+            if(this._bossNum == 0)
+            {
+               Sfx.playEnemyPingOffArmor();
+            }
+            return;
+         }
+         play("open");
+         solid = false;
+         dead = true;
+         Sfx.playOpenDoor();
+         this.fixBlocks.repairAll();
+      }
+      
+      public function Door(param1:int, param2:int, param3:int, param4:int, param5:int = 0) : void
+      {
          super(param1,param2,false);
          this._doorType = param4;
          this.fixBlocks = new FixBlocks();
@@ -79,12 +178,13 @@ package
                break;
             case 4:
                this._defense = 44;
+			   break;
          }
          if(this._bossNum == 4 && !PlayState.bossRush)
          {
             this.BOSSDOOR_OPEN_DELAY = 11.3;
          }
-         _loc6_ = 0;
+         var _loc6_:int = 0;
          var _loc7_:int = 0;
          switch(param3)
          {
@@ -149,8 +249,8 @@ package
          this._waiting = false;
          if(PlayState.player)
          {
-            _loc8_ = PlayState.player.x - param1;
-            _loc9_ = PlayState.player.y - param2;
+            var _loc8_:int = PlayState.player.x - param1;
+            var _loc9_:int = PlayState.player.y - param2;
             if(_loc8_ * _loc8_ + _loc9_ * _loc9_ < 50 * 50)
             {
                visible = false;
@@ -160,108 +260,6 @@ package
          }
          play("normal");
          active = true;
-      }
-      
-      public function blank(param1:int, param2:int) : void
-      {
-         if(PlayState.worldMap.bgmap.getTile(param1,param2) == SOLIDBLANK)
-         {
-            return;
-         }
-         this.fixBlocks.rememberBlock(param1,param2,PlayState.worldMap.bgmap.getTile(param1,param2),PlayState.worldMap.fgmap.getTile(param1,param2));
-         PlayState.worldMap.bgmap.setTile(param1,param2,SOLIDBLANK);
-      }
-      
-      override public function destroy() : void
-      {
-         this.fixBlocks = null;
-         super.destroy();
-      }
-      
-      override public function touch(param1:Player) : void
-      {
-         super.touch(param1);
-      }
-      
-      override public function update() : void
-      {
-         var _loc1_:int = 0;
-         var _loc2_:int = 0;
-         if(PlayState.realState != PlayState.STATE_GAME)
-         {
-            return;
-         }
-         if(this._bossNum != 0 && PlayState.isBossDead(this._bossNum) && this._doorType == 3)
-         {
-            this._doorType = 0;
-            this._bossNum = 0;
-            this._openTime = this.BOSSDOOR_OPEN_DELAY;
-            this._willOpen = true;
-         }
-         this._openTime -= FlxG.elapsed;
-         if(this._willOpen && this._openTime <= 0)
-         {
-            this.fixBlocks.repairAll();
-            this.hurt(2000);
-            this._willOpen = false;
-         }
-         if(this._waiting)
-         {
-            _loc1_ = PlayState.player.x - x;
-            _loc2_ = PlayState.player.y - y;
-            if(_loc1_ * _loc1_ + _loc2_ * _loc2_ > 70 * 70 || PlayState.player.isParalyzed())
-            {
-               play("close");
-               solid = true;
-               visible = true;
-               this._waiting = false;
-               Sfx.playCloseDoor();
-            }
-         }
-         else if(dead && finished)
-         {
-            exists = false;
-            visible = false;
-            solid = false;
-            return;
-         }
-         super.update();
-      }
-      
-      override public function hitRight(param1:FlxObject, param2:Number) : void
-      {
-         if(param1 is Player)
-         {
-            PlayState.player.x = int(PlayState.player.x);
-         }
-         super.hitRight(param1,param2);
-      }
-      
-      override public function kill() : void
-      {
-         this.fixBlocks.repairAll();
-         super.kill();
-      }
-      
-      override public function hurt(param1:Number) : void
-      {
-         if(this._waiting)
-         {
-            return;
-         }
-         if(param1 <= this._defense)
-         {
-            if(this._bossNum == 0)
-            {
-               Sfx.playEnemyPingOffArmor();
-            }
-            return;
-         }
-         play("open");
-         solid = false;
-         dead = true;
-         Sfx.playOpenDoor();
-         this.fixBlocks.repairAll();
       }
    }
 }
