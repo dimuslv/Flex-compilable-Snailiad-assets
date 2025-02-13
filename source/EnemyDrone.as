@@ -64,15 +64,15 @@ package
       
       private var shotNum:int = 0;
       
-      public function EnemyDrone(param1:int, param2:int)
+      public function EnemyDrone(param1:int, param2:int) : void
       {
-         if(Boolean(PlayState.player) && PlayState.player._insaneMode)
+         if(PlayState.player && PlayState.player._insaneMode)
          {
             this.MOVE_TIME = 1.3;
             this.X_RADIUS = 110;
             this.Y_RADIUS = 60;
          }
-         else if(Boolean(PlayState.player) && PlayState.player._hardMode)
+         else if(PlayState.player && PlayState.player._hardMode)
          {
             this.MOVE_TIME = 1.6;
             this.X_RADIUS = 100;
@@ -143,6 +143,7 @@ package
             case MODE_SEMICIRCLE_RIGHT_DOWN:
                x = this.originX + this.Y_RADIUS * Math.sin(_loc1_ * Math.PI);
                y = this.originY + this.Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
+			   break;
          }
       }
       
@@ -169,13 +170,12 @@ package
       
       public function shootDonuts() : void
       {
-         var _loc3_:EnemyBulletRotaryPea = null;
          var _loc1_:int = 3;
          Sfx.playShot7();
          var _loc2_:int = 0;
          while(_loc2_ < _loc1_)
          {
-            _loc3_ = PlayState.enemyBulletPool.getBullet(7) as EnemyBulletRotaryPea;
+            var _loc3_:EnemyBulletRotaryPea = PlayState.enemyBulletPool.getBullet(7) as EnemyBulletRotaryPea;
             if(_loc3_)
             {
                _loc3_.shootRotary(x + width / 2,y + height / 2,60,4,Math.PI * 2 / _loc1_ * _loc2_);
@@ -202,74 +202,74 @@ package
             }
             if(this.mode == MODE_ATTACK)
             {
-               this.shotTimeout -= FlxG.elapsed;
+               shotTimeout -= FlxG.elapsed;
                if(this.shotTimeout <= 0)
                {
-                  this.shotTimeout = SHOT_TIMEOUT;
+                  shotTimeout = SHOT_TIMEOUT;
                   --this.shotNum;
                   if(this.shotNum <= 0)
                   {
-                     this.mode = MODE_WAIT;
+                     mode = MODE_WAIT;
                      this.shootDonuts();
                   }
                   this.shoot();
                }
-               this.elapsed += FlxG.elapsed;
+               elapsed += FlxG.elapsed;
             }
             else
             {
-               this.elapsed += FlxG.elapsed;
+               elapsed += FlxG.elapsed;
                this.updatePosition();
                if(this.elapsed >= this.MOVE_TIME && this.mode != MODE_WAIT)
                {
-                  this.mode = MODE_ATTACK;
-                  this.shotNum = SHOT_NUM;
+                  mode = MODE_ATTACK;
+                  shotNum = SHOT_NUM;
                }
                else if(this.mode == MODE_WAIT)
                {
-                  this.elapsed = 0;
-                  this.originX = x;
-                  this.originY = y;
+                  elapsed = 0;
+                  originX = x;
+                  originY = y;
                   if(PlayState.player.x < x)
                   {
                      if(facing == LEFT)
                      {
                         if(PlayState.player.y < y)
                         {
-                           this.mode = MODE_COS_UP_LEFT;
+                           mode = MODE_COS_UP_LEFT;
                         }
                         else
                         {
-                           this.mode = MODE_COS_DOWN_LEFT;
+                           mode = MODE_COS_DOWN_LEFT;
                         }
                      }
                      else if(PlayState.player.y < y)
                      {
-                        this.mode = MODE_SEMICIRCLE_RIGHT_UP;
+                        mode = MODE_SEMICIRCLE_RIGHT_UP;
                      }
                      else
                      {
-                        this.mode = MODE_SEMICIRCLE_RIGHT_DOWN;
+                        mode = MODE_SEMICIRCLE_RIGHT_DOWN;
                      }
                   }
                   else if(facing == RIGHT)
                   {
                      if(PlayState.player.y < y)
                      {
-                        this.mode = MODE_COS_UP_RIGHT;
+                        mode = MODE_COS_UP_RIGHT;
                      }
                      else
                      {
-                        this.mode = MODE_COS_DOWN_RIGHT;
+                        mode = MODE_COS_DOWN_RIGHT;
                      }
                   }
                   else if(PlayState.player.y < y)
                   {
-                     this.mode = MODE_SEMICIRCLE_LEFT_UP;
+                     mode = MODE_SEMICIRCLE_LEFT_UP;
                   }
                   else
                   {
-                     this.mode = MODE_SEMICIRCLE_LEFT_DOWN;
+                     mode = MODE_SEMICIRCLE_LEFT_DOWN;
                   }
                }
             }

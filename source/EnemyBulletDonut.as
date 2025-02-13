@@ -12,7 +12,7 @@ package
       
       private static const DEFAULT_LIFETIME:Number = 3.8;
       
-      public function EnemyBulletDonut()
+      public function EnemyBulletDonut() : void
       {
          super(FIREPOWER);
          loadGraphic(Art.EnemyBulletDonut,true,true,WIDTH,HEIGHT);

@@ -26,7 +26,7 @@ package
       
       private var hopTimeout:Number = 0;
       
-      public function EnemyBlob2(param1:int, param2:int)
+      public function EnemyBlob2(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemyBlob,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -35,7 +35,7 @@ package
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
          this.hopNum = param1 % HOP_TIMEOUTS.length;
-         if(Boolean(PlayState.player) && PlayState.player._hardMode)
+         if(PlayState.player && PlayState.player._hardMode)
          {
             this.hopTimeout = HOP_TIMEOUTS[this.hopNum] / 2;
          }
@@ -62,7 +62,7 @@ package
          }
          if(onScreen())
          {
-            this.hopTimeout -= FlxG.elapsed;
+            hopTimeout -= FlxG.elapsed;
             if(this.hopTimeout < 0)
             {
                if(x > PlayState.player.x)
@@ -76,14 +76,14 @@ package
                   velocity.y = -240 * HOP_HEIGHT[this.hopNum];
                }
                ++this.hopNum;
-               this.hopNum %= HOP_TIMEOUTS.length;
-               if(Boolean(PlayState.player) && PlayState.player._hardMode)
+               hopNum %= HOP_TIMEOUTS.length;
+               if(PlayState.player && PlayState.player._hardMode)
                {
-                  this.hopTimeout = HOP_TIMEOUTS[this.hopNum] / 2;
+                  hopTimeout = HOP_TIMEOUTS[this.hopNum] / 2;
                }
                else
                {
-                  this.hopTimeout = HOP_TIMEOUTS[this.hopNum];
+                  hopTimeout = HOP_TIMEOUTS[this.hopNum];
                }
             }
          }

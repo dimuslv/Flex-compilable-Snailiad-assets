@@ -36,7 +36,7 @@ package
       
       private var vely:Number;
       
-      public function EnemyCannon(param1:int, param2:int)
+      public function EnemyCannon(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemyCannon,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -60,8 +60,8 @@ package
       {
          var _loc1_:Number = Math.atan2(PlayState.player.y - y,PlayState.player.x - x);
          _loc1_ = int((_loc1_ + Math.PI / 8) * 4 / Math.PI) / 4 * Math.PI;
-         this.velx = Math.cos(_loc1_) * SHOT_SPEED;
-         this.vely = Math.sin(_loc1_) * SHOT_SPEED;
+         velx = Math.cos(_loc1_) * SHOT_SPEED;
+         vely = Math.sin(_loc1_) * SHOT_SPEED;
          if(this.velx < -0.1)
          {
             if(this.vely < -0.1)
@@ -122,18 +122,18 @@ package
          {
             return;
          }
-         this.aimTimeout -= FlxG.elapsed;
+         aimTimeout -= FlxG.elapsed;
          if(this.aimTimeout < 0)
          {
-            this.aimTimeout = AIM_TIMEOUT;
+            aimTimeout = AIM_TIMEOUT;
             this.aimCannon();
          }
          if(onScreen())
          {
-            this.shotTimeout -= FlxG.elapsed * 0.6;
+            shotTimeout -= FlxG.elapsed * 0.6;
             if(this.shotTimeout < 0)
             {
-               this.shotTimeout = SHOT_TIMEOUT;
+               shotTimeout = SHOT_TIMEOUT;
                this.shoot(this.velx,this.vely);
             }
          }

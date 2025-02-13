@@ -4,38 +4,13 @@ package
    
    public class EnemyBulletPool extends FlxGroup
    {
-      public var groups:Array;
+      public var groups:Array = new Array();
       
-      public var bulletLists:Array;
+      public var bulletLists:Array = new Array();
 	  
-	  private var MAX_BULLET:Array;
+	  private const MAX_BULLET:Array = [40,200,100,10,60,10,10,90,20];
 	  
-	  private var MAX_WEAPON:int;
-      
-      public function EnemyBulletPool()
-      {
-         var _loc2_:int = 0;
-         this.groups = new Array();
-         this.bulletLists = new Array();
-         this.MAX_BULLET = [40,200,100,10,60,10,10,90,20];
-         this.MAX_WEAPON = this.MAX_BULLET.length;
-         super();
-         var _loc1_:int = 0;
-         while(_loc1_ < this.MAX_WEAPON)
-         {
-            this.groups[_loc1_] = new FlxGroup();
-            this.bulletLists[_loc1_] = new Array();
-            _loc2_ = 0;
-            while(_loc2_ < this.MAX_BULLET[_loc1_])
-            {
-               this.bulletLists[_loc1_][_loc2_] = this.makeBullet(_loc1_);
-               this.groups[_loc1_].add(this.bulletLists[_loc1_][_loc2_]);
-               _loc2_++;
-            }
-            add(this.groups[_loc1_]);
-            _loc1_++;
-         }
-      }
+	  private const MAX_WEAPON:int = MAX_BULLET.length;
       
       override public function destroy() : void
       {
@@ -49,17 +24,36 @@ package
          {
             this.bulletLists[_loc1_] = null;
          }
-         this.groups = null;
-         this.bulletLists = null;
+         groups = null;
+         bulletLists = null;
+      }
+      
+      public function EnemyBulletPool() : void
+      {
+         super();
+         var _loc1_:int = 0;
+         while(_loc1_ < this.MAX_WEAPON)
+         {
+            this.groups[_loc1_] = new FlxGroup();
+            this.bulletLists[_loc1_] = new Array();
+            var _loc2_:int = 0;
+            while(_loc2_ < this.MAX_BULLET[_loc1_])
+            {
+               this.bulletLists[_loc1_][_loc2_] = this.makeBullet(_loc1_);
+               this.groups[_loc1_].add(this.bulletLists[_loc1_][_loc2_]);
+               _loc2_++;
+            }
+            add(this.groups[_loc1_]);
+            _loc1_++;
+         }
       }
       
       public function destroyAll() : void
       {
-         var _loc2_:int = 0;
          var _loc1_:int = 0;
          while(_loc1_ < this.MAX_WEAPON)
          {
-            _loc2_ = 0;
+            var _loc2_:int = 0;
             while(_loc2_ < this.MAX_BULLET[_loc1_])
             {
                this.bulletLists[_loc1_][_loc2_].kill();
@@ -91,9 +85,8 @@ package
                return new EnemyBulletRotaryPea();
             case 8:
                return new EnemyBulletDonut2();
-            default:
-               throw new Error("Unknown bullet type: " + param1.toString());
          }
+		 throw new Error("Unknown bullet type: " + param1.toString());
       }
       
       public function getBullet(param1:int) : EnemyBullet

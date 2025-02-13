@@ -26,7 +26,7 @@ package
       
       private var elapsed:Number = 0;
       
-      public function EnemyDandelion(param1:int, param2:int)
+      public function EnemyDandelion(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemyDandelion,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -59,8 +59,8 @@ package
          {
             return;
          }
-         this.theta += FlxG.elapsed;
-         this.elapsed += FlxG.elapsed;
+         theta += FlxG.elapsed;
+         elapsed += FlxG.elapsed;
          this.updatePosition();
          super.update();
       }

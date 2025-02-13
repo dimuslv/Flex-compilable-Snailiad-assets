@@ -34,7 +34,7 @@ package
       
       private var shotTimeout:Number = 0;
       
-      public function EnemyBlob4(param1:int, param2:int)
+      public function EnemyBlob4(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemyBlob,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -66,7 +66,7 @@ package
          }
          if(onScreen())
          {
-            this.hopTimeout -= FlxG.elapsed;
+            hopTimeout -= FlxG.elapsed;
             if(this.hopTimeout < 0)
             {
                if(x > PlayState.player.x)
@@ -80,13 +80,13 @@ package
                   velocity.y = -200 * HOP_HEIGHT[this.hopNum];
                }
                ++this.hopNum;
-               this.hopNum %= HOP_TIMEOUTS.length;
-               this.hopTimeout = HOP_TIMEOUTS[this.hopNum];
+               hopNum %= HOP_TIMEOUTS.length;
+               hopTimeout = HOP_TIMEOUTS[this.hopNum];
             }
-            this.shotTimeout -= FlxG.elapsed;
+            shotTimeout -= FlxG.elapsed;
             if(this.shotTimeout <= 0)
             {
-               this.shotTimeout = SHOT_TIMEOUT;
+               shotTimeout = SHOT_TIMEOUT;
                Sfx.playShot7();
                _loc1_ = 0;
                while(_loc1_ < SHOT_NUM)

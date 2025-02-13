@@ -28,7 +28,7 @@ package
       
       private var actualCannon:FlxObject;
       
-      public function EnemyCannonLeft2(param1:int, param2:int, param3:Boolean)
+      public function EnemyCannonLeft2(param1:int, param2:int, param3:Boolean) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemyCannonLeft2,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -56,7 +56,7 @@ package
       
       override public function destroy() : void
       {
-         this.actualCannon = null;
+         actualCannon = null;
          super.destroy();
       }
       

@@ -148,7 +148,7 @@ package
          name null
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 7
@@ -159,10 +159,8 @@ package
          code
          getlocal0
          pushscope
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs0
@@ -184,10 +182,8 @@ package
          initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"Y_RADIUS")
          jump ofs2
          ofs1:
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs3
@@ -622,6 +618,7 @@ package
          multiply
          add
          initproperty QName(PackageNamespace(""),"y")
+         jump ofs4
          ofs12:
          label
          jump ofs4
@@ -789,13 +786,13 @@ package
          pushscope
          pushnull
          coerce QName(PackageNamespace(""),"EnemyBulletRotaryPea")
-         setlocal1
+         setlocal3
          pushbyte 3
-         setlocal2
+         setlocal1
          getlex QName(PackageNamespace(""),"Sfx")
          callpropvoid QName(PackageNamespace(""),"playShot7"), 0
          pushbyte 0
-         setlocal3
+         setlocal2
          jump ofs0
          ofs1:
          label
@@ -806,10 +803,10 @@ package
          getlex QName(PackageNamespace(""),"EnemyBulletRotaryPea")
          astypelate
          coerce QName(PackageNamespace(""),"EnemyBulletRotaryPea")
-         setlocal1
-         getlocal1
+         setlocal3
+         getlocal3
          iffalse ofs2
-         getlocal1
+         getlocal3
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"width")
          pushbyte 2
@@ -826,16 +823,16 @@ package
          getproperty QName(PackageNamespace(""),"PI")
          pushbyte 2
          multiply
-         getlocal2
+         getlocal1
          divide
-         getlocal3
+         getlocal2
          multiply
          callpropvoid QName(PackageNamespace(""),"shootRotary"), 5
          ofs2:
-         inclocal_i 3
+         inclocal_i 2
          ofs0:
-         getlocal3
          getlocal2
+         getlocal1
          iflt ofs1
          returnvoid
          end ; code
@@ -895,14 +892,14 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"shotTimeout")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"shotTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyDrone"),"shotTimeout")
          pushbyte 0
          ifnle ofs5
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyDrone"),"SHOT_TIMEOUT")
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"shotTimeout")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"shotTimeout")
          getlocal0
          dup
          setlocal1
@@ -920,7 +917,7 @@ package
          ifnle ofs6
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyDrone"),"MODE_WAIT")
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
          getlocal0
          callpropvoid QName(PackageNamespace(""),"shootDonuts"), 0
          ofs6:
@@ -933,7 +930,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          add
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"elapsed")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"elapsed")
          jump ofs1
          ofs4:
          getlocal0
@@ -942,7 +939,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          add
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"elapsed")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"elapsed")
          getlocal0
          callpropvoid QName(PackageNamespace(""),"updatePosition"), 0
          getlocal0
@@ -962,10 +959,10 @@ package
          iffalse ofs8
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyDrone"),"MODE_ATTACK")
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyDrone"),"SHOT_NUM")
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"shotNum")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"shotNum")
          jump ofs1
          ofs8:
          getlocal0
@@ -974,13 +971,13 @@ package
          ifne ofs1
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"elapsed")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"elapsed")
          getlocal0
          getlex QName(PackageNamespace(""),"x")
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"originX")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"originX")
          getlocal0
          getlex QName(PackageNamespace(""),"y")
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"originY")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"originY")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"x")
@@ -996,12 +993,12 @@ package
          ifnlt ofs11
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyDrone"),"MODE_COS_UP_LEFT")
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
          jump ofs12
          ofs11:
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyDrone"),"MODE_COS_DOWN_LEFT")
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
          ofs12:
          jump ofs13
          ofs10:
@@ -1012,12 +1009,12 @@ package
          ifnlt ofs14
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyDrone"),"MODE_SEMICIRCLE_RIGHT_UP")
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
          jump ofs13
          ofs14:
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyDrone"),"MODE_SEMICIRCLE_RIGHT_DOWN")
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
          ofs13:
          jump ofs1
          ofs9:
@@ -1031,12 +1028,12 @@ package
          ifnlt ofs16
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyDrone"),"MODE_COS_UP_RIGHT")
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
          jump ofs17
          ofs16:
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyDrone"),"MODE_COS_DOWN_RIGHT")
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
          ofs17:
          jump ofs1
          ofs15:
@@ -1047,12 +1044,12 @@ package
          ifnlt ofs18
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyDrone"),"MODE_SEMICIRCLE_LEFT_UP")
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
          jump ofs1
          ofs18:
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyDrone"),"MODE_SEMICIRCLE_LEFT_DOWN")
-         setproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyDrone"),"mode")
          ofs1:
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0

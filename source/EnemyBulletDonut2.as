@@ -12,9 +12,9 @@ package
       
       private static const DEFAULT_LIFETIME:Number = 3.8;
       
-      public function EnemyBulletDonut2()
+      public function EnemyBulletDonut2() : void
       {
-         super(PlayState.bossRush ? int(FIREPOWER / 2) : FIREPOWER);
+         super(PlayState.bossRush ? FIREPOWER / 2 : FIREPOWER);
          loadGraphic(Art.EnemyBulletDonut,true,true,WIDTH,HEIGHT);
          width = WIDTH;
          height = HEIGHT;

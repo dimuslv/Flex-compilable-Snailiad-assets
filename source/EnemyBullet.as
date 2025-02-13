@@ -12,7 +12,7 @@ package
       
       private var _firepower:int = 0;
       
-      public function EnemyBullet(param1:int)
+      public function EnemyBullet(param1:int) : void
       {
          super();
          exists = false;
@@ -32,7 +32,7 @@ package
          exists = true;
          velocity.x = param3;
          velocity.y = param4;
-         this._lifetime = param5;
+         _lifetime = param5;
       }
       
       public function collideTerrain() : Boolean
@@ -57,7 +57,7 @@ package
             return;
          }
          super.update();
-         this._lifetime -= FlxG.elapsed;
+         _lifetime -= FlxG.elapsed;
          if(this._lifetime <= 0)
          {
             this.kill();

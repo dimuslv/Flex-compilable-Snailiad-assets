@@ -24,7 +24,7 @@ package
       
       private var _offsetTheta:Number = 0;
       
-      public function EnemyBulletRotaryPea()
+      public function EnemyBulletRotaryPea() : void
       {
          super(FIREPOWER);
          loadGraphic(Art.EnemyBulletDonut,true,true,WIDTH,HEIGHT);
@@ -42,12 +42,12 @@ package
          super.shoot(param1,param2,0,0,DEFAULT_LIFETIME);
          play("normal");
          active = true;
-         this._elapsed = 0;
-         this._originX = param1;
-         this._originY = param2;
-         this._velocityR = param3;
-         this._velocityTheta = param4;
-         this._offsetTheta = param5;
+         _elapsed = 0;
+         _originX = param1;
+         _originY = param2;
+         _velocityR = param3;
+         _velocityTheta = param4;
+         _offsetTheta = param5;
       }
       
       override public function hitPlayer(param1:Player) : void
@@ -67,7 +67,7 @@ package
             return;
          }
          super.update();
-         this._elapsed += FlxG.elapsed;
+         _elapsed += FlxG.elapsed;
          x = this._originX + this._velocityR * this._elapsed * Math.cos(this._elapsed * this._velocityTheta + this._offsetTheta);
          y = this._originY + this._velocityR * this._elapsed * Math.sin(this._elapsed * this._velocityTheta + this._offsetTheta);
          if(!onScreen())

@@ -12,7 +12,7 @@ package
       
       private static const DEFAULT_LIFETIME:Number = 1.6;
       
-      public function EnemyBulletSpikeBall()
+      public function EnemyBulletSpikeBall() : void
       {
          super(FIREPOWER);
          loadGraphic(Art.EnemyBulletSpikeBall,true,true,WIDTH,HEIGHT);

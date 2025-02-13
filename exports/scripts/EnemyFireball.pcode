@@ -109,7 +109,7 @@ package
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"Boolean")
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 6
@@ -130,10 +130,8 @@ package
          getlocal0
          getlocal3
          initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"_clockwise")
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs0
@@ -149,10 +147,8 @@ package
          initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"SEC_PER_TICK")
          jump ofs2
          ofs1:
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs3
@@ -219,10 +215,8 @@ package
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyFireball"),"_clockwise")
          iffalse ofs5
-         findpropstrict QName(PackageNamespace(""),"int")
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
          negate
-         callproperty QName(PackageNamespace(""),"int"), 1
          convert_i
          jump ofs6
          ofs5:
@@ -251,10 +245,8 @@ package
          convert_i
          jump ofs10
          ofs9:
-         findpropstrict QName(PackageNamespace(""),"int")
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
          negate
-         callproperty QName(PackageNamespace(""),"int"), 1
          convert_i
          ofs10:
          initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
@@ -279,10 +271,8 @@ package
          convert_i
          jump ofs13
          ofs12:
-         findpropstrict QName(PackageNamespace(""),"int")
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
          negate
-         callproperty QName(PackageNamespace(""),"int"), 1
          convert_i
          ofs13:
          initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
@@ -303,10 +293,8 @@ package
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyFireball"),"_clockwise")
          iffalse ofs15
-         findpropstrict QName(PackageNamespace(""),"int")
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
          negate
-         callproperty QName(PackageNamespace(""),"int"), 1
          convert_i
          jump ofs16
          ofs15:
@@ -399,7 +387,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          add
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"_elapsed")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"_elapsed")
          jump ofs1
          ofs2:
          label
@@ -409,7 +397,7 @@ package
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyFireball"),"SEC_PER_TICK")
          subtract
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"_elapsed")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"_elapsed")
          findproperty QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"x")
          getlocal0
@@ -428,16 +416,16 @@ package
          ifnge ofs3
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_FALLING")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
          getlex QName(PackageNamespace(""),"acceleration")
          pushshort 1200
          setproperty QName(PackageNamespace(""),"y")
@@ -473,13 +461,13 @@ package
          iffalse ofs8
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_RIGHT")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
          findproperty QName(PackageNamespace(""),"x")
          findpropstrict QName(PackageNamespace(""),"int")
          getlex QName(PackageNamespace(""),"x")
@@ -516,14 +504,14 @@ package
          iffalse ofs10
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_LEFT")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
          negate
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
          getlocal0
          dup
          setlocal1
@@ -539,7 +527,7 @@ package
          ofs10:
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
          ofs9:
          jump ofs11
          ofs12:
@@ -569,13 +557,13 @@ package
          iffalse ofs14
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_TOP")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
          findproperty QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"x")
          pushbyte 2
@@ -604,14 +592,14 @@ package
          iffalse ofs16
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_BOTTOM")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
          negate
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
          getlocal0
          dup
          setlocal1
@@ -627,7 +615,7 @@ package
          ofs16:
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
          ofs15:
          jump ofs11
          ofs17:
@@ -655,14 +643,14 @@ package
          iffalse ofs19
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_LEFT")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
          negate
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
          findproperty QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"y")
          pushbyte 2
@@ -691,13 +679,13 @@ package
          iffalse ofs21
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_RIGHT")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
          getlocal0
          dup
          setlocal1
@@ -713,7 +701,7 @@ package
          ofs21:
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
          ofs20:
          jump ofs11
          ofs22:
@@ -741,14 +729,14 @@ package
          iffalse ofs24
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_BOTTOM")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
          negate
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
          findproperty QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"x")
          pushbyte 2
@@ -785,13 +773,13 @@ package
          iffalse ofs26
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_TOP")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
          getlocal0
          dup
          setlocal1
@@ -807,8 +795,10 @@ package
          ofs26:
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
          ofs25:
+         jump ofs11
+         ofs27:
          label
          jump ofs11
          ofs5:
@@ -817,41 +807,41 @@ package
          setlocal1
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_BOTTOM")
          getlocal1
-         ifstrictne ofs27
+         ifstrictne ofs28
          pushbyte 0
-         jump ofs28
-         ofs27:
+         jump ofs29
+         ofs28:
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_RIGHT")
          getlocal1
-         ifstrictne ofs29
+         ifstrictne ofs30
          pushbyte 1
-         jump ofs28
-         ofs29:
+         jump ofs29
+         ofs30:
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_TOP")
          getlocal1
-         ifstrictne ofs30
+         ifstrictne ofs31
          pushbyte 2
-         jump ofs28
-         ofs30:
+         jump ofs29
+         ofs31:
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_LEFT")
          getlocal1
-         ifstrictne ofs31
+         ifstrictne ofs32
          pushbyte 3
-         jump ofs28
-         ofs31:
-         jump ofs32
-         pushbyte 4
-         jump ofs32
+         jump ofs29
          ofs32:
+         jump ofs33
          pushbyte 4
-         ofs28:
+         jump ofs33
+         ofs33:
+         pushbyte 4
+         ofs29:
          kill 1
-         lookupswitch ofs25, [ofs6, ofs12, ofs17, ofs22, ofs25]
+         lookupswitch ofs27, [ofs6, ofs12, ofs17, ofs22, ofs27]
          ofs11:
          jump ofs1
          ofs4:
-         jump ofs33
-         ofs34:
+         jump ofs34
+         ofs35:
          label
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
@@ -864,7 +854,7 @@ package
          callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
          not
          dup
-         iffalse ofs35
+         iffalse ofs36
          pop
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
@@ -874,17 +864,17 @@ package
          add
          callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
          not
-         ofs35:
-         iffalse ofs36
+         ofs36:
+         iffalse ofs37
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_LEFT")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
          findproperty QName(PackageNamespace(""),"x")
          findpropstrict QName(PackageNamespace(""),"int")
          getlex QName(PackageNamespace(""),"x")
@@ -910,8 +900,8 @@ package
          setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
          kill 2
          kill 1
-         jump ofs37
-         ofs36:
+         jump ofs38
+         ofs37:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
          getlex QName(PackageNamespace(""),"x")
@@ -919,17 +909,17 @@ package
          add
          getlex QName(PackageNamespace(""),"y")
          callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
-         iffalse ofs38
+         iffalse ofs39
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_RIGHT")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
          negate
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
          getlocal0
          dup
          setlocal1
@@ -941,14 +931,14 @@ package
          setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
          kill 2
          kill 1
-         jump ofs37
-         ofs38:
+         jump ofs38
+         ofs39:
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
-         ofs37:
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
+         ofs38:
          jump ofs1
-         ofs39:
+         ofs40:
          label
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
@@ -961,7 +951,7 @@ package
          callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
          not
          dup
-         iffalse ofs40
+         iffalse ofs41
          pop
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
@@ -971,17 +961,17 @@ package
          getlex QName(PackageNamespace(""),"y")
          callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
          not
-         ofs40:
-         iffalse ofs41
+         ofs41:
+         iffalse ofs42
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_BOTTOM")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
          findproperty QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"x")
          pushbyte 1
@@ -998,25 +988,25 @@ package
          setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
          kill 2
          kill 1
-         jump ofs42
-         ofs41:
+         jump ofs43
+         ofs42:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"y")
          decrement
          callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
-         iffalse ofs43
+         iffalse ofs44
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_TOP")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
          negate
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
          getlocal0
          dup
          setlocal1
@@ -1028,14 +1018,14 @@ package
          setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
          kill 2
          kill 1
-         jump ofs42
-         ofs43:
+         jump ofs43
+         ofs44:
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
-         ofs42:
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
+         ofs43:
          jump ofs1
-         ofs44:
+         ofs45:
          label
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
@@ -1045,7 +1035,7 @@ package
          callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
          not
          dup
-         iffalse ofs45
+         iffalse ofs46
          pop
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
@@ -1056,29 +1046,22 @@ package
          decrement
          callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
          not
-         ofs45:
-         iffalse ofs46
+         ofs46:
+         iffalse ofs47
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_RIGHT")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
          negate
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
-         findpropstrict QName(PackageNamespace(""),"y")
-         dup
-         setlocal1
-         getproperty QName(PackageNamespace(""),"y")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         findproperty QName(PackageNamespace(""),"y")
+         getlex QName(PackageNamespace(""),"y")
          decrement
-         setlocal2
-         getlocal1
-         getlocal2
-         setproperty QName(PackageNamespace(""),"y")
-         kill 2
-         kill 1
+         initproperty QName(PackageNamespace(""),"y")
          getlocal0
          dup
          setlocal1
@@ -1090,24 +1073,24 @@ package
          setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
          kill 2
          kill 1
-         jump ofs47
-         ofs46:
+         jump ofs48
+         ofs47:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
          getlex QName(PackageNamespace(""),"x")
          decrement
          getlex QName(PackageNamespace(""),"y")
          callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
-         iffalse ofs48
+         iffalse ofs49
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_LEFT")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
          getlocal0
          dup
          setlocal1
@@ -1119,14 +1102,14 @@ package
          setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
          kill 2
          kill 1
-         jump ofs47
-         ofs48:
+         jump ofs48
+         ofs49:
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
-         ofs47:
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
+         ofs48:
          jump ofs1
-         ofs49:
+         ofs50:
          label
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
@@ -1138,7 +1121,7 @@ package
          callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
          not
          dup
-         iffalse ofs50
+         iffalse ofs51
          pop
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
@@ -1147,29 +1130,22 @@ package
          getlex QName(PackageNamespace(""),"y")
          callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
          not
-         ofs50:
-         iffalse ofs51
+         ofs51:
+         iffalse ofs52
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_TOP")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
          negate
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
-         findpropstrict QName(PackageNamespace(""),"x")
-         dup
-         setlocal1
-         getproperty QName(PackageNamespace(""),"x")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         findproperty QName(PackageNamespace(""),"x")
+         getlex QName(PackageNamespace(""),"x")
          decrement
-         setlocal2
-         getlocal1
-         getlocal2
-         setproperty QName(PackageNamespace(""),"x")
-         kill 2
-         kill 1
+         initproperty QName(PackageNamespace(""),"x")
          getlocal0
          dup
          setlocal1
@@ -1181,8 +1157,8 @@ package
          setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
          kill 2
          kill 1
-         jump ofs52
-         ofs51:
+         jump ofs53
+         ofs52:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"worldMap")
          getlex QName(PackageNamespace(""),"x")
@@ -1190,16 +1166,16 @@ package
          pushbyte 16
          add
          callproperty QName(PackageNamespace(""),"enemySolidAt"), 2
-         iffalse ofs53
+         iffalse ofs54
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_BOTTOM")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
          getlocal0
          dup
          setlocal1
@@ -1211,52 +1187,52 @@ package
          setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
          kill 2
          kill 1
-         jump ofs52
-         ofs53:
+         jump ofs53
+         ofs54:
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
-         ofs52:
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"turns")
+         ofs53:
          jump ofs1
-         ofs54:
+         ofs55:
          label
          jump ofs1
-         ofs33:
+         ofs34:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          setlocal1
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_BOTTOM")
          getlocal1
-         ifstrictne ofs55
+         ifstrictne ofs56
          pushbyte 0
-         jump ofs56
-         ofs55:
+         jump ofs57
+         ofs56:
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_RIGHT")
          getlocal1
-         ifstrictne ofs57
+         ifstrictne ofs58
          pushbyte 1
-         jump ofs56
-         ofs57:
+         jump ofs57
+         ofs58:
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_TOP")
          getlocal1
-         ifstrictne ofs58
+         ifstrictne ofs59
          pushbyte 2
-         jump ofs56
-         ofs58:
+         jump ofs57
+         ofs59:
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_LEFT")
          getlocal1
-         ifstrictne ofs59
+         ifstrictne ofs60
          pushbyte 3
-         jump ofs56
-         ofs59:
-         jump ofs60
-         pushbyte 4
-         jump ofs60
+         jump ofs57
          ofs60:
+         jump ofs61
          pushbyte 4
-         ofs56:
+         jump ofs61
+         ofs61:
+         pushbyte 4
+         ofs57:
          kill 1
-         lookupswitch ofs54, [ofs34, ofs39, ofs44, ofs49, ofs54]
+         lookupswitch ofs55, [ofs35, ofs40, ofs45, ofs50, ofs55]
          ofs1:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyFireball"),"_elapsed")
@@ -1283,7 +1259,7 @@ package
          returns QName(PackageNamespace(""),"void")
          
          body
-         maxstack 3
+         maxstack 2
          localcount 3
          initscopedepth 9
          maxscopedepth 10
@@ -1297,7 +1273,7 @@ package
          ifne ofs0
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"MODE_BOTTOM")
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"mode")
          getlex QName(PackageNamespace(""),"acceleration")
          pushbyte 0
          setproperty QName(PackageNamespace(""),"y")
@@ -1308,20 +1284,18 @@ package
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyFireball"),"_clockwise")
          iffalse ofs1
-         findpropstrict QName(PackageNamespace(""),"int")
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
          negate
-         callproperty QName(PackageNamespace(""),"int"), 1
          convert_i
          jump ofs2
          ofs1:
          getlex QName(PrivateNamespace(null,"#EnemyFireball"),"SPEED")
          convert_i
          ofs2:
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vx")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
+         initproperty QName(PrivateNamespace(null,"#EnemyFireball"),"vy")
          ofs0:
          returnvoid
          end ; code

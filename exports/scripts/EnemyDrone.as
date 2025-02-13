@@ -169,18 +169,18 @@ package
       
       public function shootDonuts() : void
       {
-         var _loc1_:EnemyBulletRotaryPea = null;
-         var _loc2_:int = 3;
+         var _loc3_:EnemyBulletRotaryPea = null;
+         var _loc1_:int = 3;
          Sfx.playShot7();
-         var _loc3_:int = 0;
-         while(_loc3_ < _loc2_)
+         var _loc2_:int = 0;
+         while(_loc2_ < _loc1_)
          {
-            _loc1_ = PlayState.enemyBulletPool.getBullet(7) as EnemyBulletRotaryPea;
-            if(_loc1_)
+            _loc3_ = PlayState.enemyBulletPool.getBullet(7) as EnemyBulletRotaryPea;
+            if(_loc3_)
             {
-               _loc1_.shootRotary(x + width / 2,y + height / 2,60,4,Math.PI * 2 / _loc2_ * _loc3_);
+               _loc3_.shootRotary(x + width / 2,y + height / 2,60,4,Math.PI * 2 / _loc1_ * _loc2_);
             }
-            _loc3_++;
+            _loc2_++;
          }
       }
       

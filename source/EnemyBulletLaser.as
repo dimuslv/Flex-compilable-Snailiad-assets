@@ -12,7 +12,7 @@ package
       
       private static const DEFAULT_LIFETIME:Number = 3;
       
-      public function EnemyBulletLaser()
+      public function EnemyBulletLaser() : void
       {
          super(FIREPOWER);
          loadGraphic(Art.EnemyBulletLaser,true,true,WIDTH,HEIGHT);
@@ -21,7 +21,7 @@ package
          addAnimation("normal",[0,1,2,3],30,true);
       }
       
-      override public function shoot(param1:int, param2:int, param3:int, param4:int, param5:Number = 3) : void
+      override public function shoot(param1:int, param2:int, param3:int, param4:int, param5:Number = 3.0) : void
       {
          super.shoot(param1,param2,param3,param4,param5);
          if(onScreen())
