@@ -30,7 +30,7 @@ package
       
       private var goingUp:Boolean = true;
       
-      public function EnemyBird2(param1:int, param2:int)
+      public function EnemyBird2(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemyBird2,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -61,7 +61,6 @@ package
       
       override public function update() : void
       {
-         var _loc1_:Number = NaN;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
@@ -78,17 +77,17 @@ package
                facing = LEFT;
             }
          }
-         this.theta += FlxG.elapsed;
-         _loc1_ = y;
+         theta += FlxG.elapsed;
+         var _loc1_:Number = y;
          y = this.originY + Math.sin(this.theta * this.thetaMult) * this.flyAmplitude;
          if(y < _loc1_ && !this.goingUp)
          {
-            this.goingUp = true;
+            goingUp = true;
             play("up");
          }
          if(y > _loc1_ && this.goingUp)
          {
-            this.goingUp = false;
+            goingUp = false;
             play("down");
          }
          super.update();

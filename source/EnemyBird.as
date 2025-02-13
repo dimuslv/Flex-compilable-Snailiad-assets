@@ -38,7 +38,7 @@ package
       
       private var shotTimeout:Number = 2.2;
       
-      public function EnemyBird(param1:int, param2:int)
+      public function EnemyBird(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemyBird,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -69,13 +69,12 @@ package
       
       public function shoot(param1:Number) : void
       {
-         var _loc5_:EnemyBullet = null;
          var _loc2_:Number = WEAPON_SPEED;
          var _loc3_:Number = -Math.cos(param1) * _loc2_;
          var _loc4_:Number = -Math.sin(param1) * _loc2_;
-         if(Boolean(PlayState.player) && PlayState.player._insaneMode)
+         if(PlayState.player && PlayState.player._insaneMode)
          {
-            _loc5_ = PlayState.enemyBulletPool.getBullet(4);
+            var _loc5_:EnemyBullet = PlayState.enemyBulletPool.getBullet(4);
             if(_loc5_)
             {
                _loc5_.shoot(x + width / 2,y + height / 2,_loc3_ * 1.3,_loc4_ * 1.3);
@@ -85,7 +84,6 @@ package
       
       override public function update() : void
       {
-         var _loc2_:Number = NaN;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
@@ -102,27 +100,27 @@ package
                facing = LEFT;
             }
          }
-         this.theta += FlxG.elapsed;
+         theta += FlxG.elapsed;
          var _loc1_:Number = y;
          y = this.originY + Math.sin(this.theta * this.thetaMult) * this.flyAmplitude;
          if(onScreen())
          {
-            this.shotTimeout -= FlxG.elapsed;
+            shotTimeout -= FlxG.elapsed;
             if(this.shotTimeout <= 0)
             {
-               this.shotTimeout = SHOT_TIMEOUT;
-               _loc2_ = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
+               shotTimeout = SHOT_TIMEOUT;
+               var _loc2_:Number = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
                this.shoot(_loc2_);
             }
          }
          if(y < _loc1_ && !this.goingUp)
          {
-            this.goingUp = true;
+            goingUp = true;
             play("up");
          }
          if(y > _loc1_ && this.goingUp)
          {
-            this.goingUp = false;
+            goingUp = false;
             play("down");
          }
          super.update();

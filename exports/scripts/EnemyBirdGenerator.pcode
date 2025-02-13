@@ -22,13 +22,13 @@ package
       end ; body
       end ; method
       
+      private const TIMEOUTS:Array;
+      
       private const BASE_TIMEOUT:Number = 7;
       
       private var timeout:Number = 0;
       
       private var listPos:int = 0;
-      
-      private var TIMEOUTS:Array;
       
       public function EnemyBirdGenerator(param1:int, param2:int)
       {
@@ -36,7 +36,7 @@ package
          name null
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 61
@@ -230,11 +230,9 @@ package
          code
          getlocal0
          pushscope
-         getlex QName(PackageNamespace(""),"NaN")
-         convert_d
+         pushnan
          setlocal1
-         getlex QName(PackageNamespace(""),"NaN")
-         convert_d
+         pushnan
          setlocal2
          pushnull
          coerce QName(PackageNamespace(""),"Enemy")
@@ -252,7 +250,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#EnemyBirdGenerator"),"timeout")
+         initproperty QName(PrivateNamespace(null,"#EnemyBirdGenerator"),"timeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyBirdGenerator"),"timeout")
          pushbyte 0
@@ -275,7 +273,7 @@ package
          getproperty QName(PrivateNamespace(null,"#EnemyBirdGenerator"),"TIMEOUTS")
          getproperty QName(PackageNamespace(""),"length")
          modulo
-         setproperty QName(PrivateNamespace(null,"#EnemyBirdGenerator"),"listPos")
+         initproperty QName(PrivateNamespace(null,"#EnemyBirdGenerator"),"listPos")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyBirdGenerator"),"TIMEOUTS")
@@ -285,12 +283,11 @@ package
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyBirdGenerator"),"BASE_TIMEOUT")
          multiply
-         setproperty QName(PrivateNamespace(null,"#EnemyBirdGenerator"),"timeout")
+         initproperty QName(PrivateNamespace(null,"#EnemyBirdGenerator"),"timeout")
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
          callproperty QName(PackageNamespace(""),"random"), 0
          pushdouble 0.5
-         greaterthan
-         iffalse ofs2
+         ifngt ofs2
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"scroll")
          getproperty QName(PackageNamespace(""),"x")

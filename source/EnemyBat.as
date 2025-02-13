@@ -26,7 +26,7 @@ package
       
       private var moveTimeout:Number = 0;
       
-      public function EnemyBat(param1:int, param2:int)
+      public function EnemyBat(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemyBat,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -53,7 +53,7 @@ package
          }
          if(onScreen())
          {
-            this.moveTimeout -= FlxG.elapsed;
+            moveTimeout -= FlxG.elapsed;
             if(this.moveTimeout < 0 && Math.abs(PlayState.player.x - x) < REACT_DISTANCE)
             {
                if(PlayState.player.x < x)
@@ -67,7 +67,7 @@ package
                velocity.y = Math.sqrt(Math.abs(PlayState.player.y - y + 40)) * SPEED / 4;
                acceleration.y = -SPEED * 2;
                play("flying");
-               this.moveTimeout = 9999999999;
+               moveTimeout = 9999999999;
             }
          }
          if(velocity.x < 0)

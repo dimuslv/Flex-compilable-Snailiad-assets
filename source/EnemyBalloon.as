@@ -34,7 +34,7 @@ package
       
       private var shotTimeout:Number = 2.4;
       
-      public function EnemyBalloon(param1:int, param2:int)
+      public function EnemyBalloon(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemyBalloon,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -63,21 +63,20 @@ package
       
       override public function update() : void
       {
-         var _loc1_:Number = NaN;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
          }
-         this.theta += FlxG.elapsed;
-         this.elapsed += FlxG.elapsed;
+         theta += FlxG.elapsed;
+         elapsed += FlxG.elapsed;
          this.updatePosition();
          if(onScreen())
          {
-            this.shotTimeout -= FlxG.elapsed;
+            shotTimeout -= FlxG.elapsed;
             if(this.shotTimeout <= 0)
             {
-               this.shotTimeout = SHOT_TIMEOUT;
-               _loc1_ = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
+               shotTimeout = SHOT_TIMEOUT;
+               var _loc1_:Number = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
                this.shoot(_loc1_);
             }
          }

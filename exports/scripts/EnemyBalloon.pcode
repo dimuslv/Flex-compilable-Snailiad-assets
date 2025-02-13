@@ -88,7 +88,7 @@ package
          name null
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 6
@@ -246,8 +246,7 @@ package
          code
          getlocal0
          pushscope
-         getlex QName(PackageNamespace(""),"NaN")
-         convert_d
+         pushnan
          setlocal1
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"realState")
@@ -262,14 +261,14 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          add
-         setproperty QName(PrivateNamespace(null,"#EnemyBalloon"),"theta")
+         initproperty QName(PrivateNamespace(null,"#EnemyBalloon"),"theta")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyBalloon"),"elapsed")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          add
-         setproperty QName(PrivateNamespace(null,"#EnemyBalloon"),"elapsed")
+         initproperty QName(PrivateNamespace(null,"#EnemyBalloon"),"elapsed")
          getlocal0
          callpropvoid QName(PackageNamespace(""),"updatePosition"), 0
          findpropstrict QName(PackageNamespace(""),"onScreen")
@@ -281,14 +280,14 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#EnemyBalloon"),"shotTimeout")
+         initproperty QName(PrivateNamespace(null,"#EnemyBalloon"),"shotTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyBalloon"),"shotTimeout")
          pushbyte 0
          ifnle ofs1
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyBalloon"),"SHOT_TIMEOUT")
-         setproperty QName(PrivateNamespace(null,"#EnemyBalloon"),"shotTimeout")
+         initproperty QName(PrivateNamespace(null,"#EnemyBalloon"),"shotTimeout")
          getlex QName(PackageNamespace(""),"Math")
          getlex QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"PlayState")

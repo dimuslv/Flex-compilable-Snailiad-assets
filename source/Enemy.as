@@ -22,7 +22,7 @@ package
       
       private var _noBoundsChecking:Boolean;
       
-      public function Enemy(param1:int, param2:int, param3:int, param4:int, param5:int, param6:Boolean = false)
+      public function Enemy(param1:int, param2:int, param3:int, param4:int, param5:int, param6:Boolean = false) : void
       {
          super();
          x = param1;
@@ -61,7 +61,7 @@ package
                kill();
             }
          }
-         this._hurtTimeout -= FlxG.elapsed;
+         _hurtTimeout -= FlxG.elapsed;
          if(--this._justFlashed == 0)
          {
             unFlashColor();
@@ -83,6 +83,7 @@ package
                break;
             case 4:
                this.triggerAi4();
+			   break;
          }
       }
       
@@ -125,11 +126,11 @@ package
          if(param1 <= 0)
          {
             Sfx.playEnemyPingOffArmor();
-            this._hurtTimeout = HURT_TIMEOUT;
+            _hurtTimeout = HURT_TIMEOUT;
          }
          else
          {
-            this._hp -= param1;
+            _hp -= param1;
             if(this._hp <= 0)
             {
                Sfx.playEnemyKilled();
@@ -140,8 +141,8 @@ package
             {
                Sfx.playRandomExplode();
                flashColor(16777215);
-               this._justFlashed = 1;
-               this._hurtTimeout = HURT_TIMEOUT;
+               _justFlashed = 1;
+               _hurtTimeout = HURT_TIMEOUT;
             }
          }
       }

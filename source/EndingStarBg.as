@@ -59,7 +59,7 @@ package
       public function fadeIn() : void
       {
          _fading = true;
-         _fade = 0;
+         _fade = 0.0;
       }
       
       public function setColor(param1:uint) : void

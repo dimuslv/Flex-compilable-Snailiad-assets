@@ -30,7 +30,7 @@ package
       
       private var originY:Number = 0;
       
-      public function EnemyBabyfish(param1:int, param2:int)
+      public function EnemyBabyfish(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemyBabyfish,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -62,11 +62,11 @@ package
          {
             return;
          }
-         this.elapsed += FlxG.elapsed;
+         elapsed += FlxG.elapsed;
          y = this.originY + 4 * Math.sin(this.elapsed * 2);
          if(onScreen())
          {
-            this.moveTimeout -= FlxG.elapsed;
+            moveTimeout -= FlxG.elapsed;
             if(this.moveTimeout < 0)
             {
                if(PlayState.player.x < x)
@@ -81,7 +81,7 @@ package
                {
                   velocity.x *= -1;
                }
-               this.moveTimeout = MOVE_TIMEOUT;
+               moveTimeout = MOVE_TIMEOUT;
                play("normal");
                play("swim");
             }

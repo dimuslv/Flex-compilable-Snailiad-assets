@@ -55,7 +55,7 @@ package
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"Boolean")
          optional False()
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 2
@@ -228,7 +228,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(ProtectedNamespace("Enemy"),"_hurtTimeout")
+         initproperty QName(ProtectedNamespace("Enemy"),"_hurtTimeout")
          getlocal0
          dup
          setlocal1
@@ -290,6 +290,7 @@ package
          label
          getlocal0
          callpropvoid QName(PackageNamespace(""),"triggerAi4"), 0
+         jump ofs2
          ofs6:
          label
          jump ofs2
@@ -524,7 +525,7 @@ package
          callpropvoid QName(PackageNamespace(""),"playEnemyPingOffArmor"), 0
          getlocal0
          getlex QName(PrivateNamespace(null,"#Enemy"),"HURT_TIMEOUT")
-         setproperty QName(ProtectedNamespace("Enemy"),"_hurtTimeout")
+         initproperty QName(ProtectedNamespace("Enemy"),"_hurtTimeout")
          jump ofs4
          ofs3:
          getlocal0
@@ -532,7 +533,7 @@ package
          getproperty QName(ProtectedNamespace("Enemy"),"_hp")
          getlocal1
          subtract
-         setproperty QName(ProtectedNamespace("Enemy"),"_hp")
+         initproperty QName(ProtectedNamespace("Enemy"),"_hp")
          getlocal0
          getproperty QName(ProtectedNamespace("Enemy"),"_hp")
          pushbyte 0
@@ -563,10 +564,10 @@ package
          callpropvoid QName(PackageNamespace(""),"flashColor"), 1
          getlocal0
          pushbyte 1
-         setproperty QName(ProtectedNamespace("Enemy"),"_justFlashed")
+         initproperty QName(ProtectedNamespace("Enemy"),"_justFlashed")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Enemy"),"HURT_TIMEOUT")
-         setproperty QName(ProtectedNamespace("Enemy"),"_hurtTimeout")
+         initproperty QName(ProtectedNamespace("Enemy"),"_hurtTimeout")
          ofs4:
          returnvoid
          end ; code

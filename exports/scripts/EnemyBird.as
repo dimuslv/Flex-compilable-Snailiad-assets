@@ -69,23 +69,23 @@ package
       
       public function shoot(param1:Number) : void
       {
-         var _loc2_:EnemyBullet = null;
-         var _loc3_:Number = WEAPON_SPEED;
-         var _loc4_:Number = -Math.cos(param1) * _loc3_;
-         var _loc5_:Number = -Math.sin(param1) * _loc3_;
+         var _loc5_:EnemyBullet = null;
+         var _loc2_:Number = WEAPON_SPEED;
+         var _loc3_:Number = -Math.cos(param1) * _loc2_;
+         var _loc4_:Number = -Math.sin(param1) * _loc2_;
          if(Boolean(PlayState.player) && PlayState.player._insaneMode)
          {
-            _loc2_ = PlayState.enemyBulletPool.getBullet(4);
-            if(_loc2_)
+            _loc5_ = PlayState.enemyBulletPool.getBullet(4);
+            if(_loc5_)
             {
-               _loc2_.shoot(x + width / 2,y + height / 2,_loc4_ * 1.3,_loc5_ * 1.3);
+               _loc5_.shoot(x + width / 2,y + height / 2,_loc3_ * 1.3,_loc4_ * 1.3);
             }
          }
       }
       
       override public function update() : void
       {
-         var _loc1_:Number = NaN;
+         var _loc2_:Number = NaN;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
@@ -103,7 +103,7 @@ package
             }
          }
          this.theta += FlxG.elapsed;
-         var _loc2_:Number = y;
+         var _loc1_:Number = y;
          y = this.originY + Math.sin(this.theta * this.thetaMult) * this.flyAmplitude;
          if(onScreen())
          {
@@ -111,16 +111,16 @@ package
             if(this.shotTimeout <= 0)
             {
                this.shotTimeout = SHOT_TIMEOUT;
-               _loc1_ = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
-               this.shoot(_loc1_);
+               _loc2_ = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
+               this.shoot(_loc2_);
             }
          }
-         if(y < _loc2_ && !this.goingUp)
+         if(y < _loc1_ && !this.goingUp)
          {
             this.goingUp = true;
             play("up");
          }
-         if(y > _loc2_ && this.goingUp)
+         if(y > _loc1_ && this.goingUp)
          {
             this.goingUp = false;
             play("down");
