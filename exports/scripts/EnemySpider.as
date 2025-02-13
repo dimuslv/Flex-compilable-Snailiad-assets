@@ -57,7 +57,6 @@ package
       override public function update() : void
       {
          var _loc1_:Number = NaN;
-         _loc1_ = NaN;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;

@@ -40,9 +40,9 @@ package
       
       private var moveTimeoutIndex:int = 0;
       
-      public function EnemySnake3(param1:int, param2:int)
+      public function EnemySnake3(param1:int, param2:int) : void
       {
-         if(Boolean(PlayState.player) && PlayState.player._easyMode)
+         if(PlayState.player && PlayState.player._easyMode)
          {
             this.MAX_HP *= 0.7;
             this.Y_SPEED = 120;
@@ -71,13 +71,12 @@ package
       
       public function shoot(param1:Number) : void
       {
-         var _loc5_:EnemyBullet = null;
          var _loc2_:Number = WEAPON_SPEED;
          var _loc3_:Number = -Math.cos(param1) * _loc2_;
          var _loc4_:Number = -Math.sin(param1) * _loc2_;
-         if(Boolean(PlayState.player) && PlayState.player._insaneMode)
+         if(PlayState.player && PlayState.player._insaneMode)
          {
-            _loc5_ = PlayState.enemyBulletPool.getBullet(4);
+            var _loc5_:EnemyBullet = PlayState.enemyBulletPool.getBullet(4);
             if(_loc5_)
             {
                _loc5_.shoot(x + width / 2,y + height / 2,_loc3_ * 1.3,_loc4_ * 1.3);
@@ -87,29 +86,28 @@ package
       
       override public function update() : void
       {
-         var _loc1_:Number = NaN;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
          }
          if(onScreen())
          {
-            this.moveTimeout -= FlxG.elapsed;
+            moveTimeout -= FlxG.elapsed;
             if(this.moveTimeout < 0 && Math.abs(PlayState.player.x - x) < this.REACT_DISTANCE && Math.abs(PlayState.player.y - y) < this.REACT_DISTANCE)
             {
-               _loc1_ = Math.atan2(PlayState.player.y - y,PlayState.player.x - x);
+               var _loc1_:Number = Math.atan2(PlayState.player.y - y,PlayState.player.x - x);
                _loc1_ += THETA_OFFSET[this.thetaOffsetIndex];
                ++this.thetaOffsetIndex;
-               this.thetaOffsetIndex %= THETA_OFFSET.length;
+               thetaOffsetIndex %= THETA_OFFSET.length;
                velocity.x = Math.cos(_loc1_) * this.X_SPEED;
                velocity.y = Math.sin(_loc1_) * this.Y_SPEED;
                ++this.moveTimeout;
-               this.moveTimeout %= MOVE_TIMEOUT.length;
-               this.moveTimeout = MOVE_TIMEOUT[this.moveTimeoutIndex];
-               this.shotTimeout -= FlxG.elapsed;
+               moveTimeout %= MOVE_TIMEOUT.length;
+               moveTimeout = MOVE_TIMEOUT[this.moveTimeoutIndex];
+               shotTimeout -= FlxG.elapsed;
                if(this.shotTimeout <= 0)
                {
-                  this.shotTimeout = SHOT_TIMEOUT;
+                  shotTimeout = SHOT_TIMEOUT;
                   _loc1_ = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
                   this.shoot(_loc1_);
                }

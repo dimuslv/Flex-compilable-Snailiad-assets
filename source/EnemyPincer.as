@@ -22,7 +22,7 @@ package
       
       private static const MOVE_TIMEOUT:Array = [0.4,0.3,0.4,0.2,0.4,0.3,0.4,0.2,0.4,0.3,0.4,0.2,0.2,0.2,0.2,0.1,0.4];
       
-      private static const JUMP_HEIGHT:Array = [1,1,1,1,2,1,1,1,2,1,1,1,0.5,0.5,0.5,0,2.5];
+      private static const JUMP_HEIGHT:Array = [1,1,1,1,2,1,1,1,2,1,1,1,0.5,0.5,0.5,0.0,2.5];
       
       private static const SPEED:Number = 200;
       
@@ -38,7 +38,7 @@ package
       
       private var landed:Boolean = true;
       
-      public function EnemyPincer(param1:int, param2:int)
+      public function EnemyPincer(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemyPincer,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -61,13 +61,12 @@ package
       
       public function shoot(param1:Number) : void
       {
-         var _loc5_:EnemyBullet = null;
          var _loc2_:Number = WEAPON_SPEED;
          var _loc3_:Number = -Math.cos(param1) * _loc2_;
          var _loc4_:Number = -Math.sin(param1) * _loc2_;
-         if(Boolean(PlayState.player) && PlayState.player._insaneMode)
+         if(PlayState.player && PlayState.player._insaneMode)
          {
-            _loc5_ = PlayState.enemyBulletPool.getBullet(1);
+            var _loc5_:EnemyBullet = PlayState.enemyBulletPool.getBullet(1);
             if(_loc5_)
             {
                _loc5_.shoot(x + width / 2,y + height / 2,_loc3_ * 1.3,_loc4_ * 1.3);
@@ -77,23 +76,22 @@ package
       
       override public function update() : void
       {
-         var _loc1_:Number = NaN;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
          }
          if(onScreen())
          {
-            this.moveTimeout -= FlxG.elapsed;
+            moveTimeout -= FlxG.elapsed;
             if(this.moveTimeout < 0 && Math.abs(PlayState.player.x - x) < this.REACT_DISTANCE)
             {
                ++this.moveTimeoutIndex;
-               this.moveTimeoutIndex %= MOVE_TIMEOUT.length;
-               this.moveTimeout = MOVE_TIMEOUT[this.moveTimeoutIndex];
+               moveTimeoutIndex %= MOVE_TIMEOUT.length;
+               moveTimeout = MOVE_TIMEOUT[this.moveTimeoutIndex];
                if(FlxU.random() > 0.9 && this.landed)
                {
                   velocity.y = -130 * JUMP_HEIGHT[this.moveTimeoutIndex];
-                  this.landed = false;
+                  landed = false;
                }
                if(FlxU.random() > 0.77)
                {
@@ -108,11 +106,11 @@ package
                   velocity.x = SPEED;
                }
             }
-            this.shotTimeout -= FlxG.elapsed;
+            shotTimeout -= FlxG.elapsed;
             if(this.shotTimeout <= 0)
             {
-               this.shotTimeout = SHOT_TIMEOUT;
-               _loc1_ = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
+               shotTimeout = SHOT_TIMEOUT;
+               var _loc1_:Number = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
                this.shoot(_loc1_);
             }
          }
@@ -130,7 +128,7 @@ package
       override public function hitBottom(param1:FlxObject, param2:Number) : void
       {
          velocity.y *= -0.1;
-         this.landed = true;
+         landed = true;
       }
       
       override public function hitSide(param1:FlxObject, param2:Number) : void

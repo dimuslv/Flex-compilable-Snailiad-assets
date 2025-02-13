@@ -130,7 +130,6 @@ package
       public function updatePosition() : void
       {
          var _loc1_:Number = NaN;
-         _loc1_ = NaN;
          if(this.mode == MODE_WAIT)
          {
             return;

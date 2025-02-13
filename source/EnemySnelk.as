@@ -26,7 +26,7 @@ package
       
       private var _alwaysRun:Boolean = false;
       
-      public function EnemySnelk(param1:int, param2:int, param3:Boolean = false)
+      public function EnemySnelk(param1:int, param2:int, param3:Boolean = false) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE,true);
          loadGraphic(Art.EnemySnelk,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -97,8 +97,8 @@ package
             velocity.x = _loc1_;
             velocity.y = -240 * HOP_HEIGHT[this.hopNum];
             ++this.hopNum;
-            this.hopNum %= HOP_HEIGHT.length;
-            this.hopTimeout = 1;
+            hopNum %= HOP_HEIGHT.length;
+            hopTimeout = 1;
          }
          if(velocity.x < 0)
          {
@@ -113,7 +113,7 @@ package
       
       override public function hitBottom(param1:FlxObject, param2:Number) : void
       {
-         this.hopTimeout = -1;
+         hopTimeout = -1;
          velocity.x = 0;
          velocity.y *= -0.1;
       }

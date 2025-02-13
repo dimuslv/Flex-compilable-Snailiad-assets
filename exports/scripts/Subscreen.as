@@ -248,6 +248,7 @@ package
       private function makeEscText() : void
       {
          var _loc1_:FlxText = null;
+         _loc1_ = null;
          _loc1_ = new FlxText(0,this.WEAPON_Y,FlxG.width);
          _loc1_.font = Fonts.normal;
          _loc1_.size = 10;

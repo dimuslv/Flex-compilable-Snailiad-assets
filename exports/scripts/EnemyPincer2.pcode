@@ -101,7 +101,7 @@ package
       pushdouble 0.5
       pushdouble 0.5
       pushdouble 0.5
-      pushbyte 0
+      pushdouble 0
       pushdouble 2.5
       newarray 17
       initproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"JUMP_HEIGHT")
@@ -132,7 +132,7 @@ package
          name null
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 6
@@ -267,30 +267,28 @@ package
          pushscope
          pushnull
          coerce QName(PackageNamespace(""),"EnemyBullet")
-         setlocal2
+         setlocal 5
          getlex QName(PrivateNamespace(null,"#EnemyPincer2"),"WEAPON_SPEED")
          convert_d
-         setlocal3
+         setlocal2
          getlex QName(PackageNamespace(""),"Math")
          getlocal1
          callproperty QName(PackageNamespace(""),"cos"), 1
          negate
-         getlocal3
+         getlocal2
          multiply
          convert_d
-         setlocal 4
+         setlocal3
          getlex QName(PackageNamespace(""),"Math")
          getlocal1
          callproperty QName(PackageNamespace(""),"sin"), 1
          negate
-         getlocal3
+         getlocal2
          multiply
          convert_d
-         setlocal 5
-         findpropstrict QName(PackageNamespace(""),"Boolean")
+         setlocal 4
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs0
@@ -306,10 +304,10 @@ package
          pushbyte 1
          callproperty QName(PackageNamespace(""),"getBullet"), 1
          coerce QName(PackageNamespace(""),"EnemyBullet")
-         setlocal2
-         getlocal2
+         dup
+         setlocal 5
          iffalse ofs1
-         getlocal2
+         getlocal 5
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"width")
          pushbyte 2
@@ -320,10 +318,10 @@ package
          pushbyte 2
          divide
          add
-         getlocal 4
+         getlocal3
          pushdouble 1.3
          multiply
-         getlocal 5
+         getlocal 4
          pushdouble 1.3
          multiply
          callpropvoid QName(PackageNamespace(""),"shoot"), 4
@@ -352,8 +350,7 @@ package
          code
          getlocal0
          pushscope
-         getlex QName(PackageNamespace(""),"NaN")
-         convert_d
+         pushnan
          setlocal1
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"realState")
@@ -371,7 +368,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"moveTimeout")
+         initproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"moveTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"moveTimeout")
          pushbyte 0
@@ -408,13 +405,13 @@ package
          getlex QName(PrivateNamespace(null,"#EnemyPincer2"),"MOVE_TIMEOUT")
          getproperty QName(PackageNamespace(""),"length")
          modulo
-         setproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"moveTimeoutIndex")
+         initproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"moveTimeoutIndex")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyPincer2"),"MOVE_TIMEOUT")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"moveTimeoutIndex")
          getproperty MultinameL([PrivateNamespace(null,"#EnemyPincer2"),PackageNamespace(""),PrivateNamespace(null,"#EnemyPincer2/1"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("EnemyPincer2"),StaticProtectedNs("EnemyPincer2"),StaticProtectedNs("Enemy"),StaticProtectedNs("org.flixel:FlxSprite"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
-         setproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"moveTimeout")
+         initproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"moveTimeout")
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
          callproperty QName(PackageNamespace(""),"random"), 0
          pushdouble 0.9
@@ -437,7 +434,7 @@ package
          setproperty QName(PackageNamespace(""),"y")
          getlocal0
          pushfalse
-         setproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"landed")
+         initproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"landed")
          ofs5:
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
          callproperty QName(PackageNamespace(""),"random"), 0
@@ -481,14 +478,14 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"shotTimeout")
+         initproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"shotTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"shotTimeout")
          pushbyte 0
          ifnle ofs1
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyPincer2"),"SHOT_TIMEOUT")
-         setproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"shotTimeout")
+         initproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"shotTimeout")
          getlex QName(PackageNamespace(""),"Math")
          getlex QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"PlayState")
@@ -553,7 +550,7 @@ package
          pushscope
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"landed")
+         initproperty QName(PrivateNamespace(null,"#EnemyPincer2"),"landed")
          getlex QName(PackageNamespace(""),"velocity")
          getlex QName(PackageNamespace(""),"velocity")
          getproperty QName(PackageNamespace(""),"y")

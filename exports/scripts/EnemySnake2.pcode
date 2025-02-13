@@ -90,7 +90,7 @@ package
          name null
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 6
@@ -208,30 +208,28 @@ package
          pushscope
          pushnull
          coerce QName(PackageNamespace(""),"EnemyBullet")
-         setlocal2
+         setlocal 5
          getlex QName(PrivateNamespace(null,"#EnemySnake2"),"WEAPON_SPEED")
          convert_d
-         setlocal3
+         setlocal2
          getlex QName(PackageNamespace(""),"Math")
          getlocal1
          callproperty QName(PackageNamespace(""),"cos"), 1
          negate
-         getlocal3
+         getlocal2
          multiply
          convert_d
-         setlocal 4
+         setlocal3
          getlex QName(PackageNamespace(""),"Math")
          getlocal1
          callproperty QName(PackageNamespace(""),"sin"), 1
          negate
-         getlocal3
+         getlocal2
          multiply
          convert_d
-         setlocal 5
-         findpropstrict QName(PackageNamespace(""),"Boolean")
+         setlocal 4
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs0
@@ -247,10 +245,10 @@ package
          pushbyte 4
          callproperty QName(PackageNamespace(""),"getBullet"), 1
          coerce QName(PackageNamespace(""),"EnemyBullet")
-         setlocal2
-         getlocal2
+         dup
+         setlocal 5
          iffalse ofs1
-         getlocal2
+         getlocal 5
          getlex QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"width")
          pushbyte 2
@@ -261,10 +259,10 @@ package
          pushbyte 2
          divide
          add
-         getlocal 4
+         getlocal3
          pushdouble 1.3
          multiply
-         getlocal 5
+         getlocal 4
          pushdouble 1.3
          multiply
          callpropvoid QName(PackageNamespace(""),"shoot"), 4
@@ -293,8 +291,7 @@ package
          code
          getlocal0
          pushscope
-         getlex QName(PackageNamespace(""),"NaN")
-         convert_d
+         pushnan
          setlocal1
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"realState")
@@ -312,7 +309,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#EnemySnake2"),"moveTimeout")
+         initproperty QName(PrivateNamespace(null,"#EnemySnake2"),"moveTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemySnake2"),"moveTimeout")
          pushbyte 0
@@ -349,7 +346,7 @@ package
          ofs5:
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemySnake2"),"MOVE_TIMEOUT")
-         setproperty QName(PrivateNamespace(null,"#EnemySnake2"),"moveTimeout")
+         initproperty QName(PrivateNamespace(null,"#EnemySnake2"),"moveTimeout")
          ofs3:
          getlocal0
          getlocal0
@@ -357,14 +354,14 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#EnemySnake2"),"shotTimeout")
+         initproperty QName(PrivateNamespace(null,"#EnemySnake2"),"shotTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemySnake2"),"shotTimeout")
          pushbyte 0
          ifnle ofs1
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemySnake2"),"SHOT_TIMEOUT")
-         setproperty QName(PrivateNamespace(null,"#EnemySnake2"),"shotTimeout")
+         initproperty QName(PrivateNamespace(null,"#EnemySnake2"),"shotTimeout")
          getlex QName(PackageNamespace(""),"Math")
          getlex QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"PlayState")

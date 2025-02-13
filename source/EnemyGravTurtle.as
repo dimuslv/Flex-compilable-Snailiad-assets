@@ -42,9 +42,9 @@ package
       
       private var upDownTimeout:Number = 0;
       
-      public function EnemyGravTurtle(param1:int, param2:int, param3:Boolean)
+      public function EnemyGravTurtle(param1:int, param2:int, param3:Boolean) : void
       {
-         if(Boolean(PlayState.player) && PlayState.player._hardMode)
+         if(PlayState.player && PlayState.player._hardMode)
          {
             this.WALKSPEED *= 1.9;
          }
@@ -102,13 +102,13 @@ package
          }
          if(onScreen())
          {
-            this.jumpTimeout -= FlxG.elapsed;
+            jumpTimeout -= FlxG.elapsed;
             if(this.jumpTimeout < 0)
             {
                ++this.jumpTimeoutIndex;
-               this.jumpTimeoutIndex %= JUMP_TIMEOUT.length;
-               this.jumpTimeout = JUMP_TIMEOUT[this.jumpTimeoutIndex];
-               this.flipTimeout = FLIP_TIMEOUT;
+               jumpTimeoutIndex %= JUMP_TIMEOUT.length;
+               jumpTimeout = JUMP_TIMEOUT[this.jumpTimeoutIndex];
+               flipTimeout = FLIP_TIMEOUT;
                if(facing == RIGHT)
                {
                   velocity.x = -JUMP_POWER;
@@ -119,10 +119,10 @@ package
                }
                Sfx.playJump1();
             }
-            this.flipTimeout -= FlxG.elapsed;
+            flipTimeout -= FlxG.elapsed;
             if(this.flipTimeout < 0)
             {
-               this.flipTimeout = 9999999;
+               flipTimeout = 9999999;
                if(facing == RIGHT)
                {
                   facing = LEFT;
@@ -134,19 +134,19 @@ package
                   acceleration.x = GRAVITY;
                }
             }
-            this.upDownTimeout -= FlxG.elapsed;
+            upDownTimeout -= FlxG.elapsed;
             if(this.upDownTimeout <= 0)
             {
-               this.upDownTimeout = UPDOWN_TIMEOUT;
+               upDownTimeout = UPDOWN_TIMEOUT;
                if(this.facingUp && PlayState.player.y > y)
                {
                   velocity.y = this.WALKSPEED;
-                  this.facingUp = false;
+                  facingUp = false;
                   play("down");
                }
                else if(!this.facingUp && PlayState.player.y < y)
                {
-                  this.facingUp = true;
+                  facingUp = true;
                   velocity.y = -this.WALKSPEED;
                   play("up");
                }
@@ -160,14 +160,14 @@ package
       
       override public function hitBottom(param1:FlxObject, param2:Number) : void
       {
-         this.facingUp = true;
+         facingUp = true;
          velocity.y = -this.WALKSPEED;
          play("up");
       }
       
       override public function hitTop(param1:FlxObject, param2:Number) : void
       {
-         this.facingUp = false;
+         facingUp = false;
          velocity.y = this.WALKSPEED;
          play("down");
       }

@@ -56,15 +56,15 @@ package
       
       private var _aiTriggerTimeout:Number = 0;
       
-      public function EnemySeahorse(param1:int, param2:int)
+      public function EnemySeahorse(param1:int, param2:int) : void
       {
-         if(Boolean(PlayState.player) && PlayState.player._insaneMode)
+         if(PlayState.player && PlayState.player._insaneMode)
          {
             this.MOVE_TIME = 1.3;
             this.X_RADIUS = 130;
             this.Y_RADIUS = 40;
          }
-         else if(Boolean(PlayState.player) && PlayState.player._hardMode)
+         else if(PlayState.player && PlayState.player._hardMode)
          {
             this.MOVE_TIME = 1.9;
             this.X_RADIUS = 140;
@@ -97,44 +97,43 @@ package
       
       override public function triggerAi3() : void
       {
-         this._aiTriggerTimeout -= FlxG.elapsed;
+         _aiTriggerTimeout -= FlxG.elapsed;
          if(this._aiTriggerTimeout > 0)
          {
             return;
          }
-         this._aiTriggerTimeout = this.AI_TRIGGER_TIMEOUT;
-         this.elapsed = 0;
-         this.originX = x;
-         this.originY = y;
+         _aiTriggerTimeout = this.AI_TRIGGER_TIMEOUT;
+         elapsed = 0;
+         originX = x;
+         originY = y;
          if(PlayState.player.x < x)
          {
             if(facing == LEFT)
             {
-               this.mode = MODE_COS_DOWN_LEFT;
+               mode = MODE_COS_DOWN_LEFT;
             }
             else
             {
-               this.mode = MODE_SEMICIRCLE_RIGHT_DOWN;
+               mode = MODE_SEMICIRCLE_RIGHT_DOWN;
             }
          }
          else if(facing == RIGHT)
          {
-            this.mode = MODE_COS_DOWN_RIGHT;
+            mode = MODE_COS_DOWN_RIGHT;
          }
          else
          {
-            this.mode = MODE_SEMICIRCLE_LEFT_DOWN;
+            mode = MODE_SEMICIRCLE_LEFT_DOWN;
          }
       }
       
       public function updatePosition() : void
       {
-         var _loc1_:Number = NaN;
          if(this.mode == MODE_WAIT)
          {
             return;
          }
-         _loc1_ = this.normalizedSigmoid(this.elapsed / this.MOVE_TIME);
+         var _loc1_:Number = this.normalizedSigmoid(this.elapsed / this.MOVE_TIME);
          switch(this.mode)
          {
             case MODE_COS_UP_LEFT:
@@ -184,6 +183,7 @@ package
                {
                   facing = LEFT;
                }
+			   break;
          }
       }
       
@@ -195,53 +195,53 @@ package
          }
          if(onScreen())
          {
-            this.elapsed += FlxG.elapsed;
+            elapsed += FlxG.elapsed;
             this.updatePosition();
             if(this.elapsed >= this.MOVE_TIME)
             {
-               this.elapsed = 0;
-               this.originX = x;
-               this.originY = y;
+               elapsed = 0;
+               originX = x;
+               originY = y;
                if(PlayState.player.x < x)
                {
                   if(facing == LEFT)
                   {
                      if(PlayState.player.y < y)
                      {
-                        this.mode = MODE_COS_UP_LEFT;
+                        mode = MODE_COS_UP_LEFT;
                      }
                      else
                      {
-                        this.mode = MODE_COS_DOWN_LEFT;
+                        mode = MODE_COS_DOWN_LEFT;
                      }
                   }
                   else if(PlayState.player.y < y)
                   {
-                     this.mode = MODE_SEMICIRCLE_RIGHT_UP;
+                     mode = MODE_SEMICIRCLE_RIGHT_UP;
                   }
                   else
                   {
-                     this.mode = MODE_SEMICIRCLE_RIGHT_DOWN;
+                     mode = MODE_SEMICIRCLE_RIGHT_DOWN;
                   }
                }
                else if(facing == RIGHT)
                {
                   if(PlayState.player.y < y)
                   {
-                     this.mode = MODE_COS_UP_RIGHT;
+                     mode = MODE_COS_UP_RIGHT;
                   }
                   else
                   {
-                     this.mode = MODE_COS_DOWN_RIGHT;
+                     mode = MODE_COS_DOWN_RIGHT;
                   }
                }
                else if(PlayState.player.y < y)
                {
-                  this.mode = MODE_SEMICIRCLE_LEFT_UP;
+                  mode = MODE_SEMICIRCLE_LEFT_UP;
                }
                else
                {
-                  this.mode = MODE_SEMICIRCLE_LEFT_DOWN;
+                  mode = MODE_SEMICIRCLE_LEFT_DOWN;
                }
             }
          }

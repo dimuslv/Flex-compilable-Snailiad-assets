@@ -29,7 +29,7 @@ package
       
       private var REACT_DISTANCE:int = 100;
       
-      public function EnemySnake(param1:int, param2:int)
+      public function EnemySnake(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemySnake,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -57,7 +57,7 @@ package
          }
          if(onScreen())
          {
-            this.moveTimeout -= FlxG.elapsed;
+            moveTimeout -= FlxG.elapsed;
             if(this.moveTimeout < 0 && Math.abs(PlayState.player.x - x) < this.REACT_DISTANCE)
             {
                if(PlayState.player.x < x)
@@ -68,7 +68,7 @@ package
                {
                   velocity.x = SPEED;
                }
-               this.moveTimeout = MOVE_TIMEOUT;
+               moveTimeout = MOVE_TIMEOUT;
             }
          }
          if(velocity.x < 0)

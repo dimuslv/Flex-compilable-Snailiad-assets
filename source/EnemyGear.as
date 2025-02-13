@@ -40,7 +40,7 @@ package
       
       private var _direction:int = 0;
       
-      public function EnemyGear(param1:int, param2:int, param3:int, param4:Boolean)
+      public function EnemyGear(param1:int, param2:int, param3:int, param4:Boolean) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE,true);
          loadGraphic(Art.EnemyGear,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -69,6 +69,7 @@ package
                   break;
                case DIR_RIGHT:
                   x -= START_DISTANCE;
+				  break;
             }
          }
          addAnimation("normal",[0,1],30,true);
@@ -95,6 +96,7 @@ package
             case DIR_RIGHT:
                velocity.x = X_SPEED;
                acceleration.x = -X_SPEED;
+			   break;
          }
       }
       
@@ -113,7 +115,7 @@ package
          {
             if(Math.abs(PlayState.player.x - x - width / 2) < ACTIVATE_DISTANCE)
             {
-               this._wait = false;
+               _wait = false;
                this.startMoving();
             }
          }
@@ -121,7 +123,7 @@ package
          {
             if(Math.abs(PlayState.player.y - y - height / 2) < ACTIVATE_DISTANCE)
             {
-               this._wait = false;
+               _wait = false;
                this.startMoving();
             }
          }

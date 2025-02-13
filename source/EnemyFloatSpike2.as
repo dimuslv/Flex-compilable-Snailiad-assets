@@ -22,7 +22,7 @@ package
       
       private var theta:Number = 0;
       
-      public function EnemyFloatSpike2(param1:int, param2:int)
+      public function EnemyFloatSpike2(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemyFloatSpike2,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -47,7 +47,7 @@ package
          {
             return;
          }
-         this.theta += FlxG.elapsed;
+         theta += FlxG.elapsed;
          y = this.originY + Math.sin(this.theta) * 1.8;
          super.update();
       }

@@ -125,24 +125,24 @@ package
       
       public function shoot(param1:Number) : void
       {
-         var _loc2_:EnemyBullet = null;
-         var _loc3_:Number = WEAPON_SPEED;
-         var _loc4_:Number = -Math.cos(param1) * _loc3_;
-         var _loc5_:Number = -Math.sin(param1) * _loc3_;
+         var _loc5_:EnemyBullet = null;
+         var _loc2_:Number = WEAPON_SPEED;
+         var _loc3_:Number = -Math.cos(param1) * _loc2_;
+         var _loc4_:Number = -Math.sin(param1) * _loc2_;
          if(Boolean(PlayState.player) && PlayState.player._insaneMode)
          {
-            _loc2_ = PlayState.enemyBulletPool.getBullet(1);
-            if(_loc2_)
+            _loc5_ = PlayState.enemyBulletPool.getBullet(1);
+            if(_loc5_)
             {
-               _loc2_.shoot(x + width / 2,y + height / 2,_loc4_ * 2.3,_loc5_ * 2.3);
+               _loc5_.shoot(x + width / 2,y + height / 2,_loc3_ * 2.3,_loc4_ * 2.3);
             }
          }
          else
          {
-            _loc2_ = PlayState.enemyBulletPool.getBullet(1);
-            if(_loc2_)
+            _loc5_ = PlayState.enemyBulletPool.getBullet(1);
+            if(_loc5_)
             {
-               _loc2_.shoot(x + width / 2,y + height / 2,_loc4_,_loc5_);
+               _loc5_.shoot(x + width / 2,y + height / 2,_loc3_,_loc4_);
             }
          }
       }

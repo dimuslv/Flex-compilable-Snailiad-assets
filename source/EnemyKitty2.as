@@ -42,7 +42,7 @@ package
       
       private var shotTimeout:Number;
       
-      public function EnemyKitty2(param1:int, param2:int)
+      public function EnemyKitty2(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemyKitty2,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -95,29 +95,29 @@ package
          }
          if(onScreen())
          {
-            this.shotTimeout -= FlxG.elapsed;
+            shotTimeout -= FlxG.elapsed;
             if(this.attacking && this.shotTimeout < 0 && this.shots >= 0)
             {
                --this.shots;
-               this.shotTimeout = SHOT_TIMEOUT;
+               shotTimeout = SHOT_TIMEOUT;
                this.shoot(Math.PI - Math.PI * 0.6 * this.shots / MAX_SHOTS);
             }
             if(this.shots <= 0)
             {
-               this.hopTimeout -= FlxG.elapsed;
+               hopTimeout -= FlxG.elapsed;
                if(this.hopTimeout < 0)
                {
                   if(!this.attacking && this.nextAttack == 0)
                   {
-                     this.attacking = true;
-                     this.shots = MAX_SHOTS;
-                     this.shotTimeout = SHOT_TIMEOUT;
-                     this.nextAttack = 3;
+                     attacking = true;
+                     shots = MAX_SHOTS;
+                     shotTimeout = SHOT_TIMEOUT;
+                     nextAttack = 3;
                   }
                   else
                   {
                      --this.nextAttack;
-                     this.attacking = false;
+                     attacking = false;
                      if(x > PlayState.player.x)
                      {
                         velocity.x = -120;
@@ -130,8 +130,8 @@ package
                      }
                   }
                   ++this.hopNum;
-                  this.hopNum %= HOP_TIMEOUTS.length;
-                  this.hopTimeout = HOP_TIMEOUTS[this.hopNum];
+                  hopNum %= HOP_TIMEOUTS.length;
+                  hopTimeout = HOP_TIMEOUTS[this.hopNum];
                }
             }
          }

@@ -30,7 +30,7 @@ package
       
       private var moveIndex:int = 0;
       
-      public function EnemySpider2(param1:int, param2:int)
+      public function EnemySpider2(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE,true);
          loadGraphic(Art.EnemySpider2,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -56,20 +56,19 @@ package
       
       override public function update() : void
       {
-         var _loc1_:Number = NaN;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
          }
          if(onScreen())
          {
-            this.moveTimeout -= FlxG.elapsed;
+            moveTimeout -= FlxG.elapsed;
             if(this.moveTimeout < 0)
             {
                ++this.moveIndex;
-               this.moveIndex %= WAIT_TABLE.length;
-               this.moveTimeout = WAIT_TABLE[this.moveIndex] * MOVE_TIMEOUT;
-               _loc1_ = Math.atan2(PlayState.player.y - y,PlayState.player.x - x);
+               moveIndex %= WAIT_TABLE.length;
+               moveTimeout = WAIT_TABLE[this.moveIndex] * MOVE_TIMEOUT;
+               var _loc1_:Number = Math.atan2(PlayState.player.y - y,PlayState.player.x - x);
                velocity.x = Math.cos(_loc1_) * SPEED;
                velocity.y = Math.sin(_loc1_) * SPEED;
             }

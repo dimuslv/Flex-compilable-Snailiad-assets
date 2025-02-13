@@ -16,7 +16,7 @@ package
       
       private static const OFFENSE:int = 1;
       
-      public function EnemySpike(param1:int, param2:int)
+      public function EnemySpike(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemySpike,true,true,IMG_WIDTH,IMG_HEIGHT);

@@ -28,7 +28,7 @@ package
       
       private var elapsed:Number = 0;
       
-      public function EnemyKurage(param1:int, param2:int)
+      public function EnemyKurage(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE,true);
          loadGraphic(Art.EnemyKurage,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -63,8 +63,8 @@ package
          {
             return;
          }
-         this.theta += FlxG.elapsed;
-         this.elapsed += FlxG.elapsed;
+         theta += FlxG.elapsed;
+         elapsed += FlxG.elapsed;
          this.updatePosition();
          super.update();
       }
