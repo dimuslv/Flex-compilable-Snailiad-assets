@@ -129,11 +129,12 @@ package
       
       public function updatePosition() : void
       {
+         var _loc1_:Number = NaN;
          if(this.mode == MODE_WAIT)
          {
             return;
          }
-         var _loc1_:Number = this.normalizedSigmoid(this.elapsed / this.MOVE_TIME);
+         _loc1_ = this.normalizedSigmoid(this.elapsed / this.MOVE_TIME);
          switch(this.mode)
          {
             case MODE_COS_UP_LEFT:
