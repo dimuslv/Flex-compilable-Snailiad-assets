@@ -128,7 +128,7 @@ package
          name null
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
-         returns QName(PackageNamespace(""),"void")
+         returns null
          
          body
          maxstack 7
@@ -139,8 +139,10 @@ package
          code
          getlocal0
          pushscope
+         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs0
@@ -162,8 +164,10 @@ package
          initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"Y_RADIUS")
          jump ofs2
          ofs1:
+         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
+         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs3
@@ -334,7 +338,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"_aiTriggerTimeout")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"_aiTriggerTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"_aiTriggerTimeout")
          pushbyte 0
@@ -344,16 +348,16 @@ package
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"AI_TRIGGER_TIMEOUT")
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"_aiTriggerTimeout")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"_aiTriggerTimeout")
          getlocal0
          pushbyte 0
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"elapsed")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"elapsed")
          getlocal0
          getlex QName(PackageNamespace(""),"x")
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"originX")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"originX")
          getlocal0
          getlex QName(PackageNamespace(""),"y")
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"originY")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"originY")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"x")
@@ -364,12 +368,12 @@ package
          ifne ofs2
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_COS_DOWN_LEFT")
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
          jump ofs3
          ofs2:
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_SEMICIRCLE_RIGHT_DOWN")
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
          ofs3:
          jump ofs4
          ofs1:
@@ -378,12 +382,12 @@ package
          ifne ofs5
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_COS_DOWN_RIGHT")
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
          jump ofs4
          ofs5:
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_SEMICIRCLE_LEFT_DOWN")
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
          ofs4:
          returnvoid
          end ; code
@@ -409,6 +413,9 @@ package
          getlocal0
          pushscope
          pushnan
+         setlocal1
+         getlex QName(PackageNamespace(""),"NaN")
+         convert_d
          setlocal1
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
@@ -697,8 +704,6 @@ package
          getlex QName(PackageNamespace(""),"LEFT")
          initproperty QName(PackageNamespace(""),"facing")
          ofs14:
-         jump ofs3
-         ofs15:
          label
          jump ofs3
          ofs1:
@@ -707,60 +712,60 @@ package
          setlocal2
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_COS_UP_LEFT")
          getlocal2
-         ifstrictne ofs16
+         ifstrictne ofs15
          pushbyte 0
-         jump ofs17
-         ofs16:
+         jump ofs16
+         ofs15:
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_COS_DOWN_LEFT")
          getlocal2
-         ifstrictne ofs18
+         ifstrictne ofs17
          pushbyte 1
-         jump ofs17
-         ofs18:
+         jump ofs16
+         ofs17:
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_COS_UP_RIGHT")
          getlocal2
-         ifstrictne ofs19
+         ifstrictne ofs18
          pushbyte 2
-         jump ofs17
-         ofs19:
+         jump ofs16
+         ofs18:
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_COS_DOWN_RIGHT")
          getlocal2
-         ifstrictne ofs20
+         ifstrictne ofs19
          pushbyte 3
-         jump ofs17
-         ofs20:
+         jump ofs16
+         ofs19:
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_SEMICIRCLE_LEFT_UP")
          getlocal2
-         ifstrictne ofs21
+         ifstrictne ofs20
          pushbyte 4
-         jump ofs17
-         ofs21:
+         jump ofs16
+         ofs20:
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_SEMICIRCLE_LEFT_DOWN")
          getlocal2
-         ifstrictne ofs22
+         ifstrictne ofs21
          pushbyte 5
-         jump ofs17
-         ofs22:
+         jump ofs16
+         ofs21:
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_SEMICIRCLE_RIGHT_UP")
          getlocal2
-         ifstrictne ofs23
+         ifstrictne ofs22
          pushbyte 6
-         jump ofs17
-         ofs23:
+         jump ofs16
+         ofs22:
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_SEMICIRCLE_RIGHT_DOWN")
          getlocal2
-         ifstrictne ofs24
+         ifstrictne ofs23
          pushbyte 7
-         jump ofs17
+         jump ofs16
+         ofs23:
+         jump ofs24
+         pushbyte 8
+         jump ofs24
          ofs24:
-         jump ofs25
          pushbyte 8
-         jump ofs25
-         ofs25:
-         pushbyte 8
-         ofs17:
+         ofs16:
          kill 2
-         lookupswitch ofs15, [ofs2, ofs4, ofs5, ofs6, ofs7, ofs9, ofs11, ofs13, ofs15]
+         lookupswitch ofs14, [ofs2, ofs4, ofs5, ofs6, ofs7, ofs9, ofs11, ofs13, ofs14]
          ofs3:
          returnvoid
          end ; code
@@ -802,7 +807,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          add
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"elapsed")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"elapsed")
          getlocal0
          callpropvoid QName(PackageNamespace(""),"updatePosition"), 0
          getlocal0
@@ -812,13 +817,13 @@ package
          ifnge ofs1
          getlocal0
          pushbyte 0
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"elapsed")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"elapsed")
          getlocal0
          getlex QName(PackageNamespace(""),"x")
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"originX")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"originX")
          getlocal0
          getlex QName(PackageNamespace(""),"y")
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"originY")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"originY")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"x")
@@ -834,12 +839,12 @@ package
          ifnlt ofs4
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_COS_UP_LEFT")
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
          jump ofs5
          ofs4:
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_COS_DOWN_LEFT")
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
          ofs5:
          jump ofs6
          ofs3:
@@ -850,12 +855,12 @@ package
          ifnlt ofs7
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_SEMICIRCLE_RIGHT_UP")
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
          jump ofs6
          ofs7:
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_SEMICIRCLE_RIGHT_DOWN")
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
          ofs6:
          jump ofs1
          ofs2:
@@ -869,12 +874,12 @@ package
          ifnlt ofs9
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_COS_UP_RIGHT")
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
          jump ofs10
          ofs9:
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_COS_DOWN_RIGHT")
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
          ofs10:
          jump ofs1
          ofs8:
@@ -885,12 +890,12 @@ package
          ifnlt ofs11
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_SEMICIRCLE_LEFT_UP")
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
          jump ofs1
          ofs11:
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_SEMICIRCLE_LEFT_DOWN")
-         initproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
+         setproperty QName(PrivateNamespace(null,"#EnemySeahorse"),"mode")
          ofs1:
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0
