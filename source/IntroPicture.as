@@ -19,7 +19,7 @@ package
       
       private var _fadingOut:Boolean = false;
       
-      public function IntroPicture(param1:int)
+      public function IntroPicture(param1:int) : void
       {
          super();
          x = X_POS;
@@ -47,6 +47,7 @@ package
                break;
             case 6:
                loadGraphic(Art.IntroPicture5Slug,false,false,IMG_WIDTH,IMG_HEIGHT);
+			   break;
          }
          addAnimation("normal",[0]);
          scrollFactor.x = scrollFactor.y = 0;
@@ -57,14 +58,14 @@ package
       
       public function fadeOut() : void
       {
-         this._fadingOut = true;
+         _fadingOut = true;
          alpha = 1;
       }
       
       public function fadeIn() : void
       {
-         this._fadingIn = true;
-         alpha = 0;
+         _fadingIn = true;
+         alpha = 0.0;
       }
       
       override public function update() : void
@@ -75,7 +76,7 @@ package
             if(alpha < 0)
             {
                alpha = 0;
-               this._fadingOut = false;
+               _fadingOut = false;
             }
          }
          else if(this._fadingIn)
@@ -84,7 +85,7 @@ package
             if(alpha >= 1)
             {
                alpha = 1;
-               this._fadingIn = false;
+               _fadingIn = false;
             }
          }
          super.update();

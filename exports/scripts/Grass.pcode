@@ -71,7 +71,7 @@ package
          name null
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 6
@@ -117,10 +117,8 @@ package
          getlocal0
          pushbyte 0
          initproperty QName(PrivateNamespace(null,"#Grass"),"nextNom")
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs0
@@ -136,10 +134,8 @@ package
          initproperty QName(PrivateNamespace(null,"#Grass"),"hp")
          jump ofs2
          ofs1:
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs3
@@ -208,14 +204,14 @@ package
          ofs1:
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#Grass"),"_collidedThisFrame")
+         initproperty QName(PrivateNamespace(null,"#Grass"),"_collidedThisFrame")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Grass"),"nextNom")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Grass"),"nextNom")
+         initproperty QName(PrivateNamespace(null,"#Grass"),"nextNom")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Grass"),"nextNom")
          pushbyte 0
@@ -224,7 +220,7 @@ package
          ofs2:
          getlocal0
          getlex QName(PrivateNamespace(null,"#Grass"),"NOM_DELAY")
-         setproperty QName(PrivateNamespace(null,"#Grass"),"nextNom")
+         initproperty QName(PrivateNamespace(null,"#Grass"),"nextNom")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"sprites")
          findpropstrict QName(PackageNamespace(""),"Nom")
@@ -257,11 +253,9 @@ package
          initproperty QName(PackageNamespace(""),"solid")
          getlocal0
          getlex QName(PrivateNamespace(null,"#Grass"),"GROW_DELAY")
-         setproperty QName(PrivateNamespace(null,"#Grass"),"growDelay")
-         findpropstrict QName(PackageNamespace(""),"Boolean")
+         initproperty QName(PrivateNamespace(null,"#Grass"),"growDelay")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs4
@@ -276,7 +270,7 @@ package
          getlex QName(PrivateNamespace(null,"#Grass"),"GROW_DELAY")
          pushint 99999
          multiply
-         setproperty QName(PrivateNamespace(null,"#Grass"),"growDelay")
+         initproperty QName(PrivateNamespace(null,"#Grass"),"growDelay")
          ofs3:
          returnvoid
          end ; code
@@ -315,7 +309,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Grass"),"growDelay")
+         initproperty QName(PrivateNamespace(null,"#Grass"),"growDelay")
          getlex QName(PackageNamespace(""),"visible")
          not
          dup
@@ -341,11 +335,11 @@ package
          ofs3:
          getlocal0
          getlex QName(PrivateNamespace(null,"#Grass"),"MAX_HP")
-         setproperty QName(PrivateNamespace(null,"#Grass"),"hp")
+         initproperty QName(PrivateNamespace(null,"#Grass"),"hp")
          ofs2:
          getlocal0
          pushfalse
-         setproperty QName(PrivateNamespace(null,"#Grass"),"_collidedThisFrame")
+         initproperty QName(PrivateNamespace(null,"#Grass"),"_collidedThisFrame")
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0
          returnvoid

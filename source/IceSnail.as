@@ -10,7 +10,7 @@ package
       
       private static const IMG_OFS_Y:int = 16;
       
-      public function IceSnail(param1:int, param2:int)
+      public function IceSnail(param1:int, param2:int) : void
       {
          super(param1,param2,true);
          x -= IMG_OFS_X;
@@ -20,7 +20,7 @@ package
          height = IMG_HEIGHT;
          addAnimation("normal",[0,1,2,3],8,true);
          play("normal");
-         if(Boolean(PlayState.player) && PlayState.player._insaneMode)
+         if(PlayState.player && PlayState.player._insaneMode)
          {
             exists = false;
          }

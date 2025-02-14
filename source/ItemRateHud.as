@@ -9,7 +9,7 @@ package
       
       public var relY:int = 0;
       
-      public function ItemRateHud()
+      public function ItemRateHud() : void
       {
          super(0,FlxG.height - 27,FlxG.width - 7 - 55 * 1);
          this.relY = FlxG.height - 27;
@@ -31,7 +31,7 @@ package
       
       override public function update() : void
       {
-         if(Boolean(PlayState.miniMap) && Boolean(PlayState.miniMap.subscreen))
+         if(PlayState.miniMap && PlayState.miniMap.subscreen)
          {
             y = this.relY + PlayState.miniMap.subscreen.panel.y;
          }

@@ -48,7 +48,7 @@ package
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"Boolean")
          optional False()
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 2
@@ -148,14 +148,14 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Item"),"_disappearTime")
+         initproperty QName(PrivateNamespace(null,"#Item"),"_disappearTime")
          getlocal0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Item"),"_flickerTime")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#Item"),"_flickerTime")
+         initproperty QName(PrivateNamespace(null,"#Item"),"_flickerTime")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#Item"),"_disappearTime")
          pushbyte 0
@@ -255,6 +255,7 @@ package
          label
          getlocal0
          callpropvoid QName(PackageNamespace(""),"triggerAi4"), 0
+         jump ofs2
          ofs6:
          label
          jump ofs2

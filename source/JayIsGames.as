@@ -16,7 +16,7 @@ package
       
       private var _initialized:Boolean = false;
       
-      public function JayIsGames()
+      public function JayIsGames() : void
       {
          super();
          x = 0;
@@ -72,7 +72,7 @@ package
             if(FlxG.stage != null)
             {
                FlxG.stage.addEventListener(MouseEvent.MOUSE_UP,this.onMouseUp);
-               this._initialized = true;
+               _initialized = true;
             }
          }
          super.update();

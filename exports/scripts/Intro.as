@@ -43,7 +43,6 @@ package
       public function Intro()
       {
          var _loc1_:FlxText = null;
-         _loc1_ = null;
          super();
          FlxG.noPause = true;
          FlxG.mouse.hide();

@@ -26,7 +26,7 @@ package
       
       private var _collidedThisFrame:Boolean;
       
-      public function Grass(param1:int, param2:int)
+      public function Grass(param1:int, param2:int) : void
       {
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
@@ -36,11 +36,11 @@ package
          height = IMG_HEIGHT;
          this.hp = MAX_HP;
          this.nextNom = 0;
-         if(Boolean(PlayState.player) && PlayState.player._hardMode)
+         if(PlayState.player && PlayState.player._hardMode)
          {
             this.hp = 1;
          }
-         else if(Boolean(PlayState.player) && PlayState.player._easyMode)
+         else if(PlayState.player && PlayState.player._easyMode)
          {
             this.hp *= 2;
          }
@@ -60,23 +60,23 @@ package
          {
             return;
          }
-         this._collidedThisFrame = true;
-         this.nextNom -= FlxG.elapsed;
+         _collidedThisFrame = true;
+         nextNom -= FlxG.elapsed;
          if(this.nextNom > 0)
          {
             return;
          }
-         this.nextNom = NOM_DELAY;
+         nextNom = NOM_DELAY;
          PlayState.sprites.add(new Nom(x,y));
          param1.heal(1);
          if(--this.hp <= 0)
          {
             visible = false;
             solid = false;
-            this.growDelay = GROW_DELAY;
-            if(Boolean(PlayState.player) && PlayState.player._hardMode)
+            growDelay = GROW_DELAY;
+            if(PlayState.player && PlayState.player._hardMode)
             {
-               this.growDelay = GROW_DELAY * 99999;
+               growDelay = GROW_DELAY * 99999;
             }
          }
       }
@@ -87,7 +87,7 @@ package
          {
             return;
          }
-         this.growDelay -= FlxG.elapsed;
+         growDelay -= FlxG.elapsed;
          if(!visible && this.growDelay < 0)
          {
             solid = true;
@@ -96,9 +96,9 @@ package
             {
                Sfx.playGrow();
             }
-            this.hp = MAX_HP;
+            hp = MAX_HP;
          }
-         this._collidedThisFrame = false;
+         _collidedThisFrame = false;
          super.update();
       }
    }

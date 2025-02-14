@@ -24,7 +24,7 @@ package
       
       protected var _hp:int;
       
-      public function GiantBlock1(param1:int, param2:int)
+      public function GiantBlock1(param1:int, param2:int) : void
       {
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
@@ -58,7 +58,7 @@ package
          }
          else
          {
-            this._hp -= param1;
+            _hp -= param1;
             if(this._hp <= 0)
             {
                Sfx.playEnemyKilled();
@@ -69,8 +69,8 @@ package
             {
                Sfx.playRandomExplode();
                flashColor(16777215);
-               this._justFlashed = 1;
-               this._lastHurt = 3;
+               _justFlashed = 1;
+               _lastHurt = 3;
             }
          }
       }

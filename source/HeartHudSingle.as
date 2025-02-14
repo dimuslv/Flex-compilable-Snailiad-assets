@@ -12,7 +12,7 @@ package
       
       private static const IMG_OFS_Y:int = 0;
       
-      public function HeartHudSingle(param1:int, param2:int)
+      public function HeartHudSingle(param1:int, param2:int) : void
       {
          super();
          x = param1;

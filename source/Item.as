@@ -15,7 +15,7 @@ package
       
       private var _willThisDisappear:Boolean = false;
       
-      public function Item(param1:int, param2:int, param3:Boolean = false)
+      public function Item(param1:int, param2:int, param3:Boolean = false) : void
       {
          super();
          x = param1;
@@ -42,8 +42,8 @@ package
          super.update();
          if(this._willThisDisappear)
          {
-            this._disappearTime -= FlxG.elapsed;
-            this._flickerTime -= FlxG.elapsed;
+            _disappearTime -= FlxG.elapsed;
+            _flickerTime -= FlxG.elapsed;
             if(this._disappearTime <= 0)
             {
                kill();
@@ -74,6 +74,7 @@ package
                break;
             case 4:
                this.triggerAi4();
+			   break;
          }
       }
       

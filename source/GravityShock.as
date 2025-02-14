@@ -10,7 +10,7 @@ package
       
       private static const IMG_OFS_Y:int = 16;
       
-      public function GravityShock(param1:int, param2:int)
+      public function GravityShock(param1:int, param2:int) : void
       {
          super(param1,param2,false);
          x -= IMG_OFS_X;

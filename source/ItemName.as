@@ -4,19 +4,19 @@ package
    
    public class ItemName extends FlxText
    {
+      private static const FADEOUT_START:Number = 2.8;
+      
+      private static const FADEOUT_END:Number = 3.5;
+      
       private static var _fadeOutStart:Number;
       
       private static var _fadeOutEnd:Number;
       
       private static var _colorNum:Number;
       
-      private static const FADEOUT_START:Number = 2.8;
-      
-      private static const FADEOUT_END:Number = 3.5;
-      
       private static const _colors:Array = [16040160,16570500,11595992,12370116];
       
-      public function ItemName()
+      public function ItemName() : void
       {
          super(0,FlxG.height / 2 + 40,FlxG.width);
          font = Fonts.normal;

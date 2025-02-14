@@ -10,7 +10,7 @@ package
       
       private static const IMG_OFS_Y:int = 0;
       
-      public function HelixFragment(param1:int, param2:int, param3:Boolean = false)
+      public function HelixFragment(param1:int, param2:int, param3:Boolean = false) : void
       {
          super(param1,param2,param3);
          x -= IMG_OFS_X;

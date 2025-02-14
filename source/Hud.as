@@ -16,7 +16,7 @@ package
       
       public var radar:Radar;
       
-      public function Hud()
+      public function Hud() : void
       {
          super();
          this.heartHud = new HeartHud();
@@ -35,12 +35,12 @@ package
       
       override public function destroy() : void
       {
-         this.heartHud = null;
-         this.bossBarHud = null;
-         this.areaName = null;
-         this.itemName = null;
-         this.itemRate = null;
-         this.radar = null;
+         heartHud = null;
+         bossBarHud = null;
+         areaName = null;
+         itemName = null;
+         itemRate = null;
+         radar = null;
          super.destroy();
       }
       

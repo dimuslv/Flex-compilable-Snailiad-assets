@@ -12,7 +12,7 @@ package
       
       private var _collidedThisFrame:Boolean;
       
-      public function IceSpikeLeft(param1:int, param2:int, param3:Boolean)
+      public function IceSpikeLeft(param1:int, param2:int, param3:Boolean) : void
       {
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
@@ -42,7 +42,7 @@ package
          {
             return;
          }
-         this._collidedThisFrame = true;
+         _collidedThisFrame = true;
          if(!param1.isIcy())
          {
             param1.hurt(2);
@@ -55,7 +55,7 @@ package
          {
             return;
          }
-         this._collidedThisFrame = false;
+         _collidedThisFrame = false;
          super.update();
       }
    }

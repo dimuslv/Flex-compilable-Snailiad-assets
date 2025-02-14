@@ -22,25 +22,6 @@ package
       
       private var _hearts:Array;
       
-      public function HeartHud()
-      {
-         var _loc2_:int = 0;
-         var _loc3_:int = 0;
-         super();
-         this._hearts = new Array();
-         var _loc1_:int = 0;
-         while(_loc1_ < HEARTS_MAX)
-         {
-            _loc2_ = POS_X + _loc1_ % HEARTS_PER_ROW * HEART_WIDTH;
-            _loc3_ = POS_Y + int(_loc1_ / HEARTS_PER_ROW) * HEART_HEIGHT;
-            this._hearts[_loc1_] = new HeartHudSingle(_loc2_,_loc3_);
-            add(this._hearts[_loc1_]);
-            _loc1_++;
-         }
-         this.setMaxHp(6);
-         this.setCurHp(6);
-      }
-      
       override public function destroy() : void
       {
          var _loc1_:String = null;
@@ -48,8 +29,25 @@ package
          {
             this._hearts[_loc1_] = null;
          }
-         this._hearts = null;
+         _hearts = null;
          super.destroy();
+      }
+      
+      public function HeartHud() : void
+      {
+         super();
+         this._hearts = new Array();
+         var _loc1_:int = 0;
+         while(_loc1_ < HEARTS_MAX)
+         {
+            var _loc2_:int = POS_X + _loc1_ % HEARTS_PER_ROW * HEART_WIDTH;
+            var _loc3_:int = POS_Y + (int)(_loc1_ / HEARTS_PER_ROW) * HEART_HEIGHT;
+            this._hearts[_loc1_] = new HeartHudSingle(_loc2_,_loc3_);
+            add(this._hearts[_loc1_]);
+            _loc1_++;
+         }
+         this.setMaxHp(6);
+         this.setCurHp(6);
       }
       
       public function setMaxHp(param1:int, param2:Player = null) : void

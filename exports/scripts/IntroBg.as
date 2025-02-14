@@ -18,7 +18,7 @@ package
       
       public function IntroBg()
       {
-         var _loc1_:int = 0;
+         var _loc3_:int = 0;
          super();
          this._bg = new FlxSprite();
          this._bg.scrollFactor.x = this._bg.scrollFactor.y = 0;
@@ -27,23 +27,23 @@ package
          add(this._bg);
          this.fadeIn();
          this._spirals = new Array();
-         var _loc2_:int = 0;
-         while(_loc2_ < 6)
+         var _loc1_:int = 0;
+         while(_loc1_ < 6)
          {
-            _loc1_ = 0;
-            while(_loc1_ < 6)
+            _loc3_ = 0;
+            while(_loc3_ < 6)
             {
-               this._spirals.push(new IntroSpiral(82 * _loc1_ + _loc2_ % 2 * 41,56 * _loc2_));
-               _loc1_++;
+               this._spirals.push(new IntroSpiral(82 * _loc3_ + _loc1_ % 2 * 41,56 * _loc1_));
+               _loc3_++;
             }
-            _loc2_++;
+            _loc1_++;
          }
-         var _loc3_:int = 0;
-         while(_loc3_ < this._spirals.length)
+         var _loc2_:int = 0;
+         while(_loc2_ < this._spirals.length)
          {
-            this._spirals[_loc3_].alpha = this._bg.alpha / 7;
-            add(this._spirals[_loc3_]);
-            _loc3_++;
+            this._spirals[_loc2_].alpha = this._bg.alpha / 7;
+            add(this._spirals[_loc2_]);
+            _loc2_++;
          }
       }
       

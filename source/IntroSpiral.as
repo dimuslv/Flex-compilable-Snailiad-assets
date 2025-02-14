@@ -11,7 +11,7 @@ package
       
       private static var spiralNum:int = 0;
       
-      public function IntroSpiral(param1:int, param2:int)
+      public function IntroSpiral(param1:int, param2:int) : void
       {
          super(param1,param2);
          loadGraphic(Art.IntroSpiral,true,true,IMG_WIDTH,IMG_HEIGHT);

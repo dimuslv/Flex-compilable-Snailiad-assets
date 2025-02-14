@@ -42,7 +42,7 @@ package
       
       private var _totalElapsed:Number = 0;
       
-      public function GravJump(param1:int, param2:int)
+      public function GravJump(param1:int, param2:int) : void
       {
          super(param1,param2,true,true);
          x -= IMG_OFS_X;
@@ -77,7 +77,7 @@ package
          super.update();
          if(_customReady)
          {
-            this._totalElapsed += FlxG.elapsed;
+            _totalElapsed += FlxG.elapsed;
             if(this._totalElapsed > 7)
             {
                PlayState.player.paralyze(false);
@@ -86,7 +86,7 @@ package
             }
             if(this._mode == MODE_NONE)
             {
-               this._mode = MODE_GORIGHT;
+               _mode = MODE_GORIGHT;
             }
             switch(this._mode)
             {
@@ -105,8 +105,8 @@ package
                   if(PlayState.player.x > 152 * 16 + 8)
                   {
                      PlayState.player.x = 152 * 16 + 8;
-                     this._mode = MODE_GRAVUP;
-                     this._gravTimer = 99999;
+                     _mode = MODE_GRAVUP;
+                     _gravTimer = 99999;
                      PlayState.player.velocity.x = 0;
                   }
                   break;
@@ -114,10 +114,10 @@ package
                   if(!PlayState.player._jumping && PlayState.player.y > 344 * 16)
                   {
                      PlayState.player.doJump();
-                     this._gravTimer = GRAV_TIMER;
+                     _gravTimer = GRAV_TIMER;
                      if(!this._shot)
                      {
-                        this._shot = true;
+                        _shot = true;
                         PlayState.player._weaponTimeout.value = 0;
                         PlayState.player.switchToWeapon(2);
                         FlxG.keys.unpress(Player.ALT_UP_KEY);
@@ -132,7 +132,7 @@ package
                         FlxG.keys.unpress(Player.UP_KEY);
                      }
                   }
-                  this._gravTimer -= FlxG.elapsed;
+                  _gravTimer -= FlxG.elapsed;
                   if(this._gravTimer <= 0)
                   {
                      FlxG.keys.unpress(Player.ALT_UP_KEY);
@@ -145,7 +145,7 @@ package
                      FlxG.keys.unpress(Player.DOWN_KEY);
                      PlayState.player.performGravityJump();
                      FlxG.keys.unpress(Player.UP_KEY);
-                     this._mode = MODE_GRAVLEFT;
+                     _mode = MODE_GRAVLEFT;
                   }
                   break;
                case MODE_GRAVLEFT:
@@ -162,7 +162,7 @@ package
                      FlxG.keys.unpress(Player.DOWN_KEY);
                      PlayState.player.performGravityJump();
                      FlxG.keys.unpress(Player.LEFT_KEY);
-                     this._mode = MODE_GRAVRIGHT;
+                     _mode = MODE_GRAVRIGHT;
                   }
                   break;
                case MODE_GRAVRIGHT:
@@ -179,7 +179,7 @@ package
                      FlxG.keys.unpress(Player.DOWN_KEY);
                      PlayState.player.performGravityJump();
                      FlxG.keys.unpress(Player.RIGHT_KEY);
-                     this._mode = MODE_GRAVFALL;
+                     _mode = MODE_GRAVFALL;
                   }
                   break;
                case MODE_GRAVFALL:
@@ -201,12 +201,12 @@ package
                      FlxG.keys.press(Player.DOWN_KEY);
                      PlayState.player.performGravityJump();
                      FlxG.keys.unpress(Player.DOWN_KEY);
-                     this._mode = MODE_GRAVDONE;
-                     this._doneTimeout = DONE_TIMEOUT;
+                     _mode = MODE_GRAVDONE;
+                     _doneTimeout = DONE_TIMEOUT;
                   }
                   break;
                case MODE_GRAVDONE:
-                  this._doneTimeout -= FlxG.elapsed;
+                  _doneTimeout -= FlxG.elapsed;
                   if(this._doneTimeout < 0)
                   {
                      PlayState.player.paralyze(false);

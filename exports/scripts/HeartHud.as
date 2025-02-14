@@ -24,18 +24,18 @@ package
       
       public function HeartHud()
       {
-         var _loc1_:int = 0;
          var _loc2_:int = 0;
+         var _loc3_:int = 0;
          super();
          this._hearts = new Array();
-         var _loc3_:int = 0;
-         while(_loc3_ < HEARTS_MAX)
+         var _loc1_:int = 0;
+         while(_loc1_ < HEARTS_MAX)
          {
-            _loc1_ = POS_X + _loc3_ % HEARTS_PER_ROW * HEART_WIDTH;
-            _loc2_ = POS_Y + int(_loc3_ / HEARTS_PER_ROW) * HEART_HEIGHT;
-            this._hearts[_loc3_] = new HeartHudSingle(_loc1_,_loc2_);
-            add(this._hearts[_loc3_]);
-            _loc3_++;
+            _loc2_ = POS_X + _loc1_ % HEARTS_PER_ROW * HEART_WIDTH;
+            _loc3_ = POS_Y + int(_loc1_ / HEARTS_PER_ROW) * HEART_HEIGHT;
+            this._hearts[_loc1_] = new HeartHudSingle(_loc2_,_loc3_);
+            add(this._hearts[_loc1_]);
+            _loc1_++;
          }
          this.setMaxHp(6);
          this.setCurHp(6);

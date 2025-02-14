@@ -12,7 +12,7 @@ package
       
       private static const IMG_OFS_Y:int = 0;
       
-      public function HelixHud(param1:int, param2:int)
+      public function HelixHud(param1:int, param2:int) : void
       {
          super(param1,param2);
          x -= IMG_OFS_X;

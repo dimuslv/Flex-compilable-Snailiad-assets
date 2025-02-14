@@ -4,19 +4,19 @@ package
    
    public class ItemRate extends FlxText
    {
+      private static const FADEOUT_START:Number = 1.8;
+      
+      private static const FADEOUT_END:Number = 2.5;
+      
       private static var _fadeOutStart:Number;
       
       private static var _fadeOutEnd:Number;
       
       private static var _colorNum:Number;
       
-      private static const FADEOUT_START:Number = 1.8;
-      
-      private static const FADEOUT_END:Number = 2.5;
-      
       private static const _colors:Array = [16040160,16570500,11595992,12370116];
       
-      public function ItemRate()
+      public function ItemRate() : void
       {
          super(0,FlxG.height / 2 + 64,FlxG.width);
          font = Fonts.normal;
@@ -69,7 +69,7 @@ package
          else
          {
             text += "  GAME SAVED.";
-            if(Boolean(0) && PlayState.isBossDead(4))
+            if(0 && PlayState.isBossDead(4))
             {
                text += "\n(ITEMS FOUND IN CURRENT AREA: " + PlayState.gottenItemsInArea() + "/" + PlayState.totalItemsInArea().toString() + ")";
             }
