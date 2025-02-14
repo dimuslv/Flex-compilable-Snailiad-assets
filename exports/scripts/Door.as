@@ -49,6 +49,8 @@ package
       
       public function Door(param1:int, param2:int, param3:int, param4:int, param5:int = 0)
       {
+         var _loc6_:int = 0;
+         var _loc7_:int = 0;
          var _loc8_:int = 0;
          var _loc9_:int = 0;
          super(param1,param2,false);
@@ -84,8 +86,8 @@ package
          {
             this.BOSSDOOR_OPEN_DELAY = 11.3;
          }
-         var _loc6_:int = 0;
-         var _loc7_:int = 0;
+         _loc6_ = 0;
+         _loc7_ = 0;
          switch(param3)
          {
             case SIDE_RIGHT:

@@ -73,12 +73,11 @@ package
       
       override public function update() : void
       {
-         var _loc5_:int = 0;
          var _loc1_:int = 0;
          var _loc2_:int = 0;
          var _loc3_:int = 0;
          var _loc4_:int = 0;
-         _loc5_ = 0;
+         var _loc5_:int = 0;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
