@@ -121,10 +121,9 @@ package
       
       private function createAndAddSingleLetter(param1:int, param2:int, param3:int) : void
       {
-         var _loc4_:FlxSprite = null;
          this.textX[param1] = param2 * TEXTPOS_SPACING + TEXTPOS_BASE;
          this.textY[param1] = param3 * TEXTPOS_SPACING + TEXTPOS_BASE;
-         _loc4_ = new FlxSprite();
+         var _loc4_:FlxSprite = new FlxSprite();
          _loc4_.loadGraphic(Art.ControlHelpLetters,false,false,IMG_LETTER_WIDTH,IMG_LETTER_HEIGHT);
          _loc4_.width = IMG_WIDTH;
          _loc4_.height = IMG_HEIGHT;

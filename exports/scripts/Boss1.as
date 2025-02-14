@@ -149,10 +149,7 @@ package
       
       override public function update() : void
       {
-         var _loc1_:Number = NaN;
-         var _loc2_:Number = NaN;
          var _loc3_:Number = NaN;
-         var _loc4_:Number = NaN;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
@@ -171,10 +168,10 @@ package
             PlayState.enemies.add(this._eyes);
             this._createdChildren = true;
          }
-         _loc1_ = this.now();
-         _loc2_ = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
+         var _loc1_:Number = this.now();
+         var _loc2_:Number = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
          _loc3_ = _loc1_;
-         _loc4_ = Math.sin(3 / 7 * _loc3_);
+         var _loc4_:Number = Math.sin(3 / 7 * _loc3_);
          x = this._originX + 9 * 16 * Math.cos(_loc3_) * _loc4_;
          y = this._originY + 7 * 16 * Math.sin(_loc3_) * _loc4_;
          this._eyes.x = x - Math.cos(_loc2_) * 2 + 0.5;
