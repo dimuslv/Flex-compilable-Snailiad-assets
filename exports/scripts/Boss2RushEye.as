@@ -108,6 +108,7 @@ package
       
       override public function update() : void
       {
+         var _loc1_:Number = NaN;
          var _loc2_:Number = NaN;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
@@ -121,7 +122,7 @@ package
             PlayState.enemies.add(this.eyelid);
             this._addedChildren = true;
          }
-         var _loc1_:Number = Math.atan2(PlayState.player.y - (y - 20),PlayState.player.x - x);
+         _loc1_ = Math.atan2(PlayState.player.y - (y - 20),PlayState.player.x - x);
          this.pupil.x = x + Math.cos(_loc1_) * 20;
          this.pupil.y = y + Math.sin(_loc1_) * 10;
          if(this.shouldAttack)

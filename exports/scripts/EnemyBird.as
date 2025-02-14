@@ -85,6 +85,7 @@ package
       
       override public function update() : void
       {
+         var _loc1_:Number = NaN;
          var _loc2_:Number = NaN;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
@@ -103,7 +104,7 @@ package
             }
          }
          this.theta += FlxG.elapsed;
-         var _loc1_:Number = y;
+         _loc1_ = y;
          y = this.originY + Math.sin(this.theta * this.thetaMult) * this.flyAmplitude;
          if(onScreen())
          {
