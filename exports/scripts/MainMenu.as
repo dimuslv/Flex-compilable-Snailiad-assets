@@ -1174,47 +1174,47 @@ package
       
       public function toggleHideMiniMap() : void
       {
-         var _loc1_:XMLList = null;
+         var _loc2_:XMLList = null;
          PlayState.hideMiniMap = !PlayState.hideMiniMap;
          if(PlayState.miniMap)
          {
             PlayState.miniMap.setMapLittle();
          }
-         var _loc2_:SaveData = new SaveData();
-         _loc2_.loadAll();
-         if(_loc2_.isVarSet("hideMiniMap"))
+         var _loc1_:SaveData = new SaveData();
+         _loc1_.loadAll();
+         if(_loc1_.isVarSet("hideMiniMap"))
          {
-            _loc1_ = _loc2_.xml.vars.child("hideMiniMap");
-            if(_loc1_)
+            _loc2_ = _loc1_.xml.vars.child("hideMiniMap");
+            if(_loc2_)
             {
-               delete _loc1_.parent().*[_loc1_.childIndex()];
+               delete _loc2_.parent().*[_loc2_.childIndex()];
             }
          }
-         _loc2_.xml.vars.appendChild(<hideMiniMap>{PlayState.hideMiniMap}</hideMiniMap>);
-         _loc2_.saveAll();
+         _loc1_.xml.vars.appendChild(<hideMiniMap>{PlayState.hideMiniMap}</hideMiniMap>);
+         _loc1_.saveAll();
          this.changeOption(this.curOption,"HIDE MINIMAP: " + (PlayState.hideMiniMap ? "HIDE" : "SHOW"),this.toggleHideMiniMap);
       }
       
       public function toggleHideTab() : void
       {
-         var _loc1_:XMLList = null;
+         var _loc2_:XMLList = null;
          PlayState.hideTab = !PlayState.hideTab;
          if(Boolean(PlayState.miniMap) && Boolean(PlayState.miniMap.subscreen))
          {
             PlayState.miniMap.subscreen.hide();
          }
-         var _loc2_:SaveData = new SaveData();
-         _loc2_.loadAll();
-         if(_loc2_.isVarSet("hideTab"))
+         var _loc1_:SaveData = new SaveData();
+         _loc1_.loadAll();
+         if(_loc1_.isVarSet("hideTab"))
          {
-            _loc1_ = _loc2_.xml.vars.child("hideTab");
-            if(_loc1_)
+            _loc2_ = _loc1_.xml.vars.child("hideTab");
+            if(_loc2_)
             {
-               delete _loc1_.parent().*[_loc1_.childIndex()];
+               delete _loc2_.parent().*[_loc2_.childIndex()];
             }
          }
-         _loc2_.xml.vars.appendChild(<hideTab>{PlayState.hideTab}</hideTab>);
-         _loc2_.saveAll();
+         _loc1_.xml.vars.appendChild(<hideTab>{PlayState.hideTab}</hideTab>);
+         _loc1_.saveAll();
          this.changeOption(this.curOption,"HIDE BOTTOM KEYS: " + (PlayState.hideTab ? "HIDE" : "SHOW"),this.toggleHideTab);
       }
       
@@ -1405,25 +1405,25 @@ package
       
       public function toggleShootingMode() : void
       {
-         var _loc1_:XMLList = null;
+         var _loc3_:XMLList = null;
          Player.firingMode ^= 1;
          this.changeOption(this.curOption,"SHOOTING: " + (Player.firingMode == Player.FIRING_MODE_NORMAL ? "NORMAL" : "TOGGLE"),this.toggleShootingMode);
-         var _loc2_:String = "toggleFire";
-         var _loc3_:SaveData = new SaveData();
-         _loc3_.loadAll();
-         if(_loc3_.isVarSet(_loc2_))
+         var _loc1_:String = "toggleFire";
+         var _loc2_:SaveData = new SaveData();
+         _loc2_.loadAll();
+         if(_loc2_.isVarSet(_loc1_))
          {
-            _loc1_ = _loc3_.xml.vars.child(_loc2_);
-            if(_loc1_)
+            _loc3_ = _loc2_.xml.vars.child(_loc1_);
+            if(_loc3_)
             {
-               delete _loc1_.parent().*[_loc1_.childIndex()];
+               delete _loc3_.parent().*[_loc3_.childIndex()];
             }
          }
          if(Player.firingMode == Player.FIRING_MODE_TOGGLE)
          {
-            _loc3_.xml.vars.appendChild(new XML("<" + _loc2_ + ">true</" + _loc2_ + ">"));
+            _loc2_.xml.vars.appendChild(new XML("<" + _loc1_ + ">true</" + _loc1_ + ">"));
          }
-         _loc3_.saveAll();
+         _loc2_.saveAll();
       }
       
       public function makeOptionsMenu() : void
@@ -1612,31 +1612,31 @@ package
       
       public function miniGame_aimBall() : void
       {
-         var _loc1_:* = false;
-         var _loc2_:Boolean = true;
-         if(this.miniGame_ball.velocity.y == 0 || _loc2_)
+         var _loc7_:* = false;
+         var _loc1_:Boolean = true;
+         if(this.miniGame_ball.velocity.y == 0 || _loc1_)
          {
-            _loc1_ = FlxU.random() > 0.5;
+            _loc7_ = FlxU.random() > 0.5;
          }
          else
          {
-            _loc1_ = this.miniGame_ball.velocity.y < 0;
+            _loc7_ = this.miniGame_ball.velocity.y < 0;
          }
-         var _loc3_:Number = this.miniGame_getBallSpeed();
-         var _loc4_:int = this.miniGame_getBallBounces();
-         var _loc5_:int = this.miniGame_right ? int(FlxG.width * 2 - this.miniGame_targetX) : 0 - this.miniGame_targetX;
-         var _loc6_:int = _loc4_ % 2 == 1 ? FlxG.height - this.miniGame_targetY : 0 + this.miniGame_targetY;
-         if(_loc1_)
+         var _loc2_:Number = this.miniGame_getBallSpeed();
+         var _loc3_:int = this.miniGame_getBallBounces();
+         var _loc4_:int = this.miniGame_right ? int(FlxG.width * 2 - this.miniGame_targetX) : 0 - this.miniGame_targetX;
+         var _loc5_:int = _loc3_ % 2 == 1 ? FlxG.height - this.miniGame_targetY : 0 + this.miniGame_targetY;
+         if(_loc7_)
          {
-            _loc6_ -= FlxG.height * _loc4_;
+            _loc5_ -= FlxG.height * _loc3_;
          }
          else
          {
-            _loc6_ += FlxG.height * _loc4_;
+            _loc5_ += FlxG.height * _loc3_;
          }
-         var _loc7_:Number = Math.atan2(_loc6_ - this.miniGame_ball.y,_loc5_ - this.miniGame_ball.x);
-         this.miniGame_ball.velocity.x = Math.cos(_loc7_) * _loc3_;
-         this.miniGame_ball.velocity.y = Math.sin(_loc7_) * _loc3_;
+         var _loc6_:Number = Math.atan2(_loc5_ - this.miniGame_ball.y,_loc4_ - this.miniGame_ball.x);
+         this.miniGame_ball.velocity.x = Math.cos(_loc6_) * _loc2_;
+         this.miniGame_ball.velocity.y = Math.sin(_loc6_) * _loc2_;
       }
       
       public function miniGame_start() : void
@@ -1750,26 +1750,26 @@ package
       
       public function updateJustinSnaily() : void
       {
-         var _loc1_:int = 0;
+         var _loc2_:int = 0;
          this.justinSnailyElapsed += FlxG.elapsed;
-         var _loc2_:Array = [0,2.0022,2.26774,2.44484,2.60571,2.71435,2.85117,3.65991,3.80471,4.02601,4.15476,4.36403,4.55724,5.6];
+         var _loc1_:Array = [0,2.0022,2.26774,2.44484,2.60571,2.71435,2.85117,3.65991,3.80471,4.02601,4.15476,4.36403,4.55724,5.6];
          var _loc3_:int = 0;
-         while(_loc3_ < _loc2_.length)
+         while(_loc3_ < _loc1_.length)
          {
-            if(this.justinSnailyElapsed > _loc2_[_loc3_])
+            if(this.justinSnailyElapsed > _loc1_[_loc3_])
             {
-               _loc1_ = _loc3_;
+               _loc2_ = _loc3_;
             }
             _loc3_++;
          }
          if(FlxG.keys.justPressed("ESCAPE"))
          {
-            _loc1_ = 13;
+            _loc2_ = 13;
          }
-         if(_loc1_ > this.justinSnailyLetters)
+         if(_loc2_ > this.justinSnailyLetters)
          {
-            this.justinSnailyLetters = _loc1_;
-            switch(_loc1_)
+            this.justinSnailyLetters = _loc2_;
+            switch(_loc2_)
             {
                case 1:
                   Sfx.playMenuBeep1();

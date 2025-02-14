@@ -61,7 +61,7 @@ package
       public function fadeIn() : void
       {
          _fadingIn = true;
-         _fade = 0;
+         _fade = 0.0;
       }
       
       public function fadeOut() : void
