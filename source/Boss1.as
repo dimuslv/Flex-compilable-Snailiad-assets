@@ -78,6 +78,65 @@ package
          super.destroy();
       }
       
+      public function Boss1(param1:int, param2:int) : void
+      {
+         if(PlayState.player && PlayState.player._insaneMode)
+         {
+            this.HAND_NUM *= 4;
+            this.SHOT_NUM *= 3;
+            this.SHOT_DELAY /= 3;
+            this._shotMax = 6;
+            this.PATTERN_DELAY = 4;
+            this.WEAPON_SPEED = 290;
+         }
+         else if(PlayState.player && PlayState.player._hardMode)
+         {
+            this.HAND_NUM *= 2;
+            this.SHOT_NUM *= 2;
+            this._shotMax = 10;
+            this.MAX_HP *= 0.66;
+         }
+         else
+         {
+            this.MAX_HP *= 0.88;
+         }
+         super(param1,param2,this.MAX_HP,DEFENSE,OFFENSE);
+         loadGraphic(Art.Boss1,true,true,IMGBODY_WIDTH,IMGBODY_HEIGHT);
+         width = IMGBODY_WIDTH;
+         height = IMGBODY_HEIGHT;
+         this._turboMultiplier = 0.6;
+         this._originX = param1;
+         this._originY = param2;
+         this._radiusMultTarget = 1;
+         this._radiusMultCur = 1;
+         this._attackMode = 0;
+         addAnimation("normal0",[0]);
+         addAnimation("shoot0",[1]);
+         addAnimation("normal1",[2]);
+         addAnimation("shoot1",[3]);
+         addAnimation("normal2",[4]);
+         addAnimation("shoot2",[5]);
+         play("normal0");
+         this._hand = new Array();
+         this._handThetaCur = new Array();
+         this._handThetaSpeed = new Array();
+         var _loc3_:int = 0;
+         while(_loc3_ < this.HAND_NUM)
+         {
+            this._handThetaCur[_loc3_] = 2 * Math.PI / this.HAND_NUM;
+            this._handThetaSpeed[_loc3_] = 2.5 + _loc3_ * 0.75;
+            this._hand[_loc3_] = new Boss1Hand(x,y);
+            PlayState.enemies.add(this._hand[_loc3_]);
+            _loc3_++;
+         }
+         if(!dead)
+         {
+            PlayState.player.x += 35;
+            PlayState.player.setFaceDir(Player.FACE_FLOOR_RIGHT);
+            Music.playBoss1();
+         }
+      }
+      
       public function now() : Number
       {
          return this._totalElapsed;
@@ -141,65 +200,6 @@ package
             _loc5_++;
          }
          super.update();
-      }
-      
-      public function Boss1(param1:int, param2:int) : void
-      {
-         if(PlayState.player && PlayState.player._insaneMode)
-         {
-            this.HAND_NUM *= 4;
-            this.SHOT_NUM *= 3;
-            this.SHOT_DELAY /= 3;
-            this._shotMax = 6;
-            this.PATTERN_DELAY = 4;
-            this.WEAPON_SPEED = 290;
-         }
-         else if(PlayState.player && PlayState.player._hardMode)
-         {
-            this.HAND_NUM *= 2;
-            this.SHOT_NUM *= 2;
-            this._shotMax = 10;
-            this.MAX_HP *= 0.66;
-         }
-         else
-         {
-            this.MAX_HP *= 0.88;
-         }
-         super(param1,param2,this.MAX_HP,DEFENSE,OFFENSE);
-         loadGraphic(Art.Boss1,true,true,IMGBODY_WIDTH,IMGBODY_HEIGHT);
-         width = IMGBODY_WIDTH;
-         height = IMGBODY_HEIGHT;
-         this._turboMultiplier = 0.6;
-         this._originX = param1;
-         this._originY = param2;
-         this._radiusMultTarget = 1;
-         this._radiusMultCur = 1;
-         this._attackMode = 0;
-         addAnimation("normal0",[0]);
-         addAnimation("shoot0",[1]);
-         addAnimation("normal1",[2]);
-         addAnimation("shoot1",[3]);
-         addAnimation("normal2",[4]);
-         addAnimation("shoot2",[5]);
-         play("normal0");
-         this._hand = new Array();
-         this._handThetaCur = new Array();
-         this._handThetaSpeed = new Array();
-         var _loc3_:int = 0;
-         while(_loc3_ < this.HAND_NUM)
-         {
-            this._handThetaCur[_loc3_] = 2 * Math.PI / this.HAND_NUM;
-            this._handThetaSpeed[_loc3_] = 2.5 + _loc3_ * 0.75;
-            this._hand[_loc3_] = new Boss1Hand(x,y);
-            PlayState.enemies.add(this._hand[_loc3_]);
-            _loc3_++;
-         }
-         if(!dead)
-         {
-            PlayState.player.x += 35;
-            PlayState.player.setFaceDir(Player.FACE_FLOOR_RIGHT);
-            Music.playBoss1();
-         }
       }
       
       public function shoot(param1:Number) : void
