@@ -12,7 +12,7 @@ package
       
       private var _collidedThisFrame:Boolean;
       
-      public function Fire(param1:int, param2:int)
+      public function Fire(param1:int, param2:int) : void
       {
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
@@ -24,7 +24,7 @@ package
          addAnimation("anim2",[3,2,0,1],10);
          addAnimation("anim3",[1,0,3,2],11);
          addAnimation("anim4",[2,3,1,0],13);
-         switch(int(param1 / 16) % 4)
+         switch(((int)(param1 / 16)) % 4)
          {
             case 0:
                play("anim1");
@@ -37,8 +37,9 @@ package
                break;
             case 3:
                play("anim4");
+			   break;
          }
-         this._collidedThisFrame = false;
+         _collidedThisFrame = false;
          active = true;
       }
       
@@ -48,7 +49,7 @@ package
          {
             return;
          }
-         this._collidedThisFrame = true;
+         _collidedThisFrame = true;
          if(!param1.hasArmor())
          {
             if(param1.isIcy())
@@ -68,7 +69,7 @@ package
          {
             return;
          }
-         this._collidedThisFrame = false;
+         _collidedThisFrame = false;
          super.update();
       }
    }

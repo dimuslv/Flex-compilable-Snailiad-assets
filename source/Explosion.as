@@ -4,7 +4,7 @@ package
    
    public class Explosion extends FlxSprite
    {
-      public function Explosion()
+      public function Explosion() : void
       {
          super();
          exists = false;

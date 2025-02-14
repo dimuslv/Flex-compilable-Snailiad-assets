@@ -24,7 +24,7 @@ package
       
       private var shotTimeout:Number = 0;
       
-      public function EnemyWalleye(param1:int, param2:int, param3:Boolean)
+      public function EnemyWalleye(param1:int, param2:int, param3:Boolean) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemyWalleye,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -62,14 +62,14 @@ package
          {
             return;
          }
-         this.shotTimeout -= FlxG.elapsed;
+         shotTimeout -= FlxG.elapsed;
          if(Math.abs(PlayState.player.y - y) < 4)
          {
             if(facing == RIGHT && PlayState.player.x > x)
             {
                if(this.shotTimeout <= 0)
                {
-                  this.shotTimeout = SHOT_TIMEOUT;
+                  shotTimeout = SHOT_TIMEOUT;
                   _loc1_ = PlayState.enemyBulletPool.getBullet(5);
                   if(_loc1_)
                   {
@@ -81,7 +81,7 @@ package
             {
                if(this.shotTimeout <= 0)
                {
-                  this.shotTimeout = SHOT_TIMEOUT;
+                  shotTimeout = SHOT_TIMEOUT;
                   _loc1_ = PlayState.enemyBulletPool.getBullet(5);
                   if(_loc1_)
                   {

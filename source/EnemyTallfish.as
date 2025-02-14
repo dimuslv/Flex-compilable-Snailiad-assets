@@ -38,7 +38,7 @@ package
       
       private var shotNum:int = 0;
       
-      public function EnemyTallfish(param1:int, param2:int)
+      public function EnemyTallfish(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemyTallfish,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -61,16 +61,15 @@ package
       
       override public function update() : void
       {
-         var _loc1_:Number = NaN;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
          }
-         this.elapsed += FlxG.elapsed;
+         elapsed += FlxG.elapsed;
          y = this.originY + 4 * Math.sin(this.elapsed * 2);
          if(onScreen())
          {
-            this.moveTimeout -= FlxG.elapsed;
+            moveTimeout -= FlxG.elapsed;
             if(this.moveTimeout < 0)
             {
                if(PlayState.player.x < x)
@@ -81,18 +80,18 @@ package
                {
                   velocity.x = SPEED;
                }
-               this.shotNum = SHOT_NUM;
-               this.shotTimeout = 0;
-               this.moveTimeout = MOVE_TIMEOUT;
+               shotNum = SHOT_NUM;
+               shotTimeout = 0;
+               moveTimeout = MOVE_TIMEOUT;
                play("normal");
                play("swim");
             }
-            this.shotTimeout -= FlxG.elapsed;
+            shotTimeout -= FlxG.elapsed;
             if(this.shotTimeout <= 0 && this.shotNum > 0)
             {
-               _loc1_ = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
+               var _loc1_:Number = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
                this.shoot(_loc1_);
-               this.shotTimeout = SHOT_TIMEOUT;
+               shotTimeout = SHOT_TIMEOUT;
                --this.shotNum;
             }
          }

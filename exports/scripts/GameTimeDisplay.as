@@ -52,8 +52,6 @@ package
       
       override public function update() : void
       {
-         var _loc1_:int = 0;
-         _loc1_ = 0;
          if(!PlayState.player)
          {
             text = "";
@@ -63,7 +61,7 @@ package
          {
             y = this.relY + PlayState.miniMap.subscreen.panel.y;
          }
-         _loc1_ = int(PlayState.player.gameTime.value);
+         var _loc1_:int = PlayState.player.gameTime.value;
          if(this.oldTime != _loc1_)
          {
             text = "TIME\n" + format(_loc1_);

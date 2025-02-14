@@ -4,28 +4,23 @@ package
    
    public class ExplosionPool extends FlxGroup
    {
-      public var groups:Array;
+      public var groups:Array = new Array();
       
-      public var explosionLists:Array;
+      public var explosionLists:Array = new Array();
 	  
-	  private var MAX_EXPLOSIONS:Array;
+	  private const MAX_EXPLOSIONS:Array = [120,120,20,20];
 	  
-	  private var TYPE_NUM:int;
+	  private const TYPE_NUM:int = MAX_EXPLOSIONS.length;
       
       public function ExplosionPool()
       {
-         var _loc2_:int = 0;
-         this.groups = new Array();
-         this.explosionLists = new Array();
-         this.MAX_EXPLOSIONS = [120,120,20,20];
-         this.TYPE_NUM = this.MAX_EXPLOSIONS.length;
          super();
          var _loc1_:int = 0;
          while(_loc1_ < this.TYPE_NUM)
          {
             this.groups[_loc1_] = new FlxGroup();
             this.explosionLists[_loc1_] = new Array();
-            _loc2_ = 0;
+            var _loc2_:int = 0;
             while(_loc2_ < this.MAX_EXPLOSIONS[_loc1_])
             {
                this.explosionLists[_loc1_][_loc2_] = this.makeExplosion(_loc1_);
@@ -45,7 +40,7 @@ package
          {
             this.groups[_loc1_] = null;
          }
-         this.groups = null;
+         groups = null;
          for(_loc1_ in this.explosionLists)
          {
             for(_loc2_ in this.explosionLists[_loc1_])
@@ -54,7 +49,7 @@ package
             }
             this.explosionLists[_loc1_] = null;
          }
-         this.explosionLists = null;
+         explosionLists = null;
          super.destroy();
       }
       
@@ -70,18 +65,17 @@ package
                return new ExplosionHuge();
             case 3:
                return new ExplosionTiny();
-            default:
-               throw new Error("Unknown explosion type: " + param1.toString());
          }
+		 
+		 throw new Error("Unknown explosion type: " + param1.toString());
       }
       
       public function boom(param1:int, param2:int, param3:int, param4:int = 0, param5:int = 1) : void
       {
-         var _loc7_:Explosion = null;
          var _loc6_:int = 0;
          while(_loc6_ < param5)
          {
-            _loc7_ = this.groups[param3].getFirstAvail();
+            var _loc7_:Explosion = this.groups[param3].getFirstAvail();
             if(_loc7_)
             {
                _loc7_.boom(param1 + FlxU.random() * param4 * 2 - param4,param2 + FlxU.random() * param4 * 2 - param4);
@@ -92,21 +86,16 @@ package
       
       public function boomRadial(param1:int, param2:int, param3:int, param4:int = 0, param5:int = 1) : void
       {
-         var _loc7_:Explosion = null;
-         var _loc8_:int = 0;
-         var _loc9_:int = 0;
-         var _loc10_:int = 0;
-         var _loc11_:int = 0;
          var _loc6_:int = 0;
          while(_loc6_ < param5)
          {
-            _loc7_ = this.groups[param3].getFirstAvail();
+            var _loc7_:Explosion = this.groups[param3].getFirstAvail();
             if(_loc7_)
             {
-               _loc8_ = FlxU.random() * param4;
-               _loc9_ = FlxU.random() * 360;
-               _loc10_ = param1 + Math.cos(_loc9_ * Math.PI / 180) * _loc8_;
-               _loc11_ = param2 + Math.sin(_loc9_ * Math.PI / 180) * _loc8_;
+               var _loc8_:int = FlxU.random() * param4;
+               var _loc9_:int = FlxU.random() * 360;
+               var _loc10_:int = param1 + Math.cos(_loc9_ * Math.PI / 180) * _loc8_;
+               var _loc11_:int = param2 + Math.sin(_loc9_ * Math.PI / 180) * _loc8_;
                _loc7_.boom(param1 + Math.cos(_loc9_) * _loc8_,param2 + Math.sin(_loc9_) * _loc8_);
             }
             _loc6_++;

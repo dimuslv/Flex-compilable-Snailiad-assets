@@ -15,7 +15,7 @@ package
       
       public var shown:Boolean;
       
-      public function EnterKeyLayer()
+      public function EnterKeyLayer() : void
       {
          super();
          scrollFactor.x = scrollFactor.y = 0;
@@ -30,19 +30,19 @@ package
          {
             return;
          }
-         this.bg1 = new FlxSprite();
+         bg1 = new FlxSprite();
          this.bg1.x = FlxG.width / 4 - 1;
          this.bg1.y = FlxG.height / 12 * 5 - 1;
          this.bg1.createGraphic(FlxG.width / 2 + 2,FlxG.height / 6 + 2,4026531839);
          this.bg1.scrollFactor.x = this.bg1.scrollFactor.y = 0;
          add(this.bg1);
-         this.bg2 = new FlxSprite();
+         bg2 = new FlxSprite();
          this.bg2.x = this.bg1.x + 1;
          this.bg2.y = this.bg1.y + 1;
          this.bg2.createGraphic(FlxG.width / 2,FlxG.height / 6,4009758784);
          this.bg2.scrollFactor.x = this.bg2.scrollFactor.y = 0;
          add(this.bg2);
-         this.enterKeyText = new FlxText(-1,FlxG.height / 2 - 11,FlxG.width);
+         enterKeyText = new FlxText(-1,FlxG.height / 2 - 11,FlxG.width);
          this.enterKeyText.alignment = "center";
          this.enterKeyText.color = 16777215;
          this.enterKeyText.size = 20;

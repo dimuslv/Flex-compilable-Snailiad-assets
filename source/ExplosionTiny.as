@@ -10,7 +10,7 @@ package
       
       private static const IMG_OFS_Y:int = 0;
       
-      public function ExplosionTiny()
+      public function ExplosionTiny() : void
       {
          super();
          loadGraphic(Art.ExplosionTiny,true,true,IMG_WIDTH,IMG_HEIGHT);

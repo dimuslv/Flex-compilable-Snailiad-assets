@@ -9,20 +9,6 @@ package
       
       public var relY:int = 0;
       
-      public function GameTimeDisplay()
-      {
-         super(0,FlxG.height - 27,FlxG.width - 7);
-         this.relY = FlxG.height - 27;
-         font = Fonts.normal;
-         size = 10;
-         color = 16777215;
-         shadow = 1;
-         alignment = "right";
-         scrollFactor.x = scrollFactor.y = 0;
-         setShadowDistance(1);
-         visible = false;
-      }
-      
       public static function padZero(param1:int) : String
       {
          if(param1 < 10)
@@ -52,22 +38,35 @@ package
       
       override public function update() : void
       {
-         var _loc1_:int = 0;
          if(!PlayState.player)
          {
             text = "";
             return;
          }
-         if(Boolean(PlayState.miniMap) && Boolean(PlayState.miniMap.subscreen))
+         if(PlayState.miniMap && PlayState.miniMap.subscreen)
          {
             y = this.relY + PlayState.miniMap.subscreen.panel.y;
          }
-         _loc1_ = int(PlayState.player.gameTime.value);
+         var _loc1_:int = PlayState.player.gameTime.value;
          if(this.oldTime != _loc1_)
          {
             text = "TIME\n" + format(_loc1_);
-            this.oldTime = _loc1_;
+            oldTime = _loc1_;
          }
+      }
+      
+      public function GameTimeDisplay() : void
+      {
+         super(0,FlxG.height - 27,FlxG.width - 7);
+         this.relY = FlxG.height - 27;
+         font = Fonts.normal;
+         size = 10;
+         color = 16777215;
+         shadow = 1;
+         alignment = "right";
+         scrollFactor.x = scrollFactor.y = 0;
+         setShadowDistance(1);
+         visible = false;
       }
    }
 }

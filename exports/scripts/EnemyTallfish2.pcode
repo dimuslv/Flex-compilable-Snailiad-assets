@@ -98,7 +98,7 @@ package
          name null
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 21
@@ -238,8 +238,7 @@ package
          code
          getlocal0
          pushscope
-         getlex QName(PackageNamespace(""),"NaN")
-         convert_d
+         pushnan
          setlocal1
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"realState")
@@ -254,7 +253,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          add
-         setproperty QName(PrivateNamespace(null,"#EnemyTallfish2"),"elapsed")
+         initproperty QName(PrivateNamespace(null,"#EnemyTallfish2"),"elapsed")
          findproperty QName(PackageNamespace(""),"y")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyTallfish2"),"originY")
@@ -277,7 +276,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#EnemyTallfish2"),"moveTimeout")
+         initproperty QName(PrivateNamespace(null,"#EnemyTallfish2"),"moveTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyTallfish2"),"moveTimeout")
          pushbyte 0
@@ -299,13 +298,13 @@ package
          ofs4:
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyTallfish2"),"SHOT_NUM")
-         setproperty QName(PrivateNamespace(null,"#EnemyTallfish2"),"shotNum")
+         initproperty QName(PrivateNamespace(null,"#EnemyTallfish2"),"shotNum")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#EnemyTallfish2"),"shotTimeout")
+         initproperty QName(PrivateNamespace(null,"#EnemyTallfish2"),"shotTimeout")
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyTallfish2"),"MOVE_TIMEOUT")
-         setproperty QName(PrivateNamespace(null,"#EnemyTallfish2"),"moveTimeout")
+         initproperty QName(PrivateNamespace(null,"#EnemyTallfish2"),"moveTimeout")
          findpropstrict QName(PackageNamespace(""),"play")
          pushstring "normal"
          callpropvoid QName(PackageNamespace(""),"play"), 1
@@ -319,7 +318,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#EnemyTallfish2"),"shotTimeout")
+         initproperty QName(PrivateNamespace(null,"#EnemyTallfish2"),"shotTimeout")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#EnemyTallfish2"),"shotTimeout")
          pushbyte 0
@@ -352,7 +351,7 @@ package
          callpropvoid QName(PackageNamespace(""),"shoot"), 1
          getlocal0
          getlex QName(PrivateNamespace(null,"#EnemyTallfish2"),"SHOT_TIMEOUT")
-         setproperty QName(PrivateNamespace(null,"#EnemyTallfish2"),"shotTimeout")
+         initproperty QName(PrivateNamespace(null,"#EnemyTallfish2"),"shotTimeout")
          getlocal0
          dup
          setlocal2

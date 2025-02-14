@@ -48,7 +48,7 @@ package
          name null
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 6
@@ -148,15 +148,17 @@ package
          findpropstrict QName(PackageNamespace(""),"play")
          pushstring "anim4"
          callpropvoid QName(PackageNamespace(""),"play"), 1
+         jump ofs2
          ofs6:
          label
          jump ofs2
          ofs0:
-         findpropstrict QName(PackageNamespace(""),"int")
+         getlex QName(PackageNamespace(""),"int")
+         getglobalscope
          getlocal1
          pushbyte 16
          divide
-         callproperty QName(PackageNamespace(""),"int"), 1
+         call 1
          pushbyte 4
          modulo
          setlocal3
@@ -231,7 +233,7 @@ package
          ofs0:
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#Fire"),"_collidedThisFrame")
+         initproperty QName(PrivateNamespace(null,"#Fire"),"_collidedThisFrame")
          getlocal1
          callproperty QName(PackageNamespace(""),"hasArmor"), 0
          iftrue ofs1
@@ -280,7 +282,7 @@ package
          ofs0:
          getlocal0
          pushfalse
-         setproperty QName(PrivateNamespace(null,"#Fire"),"_collidedThisFrame")
+         initproperty QName(PrivateNamespace(null,"#Fire"),"_collidedThisFrame")
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0
          returnvoid

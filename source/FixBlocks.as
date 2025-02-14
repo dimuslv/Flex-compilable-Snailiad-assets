@@ -6,7 +6,7 @@ package
    {
       public var blocks:Array;
       
-      public function FixBlocks()
+      public function FixBlocks() : void
       {
          super();
          this.blocks = new Array();
@@ -19,7 +19,7 @@ package
          {
             this.blocks[_loc1_] = null;
          }
-         this.blocks = null;
+         blocks = null;
       }
       
       public function rememberBlock(param1:int, param2:int, param3:int, param4:int) : void
@@ -35,7 +35,7 @@ package
             this.blocks[_loc1_].repair();
             _loc1_++;
          }
-         this.blocks = new Array();
+         blocks = new Array();
       }
    }
 }
