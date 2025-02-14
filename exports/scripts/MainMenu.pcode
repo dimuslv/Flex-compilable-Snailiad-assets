@@ -5764,7 +5764,7 @@ package
          getlocal2
          getproperty QName(PackageNamespace(""),"xml")
          getproperty Multiname("vars",[PrivateNamespace(null,"#MainMenu"),PackageNamespace(""),PrivateNamespace(null,"#MainMenu/1"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("MainMenu"),StaticProtectedNs("MainMenu"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
-         findpropstrict QName(PackageNamespace(""),"XML")
+         getlex QName(PackageNamespace(""),"XML")
          pushstring "<"
          getlocal1
          add
@@ -5774,7 +5774,7 @@ package
          add
          pushstring ">"
          add
-         constructprop QName(PackageNamespace(""),"XML"), 1
+         construct 1
          callpropvoid Multiname("appendChild",[PrivateNamespace(null,"#MainMenu"),PackageNamespace(""),PrivateNamespace(null,"#MainMenu/1"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel"),ProtectedNamespace("MainMenu"),StaticProtectedNs("MainMenu"),StaticProtectedNs("org.flixel:FlxGroup"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
          ofs3:
          getlocal2
@@ -6618,7 +6618,7 @@ package
          getlocal0
          pushscope
          pushfalse
-         setlocal 7
+         setlocal2
          pushtrue
          setlocal1
          getlocal0
@@ -6638,7 +6638,7 @@ package
          callproperty QName(PackageNamespace(""),"random"), 0
          pushdouble 0.5
          greaterthan
-         setlocal 7
+         setlocal2
          jump ofs2
          ofs1:
          getlocal0
@@ -6647,16 +6647,16 @@ package
          getproperty QName(PackageNamespace(""),"y")
          pushbyte 0
          lessthan
-         setlocal 7
+         setlocal2
          ofs2:
          getlocal0
          callproperty QName(PackageNamespace(""),"miniGame_getBallSpeed"), 0
          convert_d
-         setlocal2
+         setlocal3
          getlocal0
          callproperty QName(PackageNamespace(""),"miniGame_getBallBounces"), 0
          convert_i
-         setlocal3
+         setlocal 4
          getlocal0
          getproperty QName(PackageNamespace(""),"miniGame_right")
          iffalse ofs3
@@ -6677,8 +6677,8 @@ package
          convert_i
          ofs4:
          convert_i
-         setlocal 4
-         getlocal3
+         setlocal 5
+         getlocal 4
          pushbyte 2
          modulo
          pushbyte 1
@@ -6699,58 +6699,58 @@ package
          convert_i
          ofs6:
          convert_i
-         setlocal 5
-         getlocal 7
+         setlocal 6
+         getlocal2
          iffalse ofs7
-         getlocal 5
+         getlocal 6
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"height")
-         getlocal3
+         getlocal 4
          multiply
          subtract
          convert_i
-         setlocal 5
+         setlocal 6
          jump ofs8
          ofs7:
-         getlocal 5
+         getlocal 6
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"height")
-         getlocal3
+         getlocal 4
          multiply
          add
          convert_i
-         setlocal 5
+         setlocal 6
          ofs8:
          getlex QName(PackageNamespace(""),"Math")
-         getlocal 5
+         getlocal 6
          getlocal0
          getproperty QName(PackageNamespace(""),"miniGame_ball")
          getproperty QName(PackageNamespace(""),"y")
          subtract
-         getlocal 4
+         getlocal 5
          getlocal0
          getproperty QName(PackageNamespace(""),"miniGame_ball")
          getproperty QName(PackageNamespace(""),"x")
          subtract
          callproperty QName(PackageNamespace(""),"atan2"), 2
          convert_d
-         setlocal 6
+         setlocal 7
          getlocal0
          getproperty QName(PackageNamespace(""),"miniGame_ball")
          getproperty QName(PackageNamespace(""),"velocity")
          getlex QName(PackageNamespace(""),"Math")
-         getlocal 6
+         getlocal 7
          callproperty QName(PackageNamespace(""),"cos"), 1
-         getlocal2
+         getlocal3
          multiply
          setproperty QName(PackageNamespace(""),"x")
          getlocal0
          getproperty QName(PackageNamespace(""),"miniGame_ball")
          getproperty QName(PackageNamespace(""),"velocity")
          getlex QName(PackageNamespace(""),"Math")
-         getlocal 6
+         getlocal 7
          callproperty QName(PackageNamespace(""),"sin"), 1
-         getlocal2
+         getlocal3
          multiply
          setproperty QName(PackageNamespace(""),"y")
          returnvoid

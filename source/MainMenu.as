@@ -1420,7 +1420,7 @@ package
          }
          if(Player.firingMode == Player.FIRING_MODE_TOGGLE)
          {
-            _loc2_.xml.vars.appendChild(new XML("<" + _loc1_ + ">true</" + _loc1_ + ">"));
+            _loc2_.xml.vars.appendChild(<{_loc1_}>true</{_loc1_}>);
          }
          _loc2_.saveAll();
       }
@@ -1612,9 +1612,10 @@ package
       public function miniGame_aimBall() : void
       {
          var _loc1_:Boolean = true;
+		 var _loc2_:Boolean;
          if(this.miniGame_ball.velocity.y == 0 || _loc1_)
          {
-            var _loc2_:Boolean = FlxU.random() > 0.5;
+            _loc2_ = FlxU.random() > 0.5;
          }
          else
          {

@@ -1612,31 +1612,31 @@ package
       
       public function miniGame_aimBall() : void
       {
-         var _loc7_:* = false;
+         var _loc2_:* = false;
          var _loc1_:Boolean = true;
          if(this.miniGame_ball.velocity.y == 0 || _loc1_)
          {
-            _loc7_ = FlxU.random() > 0.5;
+            _loc2_ = FlxU.random() > 0.5;
          }
          else
          {
-            _loc7_ = this.miniGame_ball.velocity.y < 0;
+            _loc2_ = this.miniGame_ball.velocity.y < 0;
          }
-         var _loc2_:Number = this.miniGame_getBallSpeed();
-         var _loc3_:int = this.miniGame_getBallBounces();
-         var _loc4_:int = this.miniGame_right ? int(FlxG.width * 2 - this.miniGame_targetX) : 0 - this.miniGame_targetX;
-         var _loc5_:int = _loc3_ % 2 == 1 ? FlxG.height - this.miniGame_targetY : 0 + this.miniGame_targetY;
-         if(_loc7_)
+         var _loc3_:Number = this.miniGame_getBallSpeed();
+         var _loc4_:int = this.miniGame_getBallBounces();
+         var _loc5_:int = this.miniGame_right ? int(FlxG.width * 2 - this.miniGame_targetX) : 0 - this.miniGame_targetX;
+         var _loc6_:int = _loc4_ % 2 == 1 ? FlxG.height - this.miniGame_targetY : 0 + this.miniGame_targetY;
+         if(_loc2_)
          {
-            _loc5_ -= FlxG.height * _loc3_;
+            _loc6_ -= FlxG.height * _loc4_;
          }
          else
          {
-            _loc5_ += FlxG.height * _loc3_;
+            _loc6_ += FlxG.height * _loc4_;
          }
-         var _loc6_:Number = Math.atan2(_loc5_ - this.miniGame_ball.y,_loc4_ - this.miniGame_ball.x);
-         this.miniGame_ball.velocity.x = Math.cos(_loc6_) * _loc2_;
-         this.miniGame_ball.velocity.y = Math.sin(_loc6_) * _loc2_;
+         var _loc7_:Number = Math.atan2(_loc6_ - this.miniGame_ball.y,_loc5_ - this.miniGame_ball.x);
+         this.miniGame_ball.velocity.x = Math.cos(_loc7_) * _loc3_;
+         this.miniGame_ball.velocity.y = Math.sin(_loc7_) * _loc3_;
       }
       
       public function miniGame_start() : void
