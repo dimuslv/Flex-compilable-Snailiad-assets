@@ -50,16 +50,16 @@ package
             return;
          }
          _collidedThisFrame = true;
-         if(!param1.hasArmor())
+         if(param1.hasArmor())
+		 {
+		 }
+		 else if(param1.isIcy())
          {
-            if(param1.isIcy())
-            {
-               param1.hurt(1);
-            }
-            else
-            {
-               param1.hurt(4);
-            }
+            param1.hurt(1);
+         }
+         else
+         {
+            param1.hurt(4);
          }
       }
       

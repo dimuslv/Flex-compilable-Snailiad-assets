@@ -12,26 +12,6 @@ package
 	  
 	  private const TYPE_NUM:int = MAX_EXPLOSIONS.length;
       
-      public function ExplosionPool()
-      {
-         super();
-         var _loc1_:int = 0;
-         while(_loc1_ < this.TYPE_NUM)
-         {
-            this.groups[_loc1_] = new FlxGroup();
-            this.explosionLists[_loc1_] = new Array();
-            var _loc2_:int = 0;
-            while(_loc2_ < this.MAX_EXPLOSIONS[_loc1_])
-            {
-               this.explosionLists[_loc1_][_loc2_] = this.makeExplosion(_loc1_);
-               this.groups[_loc1_].add(this.explosionLists[_loc1_][_loc2_]);
-               _loc2_++;
-            }
-            add(this.groups[_loc1_]);
-            _loc1_++;
-         }
-      }
-      
       override public function destroy() : void
       {
          var _loc1_:String = null;
@@ -51,6 +31,26 @@ package
          }
          explosionLists = null;
          super.destroy();
+      }
+      
+      public function ExplosionPool() : void
+      {
+         super();
+         var _loc1_:int = 0;
+         while(_loc1_ < this.TYPE_NUM)
+         {
+            this.groups[_loc1_] = new FlxGroup();
+            this.explosionLists[_loc1_] = new Array();
+            var _loc2_:int = 0;
+            while(_loc2_ < this.MAX_EXPLOSIONS[_loc1_])
+            {
+               this.explosionLists[_loc1_][_loc2_] = this.makeExplosion(_loc1_);
+               this.groups[_loc1_].add(this.explosionLists[_loc1_][_loc2_]);
+               _loc2_++;
+            }
+            add(this.groups[_loc1_]);
+            _loc1_++;
+         }
       }
       
       private function makeExplosion(param1:int) : Explosion

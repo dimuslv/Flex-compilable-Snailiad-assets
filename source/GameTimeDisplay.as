@@ -47,7 +47,7 @@ package
          {
             y = this.relY + PlayState.miniMap.subscreen.panel.y;
          }
-         var _loc1_:int = PlayState.player.gameTime.value;
+         var _loc1_:int = int(PlayState.player.gameTime.value);
          if(this.oldTime != _loc1_)
          {
             text = "TIME\n" + format(_loc1_);
