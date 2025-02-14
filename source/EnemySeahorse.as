@@ -58,13 +58,13 @@ package
       
       public function EnemySeahorse(param1:int, param2:int) : void
       {
-         if(Boolean(PlayState.player) && PlayState.player._insaneMode)
+         if(PlayState.player && PlayState.player._insaneMode)
          {
             this.MOVE_TIME = 1.3;
             this.X_RADIUS = 130;
             this.Y_RADIUS = 40;
          }
-         else if(Boolean(PlayState.player) && PlayState.player._hardMode)
+         else if(PlayState.player && PlayState.player._hardMode)
          {
             this.MOVE_TIME = 1.9;
             this.X_RADIUS = 140;
