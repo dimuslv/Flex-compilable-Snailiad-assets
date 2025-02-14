@@ -184,6 +184,7 @@ package
                {
                   facing = LEFT;
                }
+			   break;
          }
       }
       

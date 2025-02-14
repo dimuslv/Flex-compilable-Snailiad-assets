@@ -700,6 +700,8 @@ package
          getlex QName(PackageNamespace(""),"LEFT")
          initproperty QName(PackageNamespace(""),"facing")
          ofs14:
+         jump ofs3
+         ofs15:
          label
          jump ofs3
          ofs1:
@@ -708,60 +710,60 @@ package
          setlocal2
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_COS_UP_LEFT")
          getlocal2
-         ifstrictne ofs15
+         ifstrictne ofs16
          pushbyte 0
-         jump ofs16
-         ofs15:
+         jump ofs17
+         ofs16:
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_COS_DOWN_LEFT")
          getlocal2
-         ifstrictne ofs17
+         ifstrictne ofs18
          pushbyte 1
-         jump ofs16
-         ofs17:
+         jump ofs17
+         ofs18:
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_COS_UP_RIGHT")
          getlocal2
-         ifstrictne ofs18
+         ifstrictne ofs19
          pushbyte 2
-         jump ofs16
-         ofs18:
+         jump ofs17
+         ofs19:
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_COS_DOWN_RIGHT")
          getlocal2
-         ifstrictne ofs19
+         ifstrictne ofs20
          pushbyte 3
-         jump ofs16
-         ofs19:
+         jump ofs17
+         ofs20:
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_SEMICIRCLE_LEFT_UP")
          getlocal2
-         ifstrictne ofs20
+         ifstrictne ofs21
          pushbyte 4
-         jump ofs16
-         ofs20:
+         jump ofs17
+         ofs21:
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_SEMICIRCLE_LEFT_DOWN")
          getlocal2
-         ifstrictne ofs21
+         ifstrictne ofs22
          pushbyte 5
-         jump ofs16
-         ofs21:
+         jump ofs17
+         ofs22:
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_SEMICIRCLE_RIGHT_UP")
          getlocal2
-         ifstrictne ofs22
+         ifstrictne ofs23
          pushbyte 6
-         jump ofs16
-         ofs22:
+         jump ofs17
+         ofs23:
          getlex QName(PrivateNamespace(null,"#EnemySeahorse"),"MODE_SEMICIRCLE_RIGHT_DOWN")
          getlocal2
-         ifstrictne ofs23
+         ifstrictne ofs24
          pushbyte 7
-         jump ofs16
-         ofs23:
-         jump ofs24
-         pushbyte 8
-         jump ofs24
+         jump ofs17
          ofs24:
+         jump ofs25
          pushbyte 8
-         ofs16:
+         jump ofs25
+         ofs25:
+         pushbyte 8
+         ofs17:
          kill 2
-         lookupswitch ofs14, [ofs2, ofs4, ofs5, ofs6, ofs7, ofs9, ofs11, ofs13, ofs14]
+         lookupswitch ofs15, [ofs2, ofs4, ofs5, ofs6, ofs7, ofs9, ofs11, ofs13, ofs15]
          ofs3:
          returnvoid
          end ; code
