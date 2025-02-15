@@ -17,7 +17,7 @@ package
       
       private var targetY:Number;
       
-      public function MainMenuCursor()
+      public function MainMenuCursor() : void
       {
          super();
          loadGraphic(Art.SnailySnail,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -37,8 +37,8 @@ package
             x = param1;
             y = param2;
          }
-         this.targetX = param1;
-         this.targetY = param2;
+         targetX = param1;
+         targetY = param2;
       }
       
       override public function update() : void

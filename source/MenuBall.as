@@ -17,7 +17,7 @@ package
       
       public var elapsed:Number = 0;
       
-      public function MenuBall()
+      public function MenuBall() : void
       {
          super();
          loadGraphic(Art.PlayerBullet1,true,true,WIDTH,HEIGHT);
@@ -49,10 +49,10 @@ package
          {
             this.kill();
          }
-         this.elapsed += FlxG.elapsed;
+         elapsed += FlxG.elapsed;
          while(this.elapsed > 0)
          {
-            this.elapsed -= SEC_PER_TICK;
+            elapsed -= SEC_PER_TICK;
             x += velocity.x * SEC_PER_TICK;
             y += velocity.y * SEC_PER_TICK;
          }

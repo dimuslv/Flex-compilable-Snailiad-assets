@@ -97,9 +97,6 @@ package
          var _loc1_:int = 0;
          var _loc2_:int = 0;
          var _loc3_:FlxSprite = null;
-         _loc1_ = 0;
-         _loc2_ = 0;
-         _loc3_ = null;
          var _loc4_:int = 0;
          this.subOfsY = this.DEFAULT_OFS_Y;
          super();
@@ -334,36 +331,34 @@ package
       
       public function updateMiniMapPos() : void
       {
-         var _loc1_:int = 0;
-         var _loc2_:int = 0;
-         var _loc3_:int = this.getXPos();
-         _loc1_ = this.getYPos() + this.subOfsY + this.subscreen.panel.y;
-         var _loc4_:int = 0;
-         while(_loc4_ < MAX_MAP_ROWS)
+         var _loc8_:int = 0;
+         var _loc1_:int = this.getXPos();
+         var _loc2_:int = this.getYPos() + this.subOfsY + this.subscreen.panel.y;
+         var _loc3_:int = 0;
+         while(_loc3_ < MAX_MAP_ROWS)
          {
-            _loc2_ = 0;
-            while(_loc2_ < MAX_MAP_COLS)
+            _loc8_ = 0;
+            while(_loc8_ < MAX_MAP_COLS)
             {
-               this._display[_loc4_][_loc2_].x = _loc3_ + _loc2_ * TILE_WIDTH;
-               this._display[_loc4_][_loc2_].y = _loc1_ + _loc4_ * TILE_HEIGHT;
-               this._specialDisplay[_loc4_][_loc2_].x = _loc3_ + _loc2_ * TILE_WIDTH;
-               this._specialDisplay[_loc4_][_loc2_].y = _loc1_ + _loc4_ * TILE_HEIGHT;
-               _loc2_++;
+               this._display[_loc3_][_loc8_].x = _loc1_ + _loc8_ * TILE_WIDTH;
+               this._display[_loc3_][_loc8_].y = _loc2_ + _loc3_ * TILE_HEIGHT;
+               this._specialDisplay[_loc3_][_loc8_].x = _loc1_ + _loc8_ * TILE_WIDTH;
+               this._specialDisplay[_loc3_][_loc8_].y = _loc2_ + _loc3_ * TILE_HEIGHT;
+               _loc8_++;
             }
-            _loc4_++;
+            _loc3_++;
          }
-         var _loc5_:int = PlayState.player.x / 16 / ROOM_WIDTH;
-         var _loc6_:int = PlayState.player.y / 16 / ROOM_HEIGHT;
-         var _loc7_:int = this.mapRows > 10 ? _loc5_ : this.getCenterCol();
-         var _loc8_:int = this.mapRows > 10 ? _loc6_ : this.getCenterRow();
-         this._center.x = _loc3_ + TILE_WIDTH * _loc7_;
-         this._center.y = _loc1_ + TILE_HEIGHT * _loc8_;
+         var _loc4_:int = PlayState.player.x / 16 / ROOM_WIDTH;
+         var _loc5_:int = PlayState.player.y / 16 / ROOM_HEIGHT;
+         var _loc6_:int = this.mapRows > 10 ? _loc4_ : this.getCenterCol();
+         var _loc7_:int = this.mapRows > 10 ? _loc5_ : this.getCenterRow();
+         this._center.x = _loc1_ + TILE_WIDTH * _loc6_;
+         this._center.y = _loc2_ + TILE_HEIGHT * _loc7_;
       }
       
       public function resizeMiniMap(param1:int, param2:int, param3:int) : void
       {
-         var _loc4_:int = 0;
-         var _loc5_:int = 0;
+         var _loc11_:int = 0;
          if(param3 == 0 && (PlayState.hideMiniMap || PlayState.hud.bossBarHud.isShown()))
          {
             param3 = -FlxG.height;
@@ -371,81 +366,81 @@ package
          this.mapRows = param2;
          this.mapCols = param1;
          this.subOfsY = param3;
-         var _loc6_:int = this.getXPos();
-         _loc4_ = this.getYPos() + param3;
-         var _loc7_:int = 0;
-         while(_loc7_ < MAX_MAP_ROWS)
+         var _loc4_:int = this.getXPos();
+         var _loc5_:int = this.getYPos() + param3;
+         var _loc6_:int = 0;
+         while(_loc6_ < MAX_MAP_ROWS)
          {
-            _loc5_ = 0;
-            while(_loc5_ < MAX_MAP_COLS)
+            _loc11_ = 0;
+            while(_loc11_ < MAX_MAP_COLS)
             {
-               this._display[_loc7_][_loc5_].visible = _loc7_ < param2 && _loc5_ < param1;
-               this._display[_loc7_][_loc5_].x = _loc6_ + _loc5_ * TILE_WIDTH;
-               this._display[_loc7_][_loc5_].y = _loc4_ + _loc7_ * TILE_HEIGHT;
-               this._specialDisplay[_loc7_][_loc5_].visible = _loc7_ < param2 && _loc5_ < param1;
-               this._specialDisplay[_loc7_][_loc5_].x = _loc6_ + _loc5_ * TILE_WIDTH;
-               this._specialDisplay[_loc7_][_loc5_].y = _loc4_ + _loc7_ * TILE_HEIGHT;
-               _loc5_++;
+               this._display[_loc6_][_loc11_].visible = _loc6_ < param2 && _loc11_ < param1;
+               this._display[_loc6_][_loc11_].x = _loc4_ + _loc11_ * TILE_WIDTH;
+               this._display[_loc6_][_loc11_].y = _loc5_ + _loc6_ * TILE_HEIGHT;
+               this._specialDisplay[_loc6_][_loc11_].visible = _loc6_ < param2 && _loc11_ < param1;
+               this._specialDisplay[_loc6_][_loc11_].x = _loc4_ + _loc11_ * TILE_WIDTH;
+               this._specialDisplay[_loc6_][_loc11_].y = _loc5_ + _loc6_ * TILE_HEIGHT;
+               _loc11_++;
             }
-            _loc7_++;
+            _loc6_++;
          }
-         var _loc8_:int = PlayState.player.x / 16 / ROOM_WIDTH;
-         var _loc9_:int = PlayState.player.y / 16 / ROOM_HEIGHT;
-         var _loc10_:int = this.mapRows > 10 ? _loc8_ : this.getCenterCol();
-         var _loc11_:int = this.mapRows > 10 ? _loc9_ : this.getCenterRow();
-         this._center.x = _loc6_ + TILE_WIDTH * _loc10_;
-         this._center.y = _loc4_ + TILE_HEIGHT * _loc11_;
+         var _loc7_:int = PlayState.player.x / 16 / ROOM_WIDTH;
+         var _loc8_:int = PlayState.player.y / 16 / ROOM_HEIGHT;
+         var _loc9_:int = this.mapRows > 10 ? _loc7_ : this.getCenterCol();
+         var _loc10_:int = this.mapRows > 10 ? _loc8_ : this.getCenterRow();
+         this._center.x = _loc4_ + TILE_WIDTH * _loc9_;
+         this._center.y = _loc5_ + TILE_HEIGHT * _loc10_;
          this._lastX = -1;
          this._lastY = -1;
       }
       
       public function updateMiniMap(param1:Boolean = false) : void
       {
-         var _loc2_:int = 0;
-         var _loc3_:int = 0;
-         var _loc4_:int = 0;
-         var _loc5_:int = 0;
-         var _loc6_:int = PlayState.player.x / 16 / ROOM_WIDTH;
-         var _loc7_:int = PlayState.player.y / 16 / ROOM_HEIGHT;
-         if(_loc6_ == this._lastX && _loc7_ == this._lastY && !param1)
+         var _loc10_:int = 0;
+         var _loc12_:int = 0;
+         var _loc13_:int = 0;
+         var _loc14_:int = 0;
+         var _loc2_:int = PlayState.player.x / 16 / ROOM_WIDTH;
+         var _loc3_:int = PlayState.player.y / 16 / ROOM_HEIGHT;
+         if(_loc2_ == this._lastX && _loc3_ == this._lastY && !param1)
          {
             return;
          }
-         this._lastX = _loc6_;
-         this._lastY = _loc7_;
-         var _loc8_:* = this.mapRows > 10;
-         var _loc9_:int = !!_loc8_ ? _loc6_ : this.getCenterCol();
-         var _loc10_:int = !!_loc8_ ? _loc7_ : this.getCenterRow();
+         this._lastX = _loc2_;
+         this._lastY = _loc3_;
+         var _loc4_:* = this.mapRows > 10;
+         var _loc5_:int = !!_loc4_ ? _loc2_ : this.getCenterCol();
+         var _loc6_:int = !!_loc4_ ? _loc3_ : this.getCenterRow();
          if(!PlayState.player.dead)
          {
             this.setKnown(PlayState.player.x,PlayState.player.y,true);
          }
-         var _loc11_:int = this.getMapOfsX();
-         var _loc12_:int = this.getMapOfsY();
-         var _loc13_:int = this.getXPos();
-         _loc2_ = this.getYPos();
-         this._center.x = _loc13_ + TILE_WIDTH * _loc9_;
-         this._center.y = _loc2_ + TILE_HEIGHT * _loc10_ + this.subOfsY;
-         var _loc14_:int = 0;
-         while(_loc14_ < this.mapRows)
+         var _loc7_:int = this.getMapOfsX();
+         var _loc8_:int = this.getMapOfsY();
+         var _loc9_:int = this.getXPos();
+         _loc10_ = this.getYPos();
+         this._center.x = _loc9_ + TILE_WIDTH * _loc5_;
+         this._center.y = _loc10_ + TILE_HEIGHT * _loc6_ + this.subOfsY;
+         var _loc11_:int = 0;
+         while(_loc11_ < this.mapRows)
          {
-            _loc3_ = 0;
-            while(_loc3_ < this.mapCols)
+            _loc12_ = 0;
+            while(_loc12_ < this.mapCols)
             {
-               _loc4_ = !!_loc8_ ? _loc3_ : _loc6_ + _loc3_ + _loc11_;
-               _loc5_ = !!_loc8_ ? _loc14_ : _loc7_ + _loc14_ + _loc12_;
-               if(_loc5_ < 0 || _loc4_ < 0 || _loc5_ >= SIZE_Y || _loc4_ >= SIZE_X || this._map[_loc5_][_loc4_] < 0 || !this._known[_loc5_][_loc4_])
+               _loc13_ = !!_loc4_ ? _loc12_ : _loc2_ + _loc12_ + _loc7_;
+               _loc14_ = !!_loc4_ ? _loc11_ : _loc3_ + _loc11_ + _loc8_;
+               if(_loc14_ < 0 || _loc13_ < 0 || _loc14_ >= SIZE_Y || _loc13_ >= SIZE_X || this._map[_loc14_][_loc13_] < 0 || !this._known[_loc14_][_loc13_])
                {
-                  this._display[_loc14_][_loc3_].play(BLANK_TILE);
-                  this._specialDisplay[_loc14_][_loc3_].play("0");
+                  this._display[_loc11_][_loc12_].play(BLANK_TILE);
+                  this._specialDisplay[_loc11_][_loc12_].play("0");
                }
                else
                {
-                  this._display[_loc14_][_loc3_].play(this._map[_loc5_][_loc4_].toString());
-                  this._specialDisplay[_loc14_][_loc3_].play(this._special[_loc5_][_loc4_].toString());
-                  if(_loc14_ == _loc10_ && _loc3_ == _loc9_)
+                  this._display[_loc11_][_loc12_].play(this._map[_loc14_][_loc13_].toString());
+                  this._specialDisplay[_loc11_][_loc12_].play(this._special[_loc14_][_loc13_].toString());
+                  if(_loc11_ == _loc6_ && _loc12_ == _loc5_)
                   {
-                     if(this._special[_loc5_][_loc4_] == this.SPECIAL_NONE)
+                     if(this._special[_loc14_][_loc13_] == this.SPECIAL_NONE)
                      {
                         this._center.play("normal");
                      }
@@ -455,9 +450,9 @@ package
                      }
                   }
                }
-               _loc3_++;
+               _loc12_++;
             }
-            _loc14_++;
+            _loc11_++;
          }
       }
       
