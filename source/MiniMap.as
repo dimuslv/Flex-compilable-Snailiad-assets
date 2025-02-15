@@ -398,7 +398,7 @@ package
          }
          _lastX = _loc2_;
          _lastY = _loc3_;
-         var _loc4_:* = this.mapRows > 10;
+         var _loc4_:Boolean = this.mapRows > 10;
          var _loc5_:int = _loc4_ ? _loc2_ : this.getCenterCol();
          var _loc6_:int = _loc4_ ? _loc3_ : this.getCenterRow();
          if(!PlayState.player.dead)
@@ -479,20 +479,15 @@ package
       
       public function saveAll() : void
       {
-         var _loc3_:int = 0;
-         var _loc4_:int = 0;
-         var _loc5_:int = 0;
-         var _loc6_:int = 0;
-         var _loc7_:XML = null;
          var _loc1_:XML = <mapData/>;
          var _loc2_:int = 0;
          while(_loc2_ < this.knownList.length)
          {
-            _loc3_ = int(this.knownList[_loc2_].x);
-            _loc4_ = int(this.knownList[_loc2_].y);
-            _loc5_ = _loc3_ / 16 / ROOM_WIDTH;
-            _loc6_ = _loc4_ / 16 / ROOM_HEIGHT;
-            _loc7_ = <k/>;
+            var _loc3_:int = this.knownList[_loc2_].x;
+            var _loc4_:int = this.knownList[_loc2_].y;
+            var _loc5_:int = _loc3_ / 16 / ROOM_WIDTH;
+            var _loc6_:int = _loc4_ / 16 / ROOM_HEIGHT;
+            var _loc7_:XML = <k/>;
             _loc7_.@x = _loc3_;
             _loc7_.@y = _loc4_;
             _loc7_.@i = _loc5_;

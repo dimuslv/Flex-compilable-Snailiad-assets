@@ -409,8 +409,8 @@ package
          this._lastX = _loc2_;
          this._lastY = _loc3_;
          var _loc4_:* = this.mapRows > 10;
-         var _loc5_:int = !!_loc4_ ? _loc2_ : this.getCenterCol();
-         var _loc6_:int = !!_loc4_ ? _loc3_ : this.getCenterRow();
+         var _loc5_:int = _loc4_ ? _loc2_ : this.getCenterCol();
+         var _loc6_:int = _loc4_ ? _loc3_ : this.getCenterRow();
          if(!PlayState.player.dead)
          {
             this.setKnown(PlayState.player.x,PlayState.player.y,true);
@@ -427,8 +427,8 @@ package
             _loc12_ = 0;
             while(_loc12_ < this.mapCols)
             {
-               _loc13_ = !!_loc4_ ? _loc12_ : _loc2_ + _loc12_ + _loc7_;
-               _loc14_ = !!_loc4_ ? _loc11_ : _loc3_ + _loc11_ + _loc8_;
+               _loc13_ = _loc4_ ? _loc12_ : _loc2_ + _loc12_ + _loc7_;
+               _loc14_ = _loc4_ ? _loc11_ : _loc3_ + _loc11_ + _loc8_;
                if(_loc14_ < 0 || _loc13_ < 0 || _loc14_ >= SIZE_Y || _loc13_ >= SIZE_X || this._map[_loc14_][_loc13_] < 0 || !this._known[_loc14_][_loc13_])
                {
                   this._display[_loc11_][_loc12_].play(BLANK_TILE);
@@ -489,34 +489,34 @@ package
       
       public function saveAll() : void
       {
-         var _loc1_:int = 0;
-         var _loc2_:int = 0;
          var _loc3_:int = 0;
          var _loc4_:int = 0;
-         var _loc5_:XML = null;
-         var _loc6_:XML = <mapData/>;
-         var _loc7_:int = 0;
-         while(_loc7_ < this.knownList.length)
+         var _loc5_:int = 0;
+         var _loc6_:int = 0;
+         var _loc7_:XML = null;
+         var _loc1_:XML = <mapData/>;
+         var _loc2_:int = 0;
+         while(_loc2_ < this.knownList.length)
          {
-            _loc1_ = int(this.knownList[_loc7_].x);
-            _loc2_ = int(this.knownList[_loc7_].y);
-            _loc3_ = _loc1_ / 16 / ROOM_WIDTH;
-            _loc4_ = _loc2_ / 16 / ROOM_HEIGHT;
-            _loc5_ = <k/>;
-            _loc5_.@x = _loc1_;
-            _loc5_.@y = _loc2_;
-            _loc5_.@i = _loc3_;
-            _loc5_.@j = _loc4_;
-            _loc5_.@k = this._map[_loc4_][_loc3_];
-            _loc5_.@l = this._special[_loc4_][_loc3_];
-            _loc6_.appendChild(_loc5_);
-            _loc7_++;
+            _loc3_ = int(this.knownList[_loc2_].x);
+            _loc4_ = int(this.knownList[_loc2_].y);
+            _loc5_ = _loc3_ / 16 / ROOM_WIDTH;
+            _loc6_ = _loc4_ / 16 / ROOM_HEIGHT;
+            _loc7_ = <k/>;
+            _loc7_.@x = _loc3_;
+            _loc7_.@y = _loc4_;
+            _loc7_.@i = _loc5_;
+            _loc7_.@j = _loc6_;
+            _loc7_.@k = this._map[_loc6_][_loc5_];
+            _loc7_.@l = this._special[_loc6_][_loc5_];
+            _loc1_.appendChild(_loc7_);
+            _loc2_++;
          }
          if(PlayState.saveData.xml.mapData != null)
          {
             delete PlayState.saveData.xml.mapData;
          }
-         PlayState.saveData.xml.appendChild(_loc6_);
+         PlayState.saveData.xml.appendChild(_loc1_);
       }
       
       public function loadAll() : void
