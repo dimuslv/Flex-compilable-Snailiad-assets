@@ -10,7 +10,7 @@ package
       
       private static const FIREPOWER:int = 68;
       
-      public function PlayerBullet6()
+      public function PlayerBullet6() : void
       {
          super(FIREPOWER);
          loadGraphic(Art.PlayerBullet6,true,true,WIDTH,HEIGHT);

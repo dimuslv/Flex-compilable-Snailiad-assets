@@ -14,7 +14,7 @@ package
       
       private var starty:int = 0;
       
-      public function PlayerBullet4()
+      public function PlayerBullet4() : void
       {
          super(FIREPOWER);
          loadGraphic(Art.PlayerBullet4,true,true,WIDTH,HEIGHT);
@@ -28,8 +28,8 @@ package
          super.shoot(param1,param2,param3 * 1.5,param4 * 1.5);
          Sfx.playShot1b();
          play("normal");
-         this.startx = param1;
-         this.starty = param2;
+         startx = param1;
+         starty = param2;
       }
       
       override public function hitEnemy(param1:Enemy) : void
