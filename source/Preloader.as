@@ -12,17 +12,16 @@ package
    {
       public static var bg:Bitmap;
       
+      public static var fail:Boolean = false;
+      
       private static var txt:TextField;
       
       private static var txt2:TextField;
-      
-      public static var fail:Boolean = false;
 	  
-	  private var LoadBg:*;
+	  [Embed(source = 'data/art/LoadBg.png')] private const LoadBg:Class;
       
-      public function Preloader()
+      public function Preloader() : void
       {
-         this.LoadBg = Preloader_LoadBg;
          bg = new this.LoadBg();
          bg.width = 800;
          bg.height = 480;

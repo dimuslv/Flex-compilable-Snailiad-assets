@@ -22,7 +22,7 @@ package
       
       private var _collidedThisFrame:Boolean;
       
-      public function PowerGrass(param1:int, param2:int)
+      public function PowerGrass(param1:int, param2:int) : void
       {
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
@@ -44,13 +44,13 @@ package
          {
             return;
          }
-         this._collidedThisFrame = true;
-         this.nextNom -= FlxG.elapsed;
+         _collidedThisFrame = true;
+         nextNom -= FlxG.elapsed;
          if(this.nextNom > 0)
          {
             return;
          }
-         this.nextNom = NOM_DELAY;
+         nextNom = NOM_DELAY;
          PlayState.sprites.add(new PowerNom(x,y));
          if(param1._easyMode)
          {
@@ -72,7 +72,7 @@ package
          {
             return;
          }
-         this._collidedThisFrame = false;
+         _collidedThisFrame = false;
          super.update();
       }
    }
