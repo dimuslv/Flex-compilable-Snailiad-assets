@@ -29,6 +29,16 @@ package org.flixel
 		 */
 		//static public var LIBRARY_MINOR_VERSION:uint = 43;
 
+		public static var noPause:Boolean = false;
+		
+		public static var cheated:Boolean = false;
+		
+		public static var _curSongVolume:Number = 1;
+		
+		public static var consoleEnabled:Boolean = false;
+		
+		protected static var _musicVolume:Number = 1;
+		
 		/**
 		 * Internal tracker for game object (so we can pause & unpause)
 		 */
@@ -178,16 +188,6 @@ package org.flixel
 		 * A special effect that fades a color onto the screen.  Usage: FlxG.fade.start();
 		 */
 		static public var fade:FlxFade;
-		
-		public static var noPause:Boolean = false;
-		
-		public static var cheated:Boolean = false;
-		
-		public static var _curSongVolume:Number = 1;
-		
-		public static var consoleEnabled:Boolean = false;
-		
-		protected static var _musicVolume:Number = 1;
 		
 		public static var MinX:int = 0;
 		
@@ -598,6 +598,7 @@ package org.flixel
 			}
 			
 			var _loc7_:Boolean = false;
+			var pixels:BitmapData;
 			//If there is no data for this key, generate the requested graphic
 			if(!checkBitmapCache(key))
 			{
@@ -611,7 +612,7 @@ package org.flixel
 			
 			if (!_loc7_ || !Reverse)
 			{
-				var pixels:BitmapData = _cache[key];
+				pixels = _cache[key];
 			}
 			if (_loc7_ && Reverse)
 			{

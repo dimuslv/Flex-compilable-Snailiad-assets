@@ -204,8 +204,8 @@ package org.flixel
          if(FlxG.pause)
          {
             FlxG.mouse.hide();
+            FlxG.pause = false;
          }
-         FlxG.pause = false;
       }
       
       protected function onFocusLost(param1:Event = null) : void

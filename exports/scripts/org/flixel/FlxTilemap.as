@@ -4,6 +4,7 @@ package org.flixel
    import flash.geom.Matrix;
    import flash.geom.Rectangle;
    import flash.utils.getTimer;
+   import mx.utils.*;
    
    public class FlxTilemap extends FlxObject
    {
@@ -681,7 +682,7 @@ package org.flixel
          }
          else if(param2 > this.heightInTiles - 1)
          {
-            param1 = this.heightInTiles - 1;
+            param2 = this.heightInTiles - 1;
          }
          return this.getTileNoWrap(param1,param2);
       }
@@ -718,7 +719,7 @@ package org.flixel
          }
          else if(param2 > this.heightInTiles - 1)
          {
-            param1 = this.heightInTiles - 1;
+            param2 = this.heightInTiles - 1;
          }
          return this.setTileNoWrap(param1,param2,param3,param4);
       }

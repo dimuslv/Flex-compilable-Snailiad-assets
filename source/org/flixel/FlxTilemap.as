@@ -5,6 +5,7 @@ package org.flixel
 	import flash.geom.Matrix;
 	import flash.geom.Rectangle;
 	import flash.utils.getTimer;
+	import mx.utils.*;
 	
 	/**
 	 * This is a traditional tilemap display and collision class.
@@ -626,7 +627,7 @@ package org.flixel
 			if (int(X) < 0) X = 0;
 			else if (X > widthInTiles - 1) X = widthInTiles - 1;
 			if (int(Y) < 0) Y = 0;
-			else if (Y > heightInTiles - 1) X = heightInTiles - 1;
+			else if (Y > heightInTiles - 1) Y = heightInTiles - 1;
 			return getTileNoWrap(X,Y);
 		}
 		
@@ -649,7 +650,7 @@ package org.flixel
 			if (int(X) < 0) X = 0;
 			else if (X > widthInTiles - 1) X = widthInTiles - 1;
 			if (int(Y) < 0) Y = 0;
-			else if (Y > heightInTiles - 1) X = heightInTiles - 1;
+			else if (Y > heightInTiles - 1) Y = heightInTiles - 1;
 			return setTileNoWrap(X,Y,Tile,UpdateGraphics);
 		}
 		

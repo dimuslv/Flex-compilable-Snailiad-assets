@@ -437,9 +437,9 @@ package org.flixel
       
       public static function addBitmap(param1:Class, param2:Boolean = false, param3:Boolean = false, param4:String = null) : BitmapData
       {
-         var _loc8_:uint = 0;
-         var _loc9_:String = null;
-         var _loc10_:BitmapData = null;
+         var _loc8_:BitmapData = null;
+         var _loc9_:uint = 0;
+         var _loc10_:String = null;
          var _loc11_:BitmapData = null;
          var _loc12_:Matrix = null;
          var _loc5_:Boolean = false;
@@ -452,14 +452,14 @@ package org.flixel
             }
             if(param3 && _cache[_loc6_] != undefined && _cache[_loc6_] != null)
             {
-               _loc8_ = 0;
+               _loc9_ = 0;
                do
                {
-                  _loc9_ = _loc6_ + _loc8_++;
+                  _loc10_ = _loc6_ + _loc9_++;
                }
-               while(_cache[_loc9_] != undefined && _cache[_loc9_] != null);
+               while(_cache[_loc10_] != undefined && _cache[_loc10_] != null);
                
-               _loc6_ = _loc9_;
+               _loc6_ = _loc10_;
             }
          }
          var _loc7_:Boolean = false;
@@ -477,13 +477,13 @@ package org.flixel
          }
          if(!_loc7_ || !param2)
          {
-            _loc10_ = _cache[_loc6_];
+            _loc8_ = _cache[_loc6_];
          }
          if(_loc7_ && param2)
          {
             _loc5_ = true;
          }
-         else if(!_loc5_ && param2 && _loc10_.width == new param1().bitmapData.width)
+         else if(!_loc5_ && param2 && _loc8_.width == new param1().bitmapData.width)
          {
             _loc5_ = true;
          }
@@ -491,21 +491,21 @@ package org.flixel
          {
             if(!_loc7_)
             {
-               _loc11_ = new BitmapData(_loc10_.width << 1,_loc10_.height,true,0);
-               _loc11_.draw(_loc10_);
+               _loc11_ = new BitmapData(_loc8_.width << 1,_loc8_.height,true,0);
+               _loc11_.draw(_loc8_);
                _loc12_ = new Matrix();
                _loc12_.scale(-1,1);
                _loc12_.translate(_loc11_.width,0);
-               _loc11_.draw(_loc10_,_loc12_);
-               _loc10_ = _loc11_;
+               _loc11_.draw(_loc8_,_loc12_);
+               _loc8_ = _loc11_;
                _cacheReverse[_loc6_] = _loc11_;
             }
             else
             {
-               _loc10_ = _cacheReverse[_loc6_];
+               _loc8_ = _cacheReverse[_loc6_];
             }
          }
-         return _loc10_;
+         return _loc8_;
       }
       
       public static function follow(param1:FlxObject, param2:Number = 1, param3:Boolean = true) : void

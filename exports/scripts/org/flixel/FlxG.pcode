@@ -8,6 +8,16 @@ package org.flixel
    
    public class FlxG
    {
+      public static var noPause:Boolean = false;
+      
+      public static var cheated:Boolean = false;
+      
+      public static var _curSongVolume:Number = 1;
+      
+      public static var consoleEnabled:Boolean = false;
+      
+      protected static var _musicVolume:Number = 1;
+      
       protected static var _game:FlxGame;
       
       protected static var _pause:Boolean;
@@ -83,16 +93,6 @@ package org.flixel
       public static var flash:FlxFlash;
       
       public static var fade:FlxFade;
-      
-      public static var noPause:Boolean = false;
-      
-      public static var cheated:Boolean = false;
-      
-      public static var _curSongVolume:Number = 1;
-      
-      public static var consoleEnabled:Boolean = false;
-      
-      protected static var _musicVolume:Number = 1;
       
       public static var MinX:int = 0;
       
@@ -1573,14 +1573,14 @@ package org.flixel
          code
          getlocal0
          pushscope
-         pushbyte 0
-         convert_u
-         setlocal 8
-         pushnull
-         coerce_s
-         setlocal 9
          pushnull
          coerce QName(PackageNamespace("flash.display"),"BitmapData")
+         setlocal 8
+         pushbyte 0
+         convert_u
+         setlocal 9
+         pushnull
+         coerce_s
          setlocal 10
          pushnull
          coerce QName(PackageNamespace("flash.display"),"BitmapData")
@@ -1630,23 +1630,23 @@ package org.flixel
          iffalse ofs0
          pushbyte 0
          convert_u
-         setlocal 8
+         setlocal 9
          jump ofs4
          ofs5:
          label
          ofs4:
          getlocal 6
-         getlocal 8
+         getlocal 9
          convert_d
          dup
          increment
          convert_u
-         setlocal 8
+         setlocal 9
          add
          coerce_s
-         setlocal 9
+         setlocal 10
          getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
-         getlocal 9
+         getlocal 10
          getproperty MultinameL([PrivateNamespace(null,"#FlxG/1"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"#FlxG/2"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace(""),"undefined")
          equals
@@ -1655,14 +1655,14 @@ package org.flixel
          iffalse ofs6
          pop
          getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
-         getlocal 9
+         getlocal 10
          getproperty MultinameL([PrivateNamespace(null,"#FlxG/1"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"#FlxG/2"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
          pushnull
          equals
          not
          ofs6:
          iftrue ofs5
-         getlocal 9
+         getlocal 10
          coerce_s
          setlocal 6
          ofs0:
@@ -1701,7 +1701,7 @@ package org.flixel
          getlocal 6
          getproperty MultinameL([PrivateNamespace(null,"#FlxG/1"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"#FlxG/2"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("flash.display"),"BitmapData")
-         setlocal 10
+         setlocal 8
          ofs11:
          getlocal 7
          convert_b
@@ -1727,7 +1727,7 @@ package org.flixel
          dup
          iffalse ofs16
          pop
-         getlocal 10
+         getlocal 8
          getproperty QName(PackageNamespace(""),"width")
          getlocal1
          construct 0
@@ -1744,11 +1744,11 @@ package org.flixel
          getlocal 7
          iftrue ofs18
          findpropstrict QName(PackageNamespace("flash.display"),"BitmapData")
-         getlocal 10
+         getlocal 8
          getproperty QName(PackageNamespace(""),"width")
          pushbyte 1
          lshift
-         getlocal 10
+         getlocal 8
          getproperty QName(PackageNamespace(""),"height")
          pushtrue
          pushbyte 0
@@ -1756,7 +1756,7 @@ package org.flixel
          coerce QName(PackageNamespace("flash.display"),"BitmapData")
          dup
          setlocal 11
-         getlocal 10
+         getlocal 8
          callpropvoid QName(PackageNamespace(""),"draw"), 1
          findpropstrict QName(PackageNamespace("flash.geom"),"Matrix")
          constructprop QName(PackageNamespace("flash.geom"),"Matrix"), 0
@@ -1772,12 +1772,12 @@ package org.flixel
          pushbyte 0
          callpropvoid QName(PackageNamespace(""),"translate"), 2
          getlocal 11
-         getlocal 10
+         getlocal 8
          getlocal 12
          callpropvoid QName(PackageNamespace(""),"draw"), 2
          getlocal 11
          coerce QName(PackageNamespace("flash.display"),"BitmapData")
-         setlocal 10
+         setlocal 8
          getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cacheReverse")
          getlocal 6
          getlocal 11
@@ -1788,9 +1788,9 @@ package org.flixel
          getlocal 6
          getproperty MultinameL([PrivateNamespace(null,"#FlxG/1"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"#FlxG/2"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("flash.display"),"BitmapData")
-         setlocal 10
+         setlocal 8
          ofs17:
-         getlocal 10
+         getlocal 8
          returnvalue
          end ; code
          end ; body

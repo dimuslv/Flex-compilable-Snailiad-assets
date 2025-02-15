@@ -31,7 +31,7 @@ package org.flixel
 		// So if you are using the Flex 3.x SDK compiler, switch the embed statment below to expose the correct version.
 		
 		//Flex v4.x SDK only (see note above):
-		[Embed(source="data/Snailplanes.ttf",fontFamily="system",embedAsCFF="false")] protected var junk:String;
+		[Embed(source="data/Snailplanes.ttf",fontFamily="Snailplanes",embedAsCFF="false")] protected var junk:String;
 		
 		//Flex v3.x SDK only (see note above):
 		//[Embed(source="data/nokiafc22.ttf",fontFamily="system")] protected var junk:String;
@@ -248,9 +248,10 @@ package org.flixel
 		 */
 		protected function onFocus(event:Event=null):void
 		{
-			if(FlxG.pause)
+			if(FlxG.pause) {
 				FlxG.mouse.hide();
 				FlxG.pause = false;
+			}
 		}
 		
 		/**
