@@ -1,6 +1,6 @@
 package com.adobe.serialization.json
 {
-   public final class JSONTokenType
+   public class JSONTokenType
    {
       public static const UNKNOWN:int = -1;
       
@@ -25,8 +25,6 @@ package com.adobe.serialization.json
       public static const STRING:int = 10;
       
       public static const NUMBER:int = 11;
-      
-      public static const NAN:int = 12;
       
       public function JSONTokenType()
       {

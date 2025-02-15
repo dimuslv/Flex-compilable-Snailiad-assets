@@ -44,69 +44,68 @@ package com.adobe.serialization.json
       
       private function escapeString(param1:String) : String
       {
+         var _loc2_:String = null;
          var _loc3_:String = null;
-         var _loc6_:String = null;
-         var _loc7_:String = null;
-         var _loc2_:* = "";
-         var _loc4_:Number = param1.length;
-         var _loc5_:int = 0;
-         while(_loc5_ < _loc4_)
+         var _loc4_:String = null;
+         var _loc5_:* = "";
+         var _loc6_:Number = param1.length;
+         var _loc7_:int = 0;
+         while(_loc7_ < _loc6_)
          {
-            _loc3_ = param1.charAt(_loc5_);
-            switch(_loc3_)
+            _loc2_ = param1.charAt(_loc7_);
+            switch(_loc2_)
             {
                case "\"":
-                  _loc2_ += "\\\"";
+                  _loc5_ += "\\\"";
                   break;
                case "\\":
-                  _loc2_ += "\\\\";
+                  _loc5_ += "\\\\";
                   break;
                case "\b":
-                  _loc2_ += "\\b";
+                  _loc5_ += "\\b";
                   break;
                case "\f":
-                  _loc2_ += "\\f";
+                  _loc5_ += "\\f";
                   break;
                case "\n":
-                  _loc2_ += "\\n";
+                  _loc5_ += "\\n";
                   break;
                case "\r":
-                  _loc2_ += "\\r";
+                  _loc5_ += "\\r";
                   break;
                case "\t":
-                  _loc2_ += "\\t";
+                  _loc5_ += "\\t";
                   break;
                default:
-                  if(_loc3_ < " ")
+                  if(_loc2_ < " ")
                   {
-                     _loc6_ = _loc3_.charCodeAt(0).toString(16);
-                     _loc7_ = _loc6_.length == 2 ? "00" : "000";
-                     _loc2_ += "\\u" + _loc7_ + _loc6_;
+                     _loc3_ = _loc2_.charCodeAt(0).toString(16);
+                     _loc4_ = _loc3_.length == 2 ? "00" : "000";
+                     _loc5_ += "\\u" + _loc4_ + _loc3_;
                   }
                   else
                   {
-                     _loc2_ += _loc3_;
+                     _loc5_ += _loc2_;
                   }
                   break;
             }
-            _loc5_++;
+            _loc7_++;
          }
-         return "\"" + _loc2_ + "\"";
+         return "\"" + _loc5_ + "\"";
       }
       
       private function arrayToString(param1:Array) : String
       {
          var _loc2_:* = "";
-         var _loc3_:int = int(param1.length);
-         var _loc4_:int = 0;
-         while(_loc4_ < _loc3_)
+         var _loc3_:int = 0;
+         while(_loc3_ < param1.length)
          {
             if(_loc2_.length > 0)
             {
                _loc2_ += ",";
             }
-            _loc2_ += this.convertToString(param1[_loc4_]);
-            _loc4_++;
+            _loc2_ += this.convertToString(param1[_loc3_]);
+            _loc3_++;
          }
          return "[" + _loc2_ + "]";
       }
@@ -136,16 +135,13 @@ package com.adobe.serialization.json
          }
          else
          {
-            for each(v in classInfo..*.(name() == "variable" || name() == "accessor" && attribute("access").charAt(0) == "r"))
+            for each(v in classInfo..*.(name() == "variable" || name() == "accessor"))
             {
-               if(!(Boolean(v.metadata) && v.metadata.(@name == "Transient").length() > 0))
+               if(s.length > 0)
                {
-                  if(s.length > 0)
-                  {
-                     s += ",";
-                  }
-                  s += this.escapeString(v.@name.toString()) + ":" + this.convertToString(o[v.@name]);
+                  s += ",";
                }
+               s += this.escapeString(v.@name.toString()) + ":" + this.convertToString(o[v.@name]);
             }
          }
          return "{" + s + "}";

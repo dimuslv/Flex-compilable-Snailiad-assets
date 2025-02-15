@@ -20,25 +20,22 @@ package com.adobe.serialization.json
       end ; body
       end ; method
       
-      private var strict:Boolean;
-      
       private var value:*;
       
       private var tokenizer:JSONTokenizer;
       
       private var token:JSONToken;
       
-      public function JSONDecoder(param1:String, param2:Boolean)
+      public function JSONDecoder(param1:String)
       {
          method
          name null
          param QName(PackageNamespace(""),"String")
-         param QName(PackageNamespace(""),"Boolean")
          returns null
          
          body
-         maxstack 4
-         localcount 3
+         maxstack 3
+         localcount 2
          initscopedepth 4
          maxscopedepth 5
          
@@ -48,13 +45,9 @@ package com.adobe.serialization.json
          getlocal0
          constructsuper 0
          getlocal0
-         getlocal2
-         initproperty QName(PrivateNamespace(null,"#JSONDecoder"),"strict")
-         getlocal0
          findpropstrict QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenizer")
          getlocal1
-         getlocal2
-         constructprop QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenizer"), 2
+         constructprop QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenizer"), 1
          initproperty QName(PrivateNamespace(null,"#JSONDecoder"),"tokenizer")
          getlocal0
          callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"nextToken"), 0
@@ -62,23 +55,6 @@ package com.adobe.serialization.json
          getlocal0
          callproperty QName(PrivateNamespace(null,"#JSONDecoder"),"parseValue"), 0
          initproperty QName(PrivateNamespace(null,"#JSONDecoder"),"value")
-         getlocal2
-         convert_b
-         dup
-         iffalse ofs0
-         pop
-         getlocal0
-         callproperty QName(PrivateNamespace(null,"#JSONDecoder"),"nextToken"), 0
-         pushnull
-         equals
-         not
-         ofs0:
-         iffalse ofs1
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"tokenizer")
-         pushstring "Unexpected characters left in input stream"
-         callpropvoid QName(PackageNamespace(""),"parseError"), 1
-         ofs1:
          returnvoid
          end ; code
          end ; body
@@ -110,10 +86,9 @@ package com.adobe.serialization.json
          end ; method
       }
       
-      final private function nextToken() : JSONToken
+      private function nextToken() : JSONToken
       {
          trait method QName(PrivateNamespace(null,"#JSONDecoder"),"nextToken")
-         flag FINAL
          dispid 0
          method
          name null
@@ -134,7 +109,7 @@ package com.adobe.serialization.json
          callproperty QName(PackageNamespace(""),"getNextToken"), 0
          dup
          setlocal1
-         initproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
+         setproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
          getlocal1
          kill 1
          returnvalue
@@ -143,76 +118,9 @@ package com.adobe.serialization.json
          end ; method
       }
       
-      final private function nextValidToken() : JSONToken
-      {
-         trait method QName(PrivateNamespace(null,"#JSONDecoder"),"nextValidToken")
-         flag FINAL
-         dispid 0
-         method
-         name null
-         returns QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
-         
-         body
-         maxstack 2
-         localcount 1
-         initscopedepth 4
-         maxscopedepth 5
-         
-         code
-         getlocal0
-         pushscope
-         getlocal0
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"tokenizer")
-         callproperty QName(PackageNamespace(""),"getNextToken"), 0
-         initproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
-         getlocal0
-         callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"checkValidToken"), 0
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
-         returnvalue
-         end ; code
-         end ; body
-         end ; method
-      }
-      
-      final private function checkValidToken() : void
-      {
-         trait method QName(PrivateNamespace(null,"#JSONDecoder"),"checkValidToken")
-         flag FINAL
-         dispid 0
-         method
-         name null
-         returns QName(PackageNamespace(""),"void")
-         
-         body
-         maxstack 2
-         localcount 1
-         initscopedepth 4
-         maxscopedepth 5
-         
-         code
-         getlocal0
-         pushscope
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
-         pushnull
-         ifne ofs0
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"tokenizer")
-         pushstring "Unexpected end of input"
-         callpropvoid QName(PackageNamespace(""),"parseError"), 1
-         ofs0:
-         returnvoid
-         end ; code
-         end ; body
-         end ; method
-      }
-      
-      final private function parseArray() : Array
+      private function parseArray() : Array
       {
          trait method QName(PrivateNamespace(null,"#JSONDecoder"),"parseArray")
-         flag FINAL
          dispid 0
          method
          name null
@@ -232,7 +140,7 @@ package com.adobe.serialization.json
          coerce QName(PackageNamespace(""),"Array")
          setlocal1
          getlocal0
-         callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"nextValidToken"), 0
+         callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"nextToken"), 0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
          getproperty QName(PackageNamespace(""),"type")
@@ -242,82 +150,33 @@ package com.adobe.serialization.json
          getlocal1
          returnvalue
          ofs0:
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"strict")
-         not
-         dup
-         iffalse ofs1
-         pop
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
-         getproperty QName(PackageNamespace(""),"type")
-         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
-         getproperty QName(PackageNamespace(""),"COMMA")
-         equals
-         ofs1:
-         iffalse ofs2
-         getlocal0
-         callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"nextValidToken"), 0
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
-         getproperty QName(PackageNamespace(""),"type")
-         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
-         getproperty QName(PackageNamespace(""),"RIGHT_BRACKET")
-         ifne ofs3
-         getlocal1
-         returnvalue
-         ofs3:
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"tokenizer")
-         pushstring "Leading commas are not supported.  Expecting \']\' but found "
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
-         getproperty QName(PackageNamespace(""),"value")
-         add
-         callpropvoid QName(PackageNamespace(""),"parseError"), 1
+         jump ofs1
          ofs2:
-         jump ofs4
-         ofs5:
          label
          getlocal1
          getlocal0
          callproperty QName(PrivateNamespace(null,"#JSONDecoder"),"parseValue"), 0
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
          getlocal0
-         callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"nextValidToken"), 0
+         callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"nextToken"), 0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
          getproperty QName(PackageNamespace(""),"type")
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"RIGHT_BRACKET")
-         ifne ofs6
-         getlocal1
-         returnvalue
-         ofs6:
+         ifne ofs3
+         jump ofs4
+         ofs3:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
          getproperty QName(PackageNamespace(""),"type")
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"COMMA")
-         ifne ofs7
+         ifne ofs5
          getlocal0
          callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"nextToken"), 0
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"strict")
-         iftrue ofs8
-         getlocal0
-         callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"checkValidToken"), 0
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
-         getproperty QName(PackageNamespace(""),"type")
-         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
-         getproperty QName(PackageNamespace(""),"RIGHT_BRACKET")
-         ifne ofs8
-         getlocal1
-         returnvalue
-         ofs8:
-         jump ofs4
-         ofs7:
+         jump ofs1
+         ofs5:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"tokenizer")
          pushstring "Expecting ] or , but found "
@@ -326,19 +185,19 @@ package com.adobe.serialization.json
          getproperty QName(PackageNamespace(""),"value")
          add
          callpropvoid QName(PackageNamespace(""),"parseError"), 1
+         ofs1:
+         jump ofs2
          ofs4:
-         jump ofs5
-         pushnull
+         getlocal1
          returnvalue
          end ; code
          end ; body
          end ; method
       }
       
-      final private function parseObject() : Object
+      private function parseObject() : Object
       {
          trait method QName(PrivateNamespace(null,"#JSONDecoder"),"parseObject")
-         flag FINAL
          dispid 0
          method
          name null
@@ -355,122 +214,73 @@ package com.adobe.serialization.json
          pushscope
          pushnull
          coerce_s
-         setlocal2
+         setlocal1
          findpropstrict QName(PackageNamespace(""),"Object")
          constructprop QName(PackageNamespace(""),"Object"), 0
          coerce QName(PackageNamespace(""),"Object")
-         setlocal1
+         setlocal2
          getlocal0
-         callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"nextValidToken"), 0
+         callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"nextToken"), 0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
          getproperty QName(PackageNamespace(""),"type")
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"RIGHT_BRACE")
          ifne ofs0
-         getlocal1
+         getlocal2
          returnvalue
          ofs0:
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"strict")
-         not
-         dup
-         iffalse ofs1
-         pop
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
-         getproperty QName(PackageNamespace(""),"type")
-         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
-         getproperty QName(PackageNamespace(""),"COMMA")
-         equals
-         ofs1:
-         iffalse ofs2
-         getlocal0
-         callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"nextValidToken"), 0
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
-         getproperty QName(PackageNamespace(""),"type")
-         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
-         getproperty QName(PackageNamespace(""),"RIGHT_BRACE")
-         ifne ofs3
-         getlocal1
-         returnvalue
-         ofs3:
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"tokenizer")
-         pushstring "Leading commas are not supported.  Expecting \'}\' but found "
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
-         getproperty QName(PackageNamespace(""),"value")
-         add
-         callpropvoid QName(PackageNamespace(""),"parseError"), 1
+         jump ofs1
          ofs2:
-         jump ofs4
-         ofs5:
          label
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
          getproperty QName(PackageNamespace(""),"type")
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"STRING")
-         ifne ofs6
+         ifne ofs3
          findpropstrict QName(PackageNamespace(""),"String")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
          getproperty QName(PackageNamespace(""),"value")
          callproperty QName(PackageNamespace(""),"String"), 1
          coerce_s
-         setlocal2
+         setlocal1
          getlocal0
-         callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"nextValidToken"), 0
+         callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"nextToken"), 0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
          getproperty QName(PackageNamespace(""),"type")
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"COLON")
-         ifne ofs7
+         ifne ofs4
          getlocal0
          callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"nextToken"), 0
-         getlocal1
          getlocal2
+         getlocal1
          getlocal0
          callproperty QName(PrivateNamespace(null,"#JSONDecoder"),"parseValue"), 0
          setproperty MultinameL([PrivateNamespace(null,"#JSONDecoder"),PackageNamespace("com.adobe.serialization.json"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin"),PrivateNamespace(null,"#JSONDecoder/1"),PackageInternalNs("com.adobe.serialization.json"),ProtectedNamespace("com.adobe.serialization.json:JSONDecoder"),StaticProtectedNs("com.adobe.serialization.json:JSONDecoder"),StaticProtectedNs("Object")])
          getlocal0
-         callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"nextValidToken"), 0
+         callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"nextToken"), 0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
          getproperty QName(PackageNamespace(""),"type")
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"RIGHT_BRACE")
-         ifne ofs8
-         getlocal1
-         returnvalue
-         ofs8:
+         ifne ofs5
+         jump ofs6
+         ofs5:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
          getproperty QName(PackageNamespace(""),"type")
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"COMMA")
-         ifne ofs9
+         ifne ofs7
          getlocal0
          callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"nextToken"), 0
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"strict")
-         iftrue ofs10
-         getlocal0
-         callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"checkValidToken"), 0
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
-         getproperty QName(PackageNamespace(""),"type")
-         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
-         getproperty QName(PackageNamespace(""),"RIGHT_BRACE")
-         ifne ofs10
-         getlocal1
-         returnvalue
-         ofs10:
-         jump ofs11
-         ofs9:
+         jump ofs8
+         ofs7:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"tokenizer")
          pushstring "Expecting } or , but found "
@@ -479,9 +289,9 @@ package com.adobe.serialization.json
          getproperty QName(PackageNamespace(""),"value")
          add
          callpropvoid QName(PackageNamespace(""),"parseError"), 1
-         ofs11:
-         jump ofs12
-         ofs7:
+         ofs8:
+         jump ofs9
+         ofs4:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"tokenizer")
          pushstring "Expecting : but found "
@@ -490,9 +300,9 @@ package com.adobe.serialization.json
          getproperty QName(PackageNamespace(""),"value")
          add
          callpropvoid QName(PackageNamespace(""),"parseError"), 1
-         ofs12:
-         jump ofs4
-         ofs6:
+         ofs9:
+         jump ofs1
+         ofs3:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"tokenizer")
          pushstring "Expecting string but found "
@@ -501,19 +311,19 @@ package com.adobe.serialization.json
          getproperty QName(PackageNamespace(""),"value")
          add
          callpropvoid QName(PackageNamespace(""),"parseError"), 1
-         ofs4:
-         jump ofs5
-         pushnull
+         ofs1:
+         jump ofs2
+         ofs6:
+         getlocal2
          returnvalue
          end ; code
          end ; body
          end ; method
       }
       
-      final private function parseValue() : Object
+      private function parseValue() : Object
       {
          trait method QName(PrivateNamespace(null,"#JSONDecoder"),"parseValue")
-         flag FINAL
          dispid 0
          method
          name null
@@ -529,43 +339,32 @@ package com.adobe.serialization.json
          getlocal0
          pushscope
          getlocal0
-         callpropvoid QName(PrivateNamespace(null,"#JSONDecoder"),"checkValidToken"), 0
-         jump ofs0
-         ofs1:
+         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
+         pushnull
+         ifne ofs0
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"tokenizer")
+         pushstring "Unexpected end of input"
+         callpropvoid QName(PackageNamespace(""),"parseError"), 1
+         ofs0:
+         jump ofs1
+         ofs2:
          label
          getlocal0
          callproperty QName(PrivateNamespace(null,"#JSONDecoder"),"parseObject"), 0
          returnvalue
-         ofs2:
+         ofs3:
          label
          getlocal0
          callproperty QName(PrivateNamespace(null,"#JSONDecoder"),"parseArray"), 0
          returnvalue
-         ofs3:
-         label
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
-         getproperty QName(PackageNamespace(""),"value")
-         returnvalue
          ofs4:
          label
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"strict")
-         iftrue ofs5
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
          getproperty QName(PackageNamespace(""),"value")
          returnvalue
          ofs5:
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"tokenizer")
-         pushstring "Unexpected "
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
-         getproperty QName(PackageNamespace(""),"value")
-         add
-         callpropvoid QName(PackageNamespace(""),"parseError"), 1
-         ofs6:
          label
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"tokenizer")
@@ -575,8 +374,10 @@ package com.adobe.serialization.json
          getproperty QName(PackageNamespace(""),"value")
          add
          callpropvoid QName(PackageNamespace(""),"parseError"), 1
-         jump ofs7
-         ofs0:
+         pushnull
+         returnvalue
+         jump ofs1
+         ofs1:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONDecoder"),"token")
          getproperty QName(PackageNamespace(""),"type")
@@ -584,70 +385,60 @@ package com.adobe.serialization.json
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"LEFT_BRACE")
          getlocal1
-         ifstrictne ofs8
+         ifstrictne ofs6
          pushbyte 0
-         jump ofs9
-         ofs8:
+         jump ofs7
+         ofs6:
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"LEFT_BRACKET")
          getlocal1
-         ifstrictne ofs10
+         ifstrictne ofs8
          pushbyte 1
-         jump ofs9
-         ofs10:
+         jump ofs7
+         ofs8:
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"STRING")
          getlocal1
-         ifstrictne ofs11
+         ifstrictne ofs9
          pushbyte 2
-         jump ofs9
-         ofs11:
+         jump ofs7
+         ofs9:
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"NUMBER")
          getlocal1
-         ifstrictne ofs12
+         ifstrictne ofs10
          pushbyte 3
-         jump ofs9
-         ofs12:
+         jump ofs7
+         ofs10:
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"TRUE")
          getlocal1
-         ifstrictne ofs13
+         ifstrictne ofs11
          pushbyte 4
-         jump ofs9
-         ofs13:
+         jump ofs7
+         ofs11:
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"FALSE")
          getlocal1
-         ifstrictne ofs14
+         ifstrictne ofs12
          pushbyte 5
-         jump ofs9
-         ofs14:
+         jump ofs7
+         ofs12:
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"NULL")
          getlocal1
-         ifstrictne ofs15
+         ifstrictne ofs13
          pushbyte 6
-         jump ofs9
-         ofs15:
-         getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
-         getproperty QName(PackageNamespace(""),"NAN")
-         getlocal1
-         ifstrictne ofs16
+         jump ofs7
+         ofs13:
+         jump ofs14
          pushbyte 7
-         jump ofs9
-         ofs16:
-         jump ofs17
-         pushbyte 8
-         jump ofs17
-         ofs17:
-         pushbyte 8
-         ofs9:
-         kill 1
-         lookupswitch ofs6, [ofs1, ofs2, ofs3, ofs3, ofs3, ofs3, ofs3, ofs4, ofs6]
+         jump ofs14
+         ofs14:
+         pushbyte 7
          ofs7:
-         pushnull
-         returnvalue
+         kill 1
+         lookupswitch ofs5, [ofs2, ofs3, ofs4, ofs4, ofs4, ofs4, ofs4, ofs5]
          end ; code
          end ; body
          end ; method

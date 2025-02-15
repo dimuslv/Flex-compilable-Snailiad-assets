@@ -1,6 +1,6 @@
 package com.adobe.serialization.json
 {
-   public final class JSON
+   public class JSON
    {
       method
       name null
@@ -55,7 +55,7 @@ package com.adobe.serialization.json
          
          body
          maxstack 2
-         localcount 2
+         localcount 3
          initscopedepth 3
          maxscopedepth 4
          
@@ -65,6 +65,9 @@ package com.adobe.serialization.json
          findpropstrict QName(PackageNamespace("com.adobe.serialization.json"),"JSONEncoder")
          getlocal1
          constructprop QName(PackageNamespace("com.adobe.serialization.json"),"JSONEncoder"), 1
+         coerce QName(PackageNamespace("com.adobe.serialization.json"),"JSONEncoder")
+         setlocal2
+         getlocal2
          callproperty QName(PackageNamespace(""),"getString"), 0
          returnvalue
          end ; code
@@ -72,21 +75,18 @@ package com.adobe.serialization.json
          end ; method
       }
       
-      public static function decode(param1:String, param2:Boolean = true) : *
+      public static function decode(param1:String) : *
       {
          trait method QName(PackageNamespace(""),"decode")
          flag FINAL
          dispid 4
          method
          name null
-         flag HAS_OPTIONAL
          param QName(PackageNamespace(""),"String")
-         param QName(PackageNamespace(""),"Boolean")
-         optional True()
          returns null
          
          body
-         maxstack 3
+         maxstack 2
          localcount 3
          initscopedepth 3
          maxscopedepth 4
@@ -96,8 +96,10 @@ package com.adobe.serialization.json
          pushscope
          findpropstrict QName(PackageNamespace("com.adobe.serialization.json"),"JSONDecoder")
          getlocal1
+         constructprop QName(PackageNamespace("com.adobe.serialization.json"),"JSONDecoder"), 1
+         coerce QName(PackageNamespace("com.adobe.serialization.json"),"JSONDecoder")
+         setlocal2
          getlocal2
-         constructprop QName(PackageNamespace("com.adobe.serialization.json"),"JSONDecoder"), 2
          callproperty QName(PackageNamespace(""),"getValue"), 0
          returnvalue
          end ; code

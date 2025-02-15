@@ -1,25 +1,36 @@
 package com.adobe.serialization.json
 {
-   public final class JSONToken
+   public class JSONToken
    {
-      internal static const token:JSONToken = new JSONToken();
+      private var _type:int;
       
-      public var type:int;
-      
-      public var value:Object;
+      private var _value:Object;
       
       public function JSONToken(param1:int = -1, param2:Object = null)
       {
          super();
-         this.type = param1;
-         this.value = param2;
+         this._type = param1;
+         this._value = param2;
       }
       
-      internal static function create(param1:int = -1, param2:Object = null) : JSONToken
+      public function get type() : int
       {
-         token.type = param1;
-         token.value = param2;
-         return token;
+         return this._type;
+      }
+      
+      public function set type(param1:int) : void
+      {
+         this._type = param1;
+      }
+      
+      public function get value() : Object
+      {
+         return this._value;
+      }
+      
+      public function set value(param1:Object) : void
+      {
+         this._value = param1;
       }
    }
 }
