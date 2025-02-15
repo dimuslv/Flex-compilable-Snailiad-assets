@@ -1924,6 +1924,7 @@ package
          }
 		 else
 		 {
+		    ;
 		 }
          this.enterKeyLayer.visible = false;
          this.updateMenuScroll();
