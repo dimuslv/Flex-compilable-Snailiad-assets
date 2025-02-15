@@ -1,6 +1,6 @@
 package com.adobe.serialization.json
 {
-   public class JSON
+   public final class JSON
    {
       public function JSON()
       {
@@ -9,14 +9,12 @@ package com.adobe.serialization.json
       
       public static function encode(param1:Object) : String
       {
-         var _loc2_:JSONEncoder = new JSONEncoder(param1);
-         return _loc2_.getString();
+         return new JSONEncoder(param1).getString();
       }
       
-      public static function decode(param1:String) : *
+      public static function decode(param1:String, param2:Boolean = true) : *
       {
-         var _loc2_:JSONDecoder = new JSONDecoder(param1);
-         return _loc2_.getValue();
+         return new JSONDecoder(param1,param2).getValue();
       }
    }
 }

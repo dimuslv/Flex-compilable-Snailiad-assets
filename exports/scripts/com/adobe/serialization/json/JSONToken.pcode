@@ -1,13 +1,15 @@
 package com.adobe.serialization.json
 {
-   public class JSONToken
+   public final class JSONToken
    {
+      internal static const token:JSONToken;
+      
       method
       name null
       returns null
       
       body
-      maxstack 1
+      maxstack 2
       localcount 1
       initscopedepth 3
       maxscopedepth 4
@@ -15,14 +17,18 @@ package com.adobe.serialization.json
       code
       getlocal0
       pushscope
+      findproperty QName(PackageInternalNs("com.adobe.serialization.json"),"token")
+      getlocal0
+      construct 0
+      initproperty QName(PackageInternalNs("com.adobe.serialization.json"),"token")
       returnvoid
       end ; code
       end ; body
       end ; method
       
-      private var _type:int;
+      public var type:int;
       
-      private var _value:Object;
+      public var value:Object;
       
       public function JSONToken(param1:int = -1, param2:Object = null)
       {
@@ -48,115 +54,47 @@ package com.adobe.serialization.json
          constructsuper 0
          getlocal0
          getlocal1
-         initproperty QName(PrivateNamespace(null,"#JSONToken"),"_type")
+         initproperty QName(PackageNamespace(""),"type")
          getlocal0
          getlocal2
-         initproperty QName(PrivateNamespace(null,"#JSONToken"),"_value")
+         initproperty QName(PackageNamespace(""),"value")
          returnvoid
          end ; code
          end ; body
          end ; method
       }
       
-      public function get type() : int
+      internal static function create(param1:int = -1, param2:Object = null) : JSONToken
       {
-         trait getter QName(PackageNamespace(""),"type")
-         dispid 0
+         trait method QName(PackageInternalNs("com.adobe.serialization.json"),"create")
+         flag FINAL
+         dispid 3
          method
          name null
-         returns QName(PackageNamespace(""),"int")
-         
-         body
-         maxstack 1
-         localcount 1
-         initscopedepth 4
-         maxscopedepth 5
-         
-         code
-         getlocal0
-         pushscope
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONToken"),"_type")
-         returnvalue
-         end ; code
-         end ; body
-         end ; method
-      }
-      
-      public function set type(param1:int) : void
-      {
-         trait setter QName(PackageNamespace(""),"type")
-         dispid 0
-         method
-         name null
+         flag HAS_OPTIONAL
          param QName(PackageNamespace(""),"int")
-         returns QName(PackageNamespace(""),"void")
-         
-         body
-         maxstack 2
-         localcount 2
-         initscopedepth 4
-         maxscopedepth 5
-         
-         code
-         getlocal0
-         pushscope
-         getlocal0
-         getlocal1
-         setproperty QName(PrivateNamespace(null,"#JSONToken"),"_type")
-         returnvoid
-         end ; code
-         end ; body
-         end ; method
-      }
-      
-      public function get value() : Object
-      {
-         trait getter QName(PackageNamespace(""),"value")
-         dispid 0
-         method
-         name null
-         returns QName(PackageNamespace(""),"Object")
-         
-         body
-         maxstack 1
-         localcount 1
-         initscopedepth 4
-         maxscopedepth 5
-         
-         code
-         getlocal0
-         pushscope
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#JSONToken"),"_value")
-         returnvalue
-         end ; code
-         end ; body
-         end ; method
-      }
-      
-      public function set value(param1:Object) : void
-      {
-         trait setter QName(PackageNamespace(""),"value")
-         dispid 0
-         method
-         name null
          param QName(PackageNamespace(""),"Object")
-         returns QName(PackageNamespace(""),"void")
+         optional Integer(-1)
+         optional Null()
+         returns QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
          
          body
          maxstack 2
-         localcount 2
-         initscopedepth 4
-         maxscopedepth 5
+         localcount 3
+         initscopedepth 3
+         maxscopedepth 4
          
          code
          getlocal0
          pushscope
-         getlocal0
+         getlex QName(PackageInternalNs("com.adobe.serialization.json"),"token")
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#JSONToken"),"_value")
-         returnvoid
+         setproperty QName(PackageNamespace(""),"type")
+         getlex QName(PackageInternalNs("com.adobe.serialization.json"),"token")
+         getlocal2
+         setproperty QName(PackageNamespace(""),"value")
+         getlex QName(PackageInternalNs("com.adobe.serialization.json"),"token")
+         returnvalue
          end ; code
          end ; body
          end ; method

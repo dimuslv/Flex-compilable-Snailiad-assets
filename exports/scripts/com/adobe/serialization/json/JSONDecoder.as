@@ -2,18 +2,25 @@ package com.adobe.serialization.json
 {
    public class JSONDecoder
    {
+      private var strict:Boolean;
+      
       private var value:*;
       
       private var tokenizer:JSONTokenizer;
       
       private var token:JSONToken;
       
-      public function JSONDecoder(param1:String)
+      public function JSONDecoder(param1:String, param2:Boolean)
       {
          super();
-         this.tokenizer = new JSONTokenizer(param1);
+         this.strict = param2;
+         this.tokenizer = new JSONTokenizer(param1,param2);
          this.nextToken();
          this.value = this.parseValue();
+         if(param2 && this.nextToken() != null)
+         {
+            this.tokenizer.parseError("Unexpected characters left in input stream");
+         }
       }
       
       public function getValue() : *
@@ -21,23 +28,47 @@ package com.adobe.serialization.json
          return this.value;
       }
       
-      private function nextToken() : JSONToken
+      final private function nextToken() : JSONToken
       {
          return this.token = this.tokenizer.getNextToken();
       }
       
-      private function parseArray() : Array
+      final private function nextValidToken() : JSONToken
+      {
+         this.token = this.tokenizer.getNextToken();
+         this.checkValidToken();
+         return this.token;
+      }
+      
+      final private function checkValidToken() : void
+      {
+         if(this.token == null)
+         {
+            this.tokenizer.parseError("Unexpected end of input");
+         }
+      }
+      
+      final private function parseArray() : Array
       {
          var _loc1_:Array = new Array();
-         this.nextToken();
+         this.nextValidToken();
          if(this.token.type == JSONTokenType.RIGHT_BRACKET)
          {
             return _loc1_;
          }
+         if(!this.strict && this.token.type == JSONTokenType.COMMA)
+         {
+            this.nextValidToken();
+            if(this.token.type == JSONTokenType.RIGHT_BRACKET)
+            {
+               return _loc1_;
+            }
+            this.tokenizer.parseError("Leading commas are not supported.  Expecting \']\' but found " + this.token.value);
+         }
          while(true)
          {
             _loc1_.push(this.parseValue());
-            this.nextToken();
+            this.nextValidToken();
             if(this.token.type == JSONTokenType.RIGHT_BRACKET)
             {
                break;
@@ -45,6 +76,14 @@ package com.adobe.serialization.json
             if(this.token.type == JSONTokenType.COMMA)
             {
                this.nextToken();
+               if(!this.strict)
+               {
+                  this.checkValidToken();
+                  if(this.token.type == JSONTokenType.RIGHT_BRACKET)
+                  {
+                     return _loc1_;
+                  }
+               }
             }
             else
             {
@@ -54,26 +93,35 @@ package com.adobe.serialization.json
          return _loc1_;
       }
       
-      private function parseObject() : Object
+      final private function parseObject() : Object
       {
-         var _loc1_:String = null;
-         var _loc2_:Object = new Object();
-         this.nextToken();
+         var _loc2_:String = null;
+         var _loc1_:Object = new Object();
+         this.nextValidToken();
          if(this.token.type == JSONTokenType.RIGHT_BRACE)
          {
-            return _loc2_;
+            return _loc1_;
+         }
+         if(!this.strict && this.token.type == JSONTokenType.COMMA)
+         {
+            this.nextValidToken();
+            if(this.token.type == JSONTokenType.RIGHT_BRACE)
+            {
+               return _loc1_;
+            }
+            this.tokenizer.parseError("Leading commas are not supported.  Expecting \'}\' but found " + this.token.value);
          }
          while(true)
          {
             if(this.token.type == JSONTokenType.STRING)
             {
-               _loc1_ = String(this.token.value);
-               this.nextToken();
+               _loc2_ = String(this.token.value);
+               this.nextValidToken();
                if(this.token.type == JSONTokenType.COLON)
                {
                   this.nextToken();
-                  _loc2_[_loc1_] = this.parseValue();
-                  this.nextToken();
+                  _loc1_[_loc2_] = this.parseValue();
+                  this.nextValidToken();
                   if(this.token.type == JSONTokenType.RIGHT_BRACE)
                   {
                      break;
@@ -81,6 +129,14 @@ package com.adobe.serialization.json
                   if(this.token.type == JSONTokenType.COMMA)
                   {
                      this.nextToken();
+                     if(!this.strict)
+                     {
+                        this.checkValidToken();
+                        if(this.token.type == JSONTokenType.RIGHT_BRACE)
+                        {
+                           return _loc1_;
+                        }
+                     }
                   }
                   else
                   {
@@ -97,15 +153,12 @@ package com.adobe.serialization.json
                this.tokenizer.parseError("Expecting string but found " + this.token.value);
             }
          }
-         return _loc2_;
+         return _loc1_;
       }
       
-      private function parseValue() : Object
+      final private function parseValue() : Object
       {
-         if(this.token == null)
-         {
-            this.tokenizer.parseError("Unexpected end of input");
-         }
+         this.checkValidToken();
          switch(this.token.type)
          {
             case JSONTokenType.LEFT_BRACE:
@@ -118,10 +171,16 @@ package com.adobe.serialization.json
             case JSONTokenType.FALSE:
             case JSONTokenType.NULL:
                return this.token.value;
-            default:
+            case JSONTokenType.NAN:
+               if(!this.strict)
+               {
+                  return this.token.value;
+               }
                this.tokenizer.parseError("Unexpected " + this.token.value);
-               return null;
+               break;
          }
+         this.tokenizer.parseError("Unexpected " + this.token.value);
+         return null;
       }
    }
 }
