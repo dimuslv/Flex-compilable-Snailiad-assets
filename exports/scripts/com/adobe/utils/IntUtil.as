@@ -22,28 +22,28 @@ package com.adobe.utils
       
       public static function toHex(param1:int, param2:Boolean = false) : String
       {
-         var _loc3_:int = 0;
          var _loc4_:int = 0;
-         var _loc5_:String = "";
+         var _loc5_:int = 0;
+         var _loc3_:String = "";
          if(param2)
-         {
-            _loc3_ = 0;
-            while(_loc3_ < 4)
-            {
-               _loc5_ += hexChars.charAt(param1 >> (3 - _loc3_) * 8 + 4 & 0x0F) + hexChars.charAt(param1 >> (3 - _loc3_) * 8 & 0x0F);
-               _loc3_++;
-            }
-         }
-         else
          {
             _loc4_ = 0;
             while(_loc4_ < 4)
             {
-               _loc5_ += hexChars.charAt(param1 >> _loc4_ * 8 + 4 & 0x0F) + hexChars.charAt(param1 >> _loc4_ * 8 & 0x0F);
+               _loc3_ += hexChars.charAt(param1 >> (3 - _loc4_) * 8 + 4 & 0x0F) + hexChars.charAt(param1 >> (3 - _loc4_) * 8 & 0x0F);
                _loc4_++;
             }
          }
-         return _loc5_;
+         else
+         {
+            _loc5_ = 0;
+            while(_loc5_ < 4)
+            {
+               _loc3_ += hexChars.charAt(param1 >> _loc5_ * 8 + 4 & 0x0F) + hexChars.charAt(param1 >> _loc5_ * 8 & 0x0F);
+               _loc5_++;
+            }
+         }
+         return _loc3_;
       }
    }
 }

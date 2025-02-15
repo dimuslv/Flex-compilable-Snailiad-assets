@@ -79,27 +79,27 @@ package com.adobe.serialization.json
          pushscope
          pushnull
          coerce_s
-         setlocal1
-         pushnull
-         coerce_s
          setlocal2
          pushnull
          coerce_s
          setlocal3
+         pushnull
+         coerce_s
+         setlocal 4
          findpropstrict QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
          constructprop QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken"), 0
          coerce QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
-         setlocal 4
+         setlocal1
          getlocal0
          callpropvoid QName(PrivateNamespace(null,"#JSONTokenizer"),"skipIgnored"), 0
          jump ofs0
          ofs1:
          label
-         getlocal 4
+         getlocal1
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"LEFT_BRACE")
          setproperty QName(PackageNamespace(""),"type")
-         getlocal 4
+         getlocal1
          pushstring "{"
          setproperty QName(PackageNamespace(""),"value")
          getlocal0
@@ -107,11 +107,11 @@ package com.adobe.serialization.json
          jump ofs2
          ofs3:
          label
-         getlocal 4
+         getlocal1
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"RIGHT_BRACE")
          setproperty QName(PackageNamespace(""),"type")
-         getlocal 4
+         getlocal1
          pushstring "}"
          setproperty QName(PackageNamespace(""),"value")
          getlocal0
@@ -119,11 +119,11 @@ package com.adobe.serialization.json
          jump ofs2
          ofs4:
          label
-         getlocal 4
+         getlocal1
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"LEFT_BRACKET")
          setproperty QName(PackageNamespace(""),"type")
-         getlocal 4
+         getlocal1
          pushstring "["
          setproperty QName(PackageNamespace(""),"value")
          getlocal0
@@ -131,11 +131,11 @@ package com.adobe.serialization.json
          jump ofs2
          ofs5:
          label
-         getlocal 4
+         getlocal1
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"RIGHT_BRACKET")
          setproperty QName(PackageNamespace(""),"type")
-         getlocal 4
+         getlocal1
          pushstring "]"
          setproperty QName(PackageNamespace(""),"value")
          getlocal0
@@ -143,11 +143,11 @@ package com.adobe.serialization.json
          jump ofs2
          ofs6:
          label
-         getlocal 4
+         getlocal1
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"COMMA")
          setproperty QName(PackageNamespace(""),"type")
-         getlocal 4
+         getlocal1
          pushstring ","
          setproperty QName(PackageNamespace(""),"value")
          getlocal0
@@ -155,11 +155,11 @@ package com.adobe.serialization.json
          jump ofs2
          ofs7:
          label
-         getlocal 4
+         getlocal1
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"COLON")
          setproperty QName(PackageNamespace(""),"type")
-         getlocal 4
+         getlocal1
          pushstring ":"
          setproperty QName(PackageNamespace(""),"value")
          getlocal0
@@ -178,15 +178,15 @@ package com.adobe.serialization.json
          callproperty QName(PrivateNamespace(null,"#JSONTokenizer"),"nextChar"), 0
          add
          coerce_s
-         setlocal1
-         getlocal1
+         setlocal2
+         getlocal2
          pushstring "true"
          ifne ofs9
-         getlocal 4
+         getlocal1
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"TRUE")
          setproperty QName(PackageNamespace(""),"type")
-         getlocal 4
+         getlocal1
          pushtrue
          setproperty QName(PackageNamespace(""),"value")
          getlocal0
@@ -195,7 +195,7 @@ package com.adobe.serialization.json
          ofs9:
          getlocal0
          pushstring "Expecting \'true\' but found "
-         getlocal1
+         getlocal2
          add
          callpropvoid QName(PackageNamespace(""),"parseError"), 1
          ofs10:
@@ -216,15 +216,15 @@ package com.adobe.serialization.json
          callproperty QName(PrivateNamespace(null,"#JSONTokenizer"),"nextChar"), 0
          add
          coerce_s
-         setlocal2
-         getlocal2
+         setlocal3
+         getlocal3
          pushstring "false"
          ifne ofs12
-         getlocal 4
+         getlocal1
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"FALSE")
          setproperty QName(PackageNamespace(""),"type")
-         getlocal 4
+         getlocal1
          pushfalse
          setproperty QName(PackageNamespace(""),"value")
          getlocal0
@@ -233,7 +233,7 @@ package com.adobe.serialization.json
          ofs12:
          getlocal0
          pushstring "Expecting \'false\' but found "
-         getlocal2
+         getlocal3
          add
          callpropvoid QName(PackageNamespace(""),"parseError"), 1
          ofs13:
@@ -251,15 +251,15 @@ package com.adobe.serialization.json
          callproperty QName(PrivateNamespace(null,"#JSONTokenizer"),"nextChar"), 0
          add
          coerce_s
-         setlocal3
-         getlocal3
+         dup
+         setlocal 4
          pushstring "null"
          ifne ofs15
-         getlocal 4
+         getlocal1
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"NULL")
          setproperty QName(PackageNamespace(""),"type")
-         getlocal 4
+         getlocal1
          pushnull
          setproperty QName(PackageNamespace(""),"value")
          getlocal0
@@ -268,7 +268,7 @@ package com.adobe.serialization.json
          ofs15:
          getlocal0
          pushstring "Expecting \'null\' but found "
-         getlocal3
+         getlocal 4
          add
          callpropvoid QName(PackageNamespace(""),"parseError"), 1
          ofs16:
@@ -278,7 +278,7 @@ package com.adobe.serialization.json
          getlocal0
          callproperty QName(PrivateNamespace(null,"#JSONTokenizer"),"readString"), 0
          coerce QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
-         setlocal 4
+         setlocal1
          jump ofs2
          ofs18:
          label
@@ -299,7 +299,7 @@ package com.adobe.serialization.json
          getlocal0
          callproperty QName(PrivateNamespace(null,"#JSONTokenizer"),"readNumber"), 0
          coerce QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
-         setlocal 4
+         setlocal1
          jump ofs21
          ofs20:
          getlocal0
@@ -392,7 +392,7 @@ package com.adobe.serialization.json
          kill 5
          lookupswitch ofs18, [ofs1, ofs3, ofs4, ofs5, ofs6, ofs7, ofs8, ofs11, ofs14, ofs17, ofs18]
          ofs2:
-         getlocal 4
+         getlocal1
          returnvalue
          end ; code
          end ; body
@@ -418,20 +418,19 @@ package com.adobe.serialization.json
          pushscope
          pushnull
          coerce_s
-         setlocal1
+         setlocal3
          pushbyte 0
-         setlocal2
+         setlocal 4
          findpropstrict QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
          constructprop QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken"), 0
          coerce QName(PackageNamespace("com.adobe.serialization.json"),"JSONToken")
-         setlocal3
-         getlocal3
+         setlocal1
+         getlocal1
          getlex QName(PackageNamespace("com.adobe.serialization.json"),"JSONTokenType")
          getproperty QName(PackageNamespace(""),"STRING")
          setproperty QName(PackageNamespace(""),"type")
          pushstring ""
-         coerce_a
-         setlocal 4
+         setlocal2
          getlocal0
          callpropvoid QName(PrivateNamespace(null,"#JSONTokenizer"),"nextChar"), 0
          jump ofs0
@@ -446,74 +445,66 @@ package com.adobe.serialization.json
          jump ofs3
          ofs4:
          label
-         getlocal 4
+         getlocal2
          pushstring "\""
          add
-         coerce_a
-         setlocal 4
+         setlocal2
          jump ofs5
          ofs6:
          label
-         getlocal 4
+         getlocal2
          pushstring "/"
          add
-         coerce_a
-         setlocal 4
+         setlocal2
          jump ofs5
          ofs7:
          label
-         getlocal 4
+         getlocal2
          pushstring "\\"
          add
-         coerce_a
-         setlocal 4
+         setlocal2
          jump ofs5
          ofs8:
          label
-         getlocal 4
+         getlocal2
          pushstring "\b"
          add
-         coerce_a
-         setlocal 4
+         setlocal2
          jump ofs5
          ofs9:
          label
-         getlocal 4
+         getlocal2
          pushstring "\f"
          add
-         coerce_a
-         setlocal 4
+         setlocal2
          jump ofs5
          ofs10:
          label
-         getlocal 4
+         getlocal2
          pushstring "\n"
          add
-         coerce_a
-         setlocal 4
+         setlocal2
          jump ofs5
          ofs11:
          label
-         getlocal 4
+         getlocal2
          pushstring "\r"
          add
-         coerce_a
-         setlocal 4
+         setlocal2
          jump ofs5
          ofs12:
          label
-         getlocal 4
+         getlocal2
          pushstring "\t"
          add
-         coerce_a
-         setlocal 4
+         setlocal2
          jump ofs5
          ofs13:
          label
          pushstring ""
-         setlocal1
+         setlocal3
          pushbyte 0
-         setlocal2
+         setlocal 4
          jump ofs14
          ofs15:
          label
@@ -529,38 +520,38 @@ package com.adobe.serialization.json
          add
          callpropvoid QName(PackageNamespace(""),"parseError"), 1
          ofs16:
-         getlocal1
+         getlocal3
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONTokenizer"),"ch")
          add
          coerce_s
-         setlocal1
-         inclocal_i 2
+         setlocal3
+         inclocal_i 4
          ofs14:
-         getlocal2
+         getlocal 4
          pushbyte 4
          iflt ofs15
-         getlocal 4
+         getlocal2
          getlex QName(PackageNamespace(""),"String")
          findpropstrict QName(PackageNamespace(""),"parseInt")
-         getlocal1
+         getlocal3
          pushbyte 16
          callproperty QName(PackageNamespace(""),"parseInt"), 2
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"fromCharCode"), 1
          add
-         coerce_a
-         setlocal 4
+         coerce_s
+         setlocal2
          jump ofs5
          ofs17:
          label
-         getlocal 4
+         getlocal2
          pushstring "\\"
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONTokenizer"),"ch")
          add
          add
-         coerce_a
-         setlocal 4
+         coerce_s
+         setlocal2
          jump ofs5
          ofs3:
          getlocal0
@@ -631,12 +622,12 @@ package com.adobe.serialization.json
          ofs5:
          jump ofs29
          ofs2:
-         getlocal 4
+         getlocal2
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONTokenizer"),"ch")
          add
-         coerce_a
-         setlocal 4
+         coerce_s
+         setlocal2
          ofs29:
          getlocal0
          callpropvoid QName(PrivateNamespace(null,"#JSONTokenizer"),"nextChar"), 0
@@ -666,10 +657,10 @@ package com.adobe.serialization.json
          ofs31:
          getlocal0
          callpropvoid QName(PrivateNamespace(null,"#JSONTokenizer"),"nextChar"), 0
-         getlocal3
-         getlocal 4
+         getlocal1
+         getlocal2
          setproperty QName(PackageNamespace(""),"value")
-         getlocal3
+         getlocal1
          returnvalue
          end ; code
          end ; body
@@ -702,7 +693,6 @@ package com.adobe.serialization.json
          getproperty QName(PackageNamespace(""),"NUMBER")
          setproperty QName(PackageNamespace(""),"type")
          pushstring ""
-         coerce_a
          setlocal2
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONTokenizer"),"ch")
@@ -711,7 +701,6 @@ package com.adobe.serialization.json
          getlocal2
          pushstring "-"
          add
-         coerce_a
          setlocal2
          getlocal0
          callpropvoid QName(PrivateNamespace(null,"#JSONTokenizer"),"nextChar"), 0
@@ -733,7 +722,7 @@ package com.adobe.serialization.json
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONTokenizer"),"ch")
          add
-         coerce_a
+         coerce_s
          setlocal2
          getlocal0
          callpropvoid QName(PrivateNamespace(null,"#JSONTokenizer"),"nextChar"), 0
@@ -755,7 +744,7 @@ package com.adobe.serialization.json
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONTokenizer"),"ch")
          add
-         coerce_a
+         coerce_s
          setlocal2
          getlocal0
          callpropvoid QName(PrivateNamespace(null,"#JSONTokenizer"),"nextChar"), 0
@@ -773,7 +762,6 @@ package com.adobe.serialization.json
          getlocal2
          pushstring "."
          add
-         coerce_a
          setlocal2
          getlocal0
          callpropvoid QName(PrivateNamespace(null,"#JSONTokenizer"),"nextChar"), 0
@@ -793,7 +781,7 @@ package com.adobe.serialization.json
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONTokenizer"),"ch")
          add
-         coerce_a
+         coerce_s
          setlocal2
          getlocal0
          callpropvoid QName(PrivateNamespace(null,"#JSONTokenizer"),"nextChar"), 0
@@ -820,7 +808,6 @@ package com.adobe.serialization.json
          getlocal2
          pushstring "e"
          add
-         coerce_a
          setlocal2
          getlocal0
          callpropvoid QName(PrivateNamespace(null,"#JSONTokenizer"),"nextChar"), 0
@@ -841,7 +828,7 @@ package com.adobe.serialization.json
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONTokenizer"),"ch")
          add
-         coerce_a
+         coerce_s
          setlocal2
          getlocal0
          callpropvoid QName(PrivateNamespace(null,"#JSONTokenizer"),"nextChar"), 0
@@ -862,7 +849,7 @@ package com.adobe.serialization.json
          getlocal0
          getproperty QName(PrivateNamespace(null,"#JSONTokenizer"),"ch")
          add
-         coerce_a
+         coerce_s
          setlocal2
          getlocal0
          callpropvoid QName(PrivateNamespace(null,"#JSONTokenizer"),"nextChar"), 0
@@ -946,7 +933,7 @@ package com.adobe.serialization.json
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charAt"), 1
          dup
          setlocal1
-         setproperty QName(PrivateNamespace(null,"#JSONTokenizer"),"ch")
+         initproperty QName(PrivateNamespace(null,"#JSONTokenizer"),"ch")
          getlocal1
          kill 1
          returnvalue
@@ -1063,6 +1050,8 @@ package com.adobe.serialization.json
          getproperty QName(PrivateNamespace(null,"#JSONTokenizer"),"ch")
          pushstring "/"
          ifne ofs10
+         getlocal0
+         callpropvoid QName(PrivateNamespace(null,"#JSONTokenizer"),"nextChar"), 0
          jump ofs11
          ofs10:
          jump ofs12
@@ -1080,8 +1069,6 @@ package com.adobe.serialization.json
          ofs7:
          jump ofs8
          ofs11:
-         getlocal0
-         callpropvoid QName(PrivateNamespace(null,"#JSONTokenizer"),"nextChar"), 0
          jump ofs0
          ofs13:
          label

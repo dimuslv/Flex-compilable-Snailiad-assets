@@ -56,23 +56,23 @@ package com.adobe.serialization.json
       
       private function parseObject() : Object
       {
-         var _loc1_:String = null;
-         var _loc2_:Object = new Object();
+         var _loc2_:String = null;
+         var _loc1_:Object = new Object();
          this.nextToken();
          if(this.token.type == JSONTokenType.RIGHT_BRACE)
          {
-            return _loc2_;
+            return _loc1_;
          }
          while(true)
          {
             if(this.token.type == JSONTokenType.STRING)
             {
-               _loc1_ = String(this.token.value);
+               _loc2_ = String(this.token.value);
                this.nextToken();
                if(this.token.type == JSONTokenType.COLON)
                {
                   this.nextToken();
-                  _loc2_[_loc1_] = this.parseValue();
+                  _loc1_[_loc2_] = this.parseValue();
                   this.nextToken();
                   if(this.token.type == JSONTokenType.RIGHT_BRACE)
                   {
@@ -97,7 +97,7 @@ package com.adobe.serialization.json
                this.tokenizer.parseError("Expecting string but found " + this.token.value);
             }
          }
-         return _loc2_;
+         return _loc1_;
       }
       
       private function parseValue() : Object

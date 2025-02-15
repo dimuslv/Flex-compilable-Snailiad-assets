@@ -20,89 +20,89 @@ package com.adobe.serialization.json
       
       public function getNextToken() : JSONToken
       {
-         var _loc1_:String = null;
          var _loc2_:String = null;
          var _loc3_:String = null;
-         var _loc4_:JSONToken = new JSONToken();
+         var _loc4_:String = null;
+         var _loc1_:JSONToken = new JSONToken();
          this.skipIgnored();
          switch(this.ch)
          {
             case "{":
-               _loc4_.type = JSONTokenType.LEFT_BRACE;
-               _loc4_.value = "{";
+               _loc1_.type = JSONTokenType.LEFT_BRACE;
+               _loc1_.value = "{";
                this.nextChar();
                break;
             case "}":
-               _loc4_.type = JSONTokenType.RIGHT_BRACE;
-               _loc4_.value = "}";
+               _loc1_.type = JSONTokenType.RIGHT_BRACE;
+               _loc1_.value = "}";
                this.nextChar();
                break;
             case "[":
-               _loc4_.type = JSONTokenType.LEFT_BRACKET;
-               _loc4_.value = "[";
+               _loc1_.type = JSONTokenType.LEFT_BRACKET;
+               _loc1_.value = "[";
                this.nextChar();
                break;
             case "]":
-               _loc4_.type = JSONTokenType.RIGHT_BRACKET;
-               _loc4_.value = "]";
+               _loc1_.type = JSONTokenType.RIGHT_BRACKET;
+               _loc1_.value = "]";
                this.nextChar();
                break;
             case ",":
-               _loc4_.type = JSONTokenType.COMMA;
-               _loc4_.value = ",";
+               _loc1_.type = JSONTokenType.COMMA;
+               _loc1_.value = ",";
                this.nextChar();
                break;
             case ":":
-               _loc4_.type = JSONTokenType.COLON;
-               _loc4_.value = ":";
+               _loc1_.type = JSONTokenType.COLON;
+               _loc1_.value = ":";
                this.nextChar();
                break;
             case "t":
-               _loc1_ = "t" + this.nextChar() + this.nextChar() + this.nextChar();
-               if(_loc1_ == "true")
+               _loc2_ = "t" + this.nextChar() + this.nextChar() + this.nextChar();
+               if(_loc2_ == "true")
                {
-                  _loc4_.type = JSONTokenType.TRUE;
-                  _loc4_.value = true;
+                  _loc1_.type = JSONTokenType.TRUE;
+                  _loc1_.value = true;
                   this.nextChar();
                }
                else
                {
-                  this.parseError("Expecting \'true\' but found " + _loc1_);
+                  this.parseError("Expecting \'true\' but found " + _loc2_);
                }
                break;
             case "f":
-               _loc2_ = "f" + this.nextChar() + this.nextChar() + this.nextChar() + this.nextChar();
-               if(_loc2_ == "false")
+               _loc3_ = "f" + this.nextChar() + this.nextChar() + this.nextChar() + this.nextChar();
+               if(_loc3_ == "false")
                {
-                  _loc4_.type = JSONTokenType.FALSE;
-                  _loc4_.value = false;
+                  _loc1_.type = JSONTokenType.FALSE;
+                  _loc1_.value = false;
                   this.nextChar();
                }
                else
                {
-                  this.parseError("Expecting \'false\' but found " + _loc2_);
+                  this.parseError("Expecting \'false\' but found " + _loc3_);
                }
                break;
             case "n":
-               _loc3_ = "n" + this.nextChar() + this.nextChar() + this.nextChar();
-               if(_loc3_ == "null")
+               _loc4_ = "n" + this.nextChar() + this.nextChar() + this.nextChar();
+               if(_loc4_ == "null")
                {
-                  _loc4_.type = JSONTokenType.NULL;
-                  _loc4_.value = null;
+                  _loc1_.type = JSONTokenType.NULL;
+                  _loc1_.value = null;
                   this.nextChar();
                }
                else
                {
-                  this.parseError("Expecting \'null\' but found " + _loc3_);
+                  this.parseError("Expecting \'null\' but found " + _loc4_);
                }
                break;
             case "\"":
-               _loc4_ = this.readString();
+               _loc1_ = this.readString();
                break;
             default:
                if(this.isDigit(this.ch) || this.ch == "-")
                {
-                  _loc4_ = this.readNumber();
+                  _loc1_ = this.readNumber();
                }
                else
                {
@@ -113,16 +113,16 @@ package com.adobe.serialization.json
                   this.parseError("Unexpected " + this.ch + " encountered");
                }
          }
-         return _loc4_;
+         return _loc1_;
       }
       
       private function readString() : JSONToken
       {
-         var _loc1_:String = null;
-         var _loc2_:int = 0;
-         var _loc3_:JSONToken = new JSONToken();
-         _loc3_.type = JSONTokenType.STRING;
-         var _loc4_:* = "";
+         var _loc3_:String = null;
+         var _loc4_:int = 0;
+         var _loc1_:JSONToken = new JSONToken();
+         _loc1_.type = JSONTokenType.STRING;
+         var _loc2_:* = "";
          this.nextChar();
          while(this.ch != "\"" && this.ch != "")
          {
@@ -132,50 +132,50 @@ package com.adobe.serialization.json
                switch(this.ch)
                {
                   case "\"":
-                     _loc4_ += "\"";
+                     _loc2_ += "\"";
                      break;
                   case "/":
-                     _loc4_ += "/";
+                     _loc2_ += "/";
                      break;
                   case "\\":
-                     _loc4_ += "\\";
+                     _loc2_ += "\\";
                      break;
                   case "b":
-                     _loc4_ += "\b";
+                     _loc2_ += "\b";
                      break;
                   case "f":
-                     _loc4_ += "\f";
+                     _loc2_ += "\f";
                      break;
                   case "n":
-                     _loc4_ += "\n";
+                     _loc2_ += "\n";
                      break;
                   case "r":
-                     _loc4_ += "\r";
+                     _loc2_ += "\r";
                      break;
                   case "t":
-                     _loc4_ += "\t";
+                     _loc2_ += "\t";
                      break;
                   case "u":
-                     _loc1_ = "";
-                     _loc2_ = 0;
-                     while(_loc2_ < 4)
+                     _loc3_ = "";
+                     _loc4_ = 0;
+                     while(_loc4_ < 4)
                      {
                         if(!this.isHexDigit(this.nextChar()))
                         {
                            this.parseError(" Excepted a hex digit, but found: " + this.ch);
                         }
-                        _loc1_ += this.ch;
-                        _loc2_++;
+                        _loc3_ += this.ch;
+                        _loc4_++;
                      }
-                     _loc4_ += String.fromCharCode(parseInt(_loc1_,16));
+                     _loc2_ += String.fromCharCode(parseInt(_loc3_,16));
                      break;
                   default:
-                     _loc4_ += "\\" + this.ch;
+                     _loc2_ += "\\" + this.ch;
                }
             }
             else
             {
-               _loc4_ += this.ch;
+               _loc2_ += this.ch;
             }
             this.nextChar();
          }
@@ -184,8 +184,8 @@ package com.adobe.serialization.json
             this.parseError("Unterminated string literal");
          }
          this.nextChar();
-         _loc3_.value = _loc4_;
-         return _loc3_;
+         _loc1_.value = _loc2_;
+         return _loc1_;
       }
       
       private function readNumber() : JSONToken
