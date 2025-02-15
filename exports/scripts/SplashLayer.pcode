@@ -49,7 +49,7 @@ package
       {
          method
          name null
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 4
@@ -143,10 +143,10 @@ package
          pushscope
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#SplashLayer"),"splash")
+         initproperty QName(PrivateNamespace(null,"#SplashLayer"),"splash")
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#SplashLayer"),"bg")
+         initproperty QName(PrivateNamespace(null,"#SplashLayer"),"bg")
          getlocal0
          callsupervoid QName(PackageNamespace(""),"destroy"), 0
          returnvoid
@@ -179,7 +179,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          add
-         setproperty QName(PrivateNamespace(null,"#SplashLayer"),"elapsed")
+         initproperty QName(PrivateNamespace(null,"#SplashLayer"),"elapsed")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SplashLayer"),"elapsed")
          getlex QName(PrivateNamespace(null,"#SplashLayer"),"FADE_IN_TIME")
@@ -212,7 +212,22 @@ package
          add
          getlex QName(PrivateNamespace(null,"#SplashLayer"),"FADE_OUT_TIME")
          add
-         ifnge ofs3
+         ifnlt ofs3
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"#SplashLayer"),"splash")
+         pushbyte 1
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"#SplashLayer"),"elapsed")
+         getlex QName(PrivateNamespace(null,"#SplashLayer"),"FADE_IN_TIME")
+         getlex QName(PrivateNamespace(null,"#SplashLayer"),"STATIC_TIME")
+         add
+         subtract
+         getlex QName(PrivateNamespace(null,"#SplashLayer"),"FADE_OUT_TIME")
+         divide
+         subtract
+         setproperty QName(PackageNamespace(""),"alpha")
+         jump ofs1
+         ofs3:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SplashLayer"),"bg")
          pushfalse
@@ -227,20 +242,6 @@ package
          findpropstrict QName(PackageNamespace(""),"kill")
          callpropvoid QName(PackageNamespace(""),"kill"), 0
          returnvoid
-         ofs3:
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#SplashLayer"),"splash")
-         pushbyte 1
-         getlocal0
-         getproperty QName(PrivateNamespace(null,"#SplashLayer"),"elapsed")
-         getlex QName(PrivateNamespace(null,"#SplashLayer"),"FADE_IN_TIME")
-         getlex QName(PrivateNamespace(null,"#SplashLayer"),"STATIC_TIME")
-         add
-         subtract
-         getlex QName(PrivateNamespace(null,"#SplashLayer"),"FADE_OUT_TIME")
-         divide
-         subtract
-         setproperty QName(PackageNamespace(""),"alpha")
          ofs1:
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0

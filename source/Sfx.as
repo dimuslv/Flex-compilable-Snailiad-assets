@@ -7,8 +7,6 @@ package
    
    public class Sfx
    {
-      public static var EndingSfx:FlxSound;
-      
       public static const MENUBEEP_TIMEOUT:int = 30;
       
       public static var nextMenuBeep:int = 0;
@@ -52,6 +50,8 @@ package
       public static const EXPLOSION_TIMEOUT:int = 25;
       
       public static var nextExplosion:int = 0;
+      
+      public static var EndingSfx:FlxSound;
       
       public static const DOOROPEN_TIMEOUT:int = 30;
       
@@ -408,7 +408,7 @@ package
             return;
          }
          nextExplosion = _loc1_ + EXPLOSION_TIMEOUT;
-         switch(int(FlxU.random() * 4))
+         switch((int)(FlxU.random() * 4))
          {
             case 0:
                playExplode1();
@@ -421,6 +421,7 @@ package
                break;
             case 3:
                playExplode4();
+			   break;
          }
       }
       
@@ -498,6 +499,7 @@ package
                [Embed(source = 'data/sfx/sfx.swf', symbol = 'dialogueletter3')]
 			   const DialogueLetter3:Class;
                FlxG.play(DialogueLetter3,0.33);
+			   break;
          }
       }
       
@@ -524,7 +526,7 @@ package
       
       public static function playRandomEnemyKilled() : void
       {
-         switch(int(FlxU.random() * 3))
+         switch((int)(FlxU.random() * 3))
          {
             case 0:
                playEnemyKilled();
@@ -534,6 +536,7 @@ package
                break;
             case 2:
                playEnemyKilled3();
+			   break;
          }
       }
       

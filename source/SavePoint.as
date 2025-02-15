@@ -12,7 +12,7 @@ package
       
       private var _haveSavedYet:Boolean = false;
       
-      public function SavePoint(param1:int, param2:int)
+      public function SavePoint(param1:int, param2:int) : void
       {
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
@@ -31,7 +31,7 @@ package
       {
          if(!this._haveSavedYet)
          {
-            this._haveSavedYet = true;
+            _haveSavedYet = true;
             play("saved");
             PlayState.player.setSaveCoords(x,y);
             Sfx.playSave1();

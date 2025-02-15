@@ -7,8 +7,6 @@ package
    
    public class Sfx
    {
-      public static var EndingSfx:FlxSound;
-      
       public static const MENUBEEP_TIMEOUT:int = 30;
       
       public static var nextMenuBeep:int = 0;
@@ -52,6 +50,8 @@ package
       public static const EXPLOSION_TIMEOUT:int = 25;
       
       public static var nextExplosion:int = 0;
+      
+      public static var EndingSfx:FlxSound;
       
       public static const DOOROPEN_TIMEOUT:int = 30;
       
@@ -1501,7 +1501,7 @@ package
          returns QName(PackageNamespace(""),"void")
          
          body
-         maxstack 3
+         maxstack 4
          localcount 3
          initscopedepth 3
          maxscopedepth 4
@@ -1543,16 +1543,18 @@ package
          label
          findpropstrict QName(PackageNamespace(""),"playExplode4")
          callpropvoid QName(PackageNamespace(""),"playExplode4"), 0
+         jump ofs3
          ofs7:
          label
          jump ofs3
          ofs1:
-         findpropstrict QName(PackageNamespace(""),"int")
+         getlex QName(PackageNamespace(""),"int")
+         getglobalscope
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
          callproperty QName(PackageNamespace(""),"random"), 0
          pushbyte 4
          multiply
-         callproperty QName(PackageNamespace(""),"int"), 1
+         call 1
          setlocal2
          pushbyte 0
          getlocal2
@@ -1861,6 +1863,7 @@ package
          getlocal 6
          pushdouble 0.33
          callpropvoid QName(PackageNamespace(""),"play"), 2
+         jump ofs3
          ofs7:
          label
          jump ofs3
@@ -2006,7 +2009,7 @@ package
          returns QName(PackageNamespace(""),"void")
          
          body
-         maxstack 3
+         maxstack 4
          localcount 2
          initscopedepth 3
          maxscopedepth 4
@@ -2029,16 +2032,18 @@ package
          label
          findpropstrict QName(PackageNamespace(""),"playEnemyKilled3")
          callpropvoid QName(PackageNamespace(""),"playEnemyKilled3"), 0
+         jump ofs2
          ofs5:
          label
          jump ofs2
          ofs0:
-         findpropstrict QName(PackageNamespace(""),"int")
+         getlex QName(PackageNamespace(""),"int")
+         getglobalscope
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
          callproperty QName(PackageNamespace(""),"random"), 0
          pushbyte 3
          multiply
-         callproperty QName(PackageNamespace(""),"int"), 1
+         call 1
          setlocal1
          pushbyte 0
          getlocal1

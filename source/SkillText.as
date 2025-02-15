@@ -7,7 +7,7 @@ package
    {
       public var relY:int = 0;
       
-      public function SkillText()
+      public function SkillText() : void
       {
          super(194,FlxG.height - 27,100);
          this.relY = FlxG.height - 27;
@@ -49,7 +49,7 @@ package
       
       override public function update() : void
       {
-         if(Boolean(PlayState.miniMap) && Boolean(PlayState.miniMap.subscreen))
+         if(PlayState.miniMap && PlayState.miniMap.subscreen)
          {
             y = this.relY + PlayState.miniMap.subscreen.panel.y;
          }

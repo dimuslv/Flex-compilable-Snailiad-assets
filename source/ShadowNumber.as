@@ -21,7 +21,7 @@ package
       
       private var _value:Number;
       
-      public function ShadowNumber(param1:Number = 0)
+      public function ShadowNumber(param1:Number = 0) : void
       {
          super();
          if(_globalCipherIndex == -1)
@@ -43,12 +43,12 @@ package
       
       public function set value(param1:Number) : void
       {
-         this._localCipherIndex += 67;
-         this._localCipherIndex %= NOISE.length;
-         this._value = param1;
-         this._localHashIndex += 113;
-         this._localHashIndex %= NOISE.length;
-         this._hash = int(this._value) ^ NOISE[this._localHashIndex];
+         _localCipherIndex += 67;
+         _localCipherIndex %= NOISE.length;
+         _value = param1;
+         _localHashIndex += 113;
+         _localHashIndex %= NOISE.length;
+         _hash = int(this._value) ^ NOISE[this._localHashIndex];
       }
       
       public function get value() : Number

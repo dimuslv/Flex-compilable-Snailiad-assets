@@ -26,7 +26,7 @@ package
       
       private var _speed:Number = 1;
       
-      public function SnailNpc(param1:int, param2:int, param3:int)
+      public function SnailNpc(param1:int, param2:int, param3:int) : void
       {
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
@@ -76,10 +76,6 @@ package
       
       override public function touch(param1:Player) : void
       {
-         var _loc6_:int = 0;
-         var _loc7_:int = 0;
-         var _loc8_:Boolean = false;
-         var _loc9_:* = null;
          var _loc2_:int = this._snailNum % 4;
          var _loc3_:String = "Snaily";
          if(param1._slugMode)
@@ -98,10 +94,10 @@ package
          }
          if(!this._talkOpen)
          {
-            _loc6_ = PlayState.player.getPercentComplete();
-            _loc7_ = PlayState.player.getHelixFragments();
-            _loc8_ = false;
-            _loc9_ = "[no text yet: NPC #" + this._snailNum.toString() + "]";
+            var _loc6_:int = PlayState.player.getPercentComplete();
+            var _loc7_:int = PlayState.player.getHelixFragments();
+            var _loc8_:Boolean = false;
+            var _loc9_:String = "[no text yet: NPC #" + this._snailNum.toString() + "]";
             switch(this._snailNum)
             {
                case 0:
@@ -503,7 +499,7 @@ package
                   }
                   break;
                case 29:
-                  if(Boolean(PlayState.player) && PlayState.player._insaneMode)
+                  if(PlayState.player && PlayState.player._insaneMode)
                   {
                      _loc9_ = "Oh, no!! " + _loc3_ + "!! The \"Ice Snail\"\n" + "power-up is missing on insane\n" + "mode! Good luck without it!!\n";
                   }
@@ -749,16 +745,17 @@ package
                   break;
                case 50:
                   _loc9_ = "Have you tried hitting the\n" + Player.STRAFE_KEY + " key yet?  It lets you\n" + "shoot while holding still!\n";
+				  break;
             }
             PlayState.dialogue.start(_loc9_,_loc2_,_loc8_,this._speed,this._snailNum);
          }
-         this._talkOpen = true;
+         _talkOpen = true;
       }
       
       public function stopTalking() : void
       {
          PlayState.dialogue.stop(this._snailNum);
-         this._talkOpen = false;
+         _talkOpen = false;
       }
       
       override public function update() : void
@@ -771,7 +768,7 @@ package
          }
          if(this._snailNum == 39 || this._snailNum == 38)
          {
-            this._elapsed += FlxG.elapsed;
+            _elapsed += FlxG.elapsed;
             offset.y = Math.sin(this._elapsed * 0.5) * 5;
          }
          if(this._talkOpen)
@@ -781,42 +778,42 @@ package
                case 1:
                   if(PlayState.hasJumped && this._nexted == 0)
                   {
-                     this._nexted = 1;
+                     _nexted = 1;
                      this.stopTalking();
                   }
                   break;
                case 4:
                   if(PlayState.worldMap.bgmap.getTile(295,143) == 0 && this._nexted == 0)
                   {
-                     this._nexted = 1;
+                     _nexted = 1;
                      this.stopTalking();
                   }
                   break;
                case 8:
                   if(PlayState.worldMap.bgmap.getTile(328,185) == 0 && this._nexted == 0)
                   {
-                     this._nexted = 1;
+                     _nexted = 1;
                      this.stopTalking();
                   }
                   break;
                case 16:
                   if(y > 2656 && this._nexted == 0)
                   {
-                     this._nexted = 1;
+                     _nexted = 1;
                      this.stopTalking();
                   }
                   break;
                case 48:
                   if(y > 198 * 16 && this._nexted == 0)
                   {
-                     this._speed = 2;
-                     this._nexted = 1;
+                     _speed = 2;
+                     _nexted = 1;
                      this.stopTalking();
                   }
                   else if(y > 232 * 16 && velocity.y < 150 && this._nexted == 1)
                   {
-                     this._speed = 1;
-                     this._nexted = 2;
+                     _speed = 1;
+                     _nexted = 2;
                      this.stopTalking();
                   }
             }

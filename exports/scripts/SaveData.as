@@ -225,8 +225,8 @@ package
       
       public function loadAll() : void
       {
-         var checksumdata:Object = null;
-         var oldsum:String = null;
+         var checksumdata:Object;
+         var oldsum:String;
          var ba:ByteArray = null;
          var xmlStr:String = null;
          var newsum:String = null;

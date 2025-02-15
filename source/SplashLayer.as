@@ -18,7 +18,7 @@ package
       
       private var elapsed:Number = 0;
       
-      public function SplashLayer()
+      public function SplashLayer() : void
       {
          super();
          FlxG.mouse.show();
@@ -36,14 +36,14 @@ package
       
       override public function destroy() : void
       {
-         this.splash = null;
-         this.bg = null;
+         splash = null;
+         bg = null;
          super.destroy();
       }
       
       override public function update() : void
       {
-         this.elapsed += FlxG.elapsed;
+         elapsed += FlxG.elapsed;
          if(this.elapsed < FADE_IN_TIME)
          {
             this.splash.alpha = this.elapsed / FADE_IN_TIME;
@@ -54,15 +54,16 @@ package
          }
          else
          {
-            if(this.elapsed >= FADE_IN_TIME + STATIC_TIME + FADE_OUT_TIME)
+            if(this.elapsed < FADE_IN_TIME + STATIC_TIME + FADE_OUT_TIME)
             {
+			   this.splash.alpha = 1 - (this.elapsed - (FADE_IN_TIME + STATIC_TIME)) / FADE_OUT_TIME;
+            } else {
                this.bg.visible = false;
                this.splash.visible = false;
                FlxG.noPause = false;
                kill();
                return;
-            }
-            this.splash.alpha = 1 - (this.elapsed - (FADE_IN_TIME + STATIC_TIME)) / FADE_OUT_TIME;
+			}
          }
          super.update();
       }

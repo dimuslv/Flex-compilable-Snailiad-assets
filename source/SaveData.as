@@ -7,7 +7,7 @@ package
    {
       public var xml:XML;
       
-      public function SaveData()
+      public function SaveData() : void
       {
          super();
          bind("Snailiad");
@@ -19,7 +19,7 @@ package
       
       public function destroy() : void
       {
-         this.xml = null;
+         xml = null;
       }
       
       public function isVarSet(param1:String) : Boolean
@@ -29,7 +29,7 @@ package
       
       public function isVarTrue(param1:String) : Boolean
       {
-         return Boolean(this.xml.vars.child(param1).length()) && this.xml.vars.child(param1) == true;
+         return this.xml.vars.child(param1).length() && this.xml.vars.child(param1) == true;
       }
       
       public function eraseAll() : void
@@ -48,10 +48,10 @@ package
          var _loc6_:Boolean = this.isVarTrue("hasFullClear");
          var _loc7_:Boolean = this.isVarTrue("hideTab");
          var _loc8_:Boolean = this.isVarTrue("hideMiniMap");
-         var _loc9_:Number = Number(this.xml.vars.bestBossRushTime);
-         var _loc10_:Number = Number(this.xml.vars.bestMainTime);
-         var _loc11_:Number = Number(this.xml.vars.bestHardTime);
-         var _loc12_:Number = Number(this.xml.vars.bestInsaneTime);
+         var _loc9_:Number = this.xml.vars.bestBossRushTime;
+         var _loc10_:Number = this.xml.vars.bestMainTime;
+         var _loc11_:Number = this.xml.vars.bestHardTime;
+         var _loc12_:Number = this.xml.vars.bestInsaneTime;
          var _loc13_:XML = new XML(<vars/>);
          if(Player.firingMode == Player.FIRING_MODE_TOGGLE)
          {
@@ -177,7 +177,7 @@ package
          this.loadAll();
          var _loc1_:XML = this.initVars();
          _loc1_.appendChild(<hardMode>true</hardMode>);
-         this.xml = new XML(<SaveData/>);
+         xml = new XML(<SaveData/>);
          this.xml.appendChild(_loc1_);
          this.saveAll();
       }
@@ -188,7 +188,7 @@ package
          var _loc1_:XML = this.initVars();
          _loc1_.appendChild(<hardMode>true</hardMode>);
          _loc1_.appendChild(<insaneMode>true</insaneMode>);
-         this.xml = new XML(<SaveData/>);
+         xml = new XML(<SaveData/>);
          this.xml.appendChild(_loc1_);
          this.saveAll();
       }
@@ -198,7 +198,7 @@ package
          this.loadAll();
          var _loc1_:XML = this.initVars();
          _loc1_.appendChild(<easyMode>true</easyMode>);
-         this.xml = new XML(<SaveData/>);
+         xml = new XML(<SaveData/>);
          this.xml.appendChild(_loc1_);
          this.saveAll();
       }
@@ -207,7 +207,7 @@ package
       {
          this.loadAll();
          var _loc1_:XML = this.initVars();
-         this.xml = new XML(<SaveData/>);
+         xml = new XML(<SaveData/>);
          this.xml.appendChild(_loc1_);
          this.saveAll();
       }
@@ -225,39 +225,34 @@ package
       
       public function loadAll() : void
       {
-         var checksumdata:Object;
-         var oldsum:String;
-         var ba:ByteArray = null;
-         var xmlStr:String = null;
-         var newsum:String = null;
          var data:Object = read("z");
          if(data == null || !(data is ByteArray) || !data.length)
          {
-            this.xml = new XML(<SaveData/>);
+            xml = new XML(<SaveData/>);
             this.xml.appendChild(<vars/>);
             return;
          }
-         checksumdata = read("y");
+         var checksumdata:Object = read("y");
          if(checksumdata == null || !(checksumdata is String) || !checksumdata.length)
          {
-            this.xml = new XML(<SaveData/>);
+            xml = new XML(<SaveData/>);
             this.xml.appendChild(<vars/>);
             return;
          }
-         oldsum = checksumdata as String;
+         var oldsum:String = checksumdata as String;
          try
          {
-            ba = data as ByteArray;
-            xmlStr = Cipher.uncompress(Cipher.cipherString(ba.toString()));
-            newsum = Cipher.MD5(xmlStr);
+            var ba:ByteArray = data as ByteArray;
+            var xmlStr:String = Cipher.uncompress(Cipher.cipherString(ba.toString()));
+            var newsum:String = Cipher.MD5(xmlStr);
             if(newsum != oldsum)
             {
                FlxG.log("Checksum failure");
-               this.xml = new XML(<SaveData/>);
+               xml = new XML(<SaveData/>);
                this.xml.appendChild(<vars/>);
                return;
             }
-            this.xml = new XML(Cipher.uncompress(Cipher.cipherString(ba.toString())));
+            xml = new XML(Cipher.uncompress(Cipher.cipherString(ba.toString())));
             if(!this.xml.hasOwnProperty("vars"))
             {
                this.xml.appendChild(<vars/>);

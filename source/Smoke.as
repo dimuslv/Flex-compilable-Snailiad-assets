@@ -10,7 +10,7 @@ package
       
       private static const IMG_OFS_Y:int = 0;
       
-      public function Smoke(param1:int, param2:int)
+      public function Smoke(param1:int, param2:int) : void
       {
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;

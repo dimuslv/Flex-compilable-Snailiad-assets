@@ -12,7 +12,7 @@ package
       
       private var _huge:Boolean = false;
       
-      public function QueuedExplosion(param1:int, param2:int, param3:Boolean = false)
+      public function QueuedExplosion(param1:int, param2:int, param3:Boolean = false) : void
       {
          super();
          x = param1;
@@ -31,7 +31,7 @@ package
          {
             return;
          }
-         this._disappearTimer -= FlxG.elapsed;
+         _disappearTimer -= FlxG.elapsed;
          if(this._disappearTimer <= 0)
          {
             kill();

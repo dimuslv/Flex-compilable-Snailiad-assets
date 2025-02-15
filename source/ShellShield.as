@@ -10,7 +10,7 @@ package
       
       private static const IMG_OFS_Y:int = 16;
       
-      public function ShellShield(param1:int, param2:int)
+      public function ShellShield(param1:int, param2:int) : void
       {
          super(param1,param2);
          x -= IMG_OFS_X;

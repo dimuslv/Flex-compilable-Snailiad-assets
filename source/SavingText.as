@@ -5,15 +5,15 @@ package
    
    public class SavingText extends FlxText
    {
-      private static var _fadeOutStart:Number;
-      
-      private static var _fadeOutEnd:Number;
-      
       private static const FADEOUT_START:Number = 1.8;
       
       private static const FADEOUT_END:Number = 2.5;
       
-      public function SavingText()
+      private static var _fadeOutStart:Number;
+      
+      private static var _fadeOutEnd:Number;
+      
+      public function SavingText() : void
       {
          super(0,FlxG.height / 2 - 38,FlxG.width);
          font = Fonts.normal;

@@ -18,7 +18,7 @@ package
       
       private var oldScrollY:Number = 0;
       
-      public function Snow()
+      public function Snow() : void
       {
          super();
          this.oldScrollX = FlxG.scroll.x;
@@ -26,7 +26,7 @@ package
          loadGraphic(Art.Snow,true,true,IMG_WIDTH,IMG_HEIGHT);
          width = IMG_WIDTH;
          height = IMG_HEIGHT;
-         addAnimation("normal",[int(FlxU.random() * 32)]);
+         addAnimation("normal",[(int)(FlxU.random() * 32)]);
          play("normal");
          x = FlxU.random() * FlxG.width;
          y = FlxU.random() * FlxG.height;
@@ -40,9 +40,9 @@ package
       {
          x += FlxG.scroll.x - this.oldScrollX;
          y += FlxG.scroll.y - this.oldScrollY;
-         this.oldScrollX = FlxG.scroll.x;
-         this.oldScrollY = FlxG.scroll.y;
-         this.elapsed += FlxG.elapsed;
+         oldScrollX = FlxG.scroll.x;
+         oldScrollY = FlxG.scroll.y;
+         elapsed += FlxG.elapsed;
          if(x > FlxG.width)
          {
             x = -width;

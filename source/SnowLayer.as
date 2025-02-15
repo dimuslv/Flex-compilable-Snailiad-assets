@@ -8,7 +8,7 @@ package
       
       public var snows:Array;
       
-      public function SnowLayer()
+      public function SnowLayer() : void
       {
          this.snows = new Array();
          super();
@@ -22,7 +22,7 @@ package
          {
             this.snows[_loc1_] = null;
          }
-         this.snows = null;
+         snows = null;
       }
       
       public function destroyAll() : void
