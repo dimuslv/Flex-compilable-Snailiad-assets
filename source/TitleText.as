@@ -32,6 +32,21 @@ package
          super.destroy();
       }
       
+      public function setYOffset(param1:int, param2:Boolean = false) : void
+      {
+         var _loc3_:int = 0;
+         _targetY = param1 + Y_POS;
+         if(param2)
+         {
+            _loc3_ = 0;
+            while(_loc3_ < this._letters.length)
+            {
+               this._letters[_loc3_].y = this._targetY;
+               _loc3_++;
+            }
+         }
+      }
+      
       public function TitleText(param1:Boolean = false) : void
       {
          super();
@@ -69,21 +84,6 @@ package
          }
          this.setYOffset(0);
          active = true;
-      }
-      
-      public function setYOffset(param1:int, param2:Boolean = false) : void
-      {
-         var _loc3_:int = 0;
-         _targetY = param1 + Y_POS;
-         if(param2)
-         {
-            _loc3_ = 0;
-            while(_loc3_ < this._letters.length)
-            {
-               this._letters[_loc3_].y = this._targetY;
-               _loc3_++;
-            }
-         }
       }
       
       override public function update() : void
