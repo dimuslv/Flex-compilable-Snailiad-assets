@@ -30,7 +30,7 @@ package org.flixel
       
       protected var _volumeAdjust:Number;
       
-      protected var _looped:Boolean;
+      public var _looped:Boolean;
       
       protected var _core:FlxObject;
       
@@ -220,6 +220,7 @@ package org.flixel
          this._fadeInTimer = param1;
          this._fadeInTotal = this._fadeInTimer;
          this.play();
+         this.updateSound();
       }
       
       public function get volume() : Number
@@ -331,6 +332,16 @@ package org.flixel
          {
             this.stop();
          }
+         if(this._core)
+         {
+            this._core.destroy();
+            this._core = null;
+         }
+         this._point2 = null;
+         super.destroy();
+         this._sound.close();
+         this._sound = null;
+         this._transform = null;
       }
       
       internal function updateTransform() : void

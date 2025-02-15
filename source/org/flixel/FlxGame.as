@@ -31,13 +31,13 @@ package org.flixel
 		// So if you are using the Flex 3.x SDK compiler, switch the embed statment below to expose the correct version.
 		
 		//Flex v4.x SDK only (see note above):
-		[Embed(source="data/nokiafc22.ttf",fontFamily="system",embedAsCFF="false")] protected var junk:String;
+		[Embed(source="data/Snailplanes.ttf",fontFamily="system",embedAsCFF="false")] protected var junk:String;
 		
 		//Flex v3.x SDK only (see note above):
 		//[Embed(source="data/nokiafc22.ttf",fontFamily="system")] protected var junk:String;
 		
-		[Embed(source="data/beep.mp3")] protected var SndBeep:Class;
-		[Embed(source="data/flixel.mp3")] protected var SndFlixel:Class;
+		//[Embed(source="data/beep.mp3")] protected var SndBeep:Class;
+		//[Embed(source="data/flixel.mp3")] protected var SndFlixel:Class;
 
 		/**
 		 * Sets 0, -, and + to control the global volume and P to pause.
@@ -136,8 +136,6 @@ package org.flixel
 		 */
 		public function showSoundTray(Silent:Boolean=false):void
 		{
-			if(!Silent)
-				FlxG.play(SndBeep);
 			_soundTrayTimer = 1;
 			_soundTray.y = _gameYOffset*_zoom;
 			_soundTray.visible = true;
@@ -190,10 +188,13 @@ package org.flixel
 		 */
 		protected function onKeyUp(event:KeyboardEvent):void
 		{
-			if((event.keyCode == 192) || (event.keyCode == 220)) //FOR ZE GERMANZ
+			if (FlxG.consoleEnabled)
 			{
-				_console.toggle();
-				return;
+				if((event.keyCode == 192) || (event.keyCode == 220)) //FOR ZE GERMANZ
+				{
+					_console.toggle();
+					return;
+				}
 			}
 			if(!FlxG.mobile && useDefaultHotKeys)
 			{
@@ -248,6 +249,7 @@ package org.flixel
 		protected function onFocus(event:Event=null):void
 		{
 			if(FlxG.pause)
+				FlxG.mouse.hide();
 				FlxG.pause = false;
 		}
 		
@@ -256,6 +258,11 @@ package org.flixel
 		 */
 		protected function onFocusLost(event:Event=null):void
 		{
+			if (FlxG.noPause)
+			{
+				return;
+			}
+			FlxG.mouse.show();
 			FlxG.pause = true;
 		}
 		
@@ -318,7 +325,7 @@ package org.flixel
 						_soundTray.visible = false;
 						
 						//Save sound preferences
-						soundPrefs = new FlxSave();
+						/*soundPrefs = new FlxSave();
 						if(soundPrefs.bind("flixel"))
 						{
 							if(soundPrefs.data.sound == null)
@@ -326,7 +333,7 @@ package org.flixel
 							soundPrefs.data.mute = FlxG.mute;
 							soundPrefs.data.volume = FlxG.volume;
 							soundPrefs.forceSave();
-						}
+						}*/
 					}
 				}
 			}
@@ -416,7 +423,7 @@ package org.flixel
 			_console = new FlxConsole(_gameXOffset,_gameYOffset,_zoom);
 			if(!FlxG.mobile)
 				addChild(_console);
-			var vstring:String = FlxG.LIBRARY_NAME+" v"+FlxG.LIBRARY_MAJOR_VERSION+"."+FlxG.LIBRARY_MINOR_VERSION;
+			/*var vstring:String = FlxG.LIBRARY_NAME+" v"+FlxG.LIBRARY_MAJOR_VERSION+"."+FlxG.LIBRARY_MINOR_VERSION;
 			if(FlxG.debug)
 				vstring += " [debug]";
 			else
@@ -430,7 +437,7 @@ package org.flixel
 				i++;
 			}
 			FlxG.log(vstring);
-			FlxG.log(underline);
+			FlxG.log(underline);*/
 			
 			//Add basic input even listeners
 			stage.addEventListener(MouseEvent.MOUSE_DOWN, FlxG.mouse.handleMouseDown);
@@ -487,11 +494,11 @@ package org.flixel
 				soundPrefs = new FlxSave();
 				if(soundPrefs.bind("flixel") && (soundPrefs.data.sound != null))
 				{
-					if(soundPrefs.data.volume != null)
+					/*if(soundPrefs.data.volume != null)
 						FlxG.volume = soundPrefs.data.volume;
 					if(soundPrefs.data.mute != null)
 						FlxG.mute = soundPrefs.data.mute;
-					showSoundTray(true);
+					showSoundTray(true);*/
 				}
 			}
 

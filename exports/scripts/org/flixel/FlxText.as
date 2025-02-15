@@ -252,9 +252,9 @@ package org.flixel
             if(this._shadow > 0)
             {
                this._tf.setTextFormat(new TextFormat(_loc4_.font,_loc4_.size,this._shadow,null,null,null,null,null,_loc4_.align));
-               _mtx.translate(1,1);
+               _mtx.translate(this._shadowDistance,this._shadowDistance);
                _pixels.draw(this._tf,_mtx,_ct);
-               _mtx.translate(-1,-1);
+               _mtx.translate(-this._shadowDistance,-this._shadowDistance);
                this._tf.setTextFormat(new TextFormat(_loc4_.font,_loc4_.size,_loc4_.color,null,null,null,null,null,_loc4_.align));
             }
             _pixels.draw(this._tf,_mtx,_ct);

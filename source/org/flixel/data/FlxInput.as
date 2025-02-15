@@ -94,7 +94,10 @@ package org.flixel.data
 		 * 
 		 * @return	Whether the key was just pressed
 		 */
-		public function justPressed(Key:String):Boolean { return _map[_lookup[Key]].current == 2; }
+		public function justPressed(Key:String):Boolean
+		{
+			return _lookup[Key] && _map[_lookup[Key]] && _map[_lookup[Key]].current == 2;
+		}
 		
 		/**
 		 * Check to see if this key is just released.

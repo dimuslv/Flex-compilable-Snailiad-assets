@@ -102,7 +102,7 @@ package org.flixel.data
 			_text.selectable = false;
 			_text.antiAliasType = AntiAliasType.NORMAL;
 			_text.gridFitType = GridFitType.PIXEL;
-			_text.defaultTextFormat = new TextFormat("system",8,0xffffff);
+			_text.defaultTextFormat = new TextFormat("system",10,0xffffff);
 			addChild(_text);
 
 			_fpsDisplay = new TextField();
@@ -115,7 +115,7 @@ package org.flixel.data
 			_fpsDisplay.selectable = false;
 			_fpsDisplay.antiAliasType = AntiAliasType.NORMAL;
 			_fpsDisplay.gridFitType = GridFitType.PIXEL;
-			_fpsDisplay.defaultTextFormat = new TextFormat("system",16,0xffffff,true,null,null,null,null,"right");
+			_fpsDisplay.defaultTextFormat = new TextFormat("system",20,0xffffff,true,null,null,null,null,"right");
 			addChild(_fpsDisplay);
 			
 			_extraDisplay = new TextField();
@@ -130,7 +130,7 @@ package org.flixel.data
 			_extraDisplay.selectable = false;
 			_extraDisplay.antiAliasType = AntiAliasType.NORMAL;
 			_extraDisplay.gridFitType = GridFitType.PIXEL;
-			_extraDisplay.defaultTextFormat = new TextFormat("system",8,0xffffff,true,null,null,null,null,"right");
+			_extraDisplay.defaultTextFormat = new TextFormat("system",10,0xffffff,true,null,null,null,null,"right");
 			addChild(_extraDisplay);
 			
 			_lines = new Array();

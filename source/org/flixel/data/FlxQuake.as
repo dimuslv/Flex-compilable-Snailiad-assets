@@ -44,7 +44,7 @@ package org.flixel.data
 		 * @param	Intensity	Percentage of screen size representing the maximum distance that the screen can move during the 'quake'.
 		 * @param	Duration	The length in seconds that the "quake" should last.
 		 */
-		public function start(Intensity:Number=0.05,Duration:Number=0.5):void
+		public function start(Intensity:Number=0.01,Duration:Number=0.5):void
 		{
 			stop();
 			_intensity = Intensity;

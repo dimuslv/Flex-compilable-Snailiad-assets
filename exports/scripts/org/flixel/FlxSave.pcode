@@ -72,7 +72,7 @@ package org.flixel
          returns QName(PackageNamespace(""),"Boolean")
          
          body
-         maxstack 3
+         maxstack 4
          localcount 4
          initscopedepth 5
          maxscopedepth 10
@@ -109,7 +109,8 @@ package org.flixel
          getlex QName(PackageNamespace("flash.net"),"SharedObject")
          getlocal0
          getproperty QName(PackageNamespace(""),"name")
-         callproperty QName(PackageNamespace(""),"getLocal"), 1
+         pushstring "/"
+         callproperty QName(PackageNamespace(""),"getLocal"), 2
          initproperty QName(ProtectedNamespace("org.flixel:FlxSave"),"_so")
          ofs1:
          jump ofs2
@@ -369,6 +370,105 @@ package org.flixel
          getlocal0
          getlocal1
          callproperty QName(PackageNamespace(""),"forceSave"), 1
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function writeArray(param1:String, param2:Array) : void
+      {
+         trait method QName(PackageNamespace(""),"writeArray")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         param QName(PackageNamespace(""),"Array")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 5
+         localcount 4
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"Array")
+         getlocal2
+         constructprop QName(PackageNamespace(""),"Array"), 1
+         coerce QName(PackageNamespace(""),"Array")
+         setlocal3
+         getlocal0
+         getlocal1
+         getlocal3
+         pushbyte 0
+         getlocal2
+         getproperty QName(PackageNamespace(""),"length")
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"splice"), 2
+         callpropvoid QName(PackageNamespace(""),"write"), 2
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function readArray(param1:String) : Array
+      {
+         trait method QName(PackageNamespace(""),"readArray")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"Array")
+         
+         body
+         maxstack 3
+         localcount 6
+         initscopedepth 4
+         maxscopedepth 5
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getlocal1
+         callproperty QName(PackageNamespace(""),"read"), 1
+         coerce QName(PackageNamespace(""),"Object")
+         setlocal2
+         findpropstrict QName(PackageNamespace(""),"String")
+         getlocal2
+         callproperty QName(PackageNamespace(""),"String"), 1
+         coerce_s
+         setlocal3
+         findpropstrict QName(PackageNamespace(""),"Array")
+         constructprop QName(PackageNamespace(""),"Array"), 0
+         coerce QName(PackageNamespace(""),"Array")
+         setlocal 4
+         pushbyte 0
+         setlocal 5
+         jump ofs0
+         ofs1:
+         label
+         getlocal3
+         getlocal 5
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charAt"), 1
+         pushstring ","
+         ifeq ofs2
+         getlocal 4
+         getlocal3
+         getlocal 5
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"charAt"), 1
+         callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
+         ofs2:
+         inclocal_i 5
+         ofs0:
+         getlocal 5
+         getlocal3
+         getproperty QName(PackageNamespace(""),"length")
+         iflt ofs1
+         getlocal 4
          returnvalue
          end ; code
          end ; body

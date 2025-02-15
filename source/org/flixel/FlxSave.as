@@ -49,7 +49,7 @@ package org.flixel
 			name = Name;
 			try
 			{
-				_so = SharedObject.getLocal(name);
+				_so = SharedObject.getLocal(name, "/");
 			}
 			catch(e:Error)
 			{
@@ -143,6 +143,26 @@ package org.flixel
 			}
 			_so.clear();
 			return forceSave(MinFileSize);
+		}
+		
+		public function writeArray(param1:String, param2:Array) : void
+		{
+			var _loc3_:Array = new Array(param2);
+			write(param1, _loc3_.splice(0, param2.length));
+		}
+		
+		public function readArray(param1:String) : Array
+		{
+			var _loc2_:Object = read(param1);
+			var _loc3_:String = String(_loc2_);
+			var _loc4_:Array = new Array();
+			for (var i:int = 0; i < _loc3_.length; i++) {
+				if (_loc3_.charAt(i) != ",")
+				{
+					_loc4_.push(_loc3_.charAt(i));
+				}
+			}
+			return _loc4_;
 		}
 	}
 }

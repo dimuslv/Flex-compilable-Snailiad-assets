@@ -35,7 +35,7 @@ package org.flixel
 		protected var _position:Number;
 		protected var _volume:Number;
 		protected var _volumeAdjust:Number;
-		protected var _looped:Boolean;
+		public var _looped:Boolean;
 		protected var _core:FlxObject;
 		protected var _radius:Number;
 		protected var _pan:Boolean;
@@ -256,6 +256,7 @@ package org.flixel
 			_fadeInTimer = Seconds;
 			_fadeInTotal = _fadeInTimer;
 			play();
+			updateSound();
 		}
 		
 		/**
@@ -355,6 +356,16 @@ package org.flixel
 		{
 			if(active)
 				stop();
+			if (_core)
+			{
+				_core.destroy();
+				_core = null;
+			}
+			_point2 = null;
+			super.destroy();
+			_sound.close();
+			_sound = null;
+			_transform = null;
 		}
 		
 		/**

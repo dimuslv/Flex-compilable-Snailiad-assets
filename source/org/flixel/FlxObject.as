@@ -235,7 +235,24 @@ package org.flixel
 		 */
 		public function destroy():void
 		{
-			//Nothing to destroy yet
+			velocity = null;
+			acceleration = null;
+			drag = null;
+			maxVelocity = null;
+			origin = null;
+			scrollFactor = null;
+			_point = null;
+			_rect = null;
+			_flashPoint = null;
+			colHullX = null;
+			colHullY = null;
+			colVector = null;
+			var _loc1_:int = colOffsets.length;
+			for (var i:int = 0; i < _loc1_; i++) {
+				colOffsets[i] = null;
+			}
+			colOffsets.length = 0;
+			colOffsets = null;
 		}
 		
 		/**

@@ -8,12 +8,6 @@ package org.flixel
    
    public class FlxG
    {
-      public static var LIBRARY_NAME:String = "flixel";
-      
-      public static var LIBRARY_MAJOR_VERSION:uint = 2;
-      
-      public static var LIBRARY_MINOR_VERSION:uint = 43;
-      
       protected static var _game:FlxGame;
       
       protected static var _pause:Boolean;
@@ -121,15 +115,6 @@ package org.flixel
       code
       getlocal0
       pushscope
-      findproperty QName(PackageNamespace(""),"LIBRARY_NAME")
-      pushstring "flixel"
-      setproperty QName(PackageNamespace(""),"LIBRARY_NAME")
-      findproperty QName(PackageNamespace(""),"LIBRARY_MAJOR_VERSION")
-      pushbyte 2
-      setproperty QName(PackageNamespace(""),"LIBRARY_MAJOR_VERSION")
-      findproperty QName(PackageNamespace(""),"LIBRARY_MINOR_VERSION")
-      pushbyte 43
-      setproperty QName(PackageNamespace(""),"LIBRARY_MINOR_VERSION")
       findproperty QName(PackageNamespace(""),"noPause")
       pushfalse
       setproperty QName(PackageNamespace(""),"noPause")
@@ -573,7 +558,7 @@ package org.flixel
          end ; method
       }
       
-      public static function play(param1:Class, param2:Number = 1, param3:Boolean = false) : FlxSound
+      public static function play(param1:Class, param2:Number = 0.75, param3:Boolean = false) : FlxSound
       {
          trait method QName(PackageNamespace(""),"play")
          flag FINAL
@@ -584,7 +569,7 @@ package org.flixel
          param QName(PackageNamespace(""),"Class")
          param QName(PackageNamespace(""),"Number")
          param QName(PackageNamespace(""),"Boolean")
-         optional Double(1)
+         optional Double(0.75)
          optional False()
          returns QName(PackageNamespace("org.flixel"),"FlxSound")
          
@@ -1260,21 +1245,6 @@ package org.flixel
          pushnull
          coerce QName(PackageNamespace("org.flixel"),"FlxSound")
          setlocal2
-         getlex QName(PackageNamespace(""),"music")
-         pushnull
-         equals
-         not
-         dup
-         iffalse ofs0
-         pop
-         getlex QName(PackageNamespace(""),"music")
-         getproperty QName(PackageNamespace(""),"active")
-         convert_b
-         ofs0:
-         iffalse ofs1
-         getlex QName(PackageNamespace(""),"music")
-         callpropvoid QName(PackageNamespace(""),"pause"), 0
-         ofs1:
          pushbyte 0
          convert_u
          setlocal1
@@ -1282,8 +1252,8 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"length")
          convert_u
          setlocal3
-         jump ofs2
-         ofs3:
+         jump ofs0
+         ofs1:
          label
          getlex QName(PackageNamespace(""),"sounds")
          getlocal1
@@ -1302,19 +1272,19 @@ package org.flixel
          equals
          not
          dup
-         iffalse ofs4
+         iffalse ofs2
          pop
          getlocal2
          getproperty QName(PackageNamespace(""),"active")
          convert_b
-         ofs4:
-         iffalse ofs2
+         ofs2:
+         iffalse ofs0
          getlocal2
          callpropvoid QName(PackageNamespace(""),"pause"), 0
-         ofs2:
+         ofs0:
          getlocal1
          getlocal3
-         iflt ofs3
+         iflt ofs1
          returnvoid
          end ; code
          end ; body
@@ -1596,7 +1566,7 @@ package org.flixel
          
          body
          maxstack 5
-         localcount 12
+         localcount 13
          initscopedepth 3
          maxscopedepth 4
          
@@ -1613,8 +1583,11 @@ package org.flixel
          coerce QName(PackageNamespace("flash.display"),"BitmapData")
          setlocal 10
          pushnull
-         coerce QName(PackageNamespace("flash.geom"),"Matrix")
+         coerce QName(PackageNamespace("flash.display"),"BitmapData")
          setlocal 11
+         pushnull
+         coerce QName(PackageNamespace("flash.geom"),"Matrix")
+         setlocal 12
          pushfalse
          setlocal 5
          getlocal 4
@@ -1627,11 +1600,15 @@ package org.flixel
          getlocal1
          callproperty QName(PackageNamespace(""),"String"), 1
          coerce_s
+         dup
          setlocal 6
+         pushstring "[class SixMap3_Imgplayer]"
+         ifne ofs1
+         ofs1:
          getlocal3
          convert_b
          dup
-         iffalse ofs1
+         iffalse ofs2
          pop
          getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
          getlocal 6
@@ -1639,9 +1616,9 @@ package org.flixel
          getlex QName(PackageNamespace(""),"undefined")
          equals
          not
-         ofs1:
+         ofs2:
          dup
-         iffalse ofs2
+         iffalse ofs3
          pop
          getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
          getlocal 6
@@ -1649,15 +1626,15 @@ package org.flixel
          pushnull
          equals
          not
-         ofs2:
+         ofs3:
          iffalse ofs0
          pushbyte 0
          convert_u
          setlocal 8
-         jump ofs3
-         ofs4:
+         jump ofs4
+         ofs5:
          label
-         ofs3:
+         ofs4:
          getlocal 6
          getlocal 8
          convert_d
@@ -1675,7 +1652,7 @@ package org.flixel
          equals
          not
          dup
-         iffalse ofs5
+         iffalse ofs6
          pop
          getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
          getlocal 9
@@ -1683,16 +1660,18 @@ package org.flixel
          pushnull
          equals
          not
-         ofs5:
-         iftrue ofs4
+         ofs6:
+         iftrue ofs5
          getlocal 9
          coerce_s
          setlocal 6
          ofs0:
+         pushfalse
+         setlocal 7
          findpropstrict QName(PackageNamespace(""),"checkBitmapCache")
          getlocal 6
          callproperty QName(PackageNamespace(""),"checkBitmapCache"), 1
-         iftrue ofs6
+         iftrue ofs7
          getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
          getlocal 6
          getlocal1
@@ -1700,77 +1679,118 @@ package org.flixel
          getproperty Multiname("bitmapData",[PrivateNamespace(null,"#FlxG/1"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"#FlxG/2"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
          setproperty MultinameL([PrivateNamespace(null,"#FlxG/1"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"#FlxG/2"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
          getlocal2
-         iffalse ofs6
+         iffalse ofs8
          pushtrue
          setlocal 5
-         ofs6:
+         ofs8:
+         jump ofs9
+         ofs7:
+         pushtrue
+         setlocal 7
+         ofs9:
+         getlocal 7
+         not
+         dup
+         iftrue ofs10
+         pop
+         getlocal2
+         not
+         ofs10:
+         iffalse ofs11
          getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cache")
          getlocal 6
          getproperty MultinameL([PrivateNamespace(null,"#FlxG/1"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"#FlxG/2"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
          coerce QName(PackageNamespace("flash.display"),"BitmapData")
-         setlocal 7
-         getlocal 5
-         not
+         setlocal 10
+         ofs11:
+         getlocal 7
+         convert_b
          dup
-         iffalse ofs7
+         iffalse ofs12
          pop
          getlocal2
          convert_b
-         ofs7:
+         ofs12:
+         iffalse ofs13
+         pushtrue
+         setlocal 5
+         jump ofs14
+         ofs13:
+         getlocal 5
+         not
          dup
-         iffalse ofs8
+         iffalse ofs15
          pop
-         getlocal 7
+         getlocal2
+         convert_b
+         ofs15:
+         dup
+         iffalse ofs16
+         pop
+         getlocal 10
          getproperty QName(PackageNamespace(""),"width")
          getlocal1
          construct 0
          getproperty Multiname("bitmapData",[PrivateNamespace(null,"#FlxG/1"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"#FlxG/2"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
          getproperty Multiname("width",[PrivateNamespace(null,"#FlxG/1"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"#FlxG/2"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
          equals
-         ofs8:
-         iffalse ofs9
+         ofs16:
+         iffalse ofs14
          pushtrue
          setlocal 5
-         ofs9:
+         ofs14:
          getlocal 5
-         iffalse ofs10
-         findpropstrict QName(PackageNamespace("flash.display"),"BitmapData")
+         iffalse ofs17
          getlocal 7
+         iftrue ofs18
+         findpropstrict QName(PackageNamespace("flash.display"),"BitmapData")
+         getlocal 10
          getproperty QName(PackageNamespace(""),"width")
          pushbyte 1
          lshift
-         getlocal 7
+         getlocal 10
          getproperty QName(PackageNamespace(""),"height")
          pushtrue
          pushbyte 0
          constructprop QName(PackageNamespace("flash.display"),"BitmapData"), 4
          coerce QName(PackageNamespace("flash.display"),"BitmapData")
          dup
-         setlocal 10
-         getlocal 7
+         setlocal 11
+         getlocal 10
          callpropvoid QName(PackageNamespace(""),"draw"), 1
          findpropstrict QName(PackageNamespace("flash.geom"),"Matrix")
          constructprop QName(PackageNamespace("flash.geom"),"Matrix"), 0
          coerce QName(PackageNamespace("flash.geom"),"Matrix")
          dup
-         setlocal 11
+         setlocal 12
          pushbyte -1
          pushbyte 1
          callpropvoid QName(PackageNamespace(""),"scale"), 2
+         getlocal 12
          getlocal 11
-         getlocal 10
          getproperty QName(PackageNamespace(""),"width")
          pushbyte 0
          callpropvoid QName(PackageNamespace(""),"translate"), 2
-         getlocal 10
-         getlocal 7
          getlocal 11
-         callpropvoid QName(PackageNamespace(""),"draw"), 2
          getlocal 10
+         getlocal 12
+         callpropvoid QName(PackageNamespace(""),"draw"), 2
+         getlocal 11
          coerce QName(PackageNamespace("flash.display"),"BitmapData")
-         setlocal 7
-         ofs10:
-         getlocal 7
+         setlocal 10
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cacheReverse")
+         getlocal 6
+         getlocal 11
+         setproperty MultinameL([PrivateNamespace(null,"#FlxG/1"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"#FlxG/2"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         jump ofs17
+         ofs18:
+         getlex QName(StaticProtectedNs("org.flixel:FlxG"),"_cacheReverse")
+         getlocal 6
+         getproperty MultinameL([PrivateNamespace(null,"#FlxG/1"),PackageNamespace(""),StaticProtectedNs("org.flixel:FlxG"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"#FlxG/2"),PackageNamespace("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),PackageNamespace("org.flixel.data"),ProtectedNamespace("org.flixel:FlxG"),StaticProtectedNs("Object")])
+         coerce QName(PackageNamespace("flash.display"),"BitmapData")
+         setlocal 10
+         ofs17:
+         getlocal 10
          returnvalue
          end ; code
          end ; body

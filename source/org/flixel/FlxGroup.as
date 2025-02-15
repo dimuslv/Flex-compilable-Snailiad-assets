@@ -186,6 +186,11 @@ package org.flixel
 			return null;
 		}
 		
+		public function logMembers(param1:String) : void
+		{
+			FlxG.log(param1 + ": " + countLiving().toString() + " living, " + countDead().toString() + " dead");
+		}
+		
 		/**
 		 * Call this function to retrieve the first object with dead == false in the group.
 		 * This is handy for checking if everything's wiped out, or choosing a squad leader, etc.
@@ -452,7 +457,7 @@ package org.flixel
 		/**
 		 * Internal function that actually loops through and destroys each member.
 		 */
-		protected function destroyMembers():void
+		public function destroyMembers():void
 		{
 			var i:uint = 0;
 			var o:FlxObject;
@@ -473,6 +478,7 @@ package org.flixel
 		override public function destroy():void
 		{
 			destroyMembers();
+			_last = null;
 			super.destroy();
 		}
 		

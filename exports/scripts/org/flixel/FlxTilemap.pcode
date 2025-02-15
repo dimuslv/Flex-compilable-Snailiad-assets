@@ -17,6 +17,14 @@ package org.flixel
       
       public static const ALT:uint = 2;
       
+      public static const TILE_ACCESS_BEHAVIOR_NORMAL:int = 0;
+      
+      public static const TILE_ACCESS_BEHAVIOR_WRAP:int = 1;
+      
+      public static const TILE_ACCESS_BEHAVIOR_ZEROES_AFTER_EDGE:int = 2;
+      
+      public static const TILE_ACCESS_BEHAVIOR_REPEATING_EDGE:int = 3;
+      
       method
       name null
       returns null
@@ -45,10 +53,28 @@ package org.flixel
       findproperty QName(PackageNamespace(""),"ALT")
       pushbyte 2
       initproperty QName(PackageNamespace(""),"ALT")
+      findproperty QName(PackageNamespace(""),"TILE_ACCESS_BEHAVIOR_NORMAL")
+      pushbyte 0
+      initproperty QName(PackageNamespace(""),"TILE_ACCESS_BEHAVIOR_NORMAL")
+      findproperty QName(PackageNamespace(""),"TILE_ACCESS_BEHAVIOR_WRAP")
+      pushbyte 1
+      initproperty QName(PackageNamespace(""),"TILE_ACCESS_BEHAVIOR_WRAP")
+      findproperty QName(PackageNamespace(""),"TILE_ACCESS_BEHAVIOR_ZEROES_AFTER_EDGE")
+      pushbyte 2
+      initproperty QName(PackageNamespace(""),"TILE_ACCESS_BEHAVIOR_ZEROES_AFTER_EDGE")
+      findproperty QName(PackageNamespace(""),"TILE_ACCESS_BEHAVIOR_REPEATING_EDGE")
+      pushbyte 3
+      initproperty QName(PackageNamespace(""),"TILE_ACCESS_BEHAVIOR_REPEATING_EDGE")
       returnvoid
       end ; code
       end ; body
       end ; method
+      
+      public var getTile:Function;
+      
+      public var setTile:Function;
+      
+      private var _tileAccessBehavior:int = 0;
       
       public var collideIndex:uint;
       
@@ -66,37 +92,41 @@ package org.flixel
       
       public var totalTiles:uint;
       
-      protected var _flashRect:Rectangle;
+      public var _flashRect:Rectangle;
       
-      protected var _flashRect2:Rectangle;
+      public var _flashRect2:Rectangle;
       
-      protected var _pixels:BitmapData;
+      public var _pixels:BitmapData;
       
-      protected var _bbPixels:BitmapData;
+      public var _bbPixels:BitmapData;
       
-      protected var _buffer:BitmapData;
+      public var _buffer:BitmapData;
       
-      protected var _bufferLoc:FlxPoint;
+      public var _bufferLoc:FlxPoint;
       
-      protected var _bbKey:String;
+      public var _bbKey:String;
       
-      protected var _data:Array;
+      public var _data:Array;
       
-      protected var _rects:Array;
+      public var _rects:Array;
       
-      protected var _tileWidth:uint;
+      public var _tileWidth:uint;
       
-      protected var _tileHeight:uint;
+      public var _tileHeight:uint;
       
-      protected var _block:FlxObject;
+      public var _block:FlxObject;
       
-      protected var _callbacks:Array;
+      public var _callbacks:Array;
       
-      protected var _screenRows:uint;
+      public var _screenRows:uint;
       
-      protected var _screenCols:uint;
+      public var _screenCols:uint;
       
-      protected var _boundsVisible:Boolean;
+      public var _boundsVisible:Boolean;
+      
+      public var _wrapCenterOffsetX:uint;
+      
+      public var _wrapCenterOffsetY:uint;
       
       public function FlxTilemap()
       {
@@ -113,6 +143,14 @@ package org.flixel
          code
          getlocal0
          pushscope
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"getTileNoWrap")
+         initproperty QName(PackageNamespace(""),"getTile")
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"setTileNoWrap")
+         initproperty QName(PackageNamespace(""),"setTile")
          getlocal0
          constructsuper 0
          getlocal0
@@ -138,42 +176,42 @@ package org.flixel
          initproperty QName(PackageNamespace(""),"totalTiles")
          getlocal0
          pushnull
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_buffer")
+         initproperty QName(PackageNamespace(""),"_buffer")
          getlocal0
          findpropstrict QName(PackageNamespace("org.flixel"),"FlxPoint")
          constructprop QName(PackageNamespace("org.flixel"),"FlxPoint"), 0
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bufferLoc")
+         initproperty QName(PackageNamespace(""),"_bufferLoc")
          getlocal0
          findpropstrict QName(PackageNamespace("flash.geom"),"Rectangle")
          constructprop QName(PackageNamespace("flash.geom"),"Rectangle"), 0
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect2")
+         initproperty QName(PackageNamespace(""),"_flashRect2")
          getlocal0
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect2")
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect2")
+         initproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
          pushnull
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         initproperty QName(PackageNamespace(""),"_data")
          getlocal0
          pushbyte 0
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         initproperty QName(PackageNamespace(""),"_tileWidth")
          getlocal0
          pushbyte 0
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         initproperty QName(PackageNamespace(""),"_tileHeight")
          getlocal0
          pushnull
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_rects")
+         initproperty QName(PackageNamespace(""),"_rects")
          getlocal0
          pushnull
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_pixels")
+         initproperty QName(PackageNamespace(""),"_pixels")
          getlocal0
          findpropstrict QName(PackageNamespace("org.flixel"),"FlxObject")
          constructprop QName(PackageNamespace("org.flixel"),"FlxObject"), 0
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_block")
+         initproperty QName(PackageNamespace(""),"_block")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_block")
+         getproperty QName(PackageNamespace(""),"_block")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_block")
+         getproperty QName(PackageNamespace(""),"_block")
          pushbyte 0
          dup
          setlocal1
@@ -182,13 +220,13 @@ package org.flixel
          kill 1
          setproperty QName(PackageNamespace(""),"width")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_block")
+         getproperty QName(PackageNamespace(""),"_block")
          pushtrue
          setproperty QName(PackageNamespace(""),"fixed")
          getlocal0
          findpropstrict QName(PackageNamespace(""),"Array")
          constructprop QName(PackageNamespace(""),"Array"), 0
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_callbacks")
+         initproperty QName(PackageNamespace(""),"_callbacks")
          getlocal0
          pushtrue
          initproperty QName(PackageNamespace(""),"fixed")
@@ -251,7 +289,7 @@ package org.flixel
          getlocal 5
          getlocal1
          pushbyte 0
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          add
          coerce_s
          setlocal 5
@@ -263,7 +301,7 @@ package org.flixel
          getlocal3
          getlocal2
          multiply
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          add
          add
          coerce_s
@@ -279,7 +317,7 @@ package org.flixel
          multiply
          getlocal 4
          add
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          add
          add
          coerce_s
@@ -516,7 +554,7 @@ package org.flixel
          findpropstrict QName(PackageNamespace(""),"bitmapToCSV")
          getlocal1
          construct 0
-         getproperty Multiname("bitmapData",[PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("bitmapData",[PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          getlocal2
          getlocal3
          callproperty QName(PackageNamespace(""),"bitmapToCSV"), 3
@@ -580,7 +618,7 @@ package org.flixel
          getlocal0
          findpropstrict QName(PackageNamespace(""),"Array")
          constructprop QName(PackageNamespace(""),"Array"), 0
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         initproperty QName(PackageNamespace(""),"_data")
          pushbyte 0
          convert_u
          setlocal 9
@@ -594,9 +632,9 @@ package org.flixel
          increment
          convert_u
          setlocal 9
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          pushstring ","
-         callproperty Multiname("split",[PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
+         callproperty Multiname("split",[PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")]), 1
          coerce QName(PackageNamespace(""),"Array")
          dup
          setlocal 7
@@ -626,7 +664,7 @@ package org.flixel
          ofs5:
          label
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          findpropstrict QName(PackageNamespace(""),"uint")
          getlocal 7
          getlocal 10
@@ -635,7 +673,7 @@ package org.flixel
          increment
          convert_u
          setlocal 10
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          callproperty QName(PackageNamespace(""),"uint"), 1
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
          ofs4:
@@ -648,6 +686,34 @@ package org.flixel
          getlocal0
          getproperty QName(PackageNamespace(""),"heightInTiles")
          iflt ofs1
+         getlocal0
+         getlex QName(PackageNamespace(""),"uint")
+         getproperty QName(PackageNamespace(""),"MAX_VALUE")
+         pushbyte 2
+         divide
+         getlex QName(PackageNamespace(""),"uint")
+         getproperty QName(PackageNamespace(""),"MAX_VALUE")
+         pushbyte 2
+         divide
+         getlocal0
+         getproperty QName(PackageNamespace(""),"widthInTiles")
+         modulo
+         subtract
+         initproperty QName(PackageNamespace(""),"_wrapCenterOffsetX")
+         getlocal0
+         getlex QName(PackageNamespace(""),"uint")
+         getproperty QName(PackageNamespace(""),"MAX_VALUE")
+         pushbyte 2
+         divide
+         getlex QName(PackageNamespace(""),"uint")
+         getproperty QName(PackageNamespace(""),"MAX_VALUE")
+         pushbyte 2
+         divide
+         getlocal0
+         getproperty QName(PackageNamespace(""),"heightInTiles")
+         modulo
+         subtract
+         initproperty QName(PackageNamespace(""),"_wrapCenterOffsetY")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"widthInTiles")
@@ -687,7 +753,7 @@ package org.flixel
          increment
          convert_u
          setlocal 11
-         callpropvoid QName(ProtectedNamespace("org.flixel:FlxTilemap"),"autoTile"), 1
+         callpropvoid QName(PackageNamespace(""),"autoTile"), 1
          ofs7:
          getlocal 11
          getlocal0
@@ -698,54 +764,54 @@ package org.flixel
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getlocal2
          callproperty QName(PackageNamespace(""),"addBitmap"), 1
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_pixels")
+         initproperty QName(PackageNamespace(""),"_pixels")
          getlocal0
          getlocal3
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         initproperty QName(PackageNamespace(""),"_tileWidth")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          pushbyte 0
          ifne ofs9
          getlocal0
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_pixels")
+         getproperty QName(PackageNamespace(""),"_pixels")
          getproperty QName(PackageNamespace(""),"height")
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         initproperty QName(PackageNamespace(""),"_tileWidth")
          ofs9:
          getlocal0
          getlocal 4
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         initproperty QName(PackageNamespace(""),"_tileHeight")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          pushbyte 0
          ifne ofs10
          getlocal0
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
+         initproperty QName(PackageNamespace(""),"_tileHeight")
          ofs10:
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_block")
+         getproperty QName(PackageNamespace(""),"_block")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          setproperty QName(PackageNamespace(""),"width")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_block")
+         getproperty QName(PackageNamespace(""),"_block")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          setproperty QName(PackageNamespace(""),"height")
          findproperty QName(PackageNamespace(""),"width")
          getlocal0
          getproperty QName(PackageNamespace(""),"widthInTiles")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          multiply
          initproperty QName(PackageNamespace(""),"width")
          findproperty QName(PackageNamespace(""),"height")
          getlocal0
          getproperty QName(PackageNamespace(""),"heightInTiles")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          multiply
          initproperty QName(PackageNamespace(""),"height")
          getlocal0
@@ -753,7 +819,7 @@ package org.flixel
          getlocal0
          getproperty QName(PackageNamespace(""),"totalTiles")
          constructprop QName(PackageNamespace(""),"Array"), 1
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_rects")
+         initproperty QName(PackageNamespace(""),"_rects")
          pushbyte 0
          convert_u
          setlocal 11
@@ -767,7 +833,7 @@ package org.flixel
          increment
          convert_u
          setlocal 11
-         callpropvoid QName(ProtectedNamespace("org.flixel:FlxTilemap"),"updateTile"), 1
+         callpropvoid QName(PackageNamespace(""),"updateTile"), 1
          ofs11:
          getlocal 11
          getlocal0
@@ -777,13 +843,13 @@ package org.flixel
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"width")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          divide
          callproperty QName(PackageNamespace(""),"ceil"), 1
          pushbyte 1
          add
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          multiply
          convert_u
          setlocal 12
@@ -791,13 +857,13 @@ package org.flixel
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"height")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          divide
          callproperty QName(PackageNamespace(""),"ceil"), 1
          pushbyte 1
          add
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          multiply
          convert_u
          setlocal 13
@@ -808,76 +874,76 @@ package org.flixel
          pushtrue
          pushbyte 0
          constructprop QName(PackageNamespace("flash.display"),"BitmapData"), 4
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_buffer")
+         initproperty QName(PackageNamespace(""),"_buffer")
          getlocal0
          getlex QName(PackageNamespace(""),"Math")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"height")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          divide
          callproperty QName(PackageNamespace(""),"ceil"), 1
          pushbyte 1
          add
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_screenRows")
+         initproperty QName(PackageNamespace(""),"_screenRows")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_screenRows")
+         getproperty QName(PackageNamespace(""),"_screenRows")
          getlocal0
          getproperty QName(PackageNamespace(""),"heightInTiles")
          ifngt ofs13
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"heightInTiles")
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_screenRows")
+         initproperty QName(PackageNamespace(""),"_screenRows")
          ofs13:
          getlocal0
          getlex QName(PackageNamespace(""),"Math")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"width")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          divide
          callproperty QName(PackageNamespace(""),"ceil"), 1
          pushbyte 1
          add
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_screenCols")
+         initproperty QName(PackageNamespace(""),"_screenCols")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_screenCols")
+         getproperty QName(PackageNamespace(""),"_screenCols")
          getlocal0
          getproperty QName(PackageNamespace(""),"widthInTiles")
          ifngt ofs14
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"widthInTiles")
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_screenCols")
+         initproperty QName(PackageNamespace(""),"_screenCols")
          ofs14:
          getlocal0
          findpropstrict QName(PackageNamespace(""),"String")
          getlocal2
          callproperty QName(PackageNamespace(""),"String"), 1
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bbKey")
+         initproperty QName(PackageNamespace(""),"_bbKey")
          getlocal0
-         callpropvoid QName(ProtectedNamespace("org.flixel:FlxTilemap"),"generateBoundingTiles"), 0
+         callpropvoid QName(PackageNamespace(""),"generateBoundingTiles"), 0
          getlocal0
          callpropvoid QName(PackageNamespace(""),"refreshHulls"), 0
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          pushbyte 0
          setproperty QName(PackageNamespace(""),"x")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          pushbyte 0
          setproperty QName(PackageNamespace(""),"y")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_buffer")
+         getproperty QName(PackageNamespace(""),"_buffer")
          getproperty QName(PackageNamespace(""),"width")
          setproperty QName(PackageNamespace(""),"width")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_buffer")
+         getproperty QName(PackageNamespace(""),"_buffer")
          getproperty QName(PackageNamespace(""),"height")
          setproperty QName(PackageNamespace(""),"height")
          getlocal0
@@ -887,9 +953,9 @@ package org.flixel
          end ; method
       }
       
-      protected function generateBoundingTiles() : void
+      public function generateBoundingTiles() : void
       {
-         trait method QName(ProtectedNamespace("org.flixel:FlxTilemap"),"generateBoundingTiles")
+         trait method QName(PackageNamespace(""),"generateBoundingTiles")
          dispid 0
          method
          name null
@@ -925,14 +991,14 @@ package org.flixel
          pushtrue
          initproperty QName(PackageNamespace(""),"refresh")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bbKey")
+         getproperty QName(PackageNamespace(""),"_bbKey")
          pushnull
          equals
          dup
          iftrue ofs0
          pop
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bbKey")
+         getproperty QName(PackageNamespace(""),"_bbKey")
          getproperty QName(PackageNamespace(""),"length")
          pushbyte 0
          lessequals
@@ -945,7 +1011,7 @@ package org.flixel
          convert_u
          setlocal1
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bbKey")
+         getproperty QName(PackageNamespace(""),"_bbKey")
          pushstring ":BBTILES"
          add
          getlocal1
@@ -960,28 +1026,28 @@ package org.flixel
          getlocal0
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_pixels")
+         getproperty QName(PackageNamespace(""),"_pixels")
          getproperty QName(PackageNamespace(""),"width")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_pixels")
+         getproperty QName(PackageNamespace(""),"_pixels")
          getproperty QName(PackageNamespace(""),"height")
          pushbyte 0
          pushtrue
          getlocal2
          callproperty QName(PackageNamespace(""),"createBitmap"), 5
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bbPixels")
+         initproperty QName(PackageNamespace(""),"_bbPixels")
          getlocal3
          iftrue ofs2
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_pixels")
+         getproperty QName(PackageNamespace(""),"_pixels")
          getproperty QName(PackageNamespace(""),"width")
          setproperty QName(PackageNamespace(""),"width")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_pixels")
+         getproperty QName(PackageNamespace(""),"_pixels")
          getproperty QName(PackageNamespace(""),"height")
          setproperty QName(PackageNamespace(""),"height")
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_flashPoint")
@@ -991,22 +1057,22 @@ package org.flixel
          pushbyte 0
          setproperty QName(PackageNamespace(""),"y")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bbPixels")
+         getproperty QName(PackageNamespace(""),"_bbPixels")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_pixels")
+         getproperty QName(PackageNamespace(""),"_pixels")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_flashPoint")
          callpropvoid QName(PackageNamespace(""),"copyPixels"), 3
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          setproperty QName(PackageNamespace(""),"width")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          setproperty QName(PackageNamespace(""),"height")
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_solid")
          convert_b
@@ -1020,12 +1086,12 @@ package org.flixel
          setlocal1
          pushstring "BBTILESTAMP"
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          add
          pushstring "X"
          add
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          add
          getlocal1
          add
@@ -1038,9 +1104,9 @@ package org.flixel
          setlocal3
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          pushbyte 0
          pushtrue
          getlocal2
@@ -1051,13 +1117,13 @@ package org.flixel
          iftrue ofs3
          getlocal 5
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal1
          callpropvoid QName(PackageNamespace(""),"fillRect"), 2
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          pushbyte 1
          dup
          setlocal 10
@@ -1066,30 +1132,30 @@ package org.flixel
          kill 10
          setproperty QName(PackageNamespace(""),"x")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getproperty QName(PackageNamespace(""),"width")
          pushbyte 2
          subtract
          setproperty QName(PackageNamespace(""),"width")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getproperty QName(PackageNamespace(""),"height")
          pushbyte 2
          subtract
          setproperty QName(PackageNamespace(""),"height")
          getlocal 5
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          pushbyte 0
          callpropvoid QName(PackageNamespace(""),"fillRect"), 2
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          pushbyte 0
          dup
          setlocal 10
@@ -1098,14 +1164,14 @@ package org.flixel
          kill 10
          setproperty QName(PackageNamespace(""),"x")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          setproperty QName(PackageNamespace(""),"width")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          setproperty QName(PackageNamespace(""),"height")
          ofs3:
          findproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_solid")
@@ -1117,12 +1183,12 @@ package org.flixel
          setlocal1
          pushstring "BBTILESTAMP"
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          add
          pushstring "X"
          add
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          add
          getlocal1
          add
@@ -1135,9 +1201,9 @@ package org.flixel
          setlocal3
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          pushbyte 0
          pushtrue
          getlocal2
@@ -1148,13 +1214,13 @@ package org.flixel
          iftrue ofs4
          getlocal 6
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal1
          callpropvoid QName(PackageNamespace(""),"fillRect"), 2
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          pushbyte 1
          dup
          setlocal 10
@@ -1163,30 +1229,30 @@ package org.flixel
          kill 10
          setproperty QName(PackageNamespace(""),"x")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getproperty QName(PackageNamespace(""),"width")
          pushbyte 2
          subtract
          setproperty QName(PackageNamespace(""),"width")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getproperty QName(PackageNamespace(""),"height")
          pushbyte 2
          subtract
          setproperty QName(PackageNamespace(""),"height")
          getlocal 6
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          pushbyte 0
          callpropvoid QName(PackageNamespace(""),"fillRect"), 2
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          pushbyte 0
          dup
          setlocal 10
@@ -1195,14 +1261,14 @@ package org.flixel
          kill 10
          setproperty QName(PackageNamespace(""),"x")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          setproperty QName(PackageNamespace(""),"width")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          setproperty QName(PackageNamespace(""),"height")
          ofs4:
          pushbyte 0
@@ -1236,10 +1302,10 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"collideIndex")
          ifnlt ofs9
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bbPixels")
+         getproperty QName(PackageNamespace(""),"_bbPixels")
          getlocal 5
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_flashPoint")
          pushnull
          pushnull
@@ -1248,10 +1314,10 @@ package org.flixel
          jump ofs10
          ofs9:
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bbPixels")
+         getproperty QName(PackageNamespace(""),"_bbPixels")
          getlocal 6
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_flashPoint")
          pushnull
          pushnull
@@ -1260,46 +1326,46 @@ package org.flixel
          ofs10:
          getlocal 8
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          add
          convert_u
          setlocal 8
          ofs7:
          getlocal 8
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bbPixels")
+         getproperty QName(PackageNamespace(""),"_bbPixels")
          getproperty QName(PackageNamespace(""),"width")
          iflt ofs8
          getlocal 7
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          add
          convert_u
          setlocal 7
          ofs5:
          getlocal 7
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bbPixels")
+         getproperty QName(PackageNamespace(""),"_bbPixels")
          getproperty QName(PackageNamespace(""),"height")
          iflt ofs6
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          pushbyte 0
          setproperty QName(PackageNamespace(""),"x")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          pushbyte 0
          setproperty QName(PackageNamespace(""),"y")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_buffer")
+         getproperty QName(PackageNamespace(""),"_buffer")
          getproperty QName(PackageNamespace(""),"width")
          setproperty QName(PackageNamespace(""),"width")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_buffer")
+         getproperty QName(PackageNamespace(""),"_buffer")
          getproperty QName(PackageNamespace(""),"height")
          setproperty QName(PackageNamespace(""),"height")
          ofs2:
@@ -1309,9 +1375,9 @@ package org.flixel
          end ; method
       }
       
-      protected function renderTilemap() : void
+      public function renderTilemap() : void
       {
-         trait method QName(ProtectedNamespace("org.flixel:FlxTilemap"),"renderTilemap")
+         trait method QName(PackageNamespace(""),"renderTilemap")
          dispid 0
          method
          name null
@@ -1336,30 +1402,30 @@ package org.flixel
          convert_u
          setlocal 7
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_buffer")
+         getproperty QName(PackageNamespace(""),"_buffer")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          pushbyte 0
          callpropvoid QName(PackageNamespace(""),"fillRect"), 2
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"showBounds")
          iffalse ofs0
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bbPixels")
+         getproperty QName(PackageNamespace(""),"_bbPixels")
          coerce QName(PackageNamespace("flash.display"),"BitmapData")
          setlocal1
          getlocal0
          pushtrue
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_boundsVisible")
+         initproperty QName(PackageNamespace(""),"_boundsVisible")
          jump ofs1
          ofs0:
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_pixels")
+         getproperty QName(PackageNamespace(""),"_pixels")
          coerce QName(PackageNamespace("flash.display"),"BitmapData")
          setlocal1
          getlocal0
          pushfalse
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_boundsVisible")
+         initproperty QName(PackageNamespace(""),"_boundsVisible")
          ofs1:
          findpropstrict QName(PackageNamespace(""),"getScreenXY")
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_point")
@@ -1377,7 +1443,7 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"x")
          negate
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          divide
          callproperty QName(PackageNamespace(""),"floor"), 1
          convert_i
@@ -1387,7 +1453,7 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"y")
          negate
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          divide
          callproperty QName(PackageNamespace(""),"floor"), 1
          convert_i
@@ -1402,13 +1468,13 @@ package org.flixel
          getlocal0
          getproperty QName(PackageNamespace(""),"widthInTiles")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_screenCols")
+         getproperty QName(PackageNamespace(""),"_screenCols")
          subtract
          ifngt ofs3
          getlocal0
          getproperty QName(PackageNamespace(""),"widthInTiles")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_screenCols")
+         getproperty QName(PackageNamespace(""),"_screenCols")
          subtract
          convert_i
          setlocal2
@@ -1423,13 +1489,13 @@ package org.flixel
          getlocal0
          getproperty QName(PackageNamespace(""),"heightInTiles")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_screenRows")
+         getproperty QName(PackageNamespace(""),"_screenRows")
          subtract
          ifngt ofs5
          getlocal0
          getproperty QName(PackageNamespace(""),"heightInTiles")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_screenRows")
+         getproperty QName(PackageNamespace(""),"_screenRows")
          subtract
          convert_i
          setlocal3
@@ -1465,26 +1531,26 @@ package org.flixel
          label
          getlocal0
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_rects")
+         getproperty QName(PackageNamespace(""),"_rects")
          getlocal 7
          convert_d
          dup
          increment
          convert_u
          setlocal 7
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace("flash.geom"),"Rectangle")
          astypelate
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         initproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          pushnull
          ifeq ofs10
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_buffer")
+         getproperty QName(PackageNamespace(""),"_buffer")
          getlocal1
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_flashPoint")
          pushnull
          pushnull
@@ -1495,7 +1561,7 @@ package org.flixel
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_flashPoint")
          getproperty QName(PackageNamespace(""),"x")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          add
          setproperty QName(PackageNamespace(""),"x")
          getlocal 6
@@ -1505,7 +1571,7 @@ package org.flixel
          ofs8:
          getlocal 6
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_screenCols")
+         getproperty QName(PackageNamespace(""),"_screenCols")
          iflt ofs9
          getlocal 4
          getlocal0
@@ -1517,7 +1583,7 @@ package org.flixel
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_flashPoint")
          getproperty QName(PackageNamespace(""),"y")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          add
          setproperty QName(PackageNamespace(""),"y")
          getlocal 5
@@ -1527,24 +1593,24 @@ package org.flixel
          ofs6:
          getlocal 5
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_screenRows")
+         getproperty QName(PackageNamespace(""),"_screenRows")
          iflt ofs7
          getlocal0
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect2")
-         initproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect2")
+         initproperty QName(PackageNamespace(""),"_flashRect")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bufferLoc")
+         getproperty QName(PackageNamespace(""),"_bufferLoc")
          getlocal2
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          multiply
          setproperty QName(PackageNamespace(""),"x")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bufferLoc")
+         getproperty QName(PackageNamespace(""),"_bufferLoc")
          getlocal3
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          multiply
          setproperty QName(PackageNamespace(""),"y")
          returnvoid
@@ -1580,7 +1646,7 @@ package org.flixel
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_point")
          getproperty QName(PackageNamespace(""),"x")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bufferLoc")
+         getproperty QName(PackageNamespace(""),"_bufferLoc")
          getproperty QName(PackageNamespace(""),"x")
          add
          setproperty QName(PackageNamespace(""),"x")
@@ -1588,7 +1654,7 @@ package org.flixel
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_point")
          getproperty QName(PackageNamespace(""),"y")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bufferLoc")
+         getproperty QName(PackageNamespace(""),"_bufferLoc")
          getproperty QName(PackageNamespace(""),"y")
          add
          setproperty QName(PackageNamespace(""),"y")
@@ -1610,7 +1676,7 @@ package org.flixel
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_point")
          getproperty QName(PackageNamespace(""),"x")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_buffer")
+         getproperty QName(PackageNamespace(""),"_buffer")
          getproperty QName(PackageNamespace(""),"width")
          add
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
@@ -1623,7 +1689,7 @@ package org.flixel
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_point")
          getproperty QName(PackageNamespace(""),"y")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_buffer")
+         getproperty QName(PackageNamespace(""),"_buffer")
          getproperty QName(PackageNamespace(""),"height")
          add
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
@@ -1662,7 +1728,7 @@ package org.flixel
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"showBounds")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_boundsVisible")
+         getproperty QName(PackageNamespace(""),"_boundsVisible")
          ifeq ofs0
          getlocal0
          pushtrue
@@ -1672,7 +1738,7 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"refresh")
          iffalse ofs1
          getlocal0
-         callpropvoid QName(ProtectedNamespace("org.flixel:FlxTilemap"),"renderTilemap"), 0
+         callpropvoid QName(PackageNamespace(""),"renderTilemap"), 0
          getlocal0
          pushfalse
          initproperty QName(PackageNamespace(""),"refresh")
@@ -1684,7 +1750,7 @@ package org.flixel
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_point")
          getproperty QName(PackageNamespace(""),"x")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bufferLoc")
+         getproperty QName(PackageNamespace(""),"_bufferLoc")
          getproperty QName(PackageNamespace(""),"x")
          add
          setproperty QName(PackageNamespace(""),"x")
@@ -1692,16 +1758,16 @@ package org.flixel
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_point")
          getproperty QName(PackageNamespace(""),"y")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_bufferLoc")
+         getproperty QName(PackageNamespace(""),"_bufferLoc")
          getproperty QName(PackageNamespace(""),"y")
          add
          setproperty QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"buffer")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_buffer")
+         getproperty QName(PackageNamespace(""),"_buffer")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_flashRect")
+         getproperty QName(PackageNamespace(""),"_flashRect")
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_flashPoint")
          pushnull
          pushnull
@@ -1742,7 +1808,7 @@ package org.flixel
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_solid")
          ifeq ofs0
          getlocal0
-         callpropvoid QName(ProtectedNamespace("org.flixel:FlxTilemap"),"generateBoundingTiles"), 0
+         callpropvoid QName(PackageNamespace(""),"generateBoundingTiles"), 0
          ofs0:
          returnvoid
          end ; code
@@ -1779,7 +1845,7 @@ package org.flixel
          getlex QName(ProtectedNamespace("org.flixel:FlxObject"),"_fixed")
          ifeq ofs0
          getlocal0
-         callpropvoid QName(ProtectedNamespace("org.flixel:FlxTilemap"),"generateBoundingTiles"), 0
+         callpropvoid QName(PackageNamespace(""),"generateBoundingTiles"), 0
          ofs0:
          returnvoid
          end ; code
@@ -1825,7 +1891,7 @@ package org.flixel
          getlex QName(PackageNamespace(""),"x")
          subtract
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          divide
          callproperty QName(PackageNamespace(""),"floor"), 1
          convert_u
@@ -1836,7 +1902,7 @@ package org.flixel
          getlex QName(PackageNamespace(""),"y")
          subtract
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          divide
          callproperty QName(PackageNamespace(""),"floor"), 1
          convert_u
@@ -1845,7 +1911,7 @@ package org.flixel
          getlocal1
          getproperty QName(PackageNamespace(""),"width")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          divide
          callproperty QName(PackageNamespace(""),"ceil"), 1
          pushbyte 1
@@ -1856,7 +1922,7 @@ package org.flixel
          getlocal1
          getproperty QName(PackageNamespace(""),"height")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          divide
          callproperty QName(PackageNamespace(""),"ceil"), 1
          pushbyte 1
@@ -1898,11 +1964,11 @@ package org.flixel
          jump ofs7
          ofs6:
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal2
          getlocal 10
          add
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace(""),"uint")
          astypelate
          convert_u
@@ -1918,7 +1984,7 @@ package org.flixel
          getlocal 10
          add
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          multiply
          add
          pushstring "y"
@@ -1927,7 +1993,7 @@ package org.flixel
          getlocal 9
          add
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          multiply
          add
          pushstring "data"
@@ -1966,14 +2032,14 @@ package org.flixel
          ofs10:
          label
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_block")
+         getproperty QName(PackageNamespace(""),"_block")
          getlocal 4
          getlocal 13
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
-         getproperty Multiname("x",[PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("x",[PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          setproperty QName(PackageNamespace(""),"x")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_block")
+         getproperty QName(PackageNamespace(""),"_block")
          getlocal 4
          getlocal 13
          convert_d
@@ -1981,11 +2047,11 @@ package org.flixel
          increment
          convert_u
          setlocal 13
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
-         getproperty Multiname("y",[PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty Multiname("y",[PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          setproperty QName(PackageNamespace(""),"y")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_block")
+         getproperty QName(PackageNamespace(""),"_block")
          getlocal1
          callproperty QName(PackageNamespace(""),"overlaps"), 1
          iffalse ofs9
@@ -2031,7 +2097,7 @@ package org.flixel
          getlex QName(PackageNamespace(""),"x")
          subtract
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          divide
          callproperty QName(PackageNamespace(""),"uint"), 1
          findpropstrict QName(PackageNamespace(""),"uint")
@@ -2039,7 +2105,7 @@ package org.flixel
          getlex QName(PackageNamespace(""),"y")
          subtract
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          divide
          callproperty QName(PackageNamespace(""),"uint"), 1
          callproperty QName(PackageNamespace(""),"getTile"), 2
@@ -2078,11 +2144,11 @@ package org.flixel
          setproperty QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"colHullX")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          setproperty QName(PackageNamespace(""),"width")
          getlex QName(PackageNamespace(""),"colHullX")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          setproperty QName(PackageNamespace(""),"height")
          getlex QName(PackageNamespace(""),"colHullY")
          pushbyte 0
@@ -2092,11 +2158,11 @@ package org.flixel
          setproperty QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"colHullY")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          setproperty QName(PackageNamespace(""),"width")
          getlex QName(PackageNamespace(""),"colHullY")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          setproperty QName(PackageNamespace(""),"height")
          returnvoid
          end ; code
@@ -2153,7 +2219,7 @@ package org.flixel
          getlex QName(PackageNamespace(""),"x")
          subtract
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          divide
          callproperty QName(PackageNamespace(""),"floor"), 1
          convert_i
@@ -2164,7 +2230,7 @@ package org.flixel
          getlex QName(PackageNamespace(""),"y")
          subtract
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          divide
          callproperty QName(PackageNamespace(""),"floor"), 1
          convert_i
@@ -2174,7 +2240,7 @@ package org.flixel
          getlocal1
          getproperty QName(PackageNamespace(""),"width")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          divide
          callproperty QName(PackageNamespace(""),"ceil"), 1
          add
@@ -2187,7 +2253,7 @@ package org.flixel
          getlocal1
          getproperty QName(PackageNamespace(""),"height")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          divide
          callproperty QName(PackageNamespace(""),"ceil"), 1
          add
@@ -2244,11 +2310,11 @@ package org.flixel
          ofs7:
          label
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal 4
          getlocal3
          add
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace(""),"uint")
          astypelate
          getlocal0
@@ -2267,17 +2333,17 @@ package org.flixel
          getlex QName(PackageNamespace(""),"x")
          getlocal3
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          multiply
          add
          getlex QName(PackageNamespace(""),"y")
          getlocal2
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          multiply
          add
          constructprop QName(PackageNamespace("org.flixel"),"FlxPoint"), 2
-         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          kill 10
          ofs8:
          getlocal3
@@ -2316,9 +2382,152 @@ package org.flixel
          end ; method
       }
       
-      public function getTile(param1:uint, param2:uint) : uint
+      public function get tileAccessBehavior() : int
       {
-         trait method QName(PackageNamespace(""),"getTile")
+         trait getter QName(PackageNamespace(""),"tileAccessBehavior")
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"int")
+         
+         body
+         maxstack 1
+         localcount 1
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PrivateNamespace(null,"#FlxTilemap"),"_tileAccessBehavior")
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function set tileAccessBehavior(param1:int) : void
+      {
+         trait setter QName(PackageNamespace(""),"tileAccessBehavior")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"int")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         jump ofs0
+         ofs1:
+         label
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"getTileNoWrap")
+         initproperty QName(PackageNamespace(""),"getTile")
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"setTileNoWrap")
+         initproperty QName(PackageNamespace(""),"setTile")
+         jump ofs2
+         ofs3:
+         label
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"getTileWrap")
+         initproperty QName(PackageNamespace(""),"getTile")
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"setTileWrap")
+         initproperty QName(PackageNamespace(""),"setTile")
+         jump ofs2
+         ofs4:
+         label
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"getTileZeroesAfterEdge")
+         initproperty QName(PackageNamespace(""),"getTile")
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"setTileZeroesAfterEdge")
+         initproperty QName(PackageNamespace(""),"setTile")
+         jump ofs2
+         ofs5:
+         label
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"getTileRepeatingEdge")
+         initproperty QName(PackageNamespace(""),"getTile")
+         getlocal0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"setTileRepeatingEdge")
+         initproperty QName(PackageNamespace(""),"setTile")
+         jump ofs2
+         ofs6:
+         label
+         findpropstrict QName(PackageNamespace(""),"Error")
+         pushstring "Unknown tile access behavior: "
+         getlocal1
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         add
+         constructprop QName(PackageNamespace(""),"Error"), 1
+         throw
+         jump ofs0
+         ofs0:
+         getlocal1
+         setlocal2
+         getlex QName(PackageNamespace(""),"TILE_ACCESS_BEHAVIOR_NORMAL")
+         getlocal2
+         ifstrictne ofs7
+         pushbyte 0
+         jump ofs8
+         ofs7:
+         getlex QName(PackageNamespace(""),"TILE_ACCESS_BEHAVIOR_WRAP")
+         getlocal2
+         ifstrictne ofs9
+         pushbyte 1
+         jump ofs8
+         ofs9:
+         getlex QName(PackageNamespace(""),"TILE_ACCESS_BEHAVIOR_ZEROES_AFTER_EDGE")
+         getlocal2
+         ifstrictne ofs10
+         pushbyte 2
+         jump ofs8
+         ofs10:
+         getlex QName(PackageNamespace(""),"TILE_ACCESS_BEHAVIOR_REPEATING_EDGE")
+         getlocal2
+         ifstrictne ofs11
+         pushbyte 3
+         jump ofs8
+         ofs11:
+         jump ofs12
+         pushbyte 4
+         jump ofs12
+         ofs12:
+         pushbyte 4
+         ofs8:
+         kill 2
+         lookupswitch ofs6, [ofs1, ofs3, ofs4, ofs5, ofs6]
+         ofs2:
+         getlocal0
+         getlocal1
+         initproperty QName(PrivateNamespace(null,"#FlxTilemap"),"_tileAccessBehavior")
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getTileNoWrap(param1:uint, param2:uint) : uint
+      {
+         trait method QName(PackageNamespace(""),"getTileNoWrap")
          dispid 0
          method
          name null
@@ -2349,39 +2558,381 @@ package org.flixel
          end ; method
       }
       
-      public function getTileByIndex(param1:uint) : uint
+      public function getTileWrap(param1:uint, param2:uint) : uint
       {
-         trait method QName(PackageNamespace(""),"getTileByIndex")
+         trait method QName(PackageNamespace(""),"getTileWrap")
          dispid 0
          method
          name null
          param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
          returns QName(PackageNamespace(""),"uint")
          
          body
-         maxstack 2
-         localcount 2
+         maxstack 3
+         localcount 3
          initscopedepth 7
          maxscopedepth 8
          
          code
          getlocal0
          pushscope
-         getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
-         getlex QName(PackageNamespace(""),"uint")
-         astypelate
+         getlocal0
+         getproperty QName(PackageNamespace(""),"_wrapCenterOffsetX")
+         add
+         getlocal0
+         getproperty QName(PackageNamespace(""),"widthInTiles")
+         modulo
+         convert_u
+         setlocal1
+         getlocal2
+         getlocal0
+         getproperty QName(PackageNamespace(""),"_wrapCenterOffsetY")
+         add
+         getlocal0
+         getproperty QName(PackageNamespace(""),"heightInTiles")
+         modulo
+         convert_u
+         setlocal2
+         getlocal0
+         getlocal1
+         getlocal2
+         callproperty QName(PackageNamespace(""),"getTileNoWrap"), 2
          returnvalue
          end ; code
          end ; body
          end ; method
       }
       
-      public function setTile(param1:uint, param2:uint, param3:uint, param4:Boolean = true) : Boolean
+      public function getTileZeroesAfterEdge(param1:uint, param2:uint) : uint
       {
-         trait method QName(PackageNamespace(""),"setTile")
+         trait method QName(PackageNamespace(""),"getTileZeroesAfterEdge")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         pushbyte 0
+         lessthan
+         dup
+         iftrue ofs0
+         pop
+         getlocal2
+         pushbyte 0
+         lessthan
+         ofs0:
+         dup
+         iftrue ofs1
+         pop
+         getlocal1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"widthInTiles")
+         greaterequals
+         ofs1:
+         dup
+         iftrue ofs2
+         pop
+         getlocal2
+         getlocal0
+         getproperty QName(PackageNamespace(""),"heightInTiles")
+         greaterequals
+         ofs2:
+         iffalse ofs3
+         pushbyte 0
+         returnvalue
+         ofs3:
+         getlocal0
+         getlocal1
+         getlocal2
+         callproperty QName(PackageNamespace(""),"getTileNoWrap"), 2
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function getTileRepeatingEdge(param1:uint, param2:uint) : uint
+      {
+         trait method QName(PackageNamespace(""),"getTileRepeatingEdge")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 3
+         localcount 3
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         callproperty QName(PackageNamespace(""),"int"), 1
+         pushbyte 0
+         ifnlt ofs0
+         pushbyte 0
+         convert_u
+         setlocal1
+         jump ofs1
+         ofs0:
+         getlocal1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"widthInTiles")
+         decrement
+         ifngt ofs1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"widthInTiles")
+         decrement
+         convert_u
+         setlocal1
+         ofs1:
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal2
+         callproperty QName(PackageNamespace(""),"int"), 1
+         pushbyte 0
+         ifnlt ofs2
+         pushbyte 0
+         convert_u
+         setlocal2
+         jump ofs3
+         ofs2:
+         getlocal2
+         getlocal0
+         getproperty QName(PackageNamespace(""),"heightInTiles")
+         decrement
+         ifngt ofs3
+         getlocal0
+         getproperty QName(PackageNamespace(""),"heightInTiles")
+         decrement
+         convert_u
+         setlocal1
+         ofs3:
+         getlocal0
+         getlocal1
+         getlocal2
+         callproperty QName(PackageNamespace(""),"getTileNoWrap"), 2
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function setTileZeroesAfterEdge(param1:uint, param2:uint, param3:uint, param4:Boolean = true) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"setTileZeroesAfterEdge")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"Boolean")
+         optional True()
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 5
+         localcount 5
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         pushbyte 0
+         lessthan
+         dup
+         iftrue ofs0
+         pop
+         getlocal2
+         pushbyte 0
+         lessthan
+         ofs0:
+         dup
+         iftrue ofs1
+         pop
+         getlocal1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"widthInTiles")
+         greaterequals
+         ofs1:
+         dup
+         iftrue ofs2
+         pop
+         getlocal2
+         getlocal0
+         getproperty QName(PackageNamespace(""),"heightInTiles")
+         greaterequals
+         ofs2:
+         iffalse ofs3
+         pushfalse
+         returnvalue
+         ofs3:
+         getlocal0
+         getlocal1
+         getlocal2
+         getlocal3
+         getlocal 4
+         callproperty QName(PackageNamespace(""),"setTileNoWrap"), 4
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function setTileWrap(param1:uint, param2:uint, param3:uint, param4:Boolean = true) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"setTileWrap")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"Boolean")
+         optional True()
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 5
+         localcount 5
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlocal1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"_wrapCenterOffsetX")
+         add
+         getlocal0
+         getproperty QName(PackageNamespace(""),"widthInTiles")
+         modulo
+         convert_u
+         setlocal1
+         getlocal2
+         getlocal0
+         getproperty QName(PackageNamespace(""),"_wrapCenterOffsetY")
+         add
+         getlocal0
+         getproperty QName(PackageNamespace(""),"heightInTiles")
+         modulo
+         convert_u
+         setlocal2
+         getlocal0
+         getlocal1
+         getlocal2
+         getlocal3
+         getlocal 4
+         callproperty QName(PackageNamespace(""),"setTileNoWrap"), 4
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function setTileRepeatingEdge(param1:uint, param2:uint, param3:uint, param4:Boolean = true) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"setTileRepeatingEdge")
+         dispid 0
+         method
+         name null
+         flag HAS_OPTIONAL
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"uint")
+         param QName(PackageNamespace(""),"Boolean")
+         optional True()
+         returns QName(PackageNamespace(""),"Boolean")
+         
+         body
+         maxstack 5
+         localcount 5
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal1
+         callproperty QName(PackageNamespace(""),"int"), 1
+         pushbyte 0
+         ifnlt ofs0
+         pushbyte 0
+         convert_u
+         setlocal1
+         jump ofs1
+         ofs0:
+         getlocal1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"widthInTiles")
+         decrement
+         ifngt ofs1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"widthInTiles")
+         decrement
+         convert_u
+         setlocal1
+         ofs1:
+         findpropstrict QName(PackageNamespace(""),"int")
+         getlocal2
+         callproperty QName(PackageNamespace(""),"int"), 1
+         pushbyte 0
+         ifnlt ofs2
+         pushbyte 0
+         convert_u
+         setlocal2
+         jump ofs3
+         ofs2:
+         getlocal2
+         getlocal0
+         getproperty QName(PackageNamespace(""),"heightInTiles")
+         decrement
+         ifngt ofs3
+         getlocal0
+         getproperty QName(PackageNamespace(""),"heightInTiles")
+         decrement
+         convert_u
+         setlocal1
+         ofs3:
+         getlocal0
+         getlocal1
+         getlocal2
+         getlocal3
+         getlocal 4
+         callproperty QName(PackageNamespace(""),"setTileNoWrap"), 4
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      public function setTileNoWrap(param1:uint, param2:uint, param3:uint, param4:Boolean = true) : Boolean
+      {
+         trait method QName(PackageNamespace(""),"setTileNoWrap")
          dispid 0
          method
          name null
@@ -2434,6 +2985,36 @@ package org.flixel
          end ; method
       }
       
+      public function getTileByIndex(param1:uint) : uint
+      {
+         trait method QName(PackageNamespace(""),"getTileByIndex")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"uint")
+         returns QName(PackageNamespace(""),"uint")
+         
+         body
+         maxstack 2
+         localcount 2
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         getproperty QName(PackageNamespace(""),"_data")
+         getlocal1
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getlex QName(PackageNamespace(""),"uint")
+         astypelate
+         returnvalue
+         end ; code
+         end ; body
+         end ; method
+      }
+      
       public function setTileByIndex(param1:uint, param2:uint, param3:Boolean = true) : Boolean
       {
          trait method QName(PackageNamespace(""),"setTileByIndex")
@@ -2461,7 +3042,7 @@ package org.flixel
          setlocal 5
          getlocal1
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getproperty QName(PackageNamespace(""),"length")
          ifnge ofs0
          pushfalse
@@ -2470,10 +3051,10 @@ package org.flixel
          pushtrue
          setlocal 4
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          getlocal2
-         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          getlocal3
          iftrue ofs1
          getlocal 4
@@ -2488,7 +3069,7 @@ package org.flixel
          ifne ofs2
          getlocal0
          getlocal1
-         callpropvoid QName(ProtectedNamespace("org.flixel:FlxTilemap"),"updateTile"), 1
+         callpropvoid QName(PackageNamespace(""),"updateTile"), 1
          getlocal 4
          returnvalue
          ofs2:
@@ -2566,10 +3147,10 @@ package org.flixel
          setlocal 5
          getlocal0
          getlocal 5
-         callpropvoid QName(ProtectedNamespace("org.flixel:FlxTilemap"),"autoTile"), 1
+         callpropvoid QName(PackageNamespace(""),"autoTile"), 1
          getlocal0
          getlocal 5
-         callpropvoid QName(ProtectedNamespace("org.flixel:FlxTilemap"),"updateTile"), 1
+         callpropvoid QName(PackageNamespace(""),"updateTile"), 1
          ofs10:
          inclocal_i 8
          ofs5:
@@ -2643,25 +3224,25 @@ package org.flixel
          getlex QName(PackageNamespace(""),"x")
          getlocal1
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          multiply
          add
          getlex QName(PackageNamespace(""),"y")
          getlocal1
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          multiply
          add
          getlex QName(PackageNamespace(""),"width")
          getlocal1
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          multiply
          subtract
          getlex QName(PackageNamespace(""),"height")
          getlocal1
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          multiply
          subtract
          callpropvoid QName(PackageNamespace(""),"followBounds"), 4
@@ -2713,16 +3294,16 @@ package org.flixel
          pushnan
          setlocal 23
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          convert_d
          setlocal 7
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          ifnlt ofs0
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          convert_d
          setlocal 7
          ofs0:
@@ -2828,25 +3409,25 @@ package org.flixel
          ofs6:
          getlocal 14
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          divide
          convert_u
          setlocal 16
          getlocal 15
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          divide
          convert_u
          setlocal 17
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal 17
          getlocal0
          getproperty QName(PackageNamespace(""),"widthInTiles")
          multiply
          getlocal 16
          add
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          getlex QName(PackageNamespace(""),"uint")
          astypelate
          getlocal0
@@ -2854,13 +3435,13 @@ package org.flixel
          ifnge ofs7
          getlocal 16
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          multiply
          convert_u
          setlocal 16
          getlocal 17
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          multiply
          convert_u
          setlocal 17
@@ -2888,7 +3469,7 @@ package org.flixel
          ifnlt ofs8
          getlocal 21
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          add
          convert_d
          setlocal 21
@@ -2916,7 +3497,7 @@ package org.flixel
          getlocal 20
          getlocal 17
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          add
          lessthan
          ofs9:
@@ -2946,7 +3527,7 @@ package org.flixel
          ifnlt ofs12
          getlocal 21
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          add
          convert_d
          setlocal 21
@@ -2974,7 +3555,7 @@ package org.flixel
          getlocal 19
          getlocal 16
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          add
          lessthan
          ofs13:
@@ -3014,9 +3595,9 @@ package org.flixel
          end ; method
       }
       
-      protected function autoTile(param1:uint) : void
+      public function autoTile(param1:uint) : void
       {
-         trait method QName(ProtectedNamespace("org.flixel:FlxTilemap"),"autoTile")
+         trait method QName(PackageNamespace(""),"autoTile")
          dispid 0
          method
          name null
@@ -3033,18 +3614,18 @@ package org.flixel
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          pushbyte 0
          ifne ofs0
          returnvoid
          ofs0:
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          pushbyte 0
-         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          getlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"widthInTiles")
@@ -3055,26 +3636,26 @@ package org.flixel
          iftrue ofs1
          pop
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"widthInTiles")
          subtract
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          pushbyte 0
          greaterthan
          ofs1:
          iffalse ofs2
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          pushbyte 1
          add
-         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          ofs2:
          getlocal1
          getlocal0
@@ -3088,25 +3669,25 @@ package org.flixel
          iftrue ofs3
          pop
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          pushbyte 1
          add
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          pushbyte 0
          greaterthan
          ofs3:
          iffalse ofs4
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          pushbyte 2
          add
-         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          ofs4:
          getlocal1
          getlocal0
@@ -3119,26 +3700,26 @@ package org.flixel
          iftrue ofs5
          pop
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"widthInTiles")
          add
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          pushbyte 0
          greaterthan
          ofs5:
          iffalse ofs6
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          pushbyte 4
          add
-         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          ofs6:
          getlocal1
          getlocal0
@@ -3150,24 +3731,24 @@ package org.flixel
          iftrue ofs7
          pop
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          decrement
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          pushbyte 0
          greaterthan
          ofs7:
          iffalse ofs8
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          pushbyte 8
          add
-         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          ofs8:
          getlocal0
          getproperty QName(PackageNamespace(""),"auto")
@@ -3177,9 +3758,9 @@ package org.flixel
          iffalse ofs9
          pop
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          pushbyte 15
          equals
          ofs9:
@@ -3205,22 +3786,22 @@ package org.flixel
          iffalse ofs12
          pop
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"widthInTiles")
          add
          decrement
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          pushbyte 0
          lessequals
          ofs12:
          iffalse ofs13
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          pushbyte 1
-         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          ofs13:
          getlocal1
          getlocal0
@@ -3242,22 +3823,22 @@ package org.flixel
          iffalse ofs15
          pop
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"widthInTiles")
          subtract
          decrement
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          pushbyte 0
          lessequals
          ofs15:
          iffalse ofs16
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          pushbyte 2
-         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          ofs16:
          getlocal1
          getlocal0
@@ -3281,23 +3862,23 @@ package org.flixel
          iffalse ofs18
          pop
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"widthInTiles")
          subtract
          pushbyte 1
          add
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          pushbyte 0
          lessequals
          ofs18:
          iffalse ofs19
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          pushbyte 4
-         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          ofs19:
          getlocal1
          getlocal0
@@ -3322,43 +3903,43 @@ package org.flixel
          iffalse ofs21
          pop
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          getlocal0
          getproperty QName(PackageNamespace(""),"widthInTiles")
          add
          pushbyte 1
          add
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          pushbyte 0
          lessequals
          ofs21:
          iffalse ofs10
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          pushbyte 8
-         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          ofs10:
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          pushbyte 1
          add
-         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          returnvoid
          end ; code
          end ; body
          end ; method
       }
       
-      protected function updateTile(param1:uint) : void
+      public function updateTile(param1:uint) : void
       {
-         trait method QName(ProtectedNamespace("org.flixel:FlxTilemap"),"updateTile")
+         trait method QName(PackageNamespace(""),"updateTile")
          dispid 0
          method
          name null
@@ -3375,28 +3956,28 @@ package org.flixel
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          getlocal0
          getproperty QName(PackageNamespace(""),"drawIndex")
          ifnlt ofs0
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_rects")
+         getproperty QName(PackageNamespace(""),"_rects")
          getlocal1
          pushnull
-         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          returnvoid
          ofs0:
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_data")
+         getproperty QName(PackageNamespace(""),"_data")
          getlocal1
-         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         getproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
          getlocal0
          getproperty QName(PackageNamespace(""),"startingIndex")
          subtract
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          multiply
          convert_u
          setlocal2
@@ -3405,41 +3986,117 @@ package org.flixel
          setlocal3
          getlocal2
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_pixels")
+         getproperty QName(PackageNamespace(""),"_pixels")
          getproperty QName(PackageNamespace(""),"width")
          ifnge ofs1
          findpropstrict QName(PackageNamespace(""),"uint")
          getlocal2
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_pixels")
+         getproperty QName(PackageNamespace(""),"_pixels")
          getproperty QName(PackageNamespace(""),"width")
          divide
          callproperty QName(PackageNamespace(""),"uint"), 1
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          multiply
          convert_u
          setlocal3
          getlocal2
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_pixels")
+         getproperty QName(PackageNamespace(""),"_pixels")
          getproperty QName(PackageNamespace(""),"width")
          modulo
          convert_u
          setlocal2
          ofs1:
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_rects")
+         getproperty QName(PackageNamespace(""),"_rects")
          getlocal1
          findpropstrict QName(PackageNamespace("flash.geom"),"Rectangle")
          getlocal2
          getlocal3
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileWidth")
+         getproperty QName(PackageNamespace(""),"_tileWidth")
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxTilemap"),"_tileHeight")
+         getproperty QName(PackageNamespace(""),"_tileHeight")
          constructprop QName(PackageNamespace("flash.geom"),"Rectangle"), 4
-         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/2"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
+      override public function destroy() : void
+      {
+         trait method QName(PackageNamespace(""),"destroy")
+         flag OVERRIDE
+         dispid 0
+         method
+         name null
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"destroy"), 0
+         getlocal0
+         pushnull
+         initproperty QName(PackageNamespace(""),"_flashRect")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"_bbPixels")
+         callpropvoid QName(PackageNamespace(""),"dispose"), 0
+         getlocal0
+         pushnull
+         initproperty QName(PackageNamespace(""),"_bbPixels")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"_block")
+         callpropvoid QName(PackageNamespace(""),"destroy"), 0
+         getlocal0
+         getproperty QName(PackageNamespace(""),"_data")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"length")
+         getlocal0
+         pushnull
+         initproperty QName(PackageNamespace(""),"_data")
+         pushbyte 0
+         setlocal1
+         jump ofs0
+         ofs1:
+         label
+         getlocal0
+         getproperty QName(PackageNamespace(""),"_rects")
+         getlocal1
+         pushnull
+         setproperty MultinameL([PrivateNamespace(null,"#FlxTilemap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#FlxTilemap/1"),PackageInternalNs("org.flixel"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxTilemap"),StaticProtectedNs("org.flixel:FlxObject"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
+         inclocal_i 1
+         ofs0:
+         getlocal1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"_rects")
+         getproperty QName(PackageNamespace(""),"length")
+         iflt ofs1
+         getlocal0
+         getproperty QName(PackageNamespace(""),"_rects")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"length")
+         getlocal0
+         pushnull
+         initproperty QName(PackageNamespace(""),"_rects")
+         getlocal0
+         getproperty QName(PackageNamespace(""),"_callbacks")
+         pushbyte 0
+         setproperty QName(PackageNamespace(""),"length")
+         getlocal0
+         pushnull
+         initproperty QName(PackageNamespace(""),"_callbacks")
          returnvoid
          end ; code
          end ; body

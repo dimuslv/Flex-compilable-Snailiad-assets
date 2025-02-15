@@ -133,6 +133,11 @@ package org.flixel
          return null;
       }
       
+      public function logMembers(param1:String) : void
+      {
+         FlxG.log(param1 + ": " + this.countLiving().toString() + " living, " + this.countDead().toString() + " dead");
+      }
+      
       public function getFirstAlive() : FlxObject
       {
          var _loc2_:FlxObject = null;
@@ -368,7 +373,7 @@ package org.flixel
          super.kill();
       }
       
-      protected function destroyMembers() : void
+      public function destroyMembers() : void
       {
          var _loc2_:FlxObject = null;
          var _loc1_:uint = 0;
@@ -387,6 +392,7 @@ package org.flixel
       override public function destroy() : void
       {
          this.destroyMembers();
+         this._last = null;
          super.destroy();
       }
       

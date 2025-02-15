@@ -28,6 +28,7 @@ package org.flixel
       
       public function create() : void
       {
+         stage.focus = this;
       }
       
       public function add(param1:FlxObject) : FlxObject

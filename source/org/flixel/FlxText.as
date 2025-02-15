@@ -306,9 +306,9 @@ package org.flixel
 				if(_shadow > 0)
 				{
 					_tf.setTextFormat(new TextFormat(tfa.font,tfa.size,_shadow,null,null,null,null,null,tfa.align));				
-					_mtx.translate(1,1);
+					_mtx.translate(_shadowDistance,_shadowDistance);
 					_pixels.draw(_tf,_mtx,_ct);
-					_mtx.translate(-1,-1);
+					_mtx.translate(-_shadowDistance,-_shadowDistance);
 					_tf.setTextFormat(new TextFormat(tfa.font,tfa.size,tfa.color,null,null,null,null,null,tfa.align));
 				}
 				//Actually draw the text onto the buffer

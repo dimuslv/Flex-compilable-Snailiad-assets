@@ -31,6 +31,20 @@ package org.flixel
 		 */
 		static public const ALT:uint = 2;
 		
+		public static const TILE_ACCESS_BEHAVIOR_NORMAL:int = 0;
+		
+		public static const TILE_ACCESS_BEHAVIOR_WRAP:int = 1;
+		
+		public static const TILE_ACCESS_BEHAVIOR_ZEROES_AFTER_EDGE:int = 2;
+		
+		public static const TILE_ACCESS_BEHAVIOR_REPEATING_EDGE:int = 3;
+		
+		public var getTile:Function = getTileNoWrap;
+		
+		public var setTile:Function = setTileNoWrap;
+		
+		private var _tileAccessBehavior:int = 0;
+		
 		/**
 		 * What tile index will you start colliding with (default: 1).
 		 */
@@ -68,23 +82,26 @@ package org.flixel
 		/**
 		 * Rendering helper.
 		 */
-		protected var _flashRect:Rectangle;
-		protected var _flashRect2:Rectangle;
+		public var _flashRect:Rectangle;
+		public var _flashRect2:Rectangle;
 		
-		protected var _pixels:BitmapData;
-		protected var _bbPixels:BitmapData;
-		protected var _buffer:BitmapData;
-		protected var _bufferLoc:FlxPoint;
-		protected var _bbKey:String;
-		protected var _data:Array;
-		protected var _rects:Array;
-		protected var _tileWidth:uint;
-		protected var _tileHeight:uint;
-		protected var _block:FlxObject;
-		protected var _callbacks:Array;
-		protected var _screenRows:uint;
-		protected var _screenCols:uint;
-		protected var _boundsVisible:Boolean;
+		public var _pixels:BitmapData;
+		public var _bbPixels:BitmapData;
+		public var _buffer:BitmapData;
+		public var _bufferLoc:FlxPoint;
+		public var _bbKey:String;
+		public var _data:Array;
+		public var _rects:Array;
+		public var _tileWidth:uint;
+		public var _tileHeight:uint;
+		public var _block:FlxObject;
+		public var _callbacks:Array;
+		public var _screenRows:uint;
+		public var _screenCols:uint;
+		public var _boundsVisible:Boolean;
+		
+		public var _wrapCenterOffsetX:uint;
+		public var _wrapCenterOffsetY:uint;
 		
 		/**
 		 * The tilemap constructor just initializes some basic variables.
@@ -153,6 +170,9 @@ package org.flixel
 					_data.push(uint(cols[c++]));
 			}
 			
+			_wrapCenterOffsetX = uint.MAX_VALUE / 2 - uint.MAX_VALUE / 2 % widthInTiles;
+			_wrapCenterOffsetY = uint.MAX_VALUE / 2 - uint.MAX_VALUE / 2 % heightInTiles;
+			
 			//Pre-process the map data if it's auto-tiled
 			var i:uint;
 			totalTiles = widthInTiles*heightInTiles;
@@ -211,7 +231,7 @@ package org.flixel
 		/**
 		 * Generates a bounding box version of the tiles, flixel should call this automatically when necessary.
 		 */
-		protected function generateBoundingTiles():void
+		public function generateBoundingTiles():void
 		{
 			refresh = true;
 			
@@ -304,7 +324,7 @@ package org.flixel
 		/**
 		 * Internal function that actually renders the tilemap to the tilemap buffer.  Called by render().
 		 */
-		protected function renderTilemap():void
+		public function renderTilemap():void
 		{
 			_buffer.fillRect(_flashRect,0);
 			
@@ -543,6 +563,37 @@ package org.flixel
 				colOffsets.length = col;
 		}
 		
+		public function get tileAccessBehavior() : int
+		{
+			return _tileAccessBehavior;
+		}
+		
+		public function set tileAccessBehavior(param1:int) : void
+		{
+			switch(param1)
+			{
+				case TILE_ACCESS_BEHAVIOR_NORMAL:
+					getTile = getTileNoWrap;
+					setTile = setTileNoWrap;
+					break;
+				case TILE_ACCESS_BEHAVIOR_WRAP:
+					getTile = getTileWrap;
+					setTile = setTileWrap;
+					break;
+				case TILE_ACCESS_BEHAVIOR_ZEROES_AFTER_EDGE:
+					getTile = getTileZeroesAfterEdge;
+					setTile = setTileZeroesAfterEdge;
+					break;
+				case TILE_ACCESS_BEHAVIOR_REPEATING_EDGE:
+					getTile = getTileRepeatingEdge;
+					setTile = setTileRepeatingEdge;
+					break;
+				default:
+					throw new Error("Unknown tile access behavior: " + param1.toString());
+			}
+			_tileAccessBehavior = param1;
+		}
+		
 		/**
 		 * Check the value of a particular tile.
 		 * 
@@ -551,21 +602,55 @@ package org.flixel
 		 * 
 		 * @return	A uint containing the value of the tile at this spot in the array.
 		 */
-		public function getTile(X:uint,Y:uint):uint
+		public function getTileNoWrap(X:uint,Y:uint):uint
 		{
 			return getTileByIndex(Y * widthInTiles + X);
 		}
 		
-		/**
-		 * Get the value of a tile in the tilemap by index.
-		 * 
-		 * @param	Index	The slot in the data array (Y * widthInTiles + X) where this tile is stored.
-		 * 
-		 * @return	A uint containing the value of the tile at this spot in the array.
-		 */
-		public function getTileByIndex(Index:uint):uint
+		public function getTileWrap(X:uint,Y:uint):uint
 		{
-			return _data[Index] as uint;
+			X = (X + _wrapCenterOffsetX) % widthInTiles;
+			Y = (Y + _wrapCenterOffsetY) % heightInTiles;
+			return getTileNoWrap(X,Y);
+		}
+		
+		public function getTileZeroesAfterEdge(X:uint,Y:uint):uint
+		{
+			if (X < 0 || Y < 0 || X >= widthInTiles || Y >= heightInTiles)
+				return 0;
+			return getTileNoWrap(X,Y);
+		}
+		
+		public function getTileRepeatingEdge(X:uint,Y:uint):uint
+		{
+			if (int(X) < 0) X = 0;
+			else if (X > widthInTiles - 1) X = widthInTiles - 1;
+			if (int(Y) < 0) Y = 0;
+			else if (Y > heightInTiles - 1) X = heightInTiles - 1;
+			return getTileNoWrap(X,Y);
+		}
+		
+		public function setTileZeroesAfterEdge(X:uint,Y:uint,Tile:uint,UpdateGraphics:Boolean=true):Boolean
+		{
+			if (X < 0 || Y < 0 || X >= widthInTiles || Y >= heightInTiles)
+				return false;
+			return setTileNoWrap(X,Y,Tile,UpdateGraphics);
+		}
+		
+		public function setTileWrap(X:uint,Y:uint,Tile:uint,UpdateGraphics:Boolean=true):Boolean
+		{
+			X = (X + _wrapCenterOffsetX) % widthInTiles;
+			Y = (Y + _wrapCenterOffsetY) % heightInTiles;
+			return setTileNoWrap(X,Y,Tile,UpdateGraphics);
+		}
+		
+		public function setTileRepeatingEdge(X:uint,Y:uint,Tile:uint,UpdateGraphics:Boolean=true):Boolean
+		{
+			if (int(X) < 0) X = 0;
+			else if (X > widthInTiles - 1) X = widthInTiles - 1;
+			if (int(Y) < 0) Y = 0;
+			else if (Y > heightInTiles - 1) X = heightInTiles - 1;
+			return setTileNoWrap(X,Y,Tile,UpdateGraphics);
 		}
 		
 		/**
@@ -578,11 +663,23 @@ package org.flixel
 		 * 
 		 * @return	Whether or not the tile was actually changed.
 		 */ 
-		public function setTile(X:uint,Y:uint,Tile:uint,UpdateGraphics:Boolean=true):Boolean
+		public function setTileNoWrap(X:uint,Y:uint,Tile:uint,UpdateGraphics:Boolean=true):Boolean
 		{
 			if((X >= widthInTiles) || (Y >= heightInTiles))
 				return false;
 			return setTileByIndex(Y * widthInTiles + X,Tile,UpdateGraphics);
+		}
+		
+		/**
+		 * Get the value of a tile in the tilemap by index.
+		 * 
+		 * @param	Index	The slot in the data array (Y * widthInTiles + X) where this tile is stored.
+		 * 
+		 * @return	A uint containing the value of the tile at this spot in the array.
+		 */
+		public function getTileByIndex(Index:uint):uint
+		{
+			return _data[Index] as uint;
 		}
 		
 		/**
@@ -867,7 +964,7 @@ package org.flixel
 		 * 
 		 * @param	Index		The index of the tile you want to analyze.
 		 */
-		protected function autoTile(Index:uint):void
+		public function autoTile(Index:uint):void
 		{
 			if(_data[Index] == 0) return;
 			_data[Index] = 0;
@@ -898,7 +995,7 @@ package org.flixel
 		 * 
 		 * @param	Index		The index of the tile you want to update.
 		 */
-		protected function updateTile(Index:uint):void
+		public function updateTile(Index:uint):void
 		{
 			if(_data[Index] < drawIndex)
 			{
@@ -913,6 +1010,24 @@ package org.flixel
 				rx %= _pixels.width;
 			}
 			_rects[Index] = (new Rectangle(rx,ry,_tileWidth,_tileHeight));
+		}
+		
+		override public function destroy() : void
+		{
+			super.destroy();
+			_flashRect = null;
+			_bbPixels.dispose();
+			_bbPixels = null;
+			_block.destroy();
+			_data.length = 0;
+			_data = null;
+			for (var i:int = 0; i < _rects.length; i++) {
+				_rects[i] = null;
+			}
+			_rects.length = 0;
+			_rects = null;
+			_callbacks.length = 0;
+			_callbacks = null;
 		}
 	}
 }

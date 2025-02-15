@@ -59,7 +59,7 @@ package org.flixel
 		 */
 		public function create():void
 		{
-			//nothing to create initially
+			stage.focus = this;
 		}
 		
 		/**

@@ -17,17 +17,17 @@ package org.flixel
 		 * If you build and maintain your own version of flixel,
 		 * you can give it your own name here.  Appears in the console.
 		 */
-		static public var LIBRARY_NAME:String = "flixel";
+		//static public var LIBRARY_NAME:String = "flixel";
 		/**
 		 * Assign a major version to your library.
 		 * Appears before the decimal in the console.
 		 */
-		static public var LIBRARY_MAJOR_VERSION:uint = 2;
+		//static public var LIBRARY_MAJOR_VERSION:uint = 2;
 		/**
 		 * Assign a minor version to your library.
 		 * Appears after the decimal in the console.
 		 */
-		static public var LIBRARY_MINOR_VERSION:uint = 43;
+		//static public var LIBRARY_MINOR_VERSION:uint = 43;
 
 		/**
 		 * Internal tracker for game object (so we can pause & unpause)
@@ -317,7 +317,7 @@ package org.flixel
 		 * 
 		 * @return	A <code>FlxSound</code> object.
 		 */
-		static public function play(EmbeddedSound:Class,Volume:Number=1.0,Looped:Boolean=false):FlxSound
+		static public function play(EmbeddedSound:Class,Volume:Number=0.75,Looped:Boolean=false):FlxSound
 		{
 			var i:uint = 0;
 			var sl:uint = sounds.length;
@@ -495,8 +495,8 @@ package org.flixel
 		 */
 		static protected function pauseSounds():void
 		{
-			if((music != null) && music.active)
-				music.pause();
+			//if((music != null) && music.active)
+			//	music.pause();
 			var i:uint = 0;
 			var s:FlxSound;
 			var sl:uint = sounds.length;
@@ -583,6 +583,9 @@ package org.flixel
 			if(key == null)
 			{
 				key = String(Graphic);
+				if (key == "[class SixMap3_Imgplayer]")
+				{
+				}
 				if(Unique && (_cache[key] != undefined) && (_cache[key] != null))
 				{
 					//Generate a unique key
@@ -593,24 +596,49 @@ package org.flixel
 					key = ukey;
 				}
 			}
+			
+			var _loc7_:Boolean = false;
 			//If there is no data for this key, generate the requested graphic
 			if(!checkBitmapCache(key))
 			{
 				_cache[key] = (new Graphic).bitmapData;
 				if(Reverse) needReverse = true;
 			}
-			var pixels:BitmapData = _cache[key];
-			if(!needReverse && Reverse && (pixels.width == (new Graphic).bitmapData.width))
+			else
+			{
+				_loc7_ = true;
+			}
+			
+			if (!_loc7_ || !Reverse)
+			{
+				var pixels:BitmapData = _cache[key];
+			}
+			if (_loc7_ && Reverse)
+			{
 				needReverse = true;
+			}
+			else if (!needReverse && Reverse && (pixels.width == (new Graphic).bitmapData.width))
+			{
+				needReverse = true;
+			}
+			
 			if(needReverse)
 			{
-				var newPixels:BitmapData = new BitmapData(pixels.width<<1,pixels.height,true,0x00000000);
-				newPixels.draw(pixels);
-				var mtx:Matrix = new Matrix();
-				mtx.scale(-1,1);
-				mtx.translate(newPixels.width,0);
-				newPixels.draw(pixels,mtx);
-				pixels = newPixels;
+				if (!_loc7_)
+				{
+					var newPixels:BitmapData = new BitmapData(pixels.width<<1,pixels.height,true,0x00000000);
+					newPixels.draw(pixels);
+					var mtx:Matrix = new Matrix();
+					mtx.scale(-1,1);
+					mtx.translate(newPixels.width,0);
+					newPixels.draw(pixels,mtx);
+					pixels = newPixels;
+					_cacheReverse[key] = newPixels;
+				}
+				else
+				{
+					pixels = _cacheReverse[key];
+				}
 			}
 			return pixels;
 		}

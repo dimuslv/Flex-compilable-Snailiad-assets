@@ -21,7 +21,7 @@ package org.flixel.data
          this.start(0);
       }
       
-      public function start(param1:Number = 0.05, param2:Number = 0.5) : void
+      public function start(param1:Number = 0.01, param2:Number = 0.5) : void
       {
          this.stop();
          this._intensity = param1;

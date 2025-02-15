@@ -85,7 +85,7 @@ package org.flixel.data
       
       public function justPressed(param1:String) : Boolean
       {
-         return this._map[this._lookup[param1]].current == 2;
+         return Boolean(this._lookup[param1]) && Boolean(this._map[this._lookup[param1]]) && this._map[this._lookup[param1]].current == 2;
       }
       
       public function justReleased(param1:String) : Boolean

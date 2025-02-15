@@ -518,6 +518,47 @@ package org.flixel
          end ; method
       }
       
+      public function logMembers(param1:String) : void
+      {
+         trait method QName(PackageNamespace(""),"logMembers")
+         dispid 0
+         method
+         name null
+         param QName(PackageNamespace(""),"String")
+         returns QName(PackageNamespace(""),"void")
+         
+         body
+         maxstack 3
+         localcount 2
+         initscopedepth 7
+         maxscopedepth 8
+         
+         code
+         getlocal0
+         pushscope
+         getlex QName(PackageNamespace("org.flixel"),"FlxG")
+         getlocal1
+         pushstring ": "
+         add
+         getlocal0
+         callproperty QName(PackageNamespace(""),"countLiving"), 0
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         add
+         pushstring " living, "
+         add
+         getlocal0
+         callproperty QName(PackageNamespace(""),"countDead"), 0
+         callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"toString"), 0
+         add
+         pushstring " dead"
+         add
+         callpropvoid QName(PackageNamespace(""),"log"), 1
+         returnvoid
+         end ; code
+         end ; body
+         end ; method
+      }
+      
       public function getFirstAlive() : FlxObject
       {
          trait method QName(PackageNamespace(""),"getFirstAlive")
@@ -1458,9 +1499,9 @@ package org.flixel
          end ; method
       }
       
-      protected function destroyMembers() : void
+      public function destroyMembers() : void
       {
-         trait method QName(ProtectedNamespace("org.flixel:FlxGroup"),"destroyMembers")
+         trait method QName(PackageNamespace(""),"destroyMembers")
          dispid 0
          method
          name null
@@ -1531,7 +1572,7 @@ package org.flixel
          returns QName(PackageNamespace(""),"void")
          
          body
-         maxstack 1
+         maxstack 2
          localcount 1
          initscopedepth 7
          maxscopedepth 8
@@ -1540,7 +1581,10 @@ package org.flixel
          getlocal0
          pushscope
          getlocal0
-         callpropvoid QName(ProtectedNamespace("org.flixel:FlxGroup"),"destroyMembers"), 0
+         callpropvoid QName(PackageNamespace(""),"destroyMembers"), 0
+         getlocal0
+         pushnull
+         initproperty QName(ProtectedNamespace("org.flixel:FlxGroup"),"_last")
          getlocal0
          callsupervoid QName(PackageNamespace(""),"destroy"), 0
          returnvoid

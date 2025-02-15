@@ -84,12 +84,6 @@ package org.flixel
       
       public static var fade:FlxFade;
       
-      public static var LIBRARY_NAME:String = "flixel";
-      
-      public static var LIBRARY_MAJOR_VERSION:uint = 2;
-      
-      public static var LIBRARY_MINOR_VERSION:uint = 43;
-      
       public static var noPause:Boolean = false;
       
       public static var cheated:Boolean = false;
@@ -206,7 +200,7 @@ package org.flixel
          music.play();
       }
       
-      public static function play(param1:Class, param2:Number = 1, param3:Boolean = false) : FlxSound
+      public static function play(param1:Class, param2:Number = 0.75, param3:Boolean = false) : FlxSound
       {
          var _loc4_:uint = 0;
          var _loc5_:uint = sounds.length;
@@ -378,10 +372,6 @@ package org.flixel
       protected static function pauseSounds() : void
       {
          var _loc2_:FlxSound = null;
-         if(music != null && music.active)
-         {
-            music.pause();
-         }
          var _loc1_:uint = 0;
          var _loc3_:uint = sounds.length;
          while(_loc1_ < _loc3_)
@@ -450,12 +440,16 @@ package org.flixel
          var _loc8_:uint = 0;
          var _loc9_:String = null;
          var _loc10_:BitmapData = null;
-         var _loc11_:Matrix = null;
+         var _loc11_:BitmapData = null;
+         var _loc12_:Matrix = null;
          var _loc5_:Boolean = false;
          var _loc6_:String = param4;
          if(_loc6_ == null)
          {
             _loc6_ = String(param1);
+            if(_loc6_ == "[class SixMap3_Imgplayer]")
+            {
+            }
             if(param3 && _cache[_loc6_] != undefined && _cache[_loc6_] != null)
             {
                _loc8_ = 0;
@@ -468,6 +462,7 @@ package org.flixel
                _loc6_ = _loc9_;
             }
          }
+         var _loc7_:Boolean = false;
          if(!checkBitmapCache(_loc6_))
          {
             _cache[_loc6_] = new param1().bitmapData;
@@ -476,22 +471,41 @@ package org.flixel
                _loc5_ = true;
             }
          }
-         var _loc7_:BitmapData = _cache[_loc6_];
-         if(!_loc5_ && param2 && _loc7_.width == new param1().bitmapData.width)
+         else
+         {
+            _loc7_ = true;
+         }
+         if(!_loc7_ || !param2)
+         {
+            _loc10_ = _cache[_loc6_];
+         }
+         if(_loc7_ && param2)
+         {
+            _loc5_ = true;
+         }
+         else if(!_loc5_ && param2 && _loc10_.width == new param1().bitmapData.width)
          {
             _loc5_ = true;
          }
          if(_loc5_)
          {
-            _loc10_ = new BitmapData(_loc7_.width << 1,_loc7_.height,true,0);
-            _loc10_.draw(_loc7_);
-            _loc11_ = new Matrix();
-            _loc11_.scale(-1,1);
-            _loc11_.translate(_loc10_.width,0);
-            _loc10_.draw(_loc7_,_loc11_);
-            _loc7_ = _loc10_;
+            if(!_loc7_)
+            {
+               _loc11_ = new BitmapData(_loc10_.width << 1,_loc10_.height,true,0);
+               _loc11_.draw(_loc10_);
+               _loc12_ = new Matrix();
+               _loc12_.scale(-1,1);
+               _loc12_.translate(_loc11_.width,0);
+               _loc11_.draw(_loc10_,_loc12_);
+               _loc10_ = _loc11_;
+               _cacheReverse[_loc6_] = _loc11_;
+            }
+            else
+            {
+               _loc10_ = _cacheReverse[_loc6_];
+            }
          }
-         return _loc7_;
+         return _loc10_;
       }
       
       public static function follow(param1:FlxObject, param2:Number = 1, param3:Boolean = true) : void

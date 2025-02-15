@@ -15,6 +15,7 @@ package org.flixel.data
 		public var F10:Boolean;
 		public var F11:Boolean;
 		public var F12:Boolean;
+		public var TAB:Boolean;
 		public var ONE:Boolean;
 		public var TWO:Boolean;
 		public var THREE:Boolean;
@@ -128,6 +129,7 @@ package org.flixel.data
 				addKey("F"+i,111+(i++));
 			
 			//SPECIAL KEYS + PUNCTUATION
+			addKey("TAB",9);
 			addKey("ESCAPE",27);
 			addKey("MINUS",189);
 			addKey("NUMPADMINUS",109);

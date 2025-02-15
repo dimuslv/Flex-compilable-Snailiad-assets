@@ -48,7 +48,7 @@ package org.flixel
       
       protected var _volumeAdjust:Number;
       
-      protected var _looped:Boolean;
+      public var _looped:Boolean;
       
       protected var _core:FlxObject;
       
@@ -139,7 +139,7 @@ package org.flixel
          initproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_volumeAdjust")
          getlocal0
          pushfalse
-         initproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_looped")
+         initproperty QName(PackageNamespace(""),"_looped")
          getlocal0
          pushnull
          initproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_core")
@@ -219,7 +219,7 @@ package org.flixel
          initproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_sound")
          getlocal0
          getlocal2
-         initproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_looped")
+         initproperty QName(PackageNamespace(""),"_looped")
          getlocal0
          callpropvoid QName(PackageInternalNs("org.flixel"),"updateTransform"), 0
          findproperty QName(PackageNamespace(""),"active")
@@ -276,7 +276,7 @@ package org.flixel
          callpropvoid QName(PackageNamespace(""),"load"), 1
          getlocal0
          getlocal2
-         initproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_looped")
+         initproperty QName(PackageNamespace(""),"_looped")
          getlocal0
          callpropvoid QName(PackageInternalNs("org.flixel"),"updateTransform"), 0
          findproperty QName(PackageNamespace(""),"active")
@@ -359,7 +359,7 @@ package org.flixel
          returnvoid
          ofs0:
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_looped")
+         getproperty QName(PackageNamespace(""),"_looped")
          iffalse ofs1
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_position")
@@ -523,7 +523,7 @@ package org.flixel
          getproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_channel")
          callpropvoid QName(PackageNamespace(""),"stop"), 0
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_looped")
+         getproperty QName(PackageNamespace(""),"_looped")
          iffalse ofs1
          jump ofs2
          ofs3:
@@ -662,6 +662,8 @@ package org.flixel
          initproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_fadeInTotal")
          getlocal0
          callpropvoid QName(PackageNamespace(""),"play"), 0
+         getlocal0
+         callpropvoid QName(ProtectedNamespace("org.flixel:FlxSound"),"updateSound"), 0
          returnvoid
          end ; code
          end ; body
@@ -997,7 +999,7 @@ package org.flixel
          returns QName(PackageNamespace(""),"void")
          
          body
-         maxstack 1
+         maxstack 2
          localcount 1
          initscopedepth 7
          maxscopedepth 8
@@ -1010,6 +1012,30 @@ package org.flixel
          getlocal0
          callpropvoid QName(PackageNamespace(""),"stop"), 0
          ofs0:
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_core")
+         iffalse ofs1
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_core")
+         callpropvoid QName(PackageNamespace(""),"destroy"), 0
+         getlocal0
+         pushnull
+         initproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_core")
+         ofs1:
+         getlocal0
+         pushnull
+         initproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_point2")
+         getlocal0
+         callsupervoid QName(PackageNamespace(""),"destroy"), 0
+         getlocal0
+         getproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_sound")
+         callpropvoid QName(PackageNamespace(""),"close"), 0
+         getlocal0
+         pushnull
+         initproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_sound")
+         getlocal0
+         pushnull
+         initproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_transform")
          returnvoid
          end ; code
          end ; body
@@ -1128,7 +1154,7 @@ package org.flixel
          getlocal0
          pushscope
          getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_looped")
+         getproperty QName(PackageNamespace(""),"_looped")
          iftrue ofs0
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxSound"),"_channel")

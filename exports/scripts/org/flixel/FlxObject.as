@@ -119,6 +119,27 @@ package org.flixel
       
       public function destroy() : void
       {
+         this.velocity = null;
+         this.acceleration = null;
+         this.drag = null;
+         this.maxVelocity = null;
+         this.origin = null;
+         this.scrollFactor = null;
+         this._point = null;
+         this._rect = null;
+         this._flashPoint = null;
+         this.colHullX = null;
+         this.colHullY = null;
+         this.colVector = null;
+         var _loc1_:int = int(this.colOffsets.length);
+         var _loc2_:int = 0;
+         while(_loc2_ < _loc1_)
+         {
+            this.colOffsets[_loc2_] = null;
+            _loc2_++;
+         }
+         this.colOffsets.length = 0;
+         this.colOffsets = null;
       }
       
       public function get solid() : Boolean

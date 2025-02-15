@@ -17,6 +17,20 @@ package org.flixel
       
       public static const ALT:uint = 2;
       
+      public static const TILE_ACCESS_BEHAVIOR_NORMAL:int = 0;
+      
+      public static const TILE_ACCESS_BEHAVIOR_WRAP:int = 1;
+      
+      public static const TILE_ACCESS_BEHAVIOR_ZEROES_AFTER_EDGE:int = 2;
+      
+      public static const TILE_ACCESS_BEHAVIOR_REPEATING_EDGE:int = 3;
+      
+      public var getTile:Function;
+      
+      public var setTile:Function;
+      
+      private var _tileAccessBehavior:int = 0;
+      
       public var collideIndex:uint;
       
       public var startingIndex:uint;
@@ -33,40 +47,46 @@ package org.flixel
       
       public var totalTiles:uint;
       
-      protected var _flashRect:Rectangle;
+      public var _flashRect:Rectangle;
       
-      protected var _flashRect2:Rectangle;
+      public var _flashRect2:Rectangle;
       
-      protected var _pixels:BitmapData;
+      public var _pixels:BitmapData;
       
-      protected var _bbPixels:BitmapData;
+      public var _bbPixels:BitmapData;
       
-      protected var _buffer:BitmapData;
+      public var _buffer:BitmapData;
       
-      protected var _bufferLoc:FlxPoint;
+      public var _bufferLoc:FlxPoint;
       
-      protected var _bbKey:String;
+      public var _bbKey:String;
       
-      protected var _data:Array;
+      public var _data:Array;
       
-      protected var _rects:Array;
+      public var _rects:Array;
       
-      protected var _tileWidth:uint;
+      public var _tileWidth:uint;
       
-      protected var _tileHeight:uint;
+      public var _tileHeight:uint;
       
-      protected var _block:FlxObject;
+      public var _block:FlxObject;
       
-      protected var _callbacks:Array;
+      public var _callbacks:Array;
       
-      protected var _screenRows:uint;
+      public var _screenRows:uint;
       
-      protected var _screenCols:uint;
+      public var _screenCols:uint;
       
-      protected var _boundsVisible:Boolean;
+      public var _boundsVisible:Boolean;
+      
+      public var _wrapCenterOffsetX:uint;
+      
+      public var _wrapCenterOffsetY:uint;
       
       public function FlxTilemap()
       {
+         this.getTile = this.getTileNoWrap;
+         this.setTile = this.setTileNoWrap;
          super();
          this.auto = OFF;
          this.collideIndex = 1;
@@ -214,6 +234,8 @@ package org.flixel
                }
             }
          }
+         this._wrapCenterOffsetX = uint.MAX_VALUE / 2 - uint.MAX_VALUE / 2 % this.widthInTiles;
+         this._wrapCenterOffsetY = uint.MAX_VALUE / 2 - uint.MAX_VALUE / 2 % this.heightInTiles;
          this.totalTiles = this.widthInTiles * this.heightInTiles;
          if(this.auto > OFF)
          {
@@ -268,7 +290,7 @@ package org.flixel
          return this;
       }
       
-      protected function generateBoundingTiles() : void
+      public function generateBoundingTiles() : void
       {
          var _loc4_:Boolean = false;
          var _loc5_:BitmapData = null;
@@ -355,7 +377,7 @@ package org.flixel
          }
       }
       
-      protected function renderTilemap() : void
+      public function renderTilemap() : void
       {
          var _loc1_:BitmapData = null;
          var _loc6_:uint = 0;
@@ -591,23 +613,128 @@ package org.flixel
          }
       }
       
-      public function getTile(param1:uint, param2:uint) : uint
+      public function get tileAccessBehavior() : int
+      {
+         return this._tileAccessBehavior;
+      }
+      
+      public function set tileAccessBehavior(param1:int) : void
+      {
+         switch(param1)
+         {
+            case TILE_ACCESS_BEHAVIOR_NORMAL:
+               this.getTile = this.getTileNoWrap;
+               this.setTile = this.setTileNoWrap;
+               break;
+            case TILE_ACCESS_BEHAVIOR_WRAP:
+               this.getTile = this.getTileWrap;
+               this.setTile = this.setTileWrap;
+               break;
+            case TILE_ACCESS_BEHAVIOR_ZEROES_AFTER_EDGE:
+               this.getTile = this.getTileZeroesAfterEdge;
+               this.setTile = this.setTileZeroesAfterEdge;
+               break;
+            case TILE_ACCESS_BEHAVIOR_REPEATING_EDGE:
+               this.getTile = this.getTileRepeatingEdge;
+               this.setTile = this.setTileRepeatingEdge;
+               break;
+            default:
+               throw new Error("Unknown tile access behavior: " + param1.toString());
+         }
+         this._tileAccessBehavior = param1;
+      }
+      
+      public function getTileNoWrap(param1:uint, param2:uint) : uint
       {
          return this.getTileByIndex(param2 * this.widthInTiles + param1);
       }
       
-      public function getTileByIndex(param1:uint) : uint
+      public function getTileWrap(param1:uint, param2:uint) : uint
       {
-         return this._data[param1] as uint;
+         param1 = (param1 + this._wrapCenterOffsetX) % this.widthInTiles;
+         param2 = (param2 + this._wrapCenterOffsetY) % this.heightInTiles;
+         return this.getTileNoWrap(param1,param2);
       }
       
-      public function setTile(param1:uint, param2:uint, param3:uint, param4:Boolean = true) : Boolean
+      public function getTileZeroesAfterEdge(param1:uint, param2:uint) : uint
+      {
+         if(param1 < 0 || param2 < 0 || param1 >= this.widthInTiles || param2 >= this.heightInTiles)
+         {
+            return 0;
+         }
+         return this.getTileNoWrap(param1,param2);
+      }
+      
+      public function getTileRepeatingEdge(param1:uint, param2:uint) : uint
+      {
+         if(int(param1) < 0)
+         {
+            param1 = 0;
+         }
+         else if(param1 > this.widthInTiles - 1)
+         {
+            param1 = this.widthInTiles - 1;
+         }
+         if(int(param2) < 0)
+         {
+            param2 = 0;
+         }
+         else if(param2 > this.heightInTiles - 1)
+         {
+            param1 = this.heightInTiles - 1;
+         }
+         return this.getTileNoWrap(param1,param2);
+      }
+      
+      public function setTileZeroesAfterEdge(param1:uint, param2:uint, param3:uint, param4:Boolean = true) : Boolean
+      {
+         if(param1 < 0 || param2 < 0 || param1 >= this.widthInTiles || param2 >= this.heightInTiles)
+         {
+            return false;
+         }
+         return this.setTileNoWrap(param1,param2,param3,param4);
+      }
+      
+      public function setTileWrap(param1:uint, param2:uint, param3:uint, param4:Boolean = true) : Boolean
+      {
+         param1 = (param1 + this._wrapCenterOffsetX) % this.widthInTiles;
+         param2 = (param2 + this._wrapCenterOffsetY) % this.heightInTiles;
+         return this.setTileNoWrap(param1,param2,param3,param4);
+      }
+      
+      public function setTileRepeatingEdge(param1:uint, param2:uint, param3:uint, param4:Boolean = true) : Boolean
+      {
+         if(int(param1) < 0)
+         {
+            param1 = 0;
+         }
+         else if(param1 > this.widthInTiles - 1)
+         {
+            param1 = this.widthInTiles - 1;
+         }
+         if(int(param2) < 0)
+         {
+            param2 = 0;
+         }
+         else if(param2 > this.heightInTiles - 1)
+         {
+            param1 = this.heightInTiles - 1;
+         }
+         return this.setTileNoWrap(param1,param2,param3,param4);
+      }
+      
+      public function setTileNoWrap(param1:uint, param2:uint, param3:uint, param4:Boolean = true) : Boolean
       {
          if(param1 >= this.widthInTiles || param2 >= this.heightInTiles)
          {
             return false;
          }
          return this.setTileByIndex(param2 * this.widthInTiles + param1,param3,param4);
+      }
+      
+      public function getTileByIndex(param1:uint) : uint
+      {
+         return this._data[param1] as uint;
       }
       
       public function setTileByIndex(param1:uint, param2:uint, param3:Boolean = true) : Boolean
@@ -747,7 +874,7 @@ package org.flixel
          return false;
       }
       
-      protected function autoTile(param1:uint) : void
+      public function autoTile(param1:uint) : void
       {
          if(this._data[param1] == 0)
          {
@@ -792,7 +919,7 @@ package org.flixel
          this._data[param1] += 1;
       }
       
-      protected function updateTile(param1:uint) : void
+      public function updateTile(param1:uint) : void
       {
          if(this._data[param1] < this.drawIndex)
          {
@@ -807,6 +934,27 @@ package org.flixel
             _loc2_ %= this._pixels.width;
          }
          this._rects[param1] = new Rectangle(_loc2_,_loc3_,this._tileWidth,this._tileHeight);
+      }
+      
+      override public function destroy() : void
+      {
+         super.destroy();
+         this._flashRect = null;
+         this._bbPixels.dispose();
+         this._bbPixels = null;
+         this._block.destroy();
+         this._data.length = 0;
+         this._data = null;
+         var _loc1_:int = 0;
+         while(_loc1_ < this._rects.length)
+         {
+            this._rects[_loc1_] = null;
+            _loc1_++;
+         }
+         this._rects.length = 0;
+         this._rects = null;
+         this._callbacks.length = 0;
+         this._callbacks = null;
       }
    }
 }
