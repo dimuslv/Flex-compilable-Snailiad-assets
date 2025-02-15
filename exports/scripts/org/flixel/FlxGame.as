@@ -20,6 +20,10 @@ package org.flixel
    {
       protected var junk:String = "FlxGame_junk";
       
+      protected var SndBeep:Class;
+      
+      protected var SndFlixel:Class;
+      
       public var useDefaultHotKeys:Boolean;
       
       public var pause:FlxGroup;
@@ -64,6 +68,8 @@ package org.flixel
       
       public function FlxGame(param1:uint, param2:uint, param3:Class, param4:uint = 2)
       {
+         this.SndBeep = FlxGame_SndBeep;
+         this.SndFlixel = FlxGame_SndFlixel;
          super();
          Mouse.hide();
          this._zoom = param4;
@@ -94,6 +100,10 @@ package org.flixel
       
       public function showSoundTray(param1:Boolean = false) : void
       {
+         if(!param1)
+         {
+            FlxG.play(this.SndBeep);
+         }
          this._soundTrayTimer = 1;
          this._soundTray.y = this._gameYOffset * this._zoom;
          this._soundTray.visible = true;
@@ -142,21 +152,18 @@ package org.flixel
       
       protected function onKeyUp(param1:KeyboardEvent) : void
       {
-         var _loc2_:int = 0;
-         var _loc3_:String = null;
-         if(FlxG.consoleEnabled)
+         var _loc4_:int = 0;
+         var _loc5_:String = null;
+         if(param1.keyCode == 192 || param1.keyCode == 220)
          {
-            if(param1.keyCode == 192 || param1.keyCode == 220)
-            {
-               this._console.toggle();
-               return;
-            }
+            this._console.toggle();
+            return;
          }
          if(!FlxG.mobile && this.useDefaultHotKeys)
          {
-            _loc2_ = int(param1.keyCode);
-            _loc3_ = String.fromCharCode(param1.charCode);
-            switch(_loc2_)
+            _loc4_ = int(param1.keyCode);
+            _loc5_ = String.fromCharCode(param1.charCode);
+            switch(_loc4_)
             {
                case 48:
                case 96:
@@ -180,11 +187,11 @@ package org.flixel
             }
          }
          FlxG.keys.handleKeyUp(param1);
-         var _loc4_:uint = 0;
-         var _loc5_:uint = FlxG.gamepads.length;
-         while(_loc4_ < _loc5_)
+         var _loc2_:uint = 0;
+         var _loc3_:uint = FlxG.gamepads.length;
+         while(_loc2_ < _loc3_)
          {
-            FlxG.gamepads[_loc4_++].handleKeyUp(param1);
+            FlxG.gamepads[_loc2_++].handleKeyUp(param1);
          }
       }
       
@@ -203,18 +210,12 @@ package org.flixel
       {
          if(FlxG.pause)
          {
-            FlxG.mouse.hide();
             FlxG.pause = false;
          }
       }
       
       protected function onFocusLost(param1:Event = null) : void
       {
-         if(FlxG.noPause)
-         {
-            return;
-         }
-         FlxG.mouse.show();
          FlxG.pause = true;
       }
       
@@ -243,13 +244,13 @@ package org.flixel
       
       protected function update(param1:Event) : void
       {
-         var _loc2_:uint = 0;
-         var _loc3_:FlxSave = null;
-         var _loc4_:uint = uint(getTimer());
-         var _loc5_:uint = uint(_loc4_ - this._total);
+         var _loc3_:uint = 0;
+         var _loc4_:FlxSave = null;
+         var _loc2_:uint = uint(getTimer());
+         var _loc5_:uint = uint(_loc2_ - this._total);
          this._elapsed = _loc5_ / 1000;
          this._console.mtrTotal.add(_loc5_);
-         this._total = _loc4_;
+         this._total = _loc2_;
          FlxG.elapsed = this._elapsed;
          if(FlxG.elapsed > FlxG.maxElapsed)
          {
@@ -268,6 +269,17 @@ package org.flixel
                if(this._soundTray.y <= -this._soundTray.height)
                {
                   this._soundTray.visible = false;
+                  _loc4_ = new FlxSave();
+                  if(_loc4_.bind("flixel"))
+                  {
+                     if(_loc4_.data.sound == null)
+                     {
+                        _loc4_.data.sound = new Object();
+                     }
+                     _loc4_.data.mute = FlxG.mute;
+                     _loc4_.data.volume = FlxG.volume;
+                     _loc4_.forceSave();
+                  }
                }
             }
          }
@@ -299,7 +311,7 @@ package org.flixel
             this._screen.y = FlxG.quake.y;
          }
          var _loc6_:uint = uint(getTimer());
-         this._console.mtrUpdate.add(_loc6_ - _loc4_);
+         this._console.mtrUpdate.add(_loc6_ - _loc2_);
          FlxG.buffer.lock();
          this._state.preProcess();
          this._state.render();
@@ -341,10 +353,10 @@ package org.flixel
          var _loc2_:uint = 0;
          var _loc3_:uint = 0;
          var _loc4_:FlxSave = null;
-         var _loc5_:TextField = null;
-         var _loc6_:uint = 0;
-         var _loc7_:uint = 0;
-         var _loc8_:Bitmap = null;
+         var _loc8_:TextField = null;
+         var _loc9_:uint = 0;
+         var _loc10_:uint = 0;
+         var _loc11_:Bitmap = null;
          if(root == null)
          {
             return;
@@ -354,17 +366,36 @@ package org.flixel
          stage.frameRate = this._framerate;
          this._screen = new Sprite();
          addChild(this._screen);
-         var _loc9_:Bitmap = new Bitmap(new BitmapData(FlxG.width,FlxG.height,true,FlxState.bgColor));
-         _loc9_.x = this._gameXOffset;
-         _loc9_.y = this._gameYOffset;
-         _loc9_.scaleX = _loc9_.scaleY = this._zoom;
-         this._screen.addChild(_loc9_);
-         FlxG.buffer = _loc9_.bitmapData;
+         var _loc5_:Bitmap = new Bitmap(new BitmapData(FlxG.width,FlxG.height,true,FlxState.bgColor));
+         _loc5_.x = this._gameXOffset;
+         _loc5_.y = this._gameYOffset;
+         _loc5_.scaleX = _loc5_.scaleY = this._zoom;
+         this._screen.addChild(_loc5_);
+         FlxG.buffer = _loc5_.bitmapData;
          this._console = new FlxConsole(this._gameXOffset,this._gameYOffset,this._zoom);
          if(!FlxG.mobile)
          {
             addChild(this._console);
          }
+         var _loc6_:* = FlxG.LIBRARY_NAME + " v" + FlxG.LIBRARY_MAJOR_VERSION + "." + FlxG.LIBRARY_MINOR_VERSION;
+         if(FlxG.debug)
+         {
+            _loc6_ += " [debug]";
+         }
+         else
+         {
+            _loc6_ += " [release]";
+         }
+         var _loc7_:* = "";
+         _loc2_ = 0;
+         _loc3_ = uint(_loc6_.length + 32);
+         while(_loc2_ < _loc3_)
+         {
+            _loc7_ += "-";
+            _loc2_++;
+         }
+         FlxG.log(_loc6_);
+         FlxG.log(_loc7_);
          stage.addEventListener(MouseEvent.MOUSE_DOWN,FlxG.mouse.handleMouseDown);
          stage.addEventListener(MouseEvent.MOUSE_UP,FlxG.mouse.handleMouseUp);
          stage.addEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown);
@@ -380,47 +411,56 @@ package org.flixel
             this._soundTray.visible = false;
             this._soundTray.scaleX = 2;
             this._soundTray.scaleY = 2;
-            _loc9_ = new Bitmap(new BitmapData(80,30,true,2130706432));
-            this._soundTray.x = (this._gameXOffset + FlxG.width / 2) * this._zoom - _loc9_.width / 2 * this._soundTray.scaleX;
-            this._soundTray.addChild(_loc9_);
-            _loc5_ = new TextField();
-            _loc5_.width = _loc9_.width;
-            _loc5_.height = _loc9_.height;
-            _loc5_.multiline = true;
-            _loc5_.wordWrap = true;
-            _loc5_.selectable = false;
-            _loc5_.embedFonts = true;
-            _loc5_.antiAliasType = AntiAliasType.NORMAL;
-            _loc5_.gridFitType = GridFitType.PIXEL;
-            _loc5_.defaultTextFormat = new TextFormat("system",8,16777215,null,null,null,null,null,"center");
+            _loc5_ = new Bitmap(new BitmapData(80,30,true,2130706432));
+            this._soundTray.x = (this._gameXOffset + FlxG.width / 2) * this._zoom - _loc5_.width / 2 * this._soundTray.scaleX;
             this._soundTray.addChild(_loc5_);
-            _loc5_.text = "VOLUME";
-            _loc5_.y = 16;
-            _loc6_ = 10;
-            _loc7_ = 14;
+            _loc8_ = new TextField();
+            _loc8_.width = _loc5_.width;
+            _loc8_.height = _loc5_.height;
+            _loc8_.multiline = true;
+            _loc8_.wordWrap = true;
+            _loc8_.selectable = false;
+            _loc8_.embedFonts = true;
+            _loc8_.antiAliasType = AntiAliasType.NORMAL;
+            _loc8_.gridFitType = GridFitType.PIXEL;
+            _loc8_.defaultTextFormat = new TextFormat("system",8,16777215,null,null,null,null,null,"center");
+            this._soundTray.addChild(_loc8_);
+            _loc8_.text = "VOLUME";
+            _loc8_.y = 16;
+            _loc9_ = 10;
+            _loc10_ = 14;
             this._soundTrayBars = new Array();
             _loc2_ = 0;
             while(_loc2_ < 10)
             {
-               _loc9_ = new Bitmap(new BitmapData(4,++_loc2_,false,16777215));
-               _loc9_.x = _loc6_;
-               _loc9_.y = _loc7_;
-               this._soundTrayBars.push(this._soundTray.addChild(_loc9_));
-               _loc6_ += 6;
-               _loc7_--;
+               _loc5_ = new Bitmap(new BitmapData(4,++_loc2_,false,16777215));
+               _loc5_.x = _loc9_;
+               _loc5_.y = _loc10_;
+               this._soundTrayBars.push(this._soundTray.addChild(_loc5_));
+               _loc9_ += 6;
+               _loc10_--;
             }
             addChild(this._soundTray);
             _loc4_ = new FlxSave();
             if(_loc4_.bind("flixel") && _loc4_.data.sound != null)
             {
+               if(_loc4_.data.volume != null)
+               {
+                  FlxG.volume = _loc4_.data.volume;
+               }
+               if(_loc4_.data.mute != null)
+               {
+                  FlxG.mute = _loc4_.data.mute;
+               }
+               this.showSoundTray(true);
             }
          }
          if(this._frame != null)
          {
-            _loc8_ = new this._frame();
-            _loc8_.scaleX = this._zoom;
-            _loc8_.scaleY = this._zoom;
-            addChild(_loc8_);
+            _loc11_ = new this._frame();
+            _loc11_.scaleX = this._zoom;
+            _loc11_.scaleY = this._zoom;
+            addChild(_loc11_);
          }
          this.switchState(new this._iState());
          FlxState.screen.unsafeBind(FlxG.buffer);

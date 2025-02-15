@@ -216,10 +216,10 @@ package org.flixel
          callpropvoid QName(PackageNamespace(""),"setTextFormat"), 1
          getlocal0
          getlocal 5
-         setproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_shadow")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_shadow")
          getlocal0
          pushtrue
-         setproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_regen")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_regen")
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxText"),"calcFrame"), 0
          getlocal0
@@ -249,7 +249,7 @@ package org.flixel
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_shadowDistance")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_shadowDistance")
          returnvoid
          end ; code
          end ; body
@@ -368,7 +368,7 @@ package org.flixel
          ifeq ofs0
          getlocal0
          pushtrue
-         setproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_regen")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_regen")
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxText"),"calcFrame"), 0
          ofs0:
@@ -398,7 +398,7 @@ package org.flixel
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_outline")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_outline")
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxText"),"calcFrame"), 0
          returnvoid
@@ -496,7 +496,7 @@ package org.flixel
          callpropvoid QName(PackageNamespace(""),"setTextFormat"), 1
          getlocal0
          pushtrue
-         setproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_regen")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_regen")
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxText"),"calcFrame"), 0
          returnvoid
@@ -571,7 +571,7 @@ package org.flixel
          callpropvoid QName(PackageNamespace(""),"setTextFormat"), 1
          getlocal0
          pushtrue
-         setproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_regen")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_regen")
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxText"),"calcFrame"), 0
          returnvoid
@@ -642,7 +642,7 @@ package org.flixel
          callpropvoid QName(PackageNamespace(""),"setTextFormat"), 1
          getlocal0
          pushtrue
-         setproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_regen")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_regen")
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxText"),"calcFrame"), 0
          returnvoid
@@ -789,7 +789,7 @@ package org.flixel
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_outlineColor")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_outlineColor")
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxText"),"calcFrame"), 0
          returnvoid
@@ -818,7 +818,7 @@ package org.flixel
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_shadow")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_shadow")
          getlocal0
          callpropvoid QName(ProtectedNamespace("org.flixel:FlxText"),"calcFrame"), 0
          returnvoid
@@ -863,11 +863,9 @@ package org.flixel
          pushbyte 0
          convert_u
          setlocal1
-         findpropstrict QName(PackageNamespace(""),"uint")
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_tf")
          getproperty QName(PackageNamespace(""),"numLines")
-         callproperty QName(PackageNamespace(""),"uint"), 1
          convert_u
          setlocal2
          findproperty QName(PackageNamespace(""),"height")
@@ -938,7 +936,7 @@ package org.flixel
          setproperty QName(PackageNamespace(""),"height")
          getlocal0
          pushfalse
-         setproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_regen")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_regen")
          jump ofs3
          ofs0:
          getlex QName(ProtectedNamespace("org.flixel:FlxSprite"),"_pixels")
@@ -1138,10 +1136,8 @@ package org.flixel
          constructprop QName(PackageNamespace("flash.text"),"TextFormat"), 9
          callpropvoid QName(PackageNamespace(""),"setTextFormat"), 1
          getlex QName(ProtectedNamespace("org.flixel:FlxSprite"),"_mtx")
-         getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_shadowDistance")
-         getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_shadowDistance")
+         pushbyte 1
+         dup
          callpropvoid QName(PackageNamespace(""),"translate"), 2
          getlex QName(ProtectedNamespace("org.flixel:FlxSprite"),"_pixels")
          getlocal0
@@ -1150,12 +1146,8 @@ package org.flixel
          getlex QName(ProtectedNamespace("org.flixel:FlxSprite"),"_ct")
          callpropvoid QName(PackageNamespace(""),"draw"), 3
          getlex QName(ProtectedNamespace("org.flixel:FlxSprite"),"_mtx")
-         getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_shadowDistance")
-         negate
-         getlocal0
-         getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_shadowDistance")
-         negate
+         pushbyte -1
+         pushbyte -1
          callpropvoid QName(PackageNamespace(""),"translate"), 2
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_tf")
@@ -1280,7 +1272,7 @@ package org.flixel
          callsupervoid QName(PackageNamespace(""),"destroy"), 0
          getlocal0
          pushnull
-         setproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_tf")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxText"),"_tf")
          returnvoid
          end ; code
          end ; body

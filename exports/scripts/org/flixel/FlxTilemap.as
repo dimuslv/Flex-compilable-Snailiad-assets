@@ -4,7 +4,6 @@ package org.flixel
    import flash.geom.Matrix;
    import flash.geom.Rectangle;
    import flash.utils.getTimer;
-   import mx.utils.*;
    
    public class FlxTilemap extends FlxObject
    {
@@ -17,20 +16,6 @@ package org.flixel
       public static const AUTO:uint = 1;
       
       public static const ALT:uint = 2;
-      
-      public static const TILE_ACCESS_BEHAVIOR_NORMAL:int = 0;
-      
-      public static const TILE_ACCESS_BEHAVIOR_WRAP:int = 1;
-      
-      public static const TILE_ACCESS_BEHAVIOR_ZEROES_AFTER_EDGE:int = 2;
-      
-      public static const TILE_ACCESS_BEHAVIOR_REPEATING_EDGE:int = 3;
-      
-      public var getTile:Function;
-      
-      public var setTile:Function;
-      
-      private var _tileAccessBehavior:int = 0;
       
       public var collideIndex:uint;
       
@@ -48,46 +33,40 @@ package org.flixel
       
       public var totalTiles:uint;
       
-      public var _flashRect:Rectangle;
+      protected var _flashRect:Rectangle;
       
-      public var _flashRect2:Rectangle;
+      protected var _flashRect2:Rectangle;
       
-      public var _pixels:BitmapData;
+      protected var _pixels:BitmapData;
       
-      public var _bbPixels:BitmapData;
+      protected var _bbPixels:BitmapData;
       
-      public var _buffer:BitmapData;
+      protected var _buffer:BitmapData;
       
-      public var _bufferLoc:FlxPoint;
+      protected var _bufferLoc:FlxPoint;
       
-      public var _bbKey:String;
+      protected var _bbKey:String;
       
-      public var _data:Array;
+      protected var _data:Array;
       
-      public var _rects:Array;
+      protected var _rects:Array;
       
-      public var _tileWidth:uint;
+      protected var _tileWidth:uint;
       
-      public var _tileHeight:uint;
+      protected var _tileHeight:uint;
       
-      public var _block:FlxObject;
+      protected var _block:FlxObject;
       
-      public var _callbacks:Array;
+      protected var _callbacks:Array;
       
-      public var _screenRows:uint;
+      protected var _screenRows:uint;
       
-      public var _screenCols:uint;
+      protected var _screenCols:uint;
       
-      public var _boundsVisible:Boolean;
-      
-      public var _wrapCenterOffsetX:uint;
-      
-      public var _wrapCenterOffsetY:uint;
+      protected var _boundsVisible:Boolean;
       
       public function FlxTilemap()
       {
-         this.getTile = this.getTileNoWrap;
-         this.setTile = this.setTileNoWrap;
          super();
          this.auto = OFF;
          this.collideIndex = 1;
@@ -114,89 +93,89 @@ package org.flixel
       
       public static function arrayToCSV(param1:Array, param2:int) : String
       {
+         var _loc4_:uint = 0;
+         var _loc5_:String = null;
          var _loc3_:uint = 0;
-         var _loc4_:String = null;
-         var _loc5_:uint = 0;
          var _loc6_:int = param1.length / param2;
-         while(_loc5_ < _loc6_)
+         while(_loc3_ < _loc6_)
          {
-            _loc3_ = 0;
-            while(_loc3_ < param2)
+            _loc4_ = 0;
+            while(_loc4_ < param2)
             {
-               if(_loc3_ == 0)
+               if(_loc4_ == 0)
                {
-                  if(_loc5_ == 0)
+                  if(_loc3_ == 0)
                   {
-                     _loc4_ += param1[0];
+                     _loc5_ += param1[0];
                   }
                   else
                   {
-                     _loc4_ += "\n" + param1[_loc5_ * param2];
+                     _loc5_ += "\n" + param1[_loc3_ * param2];
                   }
                }
                else
                {
-                  _loc4_ += ", " + param1[_loc5_ * param2 + _loc3_];
+                  _loc5_ += ", " + param1[_loc3_ * param2 + _loc4_];
                }
-               _loc3_++;
+               _loc4_++;
             }
-            _loc5_++;
+            _loc3_++;
          }
-         return _loc4_;
+         return _loc5_;
       }
       
       public static function bitmapToCSV(param1:BitmapData, param2:Boolean = false, param3:uint = 1) : String
       {
-         var _loc4_:uint = 0;
          var _loc5_:uint = 0;
-         var _loc6_:String = null;
-         var _loc7_:BitmapData = null;
-         var _loc8_:Matrix = null;
+         var _loc6_:uint = 0;
+         var _loc7_:String = null;
+         var _loc10_:BitmapData = null;
+         var _loc11_:Matrix = null;
          if(param3 > 1)
          {
-            _loc7_ = param1;
+            _loc10_ = param1;
             param1 = new BitmapData(param1.width * param3,param1.height * param3);
-            _loc8_ = new Matrix();
-            _loc8_.scale(param3,param3);
-            param1.draw(_loc7_,_loc8_);
+            _loc11_ = new Matrix();
+            _loc11_.scale(param3,param3);
+            param1.draw(_loc10_,_loc11_);
          }
-         var _loc9_:uint = 0;
-         var _loc10_:uint = uint(param1.width);
-         var _loc11_:uint = uint(param1.height);
-         while(_loc9_ < _loc11_)
+         var _loc4_:uint = 0;
+         var _loc8_:uint = uint(param1.width);
+         var _loc9_:uint = uint(param1.height);
+         while(_loc4_ < _loc9_)
          {
-            _loc4_ = 0;
-            while(_loc4_ < _loc10_)
+            _loc5_ = 0;
+            while(_loc5_ < _loc8_)
             {
-               _loc5_ = param1.getPixel(_loc4_,_loc9_);
-               if(param2 && _loc5_ > 0 || !param2 && _loc5_ == 0)
+               _loc6_ = param1.getPixel(_loc5_,_loc4_);
+               if(param2 && _loc6_ > 0 || !param2 && _loc6_ == 0)
                {
-                  _loc5_ = 1;
+                  _loc6_ = 1;
                }
                else
                {
-                  _loc5_ = 0;
+                  _loc6_ = 0;
                }
-               if(_loc4_ == 0)
+               if(_loc5_ == 0)
                {
-                  if(_loc9_ == 0)
+                  if(_loc4_ == 0)
                   {
-                     _loc6_ += _loc5_;
+                     _loc7_ += _loc6_;
                   }
                   else
                   {
-                     _loc6_ += "\n" + _loc5_;
+                     _loc7_ += "\n" + _loc6_;
                   }
                }
                else
                {
-                  _loc6_ += ", " + _loc5_;
+                  _loc7_ += ", " + _loc6_;
                }
-               _loc4_++;
+               _loc5_++;
             }
-            _loc9_++;
+            _loc4_++;
          }
-         return _loc6_;
+         return _loc7_;
       }
       
       public static function imageToCSV(param1:Class, param2:Boolean = false, param3:uint = 1) : String
@@ -206,19 +185,19 @@ package org.flixel
       
       public function loadMap(param1:String, param2:Class, param3:uint = 0, param4:uint = 0, param5:String = "") : FlxTilemap
       {
-         var _loc6_:Array = null;
-         var _loc7_:uint = 0;
-         var _loc8_:uint = 0;
-         this.refresh = true;
-         var _loc9_:int = getTimer();
-         var _loc10_:Array = param1.split("\n");
-         this.heightInTiles = _loc10_.length;
-         this._data = new Array();
+         var _loc7_:Array = null;
+         var _loc10_:uint = 0;
          var _loc11_:uint = 0;
-         while(_loc11_ < this.heightInTiles)
+         this.refresh = true;
+         var _loc6_:int = getTimer();
+         var _loc8_:Array = param1.split("\n");
+         this.heightInTiles = _loc8_.length;
+         this._data = new Array();
+         var _loc9_:uint = 0;
+         while(_loc9_ < this.heightInTiles)
          {
-            _loc6_ = _loc10_[_loc11_++].split(",");
-            if(_loc6_.length <= 1)
+            _loc7_ = _loc8_[_loc9_++].split(",");
+            if(_loc7_.length <= 1)
             {
                --this.heightInTiles;
             }
@@ -226,25 +205,23 @@ package org.flixel
             {
                if(this.widthInTiles == 0)
                {
-                  this.widthInTiles = _loc6_.length;
+                  this.widthInTiles = _loc7_.length;
                }
-               _loc7_ = 0;
-               while(_loc7_ < this.widthInTiles)
+               _loc10_ = 0;
+               while(_loc10_ < this.widthInTiles)
                {
-                  this._data.push(uint(_loc6_[_loc7_++]));
+                  this._data.push(uint(_loc7_[_loc10_++]));
                }
             }
          }
-         this._wrapCenterOffsetX = uint.MAX_VALUE / 2 - uint.MAX_VALUE / 2 % this.widthInTiles;
-         this._wrapCenterOffsetY = uint.MAX_VALUE / 2 - uint.MAX_VALUE / 2 % this.heightInTiles;
          this.totalTiles = this.widthInTiles * this.heightInTiles;
          if(this.auto > OFF)
          {
             this.collideIndex = this.startingIndex = this.drawIndex = 1;
-            _loc8_ = 0;
-            while(_loc8_ < this.totalTiles)
+            _loc11_ = 0;
+            while(_loc11_ < this.totalTiles)
             {
-               this.autoTile(_loc8_++);
+               this.autoTile(_loc11_++);
             }
          }
          this._pixels = FlxG.addBitmap(param2);
@@ -263,10 +240,10 @@ package org.flixel
          width = this.widthInTiles * this._tileWidth;
          height = this.heightInTiles * this._tileHeight;
          this._rects = new Array(this.totalTiles);
-         _loc8_ = 0;
-         while(_loc8_ < this.totalTiles)
+         _loc11_ = 0;
+         while(_loc11_ < this.totalTiles)
          {
-            this.updateTile(_loc8_++);
+            this.updateTile(_loc11_++);
          }
          var _loc12_:uint = (FlxU.ceil(FlxG.width / this._tileWidth) + 1) * this._tileWidth;
          var _loc13_:uint = (FlxU.ceil(FlxG.height / this._tileHeight) + 1) * this._tileHeight;
@@ -291,24 +268,24 @@ package org.flixel
          return this;
       }
       
-      public function generateBoundingTiles() : void
+      protected function generateBoundingTiles() : void
       {
-         var _loc1_:Boolean = false;
-         var _loc2_:BitmapData = null;
-         var _loc3_:BitmapData = null;
-         var _loc4_:uint = 0;
-         var _loc5_:uint = 0;
-         var _loc6_:uint = 0;
+         var _loc4_:Boolean = false;
+         var _loc5_:BitmapData = null;
+         var _loc6_:BitmapData = null;
+         var _loc7_:uint = 0;
+         var _loc8_:uint = 0;
+         var _loc9_:uint = 0;
          this.refresh = true;
          if(this._bbKey == null || this._bbKey.length <= 0)
          {
             return;
          }
-         var _loc7_:uint = getBoundingColor();
-         var _loc8_:String = this._bbKey + ":BBTILES" + _loc7_;
-         var _loc9_:Boolean = FlxG.checkBitmapCache(_loc8_);
-         this._bbPixels = FlxG.createBitmap(this._pixels.width,this._pixels.height,0,true,_loc8_);
-         if(!_loc9_)
+         var _loc1_:uint = getBoundingColor();
+         var _loc2_:String = this._bbKey + ":BBTILES" + _loc1_;
+         var _loc3_:Boolean = FlxG.checkBitmapCache(_loc2_);
+         this._bbPixels = FlxG.createBitmap(this._pixels.width,this._pixels.height,0,true,_loc2_);
+         if(!_loc3_)
          {
             this._flashRect.width = this._pixels.width;
             this._flashRect.height = this._pixels.height;
@@ -317,59 +294,59 @@ package org.flixel
             this._bbPixels.copyPixels(this._pixels,this._flashRect,_flashPoint);
             this._flashRect.width = this._tileWidth;
             this._flashRect.height = this._tileHeight;
-            _loc1_ = _solid;
+            _loc4_ = _solid;
             _solid = false;
-            _loc7_ = getBoundingColor();
-            _loc8_ = "BBTILESTAMP" + this._tileWidth + "X" + this._tileHeight + _loc7_;
-            _loc9_ = FlxG.checkBitmapCache(_loc8_);
-            _loc2_ = FlxG.createBitmap(this._tileWidth,this._tileHeight,0,true,_loc8_);
-            if(!_loc9_)
+            _loc1_ = getBoundingColor();
+            _loc2_ = "BBTILESTAMP" + this._tileWidth + "X" + this._tileHeight + _loc1_;
+            _loc3_ = FlxG.checkBitmapCache(_loc2_);
+            _loc5_ = FlxG.createBitmap(this._tileWidth,this._tileHeight,0,true,_loc2_);
+            if(!_loc3_)
             {
-               _loc2_.fillRect(this._flashRect,_loc7_);
+               _loc5_.fillRect(this._flashRect,_loc1_);
                this._flashRect.x = this._flashRect.y = 1;
                this._flashRect.width -= 2;
                this._flashRect.height -= 2;
-               _loc2_.fillRect(this._flashRect,0);
+               _loc5_.fillRect(this._flashRect,0);
                this._flashRect.x = this._flashRect.y = 0;
                this._flashRect.width = this._tileWidth;
                this._flashRect.height = this._tileHeight;
             }
-            _solid = _loc1_;
-            _loc7_ = getBoundingColor();
-            _loc8_ = "BBTILESTAMP" + this._tileWidth + "X" + this._tileHeight + _loc7_;
-            _loc9_ = FlxG.checkBitmapCache(_loc8_);
-            _loc3_ = FlxG.createBitmap(this._tileWidth,this._tileHeight,0,true,_loc8_);
-            if(!_loc9_)
+            _solid = _loc4_;
+            _loc1_ = getBoundingColor();
+            _loc2_ = "BBTILESTAMP" + this._tileWidth + "X" + this._tileHeight + _loc1_;
+            _loc3_ = FlxG.checkBitmapCache(_loc2_);
+            _loc6_ = FlxG.createBitmap(this._tileWidth,this._tileHeight,0,true,_loc2_);
+            if(!_loc3_)
             {
-               _loc3_.fillRect(this._flashRect,_loc7_);
+               _loc6_.fillRect(this._flashRect,_loc1_);
                this._flashRect.x = this._flashRect.y = 1;
                this._flashRect.width -= 2;
                this._flashRect.height -= 2;
-               _loc3_.fillRect(this._flashRect,0);
+               _loc6_.fillRect(this._flashRect,0);
                this._flashRect.x = this._flashRect.y = 0;
                this._flashRect.width = this._tileWidth;
                this._flashRect.height = this._tileHeight;
             }
-            _loc4_ = 0;
-            _loc6_ = 0;
-            while(_loc4_ < this._bbPixels.height)
+            _loc7_ = 0;
+            _loc9_ = 0;
+            while(_loc7_ < this._bbPixels.height)
             {
-               _loc5_ = 0;
-               while(_loc5_ < this._bbPixels.width)
+               _loc8_ = 0;
+               while(_loc8_ < this._bbPixels.width)
                {
-                  _flashPoint.x = _loc5_;
-                  _flashPoint.y = _loc4_;
-                  if(_loc6_++ < this.collideIndex)
+                  _flashPoint.x = _loc8_;
+                  _flashPoint.y = _loc7_;
+                  if(_loc9_++ < this.collideIndex)
                   {
-                     this._bbPixels.copyPixels(_loc2_,this._flashRect,_flashPoint,null,null,true);
+                     this._bbPixels.copyPixels(_loc5_,this._flashRect,_flashPoint,null,null,true);
                   }
                   else
                   {
-                     this._bbPixels.copyPixels(_loc3_,this._flashRect,_flashPoint,null,null,true);
+                     this._bbPixels.copyPixels(_loc6_,this._flashRect,_flashPoint,null,null,true);
                   }
-                  _loc5_ += this._tileWidth;
+                  _loc8_ += this._tileWidth;
                }
-               _loc4_ += this._tileHeight;
+               _loc7_ += this._tileHeight;
             }
             this._flashRect.x = 0;
             this._flashRect.y = 0;
@@ -378,11 +355,11 @@ package org.flixel
          }
       }
       
-      public function renderTilemap() : void
+      protected function renderTilemap() : void
       {
          var _loc1_:BitmapData = null;
-         var _loc2_:uint = 0;
-         var _loc3_:uint = 0;
+         var _loc6_:uint = 0;
+         var _loc7_:uint = 0;
          this._buffer.fillRect(this._flashRect,0);
          if(FlxG.showBounds)
          {
@@ -397,49 +374,49 @@ package org.flixel
          getScreenXY(_point);
          _flashPoint.x = _point.x;
          _flashPoint.y = _point.y;
-         var _loc4_:int = Math.floor(-_flashPoint.x / this._tileWidth);
-         var _loc5_:int = Math.floor(-_flashPoint.y / this._tileHeight);
-         if(_loc4_ < 0)
+         var _loc2_:int = Math.floor(-_flashPoint.x / this._tileWidth);
+         var _loc3_:int = Math.floor(-_flashPoint.y / this._tileHeight);
+         if(_loc2_ < 0)
          {
-            _loc4_ = 0;
-         }
-         if(_loc4_ > this.widthInTiles - this._screenCols)
-         {
-            _loc4_ = this.widthInTiles - this._screenCols;
-         }
-         if(_loc5_ < 0)
-         {
-            _loc5_ = 0;
-         }
-         if(_loc5_ > this.heightInTiles - this._screenRows)
-         {
-            _loc5_ = this.heightInTiles - this._screenRows;
-         }
-         var _loc6_:int = _loc5_ * this.widthInTiles + _loc4_;
-         _flashPoint.y = 0;
-         var _loc7_:uint = 0;
-         while(_loc7_ < this._screenRows)
-         {
-            _loc3_ = uint(_loc6_);
             _loc2_ = 0;
+         }
+         if(_loc2_ > this.widthInTiles - this._screenCols)
+         {
+            _loc2_ = this.widthInTiles - this._screenCols;
+         }
+         if(_loc3_ < 0)
+         {
+            _loc3_ = 0;
+         }
+         if(_loc3_ > this.heightInTiles - this._screenRows)
+         {
+            _loc3_ = this.heightInTiles - this._screenRows;
+         }
+         var _loc4_:int = _loc3_ * this.widthInTiles + _loc2_;
+         _flashPoint.y = 0;
+         var _loc5_:uint = 0;
+         while(_loc5_ < this._screenRows)
+         {
+            _loc7_ = uint(_loc4_);
+            _loc6_ = 0;
             _flashPoint.x = 0;
-            while(_loc2_ < this._screenCols)
+            while(_loc6_ < this._screenCols)
             {
-               this._flashRect = this._rects[_loc3_++] as Rectangle;
+               this._flashRect = this._rects[_loc7_++] as Rectangle;
                if(this._flashRect != null)
                {
                   this._buffer.copyPixels(_loc1_,this._flashRect,_flashPoint,null,null,true);
                }
                _flashPoint.x += this._tileWidth;
-               _loc2_++;
+               _loc6_++;
             }
-            _loc6_ += this.widthInTiles;
+            _loc4_ += this.widthInTiles;
             _flashPoint.y += this._tileHeight;
-            _loc7_++;
+            _loc5_++;
          }
          this._flashRect = this._flashRect2;
-         this._bufferLoc.x = _loc4_ * this._tileWidth;
-         this._bufferLoc.y = _loc5_ * this._tileHeight;
+         this._bufferLoc.x = _loc2_ * this._tileWidth;
+         this._bufferLoc.y = _loc3_ * this._tileHeight;
       }
       
       override public function update() : void
@@ -495,47 +472,47 @@ package org.flixel
       {
          var _loc2_:uint = 0;
          var _loc3_:uint = 0;
-         var _loc4_:uint = 0;
-         var _loc5_:Array = new Array();
-         var _loc6_:uint = Math.floor((param1.x - x) / this._tileWidth);
-         var _loc7_:uint = Math.floor((param1.y - y) / this._tileHeight);
-         var _loc8_:uint = Math.ceil(param1.width / this._tileWidth) + 1;
-         var _loc9_:uint = Math.ceil(param1.height / this._tileHeight) + 1;
          var _loc10_:uint = 0;
-         while(_loc10_ < _loc9_)
+         var _loc4_:Array = new Array();
+         var _loc5_:uint = Math.floor((param1.x - x) / this._tileWidth);
+         var _loc6_:uint = Math.floor((param1.y - y) / this._tileHeight);
+         var _loc7_:uint = Math.ceil(param1.width / this._tileWidth) + 1;
+         var _loc8_:uint = Math.ceil(param1.height / this._tileHeight) + 1;
+         var _loc9_:uint = 0;
+         while(_loc9_ < _loc8_)
          {
-            if(_loc10_ >= this.heightInTiles)
+            if(_loc9_ >= this.heightInTiles)
             {
                break;
             }
-            _loc2_ = (_loc7_ + _loc10_) * this.widthInTiles + _loc6_;
-            _loc4_ = 0;
-            while(_loc4_ < _loc8_)
+            _loc2_ = (_loc6_ + _loc9_) * this.widthInTiles + _loc5_;
+            _loc10_ = 0;
+            while(_loc10_ < _loc7_)
             {
-               if(_loc4_ >= this.widthInTiles)
+               if(_loc10_ >= this.widthInTiles)
                {
                   break;
                }
-               _loc3_ = this._data[_loc2_ + _loc4_] as uint;
+               _loc3_ = this._data[_loc2_ + _loc10_] as uint;
                if(_loc3_ >= this.collideIndex)
                {
-                  _loc5_.push({
-                     "x":x + (_loc6_ + _loc4_) * this._tileWidth,
-                     "y":y + (_loc7_ + _loc10_) * this._tileHeight,
+                  _loc4_.push({
+                     "x":x + (_loc5_ + _loc10_) * this._tileWidth,
+                     "y":y + (_loc6_ + _loc9_) * this._tileHeight,
                      "data":_loc3_
                   });
                }
-               _loc4_++;
+               _loc10_++;
             }
-            _loc10_++;
+            _loc9_++;
          }
-         var _loc11_:uint = _loc5_.length;
+         var _loc11_:uint = _loc4_.length;
          var _loc12_:Boolean = false;
          var _loc13_:uint = 0;
          while(_loc13_ < _loc11_)
          {
-            this._block.x = _loc5_[_loc13_].x;
-            this._block.y = _loc5_[_loc13_++].y;
+            this._block.x = _loc4_[_loc13_].x;
+            this._block.y = _loc4_[_loc13_++].y;
             if(this._block.overlaps(param1))
             {
                return true;
@@ -563,7 +540,6 @@ package org.flixel
       
       override public function preCollide(param1:FlxObject) : void
       {
-         var _loc10_:* = undefined;
          var _loc2_:uint = 0;
          var _loc3_:uint = 0;
          var _loc4_:uint = 0;
@@ -601,8 +577,8 @@ package org.flixel
             {
                if(this._data[_loc4_ + _loc3_] as uint >= this.collideIndex)
                {
-                  var _loc11_:*;
-                  colOffsets[_loc11_ = _loc10_ = _loc5_++] = new FlxPoint(x + _loc3_ * this._tileWidth,y + _loc2_ * this._tileHeight);
+                  var _loc10_:*;
+                  colOffsets[_loc10_ = _loc5_++] = new FlxPoint(x + _loc3_ * this._tileWidth,y + _loc2_ * this._tileHeight);
                }
                _loc3_++;
             }
@@ -615,117 +591,17 @@ package org.flixel
          }
       }
       
-      public function get tileAccessBehavior() : int
-      {
-         return this._tileAccessBehavior;
-      }
-      
-      public function set tileAccessBehavior(param1:int) : void
-      {
-         switch(param1)
-         {
-            case TILE_ACCESS_BEHAVIOR_NORMAL:
-               this.getTile = this.getTileNoWrap;
-               this.setTile = this.setTileNoWrap;
-               break;
-            case TILE_ACCESS_BEHAVIOR_WRAP:
-               this.getTile = this.getTileWrap;
-               this.setTile = this.setTileWrap;
-               break;
-            case TILE_ACCESS_BEHAVIOR_ZEROES_AFTER_EDGE:
-               this.getTile = this.getTileZeroesAfterEdge;
-               this.setTile = this.setTileZeroesAfterEdge;
-               break;
-            case TILE_ACCESS_BEHAVIOR_REPEATING_EDGE:
-               this.getTile = this.getTileRepeatingEdge;
-               this.setTile = this.setTileRepeatingEdge;
-               break;
-            default:
-               throw new Error("Unknown tile access behavior: " + param1.toString());
-         }
-         this._tileAccessBehavior = param1;
-      }
-      
-      public function getTileNoWrap(param1:uint, param2:uint) : uint
+      public function getTile(param1:uint, param2:uint) : uint
       {
          return this.getTileByIndex(param2 * this.widthInTiles + param1);
       }
       
-      public function getTileWrap(param1:uint, param2:uint) : uint
+      public function getTileByIndex(param1:uint) : uint
       {
-         param1 = (param1 + this._wrapCenterOffsetX) % this.widthInTiles;
-         param2 = (param2 + this._wrapCenterOffsetY) % this.heightInTiles;
-         return this.getTileNoWrap(param1,param2);
+         return this._data[param1] as uint;
       }
       
-      public function getTileZeroesAfterEdge(param1:uint, param2:uint) : uint
-      {
-         if(param1 < 0 || param2 < 0 || param1 >= this.widthInTiles || param2 >= this.heightInTiles)
-         {
-            return 0;
-         }
-         return this.getTileNoWrap(param1,param2);
-      }
-      
-      public function getTileRepeatingEdge(param1:uint, param2:uint) : uint
-      {
-         if(int(param1) < 0)
-         {
-            param1 = 0;
-         }
-         else if(param1 > this.widthInTiles - 1)
-         {
-            param1 = this.widthInTiles - 1;
-         }
-         if(int(param2) < 0)
-         {
-            param2 = 0;
-         }
-         else if(param2 > this.heightInTiles - 1)
-         {
-            param2 = this.heightInTiles - 1;
-         }
-         return this.getTileNoWrap(param1,param2);
-      }
-      
-      public function setTileZeroesAfterEdge(param1:uint, param2:uint, param3:uint, param4:Boolean = true) : Boolean
-      {
-         if(param1 < 0 || param2 < 0 || param1 >= this.widthInTiles || param2 >= this.heightInTiles)
-         {
-            return false;
-         }
-         return this.setTileNoWrap(param1,param2,param3,param4);
-      }
-      
-      public function setTileWrap(param1:uint, param2:uint, param3:uint, param4:Boolean = true) : Boolean
-      {
-         param1 = (param1 + this._wrapCenterOffsetX) % this.widthInTiles;
-         param2 = (param2 + this._wrapCenterOffsetY) % this.heightInTiles;
-         return this.setTileNoWrap(param1,param2,param3,param4);
-      }
-      
-      public function setTileRepeatingEdge(param1:uint, param2:uint, param3:uint, param4:Boolean = true) : Boolean
-      {
-         if(int(param1) < 0)
-         {
-            param1 = 0;
-         }
-         else if(param1 > this.widthInTiles - 1)
-         {
-            param1 = this.widthInTiles - 1;
-         }
-         if(int(param2) < 0)
-         {
-            param2 = 0;
-         }
-         else if(param2 > this.heightInTiles - 1)
-         {
-            param2 = this.heightInTiles - 1;
-         }
-         return this.setTileNoWrap(param1,param2,param3,param4);
-      }
-      
-      public function setTileNoWrap(param1:uint, param2:uint, param3:uint, param4:Boolean = true) : Boolean
+      public function setTile(param1:uint, param2:uint, param3:uint, param4:Boolean = true) : Boolean
       {
          if(param1 >= this.widthInTiles || param2 >= this.heightInTiles)
          {
@@ -734,29 +610,24 @@ package org.flixel
          return this.setTileByIndex(param2 * this.widthInTiles + param1,param3,param4);
       }
       
-      public function getTileByIndex(param1:uint) : uint
-      {
-         return this._data[param1] as uint;
-      }
-      
       public function setTileByIndex(param1:uint, param2:uint, param3:Boolean = true) : Boolean
       {
-         var _loc4_:uint = 0;
+         var _loc5_:uint = 0;
          if(param1 >= this._data.length)
          {
             return false;
          }
-         var _loc5_:Boolean = true;
+         var _loc4_:Boolean = true;
          this._data[param1] = param2;
          if(!param3)
          {
-            return _loc5_;
+            return _loc4_;
          }
          this.refresh = true;
          if(this.auto == OFF)
          {
             this.updateTile(param1);
-            return _loc5_;
+            return _loc4_;
          }
          var _loc6_:int = int(param1 / this.widthInTiles) - 1;
          var _loc7_:int = _loc6_ + 3;
@@ -769,15 +640,15 @@ package org.flixel
             {
                if(_loc6_ >= 0 && _loc6_ < this.heightInTiles && _loc8_ >= 0 && _loc8_ < this.widthInTiles)
                {
-                  _loc4_ = _loc6_ * this.widthInTiles + _loc8_;
-                  this.autoTile(_loc4_);
-                  this.updateTile(_loc4_);
+                  _loc5_ = _loc6_ * this.widthInTiles + _loc8_;
+                  this.autoTile(_loc5_);
+                  this.updateTile(_loc5_);
                }
                _loc8_++;
             }
             _loc6_++;
          }
-         return _loc5_;
+         return _loc4_;
       }
       
       public function setCallback(param1:uint, param2:Function, param3:uint = 1) : void
@@ -792,91 +663,91 @@ package org.flixel
       
       public function ray(param1:Number, param2:Number, param3:Number, param4:Number, param5:FlxPoint, param6:Number = 1) : Boolean
       {
-         var _loc7_:uint = 0;
-         var _loc8_:uint = 0;
-         var _loc9_:Number = NaN;
-         var _loc10_:Number = NaN;
-         var _loc11_:Number = NaN;
-         var _loc12_:Number = NaN;
-         var _loc13_:Number = NaN;
-         var _loc14_:Number = this._tileWidth;
+         var _loc16_:uint = 0;
+         var _loc17_:uint = 0;
+         var _loc19_:Number = NaN;
+         var _loc20_:Number = NaN;
+         var _loc21_:Number = NaN;
+         var _loc22_:Number = NaN;
+         var _loc23_:Number = NaN;
+         var _loc7_:Number = this._tileWidth;
          if(this._tileHeight < this._tileWidth)
          {
-            _loc14_ = this._tileHeight;
+            _loc7_ = this._tileHeight;
          }
-         _loc14_ /= param6;
-         var _loc15_:Number = param3 - param1;
-         var _loc16_:Number = param4 - param2;
-         var _loc17_:Number = Math.sqrt(_loc15_ * _loc15_ + _loc16_ * _loc16_);
-         var _loc18_:uint = Math.ceil(_loc17_ / _loc14_);
-         var _loc19_:Number = _loc15_ / _loc18_;
-         var _loc20_:Number = _loc16_ / _loc18_;
-         var _loc21_:Number = param1 - _loc19_;
-         var _loc22_:Number = param2 - _loc20_;
-         var _loc23_:uint = 0;
-         while(_loc23_ < _loc18_)
+         _loc7_ /= param6;
+         var _loc8_:Number = param3 - param1;
+         var _loc9_:Number = param4 - param2;
+         var _loc10_:Number = Math.sqrt(_loc8_ * _loc8_ + _loc9_ * _loc9_);
+         var _loc11_:uint = Math.ceil(_loc10_ / _loc7_);
+         var _loc12_:Number = _loc8_ / _loc11_;
+         var _loc13_:Number = _loc9_ / _loc11_;
+         var _loc14_:Number = param1 - _loc12_;
+         var _loc15_:Number = param2 - _loc13_;
+         var _loc18_:uint = 0;
+         while(_loc18_ < _loc11_)
          {
-            _loc21_ += _loc19_;
-            _loc22_ += _loc20_;
-            if(_loc21_ < 0 || _loc21_ > width || _loc22_ < 0 || _loc22_ > height)
+            _loc14_ += _loc12_;
+            _loc15_ += _loc13_;
+            if(_loc14_ < 0 || _loc14_ > width || _loc15_ < 0 || _loc15_ > height)
             {
-               _loc23_++;
+               _loc18_++;
             }
             else
             {
-               _loc7_ = _loc21_ / this._tileWidth;
-               _loc8_ = _loc22_ / this._tileHeight;
-               if(this._data[_loc8_ * this.widthInTiles + _loc7_] as uint >= this.collideIndex)
+               _loc16_ = _loc14_ / this._tileWidth;
+               _loc17_ = _loc15_ / this._tileHeight;
+               if(this._data[_loc17_ * this.widthInTiles + _loc16_] as uint >= this.collideIndex)
                {
-                  _loc7_ *= this._tileWidth;
-                  _loc8_ *= this._tileHeight;
-                  _loc9_ = 0;
-                  _loc10_ = 0;
-                  _loc12_ = _loc21_ - _loc19_;
-                  _loc13_ = _loc22_ - _loc20_;
-                  _loc11_ = _loc7_;
-                  if(_loc15_ < 0)
+                  _loc16_ *= this._tileWidth;
+                  _loc17_ *= this._tileHeight;
+                  _loc19_ = 0;
+                  _loc20_ = 0;
+                  _loc22_ = _loc14_ - _loc12_;
+                  _loc23_ = _loc15_ - _loc13_;
+                  _loc21_ = _loc16_;
+                  if(_loc8_ < 0)
                   {
-                     _loc11_ += this._tileWidth;
+                     _loc21_ += this._tileWidth;
                   }
-                  _loc9_ = _loc11_;
-                  _loc10_ = _loc13_ + _loc20_ * ((_loc11_ - _loc12_) / _loc19_);
-                  if(_loc10_ > _loc8_ && _loc10_ < _loc8_ + this._tileHeight)
+                  _loc19_ = _loc21_;
+                  _loc20_ = _loc23_ + _loc13_ * ((_loc21_ - _loc22_) / _loc12_);
+                  if(_loc20_ > _loc17_ && _loc20_ < _loc17_ + this._tileHeight)
                   {
                      if(param5 == null)
                      {
                         param5 = new FlxPoint();
                      }
-                     param5.x = _loc9_;
-                     param5.y = _loc10_;
+                     param5.x = _loc19_;
+                     param5.y = _loc20_;
                      return true;
                   }
-                  _loc11_ = _loc8_;
-                  if(_loc16_ < 0)
+                  _loc21_ = _loc17_;
+                  if(_loc9_ < 0)
                   {
-                     _loc11_ += this._tileHeight;
+                     _loc21_ += this._tileHeight;
                   }
-                  _loc9_ = _loc12_ + _loc19_ * ((_loc11_ - _loc13_) / _loc20_);
-                  _loc10_ = _loc11_;
-                  if(_loc9_ > _loc7_ && _loc9_ < _loc7_ + this._tileWidth)
+                  _loc19_ = _loc22_ + _loc12_ * ((_loc21_ - _loc23_) / _loc13_);
+                  _loc20_ = _loc21_;
+                  if(_loc19_ > _loc16_ && _loc19_ < _loc16_ + this._tileWidth)
                   {
                      if(param5 == null)
                      {
                         param5 = new FlxPoint();
                      }
-                     param5.x = _loc9_;
-                     param5.y = _loc10_;
+                     param5.x = _loc19_;
+                     param5.y = _loc20_;
                      return true;
                   }
                   return false;
                }
-               _loc23_++;
+               _loc18_++;
             }
          }
          return false;
       }
       
-      public function autoTile(param1:uint) : void
+      protected function autoTile(param1:uint) : void
       {
          if(this._data[param1] == 0)
          {
@@ -921,7 +792,7 @@ package org.flixel
          this._data[param1] += 1;
       }
       
-      public function updateTile(param1:uint) : void
+      protected function updateTile(param1:uint) : void
       {
          if(this._data[param1] < this.drawIndex)
          {
@@ -936,27 +807,6 @@ package org.flixel
             _loc2_ %= this._pixels.width;
          }
          this._rects[param1] = new Rectangle(_loc2_,_loc3_,this._tileWidth,this._tileHeight);
-      }
-      
-      override public function destroy() : void
-      {
-         super.destroy();
-         this._flashRect = null;
-         this._bbPixels.dispose();
-         this._bbPixels = null;
-         this._block.destroy();
-         this._data.length = 0;
-         this._data = null;
-         var _loc1_:int = 0;
-         while(_loc1_ < this._rects.length)
-         {
-            this._rects[_loc1_] = null;
-            _loc1_++;
-         }
-         this._rects.length = 0;
-         this._rects = null;
-         this._callbacks.length = 0;
-         this._callbacks = null;
       }
    }
 }

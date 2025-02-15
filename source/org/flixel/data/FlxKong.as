@@ -1,37 +1,57 @@
 package org.flixel.data
 {
-   import flash.display.Loader;
-   import flash.display.LoaderInfo;
-   import flash.display.Sprite;
-   import flash.events.Event;
-   import flash.net.URLRequest;
-   
-   public class FlxKong extends Sprite
-   {
-      public var API:*;
-      
-      public function FlxKong()
-      {
-         super();
-         this.API = null;
-      }
-      
-      public function init() : void
-      {
-         var _loc1_:Object = LoaderInfo(root.loaderInfo).parameters;
-         var _loc2_:String = _loc1_.api_path || "http://www.kongregate.com/flash/API_AS3_Local.swf";
-         var _loc3_:URLRequest = new URLRequest(_loc2_);
-         var _loc4_:Loader = new Loader();
-         _loc4_.contentLoaderInfo.addEventListener(Event.COMPLETE,this.APILoaded);
-         _loc4_.load(_loc3_);
-         this.addChild(_loc4_);
-      }
-      
-      protected function APILoaded(param1:Event) : void
-      {
-         this.API = param1.target.content;
-         this.API.services.connect();
-      }
-   }
-}
+	import flash.display.DisplayObject;
+	import flash.display.LoaderInfo;
+	import flash.display.Loader;
+	import flash.display.Sprite;
+	import flash.net.URLRequest;
+	import flash.events.Event;
 
+	/**
+	 * This class provides basic high scores and achievements via Kongregate's game API.
+	 */
+	public class FlxKong extends Sprite
+	{
+		/**
+		 * Stores the Kongregate API object.
+		 * 
+		 * @default null
+		 */
+		public var API:*;
+		
+		/**
+		 * Constructor.
+		 */
+		public function FlxKong()
+		{
+			API = null;
+		}
+		
+		/**
+		 * Actually initializes the FlxKong object.  Highly recommend calling this
+		 * inside your first game state's <code>update()</code> function to ensure
+		 * that all the necessary Flash stage stuff is loaded.
+		 */
+		public function init():void
+		{
+			var paramObj:Object = LoaderInfo(root.loaderInfo).parameters;
+			var api_url:String = paramObj.api_path || "http://www.kongregate.com/flash/API_AS3_Local.swf";
+			
+			//Load the API
+			var request:URLRequest = new URLRequest(api_url);
+			var loader:Loader = new Loader();
+			loader.contentLoaderInfo.addEventListener(Event.COMPLETE,APILoaded);
+			loader.load(request);
+			this.addChild(loader);
+		}
+		
+		/**
+		 * Fired when the Kongregate API finishes loading into the API object.
+		 */
+		protected function APILoaded(event:Event):void
+		{
+		    API = event.target.content;
+		    API.services.connect();
+		}
+	}
+}

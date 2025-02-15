@@ -77,15 +77,15 @@ package org.flixel
       
       public function getFirstAvail() : FlxObject
       {
-         var _loc1_:FlxObject = null;
-         var _loc2_:uint = 0;
+         var _loc2_:FlxObject = null;
+         var _loc1_:uint = 0;
          var _loc3_:uint = this.members.length;
-         while(_loc2_ < _loc3_)
+         while(_loc1_ < _loc3_)
          {
-            _loc1_ = this.members[_loc2_++] as FlxObject;
-            if(_loc1_ != null && !_loc1_.exists)
+            _loc2_ = this.members[_loc1_++] as FlxObject;
+            if(_loc2_ != null && !_loc2_.exists)
             {
-               return _loc1_;
+               return _loc2_;
             }
          }
          return null;
@@ -119,36 +119,31 @@ package org.flixel
       
       public function getFirstExtant() : FlxObject
       {
-         var _loc1_:FlxObject = null;
-         var _loc2_:uint = 0;
+         var _loc2_:FlxObject = null;
+         var _loc1_:uint = 0;
          var _loc3_:uint = this.members.length;
-         while(_loc2_ < _loc3_)
+         while(_loc1_ < _loc3_)
          {
-            _loc1_ = this.members[_loc2_++] as FlxObject;
-            if(_loc1_ != null && _loc1_.exists)
+            _loc2_ = this.members[_loc1_++] as FlxObject;
+            if(_loc2_ != null && _loc2_.exists)
             {
-               return _loc1_;
+               return _loc2_;
             }
          }
          return null;
       }
       
-      public function logMembers(param1:String) : void
-      {
-         FlxG.log(param1 + ": " + this.countLiving().toString() + " living, " + this.countDead().toString() + " dead");
-      }
-      
       public function getFirstAlive() : FlxObject
       {
-         var _loc1_:FlxObject = null;
-         var _loc2_:uint = 0;
+         var _loc2_:FlxObject = null;
+         var _loc1_:uint = 0;
          var _loc3_:uint = this.members.length;
-         while(_loc2_ < _loc3_)
+         while(_loc1_ < _loc3_)
          {
-            _loc1_ = this.members[_loc2_++] as FlxObject;
-            if(_loc1_ != null && _loc1_.exists && !_loc1_.dead)
+            _loc2_ = this.members[_loc1_++] as FlxObject;
+            if(_loc2_ != null && _loc2_.exists && !_loc2_.dead)
             {
-               return _loc1_;
+               return _loc2_;
             }
          }
          return null;
@@ -156,15 +151,15 @@ package org.flixel
       
       public function getFirstDead() : FlxObject
       {
-         var _loc1_:FlxObject = null;
-         var _loc2_:uint = 0;
+         var _loc2_:FlxObject = null;
+         var _loc1_:uint = 0;
          var _loc3_:uint = this.members.length;
-         while(_loc2_ < _loc3_)
+         while(_loc1_ < _loc3_)
          {
-            _loc1_ = this.members[_loc2_++] as FlxObject;
-            if(_loc1_ != null && _loc1_.dead)
+            _loc2_ = this.members[_loc1_++] as FlxObject;
+            if(_loc2_ != null && _loc2_.dead)
             {
-               return _loc1_;
+               return _loc2_;
             }
          }
          return null;
@@ -172,74 +167,74 @@ package org.flixel
       
       public function countLiving() : int
       {
-         var _loc1_:FlxObject = null;
-         var _loc2_:int = -1;
-         var _loc3_:uint = 0;
+         var _loc3_:FlxObject = null;
+         var _loc1_:int = -1;
+         var _loc2_:uint = 0;
          var _loc4_:uint = this.members.length;
-         while(_loc3_ < _loc4_)
+         while(_loc2_ < _loc4_)
          {
-            _loc1_ = this.members[_loc3_++] as FlxObject;
-            if(_loc1_ != null)
+            _loc3_ = this.members[_loc2_++] as FlxObject;
+            if(_loc3_ != null)
             {
-               if(_loc2_ < 0)
+               if(_loc1_ < 0)
                {
-                  _loc2_ = 0;
+                  _loc1_ = 0;
                }
-               if(_loc1_.exists && !_loc1_.dead)
+               if(_loc3_.exists && !_loc3_.dead)
                {
-                  _loc2_++;
+                  _loc1_++;
                }
             }
          }
-         return _loc2_;
+         return _loc1_;
       }
       
       public function countDead() : int
       {
-         var _loc1_:FlxObject = null;
-         var _loc2_:int = -1;
-         var _loc3_:uint = 0;
+         var _loc3_:FlxObject = null;
+         var _loc1_:int = -1;
+         var _loc2_:uint = 0;
          var _loc4_:uint = this.members.length;
-         while(_loc3_ < _loc4_)
+         while(_loc2_ < _loc4_)
          {
-            _loc1_ = this.members[_loc3_++] as FlxObject;
-            if(_loc1_ != null)
+            _loc3_ = this.members[_loc2_++] as FlxObject;
+            if(_loc3_ != null)
             {
-               if(_loc2_ < 0)
+               if(_loc1_ < 0)
                {
-                  _loc2_ = 0;
+                  _loc1_ = 0;
                }
-               if(_loc1_.dead)
+               if(_loc3_.dead)
                {
-                  _loc2_++;
+                  _loc1_++;
                }
             }
          }
-         return _loc2_;
+         return _loc1_;
       }
       
       public function countOnScreen() : int
       {
-         var _loc1_:FlxObject = null;
-         var _loc2_:int = -1;
-         var _loc3_:uint = 0;
+         var _loc3_:FlxObject = null;
+         var _loc1_:int = -1;
+         var _loc2_:uint = 0;
          var _loc4_:uint = this.members.length;
-         while(_loc3_ < _loc4_)
+         while(_loc2_ < _loc4_)
          {
-            _loc1_ = this.members[_loc3_++] as FlxObject;
-            if(_loc1_ != null)
+            _loc3_ = this.members[_loc2_++] as FlxObject;
+            if(_loc3_ != null)
             {
-               if(_loc2_ < 0)
+               if(_loc1_ < 0)
                {
-                  _loc2_ = 0;
+                  _loc1_ = 0;
                }
-               if(_loc1_.onScreen())
+               if(_loc3_.onScreen())
                {
-                  _loc2_++;
+                  _loc1_++;
                }
             }
          }
-         return _loc2_;
+         return _loc1_;
       }
       
       public function getRandom() : FlxObject
@@ -273,52 +268,52 @@ package org.flixel
       {
          var _loc1_:Number = NaN;
          var _loc2_:Number = NaN;
-         var _loc3_:FlxObject = null;
-         var _loc4_:Boolean = false;
+         var _loc5_:FlxObject = null;
+         var _loc3_:Boolean = false;
          if(x != this._last.x || y != this._last.y)
          {
-            _loc4_ = true;
+            _loc3_ = true;
             _loc1_ = x - this._last.x;
             _loc2_ = y - this._last.y;
          }
-         var _loc5_:uint = 0;
+         var _loc4_:uint = 0;
          var _loc6_:uint = this.members.length;
-         while(_loc5_ < _loc6_)
+         while(_loc4_ < _loc6_)
          {
-            _loc3_ = this.members[_loc5_++] as FlxObject;
-            if(_loc3_ != null && _loc3_.exists)
+            _loc5_ = this.members[_loc4_++] as FlxObject;
+            if(_loc5_ != null && _loc5_.exists)
             {
-               if(_loc4_)
+               if(_loc3_)
                {
-                  if(_loc3_._group)
+                  if(_loc5_._group)
                   {
-                     _loc3_.reset(_loc3_.x + _loc1_,_loc3_.y + _loc2_);
+                     _loc5_.reset(_loc5_.x + _loc1_,_loc5_.y + _loc2_);
                   }
                   else
                   {
-                     _loc3_.x += _loc1_;
-                     _loc3_.y += _loc2_;
+                     _loc5_.x += _loc1_;
+                     _loc5_.y += _loc2_;
                   }
                }
-               if(_loc3_.active)
+               if(_loc5_.active)
                {
-                  _loc3_.update();
+                  _loc5_.update();
                }
-               if(_loc4_ && _loc3_.solid)
+               if(_loc3_ && _loc5_.solid)
                {
-                  _loc3_.colHullX.width += _loc1_ > 0 ? _loc1_ : -_loc1_;
+                  _loc5_.colHullX.width += _loc1_ > 0 ? _loc1_ : -_loc1_;
                   if(_loc1_ < 0)
                   {
-                     _loc3_.colHullX.x += _loc1_;
+                     _loc5_.colHullX.x += _loc1_;
                   }
-                  _loc3_.colHullY.x = x;
-                  _loc3_.colHullY.height += _loc2_ > 0 ? _loc2_ : -_loc2_;
+                  _loc5_.colHullY.x = x;
+                  _loc5_.colHullY.height += _loc2_ > 0 ? _loc2_ : -_loc2_;
                   if(_loc2_ < 0)
                   {
-                     _loc3_.colHullY.y += _loc2_;
+                     _loc5_.colHullY.y += _loc2_;
                   }
-                  _loc3_.colVector.x += _loc1_;
-                  _loc3_.colVector.y += _loc2_;
+                  _loc5_.colVector.x += _loc1_;
+                  _loc5_.colVector.y += _loc2_;
                }
             }
          }
@@ -334,15 +329,15 @@ package org.flixel
       
       protected function renderMembers() : void
       {
-         var _loc1_:FlxObject = null;
-         var _loc2_:uint = 0;
+         var _loc2_:FlxObject = null;
+         var _loc1_:uint = 0;
          var _loc3_:uint = this.members.length;
-         while(_loc2_ < _loc3_)
+         while(_loc1_ < _loc3_)
          {
-            _loc1_ = this.members[_loc2_++] as FlxObject;
-            if(_loc1_ != null && _loc1_.exists && _loc1_.visible)
+            _loc2_ = this.members[_loc1_++] as FlxObject;
+            if(_loc2_ != null && _loc2_.exists && _loc2_.visible)
             {
-               _loc1_.render();
+               _loc2_.render();
             }
          }
       }
@@ -354,15 +349,15 @@ package org.flixel
       
       protected function killMembers() : void
       {
-         var _loc1_:FlxObject = null;
-         var _loc2_:uint = 0;
+         var _loc2_:FlxObject = null;
+         var _loc1_:uint = 0;
          var _loc3_:uint = this.members.length;
-         while(_loc2_ < _loc3_)
+         while(_loc1_ < _loc3_)
          {
-            _loc1_ = this.members[_loc2_++] as FlxObject;
-            if(_loc1_ != null)
+            _loc2_ = this.members[_loc1_++] as FlxObject;
+            if(_loc2_ != null)
             {
-               _loc1_.kill();
+               _loc2_.kill();
             }
          }
       }
@@ -373,17 +368,17 @@ package org.flixel
          super.kill();
       }
       
-      public function destroyMembers() : void
+      protected function destroyMembers() : void
       {
-         var _loc1_:FlxObject = null;
-         var _loc2_:uint = 0;
+         var _loc2_:FlxObject = null;
+         var _loc1_:uint = 0;
          var _loc3_:uint = this.members.length;
-         while(_loc2_ < _loc3_)
+         while(_loc1_ < _loc3_)
          {
-            _loc1_ = this.members[_loc2_++] as FlxObject;
-            if(_loc1_ != null)
+            _loc2_ = this.members[_loc1_++] as FlxObject;
+            if(_loc2_ != null)
             {
-               _loc1_.destroy();
+               _loc2_.destroy();
             }
          }
          this.members.length = 0;
@@ -392,7 +387,6 @@ package org.flixel
       override public function destroy() : void
       {
          this.destroyMembers();
-         this._last = null;
          super.destroy();
       }
       
@@ -400,48 +394,48 @@ package org.flixel
       {
          var _loc3_:Number = NaN;
          var _loc4_:Number = NaN;
-         var _loc5_:FlxObject = null;
+         var _loc7_:FlxObject = null;
          this.saveOldPosition();
          super.reset(param1,param2);
-         var _loc6_:Boolean = false;
+         var _loc5_:Boolean = false;
          if(x != this._last.x || y != this._last.y)
          {
-            _loc6_ = true;
+            _loc5_ = true;
             _loc3_ = x - this._last.x;
             _loc4_ = y - this._last.y;
          }
-         var _loc7_:uint = 0;
+         var _loc6_:uint = 0;
          var _loc8_:uint = this.members.length;
-         while(_loc7_ < _loc8_)
+         while(_loc6_ < _loc8_)
          {
-            _loc5_ = this.members[_loc7_++] as FlxObject;
-            if(_loc5_ != null && _loc5_.exists)
+            _loc7_ = this.members[_loc6_++] as FlxObject;
+            if(_loc7_ != null && _loc7_.exists)
             {
-               if(_loc6_)
+               if(_loc5_)
                {
-                  if(_loc5_._group)
+                  if(_loc7_._group)
                   {
-                     _loc5_.reset(_loc5_.x + _loc3_,_loc5_.y + _loc4_);
+                     _loc7_.reset(_loc7_.x + _loc3_,_loc7_.y + _loc4_);
                   }
                   else
                   {
-                     _loc5_.x += _loc3_;
-                     _loc5_.y += _loc4_;
+                     _loc7_.x += _loc3_;
+                     _loc7_.y += _loc4_;
                      if(solid)
                      {
-                        _loc5_.colHullX.width += _loc3_ > 0 ? _loc3_ : -_loc3_;
+                        _loc7_.colHullX.width += _loc3_ > 0 ? _loc3_ : -_loc3_;
                         if(_loc3_ < 0)
                         {
-                           _loc5_.colHullX.x += _loc3_;
+                           _loc7_.colHullX.x += _loc3_;
                         }
-                        _loc5_.colHullY.x = x;
-                        _loc5_.colHullY.height += _loc4_ > 0 ? _loc4_ : -_loc4_;
+                        _loc7_.colHullY.x = x;
+                        _loc7_.colHullY.height += _loc4_ > 0 ? _loc4_ : -_loc4_;
                         if(_loc4_ < 0)
                         {
-                           _loc5_.colHullY.y += _loc4_;
+                           _loc7_.colHullY.y += _loc4_;
                         }
-                        _loc5_.colVector.x += _loc3_;
-                        _loc5_.colVector.y += _loc4_;
+                        _loc7_.colVector.x += _loc3_;
+                        _loc7_.colVector.y += _loc4_;
                      }
                   }
                }

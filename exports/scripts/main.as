@@ -36,9 +36,9 @@ package
       
       public function createContextMenu() : void
       {
-         var menuCopyright:ContextMenuItem = null;
-         var menuEmail:ContextMenuItem = null;
-         var menuUrl:ContextMenuItem = null;
+         var menuCopyright:ContextMenuItem;
+         var menuEmail:ContextMenuItem;
+         var menuUrl:ContextMenuItem;
          var myContextMenu:ContextMenu = new ContextMenu();
          myContextMenu.hideBuiltInItems();
          menuCopyright = new ContextMenuItem("Copyright 2011 Crystal Jacobs");

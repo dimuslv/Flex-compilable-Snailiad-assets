@@ -30,7 +30,7 @@ package org.flixel
       
       protected var _volumeAdjust:Number;
       
-      public var _looped:Boolean;
+      protected var _looped:Boolean;
       
       protected var _core:FlxObject;
       
@@ -220,7 +220,6 @@ package org.flixel
          this._fadeInTimer = param1;
          this._fadeInTotal = this._fadeInTimer;
          this.play();
-         this.updateSound();
       }
       
       public function get volume() : Number
@@ -244,46 +243,46 @@ package org.flixel
       
       protected function updateSound() : void
       {
-         var _loc1_:FlxPoint = null;
-         var _loc2_:FlxPoint = null;
-         var _loc3_:Number = NaN;
-         var _loc4_:Number = NaN;
+         var _loc3_:FlxPoint = null;
+         var _loc4_:FlxPoint = null;
          var _loc5_:Number = NaN;
+         var _loc6_:Number = NaN;
+         var _loc7_:Number = NaN;
          if(this._position != 0)
          {
             return;
          }
-         var _loc6_:Number = 1;
-         var _loc7_:Number = 1;
+         var _loc1_:Number = 1;
+         var _loc2_:Number = 1;
          if(this._core != null)
          {
-            _loc1_ = new FlxPoint();
-            _loc2_ = new FlxPoint();
-            this._core.getScreenXY(_loc1_);
-            getScreenXY(_loc2_);
-            _loc3_ = _loc1_.x - _loc2_.x;
-            _loc4_ = _loc1_.y - _loc2_.y;
-            _loc6_ = (this._radius - Math.sqrt(_loc3_ * _loc3_ + _loc4_ * _loc4_)) / this._radius;
-            if(_loc6_ < 0)
+            _loc3_ = new FlxPoint();
+            _loc4_ = new FlxPoint();
+            this._core.getScreenXY(_loc3_);
+            getScreenXY(_loc4_);
+            _loc5_ = _loc3_.x - _loc4_.x;
+            _loc6_ = _loc3_.y - _loc4_.y;
+            _loc1_ = (this._radius - Math.sqrt(_loc5_ * _loc5_ + _loc6_ * _loc6_)) / this._radius;
+            if(_loc1_ < 0)
             {
-               _loc6_ = 0;
+               _loc1_ = 0;
             }
-            if(_loc6_ > 1)
+            if(_loc1_ > 1)
             {
-               _loc6_ = 1;
+               _loc1_ = 1;
             }
             if(this._pan)
             {
-               _loc5_ = -_loc3_ / this._radius;
-               if(_loc5_ < -1)
+               _loc7_ = -_loc5_ / this._radius;
+               if(_loc7_ < -1)
                {
-                  _loc5_ = -1;
+                  _loc7_ = -1;
                }
-               else if(_loc5_ > 1)
+               else if(_loc7_ > 1)
                {
-                  _loc5_ = 1;
+                  _loc7_ = 1;
                }
-               this._transform.pan = _loc5_;
+               this._transform.pan = _loc7_;
             }
          }
          if(this._fadeOutTimer > 0)
@@ -300,23 +299,23 @@ package org.flixel
                   this.stop();
                }
             }
-            _loc7_ = this._fadeOutTimer / this._fadeOutTotal;
-            if(_loc7_ < 0)
+            _loc2_ = this._fadeOutTimer / this._fadeOutTotal;
+            if(_loc2_ < 0)
             {
-               _loc7_ = 0;
+               _loc2_ = 0;
             }
          }
          else if(this._fadeInTimer > 0)
          {
             this._fadeInTimer -= FlxG.elapsed;
-            _loc7_ = this._fadeInTimer / this._fadeInTotal;
-            if(_loc7_ < 0)
+            _loc2_ = this._fadeInTimer / this._fadeInTotal;
+            if(_loc2_ < 0)
             {
-               _loc7_ = 0;
+               _loc2_ = 0;
             }
-            _loc7_ = 1 - _loc7_;
+            _loc2_ = 1 - _loc2_;
          }
-         this._volumeAdjust = _loc6_ * _loc7_;
+         this._volumeAdjust = _loc1_ * _loc2_;
          this.updateTransform();
       }
       
@@ -332,16 +331,6 @@ package org.flixel
          {
             this.stop();
          }
-         if(this._core)
-         {
-            this._core.destroy();
-            this._core = null;
-         }
-         this._point2 = null;
-         super.destroy();
-         this._sound.close();
-         this._sound = null;
-         this._transform = null;
       }
       
       internal function updateTransform() : void

@@ -17,16 +17,13 @@ package
    {
       private static const myPageUrl:String = "http://auriplane.newgrounds.com/";
       
-      public function main()
+      public function main() : void
       {
-         var _loc1_:uint = 0;
-         var _loc2_:uint = 0;
-         var _loc3_:uint = 0;
          if(!Preloader.fail)
          {
-            _loc1_ = 400;
-            _loc2_ = 240;
-            _loc3_ = 2;
+            var _loc1_:uint = 400;
+            var _loc2_:uint = 240;
+            var _loc3_:uint = 2;
             super(_loc1_,_loc2_,PlayState,_loc3_);
             pause = new PauseLayer();
             FlxState.bgColor = 4278190080;
@@ -39,14 +36,11 @@ package
       
       public function createContextMenu() : void
       {
-         var menuCopyright:ContextMenuItem;
-         var menuEmail:ContextMenuItem;
-         var menuUrl:ContextMenuItem;
          var myContextMenu:ContextMenu = new ContextMenu();
          myContextMenu.hideBuiltInItems();
-         menuCopyright = new ContextMenuItem("Copyright 2011 Crystal Jacobs");
-         menuEmail = new ContextMenuItem("Email: crystal@panix.com");
-         menuUrl = new ContextMenuItem(myPageUrl);
+         var menuCopyright:ContextMenuItem = new ContextMenuItem("Copyright 2011 Crystal Jacobs");
+         var menuEmail:ContextMenuItem = new ContextMenuItem("Email: crystal@panix.com");
+         var menuUrl:ContextMenuItem = new ContextMenuItem(myPageUrl);
          if(API.isNewgrounds())
          {
             menuUrl = new ContextMenuItem(myPageUrl);

@@ -39,7 +39,7 @@ package
       {
          method
          name null
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 5
@@ -116,21 +116,21 @@ package
          localcount 2
          initscopedepth 11
          maxscopedepth 13
-         trait slot QName(PackageInternalNs(""),"menuCopyright")
+         trait slot QName(PackageInternalNs(""),"myContextMenu")
          slotid 1
-         type QName(PackageNamespace("flash.ui"),"ContextMenuItem")
+         type QName(PackageNamespace("flash.ui"),"ContextMenu")
          end ; trait
-         trait slot QName(PackageInternalNs(""),"menuEmail")
+         trait slot QName(PackageInternalNs(""),"menuCopyright")
          slotid 2
          type QName(PackageNamespace("flash.ui"),"ContextMenuItem")
          end ; trait
-         trait slot QName(PackageInternalNs(""),"menuUrl")
+         trait slot QName(PackageInternalNs(""),"menuEmail")
          slotid 3
          type QName(PackageNamespace("flash.ui"),"ContextMenuItem")
          end ; trait
-         trait slot QName(PackageInternalNs(""),"myContextMenu")
+         trait slot QName(PackageInternalNs(""),"menuUrl")
          slotid 4
-         type QName(PackageNamespace("flash.ui"),"ContextMenu")
+         type QName(PackageNamespace("flash.ui"),"ContextMenuItem")
          end ; trait
          
          code
@@ -141,43 +141,31 @@ package
          setlocal1
          pushscope
          getscopeobject 1
-         pushnull
-         coerce QName(PackageNamespace("flash.ui"),"ContextMenuItem")
-         setslot 1
-         getscopeobject 1
-         pushnull
-         coerce QName(PackageNamespace("flash.ui"),"ContextMenuItem")
-         setslot 2
-         getscopeobject 1
-         pushnull
-         coerce QName(PackageNamespace("flash.ui"),"ContextMenuItem")
-         setslot 3
-         getscopeobject 1
          findpropstrict QName(PackageNamespace("flash.ui"),"ContextMenu")
          constructprop QName(PackageNamespace("flash.ui"),"ContextMenu"), 0
          coerce QName(PackageNamespace("flash.ui"),"ContextMenu")
-         setslot 4
+         setslot 1
          getscopeobject 1
-         getslot 4
+         getslot 1
          callpropvoid QName(PackageNamespace(""),"hideBuiltInItems"), 0
          getscopeobject 1
          findpropstrict QName(PackageNamespace("flash.ui"),"ContextMenuItem")
          pushstring "Copyright 2011 Crystal Jacobs"
          constructprop QName(PackageNamespace("flash.ui"),"ContextMenuItem"), 1
          coerce QName(PackageNamespace("flash.ui"),"ContextMenuItem")
-         setslot 1
+         setslot 2
          getscopeobject 1
          findpropstrict QName(PackageNamespace("flash.ui"),"ContextMenuItem")
          pushstring "Email: crystal@panix.com"
          constructprop QName(PackageNamespace("flash.ui"),"ContextMenuItem"), 1
          coerce QName(PackageNamespace("flash.ui"),"ContextMenuItem")
-         setslot 2
+         setslot 3
          getscopeobject 1
          findpropstrict QName(PackageNamespace("flash.ui"),"ContextMenuItem")
          getlex QName(PrivateNamespace(null,"#main"),"myPageUrl")
          constructprop QName(PackageNamespace("flash.ui"),"ContextMenuItem"), 1
          coerce QName(PackageNamespace("flash.ui"),"ContextMenuItem")
-         setslot 3
+         setslot 4
          getlex QName(PackageNamespace("com.newgrounds"),"API")
          callproperty QName(PackageNamespace(""),"isNewgrounds"), 0
          iffalse ofs0
@@ -186,45 +174,45 @@ package
          getlex QName(PrivateNamespace(null,"#main"),"myPageUrl")
          constructprop QName(PackageNamespace("flash.ui"),"ContextMenuItem"), 1
          coerce QName(PackageNamespace("flash.ui"),"ContextMenuItem")
-         setslot 3
+         setslot 4
          getscopeobject 1
-         getslot 3
+         getslot 4
          pushfalse
          setproperty QName(PackageNamespace(""),"enabled")
          jump ofs1
          ofs0:
          getscopeobject 1
-         getslot 3
+         getslot 4
          getlex QName(PackageNamespace("flash.events"),"ContextMenuEvent")
          getproperty QName(PackageNamespace(""),"MENU_ITEM_SELECT")
          newfunction 16
          callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
          getscopeobject 1
-         getslot 3
+         getslot 4
          pushtrue
          setproperty QName(PackageNamespace(""),"enabled")
          ofs1:
          getscopeobject 1
+         getslot 3
+         pushfalse
+         setproperty QName(PackageNamespace(""),"enabled")
+         getscopeobject 1
          getslot 2
          pushfalse
          setproperty QName(PackageNamespace(""),"enabled")
          getscopeobject 1
          getslot 1
-         pushfalse
-         setproperty QName(PackageNamespace(""),"enabled")
-         getscopeobject 1
-         getslot 4
          getproperty QName(PackageNamespace(""),"customItems")
-         getscopeobject 1
-         getslot 1
          getscopeobject 1
          getslot 2
          getscopeobject 1
          getslot 3
+         getscopeobject 1
+         getslot 4
          callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 3
          findproperty QName(PackageNamespace(""),"contextMenu")
          getscopeobject 1
-         getslot 4
+         getslot 1
          initproperty QName(PackageNamespace(""),"contextMenu")
          returnvoid
          end ; code

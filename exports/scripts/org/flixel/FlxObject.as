@@ -119,27 +119,6 @@ package org.flixel
       
       public function destroy() : void
       {
-         this.velocity = null;
-         this.acceleration = null;
-         this.drag = null;
-         this.maxVelocity = null;
-         this.origin = null;
-         this.scrollFactor = null;
-         this._point = null;
-         this._rect = null;
-         this._flashPoint = null;
-         this.colHullX = null;
-         this.colHullY = null;
-         this.colVector = null;
-         var _loc1_:int = int(this.colOffsets.length);
-         var _loc2_:int = 0;
-         while(_loc2_ < _loc1_)
-         {
-            this.colOffsets[_loc2_] = null;
-            _loc2_++;
-         }
-         this.colOffsets.length = 0;
-         this.colOffsets = null;
       }
       
       public function get solid() : Boolean
@@ -178,8 +157,8 @@ package org.flixel
       {
          var _loc1_:Number = NaN;
          var _loc2_:FlxPoint = null;
-         var _loc3_:FlxPoint = null;
-         var _loc4_:Number = NaN;
+         var _loc5_:FlxPoint = null;
+         var _loc6_:Number = NaN;
          if(!this.moves)
          {
             return;
@@ -196,17 +175,17 @@ package org.flixel
          if(this.thrust != 0)
          {
             _loc2_ = FlxU.rotatePoint(-this.thrust,0,0,0,this.angle);
-            _loc3_ = FlxU.rotatePoint(-this.maxThrust,0,0,0,this.angle);
-            _loc4_ = _loc3_.x > 0 ? _loc3_.x : -_loc3_.x;
-            if(_loc4_ > (_loc3_.y > 0 ? _loc3_.y : -_loc3_.y))
+            _loc5_ = FlxU.rotatePoint(-this.maxThrust,0,0,0,this.angle);
+            _loc6_ = _loc5_.x > 0 ? _loc5_.x : -_loc5_.x;
+            if(_loc6_ > (_loc5_.y > 0 ? _loc5_.y : -_loc5_.y))
             {
-               _loc3_.y = _loc4_;
+               _loc5_.y = _loc6_;
             }
             else
             {
-               _loc4_ = _loc3_.y > 0 ? _loc3_.y : -_loc3_.y;
+               _loc6_ = _loc5_.y > 0 ? _loc5_.y : -_loc5_.y;
             }
-            this.maxVelocity.x = this.maxVelocity.y = _loc4_ > 0 ? _loc4_ : -_loc4_;
+            this.maxVelocity.x = this.maxVelocity.y = _loc6_ > 0 ? _loc6_ : -_loc6_;
          }
          else
          {
@@ -214,20 +193,20 @@ package org.flixel
          }
          _loc1_ = (FlxU.computeVelocity(this.velocity.x,this.acceleration.x + _loc2_.x,this.drag.x,this.maxVelocity.x) - this.velocity.x) / 2;
          this.velocity.x += _loc1_;
-         var _loc5_:Number = this.velocity.x * FlxG.elapsed;
+         var _loc3_:Number = this.velocity.x * FlxG.elapsed;
          this.velocity.x += _loc1_;
          _loc1_ = (FlxU.computeVelocity(this.velocity.y,this.acceleration.y + _loc2_.y,this.drag.y,this.maxVelocity.y) - this.velocity.y) / 2;
          this.velocity.y += _loc1_;
-         var _loc6_:Number = this.velocity.y * FlxG.elapsed;
+         var _loc4_:Number = this.velocity.y * FlxG.elapsed;
          this.velocity.y += _loc1_;
-         x += _loc5_;
-         y += _loc6_;
+         x += _loc3_;
+         y += _loc4_;
          if(!this._solid)
          {
             return;
          }
-         this.colVector.x = _loc5_;
-         this.colVector.y = _loc6_;
+         this.colVector.x = _loc3_;
+         this.colVector.y = _loc4_;
          this.colHullX.width += this.colVector.x > 0 ? this.colVector.x : -this.colVector.x;
          if(this.colVector.x < 0)
          {

@@ -1,291 +1,346 @@
 package org.flixel
 {
-   import flash.display.BitmapData;
-   import flash.text.TextField;
-   import flash.text.TextFormat;
-   
-   public class FlxText extends FlxSprite
-   {
-      protected var _tf:TextField;
-      
-      protected var _regen:Boolean;
-      
-      protected var _outline:Boolean;
-      
-      protected var _outlineColor:uint;
-      
-      protected var _shadow:uint;
-      
-      protected var _shadowDistance:uint;
-      
-      public function FlxText(param1:Number, param2:Number, param3:uint, param4:String = null, param5:Boolean = true)
-      {
-         super(param1,param2);
-         createGraphic(param3,1,0);
-         if(param4 == null)
-         {
-            param4 = "";
-         }
-         this._tf = new TextField();
-         this._tf.width = param3;
-         this._tf.embedFonts = param5;
-         this._tf.selectable = false;
-         this._tf.sharpness = 100;
-         this._tf.multiline = true;
-         this._tf.wordWrap = true;
-         this._tf.text = param4;
-         var _loc6_:TextFormat = new TextFormat("system",8,16777215);
-         this._tf.defaultTextFormat = _loc6_;
-         this._tf.setTextFormat(_loc6_);
-         if(param4.length <= 0)
-         {
-            this._tf.height = 1;
-         }
-         else
-         {
-            this._tf.height = 10;
-         }
-         this._regen = true;
-         this._shadow = 0;
-         this._shadowDistance = 1;
-         solid = false;
-         this.calcFrame();
-      }
-      
-      public function setFormat(param1:String = null, param2:Number = 8, param3:uint = 16777215, param4:String = null, param5:uint = 0) : FlxText
-      {
-         if(param1 == null)
-         {
-            param1 = "";
-         }
-         var _loc6_:TextFormat = this.dtfCopy();
-         _loc6_.font = param1;
-         _loc6_.size = param2;
-         _loc6_.color = param3;
-         _loc6_.align = param4;
-         this._tf.defaultTextFormat = _loc6_;
-         this._tf.setTextFormat(_loc6_);
-         this._shadow = param5;
-         this._regen = true;
-         this.calcFrame();
-         return this;
-      }
-      
-      public function setShadowDistance(param1:int) : void
-      {
-         this._shadowDistance = param1;
-      }
-      
-      public function get text() : String
-      {
-         return this._tf.text;
-      }
-      
-      public function get realWidth() : int
-      {
-         return this._tf.textWidth;
-      }
-      
-      public function get realHeight() : int
-      {
-         return this._tf.textHeight;
-      }
-      
-      public function set text(param1:String) : void
-      {
-         var _loc2_:String = this._tf.text;
-         this._tf.text = param1;
-         if(this._tf.text != _loc2_)
-         {
-            this._regen = true;
-            this.calcFrame();
-         }
-      }
-      
-      public function set outline(param1:Boolean) : void
-      {
-         this._outline = param1;
-         this.calcFrame();
-      }
-      
-      public function get outline() : Boolean
-      {
-         return this._outline;
-      }
-      
-      public function get size() : Number
-      {
-         return this._tf.defaultTextFormat.size as Number;
-      }
-      
-      public function set size(param1:Number) : void
-      {
-         var _loc2_:TextFormat = this.dtfCopy();
-         _loc2_.size = param1;
-         this._tf.defaultTextFormat = _loc2_;
-         this._tf.setTextFormat(_loc2_);
-         this._regen = true;
-         this.calcFrame();
-      }
-      
-      override public function get color() : uint
-      {
-         return this._tf.defaultTextFormat.color as uint;
-      }
-      
-      override public function set color(param1:uint) : void
-      {
-         var _loc2_:TextFormat = this.dtfCopy();
-         _loc2_.color = param1;
-         this._tf.defaultTextFormat = _loc2_;
-         this._tf.setTextFormat(_loc2_);
-         this._regen = true;
-         this.calcFrame();
-      }
-      
-      public function get font() : String
-      {
-         return this._tf.defaultTextFormat.font;
-      }
-      
-      public function set font(param1:String) : void
-      {
-         var _loc2_:TextFormat = this.dtfCopy();
-         _loc2_.font = param1;
-         this._tf.defaultTextFormat = _loc2_;
-         this._tf.setTextFormat(_loc2_);
-         this._regen = true;
-         this.calcFrame();
-      }
-      
-      public function get alignment() : String
-      {
-         return this._tf.defaultTextFormat.align;
-      }
-      
-      public function set alignment(param1:String) : void
-      {
-         var _loc2_:TextFormat = this.dtfCopy();
-         _loc2_.align = param1;
-         this._tf.defaultTextFormat = _loc2_;
-         this._tf.setTextFormat(_loc2_);
-         this.calcFrame();
-      }
-      
-      public function get shadow() : uint
-      {
-         return this._shadow;
-      }
-      
-      public function get outlineColor() : uint
-      {
-         return this._outlineColor;
-      }
-      
-      public function set outlineColor(param1:uint) : void
-      {
-         this._outlineColor = param1;
-         this.calcFrame();
-      }
-      
-      public function set shadow(param1:uint) : void
-      {
-         this._shadow = param1;
-         this.calcFrame();
-      }
-      
-      override protected function calcFrame() : void
-      {
-         var _loc1_:uint = 0;
-         var _loc2_:uint = 0;
-         var _loc3_:TextFormat = null;
-         var _loc4_:TextFormat = null;
-         if(this._regen)
-         {
-            _loc1_ = 0;
-            _loc2_ = uint(this._tf.numLines);
-            height = 0;
-            while(_loc1_ < _loc2_)
-            {
-               height += this._tf.getLineMetrics(_loc1_++).height;
-            }
-            height += 4;
-            _pixels = new BitmapData(width,height,true,0);
-            _bbb = new BitmapData(width,height,true,0);
-            frameHeight = height;
-            this._tf.height = height * 1.2;
-            _flashRect.x = 0;
-            _flashRect.y = 0;
-            _flashRect.width = width;
-            _flashRect.height = height;
-            this._regen = false;
-         }
-         else
-         {
-            _pixels.fillRect(_flashRect,0);
-         }
-         if(this._tf != null && this._tf.text != null && this._tf.text.length > 0)
-         {
-            _loc3_ = this._tf.defaultTextFormat;
-            _loc4_ = _loc3_;
-            _mtx.identity();
-            if(_loc3_.align == "center" && this._tf.numLines == 1)
-            {
-               _loc4_ = new TextFormat(_loc3_.font,_loc3_.size,_loc3_.color,null,null,null,null,null,"left");
-               this._tf.setTextFormat(_loc4_);
-               _mtx.translate(Math.floor((width - this._tf.getLineMetrics(0).width) / 2),0);
-            }
-            if(this._outline)
-            {
-               this._tf.setTextFormat(new TextFormat(_loc4_.font,_loc4_.size,this._outlineColor,null,null,null,null,null,_loc4_.align));
-               _mtx.translate(1,0);
-               _pixels.draw(this._tf,_mtx,_ct);
-               _mtx.translate(-2,0);
-               _pixels.draw(this._tf,_mtx,_ct);
-               _mtx.translate(1,1);
-               _pixels.draw(this._tf,_mtx,_ct);
-               _mtx.translate(0,-2);
-               _pixels.draw(this._tf,_mtx,_ct);
-               _mtx.translate(0,1);
-               this._tf.setTextFormat(new TextFormat(_loc4_.font,_loc4_.size,_loc4_.color,null,null,null,null,null,_loc4_.align));
-            }
-            if(this._shadow > 0)
-            {
-               this._tf.setTextFormat(new TextFormat(_loc4_.font,_loc4_.size,this._shadow,null,null,null,null,null,_loc4_.align));
-               _mtx.translate(this._shadowDistance,this._shadowDistance);
-               _pixels.draw(this._tf,_mtx,_ct);
-               _mtx.translate(-this._shadowDistance,-this._shadowDistance);
-               this._tf.setTextFormat(new TextFormat(_loc4_.font,_loc4_.size,_loc4_.color,null,null,null,null,null,_loc4_.align));
-            }
-            _pixels.draw(this._tf,_mtx,_ct);
-            this._tf.setTextFormat(new TextFormat(_loc3_.font,_loc3_.size,_loc3_.color,null,null,null,null,null,_loc3_.align));
-         }
-         if(_framePixels == null || _framePixels.width != _pixels.width || _framePixels.height != _pixels.height)
-         {
-            _framePixels = new BitmapData(_pixels.width,_pixels.height,true,0);
-         }
-         _framePixels.copyPixels(_pixels,_flashRect,_flashPointZero);
-         if(FlxG.showBounds)
-         {
-            drawBounds();
-         }
-         if(solid)
-         {
-            refreshHulls();
-         }
-      }
-      
-      override public function destroy() : void
-      {
-         super.destroy();
-         this._tf = null;
-      }
-      
-      protected function dtfCopy() : TextFormat
-      {
-         var _loc1_:TextFormat = this._tf.defaultTextFormat;
-         return new TextFormat(_loc1_.font,_loc1_.size,_loc1_.color,_loc1_.bold,_loc1_.italic,_loc1_.underline,_loc1_.url,_loc1_.target,_loc1_.align);
-      }
-   }
+	import flash.display.BitmapData;
+	import flash.text.TextField;
+	import flash.text.TextFormat;
+	
+	/**
+	 * Extends <code>FlxSprite</code> to support rendering text.
+	 * Can tint, fade, rotate and scale just like a sprite.
+	 * Doesn't really animate though, as far as I know.
+	 * Also does nice pixel-perfect centering on pixel fonts
+	 * as long as they are only one liners.
+	 */
+	public class FlxText extends FlxSprite
+	{
+		protected var _tf:TextField;
+		protected var _regen:Boolean;
+		protected var _outline:Boolean;
+		protected var _outlineColor:uint;
+		protected var _shadow:uint;
+		protected var _shadowDistance:uint;
+		
+		/**
+		 * Creates a new <code>FlxText</code> object at the specified position.
+		 * 
+		 * @param	X				The X position of the text.
+		 * @param	Y				The Y position of the text.
+		 * @param	Width			The width of the text object (height is determined automatically).
+		 * @param	Text			The actual text you would like to display initially.
+		 * @param	EmbeddedFont	Whether this text field uses embedded fonts or nto
+		 */
+		public function FlxText(X:Number, Y:Number, Width:uint, Text:String=null, EmbeddedFont:Boolean=true)
+		{
+			super(X,Y);
+			createGraphic(Width,1,0);
+			
+			if(Text == null)
+				Text = "";
+			_tf = new TextField();
+			_tf.width = Width;
+			_tf.embedFonts = EmbeddedFont;
+			_tf.selectable = false;
+			_tf.sharpness = 100;
+			_tf.multiline = true;
+			_tf.wordWrap = true;
+			_tf.text = Text;
+			var tf:TextFormat = new TextFormat("system",8,0xffffff);
+			_tf.defaultTextFormat = tf;
+			_tf.setTextFormat(tf);
+			if(Text.length <= 0)
+				_tf.height = 1;
+			else
+				_tf.height = 10;
+			
+			_regen = true;
+			_shadow = 0;
+			_shadowDistance = 1;
+			solid = false;
+			calcFrame();
+		}
+		
+		/**
+		 * You can use this if you have a lot of text parameters
+		 * to set instead of the individual properties.
+		 * 
+		 * @param	Font		The name of the font face for the text display.
+		 * @param	Size		The size of the font (in pixels essentially).
+		 * @param	Color		The color of the text in traditional flash 0xRRGGBB format.
+		 * @param	Alignment	A string representing the desired alignment ("left,"right" or "center").
+		 * @param	ShadowColor	A uint representing the desired text shadow color in flash 0xRRGGBB format.
+		 * 
+		 * @return	This FlxText instance (nice for chaining stuff together, if you're into that).
+		 */
+		public function setFormat(Font:String=null,Size:Number=8,Color:uint=0xffffff,Alignment:String=null,ShadowColor:uint=0):FlxText
+		{
+			if(Font == null)
+				Font = "";
+			var tf:TextFormat = dtfCopy();
+			tf.font = Font;
+			tf.size = Size;
+			tf.color = Color;
+			tf.align = Alignment;
+			_tf.defaultTextFormat = tf;
+			_tf.setTextFormat(tf);
+			_shadow = ShadowColor;
+			_regen = true;
+			calcFrame();
+			return this;
+		}
+		
+		public function setShadowDistance(param1:int) : void
+		{
+			_shadowDistance = param1;
+		}
+		
+		/**
+		 * The text being displayed.
+		 */
+		public function get text():String
+		{
+			return _tf.text;
+		}
+		
+		public function get realWidth() : int
+		{
+			return this._tf.textWidth;
+		}
+		
+		public function get realHeight() : int
+		{
+			return this._tf.textHeight;
+		}
+		
+		/**
+		 * @private
+		 */
+		public function set text(Text:String):void
+		{
+			var ot:String = _tf.text;
+			_tf.text = Text;
+			if(_tf.text != ot)
+			{
+				_regen = true;
+				calcFrame();
+			}
+		}
+		
+		public function set outline(param1:Boolean) : void
+		{
+			_outline = param1;
+			calcFrame();
+		}
+		
+		public function get outline() : Boolean
+		{
+			return _outline;
+		}
+		
+		/**
+		 * The size of the text being displayed.
+		 */
+		 public function get size():Number
+		{
+			return _tf.defaultTextFormat.size as Number;
+		}
+		
+		/**
+		 * @private
+		 */
+		public function set size(Size:Number):void
+		{
+			var tf:TextFormat = dtfCopy();
+			tf.size = Size;
+			_tf.defaultTextFormat = tf;
+			_tf.setTextFormat(tf);
+			_regen = true;
+			calcFrame();
+		}
+		
+		/**
+		 * The color of the text being displayed.
+		 */
+		override public function get color():uint
+		{
+			return _tf.defaultTextFormat.color as uint;
+		}
+		
+		/**
+		 * @private
+		 */
+		override public function set color(Color:uint):void
+		{
+			var tf:TextFormat = dtfCopy();
+			tf.color = Color;
+			_tf.defaultTextFormat = tf;
+			_tf.setTextFormat(tf);
+			_regen = true;
+			calcFrame();
+		}
+		
+		/**
+		 * The font used for this text.
+		 */
+		public function get font():String
+		{
+			return _tf.defaultTextFormat.font;
+		}
+		
+		/**
+		 * @private
+		 */
+		public function set font(Font:String):void
+		{
+			var tf:TextFormat = dtfCopy();
+			tf.font = Font;
+			_tf.defaultTextFormat = tf;
+			_tf.setTextFormat(tf);
+			_regen = true;
+			calcFrame();
+		}
+		
+		/**
+		 * The alignment of the font ("left", "right", or "center").
+		 */
+		public function get alignment():String
+		{
+			return _tf.defaultTextFormat.align;
+		}
+		
+		/**
+		 * @private
+		 */
+		public function set alignment(Alignment:String):void
+		{
+			var tf:TextFormat = dtfCopy();
+			tf.align = Alignment;
+			_tf.defaultTextFormat = tf;
+			_tf.setTextFormat(tf);
+			calcFrame();
+		}
+		
+		/**
+		 * The alignment of the font ("left", "right", or "center").
+		 */
+		public function get shadow():uint
+		{
+			return _shadow;
+		}
+		
+		public function get outlineColor() : uint
+		{
+			return _outlineColor;
+		}
+		
+		public function set outlineColor(param1:uint) : void
+		{
+			_outlineColor = param1;
+			calcFrame();
+		}
+		
+		/**
+		 * @private
+		 */
+		public function set shadow(Color:uint):void
+		{
+			_shadow = Color;
+			calcFrame();
+		}
+		
+		/**
+		 * Internal function to update the current animation frame.
+		 */
+		override protected function calcFrame():void
+		{
+			if(_regen)
+			{
+				//Need to generate a new buffer to store the text graphic
+				var i:uint = 0;
+				var nl:uint = _tf.numLines;
+				height = 0;
+				while(i < nl)
+					height += _tf.getLineMetrics(i++).height;
+				height += 4; //account for 2px gutter on top and bottom
+				_pixels = new BitmapData(width,height,true,0);
+				_bbb = new BitmapData(width,height,true,0);
+				frameHeight = height;
+				_tf.height = height*1.2;
+				_flashRect.x = 0;
+				_flashRect.y = 0;
+				_flashRect.width = width;
+				_flashRect.height = height;
+				_regen = false;
+			}
+			else	//Else just clear the old buffer before redrawing the text
+				_pixels.fillRect(_flashRect,0);
+			
+			if((_tf != null) && (_tf.text != null) && (_tf.text.length > 0))
+			{
+				//Now that we've cleared a buffer, we need to actually render the text to it
+				var tf:TextFormat = _tf.defaultTextFormat;
+				var tfa:TextFormat = tf;
+				_mtx.identity();
+				//If it's a single, centered line of text, we center it ourselves so it doesn't blur to hell
+				if((tf.align == "center") && (_tf.numLines == 1))
+				{
+					tfa = new TextFormat(tf.font,tf.size,tf.color,null,null,null,null,null,"left");
+					_tf.setTextFormat(tfa);				
+					_mtx.translate(Math.floor((width - _tf.getLineMetrics(0).width)/2),0);
+				}
+				
+				if (_outline) {
+					_tf.setTextFormat(new TextFormat(tfa.font, tfa.size,_outlineColor,null,null,null,null,null,tfa.align));
+					_mtx.translate(1,0);
+					_pixels.draw(_tf,_mtx,_ct);
+					_mtx.translate(-2,0);
+					_pixels.draw(_tf,_mtx,_ct);
+					_mtx.translate(1,1);
+					_pixels.draw(_tf,_mtx,_ct);
+					_mtx.translate(0,-2);
+					_pixels.draw(_tf,_mtx,_ct);
+					_mtx.translate(0,1);
+					_tf.setTextFormat(new TextFormat(tfa.font, tfa.size,tfa.color,null,null,null,null,null,tfa.align));
+				}
+				
+				//Render a single pixel shadow beneath the text
+				if(_shadow > 0)
+				{
+					_tf.setTextFormat(new TextFormat(tfa.font,tfa.size,_shadow,null,null,null,null,null,tfa.align));				
+					_mtx.translate(1,1);
+					_pixels.draw(_tf,_mtx,_ct);
+					_mtx.translate(-1,-1);
+					_tf.setTextFormat(new TextFormat(tfa.font,tfa.size,tfa.color,null,null,null,null,null,tfa.align));
+				}
+				//Actually draw the text onto the buffer
+				_pixels.draw(_tf,_mtx,_ct);
+				_tf.setTextFormat(new TextFormat(tf.font,tf.size,tf.color,null,null,null,null,null,tf.align));
+			}
+			
+			//Finally, update the visible pixels
+			if((_framePixels == null) || (_framePixels.width != _pixels.width) || (_framePixels.height != _pixels.height))
+				_framePixels = new BitmapData(_pixels.width,_pixels.height,true,0);
+			_framePixels.copyPixels(_pixels,_flashRect,_flashPointZero);
+			if(FlxG.showBounds)
+				drawBounds();
+			if(solid)
+				refreshHulls();
+		}
+		
+		override public function destroy() : void
+		{
+			super.destroy();
+			_tf = null;
+		}
+		
+		/**
+		 * A helper function for updating the <code>TextField</code> that we use for rendering.
+		 * 
+		 * @return	A writable copy of <code>TextField.defaultTextFormat</code>.
+		 */
+		protected function dtfCopy():TextFormat
+		{
+			var dtf:TextFormat = _tf.defaultTextFormat;
+			return new TextFormat(dtf.font,dtf.size,dtf.color,dtf.bold,dtf.italic,dtf.underline,dtf.url,dtf.target,dtf.align);
+		}
+	}
 }
-

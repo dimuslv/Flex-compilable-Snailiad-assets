@@ -1,432 +1,514 @@
 package org.flixel
 {
-   import flash.display.Bitmap;
-   import flash.display.BitmapData;
-   import flash.display.Sprite;
-   import flash.display.StageAlign;
-   import flash.display.StageScaleMode;
-   import flash.events.*;
-   import flash.geom.Point;
-   import flash.text.AntiAliasType;
-   import flash.text.GridFitType;
-   import flash.text.TextField;
-   import flash.text.TextFormat;
-   import flash.ui.Mouse;
-   import flash.utils.getTimer;
-   import org.flixel.data.FlxConsole;
-   import org.flixel.data.FlxPause;
-   
-   public class FlxGame extends Sprite
-   {
-      protected var junk:String = "FlxGame_junk";
-      
-      public var useDefaultHotKeys:Boolean;
-      
-      public var pause:FlxGroup;
-      
-      internal var _iState:Class;
-      
-      internal var _created:Boolean;
-      
-      internal var _state:FlxState;
-      
-      internal var _screen:Sprite;
-      
-      internal var _buffer:Bitmap;
-      
-      internal var _zoom:uint;
-      
-      internal var _gameXOffset:int;
-      
-      internal var _gameYOffset:int;
-      
-      internal var _frame:Class;
-      
-      internal var _zeroPoint:Point;
-      
-      internal var _elapsed:Number;
-      
-      internal var _total:uint;
-      
-      internal var _paused:Boolean;
-      
-      internal var _framerate:uint;
-      
-      internal var _frameratePaused:uint;
-      
-      internal var _soundTray:Sprite;
-      
-      internal var _soundTrayTimer:Number;
-      
-      internal var _soundTrayBars:Array;
-      
-      internal var _console:FlxConsole;
-      
-      public function FlxGame(param1:uint, param2:uint, param3:Class, param4:uint = 2)
-      {
-         super();
-         Mouse.hide();
-         this._zoom = param4;
-         FlxState.bgColor = 4278190080;
-         FlxG.setGameData(this,param1,param2,param4);
-         this._elapsed = 0;
-         this._total = 0;
-         this.pause = new FlxPause();
-         this._state = null;
-         this._iState = param3;
-         this._zeroPoint = new Point();
-         this.useDefaultHotKeys = true;
-         this._frame = null;
-         this._gameXOffset = 0;
-         this._gameYOffset = 0;
-         this._paused = false;
-         this._created = false;
-         addEventListener(Event.ENTER_FRAME,this.create);
-      }
-      
-      protected function addFrame(param1:Class, param2:uint, param3:uint) : FlxGame
-      {
-         this._frame = param1;
-         this._gameXOffset = param2;
-         this._gameYOffset = param3;
-         return this;
-      }
-      
-      public function showSoundTray(param1:Boolean = false) : void
-      {
-         this._soundTrayTimer = 1;
-         this._soundTray.y = this._gameYOffset * this._zoom;
-         this._soundTray.visible = true;
-         var _loc2_:uint = Math.round(FlxG.volume * 10);
-         if(FlxG.mute)
-         {
-            _loc2_ = 0;
-         }
-         var _loc3_:uint = 0;
-         while(_loc3_ < this._soundTrayBars.length)
-         {
-            if(_loc3_ < _loc2_)
-            {
-               this._soundTrayBars[_loc3_].alpha = 1;
-            }
-            else
-            {
-               this._soundTrayBars[_loc3_].alpha = 0.5;
-            }
-            _loc3_++;
-         }
-      }
-      
-      public function switchState(param1:FlxState) : void
-      {
-         FlxG.panel.hide();
-         FlxG.unfollow();
-         FlxG.resetInput();
-         FlxG.destroySounds();
-         FlxG.flash.stop();
-         FlxG.fade.stop();
-         FlxG.quake.stop();
-         this._screen.x = 0;
-         this._screen.y = 0;
-         this._screen.addChild(param1);
-         if(this._state != null)
-         {
-            this._state.destroy();
-            this._screen.swapChildren(param1,this._state);
-            this._screen.removeChild(this._state);
-         }
-         this._state = param1;
-         this._state.scaleX = this._state.scaleY = this._zoom;
-         this._state.create();
-      }
-      
-      protected function onKeyUp(param1:KeyboardEvent) : void
-      {
-         var _loc4_:int = 0;
-         var _loc5_:String = null;
-         if(FlxG.consoleEnabled)
-         {
-            if(param1.keyCode == 192 || param1.keyCode == 220)
-            {
-               this._console.toggle();
-               return;
-            }
-         }
-         if(!FlxG.mobile && this.useDefaultHotKeys)
-         {
-            _loc4_ = int(param1.keyCode);
-            _loc5_ = String.fromCharCode(param1.charCode);
-            switch(_loc4_)
-            {
-               case 48:
-               case 96:
-                  FlxG.mute = !FlxG.mute;
-                  this.showSoundTray();
-                  return;
-               case 109:
-               case 189:
-                  FlxG.mute = false;
-                  FlxG.volume -= 0.1;
-                  this.showSoundTray();
-                  return;
-               case 107:
-               case 187:
-                  FlxG.mute = false;
-                  FlxG.volume += 0.1;
-                  this.showSoundTray();
-                  return;
-               case 80:
-                  FlxG.pause = !FlxG.pause;
-            }
-         }
-         FlxG.keys.handleKeyUp(param1);
-         var _loc2_:uint = 0;
-         var _loc3_:uint = FlxG.gamepads.length;
-         while(_loc2_ < _loc3_)
-         {
-            FlxG.gamepads[_loc2_++].handleKeyUp(param1);
-         }
-      }
-      
-      protected function onKeyDown(param1:KeyboardEvent) : void
-      {
-         FlxG.keys.handleKeyDown(param1);
-         var _loc2_:uint = 0;
-         var _loc3_:uint = FlxG.gamepads.length;
-         while(_loc2_ < _loc3_)
-         {
-            FlxG.gamepads[_loc2_++].handleKeyDown(param1);
-         }
-      }
-      
-      protected function onFocus(param1:Event = null) : void
-      {
-         if(FlxG.pause)
-         {
-            FlxG.mouse.hide();
-            FlxG.pause = false;
-         }
-      }
-      
-      protected function onFocusLost(param1:Event = null) : void
-      {
-         if(FlxG.noPause)
-         {
-            return;
-         }
-         FlxG.mouse.show();
-         FlxG.pause = true;
-      }
-      
-      internal function unpauseGame() : void
-      {
-         if(!FlxG.panel.visible)
-         {
-            Mouse.hide();
-         }
-         FlxG.resetInput();
-         this._paused = false;
-         stage.frameRate = this._framerate;
-      }
-      
-      internal function pauseGame() : void
-      {
-         if(x != 0 || y != 0)
-         {
-            x = 0;
-            y = 0;
-         }
-         Mouse.show();
-         this._paused = true;
-         stage.frameRate = this._frameratePaused;
-      }
-      
-      protected function update(param1:Event) : void
-      {
-         var _loc3_:uint = 0;
-         var _loc4_:FlxSave = null;
-         var _loc2_:uint = uint(getTimer());
-         var _loc5_:uint = uint(_loc2_ - this._total);
-         this._elapsed = _loc5_ / 1000;
-         this._console.mtrTotal.add(_loc5_);
-         this._total = _loc2_;
-         FlxG.elapsed = this._elapsed;
-         if(FlxG.elapsed > FlxG.maxElapsed)
-         {
-            FlxG.elapsed = FlxG.maxElapsed;
-         }
-         FlxG.elapsed *= FlxG.timeScale;
-         if(this._soundTray != null)
-         {
-            if(this._soundTrayTimer > 0)
-            {
-               this._soundTrayTimer -= this._elapsed;
-            }
-            else if(this._soundTray.y > -this._soundTray.height)
-            {
-               this._soundTray.y -= this._elapsed * FlxG.height * 2;
-               if(this._soundTray.y <= -this._soundTray.height)
-               {
-                  this._soundTray.visible = false;
-               }
-            }
-         }
-         FlxG.panel.update();
-         if(this._console.visible)
-         {
-            this._console.update();
-         }
-         FlxG.updateInput();
-         FlxG.updateSounds();
-         if(this._paused)
-         {
-            this.pause.update();
-         }
-         else
-         {
-            FlxG.doFollow();
-            this._state.update();
-            if(FlxG.flash.exists)
-            {
-               FlxG.flash.update();
-            }
-            if(FlxG.fade.exists)
-            {
-               FlxG.fade.update();
-            }
-            FlxG.quake.update();
-            this._screen.x = FlxG.quake.x;
-            this._screen.y = FlxG.quake.y;
-         }
-         var _loc6_:uint = uint(getTimer());
-         this._console.mtrUpdate.add(_loc6_ - _loc2_);
-         FlxG.buffer.lock();
-         this._state.preProcess();
-         this._state.render();
-         if(FlxG.flash.exists)
-         {
-            FlxG.flash.render();
-         }
-         if(FlxG.fade.exists)
-         {
-            FlxG.fade.render();
-         }
-         if(FlxG.panel.visible)
-         {
-            FlxG.panel.render();
-         }
-         if(FlxG.mouse.cursor != null)
-         {
-            if(FlxG.mouse.cursor.active)
-            {
-               FlxG.mouse.cursor.update();
-            }
-            if(FlxG.mouse.cursor.visible)
-            {
-               FlxG.mouse.cursor.render();
-            }
-         }
-         this._state.postProcess();
-         if(this._paused)
-         {
-            this.pause.render();
-         }
-         FlxG.buffer.unlock();
-         this._console.mtrRender.add(getTimer() - _loc6_);
-         FlxG.mouse.wheel = 0;
-      }
-      
-      internal function create(param1:Event) : void
-      {
-         var _loc2_:uint = 0;
-         var _loc3_:uint = 0;
-         var _loc4_:FlxSave = null;
-         var _loc6_:TextField = null;
-         var _loc7_:uint = 0;
-         var _loc8_:uint = 0;
-         var _loc9_:Bitmap = null;
-         if(root == null)
-         {
-            return;
-         }
-         stage.scaleMode = StageScaleMode.NO_SCALE;
-         stage.align = StageAlign.TOP_LEFT;
-         stage.frameRate = this._framerate;
-         this._screen = new Sprite();
-         addChild(this._screen);
-         var _loc5_:Bitmap = new Bitmap(new BitmapData(FlxG.width,FlxG.height,true,FlxState.bgColor));
-         _loc5_.x = this._gameXOffset;
-         _loc5_.y = this._gameYOffset;
-         _loc5_.scaleX = _loc5_.scaleY = this._zoom;
-         this._screen.addChild(_loc5_);
-         FlxG.buffer = _loc5_.bitmapData;
-         this._console = new FlxConsole(this._gameXOffset,this._gameYOffset,this._zoom);
-         if(!FlxG.mobile)
-         {
-            addChild(this._console);
-         }
-         stage.addEventListener(MouseEvent.MOUSE_DOWN,FlxG.mouse.handleMouseDown);
-         stage.addEventListener(MouseEvent.MOUSE_UP,FlxG.mouse.handleMouseUp);
-         stage.addEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown);
-         stage.addEventListener(KeyboardEvent.KEY_UP,this.onKeyUp);
-         if(!FlxG.mobile)
-         {
-            stage.addEventListener(MouseEvent.MOUSE_OUT,FlxG.mouse.handleMouseOut);
-            stage.addEventListener(MouseEvent.MOUSE_OVER,FlxG.mouse.handleMouseOver);
-            stage.addEventListener(MouseEvent.MOUSE_WHEEL,FlxG.mouse.handleMouseWheel);
-            stage.addEventListener(Event.DEACTIVATE,this.onFocusLost);
-            stage.addEventListener(Event.ACTIVATE,this.onFocus);
-            this._soundTray = new Sprite();
-            this._soundTray.visible = false;
-            this._soundTray.scaleX = 2;
-            this._soundTray.scaleY = 2;
-            _loc5_ = new Bitmap(new BitmapData(80,30,true,2130706432));
-            this._soundTray.x = (this._gameXOffset + FlxG.width / 2) * this._zoom - _loc5_.width / 2 * this._soundTray.scaleX;
-            this._soundTray.addChild(_loc5_);
-            _loc6_ = new TextField();
-            _loc6_.width = _loc5_.width;
-            _loc6_.height = _loc5_.height;
-            _loc6_.multiline = true;
-            _loc6_.wordWrap = true;
-            _loc6_.selectable = false;
-            _loc6_.embedFonts = true;
-            _loc6_.antiAliasType = AntiAliasType.NORMAL;
-            _loc6_.gridFitType = GridFitType.PIXEL;
-            _loc6_.defaultTextFormat = new TextFormat("system",8,16777215,null,null,null,null,null,"center");
-            this._soundTray.addChild(_loc6_);
-            _loc6_.text = "VOLUME";
-            _loc6_.y = 16;
-            _loc7_ = 10;
-            _loc8_ = 14;
-            this._soundTrayBars = new Array();
-            _loc2_ = 0;
-            while(_loc2_ < 10)
-            {
-               _loc5_ = new Bitmap(new BitmapData(4,++_loc2_,false,16777215));
-               _loc5_.x = _loc7_;
-               _loc5_.y = _loc8_;
-               this._soundTrayBars.push(this._soundTray.addChild(_loc5_));
-               _loc7_ += 6;
-               _loc8_--;
-            }
-            addChild(this._soundTray);
-            _loc4_ = new FlxSave();
-            if(_loc4_.bind("flixel") && _loc4_.data.sound != null)
-            {
-            }
-         }
-         if(this._frame != null)
-         {
-            _loc9_ = new this._frame();
-            _loc9_.scaleX = this._zoom;
-            _loc9_.scaleY = this._zoom;
-            addChild(_loc9_);
-         }
-         this.switchState(new this._iState());
-         FlxState.screen.unsafeBind(FlxG.buffer);
-         removeEventListener(Event.ENTER_FRAME,this.create);
-         addEventListener(Event.ENTER_FRAME,this.update);
-      }
-   }
-}
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
+	import flash.display.Sprite;
+	import flash.display.StageAlign;
+	import flash.display.StageScaleMode;
+	import flash.events.*;
+	import flash.geom.Point;
+	import flash.text.AntiAliasType;
+	import flash.text.GridFitType;
+	import flash.text.TextField;
+	import flash.text.TextFormat;
+	import flash.ui.Mouse;
+	import flash.utils.Timer;
+	import flash.utils.getTimer;
+	
+	import org.flixel.data.FlxConsole;
+	import org.flixel.data.FlxPause;
 
+	/**
+	 * FlxGame is the heart of all flixel games, and contains a bunch of basic game loops and things.
+	 * It is a long and sloppy file that you shouldn't have to worry about too much!
+	 * It is basically only used to create your game object in the first place,
+	 * after that FlxG and FlxState have all the useful stuff you actually need.
+	 */
+	public class FlxGame extends Sprite
+	{
+		// NOTE: Flex 4 introduces DefineFont4, which is used by default and does not work in native text fields.
+		// Use the embedAsCFF="false" param to switch back to DefineFont4. In earlier Flex 4 SDKs this was cff="false".
+		// So if you are using the Flex 3.x SDK compiler, switch the embed statment below to expose the correct version.
+		
+		//Flex v4.x SDK only (see note above):
+		[Embed(source="data/nokiafc22.ttf",fontFamily="system",embedAsCFF="false")] protected var junk:String;
+		
+		//Flex v3.x SDK only (see note above):
+		//[Embed(source="data/nokiafc22.ttf",fontFamily="system")] protected var junk:String;
+		
+		[Embed(source="data/beep.mp3")] protected var SndBeep:Class;
+		[Embed(source="data/flixel.mp3")] protected var SndFlixel:Class;
+
+		/**
+		 * Sets 0, -, and + to control the global volume and P to pause.
+		 * @default true
+		 */
+		public var useDefaultHotKeys:Boolean;
+		/**
+		 * Displayed whenever the game is paused.
+		 * Override with your own <code>FlxLayer</code> for hot custom pause action!
+		 * Defaults to <code>data.FlxPause</code>.
+		 */
+		public var pause:FlxGroup;
+		
+		//startup
+		internal var _iState:Class;
+		internal var _created:Boolean;
+		
+		//basic display stuff
+		internal var _state:FlxState;
+		internal var _screen:Sprite;
+		internal var _buffer:Bitmap;
+		internal var _zoom:uint;
+		internal var _gameXOffset:int;
+		internal var _gameYOffset:int;
+		internal var _frame:Class;
+		internal var _zeroPoint:Point;
+		
+		//basic update stuff
+		internal var _elapsed:Number;
+		internal var _total:uint;
+		internal var _paused:Boolean;
+		internal var _framerate:uint;
+		internal var _frameratePaused:uint;
+		
+		//Pause screen, sound tray, support panel, dev console, and special effects objects
+		internal var _soundTray:Sprite;
+		internal var _soundTrayTimer:Number;
+		internal var _soundTrayBars:Array;
+		internal var _console:FlxConsole;
+		
+		/**
+		 * Game object constructor - sets up the basic properties of your game.
+		 * 
+		 * @param	GameSizeX		The width of your game in pixels (e.g. 320).
+		 * @param	GameSizeY		The height of your game in pixels (e.g. 240).
+		 * @param	InitialState	The class name of the state you want to create and switch to first (e.g. MenuState).
+		 * @param	Zoom			The level of zoom (e.g. 2 means all pixels are now rendered twice as big).
+		 */
+		public function FlxGame(GameSizeX:uint,GameSizeY:uint,InitialState:Class,Zoom:uint=2)
+		{
+			flash.ui.Mouse.hide();
+			
+			_zoom = Zoom;
+			FlxState.bgColor = 0xff000000;
+			FlxG.setGameData(this,GameSizeX,GameSizeY,Zoom);
+			_elapsed = 0;
+			_total = 0;
+			pause = new FlxPause();
+			_state = null;
+			_iState = InitialState;
+			_zeroPoint = new Point();
+
+			useDefaultHotKeys = true;
+			
+			_frame = null;
+			_gameXOffset = 0;
+			_gameYOffset = 0;
+			
+			_paused = false;
+			_created = false;
+			
+			addEventListener(Event.ENTER_FRAME, create);
+		}
+		
+		/**
+		 * Adds a frame around your game for presentation purposes (see Canabalt, Gravity Hook).
+		 * 
+		 * @param	Frame			If you want you can add a little graphical frame to the outside edges of your game.
+		 * @param	ScreenOffsetX	Width in pixels of left side of frame.
+		 * @param	ScreenOffsetY	Height in pixels of top of frame.
+		 * 
+		 * @return	This <code>FlxGame</code> instance.
+		 */
+		protected function addFrame(Frame:Class,ScreenOffsetX:uint,ScreenOffsetY:uint):FlxGame
+		{
+			_frame = Frame;
+			_gameXOffset = ScreenOffsetX;
+			_gameYOffset = ScreenOffsetY;
+			return this;
+		}
+		
+		/**
+		 * Makes the little volume tray slide out.
+		 * 
+		 * @param	Silent	Whether or not it should beep.
+		 */
+		public function showSoundTray(Silent:Boolean=false):void
+		{
+			if(!Silent)
+				FlxG.play(SndBeep);
+			_soundTrayTimer = 1;
+			_soundTray.y = _gameYOffset*_zoom;
+			_soundTray.visible = true;
+			var gv:uint = Math.round(FlxG.volume*10);
+			if(FlxG.mute)
+				gv = 0;
+			for (var i:uint = 0; i < _soundTrayBars.length; i++)
+			{
+				if(i < gv) _soundTrayBars[i].alpha = 1;
+				else _soundTrayBars[i].alpha = 0.5;
+			}
+		}
+		
+		/**
+		 * Switch from one <code>FlxState</code> to another.
+		 * Usually called from <code>FlxG</code>.
+		 * 
+		 * @param	State		The class name of the state you want (e.g. PlayState)
+		 */
+		public function switchState(State:FlxState):void
+		{ 
+			//Basic reset stuff
+			FlxG.panel.hide();
+			FlxG.unfollow();
+			FlxG.resetInput();
+			FlxG.destroySounds();
+			FlxG.flash.stop();
+			FlxG.fade.stop();
+			FlxG.quake.stop();
+			_screen.x = 0;
+			_screen.y = 0;
+			
+			//Swap the new state for the old one and dispose of it
+			_screen.addChild(State);
+			if(_state != null)
+			{
+				_state.destroy(); //important that it is destroyed while still in the display list
+				_screen.swapChildren(State,_state);
+				_screen.removeChild(_state);
+			}
+			_state = State;
+			_state.scaleX = _state.scaleY = _zoom;
+			
+			//Finally, create the new state
+			_state.create();
+		}
+
+		/**
+		 * Internal event handler for input and focus.
+		 */
+		protected function onKeyUp(event:KeyboardEvent):void
+		{
+			if((event.keyCode == 192) || (event.keyCode == 220)) //FOR ZE GERMANZ
+			{
+				_console.toggle();
+				return;
+			}
+			if(!FlxG.mobile && useDefaultHotKeys)
+			{
+				var c:int = event.keyCode;
+				var code:String = String.fromCharCode(event.charCode);
+				switch(c)
+				{
+					case 48:
+					case 96:
+						FlxG.mute = !FlxG.mute;
+						showSoundTray();
+						return;
+					case 109:
+					case 189:
+						FlxG.mute = false;
+			    		FlxG.volume = FlxG.volume - 0.1;
+			    		showSoundTray();
+						return;
+					case 107:
+					case 187:
+						FlxG.mute = false;
+			    		FlxG.volume = FlxG.volume + 0.1;
+			    		showSoundTray();
+						return;
+					case 80:
+						FlxG.pause = !FlxG.pause;
+					default: break;
+				}
+			}
+			FlxG.keys.handleKeyUp(event);
+			var i:uint = 0;
+			var l:uint = FlxG.gamepads.length;
+			while(i < l)
+				FlxG.gamepads[i++].handleKeyUp(event);
+		}
+		
+		/**
+		 * Internal event handler for input and focus.
+		 */
+		protected function onKeyDown(event:KeyboardEvent):void
+		{
+			FlxG.keys.handleKeyDown(event);
+			var i:uint = 0;
+			var l:uint = FlxG.gamepads.length;
+			while(i < l)
+				FlxG.gamepads[i++].handleKeyDown(event);
+		}
+		
+		/**
+		 * Internal event handler for input and focus.
+		 */
+		protected function onFocus(event:Event=null):void
+		{
+			if(FlxG.pause)
+				FlxG.pause = false;
+		}
+		
+		/**
+		 * Internal event handler for input and focus.
+		 */
+		protected function onFocusLost(event:Event=null):void
+		{
+			FlxG.pause = true;
+		}
+		
+		/**
+		 * Internal function to help with basic pause game functionality.
+		 */
+		internal function unpauseGame():void
+		{
+			if(!FlxG.panel.visible) flash.ui.Mouse.hide();
+			FlxG.resetInput();
+			_paused = false;
+			stage.frameRate = _framerate;
+		}
+		
+		/**
+		 * Internal function to help with basic pause game functionality.
+		 */
+		internal function pauseGame():void
+		{
+			if((x != 0) || (y != 0))
+			{
+				x = 0;
+				y = 0;
+			}
+			flash.ui.Mouse.show();
+			_paused = true;
+			stage.frameRate = _frameratePaused;
+		}
+		
+		/**
+		 * This is the main game loop.  It controls all the updating and rendering.
+		 */
+		protected function update(event:Event):void
+		{
+			var mark:uint = getTimer();
+			
+			var i:uint;
+			var soundPrefs:FlxSave;
+
+			//Frame timing
+			var ems:uint = mark-_total;
+			_elapsed = ems/1000;
+			_console.mtrTotal.add(ems);
+			_total = mark;
+			FlxG.elapsed = _elapsed;
+			if(FlxG.elapsed > FlxG.maxElapsed)
+				FlxG.elapsed = FlxG.maxElapsed;
+			FlxG.elapsed *= FlxG.timeScale;
+			
+			//Sound tray crap
+			if(_soundTray != null)
+			{
+				if(_soundTrayTimer > 0)
+					_soundTrayTimer -= _elapsed;
+				else if(_soundTray.y > -_soundTray.height)
+				{
+					_soundTray.y -= _elapsed*FlxG.height*2;
+					if(_soundTray.y <= -_soundTray.height)
+					{
+						_soundTray.visible = false;
+						
+						//Save sound preferences
+						soundPrefs = new FlxSave();
+						if(soundPrefs.bind("flixel"))
+						{
+							if(soundPrefs.data.sound == null)
+								soundPrefs.data.sound = new Object;
+							soundPrefs.data.mute = FlxG.mute;
+							soundPrefs.data.volume = FlxG.volume;
+							soundPrefs.forceSave();
+						}
+					}
+				}
+			}
+
+			//Animate flixel HUD elements
+			FlxG.panel.update();
+			if(_console.visible)
+				_console.update();
+			
+			//State updating
+			FlxG.updateInput();
+			FlxG.updateSounds();
+			if(_paused)
+				pause.update();
+			else
+			{
+				//Update the camera and game state
+				FlxG.doFollow();
+				_state.update();
+				
+				//Update the various special effects
+				if(FlxG.flash.exists)
+					FlxG.flash.update();
+				if(FlxG.fade.exists)
+					FlxG.fade.update();
+				FlxG.quake.update();
+				_screen.x = FlxG.quake.x;
+				_screen.y = FlxG.quake.y;
+			}
+			//Keep track of how long it took to update everything
+			var updateMark:uint = getTimer();
+			_console.mtrUpdate.add(updateMark-mark);
+			
+			//Render game content, special fx, and overlays
+			FlxG.buffer.lock();
+			_state.preProcess();
+			_state.render();
+			if(FlxG.flash.exists)
+				FlxG.flash.render();
+			if(FlxG.fade.exists)
+				FlxG.fade.render();
+			if(FlxG.panel.visible)
+				FlxG.panel.render();
+			if(FlxG.mouse.cursor != null)
+			{
+				if(FlxG.mouse.cursor.active)
+					FlxG.mouse.cursor.update();
+				if(FlxG.mouse.cursor.visible)
+					FlxG.mouse.cursor.render();
+			}
+			_state.postProcess();
+			if(_paused)
+				pause.render();
+			FlxG.buffer.unlock();
+			//Keep track of how long it took to draw everything
+			_console.mtrRender.add(getTimer()-updateMark);
+			//clear mouse wheel delta
+			FlxG.mouse.wheel = 0;
+		}
+		
+		/**
+		 * Used to instantiate the guts of flixel once we have a valid pointer to the root.
+		 */
+		internal function create(event:Event):void
+		{
+			if(root == null)
+				return;
+
+			var i:uint;
+			var l:uint;
+			var soundPrefs:FlxSave;
+			
+			//Set up the view window and double buffering
+			stage.scaleMode = StageScaleMode.NO_SCALE;
+            stage.align = StageAlign.TOP_LEFT;
+            stage.frameRate = _framerate;
+            _screen = new Sprite();
+            addChild(_screen);
+			var tmp:Bitmap = new Bitmap(new BitmapData(FlxG.width,FlxG.height,true,FlxState.bgColor));
+			tmp.x = _gameXOffset;
+			tmp.y = _gameYOffset;
+			tmp.scaleX = tmp.scaleY = _zoom;
+			_screen.addChild(tmp);
+			FlxG.buffer = tmp.bitmapData;
+			
+			//Initialize game console
+			_console = new FlxConsole(_gameXOffset,_gameYOffset,_zoom);
+			if(!FlxG.mobile)
+				addChild(_console);
+			var vstring:String = FlxG.LIBRARY_NAME+" v"+FlxG.LIBRARY_MAJOR_VERSION+"."+FlxG.LIBRARY_MINOR_VERSION;
+			if(FlxG.debug)
+				vstring += " [debug]";
+			else
+				vstring += " [release]";
+			var underline:String = "";
+			i = 0;
+			l = vstring.length+32;
+			while(i < l)
+			{
+				underline += "-";
+				i++;
+			}
+			FlxG.log(vstring);
+			FlxG.log(underline);
+			
+			//Add basic input even listeners
+			stage.addEventListener(MouseEvent.MOUSE_DOWN, FlxG.mouse.handleMouseDown);
+			stage.addEventListener(MouseEvent.MOUSE_UP, FlxG.mouse.handleMouseUp);
+			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+			stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
+			if(!FlxG.mobile)
+			{
+				stage.addEventListener(MouseEvent.MOUSE_OUT, FlxG.mouse.handleMouseOut);
+				stage.addEventListener(MouseEvent.MOUSE_OVER, FlxG.mouse.handleMouseOver);
+				stage.addEventListener(MouseEvent.MOUSE_WHEEL, FlxG.mouse.handleMouseWheel);
+				stage.addEventListener(Event.DEACTIVATE, onFocusLost);
+				stage.addEventListener(Event.ACTIVATE, onFocus);
+				
+				//Sound Tray popup
+				_soundTray = new Sprite();
+				_soundTray.visible = false;
+				_soundTray.scaleX = 2;
+				_soundTray.scaleY = 2;
+				tmp = new Bitmap(new BitmapData(80,30,true,0x7F000000));
+				_soundTray.x = (_gameXOffset+FlxG.width/2)*_zoom-(tmp.width/2)*_soundTray.scaleX;
+				_soundTray.addChild(tmp);
+				
+				var text:TextField = new TextField();
+				text.width = tmp.width;
+				text.height = tmp.height;
+				text.multiline = true;
+				text.wordWrap = true;
+				text.selectable = false;
+				text.embedFonts = true;
+				text.antiAliasType = AntiAliasType.NORMAL;
+				text.gridFitType = GridFitType.PIXEL;
+				text.defaultTextFormat = new TextFormat("system",8,0xffffff,null,null,null,null,null,"center");;
+				_soundTray.addChild(text);
+				text.text = "VOLUME";
+				text.y = 16;
+				
+				var bx:uint = 10;
+				var by:uint = 14;
+				_soundTrayBars = new Array();
+				i = 0;
+				while(i < 10)
+				{
+					tmp = new Bitmap(new BitmapData(4,++i,false,0xffffff));
+					tmp.x = bx;
+					tmp.y = by;
+					_soundTrayBars.push(_soundTray.addChild(tmp));
+					bx += 6;
+					by--;
+				}
+				addChild(_soundTray);
+				
+				//Check for saved sound preference data
+				soundPrefs = new FlxSave();
+				if(soundPrefs.bind("flixel") && (soundPrefs.data.sound != null))
+				{
+					if(soundPrefs.data.volume != null)
+						FlxG.volume = soundPrefs.data.volume;
+					if(soundPrefs.data.mute != null)
+						FlxG.mute = soundPrefs.data.mute;
+					showSoundTray(true);
+				}
+			}
+
+			//Initialize the decorative frame (optional)
+			if(_frame != null)
+			{
+				var bmp:Bitmap = new _frame();
+				bmp.scaleX = _zoom;
+				bmp.scaleY = _zoom;
+				addChild(bmp);
+			}
+			
+			//All set!
+			switchState(new _iState());
+			FlxState.screen.unsafeBind(FlxG.buffer);
+			removeEventListener(Event.ENTER_FRAME, create);
+			addEventListener(Event.ENTER_FRAME, update);
+		}
+	}
+}

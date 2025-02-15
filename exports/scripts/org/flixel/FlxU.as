@@ -427,443 +427,442 @@ package org.flixel
       
       public static function solveXCollision(param1:FlxObject, param2:FlxObject) : Boolean
       {
-         var _loc3_:Boolean = false;
-         var _loc4_:Boolean = false;
-         var _loc5_:Number = NaN;
+         var _loc5_:Boolean = false;
          var _loc6_:Boolean = false;
-         var _loc7_:uint = 0;
-         var _loc8_:uint = 0;
-         var _loc9_:FlxRect = null;
-         var _loc10_:Number = NaN;
-         var _loc11_:Number = NaN;
-         var _loc12_:Number = NaN;
-         var _loc13_:Number = NaN;
-         var _loc14_:Number = NaN;
-         var _loc15_:Number = NaN;
-         var _loc16_:Number = NaN;
-         var _loc17_:Number = NaN;
-         var _loc18_:Number = param1.colVector.x;
-         var _loc19_:Number = param2.colVector.x;
-         if(_loc18_ == _loc19_)
+         var _loc7_:Number = NaN;
+         var _loc9_:Boolean = false;
+         var _loc16_:uint = 0;
+         var _loc17_:uint = 0;
+         var _loc24_:Number = NaN;
+         var _loc25_:Number = NaN;
+         var _loc26_:Number = NaN;
+         var _loc27_:Number = NaN;
+         var _loc28_:Number = NaN;
+         var _loc29_:Number = NaN;
+         var _loc30_:Number = NaN;
+         var _loc31_:Number = NaN;
+         var _loc3_:Number = param1.colVector.x;
+         var _loc4_:Number = param2.colVector.x;
+         if(_loc3_ == _loc4_)
          {
             return false;
          }
          param1.preCollide(param2);
          param2.preCollide(param1);
-         var _loc20_:Boolean = false;
-         var _loc21_:* = _loc18_ == 0;
-         var _loc22_:* = _loc18_ < 0;
-         var _loc23_:* = _loc18_ > 0;
-         var _loc24_:* = _loc19_ == 0;
-         var _loc25_:* = _loc19_ < 0;
-         var _loc26_:* = _loc19_ > 0;
-         _loc9_ = param1.colHullX;
-         var _loc27_:FlxRect = param2.colHullX;
-         var _loc28_:Array = param1.colOffsets;
-         var _loc29_:Array = param2.colOffsets;
-         var _loc30_:uint = _loc28_.length;
-         var _loc31_:uint = _loc29_.length;
-         _loc6_ = _loc21_ && _loc25_ || _loc23_ && _loc24_ || _loc23_ && _loc25_ || _loc22_ && _loc25_ && (_loc18_ > 0 ? _loc18_ : -_loc18_) < (_loc19_ > 0 ? _loc19_ : -_loc19_) || _loc23_ && _loc26_ && (_loc18_ > 0 ? _loc18_ : -_loc18_) > (_loc19_ > 0 ? _loc19_ : -_loc19_);
-         if(_loc6_ ? !param1.collideRight || !param2.collideLeft : !param1.collideLeft || !param2.collideRight)
+         var _loc8_:Boolean = false;
+         var _loc10_:* = _loc3_ == 0;
+         var _loc11_:* = _loc3_ < 0;
+         var _loc12_:* = _loc3_ > 0;
+         var _loc13_:* = _loc4_ == 0;
+         var _loc14_:* = _loc4_ < 0;
+         var _loc15_:* = _loc4_ > 0;
+         var _loc18_:FlxRect = param1.colHullX;
+         var _loc19_:FlxRect = param2.colHullX;
+         var _loc20_:Array = param1.colOffsets;
+         var _loc21_:Array = param2.colOffsets;
+         var _loc22_:uint = _loc20_.length;
+         var _loc23_:uint = _loc21_.length;
+         _loc9_ = _loc10_ && _loc14_ || _loc12_ && _loc13_ || _loc12_ && _loc14_ || _loc11_ && _loc14_ && (_loc3_ > 0 ? _loc3_ : -_loc3_) < (_loc4_ > 0 ? _loc4_ : -_loc4_) || _loc12_ && _loc15_ && (_loc3_ > 0 ? _loc3_ : -_loc3_) > (_loc4_ > 0 ? _loc4_ : -_loc4_);
+         if(_loc9_ ? !param1.collideRight || !param2.collideLeft : !param1.collideLeft || !param2.collideRight)
          {
             return false;
          }
-         _loc7_ = 0;
-         while(_loc7_ < _loc30_)
+         _loc16_ = 0;
+         while(_loc16_ < _loc22_)
          {
-            _loc10_ = Number(_loc28_[_loc7_].x);
-            _loc11_ = Number(_loc28_[_loc7_].y);
-            _loc9_.x += _loc10_;
-            _loc9_.y += _loc11_;
-            _loc8_ = 0;
-            while(_loc8_ < _loc31_)
+            _loc24_ = Number(_loc20_[_loc16_].x);
+            _loc25_ = Number(_loc20_[_loc16_].y);
+            _loc18_.x += _loc24_;
+            _loc18_.y += _loc25_;
+            _loc17_ = 0;
+            while(_loc17_ < _loc23_)
             {
-               _loc12_ = Number(_loc29_[_loc8_].x);
-               _loc13_ = Number(_loc29_[_loc8_].y);
-               _loc27_.x += _loc12_;
-               _loc27_.y += _loc13_;
-               if(_loc9_.x + _loc9_.width < _loc27_.x + roundingError || _loc9_.x + roundingError > _loc27_.x + _loc27_.width || _loc9_.y + _loc9_.height < _loc27_.y + roundingError || _loc9_.y + roundingError > _loc27_.y + _loc27_.height)
+               _loc26_ = Number(_loc21_[_loc17_].x);
+               _loc27_ = Number(_loc21_[_loc17_].y);
+               _loc19_.x += _loc26_;
+               _loc19_.y += _loc27_;
+               if(_loc18_.x + _loc18_.width < _loc19_.x + roundingError || _loc18_.x + roundingError > _loc19_.x + _loc19_.width || _loc18_.y + _loc18_.height < _loc19_.y + roundingError || _loc18_.y + roundingError > _loc19_.y + _loc19_.height)
                {
-                  _loc27_.x -= _loc12_;
-                  _loc27_.y -= _loc13_;
-                  _loc8_++;
+                  _loc19_.x -= _loc26_;
+                  _loc19_.y -= _loc27_;
+                  _loc17_++;
                }
                else
                {
-                  if(_loc6_)
+                  if(_loc9_)
                   {
-                     if(_loc22_)
+                     if(_loc11_)
                      {
-                        _loc14_ = _loc9_.x + param1.colHullY.width;
+                        _loc28_ = _loc18_.x + param1.colHullY.width;
                      }
                      else
                      {
-                        _loc14_ = _loc9_.x + _loc9_.width;
+                        _loc28_ = _loc18_.x + _loc18_.width;
                      }
-                     if(_loc25_)
+                     if(_loc14_)
                      {
-                        _loc15_ = _loc27_.x;
+                        _loc29_ = _loc19_.x;
                      }
                      else
                      {
-                        _loc15_ = _loc27_.x + _loc27_.width - param2.colHullY.width;
+                        _loc29_ = _loc19_.x + _loc19_.width - param2.colHullY.width;
                      }
                   }
                   else
                   {
-                     if(_loc25_)
+                     if(_loc14_)
                      {
-                        _loc14_ = -_loc27_.x - param2.colHullY.width;
+                        _loc28_ = -_loc19_.x - param2.colHullY.width;
                      }
                      else
                      {
-                        _loc14_ = -_loc27_.x - _loc27_.width;
+                        _loc28_ = -_loc19_.x - _loc19_.width;
                      }
-                     if(_loc22_)
+                     if(_loc11_)
                      {
-                        _loc15_ = -_loc9_.x;
+                        _loc29_ = -_loc18_.x;
                      }
                      else
                      {
-                        _loc15_ = -_loc9_.x - _loc9_.width + param1.colHullY.width;
+                        _loc29_ = -_loc18_.x - _loc18_.width + param1.colHullY.width;
                      }
                   }
-                  _loc5_ = _loc14_ - _loc15_;
-                  _loc3_ = param1.fixed;
-                  _loc4_ = param2.fixed;
-                  if(_loc3_ && _loc4_)
+                  _loc7_ = _loc28_ - _loc29_;
+                  _loc5_ = param1.fixed;
+                  _loc6_ = param2.fixed;
+                  if(_loc5_ && _loc6_)
                   {
-                     _loc3_ &&= param1.colVector.x == 0 && _loc18_ == 0;
-                     _loc4_ &&= param2.colVector.x == 0 && _loc19_ == 0;
+                     _loc5_ &&= param1.colVector.x == 0 && _loc3_ == 0;
+                     _loc6_ &&= param2.colVector.x == 0 && _loc4_ == 0;
                   }
-                  if(_loc5_ == 0 || !_loc3_ && (_loc5_ > 0 ? _loc5_ : -_loc5_) > _loc9_.width * 0.8 || !_loc4_ && (_loc5_ > 0 ? _loc5_ : -_loc5_) > _loc27_.width * 0.8)
+                  if(_loc7_ == 0 || !_loc5_ && (_loc7_ > 0 ? _loc7_ : -_loc7_) > _loc18_.width * 0.8 || !_loc6_ && (_loc7_ > 0 ? _loc7_ : -_loc7_) > _loc19_.width * 0.8)
                   {
-                     _loc27_.x -= _loc12_;
-                     _loc27_.y -= _loc13_;
-                     _loc8_++;
+                     _loc19_.x -= _loc26_;
+                     _loc19_.y -= _loc27_;
+                     _loc17_++;
                   }
                   else
                   {
-                     _loc20_ = true;
-                     _loc16_ = param2.velocity.x;
-                     _loc17_ = param1.velocity.x;
-                     if(!_loc3_ && _loc4_)
+                     _loc8_ = true;
+                     _loc30_ = param2.velocity.x;
+                     _loc31_ = param1.velocity.x;
+                     if(!_loc5_ && _loc6_)
                      {
                         if(param1._group)
                         {
-                           param1.reset(param1.x - _loc5_,param1.y);
+                           param1.reset(param1.x - _loc7_,param1.y);
                         }
                         else
                         {
-                           param1.x -= _loc5_;
+                           param1.x -= _loc7_;
                         }
                      }
-                     else if(_loc3_ && !_loc4_)
+                     else if(_loc5_ && !_loc6_)
                      {
                         if(param2._group)
                         {
-                           param2.reset(param2.x + _loc5_,param2.y);
+                           param2.reset(param2.x + _loc7_,param2.y);
                         }
                         else
                         {
-                           param2.x += _loc5_;
+                           param2.x += _loc7_;
                         }
                      }
-                     else if(!_loc3_ && !_loc4_)
+                     else if(!_loc5_ && !_loc6_)
                      {
-                        _loc5_ /= 2;
+                        _loc7_ /= 2;
                         if(param1._group)
                         {
-                           param1.reset(param1.x - _loc5_,param1.y);
+                           param1.reset(param1.x - _loc7_,param1.y);
                         }
                         else
                         {
-                           param1.x -= _loc5_;
+                           param1.x -= _loc7_;
                         }
                         if(param2._group)
                         {
-                           param2.reset(param2.x + _loc5_,param2.y);
+                           param2.reset(param2.x + _loc7_,param2.y);
                         }
                         else
                         {
-                           param2.x += _loc5_;
+                           param2.x += _loc7_;
                         }
-                        _loc16_ *= 0.5;
-                        _loc17_ *= 0.5;
+                        _loc30_ *= 0.5;
+                        _loc31_ *= 0.5;
                      }
-                     if(_loc6_)
+                     if(_loc9_)
                      {
-                        param1.hitRight(param2,_loc16_);
-                        param2.hitLeft(param1,_loc17_);
+                        param1.hitRight(param2,_loc30_);
+                        param2.hitLeft(param1,_loc31_);
                      }
                      else
                      {
-                        param1.hitLeft(param2,_loc16_);
-                        param2.hitRight(param1,_loc17_);
+                        param1.hitLeft(param2,_loc30_);
+                        param2.hitRight(param1,_loc31_);
                      }
-                     if(!_loc3_ && _loc5_ != 0)
+                     if(!_loc5_ && _loc7_ != 0)
                      {
-                        if(_loc6_)
+                        if(_loc9_)
                         {
-                           _loc9_.width -= _loc5_;
+                           _loc18_.width -= _loc7_;
                         }
                         else
                         {
-                           _loc9_.x -= _loc5_;
-                           _loc9_.width += _loc5_;
+                           _loc18_.x -= _loc7_;
+                           _loc18_.width += _loc7_;
                         }
-                        param1.colHullY.x -= _loc5_;
+                        param1.colHullY.x -= _loc7_;
                      }
-                     if(!_loc4_ && _loc5_ != 0)
+                     if(!_loc6_ && _loc7_ != 0)
                      {
-                        if(_loc6_)
+                        if(_loc9_)
                         {
-                           _loc27_.x += _loc5_;
-                           _loc27_.width -= _loc5_;
+                           _loc19_.x += _loc7_;
+                           _loc19_.width -= _loc7_;
                         }
                         else
                         {
-                           _loc27_.width += _loc5_;
+                           _loc19_.width += _loc7_;
                         }
-                        param2.colHullY.x += _loc5_;
+                        param2.colHullY.x += _loc7_;
                      }
-                     _loc27_.x -= _loc12_;
-                     _loc27_.y -= _loc13_;
-                     _loc8_++;
+                     _loc19_.x -= _loc26_;
+                     _loc19_.y -= _loc27_;
+                     _loc17_++;
                   }
                }
             }
-            _loc9_.x -= _loc10_;
-            _loc9_.y -= _loc11_;
-            _loc7_++;
+            _loc18_.x -= _loc24_;
+            _loc18_.y -= _loc25_;
+            _loc16_++;
          }
-         return _loc20_;
+         return _loc8_;
       }
       
       public static function solveYCollision(param1:FlxObject, param2:FlxObject) : Boolean
       {
-         var _loc3_:Boolean = false;
-         var _loc4_:Boolean = false;
-         var _loc5_:Number = NaN;
+         var _loc5_:Boolean = false;
          var _loc6_:Boolean = false;
-         var _loc7_:uint = 0;
-         var _loc8_:uint = 0;
-         var _loc9_:Number = NaN;
-         var _loc10_:Number = NaN;
-         var _loc11_:Number = NaN;
-         var _loc12_:Number = NaN;
-         var _loc13_:Number = NaN;
-         var _loc14_:Number = NaN;
-         var _loc15_:Number = NaN;
-         var _loc16_:Number = NaN;
-         var _loc17_:Number = param1.colVector.y;
-         var _loc18_:Number = param2.colVector.y;
-         if(_loc17_ == _loc18_)
+         var _loc7_:Number = NaN;
+         var _loc9_:Boolean = false;
+         var _loc16_:uint = 0;
+         var _loc17_:uint = 0;
+         var _loc24_:Number = NaN;
+         var _loc25_:Number = NaN;
+         var _loc26_:Number = NaN;
+         var _loc27_:Number = NaN;
+         var _loc28_:Number = NaN;
+         var _loc29_:Number = NaN;
+         var _loc30_:Number = NaN;
+         var _loc31_:Number = NaN;
+         var _loc3_:Number = param1.colVector.y;
+         var _loc4_:Number = param2.colVector.y;
+         if(_loc3_ == _loc4_)
          {
             return false;
          }
          param1.preCollide(param2);
          param2.preCollide(param1);
-         var _loc19_:Boolean = false;
-         var _loc20_:* = _loc17_ == 0;
-         var _loc21_:* = _loc17_ < 0;
-         var _loc22_:* = _loc17_ > 0;
-         var _loc23_:* = _loc18_ == 0;
-         var _loc24_:* = _loc18_ < 0;
-         var _loc25_:* = _loc18_ > 0;
-         var _loc26_:FlxRect = param1.colHullY;
-         var _loc27_:FlxRect = param2.colHullY;
-         var _loc28_:Array = param1.colOffsets;
-         var _loc29_:Array = param2.colOffsets;
-         var _loc30_:uint = _loc28_.length;
-         var _loc31_:uint = _loc29_.length;
-         _loc6_ = _loc20_ && _loc24_ || _loc22_ && _loc23_ || _loc22_ && _loc24_ || _loc21_ && _loc24_ && (_loc17_ > 0 ? _loc17_ : -_loc17_) < (_loc18_ > 0 ? _loc18_ : -_loc18_) || _loc22_ && _loc25_ && (_loc17_ > 0 ? _loc17_ : -_loc17_) > (_loc18_ > 0 ? _loc18_ : -_loc18_);
-         if(_loc6_ ? !param1.collideBottom || !param2.collideTop : !param1.collideTop || !param2.collideBottom)
+         var _loc8_:Boolean = false;
+         var _loc10_:* = _loc3_ == 0;
+         var _loc11_:* = _loc3_ < 0;
+         var _loc12_:* = _loc3_ > 0;
+         var _loc13_:* = _loc4_ == 0;
+         var _loc14_:* = _loc4_ < 0;
+         var _loc15_:* = _loc4_ > 0;
+         var _loc18_:FlxRect = param1.colHullY;
+         var _loc19_:FlxRect = param2.colHullY;
+         var _loc20_:Array = param1.colOffsets;
+         var _loc21_:Array = param2.colOffsets;
+         var _loc22_:uint = _loc20_.length;
+         var _loc23_:uint = _loc21_.length;
+         _loc9_ = _loc10_ && _loc14_ || _loc12_ && _loc13_ || _loc12_ && _loc14_ || _loc11_ && _loc14_ && (_loc3_ > 0 ? _loc3_ : -_loc3_) < (_loc4_ > 0 ? _loc4_ : -_loc4_) || _loc12_ && _loc15_ && (_loc3_ > 0 ? _loc3_ : -_loc3_) > (_loc4_ > 0 ? _loc4_ : -_loc4_);
+         if(_loc9_ ? !param1.collideBottom || !param2.collideTop : !param1.collideTop || !param2.collideBottom)
          {
             return false;
          }
-         _loc7_ = 0;
-         while(_loc7_ < _loc30_)
+         _loc16_ = 0;
+         while(_loc16_ < _loc22_)
          {
-            _loc9_ = Number(_loc28_[_loc7_].x);
-            _loc10_ = Number(_loc28_[_loc7_].y);
-            _loc26_.x += _loc9_;
-            _loc26_.y += _loc10_;
-            _loc8_ = 0;
-            while(_loc8_ < _loc31_)
+            _loc24_ = Number(_loc20_[_loc16_].x);
+            _loc25_ = Number(_loc20_[_loc16_].y);
+            _loc18_.x += _loc24_;
+            _loc18_.y += _loc25_;
+            _loc17_ = 0;
+            while(_loc17_ < _loc23_)
             {
-               _loc11_ = Number(_loc29_[_loc8_].x);
-               _loc12_ = Number(_loc29_[_loc8_].y);
-               _loc27_.x += _loc11_;
-               _loc27_.y += _loc12_;
-               if(_loc26_.x + _loc26_.width < _loc27_.x + roundingError || _loc26_.x + roundingError > _loc27_.x + _loc27_.width || _loc26_.y + _loc26_.height < _loc27_.y + roundingError || _loc26_.y + roundingError > _loc27_.y + _loc27_.height)
+               _loc26_ = Number(_loc21_[_loc17_].x);
+               _loc27_ = Number(_loc21_[_loc17_].y);
+               _loc19_.x += _loc26_;
+               _loc19_.y += _loc27_;
+               if(_loc18_.x + _loc18_.width < _loc19_.x + roundingError || _loc18_.x + roundingError > _loc19_.x + _loc19_.width || _loc18_.y + _loc18_.height < _loc19_.y + roundingError || _loc18_.y + roundingError > _loc19_.y + _loc19_.height)
                {
-                  _loc27_.x -= _loc11_;
-                  _loc27_.y -= _loc12_;
-                  _loc8_++;
+                  _loc19_.x -= _loc26_;
+                  _loc19_.y -= _loc27_;
+                  _loc17_++;
                }
                else
                {
-                  if(_loc6_)
+                  if(_loc9_)
                   {
-                     if(_loc21_)
+                     if(_loc11_)
                      {
-                        _loc13_ = _loc26_.y + param1.colHullX.height;
+                        _loc28_ = _loc18_.y + param1.colHullX.height;
                      }
                      else
                      {
-                        _loc13_ = _loc26_.y + _loc26_.height;
+                        _loc28_ = _loc18_.y + _loc18_.height;
                      }
-                     if(_loc24_)
+                     if(_loc14_)
                      {
-                        _loc14_ = _loc27_.y;
+                        _loc29_ = _loc19_.y;
                      }
                      else
                      {
-                        _loc14_ = _loc27_.y + _loc27_.height - param2.colHullX.height;
+                        _loc29_ = _loc19_.y + _loc19_.height - param2.colHullX.height;
                      }
                   }
                   else
                   {
-                     if(_loc24_)
+                     if(_loc14_)
                      {
-                        _loc13_ = -_loc27_.y - param2.colHullX.height;
+                        _loc28_ = -_loc19_.y - param2.colHullX.height;
                      }
                      else
                      {
-                        _loc13_ = -_loc27_.y - _loc27_.height;
+                        _loc28_ = -_loc19_.y - _loc19_.height;
                      }
-                     if(_loc21_)
+                     if(_loc11_)
                      {
-                        _loc14_ = -_loc26_.y;
+                        _loc29_ = -_loc18_.y;
                      }
                      else
                      {
-                        _loc14_ = -_loc26_.y - _loc26_.height + param1.colHullX.height;
+                        _loc29_ = -_loc18_.y - _loc18_.height + param1.colHullX.height;
                      }
                   }
-                  _loc5_ = _loc13_ - _loc14_;
-                  _loc3_ = param1.fixed;
-                  _loc4_ = param2.fixed;
-                  if(_loc3_ && _loc4_)
+                  _loc7_ = _loc28_ - _loc29_;
+                  _loc5_ = param1.fixed;
+                  _loc6_ = param2.fixed;
+                  if(_loc5_ && _loc6_)
                   {
-                     _loc3_ &&= param1.colVector.x == 0 && _loc17_ == 0;
-                     _loc4_ &&= param2.colVector.x == 0 && _loc18_ == 0;
+                     _loc5_ &&= param1.colVector.x == 0 && _loc3_ == 0;
+                     _loc6_ &&= param2.colVector.x == 0 && _loc4_ == 0;
                   }
-                  if(_loc5_ == 0 || !_loc3_ && (_loc5_ > 0 ? _loc5_ : -_loc5_) > _loc26_.height * 0.8 || !_loc4_ && (_loc5_ > 0 ? _loc5_ : -_loc5_) > _loc27_.height * 0.8)
+                  if(_loc7_ == 0 || !_loc5_ && (_loc7_ > 0 ? _loc7_ : -_loc7_) > _loc18_.height * 0.8 || !_loc6_ && (_loc7_ > 0 ? _loc7_ : -_loc7_) > _loc19_.height * 0.8)
                   {
-                     _loc27_.x -= _loc11_;
-                     _loc27_.y -= _loc12_;
-                     _loc8_++;
+                     _loc19_.x -= _loc26_;
+                     _loc19_.y -= _loc27_;
+                     _loc17_++;
                   }
                   else
                   {
-                     _loc19_ = true;
-                     _loc15_ = param2.velocity.y;
-                     _loc16_ = param1.velocity.y;
-                     if(!_loc3_ && _loc4_)
+                     _loc8_ = true;
+                     _loc30_ = param2.velocity.y;
+                     _loc31_ = param1.velocity.y;
+                     if(!_loc5_ && _loc6_)
                      {
                         if(param1._group)
                         {
-                           param1.reset(param1.x,param1.y - _loc5_);
+                           param1.reset(param1.x,param1.y - _loc7_);
                         }
                         else
                         {
-                           param1.y -= _loc5_;
+                           param1.y -= _loc7_;
                         }
                      }
-                     else if(_loc3_ && !_loc4_)
+                     else if(_loc5_ && !_loc6_)
                      {
                         if(param2._group)
                         {
-                           param2.reset(param2.x,param2.y + _loc5_);
+                           param2.reset(param2.x,param2.y + _loc7_);
                         }
                         else
                         {
-                           param2.y += _loc5_;
+                           param2.y += _loc7_;
                         }
                      }
-                     else if(!_loc3_ && !_loc4_)
+                     else if(!_loc5_ && !_loc6_)
                      {
-                        _loc5_ /= 2;
+                        _loc7_ /= 2;
                         if(param1._group)
                         {
-                           param1.reset(param1.x,param1.y - _loc5_);
+                           param1.reset(param1.x,param1.y - _loc7_);
                         }
                         else
                         {
-                           param1.y -= _loc5_;
+                           param1.y -= _loc7_;
                         }
                         if(param2._group)
                         {
-                           param2.reset(param2.x,param2.y + _loc5_);
+                           param2.reset(param2.x,param2.y + _loc7_);
                         }
                         else
                         {
-                           param2.y += _loc5_;
+                           param2.y += _loc7_;
                         }
-                        _loc15_ *= 0.5;
-                        _loc16_ *= 0.5;
+                        _loc30_ *= 0.5;
+                        _loc31_ *= 0.5;
                      }
-                     if(_loc6_)
+                     if(_loc9_)
                      {
-                        param1.hitBottom(param2,_loc15_);
-                        param2.hitTop(param1,_loc16_);
+                        param1.hitBottom(param2,_loc30_);
+                        param2.hitTop(param1,_loc31_);
                      }
                      else
                      {
-                        param1.hitTop(param2,_loc15_);
-                        param2.hitBottom(param1,_loc16_);
+                        param1.hitTop(param2,_loc30_);
+                        param2.hitBottom(param1,_loc31_);
                      }
-                     if(!_loc3_ && _loc5_ != 0)
+                     if(!_loc5_ && _loc7_ != 0)
                      {
-                        if(_loc6_)
+                        if(_loc9_)
                         {
-                           _loc26_.y -= _loc5_;
-                           if(_loc4_ && param2.moves)
+                           _loc18_.y -= _loc7_;
+                           if(_loc6_ && param2.moves)
                            {
-                              _loc15_ = param2.colVector.x;
-                              param1.x += _loc15_;
-                              _loc26_.x += _loc15_;
-                              param1.colHullX.x += _loc15_;
+                              _loc30_ = param2.colVector.x;
+                              param1.x += _loc30_;
+                              _loc18_.x += _loc30_;
+                              param1.colHullX.x += _loc30_;
                            }
                         }
                         else
                         {
-                           _loc26_.y -= _loc5_;
-                           _loc26_.height += _loc5_;
+                           _loc18_.y -= _loc7_;
+                           _loc18_.height += _loc7_;
                         }
                      }
-                     if(!_loc4_ && _loc5_ != 0)
+                     if(!_loc6_ && _loc7_ != 0)
                      {
-                        if(_loc6_)
+                        if(_loc9_)
                         {
-                           _loc27_.y += _loc5_;
-                           _loc27_.height -= _loc5_;
+                           _loc19_.y += _loc7_;
+                           _loc19_.height -= _loc7_;
                         }
                         else
                         {
-                           _loc27_.height += _loc5_;
-                           if(_loc3_ && param1.moves)
+                           _loc19_.height += _loc7_;
+                           if(_loc5_ && param1.moves)
                            {
-                              _loc16_ = param1.colVector.x;
-                              param2.x += _loc16_;
-                              _loc27_.x += _loc16_;
-                              param2.colHullX.x += _loc16_;
+                              _loc31_ = param1.colVector.x;
+                              param2.x += _loc31_;
+                              _loc19_.x += _loc31_;
+                              param2.colHullX.x += _loc31_;
                            }
                         }
                      }
-                     _loc27_.x -= _loc11_;
-                     _loc27_.y -= _loc12_;
-                     _loc8_++;
+                     _loc19_.x -= _loc26_;
+                     _loc19_.y -= _loc27_;
+                     _loc17_++;
                   }
                }
             }
-            _loc26_.x -= _loc9_;
-            _loc26_.y -= _loc10_;
-            _loc7_++;
+            _loc18_.x -= _loc24_;
+            _loc18_.y -= _loc25_;
+            _loc16_++;
          }
-         return _loc19_;
+         return _loc8_;
       }
    }
 }

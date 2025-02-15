@@ -164,82 +164,81 @@ package org.flixel
       
       public function loadRotatedGraphic(param1:Class, param2:uint = 16, param3:int = -1, param4:Boolean = false, param5:Boolean = false) : FlxSprite
       {
-         var _loc22_:Boolean = false;
-         var _loc6_:BitmapData = null;
-         var _loc7_:uint = 0;
-         var _loc8_:uint = 0;
-         var _loc9_:uint = 0;
-         var _loc10_:uint = 0;
-         var _loc11_:uint = 0;
-         var _loc12_:Number = NaN;
+         var _loc12_:BitmapData = null;
          var _loc13_:uint = 0;
          var _loc14_:uint = 0;
          var _loc15_:uint = 0;
          var _loc16_:uint = 0;
-         var _loc17_:uint = Math.sqrt(param2);
-         var _loc18_:BitmapData = FlxG.addBitmap(param1);
+         var _loc17_:uint = 0;
+         var _loc18_:Number = NaN;
+         var _loc19_:uint = 0;
+         var _loc20_:uint = 0;
+         var _loc21_:uint = 0;
+         var _loc22_:uint = 0;
+         var _loc6_:uint = Math.sqrt(param2);
+         var _loc7_:BitmapData = FlxG.addBitmap(param1);
          if(param3 >= 0)
          {
-            _loc6_ = _loc18_;
-            _loc18_ = new BitmapData(_loc6_.height,_loc6_.height);
-            _loc7_ = uint(param3 * _loc18_.width);
-            _loc8_ = 0;
-            _loc9_ = uint(_loc6_.width);
-            if(_loc7_ >= _loc9_)
+            _loc12_ = _loc7_;
+            _loc7_ = new BitmapData(_loc12_.height,_loc12_.height);
+            _loc13_ = uint(param3 * _loc7_.width);
+            _loc14_ = 0;
+            _loc15_ = uint(_loc12_.width);
+            if(_loc13_ >= _loc15_)
             {
-               _loc8_ = uint(_loc7_ / _loc9_) * _loc18_.height;
-               _loc7_ %= _loc9_;
+               _loc14_ = uint(_loc13_ / _loc15_) * _loc7_.height;
+               _loc13_ %= _loc15_;
             }
-            this._flashRect.x = _loc7_;
-            this._flashRect.y = _loc8_;
-            this._flashRect.width = _loc18_.width;
-            this._flashRect.height = _loc18_.height;
-            _loc18_.copyPixels(_loc6_,this._flashRect,this._flashPointZero);
+            this._flashRect.x = _loc13_;
+            this._flashRect.y = _loc14_;
+            this._flashRect.width = _loc7_.width;
+            this._flashRect.height = _loc7_.height;
+            _loc7_.copyPixels(_loc12_,this._flashRect,this._flashPointZero);
          }
-         var _loc19_:uint = uint(_loc18_.width);
-         if(_loc18_.height > _loc19_)
+         var _loc8_:uint = uint(_loc7_.width);
+         if(_loc7_.height > _loc8_)
          {
-            _loc19_ = uint(_loc18_.height);
+            _loc8_ = uint(_loc7_.height);
          }
          if(param5)
          {
-            _loc19_ *= 1.5;
+            _loc8_ *= 1.5;
          }
-         var _loc20_:uint = FlxU.ceil(param2 / _loc17_);
-         width = _loc19_ * _loc20_;
-         height = _loc19_ * _loc17_;
-         var _loc21_:String = String(param1) + ":" + param3 + ":" + width + "x" + height;
-         _loc22_ = FlxG.checkBitmapCache(_loc21_);
-         this._pixels = FlxG.createBitmap(width,height,0,true,_loc21_);
+         var _loc9_:uint = FlxU.ceil(param2 / _loc6_);
+         width = _loc8_ * _loc9_;
+         height = _loc8_ * _loc6_;
+         var _loc10_:String = String(param1) + ":" + param3 + ":" + width + "x" + height;
+         var _loc11_:Boolean = FlxG.checkBitmapCache(_loc10_);
+         this._pixels = FlxG.createBitmap(width,height,0,true,_loc10_);
          width = this.frameWidth = this._pixels.width;
          height = this.frameHeight = this._pixels.height;
          this._bakedRotation = 360 / param2;
-         if(!_loc22_)
+         if(!_loc11_)
          {
-            _loc10_ = 0;
-            _loc12_ = 0;
-            _loc13_ = _loc18_.width * 0.5;
-            _loc14_ = _loc18_.height * 0.5;
-            _loc15_ = _loc19_ * 0.5;
-            _loc16_ = _loc19_ * 0.5;
-            while(_loc10_ < _loc17_)
+            _loc16_ = 0;
+            _loc18_ = 0;
+            _loc19_ = _loc7_.width * 0.5;
+            _loc20_ = _loc7_.height * 0.5;
+            _loc21_ = _loc8_ * 0.5;
+            _loc22_ = _loc8_ * 0.5;
+            while(_loc16_ < _loc6_)
             {
-               _loc11_ = 0;
-               while(_loc11_ < _loc20_)
+               _loc17_ = 0;
+               while(_loc17_ < _loc9_)
                {
                   this._mtx.identity();
-                  this._mtx.translate(-_loc13_,-_loc14_);
-                  this._mtx.rotate(_loc12_ * 0.017453293);
-                  this._mtx.translate(_loc19_ * _loc11_ + _loc15_,_loc16_);
-                  _loc12_ += this._bakedRotation;
-                  this._pixels.draw(_loc18_,this._mtx,null,null,null,param4);
-                  _loc11_++;
+                  this._mtx.translate(-_loc19_,-_loc20_);
+                  this._mtx.rotate(_loc18_ * 0.017453293);
+                  this._mtx.translate(_loc8_ * _loc17_ + _loc21_,_loc22_);
+                  _loc18_ += this._bakedRotation;
+                  this._pixels.draw(_loc7_,this._mtx,null,null,null,param4);
+                  _loc17_++;
                }
-               _loc16_ += _loc19_;
-               _loc10_++;
+               _loc22_ += _loc8_;
+               _loc16_++;
             }
          }
-         this.frameWidth = this.frameHeight = width = height = _loc19_;
+         this.frameWidth = this.frameHeight = width = height = _loc8_;
          this.resetHelpers();
          return this;
       }

@@ -1,397 +1,415 @@
 package org.flixel
 {
-   import flash.events.Event;
-   import flash.media.Sound;
-   import flash.media.SoundChannel;
-   import flash.media.SoundTransform;
-   import flash.net.URLRequest;
-   
-   public class FlxSound extends FlxObject
-   {
-      public var survive:Boolean;
-      
-      public var playing:Boolean;
-      
-      public var name:String;
-      
-      public var artist:String;
-      
-      protected var _init:Boolean;
-      
-      protected var _sound:Sound;
-      
-      protected var _channel:SoundChannel;
-      
-      protected var _transform:SoundTransform;
-      
-      protected var _position:Number;
-      
-      protected var _volume:Number;
-      
-      protected var _volumeAdjust:Number;
-      
-      public var _looped:Boolean;
-      
-      protected var _core:FlxObject;
-      
-      protected var _radius:Number;
-      
-      protected var _pan:Boolean;
-      
-      protected var _fadeOutTimer:Number;
-      
-      protected var _fadeOutTotal:Number;
-      
-      protected var _pauseOnFadeOut:Boolean;
-      
-      protected var _fadeInTimer:Number;
-      
-      protected var _fadeInTotal:Number;
-      
-      protected var _point2:FlxPoint;
-      
-      public function FlxSound()
-      {
-         super();
-         this._point2 = new FlxPoint();
-         this._transform = new SoundTransform();
-         this.init();
-         fixed = true;
-      }
-      
-      protected function init() : void
-      {
-         this._transform.pan = 0;
-         this._sound = null;
-         this._position = 0;
-         this._volume = 1;
-         this._volumeAdjust = 1;
-         this._looped = false;
-         this._core = null;
-         this._radius = 0;
-         this._pan = false;
-         this._fadeOutTimer = 0;
-         this._fadeOutTotal = 0;
-         this._pauseOnFadeOut = false;
-         this._fadeInTimer = 0;
-         this._fadeInTotal = 0;
-         active = false;
-         visible = false;
-         solid = false;
-         this.playing = false;
-         this.name = null;
-         this.artist = null;
-      }
-      
-      public function loadEmbedded(param1:Class, param2:Boolean = false) : FlxSound
-      {
-         this.stop();
-         this.init();
-         this._sound = new param1();
-         this._looped = param2;
-         this.updateTransform();
-         active = true;
-         return this;
-      }
-      
-      public function loadStream(param1:String, param2:Boolean = false) : FlxSound
-      {
-         this.stop();
-         this.init();
-         this._sound = new Sound();
-         this._sound.addEventListener(Event.ID3,this.gotID3);
-         this._sound.load(new URLRequest(param1));
-         this._looped = param2;
-         this.updateTransform();
-         active = true;
-         return this;
-      }
-      
-      public function proximity(param1:Number, param2:Number, param3:FlxObject, param4:Number, param5:Boolean = true) : FlxSound
-      {
-         x = param1;
-         y = param2;
-         this._core = param3;
-         this._radius = param4;
-         this._pan = param5;
-         return this;
-      }
-      
-      public function play() : void
-      {
-         if(this._position < 0)
-         {
-            return;
-         }
-         if(this._looped)
-         {
-            if(this._position == 0)
-            {
-               if(this._channel == null)
-               {
-                  this._channel = this._sound.play(0,9999,this._transform);
-               }
-               if(this._channel == null)
-               {
-                  active = false;
-               }
-            }
-            else
-            {
-               this._channel = this._sound.play(this._position,0,this._transform);
-               if(this._channel == null)
-               {
-                  active = false;
-               }
-               else
-               {
-                  this._channel.addEventListener(Event.SOUND_COMPLETE,this.looped);
-               }
-            }
-         }
-         else if(this._position == 0)
-         {
-            if(this._channel == null)
-            {
-               this._channel = this._sound.play(0,0,this._transform);
-               if(this._channel == null)
-               {
-                  active = false;
-               }
-               else
-               {
-                  this._channel.addEventListener(Event.SOUND_COMPLETE,this.stopped);
-               }
-            }
-         }
-         else
-         {
-            this._channel = this._sound.play(this._position,0,this._transform);
-            if(this._channel == null)
-            {
-               active = false;
-            }
-         }
-         this.playing = this._channel != null;
-         this._position = 0;
-      }
-      
-      public function pause() : void
-      {
-         if(this._channel == null)
-         {
-            this._position = -1;
-            return;
-         }
-         this._position = this._channel.position;
-         this._channel.stop();
-         if(this._looped)
-         {
-            while(this._position >= this._sound.length)
-            {
-               this._position -= this._sound.length;
-            }
-         }
-         this._channel = null;
-         this.playing = false;
-      }
-      
-      public function stop() : void
-      {
-         this._position = 0;
-         if(this._channel != null)
-         {
-            this._channel.stop();
-            this.stopped();
-         }
-      }
-      
-      public function fadeOut(param1:Number, param2:Boolean = false) : void
-      {
-         this._pauseOnFadeOut = param2;
-         this._fadeInTimer = 0;
-         this._fadeOutTimer = param1;
-         this._fadeOutTotal = this._fadeOutTimer;
-      }
-      
-      public function fadeIn(param1:Number) : void
-      {
-         this._fadeOutTimer = 0;
-         this._fadeInTimer = param1;
-         this._fadeInTotal = this._fadeInTimer;
-         this.play();
-         this.updateSound();
-      }
-      
-      public function get volume() : Number
-      {
-         return this._volume;
-      }
-      
-      public function set volume(param1:Number) : void
-      {
-         this._volume = param1;
-         if(this._volume < 0)
-         {
-            this._volume = 0;
-         }
-         else if(this._volume > 1)
-         {
-            this._volume = 1;
-         }
-         this.updateTransform();
-      }
-      
-      protected function updateSound() : void
-      {
-         var _loc3_:FlxPoint = null;
-         var _loc4_:FlxPoint = null;
-         var _loc5_:Number = NaN;
-         var _loc6_:Number = NaN;
-         var _loc7_:Number = NaN;
-         if(this._position != 0)
-         {
-            return;
-         }
-         var _loc1_:Number = 1;
-         var _loc2_:Number = 1;
-         if(this._core != null)
-         {
-            _loc3_ = new FlxPoint();
-            _loc4_ = new FlxPoint();
-            this._core.getScreenXY(_loc3_);
-            getScreenXY(_loc4_);
-            _loc5_ = _loc3_.x - _loc4_.x;
-            _loc6_ = _loc3_.y - _loc4_.y;
-            _loc1_ = (this._radius - Math.sqrt(_loc5_ * _loc5_ + _loc6_ * _loc6_)) / this._radius;
-            if(_loc1_ < 0)
-            {
-               _loc1_ = 0;
-            }
-            if(_loc1_ > 1)
-            {
-               _loc1_ = 1;
-            }
-            if(this._pan)
-            {
-               _loc7_ = -_loc5_ / this._radius;
-               if(_loc7_ < -1)
-               {
-                  _loc7_ = -1;
-               }
-               else if(_loc7_ > 1)
-               {
-                  _loc7_ = 1;
-               }
-               this._transform.pan = _loc7_;
-            }
-         }
-         if(this._fadeOutTimer > 0)
-         {
-            this._fadeOutTimer -= FlxG.elapsed;
-            if(this._fadeOutTimer <= 0)
-            {
-               if(this._pauseOnFadeOut)
-               {
-                  this.pause();
-               }
-               else
-               {
-                  this.stop();
-               }
-            }
-            _loc2_ = this._fadeOutTimer / this._fadeOutTotal;
-            if(_loc2_ < 0)
-            {
-               _loc2_ = 0;
-            }
-         }
-         else if(this._fadeInTimer > 0)
-         {
-            this._fadeInTimer -= FlxG.elapsed;
-            _loc2_ = this._fadeInTimer / this._fadeInTotal;
-            if(_loc2_ < 0)
-            {
-               _loc2_ = 0;
-            }
-            _loc2_ = 1 - _loc2_;
-         }
-         this._volumeAdjust = _loc1_ * _loc2_;
-         this.updateTransform();
-      }
-      
-      override public function update() : void
-      {
-         super.update();
-         this.updateSound();
-      }
-      
-      override public function destroy() : void
-      {
-         if(active)
-         {
-            this.stop();
-         }
-         if(this._core)
-         {
-            this._core.destroy();
-            this._core = null;
-         }
-         this._point2 = null;
-         super.destroy();
-         this._sound.close();
-         this._sound = null;
-         this._transform = null;
-      }
-      
-      internal function updateTransform() : void
-      {
-         this._transform.volume = FlxG.getMuteValue() * FlxG.volume * this._volume * this._volumeAdjust;
-         if(this._channel != null)
-         {
-            this._channel.soundTransform = this._transform;
-         }
-      }
-      
-      protected function looped(param1:Event = null) : void
-      {
-         if(this._channel == null)
-         {
-            return;
-         }
-         this._channel.removeEventListener(Event.SOUND_COMPLETE,this.looped);
-         this._channel = null;
-         this.play();
-      }
-      
-      protected function stopped(param1:Event = null) : void
-      {
-         if(!this._looped)
-         {
-            this._channel.removeEventListener(Event.SOUND_COMPLETE,this.stopped);
-         }
-         else
-         {
-            this._channel.removeEventListener(Event.SOUND_COMPLETE,this.looped);
-         }
-         this._channel = null;
-         active = false;
-         this.playing = false;
-      }
-      
-      protected function gotID3(param1:Event = null) : void
-      {
-         FlxG.log("got ID3 info!");
-         if(this._sound.id3.songName.length > 0)
-         {
-            this.name = this._sound.id3.songName;
-         }
-         if(this._sound.id3.artist.length > 0)
-         {
-            this.artist = this._sound.id3.artist;
-         }
-         this._sound.removeEventListener(Event.ID3,this.gotID3);
-      }
-   }
-}
+	import flash.events.Event;
+	import flash.media.Sound;
+	import flash.media.SoundChannel;
+	import flash.media.SoundTransform;
+	import flash.net.URLRequest;
+	
+	/**
+	 * This is the universal flixel sound object, used for streaming, music, and sound effects.
+	 */
+	public class FlxSound extends FlxObject
+	{
+		/**
+		 * Whether or not this sound should be automatically destroyed when you switch states.
+		 */
+		public var survive:Boolean;
+		/**
+		 * Whether the sound is currently playing or not.
+		 */
+		public var playing:Boolean;
+		/**
+		 * The ID3 song name.  Defaults to null.  Currently only works for streamed sounds.
+		 */
+		public var name:String;
+		/**
+		 * The ID3 artist name.  Defaults to null.  Currently only works for streamed sounds.
+		 */
+		public var artist:String;
+		
+		protected var _init:Boolean;
+		protected var _sound:Sound;
+		protected var _channel:SoundChannel;
+		protected var _transform:SoundTransform;
+		protected var _position:Number;
+		protected var _volume:Number;
+		protected var _volumeAdjust:Number;
+		protected var _looped:Boolean;
+		protected var _core:FlxObject;
+		protected var _radius:Number;
+		protected var _pan:Boolean;
+		protected var _fadeOutTimer:Number;
+		protected var _fadeOutTotal:Number;
+		protected var _pauseOnFadeOut:Boolean;
+		protected var _fadeInTimer:Number;
+		protected var _fadeInTotal:Number;
+		protected var _point2:FlxPoint;
+		
+		/**
+		 * The FlxSound constructor gets all the variables initialized, but NOT ready to play a sound yet.
+		 */
+		public function FlxSound()
+		{
+			super();
+			_point2 = new FlxPoint();
+			_transform = new SoundTransform();
+			init();
+			fixed = true; //no movement usually
+		}
+		
+		/**
+		 * An internal function for clearing all the variables used by sounds.
+		 */
+		protected function init():void
+		{
+			_transform.pan = 0;
+			_sound = null;
+			_position = 0;
+			_volume = 1.0;
+			_volumeAdjust = 1.0;
+			_looped = false;
+			_core = null;
+			_radius = 0;
+			_pan = false;
+			_fadeOutTimer = 0;
+			_fadeOutTotal = 0;
+			_pauseOnFadeOut = false;
+			_fadeInTimer = 0;
+			_fadeInTotal = 0;
+			active = false;
+			visible = false;
+			solid = false;
+			playing = false;
+			name = null;
+			artist = null;
+		}
+		
+		/**
+		 * One of two main setup functions for sounds, this function loads a sound from an embedded MP3.
+		 * 
+		 * @param	EmbeddedSound	An embedded Class object representing an MP3 file.
+		 * @param	Looped			Whether or not this sound should loop endlessly.
+		 * 
+		 * @return	This <code>FlxSound</code> instance (nice for chaining stuff together, if you're into that).
+		 */
+		public function loadEmbedded(EmbeddedSound:Class, Looped:Boolean=false):FlxSound
+		{
+			stop();
+			init();
+			_sound = new EmbeddedSound();
+			//NOTE: can't pull ID3 info from embedded sound currently
+			_looped = Looped;
+			updateTransform();
+			active = true;
+			return this;
+		}
+		
+		/**
+		 * One of two main setup functions for sounds, this function loads a sound from a URL.
+		 * 
+		 * @param	EmbeddedSound	A string representing the URL of the MP3 file you want to play.
+		 * @param	Looped			Whether or not this sound should loop endlessly.
+		 * 
+		 * @return	This <code>FlxSound</code> instance (nice for chaining stuff together, if you're into that).
+		 */
+		public function loadStream(SoundURL:String, Looped:Boolean=false):FlxSound
+		{
+			stop();
+			init();
+			_sound = new Sound();
+			_sound.addEventListener(Event.ID3, gotID3);
+			_sound.load(new URLRequest(SoundURL));
+			_looped = Looped;
+			updateTransform();
+			active = true;
+			return this;
+		}
+		
+		/**
+		 * Call this function if you want this sound's volume to change
+		 * based on distance from a particular FlxCore object.
+		 * 
+		 * @param	X		The X position of the sound.
+		 * @param	Y		The Y position of the sound.
+		 * @param	Core	The object you want to track.
+		 * @param	Radius	The maximum distance this sound can travel.
+		 * 
+		 * @return	This FlxSound instance (nice for chaining stuff together, if you're into that).
+		 */
+		public function proximity(X:Number,Y:Number,Core:FlxObject,Radius:Number,Pan:Boolean=true):FlxSound
+		{
+			x = X;
+			y = Y;
+			_core = Core;
+			_radius = Radius;
+			_pan = Pan;
+			return this;
+		}
+		
+		/**
+		 * Call this function to play the sound.
+		 */
+		public function play():void
+		{
+			if(_position < 0)
+				return;
+			if(_looped)
+			{
+				if(_position == 0)
+				{
+					if(_channel == null)
+						_channel = _sound.play(0,9999,_transform);
+					if(_channel == null)
+						active = false;
+				}
+				else
+				{
+					_channel = _sound.play(_position,0,_transform);
+					if(_channel == null)
+						active = false;
+					else
+						_channel.addEventListener(Event.SOUND_COMPLETE, looped);
+				}
+			}
+			else
+			{
+				if(_position == 0)
+				{
+					if(_channel == null)
+					{
+						_channel = _sound.play(0,0,_transform);
+						if(_channel == null)
+							active = false;
+						else
+							_channel.addEventListener(Event.SOUND_COMPLETE, stopped);
+					}
+				}
+				else
+				{
+					_channel = _sound.play(_position,0,_transform);
+					if(_channel == null)
+						active = false;
+				}
+			}
+			playing = (_channel != null);
+			_position = 0;
+		}
+		
+		/**
+		 * Call this function to pause this sound.
+		 */
+		public function pause():void
+		{
+			if(_channel == null)
+			{
+				_position = -1;
+				return;
+			}
+			_position = _channel.position;
+			_channel.stop();
+			if(_looped)
+			{
+				while(_position >= _sound.length)
+					_position -= _sound.length;
+			}
+			_channel = null;
+			playing = false;
+		}
+		
+		/**
+		 * Call this function to stop this sound.
+		 */
+		public function stop():void
+		{
+			_position = 0;
+			if(_channel != null)
+			{
+				_channel.stop();
+				stopped();
+			}
+		}
+		
+		/**
+		 * Call this function to make this sound fade out over a certain time interval.
+		 * 
+		 * @param	Seconds			The amount of time the fade out operation should take.
+		 * @param	PauseInstead	Tells the sound to pause on fadeout, instead of stopping.
+		 */
+		public function fadeOut(Seconds:Number,PauseInstead:Boolean=false):void
+		{
+			_pauseOnFadeOut = PauseInstead;
+			_fadeInTimer = 0;
+			_fadeOutTimer = Seconds;
+			_fadeOutTotal = _fadeOutTimer;
+		}
+		
+		/**
+		 * Call this function to make a sound fade in over a certain
+		 * time interval (calls <code>play()</code> automatically).
+		 * 
+		 * @param	Seconds		The amount of time the fade-in operation should take.
+		 */
+		public function fadeIn(Seconds:Number):void
+		{
+			_fadeOutTimer = 0;
+			_fadeInTimer = Seconds;
+			_fadeInTotal = _fadeInTimer;
+			play();
+		}
+		
+		/**
+		 * Set <code>volume</code> to a value between 0 and 1 to change how this sound is.
+		 */
+		public function get volume():Number
+		{
+			return _volume;
+		}
+		
+		/**
+		 * @private
+		 */
+		public function set volume(Volume:Number):void
+		{
+			_volume = Volume;
+			if(_volume < 0)
+				_volume = 0;
+			else if(_volume > 1)
+				_volume = 1;
+			updateTransform();
+		}
+		
+		/**
+		 * Internal function that performs the actual logical updates to the sound object.
+		 * Doesn't do much except optional proximity and fade calculations.
+		 */
+		protected function updateSound():void
+		{
+			if(_position != 0)
+				return;
+			
+			var radial:Number = 1.0;
+			var fade:Number = 1.0;
+			
+			//Distance-based volume control
+			if(_core != null)
+			{
+				var _point:FlxPoint = new FlxPoint();
+				var _point2:FlxPoint = new FlxPoint();
+				_core.getScreenXY(_point);
+				getScreenXY(_point2);
+				var dx:Number = _point.x - _point2.x;
+				var dy:Number = _point.y - _point2.y;
+				radial = (_radius - Math.sqrt(dx*dx + dy*dy))/_radius;
+				if(radial < 0) radial = 0;
+				if(radial > 1) radial = 1;
+				
+				if(_pan)
+				{
+					var d:Number = -dx/_radius;
+					if(d < -1) d = -1;
+					else if(d > 1) d = 1;
+					_transform.pan = d;
+				}
+			}
+			
+			//Cross-fading volume control
+			if(_fadeOutTimer > 0)
+			{
+				_fadeOutTimer -= FlxG.elapsed;
+				if(_fadeOutTimer <= 0)
+				{
+					if(_pauseOnFadeOut)
+						pause();
+					else
+						stop();
+				}
+				fade = _fadeOutTimer/_fadeOutTotal;
+				if(fade < 0) fade = 0;
+			}
+			else if(_fadeInTimer > 0)
+			{
+				_fadeInTimer -= FlxG.elapsed;
+				fade = _fadeInTimer/_fadeInTotal;
+				if(fade < 0) fade = 0;
+				fade = 1 - fade;
+			}
+			
+			_volumeAdjust = radial*fade;
+			updateTransform();
+		}
 
+		/**
+		 * The basic game loop update function.  Just calls <code>updateSound()</code>.
+		 */
+		override public function update():void
+		{
+			super.update();
+			updateSound();			
+		}
+		
+		/**
+		 * The basic class destructor, stops the music and removes any leftover events.
+		 */
+		override public function destroy():void
+		{
+			if(active)
+				stop();
+		}
+		
+		/**
+		 * An internal function used to help organize and change the volume of the sound.
+		 */
+		internal function updateTransform():void
+		{
+			_transform.volume = FlxG.getMuteValue()*FlxG.volume*_volume*_volumeAdjust;
+			if(_channel != null)
+				_channel.soundTransform = _transform;
+		}
+		
+		/**
+		 * An internal helper function used to help Flash resume playing a looped sound.
+		 * 
+		 * @param	event		An <code>Event</code> object.
+		 */
+		protected function looped(event:Event=null):void
+		{
+		    if (_channel == null)
+		    	return;
+	        _channel.removeEventListener(Event.SOUND_COMPLETE,looped);
+	        _channel = null;
+			play();
+		}
+
+		/**
+		 * An internal helper function used to help Flash clean up and re-use finished sounds.
+		 * 
+		 * @param	event		An <code>Event</code> object.
+		 */
+		protected function stopped(event:Event=null):void
+		{
+			if(!_looped)
+	        	_channel.removeEventListener(Event.SOUND_COMPLETE,stopped);
+	        else
+	        	_channel.removeEventListener(Event.SOUND_COMPLETE,looped);
+	        _channel = null;
+	        active = false;
+			playing = false;
+		}
+		
+		/**
+		 * Internal event handler for ID3 info (i.e. fetching the song name).
+		 * 
+		 * @param	event	An <code>Event</code> object.
+		 */
+		protected function gotID3(event:Event=null):void
+		{
+			FlxG.log("got ID3 info!");
+			if(_sound.id3.songName.length > 0)
+				name = _sound.id3.songName;
+			if(_sound.id3.artist.length > 0)
+				artist = _sound.id3.artist;
+			_sound.removeEventListener(Event.ID3, gotID3);
+		}
+	}
+}

@@ -32,38 +32,38 @@ package org.flixel.data
       
       public function update() : void
       {
-         var _loc1_:Object = null;
-         var _loc2_:uint = 0;
-         while(_loc2_ < this._t)
+         var _loc2_:Object = null;
+         var _loc1_:uint = 0;
+         while(_loc1_ < this._t)
          {
-            _loc1_ = this._map[_loc2_++];
-            if(_loc1_ != null)
+            _loc2_ = this._map[_loc1_++];
+            if(_loc2_ != null)
             {
-               if(_loc1_.last == -1 && _loc1_.current == -1)
+               if(_loc2_.last == -1 && _loc2_.current == -1)
                {
-                  _loc1_.current = 0;
+                  _loc2_.current = 0;
                }
-               else if(_loc1_.last == 2 && _loc1_.current == 2)
+               else if(_loc2_.last == 2 && _loc2_.current == 2)
                {
-                  _loc1_.current = 1;
+                  _loc2_.current = 1;
                }
-               _loc1_.last = _loc1_.current;
+               _loc2_.last = _loc2_.current;
             }
          }
       }
       
       public function reset() : void
       {
-         var _loc1_:Object = null;
-         var _loc2_:uint = 0;
-         while(_loc2_ < this._t)
+         var _loc2_:Object = null;
+         var _loc1_:uint = 0;
+         while(_loc1_ < this._t)
          {
-            _loc1_ = this._map[_loc2_++];
-            if(_loc1_ != null)
+            _loc2_ = this._map[_loc1_++];
+            if(_loc2_ != null)
             {
-               this[_loc1_.name] = false;
-               _loc1_.current = 0;
-               _loc1_.last = 0;
+               this[_loc2_.name] = false;
+               _loc2_.current = 0;
+               _loc2_.last = 0;
             }
          }
       }
@@ -85,7 +85,7 @@ package org.flixel.data
       
       public function justPressed(param1:String) : Boolean
       {
-         return Boolean(this._lookup[param1]) && Boolean(this._map[this._lookup[param1]]) && this._map[this._lookup[param1]].current == 2;
+         return this._map[this._lookup[param1]].current == 2;
       }
       
       public function justReleased(param1:String) : Boolean

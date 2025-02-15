@@ -20,9 +20,6 @@ package org.flixel.data
          var _loc1_:uint = 0;
          var _loc2_:uint = 0;
          var _loc3_:FlxSprite = null;
-         _loc1_ = 0;
-         _loc2_ = 0;
-         _loc3_ = null;
          this.ImgKeyMinus = FlxPause_ImgKeyMinus;
          this.ImgKeyPlus = FlxPause_ImgKeyPlus;
          this.ImgKey0 = FlxPause_ImgKey0;

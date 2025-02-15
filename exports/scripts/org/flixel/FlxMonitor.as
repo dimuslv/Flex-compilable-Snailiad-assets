@@ -10,7 +10,6 @@ package org.flixel
       
       public function FlxMonitor(param1:uint, param2:Number = 0)
       {
-         var _loc4_:* = undefined;
          super();
          this._size = param1;
          if(this._size <= 0)
@@ -22,8 +21,8 @@ package org.flixel
          var _loc3_:uint = 0;
          while(_loc3_ < this._size)
          {
-            var _loc5_:*;
-            this._data[_loc5_ = _loc4_ = _loc3_++] = param2;
+            var _loc4_:*;
+            this._data[_loc4_ = _loc3_++] = param2;
          }
       }
       

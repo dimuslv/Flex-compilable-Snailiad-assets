@@ -266,79 +266,14 @@ package org.flixel
          returns QName(PackageNamespace(""),"void")
          
          body
-         maxstack 3
-         localcount 3
+         maxstack 1
+         localcount 1
          initscopedepth 6
          maxscopedepth 7
          
          code
          getlocal0
          pushscope
-         getlocal0
-         pushnull
-         setproperty QName(PackageNamespace(""),"velocity")
-         getlocal0
-         pushnull
-         setproperty QName(PackageNamespace(""),"acceleration")
-         getlocal0
-         pushnull
-         setproperty QName(PackageNamespace(""),"drag")
-         getlocal0
-         pushnull
-         setproperty QName(PackageNamespace(""),"maxVelocity")
-         getlocal0
-         pushnull
-         setproperty QName(PackageNamespace(""),"origin")
-         getlocal0
-         pushnull
-         setproperty QName(PackageNamespace(""),"scrollFactor")
-         getlocal0
-         pushnull
-         setproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_point")
-         getlocal0
-         pushnull
-         setproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_rect")
-         getlocal0
-         pushnull
-         setproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_flashPoint")
-         getlocal0
-         pushnull
-         setproperty QName(PackageNamespace(""),"colHullX")
-         getlocal0
-         pushnull
-         setproperty QName(PackageNamespace(""),"colHullY")
-         getlocal0
-         pushnull
-         setproperty QName(PackageNamespace(""),"colVector")
-         findpropstrict QName(PackageNamespace(""),"int")
-         getlocal0
-         getproperty QName(PackageNamespace(""),"colOffsets")
-         getproperty QName(PackageNamespace(""),"length")
-         callproperty QName(PackageNamespace(""),"int"), 1
-         convert_i
-         setlocal1
-         pushbyte 0
-         setlocal2
-         jump ofs0
-         ofs1:
-         label
-         getlocal0
-         getproperty QName(PackageNamespace(""),"colOffsets")
-         getlocal2
-         pushnull
-         setproperty MultinameL([PrivateNamespace(null,"#FlxObject/1"),StaticProtectedNs("org.flixel:FlxObject"),PackageNamespace("org.flixel"),PackageNamespace(""),ProtectedNamespace("org.flixel:FlxObject"),PackageInternalNs("org.flixel"),PrivateNamespace(null,"#FlxObject/2"),Namespace("http://adobe.com/AS3/2006/builtin"),StaticProtectedNs("org.flixel:FlxRect"),StaticProtectedNs("org.flixel:FlxPoint"),StaticProtectedNs("Object")])
-         inclocal_i 2
-         ofs0:
-         getlocal2
-         getlocal1
-         iflt ofs1
-         getlocal0
-         getproperty QName(PackageNamespace(""),"colOffsets")
-         pushbyte 0
-         setproperty QName(PackageNamespace(""),"length")
-         getlocal0
-         pushnull
-         setproperty QName(PackageNamespace(""),"colOffsets")
          returnvoid
          end ; code
          end ; body
@@ -390,7 +325,7 @@ package org.flixel
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_solid")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_solid")
          returnvoid
          end ; code
          end ; body
@@ -442,7 +377,7 @@ package org.flixel
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_fixed")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_fixed")
          returnvoid
          end ; code
          end ; body
@@ -521,18 +456,16 @@ package org.flixel
          code
          getlocal0
          pushscope
-         getlex QName(PackageNamespace(""),"NaN")
-         convert_d
+         pushnan
          setlocal1
          pushnull
          coerce QName(PackageNamespace("org.flixel"),"FlxPoint")
          setlocal2
          pushnull
          coerce QName(PackageNamespace("org.flixel"),"FlxPoint")
-         setlocal3
-         getlex QName(PackageNamespace(""),"NaN")
-         convert_d
-         setlocal 4
+         setlocal 5
+         pushnan
+         setlocal 6
          getlocal0
          getproperty QName(PackageNamespace(""),"moves")
          iftrue ofs0
@@ -546,7 +479,7 @@ package org.flixel
          ofs1:
          getlocal0
          pushfalse
-         setproperty QName(PackageNamespace(""),"onFloor")
+         initproperty QName(PackageNamespace(""),"onFloor")
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
          getlocal0
          getproperty QName(PackageNamespace(""),"angularVelocity")
@@ -569,7 +502,7 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"angularVelocity")
          getlocal1
          add
-         setproperty QName(PackageNamespace(""),"angularVelocity")
+         initproperty QName(PackageNamespace(""),"angularVelocity")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"angle")
@@ -579,13 +512,13 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"elapsed")
          multiply
          add
-         setproperty QName(PackageNamespace(""),"angle")
+         initproperty QName(PackageNamespace(""),"angle")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"angularVelocity")
          getlocal1
          add
-         setproperty QName(PackageNamespace(""),"angularVelocity")
+         initproperty QName(PackageNamespace(""),"angularVelocity")
          getlocal0
          getproperty QName(PackageNamespace(""),"thrust")
          pushbyte 0
@@ -613,77 +546,73 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"angle")
          callproperty QName(PackageNamespace(""),"rotatePoint"), 5
          coerce QName(PackageNamespace("org.flixel"),"FlxPoint")
-         setlocal3
-         getlocal3
+         dup
+         setlocal 5
          getproperty QName(PackageNamespace(""),"x")
          pushbyte 0
-         greaterthan
-         iffalse ofs3
-         getlocal3
+         ifngt ofs3
+         getlocal 5
          getproperty QName(PackageNamespace(""),"x")
          convert_d
          jump ofs4
          ofs3:
-         getlocal3
+         getlocal 5
          getproperty QName(PackageNamespace(""),"x")
          negate
          convert_d
          ofs4:
          convert_d
          dup
-         setlocal 4
-         getlocal3
+         setlocal 6
+         getlocal 5
          getproperty QName(PackageNamespace(""),"y")
          pushbyte 0
-         greaterthan
-         iffalse ofs5
-         getlocal3
+         ifngt ofs5
+         getlocal 5
          getproperty QName(PackageNamespace(""),"y")
          coerce_a
          jump ofs6
          ofs5:
-         getlocal3
+         getlocal 5
          getproperty QName(PackageNamespace(""),"y")
          negate
          coerce_a
          ofs6:
          ifngt ofs7
-         getlocal3
-         getlocal 4
+         getlocal 5
+         getlocal 6
          setproperty QName(PackageNamespace(""),"y")
          jump ofs8
          ofs7:
-         getlocal3
+         getlocal 5
          getproperty QName(PackageNamespace(""),"y")
          pushbyte 0
-         greaterthan
-         iffalse ofs9
-         getlocal3
+         ifngt ofs9
+         getlocal 5
          getproperty QName(PackageNamespace(""),"y")
          convert_d
          jump ofs10
          ofs9:
-         getlocal3
+         getlocal 5
          getproperty QName(PackageNamespace(""),"y")
          negate
          convert_d
          ofs10:
          convert_d
-         setlocal 4
+         setlocal 6
          ofs8:
          getlocal0
          getproperty QName(PackageNamespace(""),"maxVelocity")
          getlocal0
          getproperty QName(PackageNamespace(""),"maxVelocity")
-         getlocal 4
+         getlocal 6
          pushbyte 0
-         greaterthan
-         iffalse ofs11
-         getlocal 4
+         ifngt ofs11
+         getlocal 6
          convert_d
          jump ofs12
          ofs11:
-         getlocal 4
+         getlocal 6
          negate
          convert_d
          ofs12:
@@ -739,7 +668,7 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"elapsed")
          multiply
          convert_d
-         setlocal 5
+         setlocal3
          getlocal0
          getproperty QName(PackageNamespace(""),"velocity")
          getlocal0
@@ -788,7 +717,7 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"elapsed")
          multiply
          convert_d
-         setlocal 6
+         setlocal 4
          getlocal0
          getproperty QName(PackageNamespace(""),"velocity")
          getlocal0
@@ -799,12 +728,12 @@ package org.flixel
          setproperty QName(PackageNamespace(""),"y")
          findproperty QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace(""),"x")
-         getlocal 5
+         getlocal3
          add
          initproperty QName(PackageNamespace(""),"x")
          findproperty QName(PackageNamespace(""),"y")
          getlex QName(PackageNamespace(""),"y")
-         getlocal 6
+         getlocal 4
          add
          initproperty QName(PackageNamespace(""),"y")
          getlocal0
@@ -814,11 +743,11 @@ package org.flixel
          ofs14:
          getlocal0
          getproperty QName(PackageNamespace(""),"colVector")
-         getlocal 5
+         getlocal3
          setproperty QName(PackageNamespace(""),"x")
          getlocal0
          getproperty QName(PackageNamespace(""),"colVector")
-         getlocal 6
+         getlocal 4
          setproperty QName(PackageNamespace(""),"y")
          getlocal0
          getproperty QName(PackageNamespace(""),"colHullX")
@@ -829,8 +758,7 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"colVector")
          getproperty QName(PackageNamespace(""),"x")
          pushbyte 0
-         greaterthan
-         iffalse ofs15
+         ifngt ofs15
          getlocal0
          getproperty QName(PackageNamespace(""),"colVector")
          getproperty QName(PackageNamespace(""),"x")
@@ -874,8 +802,7 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"colVector")
          getproperty QName(PackageNamespace(""),"y")
          pushbyte 0
-         greaterthan
-         iffalse ofs18
+         ifngt ofs18
          getlocal0
          getproperty QName(PackageNamespace(""),"colVector")
          getproperty QName(PackageNamespace(""),"y")
@@ -942,14 +869,14 @@ package org.flixel
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_flickerTimer")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_flickerTimer")
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_flickerTimer")
          pushbyte 0
          ifne ofs1
          getlocal0
          pushbyte -1
-         setproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_flickerTimer")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_flickerTimer")
          ofs1:
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_flickerTimer")
@@ -964,12 +891,12 @@ package org.flixel
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_flicker")
          not
-         setproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_flicker")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_flicker")
          getlocal0
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_flicker")
          not
-         setproperty QName(PackageNamespace(""),"visible")
+         initproperty QName(PackageNamespace(""),"visible")
          ofs0:
          returnvoid
          end ; code
@@ -1231,8 +1158,7 @@ package org.flixel
          getlocal0
          getlocal1
          pushnull
-         equals
-         iffalse ofs0
+         ifne ofs0
          getlocal0
          coerce QName(PackageNamespace("org.flixel"),"FlxObject")
          jump ofs1
@@ -1468,7 +1394,7 @@ package org.flixel
          pushscope
          getlocal0
          pushtrue
-         setproperty QName(PackageNamespace(""),"onFloor")
+         initproperty QName(PackageNamespace(""),"onFloor")
          getlocal0
          getproperty QName(PackageNamespace(""),"fixed")
          not
@@ -1532,7 +1458,7 @@ package org.flixel
          getproperty QName(PackageNamespace(""),"health")
          getlocal1
          subtract
-         setproperty QName(PackageNamespace(""),"health")
+         initproperty QName(PackageNamespace(""),"health")
          getlocal0
          getproperty QName(PackageNamespace(""),"health")
          pushbyte 0
@@ -1565,10 +1491,10 @@ package org.flixel
          pushscope
          getlocal0
          pushfalse
-         setproperty QName(PackageNamespace(""),"exists")
+         initproperty QName(PackageNamespace(""),"exists")
          getlocal0
          pushtrue
-         setproperty QName(PackageNamespace(""),"dead")
+         initproperty QName(PackageNamespace(""),"dead")
          returnvoid
          end ; code
          end ; body
@@ -1597,17 +1523,17 @@ package org.flixel
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_flickerTimer")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_flickerTimer")
          getlocal0
          getproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_flickerTimer")
          pushbyte 0
          ifnlt ofs0
          getlocal0
          pushfalse
-         setproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_flicker")
+         initproperty QName(ProtectedNamespace("org.flixel:FlxObject"),"_flicker")
          getlocal0
          pushtrue
-         setproperty QName(PackageNamespace(""),"visible")
+         initproperty QName(PackageNamespace(""),"visible")
          ofs0:
          returnvoid
          end ; code
@@ -1810,10 +1736,10 @@ package org.flixel
          initproperty QName(PackageNamespace(""),"y")
          getlocal0
          pushtrue
-         setproperty QName(PackageNamespace(""),"exists")
+         initproperty QName(PackageNamespace(""),"exists")
          getlocal0
          pushfalse
-         setproperty QName(PackageNamespace(""),"dead")
+         initproperty QName(PackageNamespace(""),"dead")
          returnvoid
          end ; code
          end ; body
@@ -1848,6 +1774,7 @@ package org.flixel
          ofs1:
          pushint 2147418130
          returnvalue
+         jump ofs0
          ofs0:
          pushint 2130743529
          returnvalue

@@ -84,6 +84,12 @@ package org.flixel
       
       public static var fade:FlxFade;
       
+      public static var LIBRARY_NAME:String = "flixel";
+      
+      public static var LIBRARY_MAJOR_VERSION:uint = 2;
+      
+      public static var LIBRARY_MINOR_VERSION:uint = 43;
+      
       public static var noPause:Boolean = false;
       
       public static var cheated:Boolean = false;
@@ -200,7 +206,7 @@ package org.flixel
          music.play();
       }
       
-      public static function play(param1:Class, param2:Number = 0.75, param3:Boolean = false) : FlxSound
+      public static function play(param1:Class, param2:Number = 1, param3:Boolean = false) : FlxSound
       {
          var _loc4_:uint = 0;
          var _loc5_:uint = sounds.length;
@@ -310,7 +316,7 @@ package org.flixel
       
       internal static function destroySounds(param1:Boolean = false) : void
       {
-         var _loc2_:FlxSound = null;
+         var _loc3_:FlxSound = null;
          if(sounds == null)
          {
             return;
@@ -319,86 +325,90 @@ package org.flixel
          {
             music.destroy();
          }
-         var _loc3_:uint = 0;
+         var _loc2_:uint = 0;
          var _loc4_:uint = sounds.length;
-         while(_loc3_ < _loc4_)
+         while(_loc2_ < _loc4_)
          {
-            _loc2_ = sounds[_loc3_++] as FlxSound;
-            if(_loc2_ != null && (param1 || !_loc2_.survive))
+            _loc3_ = sounds[_loc2_++] as FlxSound;
+            if(_loc3_ != null && (param1 || !_loc3_.survive))
             {
-               _loc2_.destroy();
+               _loc3_.destroy();
             }
          }
       }
       
       protected static function changeSounds() : void
       {
-         var _loc1_:FlxSound = null;
+         var _loc2_:FlxSound = null;
          if(music != null && music.active)
          {
             music.updateTransform();
          }
-         var _loc2_:uint = 0;
+         var _loc1_:uint = 0;
          var _loc3_:uint = sounds.length;
-         while(_loc2_ < _loc3_)
+         while(_loc1_ < _loc3_)
          {
-            _loc1_ = sounds[_loc2_++] as FlxSound;
-            if(_loc1_ != null && _loc1_.active)
+            _loc2_ = sounds[_loc1_++] as FlxSound;
+            if(_loc2_ != null && _loc2_.active)
             {
-               _loc1_.updateTransform();
+               _loc2_.updateTransform();
             }
          }
       }
       
       internal static function updateSounds() : void
       {
-         var _loc1_:FlxSound = null;
+         var _loc2_:FlxSound = null;
          if(music != null && music.active)
          {
             music.update();
          }
-         var _loc2_:uint = 0;
+         var _loc1_:uint = 0;
          var _loc3_:uint = sounds.length;
-         while(_loc2_ < _loc3_)
+         while(_loc1_ < _loc3_)
          {
-            _loc1_ = sounds[_loc2_++] as FlxSound;
-            if(_loc1_ != null && _loc1_.active)
+            _loc2_ = sounds[_loc1_++] as FlxSound;
+            if(_loc2_ != null && _loc2_.active)
             {
-               _loc1_.update();
+               _loc2_.update();
             }
          }
       }
       
       protected static function pauseSounds() : void
       {
-         var _loc1_:FlxSound = null;
-         var _loc2_:uint = 0;
-         var _loc3_:uint = sounds.length;
-         while(_loc2_ < _loc3_)
+         var _loc2_:FlxSound = null;
+         if(music != null && music.active)
          {
-            _loc1_ = sounds[_loc2_++] as FlxSound;
-            if(_loc1_ != null && _loc1_.active)
+            music.pause();
+         }
+         var _loc1_:uint = 0;
+         var _loc3_:uint = sounds.length;
+         while(_loc1_ < _loc3_)
+         {
+            _loc2_ = sounds[_loc1_++] as FlxSound;
+            if(_loc2_ != null && _loc2_.active)
             {
-               _loc1_.pause();
+               _loc2_.pause();
             }
          }
       }
       
       protected static function playSounds() : void
       {
-         var _loc1_:FlxSound = null;
+         var _loc2_:FlxSound = null;
          if(music != null && music.active)
          {
             music.play();
          }
-         var _loc2_:uint = 0;
+         var _loc1_:uint = 0;
          var _loc3_:uint = sounds.length;
-         while(_loc2_ < _loc3_)
+         while(_loc1_ < _loc3_)
          {
-            _loc1_ = sounds[_loc2_++] as FlxSound;
-            if(_loc1_ != null && _loc1_.active)
+            _loc2_ = sounds[_loc1_++] as FlxSound;
+            if(_loc2_ != null && _loc2_.active)
             {
-               _loc1_.play();
+               _loc2_.play();
             }
          }
       }
@@ -410,102 +420,78 @@ package org.flixel
       
       public static function createBitmap(param1:uint, param2:uint, param3:uint, param4:Boolean = false, param5:String = null) : BitmapData
       {
-         var _loc6_:uint = 0;
-         var _loc7_:String = null;
-         var _loc8_:String = param5;
-         if(_loc8_ == null)
+         var _loc7_:uint = 0;
+         var _loc8_:String = null;
+         var _loc6_:String = param5;
+         if(_loc6_ == null)
          {
-            _loc8_ = param1 + "x" + param2 + ":" + param3;
-            if(param4 && _cache[_loc8_] != undefined && _cache[_loc8_] != null)
+            _loc6_ = param1 + "x" + param2 + ":" + param3;
+            if(param4 && _cache[_loc6_] != undefined && _cache[_loc6_] != null)
             {
-               _loc6_ = 0;
+               _loc7_ = 0;
                do
                {
-                  _loc7_ = _loc8_ + _loc6_++;
+                  _loc8_ = _loc6_ + _loc7_++;
                }
-               while(_cache[_loc7_] != undefined && _cache[_loc7_] != null);
+               while(_cache[_loc8_] != undefined && _cache[_loc8_] != null);
                
-               _loc8_ = _loc7_;
+               _loc6_ = _loc8_;
             }
          }
-         if(!checkBitmapCache(_loc8_))
+         if(!checkBitmapCache(_loc6_))
          {
-            _cache[_loc8_] = new BitmapData(param1,param2,true,param3);
+            _cache[_loc6_] = new BitmapData(param1,param2,true,param3);
          }
-         return _cache[_loc8_];
+         return _cache[_loc6_];
       }
       
       public static function addBitmap(param1:Class, param2:Boolean = false, param3:Boolean = false, param4:String = null) : BitmapData
       {
-         var _loc5_:BitmapData = null;
-         var _loc6_:uint = 0;
-         var _loc7_:String = null;
-         var _loc8_:BitmapData = null;
-         var _loc9_:Matrix = null;
-         var _loc10_:Boolean = false;
-         var _loc11_:String = param4;
-         if(_loc11_ == null)
+         var _loc8_:uint = 0;
+         var _loc9_:String = null;
+         var _loc10_:BitmapData = null;
+         var _loc11_:Matrix = null;
+         var _loc5_:Boolean = false;
+         var _loc6_:String = param4;
+         if(_loc6_ == null)
          {
-            _loc11_ = String(param1);
-            if(_loc11_ == "[class SixMap3_Imgplayer]")
+            _loc6_ = String(param1);
+            if(param3 && _cache[_loc6_] != undefined && _cache[_loc6_] != null)
             {
-            }
-            if(param3 && _cache[_loc11_] != undefined && _cache[_loc11_] != null)
-            {
-               _loc6_ = 0;
+               _loc8_ = 0;
                do
                {
-                  _loc7_ = _loc11_ + _loc6_++;
+                  _loc9_ = _loc6_ + _loc8_++;
                }
-               while(_cache[_loc7_] != undefined && _cache[_loc7_] != null);
+               while(_cache[_loc9_] != undefined && _cache[_loc9_] != null);
                
-               _loc11_ = _loc7_;
+               _loc6_ = _loc9_;
             }
          }
-         var _loc12_:Boolean = false;
-         if(!checkBitmapCache(_loc11_))
+         if(!checkBitmapCache(_loc6_))
          {
-            _cache[_loc11_] = new param1().bitmapData;
+            _cache[_loc6_] = new param1().bitmapData;
             if(param2)
             {
-               _loc10_ = true;
+               _loc5_ = true;
             }
          }
-         else
+         var _loc7_:BitmapData = _cache[_loc6_];
+         if(!_loc5_ && param2 && _loc7_.width == new param1().bitmapData.width)
          {
-            _loc12_ = true;
+            _loc5_ = true;
          }
-         if(!_loc12_ || !param2)
+         if(_loc5_)
          {
-            _loc5_ = _cache[_loc11_];
+            _loc10_ = new BitmapData(_loc7_.width << 1,_loc7_.height,true,0);
+            _loc10_.draw(_loc7_);
+            _loc11_ = new Matrix();
+            _loc11_.scale(-1,1);
+            _loc11_.translate(_loc10_.width,0);
+            _loc10_.draw(_loc7_,_loc11_);
+            _loc7_ = _loc10_;
          }
-         if(_loc12_ && param2)
-         {
-            _loc10_ = true;
-         }
-         else if(!_loc10_ && param2 && _loc5_.width == new param1().bitmapData.width)
-         {
-            _loc10_ = true;
-         }
-         if(_loc10_)
-         {
-            if(!_loc12_)
-            {
-               _loc8_ = new BitmapData(_loc5_.width << 1,_loc5_.height,true,0);
-               _loc8_.draw(_loc5_);
-               _loc9_ = new Matrix();
-               _loc9_.scale(-1,1);
-               _loc9_.translate(_loc8_.width,0);
-               _loc8_.draw(_loc5_,_loc9_);
-               _loc5_ = _loc8_;
-               _cacheReverse[_loc11_] = _loc8_;
-            }
-            else
-            {
-               _loc5_ = _cacheReverse[_loc11_];
-            }
-         }
-         return _loc5_;
+         return _loc7_;
       }
       
       public static function follow(param1:FlxObject, param2:Number = 1, param3:Boolean = true) : void

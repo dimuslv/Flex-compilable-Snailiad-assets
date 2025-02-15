@@ -297,91 +297,91 @@ package org.flixel
       
       public function overlap(param1:Boolean = true, param2:Function = null) : Boolean
       {
-         var _loc3_:FlxList = null;
+         var _loc4_:FlxList = null;
          _oc = param2;
-         var _loc4_:Boolean = false;
+         var _loc3_:Boolean = false;
          if(param1)
          {
             _oa = B_LIST;
             if(this._headA.object != null)
             {
-               _loc3_ = this._headA;
-               while(_loc3_ != null)
+               _loc4_ = this._headA;
+               while(_loc4_ != null)
                {
-                  _o = _loc3_.object;
+                  _o = _loc4_.object;
                   if(_o.exists && _o.solid && this.overlapNode())
                   {
-                     _loc4_ = true;
+                     _loc3_ = true;
                   }
-                  _loc3_ = _loc3_.next;
+                  _loc4_ = _loc4_.next;
                }
             }
             _oa = A_LIST;
             if(this._headB.object != null)
             {
-               _loc3_ = this._headB;
-               while(_loc3_ != null)
+               _loc4_ = this._headB;
+               while(_loc4_ != null)
                {
-                  _o = _loc3_.object;
+                  _o = _loc4_.object;
                   if(_o.exists && _o.solid)
                   {
                      if(this._nw != null && this._nw.overlapNode())
                      {
-                        _loc4_ = true;
+                        _loc3_ = true;
                      }
                      if(this._ne != null && this._ne.overlapNode())
                      {
-                        _loc4_ = true;
+                        _loc3_ = true;
                      }
                      if(this._se != null && this._se.overlapNode())
                      {
-                        _loc4_ = true;
+                        _loc3_ = true;
                      }
                      if(this._sw != null && this._sw.overlapNode())
                      {
-                        _loc4_ = true;
+                        _loc3_ = true;
                      }
                   }
-                  _loc3_ = _loc3_.next;
+                  _loc4_ = _loc4_.next;
                }
             }
          }
          else if(this._headA.object != null)
          {
-            _loc3_ = this._headA;
-            while(_loc3_ != null)
+            _loc4_ = this._headA;
+            while(_loc4_ != null)
             {
-               _o = _loc3_.object;
-               if(_o.exists && _o.solid && this.overlapNode(_loc3_.next))
+               _o = _loc4_.object;
+               if(_o.exists && _o.solid && this.overlapNode(_loc4_.next))
                {
-                  _loc4_ = true;
+                  _loc3_ = true;
                }
-               _loc3_ = _loc3_.next;
+               _loc4_ = _loc4_.next;
             }
          }
          if(this._nw != null && this._nw.overlap(param1,_oc))
          {
-            _loc4_ = true;
+            _loc3_ = true;
          }
          if(this._ne != null && this._ne.overlap(param1,_oc))
          {
-            _loc4_ = true;
+            _loc3_ = true;
          }
          if(this._se != null && this._se.overlap(param1,_oc))
          {
-            _loc4_ = true;
+            _loc3_ = true;
          }
          if(this._sw != null && this._sw.overlap(param1,_oc))
          {
-            _loc4_ = true;
+            _loc3_ = true;
          }
-         return _loc4_;
+         return _loc3_;
       }
       
       protected function overlapNode(param1:FlxList = null) : Boolean
       {
-         var _loc2_:FlxObject = null;
-         var _loc3_:Boolean = false;
+         var _loc3_:FlxObject = null;
+         var _loc2_:Boolean = false;
          var _loc4_:FlxList = param1;
          if(_loc4_ == null)
          {
@@ -398,8 +398,8 @@ package org.flixel
          {
             while(_loc4_ != null)
             {
-               _loc2_ = _loc4_.object;
-               if(_o === _loc2_ || !_loc2_.exists || !_o.exists || !_loc2_.solid || !_o.solid || _o.x + _o.width < _loc2_.x + FlxU.roundingError || _o.x + FlxU.roundingError > _loc2_.x + _loc2_.width || _o.y + _o.height < _loc2_.y + FlxU.roundingError || _o.y + FlxU.roundingError > _loc2_.y + _loc2_.height)
+               _loc3_ = _loc4_.object;
+               if(_o === _loc3_ || !_loc3_.exists || !_o.exists || !_loc3_.solid || !_o.solid || _o.x + _o.width < _loc3_.x + FlxU.roundingError || _o.x + FlxU.roundingError > _loc3_.x + _loc3_.width || _o.y + _o.height < _loc3_.y + FlxU.roundingError || _o.y + FlxU.roundingError > _loc3_.y + _loc3_.height)
                {
                   _loc4_ = _loc4_.next;
                }
@@ -408,18 +408,18 @@ package org.flixel
                   if(_oc == null)
                   {
                      _o.kill();
-                     _loc2_.kill();
-                     _loc3_ = true;
+                     _loc3_.kill();
+                     _loc2_ = true;
                   }
-                  else if(_oc(_o,_loc2_))
+                  else if(_oc(_o,_loc3_))
                   {
-                     _loc3_ = true;
+                     _loc2_ = true;
                   }
                   _loc4_ = _loc4_.next;
                }
             }
          }
-         return _loc3_;
+         return _loc2_;
       }
    }
 }

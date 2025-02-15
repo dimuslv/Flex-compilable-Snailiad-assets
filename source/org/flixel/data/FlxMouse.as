@@ -1,196 +1,255 @@
 package org.flixel.data
 {
-   import flash.events.MouseEvent;
-   import org.flixel.FlxSprite;
-   import org.flixel.FlxU;
-   
-   public class FlxMouse
-   {
-      protected var ImgDefaultCursor:Class;
-      
-      public var _justMoved:Boolean;
-      
-      public var x:int;
-      
-      public var y:int;
-      
-      public var wheel:int;
-      
-      public var screenX:int;
-      
-      public var screenY:int;
-      
-      public var cursor:FlxSprite;
-      
-      protected var _current:int;
-      
-      protected var _last:int;
-      
-      protected var _out:Boolean;
-      
-      public function FlxMouse()
-      {
-         this.ImgDefaultCursor = FlxMouse_ImgDefaultCursor;
-         super();
-         this.x = 0;
-         this.y = 0;
-         this.screenX = 0;
-         this.screenY = 0;
-         this._current = 0;
-         this._last = 0;
-         this.cursor = null;
-         this._out = false;
-      }
-      
-      public function show(param1:Class = null, param2:int = 0, param3:int = 0) : void
-      {
-         this._out = true;
-         if(param1 != null)
-         {
-            this.load(param1,param2,param3);
-         }
-         else if(this.cursor != null)
-         {
-            this.cursor.visible = true;
-         }
-         else
-         {
-            this.load(null);
-         }
-      }
-      
-      public function hide() : void
-      {
-         if(this.cursor != null)
-         {
-            this.cursor.visible = false;
-            this._out = false;
-         }
-      }
-      
-      public function load(param1:Class, param2:int = 0, param3:int = 0) : void
-      {
-         if(param1 == null)
-         {
-            param1 = this.ImgDefaultCursor;
-         }
-         this.cursor = new FlxSprite(this.screenX,this.screenY,param1);
-         this.cursor.solid = false;
-         this.cursor.offset.x = param2;
-         this.cursor.offset.y = param3;
-      }
-      
-      public function unload() : void
-      {
-         if(this.cursor != null)
-         {
-            if(this.cursor.visible)
-            {
-               this.load(null);
-            }
-            else
-            {
-               this.cursor = null;
-            }
-         }
-      }
-      
-      public function update(param1:int, param2:int, param3:Number, param4:Number) : void
-      {
-         var _loc5_:int = this.screenX;
-         var _loc6_:int = this.screenY;
-         this.screenX = param1;
-         this.screenY = param2;
-         this.x = this.screenX - FlxU.floor(param3);
-         this.y = this.screenY - FlxU.floor(param4);
-         if(this.cursor != null)
-         {
-            this.cursor.x = this.x;
-            this.cursor.y = this.y;
-         }
-         if(this._last == -1 && this._current == -1)
-         {
-            this._current = 0;
-         }
-         else if(this._last == 2 && this._current == 2)
-         {
-            this._current = 1;
-         }
-         this._last = this._current;
-         this._justMoved = _loc5_ != this.screenX || _loc6_ != this.screenY;
-      }
-      
-      public function get justMoved() : Boolean
-      {
-         return this._justMoved;
-      }
-      
-      public function reset() : void
-      {
-         this._current = 0;
-         this._last = 0;
-      }
-      
-      public function pressed() : Boolean
-      {
-         return this._current > 0;
-      }
-      
-      public function justPressed() : Boolean
-      {
-         return this._current == 2;
-      }
-      
-      public function justReleased() : Boolean
-      {
-         return this._current == -1;
-      }
-      
-      public function handleMouseDown(param1:MouseEvent) : void
-      {
-         if(this._current > 0)
-         {
-            this._current = 1;
-         }
-         else
-         {
-            this._current = 2;
-         }
-      }
-      
-      public function handleMouseUp(param1:MouseEvent) : void
-      {
-         if(this._current > 0)
-         {
-            this._current = -1;
-         }
-         else
-         {
-            this._current = 0;
-         }
-      }
-      
-      public function handleMouseOut(param1:MouseEvent) : void
-      {
-         if(this.cursor != null)
-         {
-            this._out = this.cursor.visible;
-            this.cursor.visible = false;
-         }
-      }
-      
-      public function handleMouseOver(param1:MouseEvent) : void
-      {
-         if(this.cursor != null)
-         {
-            this.cursor.visible = this._out;
-         }
-      }
-      
-      public function handleMouseWheel(param1:MouseEvent) : void
-      {
-         this.wheel = param1.delta;
-      }
-   }
-}
+	import flash.events.MouseEvent;
+	
+	import org.flixel.FlxPoint;
+	import org.flixel.FlxSprite;
+	import org.flixel.FlxU;
+	
+	/**
+	 * This class helps contain and track the mouse pointer in your game.
+	 * Automatically accounts for parallax scrolling, etc.
+	 */
+	public class FlxMouse
+	{
+		[Embed(source="cursor.png")] protected var ImgDefaultCursor:Class;
+		
+		public var _justMoved:Boolean;
+		
+		/**
+		 * Current X position of the mouse pointer in the game world.
+		 */
+		public var x:int;
+		/**
+		 * Current Y position of the mouse pointer in the game world.
+		 */
+		public var y:int;
+		/**
+		 * Current "delta" value of mouse wheel.  If the wheel was just scrolled up, it will have a positive value.  If it was just scrolled down, it will have a negative value.  If it wasn't just scroll this frame, it will be 0.
+		 */
+		public var wheel:int;
+		/**
+		 * Current X position of the mouse pointer on the screen.
+		 */
+		public var screenX:int;
+		/**
+		 * Current Y position of the mouse pointer on the screen.
+		 */
+		public var screenY:int;
+		/**
+		 * Graphical representation of the mouse pointer.
+		 */
+		public var cursor:FlxSprite;
+		/**
+		 * Helper variable for tracking whether the mouse was just pressed or just released.
+		 */
+		protected var _current:int;
+		/**
+		 * Helper variable for tracking whether the mouse was just pressed or just released.
+		 */
+		protected var _last:int;
+		/**
+		 * Helper for mouse visibility.
+		 */
+		protected var _out:Boolean;
+		
+		/**
+		 * Constructor.
+		 */
+		public function FlxMouse()
+		{
+			x = 0;
+			y = 0;
+			screenX = 0;
+			screenY = 0;
+			_current = 0;
+			_last = 0;
+			cursor = null;
+			_out = false;
+		}
+		
+		/**
+		 * Either show an existing cursor or load a new one.
+		 * 
+		 * @param	Graphic		The image you want to use for the cursor.
+		 * @param	XOffset		The number of pixels between the mouse's screen position and the graphic's top left corner.
+		 * * @param	YOffset		The number of pixels between the mouse's screen position and the graphic's top left corner. 
+		 */
+		public function show(Graphic:Class=null,XOffset:int=0,YOffset:int=0):void
+		{
+			_out = true;
+			if(Graphic != null)
+				load(Graphic,XOffset,YOffset);
+			else if(cursor != null)
+				cursor.visible = true;
+			else
+				load(null);
+		}
+		
+		/**
+		 * Hides the mouse cursor
+		 */
+		public function hide():void
+		{
+			if(cursor != null)
+			{
+				cursor.visible = false;
+				_out = false;
+			}
+		}
+		
+		/**
+		 * Load a new mouse cursor graphic
+		 * 
+		 * @param	Graphic		The image you want to use for the cursor.
+		 * @param	XOffset		The number of pixels between the mouse's screen position and the graphic's top left corner.
+		 * * @param	YOffset		The number of pixels between the mouse's screen position and the graphic's top left corner. 
+		 */
+		public function load(Graphic:Class,XOffset:int=0,YOffset:int=0):void
+		{
+			if(Graphic == null)
+				Graphic = ImgDefaultCursor;
+			cursor = new FlxSprite(screenX,screenY,Graphic);
+			cursor.solid = false;
+			cursor.offset.x = XOffset;
+			cursor.offset.y = YOffset;
+		}
+		
+		/**
+		 * Unload the current cursor graphic.  If the current cursor is visible,
+		 * then the default system cursor is loaded up to replace the old one.
+		 */
+		public function unload():void
+		{
+			if(cursor != null)
+			{
+				if(cursor.visible)
+					load(null);
+				else
+					cursor = null;
+			}
+		}
 
+		/**
+		 * Called by the internal game loop to update the mouse pointer's position in the game world.
+		 * Also updates the just pressed/just released flags.
+		 * 
+		 * @param	X			The current X position of the mouse in the window.
+		 * @param	Y			The current Y position of the mouse in the window.
+		 * @param	XScroll		The amount the game world has scrolled horizontally.
+		 * @param	YScroll		The amount the game world has scrolled vertically.
+		 */
+		public function update(X:int,Y:int,XScroll:Number,YScroll:Number):void
+		{
+			var _loc5_:int = screenX;
+			var _loc6_:int = screenY;
+			screenX = X;
+			screenY = Y;
+			x = screenX-FlxU.floor(XScroll);
+			y = screenY-FlxU.floor(YScroll);
+			if(cursor != null)
+			{
+				cursor.x = x;
+				cursor.y = y;
+			}
+			if((_last == -1) && (_current == -1))
+				_current = 0;
+			else if((_last == 2) && (_current == 2))
+				_current = 1;
+			_last = _current;
+			_justMoved = _loc5_ != screenX || _loc6_ != screenY;
+		}
+		
+		public function get justMoved() : Boolean
+		{
+			return _justMoved;
+		}
+		
+		/**
+		 * Resets the just pressed/just released flags and sets mouse to not pressed.
+		 */
+		public function reset():void
+		{
+			_current = 0;
+			_last = 0;
+		}
+		
+		/**
+		 * Check to see if the mouse is pressed.
+		 * 
+		 * @return	Whether the mouse is pressed.
+		 */
+		public function pressed():Boolean { return _current > 0; }
+		
+		/**
+		 * Check to see if the mouse was just pressed.
+		 * 
+		 * @return Whether the mouse was just pressed.
+		 */
+		public function justPressed():Boolean { return _current == 2; }
+		
+		/**
+		 * Check to see if the mouse was just released.
+		 * 
+		 * @return	Whether the mouse was just released.
+		 */
+		public function justReleased():Boolean { return _current == -1; }
+		
+		/**
+		 * Event handler so FlxGame can update the mouse.
+		 * 
+		 * @param	event	A <code>MouseEvent</code> object.
+		 */
+		public function handleMouseDown(event:MouseEvent):void
+		{
+			if(_current > 0) _current = 1;
+			else _current = 2;
+		}
+		
+		/**
+		 * Event handler so FlxGame can update the mouse.
+		 * 
+		 * @param	event	A <code>MouseEvent</code> object.
+		 */
+		public function handleMouseUp(event:MouseEvent):void
+		{
+			if(_current > 0) _current = -1;
+			else _current = 0;
+		}
+		
+		/**
+		 * Event handler so FlxGame can update the mouse.
+		 * 
+		 * @param	event	A <code>MouseEvent</code> object.
+		 */
+		public function handleMouseOut(event:MouseEvent):void
+		{
+			if(cursor != null)
+			{
+				_out = cursor.visible;
+				cursor.visible = false;
+			}
+		}
+		
+		/**
+		 * Event handler so FlxGame can update the mouse.
+		 * 
+		 * @param	event	A <code>MouseEvent</code> object.
+		 */
+		public function handleMouseOver(event:MouseEvent):void
+		{
+			if(cursor != null)
+				cursor.visible = _out;
+		}
+		
+		/**
+		 * Event handler so FlxGame can update the mouse.
+		 * 
+		 * @param	event	A <code>MouseEvent</code> object.
+		 */
+		public function handleMouseWheel(event:MouseEvent):void
+		{
+			wheel = event.delta;
+		}
+	}
+}

@@ -28,7 +28,7 @@ package org.flixel
          this.name = Name;
          try
          {
-            this._so = SharedObject.getLocal(this.name,"/");
+            this._so = SharedObject.getLocal(this.name);
          }
          catch(e:Error)
          {
@@ -65,7 +65,7 @@ package org.flixel
       
       public function forceSave(param1:uint = 0) : Boolean
       {
-         var status:Object = null;
+         var status:Object;
          var MinFileSize:uint = param1;
          if(this._so == null)
          {
@@ -94,29 +94,6 @@ package org.flixel
          }
          this._so.clear();
          return this.forceSave(param1);
-      }
-      
-      public function writeArray(param1:String, param2:Array) : void
-      {
-         var _loc3_:Array = new Array(param2);
-         this.write(param1,_loc3_.splice(0,param2.length));
-      }
-      
-      public function readArray(param1:String) : Array
-      {
-         var _loc2_:Object = this.read(param1);
-         var _loc3_:String = String(_loc2_);
-         var _loc4_:Array = new Array();
-         var _loc5_:int = 0;
-         while(_loc5_ < _loc3_.length)
-         {
-            if(_loc3_.charAt(_loc5_) != ",")
-            {
-               _loc4_.push(_loc3_.charAt(_loc5_));
-            }
-            _loc5_++;
-         }
-         return _loc4_;
       }
    }
 }

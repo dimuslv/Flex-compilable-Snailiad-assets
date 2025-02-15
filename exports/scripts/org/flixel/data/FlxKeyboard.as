@@ -28,8 +28,6 @@ package org.flixel.data
       
       public var F12:Boolean;
       
-      public var TAB:Boolean;
-      
       public var ONE:Boolean;
       
       public var TWO:Boolean;
@@ -210,7 +208,6 @@ package org.flixel.data
          {
             addKey("F" + _loc1_,111 + _loc1_++);
          }
-         addKey("TAB",9);
          addKey("ESCAPE",27);
          addKey("MINUS",189);
          addKey("NUMPADMINUS",109);
