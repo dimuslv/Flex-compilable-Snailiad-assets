@@ -8,7 +8,7 @@ package
       
       public var stars:Array;
       
-      public function StarInwardLayer()
+      public function StarInwardLayer() : void
       {
          this.stars = new Array();
          super();
@@ -22,7 +22,7 @@ package
          {
             this.stars[_loc1_] = null;
          }
-         this.stars = null;
+         stars = null;
       }
       
       public function destroyAll() : void

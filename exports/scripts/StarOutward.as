@@ -26,8 +26,6 @@ package
       {
          var _loc1_:Number = NaN;
          var _loc2_:Number = NaN;
-         _loc1_ = NaN;
-         _loc2_ = NaN;
          x = FlxG.width / 2 - width / 2;
          y = FlxG.height / 2 - height / 2;
          _loc1_ = FlxU.random() * Math.PI * 2;

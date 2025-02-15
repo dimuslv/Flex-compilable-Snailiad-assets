@@ -14,7 +14,7 @@ package
       
       private var disappearTime:Number = 0;
       
-      public function UniqueItem(param1:int, param2:int, param3:Boolean = false)
+      public function UniqueItem(param1:int, param2:int, param3:Boolean = false) : void
       {
          super(param1,param2,false);
          x = param1;
@@ -44,8 +44,8 @@ package
             PlayState.uniqueBlocks.rememberBlock(_loc2_,_loc3_);
          }
          solid = false;
-         this.gotten = true;
-         this.disappearTime = HOLD_TIMEOUT;
+         gotten = true;
+         disappearTime = HOLD_TIMEOUT;
          if(PlayState.bossRush)
          {
             Sfx.playPickup4();
@@ -83,8 +83,9 @@ package
                case Player.GRAV_RIGHT:
                   x = PlayState.player.x - width;
                   y = PlayState.player.y;
+				  break;
             }
-            this.disappearTime -= FlxG.elapsed;
+            disappearTime -= FlxG.elapsed;
             if(this.disappearTime < 0)
             {
                kill();

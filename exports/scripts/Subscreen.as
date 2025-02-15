@@ -199,56 +199,53 @@ package
       
       private function makeText(param1:int, param2:int, param3:int, param4:String) : void
       {
+         var _loc5_:int = BASE_X;
+         var _loc6_:int = GROUP_Y[param2] + BASE_Y + param3 * LINE_SPACING;
+         var _loc7_:FlxText = new FlxText(_loc5_,_loc6_,200);
+         _loc7_.font = Fonts.normal;
+         _loc7_.size = 10;
+         _loc7_.color = 16777215;
+         _loc7_.shadow = 1;
+         _loc7_.alignment = "left";
+         _loc7_.text = param4;
+         _loc7_.scrollFactor.x = _loc7_.scrollFactor.y = 0;
+         _loc7_.visible = false;
+         add(_loc7_);
+         this.texts[param1] = _loc7_;
+         this.textY[param1] = _loc7_.y;
+      }
+      
+      private function makeWeaponText(param1:int) : void
+      {
          var _loc5_:FlxText = null;
-         _loc5_ = null;
-         var _loc6_:int = BASE_X;
-         var _loc7_:int = GROUP_Y[param2] + BASE_Y + param3 * LINE_SPACING;
-         _loc5_ = new FlxText(_loc6_,_loc7_,200);
+         var _loc2_:int = this.WEAPON_BASE_X;
+         var _loc3_:int = 0;
+         while(_loc3_ < param1)
+         {
+            _loc2_ += this.weaponText[_loc3_].realWidth + this.WEAPON_SPACING;
+            _loc3_++;
+         }
+         if(param1 == 2)
+         {
+            _loc2_--;
+         }
+         var _loc4_:int = this.WEAPON_Y;
+         _loc5_ = new FlxText(_loc2_,_loc4_,20);
          _loc5_.font = Fonts.normal;
          _loc5_.size = 10;
          _loc5_.color = 16777215;
          _loc5_.shadow = 1;
          _loc5_.alignment = "left";
-         _loc5_.text = param4;
+         _loc5_.text = (param1 + 1).toString();
          _loc5_.scrollFactor.x = _loc5_.scrollFactor.y = 0;
          _loc5_.visible = false;
          add(_loc5_);
-         this.texts[param1] = _loc5_;
-         this.textY[param1] = _loc5_.y;
-      }
-      
-      private function makeWeaponText(param1:int) : void
-      {
-         var _loc2_:FlxText = null;
-         var _loc3_:int = this.WEAPON_BASE_X;
-         var _loc4_:int = 0;
-         while(_loc4_ < param1)
-         {
-            _loc3_ += this.weaponText[_loc4_].realWidth + this.WEAPON_SPACING;
-            _loc4_++;
-         }
-         if(param1 == 2)
-         {
-            _loc3_--;
-         }
-         var _loc5_:int = this.WEAPON_Y;
-         _loc2_ = new FlxText(_loc3_,_loc5_,20);
-         _loc2_.font = Fonts.normal;
-         _loc2_.size = 10;
-         _loc2_.color = 16777215;
-         _loc2_.shadow = 1;
-         _loc2_.alignment = "left";
-         _loc2_.text = (param1 + 1).toString();
-         _loc2_.scrollFactor.x = _loc2_.scrollFactor.y = 0;
-         _loc2_.visible = false;
-         add(_loc2_);
-         this.weaponText[param1] = _loc2_;
+         this.weaponText[param1] = _loc5_;
       }
       
       private function makeEscText() : void
       {
          var _loc1_:FlxText = null;
-         _loc1_ = null;
          _loc1_ = new FlxText(0,this.WEAPON_Y,FlxG.width);
          _loc1_.font = Fonts.normal;
          _loc1_.size = 10;

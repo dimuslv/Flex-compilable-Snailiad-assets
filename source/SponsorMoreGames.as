@@ -13,7 +13,7 @@ package
       
       private var _initialized:Boolean = false;
       
-      public function SponsorMoreGames()
+      public function SponsorMoreGames() : void
       {
          super();
          x = FlxG.width - IMG_WIDTH;
@@ -69,7 +69,7 @@ package
             if(FlxG.stage != null)
             {
                FlxG.stage.addEventListener(MouseEvent.MOUSE_UP,this.onMouseUp);
-               this._initialized = true;
+               _initialized = true;
             }
          }
          super.update();

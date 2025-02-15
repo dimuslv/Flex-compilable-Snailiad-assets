@@ -10,13 +10,13 @@ package
       
       private static const IMG_HEIGHT:int = 16;
       
-      public function Star()
+      public function Star() : void
       {
          super();
          loadGraphic(Art.Star,true,true,IMG_WIDTH,IMG_HEIGHT);
          width = IMG_WIDTH;
          height = IMG_HEIGHT;
-         addAnimation("normal",[int(FlxU.random() * 32)]);
+         addAnimation("normal",[(int)(FlxU.random() * 32)]);
          play("normal");
          x = FlxU.random() * FlxG.width;
          y = FlxU.random() * FlxG.height;

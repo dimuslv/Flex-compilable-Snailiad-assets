@@ -44,7 +44,7 @@ package
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"Boolean")
          optional False()
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 4
@@ -156,10 +156,10 @@ package
          initproperty QName(PackageNamespace(""),"solid")
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#UniqueItem"),"gotten")
+         initproperty QName(PrivateNamespace(null,"#UniqueItem"),"gotten")
          getlocal0
          getlex QName(PrivateNamespace(null,"#UniqueItem"),"HOLD_TIMEOUT")
-         setproperty QName(PrivateNamespace(null,"#UniqueItem"),"disappearTime")
+         initproperty QName(PrivateNamespace(null,"#UniqueItem"),"disappearTime")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"bossRush")
          iffalse ofs2
@@ -273,6 +273,7 @@ package
          getproperty QName(PackageNamespace(""),"player")
          getproperty QName(PackageNamespace(""),"y")
          initproperty QName(PackageNamespace(""),"y")
+         jump ofs4
          ofs8:
          label
          jump ofs4
@@ -324,7 +325,7 @@ package
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getproperty QName(PackageNamespace(""),"elapsed")
          subtract
-         setproperty QName(PrivateNamespace(null,"#UniqueItem"),"disappearTime")
+         initproperty QName(PrivateNamespace(null,"#UniqueItem"),"disappearTime")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#UniqueItem"),"disappearTime")
          pushbyte 0

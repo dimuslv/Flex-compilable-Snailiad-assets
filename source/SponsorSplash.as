@@ -9,7 +9,7 @@ package
       
       private static const IMG_HEIGHT:int = 200;
       
-      public function SponsorSplash()
+      public function SponsorSplash() : void
       {
          super();
          x = FlxG.width / 2 - IMG_WIDTH / 2;

@@ -96,7 +96,7 @@ package
       {
          method
          name null
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 6
@@ -242,16 +242,16 @@ package
          pushscope
          getlocal0
          pushnull
-         setproperty QName(PackageNamespace(""),"skymap")
+         initproperty QName(PackageNamespace(""),"skymap")
          getlocal0
          pushnull
-         setproperty QName(PackageNamespace(""),"bgmap")
+         initproperty QName(PackageNamespace(""),"bgmap")
          getlocal0
          pushnull
-         setproperty QName(PackageNamespace(""),"fgmap")
+         initproperty QName(PackageNamespace(""),"fgmap")
          getlocal0
          pushnull
-         setproperty QName(PackageNamespace(""),"spmap")
+         initproperty QName(PackageNamespace(""),"spmap")
          returnvoid
          end ; code
          end ; body
@@ -380,9 +380,7 @@ package
          getlocal3
          getlocal0
          getproperty QName(PackageNamespace(""),"minY")
-         ifnge ofs6
-         returnvoid
-         ofs6:
+         ifnlt ofs6
          getlocal1
          getlocal1
          getproperty QName(PackageNamespace(""),"y")
@@ -397,6 +395,9 @@ package
          pushbyte 16
          subtract
          callpropvoid QName(PackageNamespace(""),"findRoomBounds"), 2
+         jump ofs3
+         ofs6:
+         returnvoid
          ofs3:
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"playerBulletGroups")
@@ -1481,7 +1482,7 @@ package
          setlocal2
          getlocal0
          getlocal1
-         setproperty QName(PackageNamespace(""),"tileMinX")
+         initproperty QName(PackageNamespace(""),"tileMinX")
          jump ofs0
          ofs1:
          label
@@ -1512,7 +1513,7 @@ package
          ofs3:
          getlocal0
          getlocal1
-         setproperty QName(PackageNamespace(""),"tileMaxX")
+         initproperty QName(PackageNamespace(""),"tileMaxX")
          jump ofs4
          ofs5:
          label
@@ -1545,7 +1546,7 @@ package
          ofs7:
          getlocal0
          getlocal2
-         setproperty QName(PackageNamespace(""),"tileMinY")
+         initproperty QName(PackageNamespace(""),"tileMinY")
          jump ofs8
          ofs9:
          label
@@ -1576,7 +1577,7 @@ package
          ofs11:
          getlocal0
          getlocal2
-         setproperty QName(PackageNamespace(""),"tileMaxY")
+         initproperty QName(PackageNamespace(""),"tileMaxY")
          jump ofs12
          ofs13:
          label
@@ -1614,7 +1615,7 @@ package
          multiply
          pushbyte 16
          add
-         setproperty QName(PackageNamespace(""),"minX")
+         initproperty QName(PackageNamespace(""),"minX")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"tileMinY")
@@ -1622,7 +1623,7 @@ package
          multiply
          pushbyte 16
          add
-         setproperty QName(PackageNamespace(""),"minY")
+         initproperty QName(PackageNamespace(""),"minY")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"tileMaxX")
@@ -1630,7 +1631,7 @@ package
          multiply
          pushbyte 0
          add
-         setproperty QName(PackageNamespace(""),"maxX")
+         initproperty QName(PackageNamespace(""),"maxX")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"tileMaxY")
@@ -1638,7 +1639,7 @@ package
          multiply
          pushbyte 0
          add
-         setproperty QName(PackageNamespace(""),"maxY")
+         initproperty QName(PackageNamespace(""),"maxY")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")
          getlocal0
          getproperty QName(PackageNamespace(""),"minX")
@@ -1682,8 +1683,6 @@ package
          getlocal0
          pushscope
          pushbyte 0
-         setlocal1
-         pushbyte 0
          setlocal2
          pushbyte 0
          setlocal3
@@ -1692,59 +1691,56 @@ package
          pushbyte 0
          setlocal 5
          pushbyte 0
-         convert_u
          setlocal 6
          pushbyte 0
+         convert_u
          setlocal 7
          pushbyte 0
          setlocal 8
          pushbyte 0
          setlocal 9
+         pushbyte 0
+         setlocal1
          jump ofs0
          ofs1:
          label
          pushbyte 0
-         setlocal1
+         setlocal2
          jump ofs2
          ofs3:
          label
          pushbyte 0
-         setlocal2
+         setlocal3
          jump ofs4
          ofs5:
          label
          pushbyte 0
-         setlocal3
+         setlocal 4
          jump ofs6
          ofs7:
          label
-         getlocal 9
-         getlex QName(PackageNamespace(""),"MiniMap")
-         getproperty QName(PackageNamespace(""),"ROOM_WIDTH")
-         multiply
-         getlocal2
-         add
-         convert_i
-         setlocal 4
          getlocal1
          getlex QName(PackageNamespace(""),"MiniMap")
-         getproperty QName(PackageNamespace(""),"ROOM_HEIGHT")
+         getproperty QName(PackageNamespace(""),"ROOM_WIDTH")
          multiply
          getlocal3
          add
          convert_i
          setlocal 5
+         getlocal2
+         getlex QName(PackageNamespace(""),"MiniMap")
+         getproperty QName(PackageNamespace(""),"ROOM_HEIGHT")
+         multiply
+         getlocal 4
+         add
+         convert_i
+         setlocal 6
          getlocal0
          getproperty QName(PackageNamespace(""),"spmap")
-         getlocal 4
          getlocal 5
+         getlocal 6
          callproperty QName(PackageNamespace(""),"getTile"), 2
          convert_u
-         setlocal 6
-         getlocal 4
-         pushbyte 16
-         multiply
-         convert_i
          setlocal 7
          getlocal 5
          pushbyte 16
@@ -1752,77 +1748,82 @@ package
          convert_i
          setlocal 8
          getlocal 6
+         pushbyte 16
+         multiply
+         convert_i
+         setlocal 9
+         getlocal 7
          pushbyte 93
          greaterequals
          dup
          iffalse ofs8
          pop
-         getlocal 6
+         getlocal 7
          pushshort 332
          lessequals
          ofs8:
          iffalse ofs9
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"miniMap")
-         getlocal 7
          getlocal 8
-         getlocal 6
+         getlocal 9
+         getlocal 7
          pushbyte 93
          subtract
          callpropvoid QName(PackageNamespace(""),"setTile"), 3
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"miniMap")
-         getlocal 7
          getlocal 8
+         getlocal 9
          callpropvoid QName(PackageNamespace(""),"setKnown"), 2
          ofs9:
-         getlocal 6
+         getlocal 7
          pushbyte 30
          ifne ofs10
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"miniMap")
-         getlocal 7
          getlocal 8
+         getlocal 9
          callpropvoid QName(PackageNamespace(""),"setSpecialSave"), 2
          ofs10:
-         getlocal 6
+         getlocal 7
          pushbyte 24
          greaterequals
          dup
          iffalse ofs11
          pop
-         getlocal 6
+         getlocal 7
          pushbyte 27
          lessequals
          ofs11:
          iffalse ofs12
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"miniMap")
-         getlocal 7
          getlocal 8
+         getlocal 9
          callpropvoid QName(PackageNamespace(""),"setSpecialBoss"), 2
          ofs12:
-         inclocal_i 3
+         inclocal_i 4
          ofs6:
-         getlocal3
+         getlocal 4
          getlex QName(PackageNamespace(""),"MiniMap")
          getproperty QName(PackageNamespace(""),"ROOM_HEIGHT")
          iflt ofs7
-         inclocal_i 2
+         inclocal_i 3
          ofs4:
-         getlocal2
+         getlocal3
          getlex QName(PackageNamespace(""),"MiniMap")
          getproperty QName(PackageNamespace(""),"ROOM_WIDTH")
          iflt ofs5
-         inclocal_i 1
+         inclocal_i 2
          ofs2:
-         getlocal1
+         getlocal2
          getlex QName(PackageNamespace(""),"MiniMap")
          getproperty QName(PackageNamespace(""),"SIZE_Y")
          iflt ofs3
-         inclocal_i 9
+         inclocal_i 1
          ofs0:
-         getlocal 9
+         getlocal1
          getlex QName(PackageNamespace(""),"MiniMap")
          getproperty QName(PackageNamespace(""),"SIZE_X")
          iflt ofs1
@@ -1923,23 +1924,19 @@ package
          jump ofs1
          ofs2:
          label
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"doors")
          getlocal3
          getproperty MultinameL([PrivateNamespace(null,"#WorldMap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#WorldMap/1"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("WorldMap"),StaticProtectedNs("WorldMap"),StaticProtectedNs("Object")])
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs3
          pop
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"doors")
          getlocal3
          getproperty MultinameL([PrivateNamespace(null,"#WorldMap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#WorldMap/1"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("WorldMap"),StaticProtectedNs("WorldMap"),StaticProtectedNs("Object")])
          getproperty Multiname("fixBlocks",[PrivateNamespace(null,"#WorldMap"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#WorldMap/1"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("WorldMap"),StaticProtectedNs("WorldMap"),StaticProtectedNs("Object")])
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          ofs3:
          iffalse ofs4
@@ -2083,23 +2080,23 @@ package
          getlocal0
          findpropstrict QName(PackageNamespace(""),"Array")
          constructprop QName(PackageNamespace(""),"Array"), 0
-         setproperty QName(PackageNamespace(""),"waterLevelY")
+         initproperty QName(PackageNamespace(""),"waterLevelY")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"minX")
-         setproperty QName(PackageNamespace(""),"fakeMinX")
+         initproperty QName(PackageNamespace(""),"fakeMinX")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"maxX")
-         setproperty QName(PackageNamespace(""),"fakeMaxX")
+         initproperty QName(PackageNamespace(""),"fakeMaxX")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"minY")
-         setproperty QName(PackageNamespace(""),"fakeMinY")
+         initproperty QName(PackageNamespace(""),"fakeMinY")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"maxY")
-         setproperty QName(PackageNamespace(""),"fakeMaxY")
+         initproperty QName(PackageNamespace(""),"fakeMaxY")
          getlocal0
          getproperty QName(PackageNamespace(""),"tileMinX")
          pushbyte 1
@@ -2125,10 +2122,8 @@ package
          callproperty QName(PackageNamespace(""),"getTile"), 2
          convert_u
          setlocal 4
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs9
@@ -2997,7 +2992,7 @@ package
          ifngt ofs90
          getlocal0
          getlocal 5
-         setproperty QName(PackageNamespace(""),"fakeMaxX")
+         initproperty QName(PackageNamespace(""),"fakeMaxX")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"tileMinX")
@@ -3012,7 +3007,7 @@ package
          ofs90:
          getlocal0
          getlocal 5
-         setproperty QName(PackageNamespace(""),"fakeMinX")
+         initproperty QName(PackageNamespace(""),"fakeMinX")
          getlocal0
          getlocal1
          getlocal0
@@ -3034,7 +3029,7 @@ package
          ifngt ofs93
          getlocal0
          getlocal 6
-         setproperty QName(PackageNamespace(""),"fakeMaxY")
+         initproperty QName(PackageNamespace(""),"fakeMaxY")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"tileMinX")
@@ -3049,7 +3044,7 @@ package
          ofs93:
          getlocal0
          getlocal 6
-         setproperty QName(PackageNamespace(""),"fakeMinY")
+         initproperty QName(PackageNamespace(""),"fakeMinY")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"tileMinX")
@@ -3327,7 +3322,7 @@ package
          ifngt ofs122
          getlocal0
          getlocal 6
-         setproperty QName(PackageNamespace(""),"fakeMaxY")
+         initproperty QName(PackageNamespace(""),"fakeMaxY")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"tileMinX")
@@ -4830,7 +4825,7 @@ package
          ifne ofs326
          getlocal0
          pushint -10000000
-         setproperty QName(PackageNamespace(""),"fakeMinX")
+         initproperty QName(PackageNamespace(""),"fakeMinX")
          ofs326:
          getlocal0
          getproperty QName(PackageNamespace(""),"fakeMaxX")
@@ -4839,7 +4834,7 @@ package
          ifne ofs327
          getlocal0
          pushint 10000000
-         setproperty QName(PackageNamespace(""),"fakeMaxX")
+         initproperty QName(PackageNamespace(""),"fakeMaxX")
          ofs327:
          getlocal0
          getproperty QName(PackageNamespace(""),"fakeMinY")
@@ -4848,7 +4843,7 @@ package
          ifne ofs328
          getlocal0
          pushint -10000000
-         setproperty QName(PackageNamespace(""),"fakeMinY")
+         initproperty QName(PackageNamespace(""),"fakeMinY")
          ofs328:
          getlocal0
          getproperty QName(PackageNamespace(""),"fakeMaxY")
@@ -4857,24 +4852,24 @@ package
          ifne ofs329
          getlocal0
          pushint 10000000
-         setproperty QName(PackageNamespace(""),"fakeMaxY")
+         initproperty QName(PackageNamespace(""),"fakeMaxY")
          ofs329:
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"fakeMinX")
-         setproperty QName(PackageNamespace(""),"dFakeMinX")
+         initproperty QName(PackageNamespace(""),"dFakeMinX")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"fakeMaxX")
-         setproperty QName(PackageNamespace(""),"dFakeMaxX")
+         initproperty QName(PackageNamespace(""),"dFakeMaxX")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"fakeMinY")
-         setproperty QName(PackageNamespace(""),"dFakeMinY")
+         initproperty QName(PackageNamespace(""),"dFakeMinY")
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"fakeMaxY")
-         setproperty QName(PackageNamespace(""),"dFakeMaxY")
+         initproperty QName(PackageNamespace(""),"dFakeMaxY")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"miniMap")
          callpropvoid QName(PackageNamespace(""),"setMapLittle"), 0
@@ -4907,10 +4902,8 @@ package
          pushnull
          coerce QName(PackageNamespace(""),"Enemy")
          setlocal 4
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"PlayState")
          getproperty QName(PackageNamespace(""),"player")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs0
@@ -5115,6 +5108,7 @@ package
          constructprop QName(PackageNamespace(""),"EnemyDandelionGenerator"), 2
          coerce QName(PackageNamespace(""),"Enemy")
          setlocal 4
+         jump ofs7
          ofs25:
          label
          jump ofs7
@@ -5328,6 +5322,7 @@ package
          constructprop QName(PackageNamespace(""),"Boss4"), 2
          coerce QName(PackageNamespace(""),"Enemy")
          setlocal 4
+         jump ofs3
          ofs7:
          label
          jump ofs3
@@ -5449,6 +5444,7 @@ package
          constructprop QName(PackageNamespace(""),"Boss4Rush"), 2
          coerce QName(PackageNamespace(""),"Enemy")
          setlocal 4
+         jump ofs3
          ofs7:
          label
          jump ofs3
@@ -5533,7 +5529,7 @@ package
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"maxX")
-         setproperty QName(PackageNamespace(""),"dFakeMaxX")
+         initproperty QName(PackageNamespace(""),"dFakeMaxX")
          ofs0:
          getlocal1
          getlocal0
@@ -5546,7 +5542,7 @@ package
          getproperty QName(PackageNamespace(""),"minX")
          pushbyte 16
          subtract
-         setproperty QName(PackageNamespace(""),"dFakeMinX")
+         initproperty QName(PackageNamespace(""),"dFakeMinX")
          ofs1:
          getlocal2
          getlocal0
@@ -5557,7 +5553,7 @@ package
          getlocal0
          getlocal0
          getproperty QName(PackageNamespace(""),"maxY")
-         setproperty QName(PackageNamespace(""),"dFakeMaxY")
+         initproperty QName(PackageNamespace(""),"dFakeMaxY")
          ofs2:
          getlocal2
          getlocal0
@@ -5570,7 +5566,7 @@ package
          getproperty QName(PackageNamespace(""),"minY")
          pushbyte 16
          subtract
-         setproperty QName(PackageNamespace(""),"dFakeMinY")
+         initproperty QName(PackageNamespace(""),"dFakeMinY")
          ofs3:
          getlocal0
          getproperty QName(PackageNamespace(""),"dFakeMaxX")
@@ -5591,7 +5587,7 @@ package
          divide
          pushdouble 0.4
          add
-         setproperty QName(PackageNamespace(""),"fakeMaxX")
+         initproperty QName(PackageNamespace(""),"fakeMaxX")
          getlocal0
          getproperty QName(PackageNamespace(""),"fakeMaxX")
          getlocal0
@@ -5603,10 +5599,10 @@ package
          getproperty QName(PackageNamespace(""),"maxX")
          dup
          setlocal3
-         setproperty QName(PackageNamespace(""),"fakeMaxX")
+         initproperty QName(PackageNamespace(""),"fakeMaxX")
          getlocal3
          kill 3
-         setproperty QName(PackageNamespace(""),"dFakeMaxX")
+         initproperty QName(PackageNamespace(""),"dFakeMaxX")
          ofs5:
          getlocal0
          getlocal0
@@ -5641,7 +5637,7 @@ package
          divide
          pushdouble 0.4
          add
-         setproperty QName(PackageNamespace(""),"fakeMaxY")
+         initproperty QName(PackageNamespace(""),"fakeMaxY")
          getlocal0
          getproperty QName(PackageNamespace(""),"fakeMaxY")
          getlocal0
@@ -5653,10 +5649,10 @@ package
          getproperty QName(PackageNamespace(""),"maxY")
          dup
          setlocal3
-         setproperty QName(PackageNamespace(""),"fakeMaxY")
+         initproperty QName(PackageNamespace(""),"fakeMaxY")
          getlocal3
          kill 3
-         setproperty QName(PackageNamespace(""),"dFakeMaxY")
+         initproperty QName(PackageNamespace(""),"dFakeMaxY")
          ofs7:
          getlocal0
          getlocal0
@@ -5691,7 +5687,7 @@ package
          divide
          pushdouble 0.4
          subtract
-         setproperty QName(PackageNamespace(""),"fakeMinX")
+         initproperty QName(PackageNamespace(""),"fakeMinX")
          getlocal0
          getproperty QName(PackageNamespace(""),"fakeMinX")
          getlocal0
@@ -5707,10 +5703,10 @@ package
          subtract
          dup
          setlocal3
-         setproperty QName(PackageNamespace(""),"fakeMinX")
+         initproperty QName(PackageNamespace(""),"fakeMinX")
          getlocal3
          kill 3
-         setproperty QName(PackageNamespace(""),"dFakeMinX")
+         initproperty QName(PackageNamespace(""),"dFakeMinX")
          ofs9:
          getlocal0
          getlocal0
@@ -5745,7 +5741,7 @@ package
          divide
          pushdouble 0.4
          subtract
-         setproperty QName(PackageNamespace(""),"fakeMinY")
+         initproperty QName(PackageNamespace(""),"fakeMinY")
          getlocal0
          getproperty QName(PackageNamespace(""),"fakeMinY")
          getlocal0
@@ -5761,10 +5757,10 @@ package
          subtract
          dup
          setlocal3
-         setproperty QName(PackageNamespace(""),"fakeMinY")
+         initproperty QName(PackageNamespace(""),"fakeMinY")
          getlocal3
          kill 3
-         setproperty QName(PackageNamespace(""),"dFakeMinY")
+         initproperty QName(PackageNamespace(""),"dFakeMinY")
          ofs11:
          getlocal0
          getlocal0

@@ -84,7 +84,32 @@ package
       
       public var escText:FlxText;
       
-      public function Subscreen()
+      override public function destroy() : void
+      {
+         var _loc1_:int = 0;
+         while(_loc1_ < this.texts.length)
+         {
+            this.texts[_loc1_] = null;
+            _loc1_++;
+         }
+         texts = null;
+         textY = null;
+         _loc1_ = 0;
+         while(_loc1_ < this.weaponText.length)
+         {
+            this.weaponText[_loc1_] = null;
+            _loc1_++;
+         }
+         tabText = null;
+         weaponText = null;
+         helixSprite = null;
+         helixText = null;
+         bg = null;
+         panel = null;
+         super.destroy();
+      }
+      
+      public function Subscreen() : void
       {
          this.WEAPON_BASE_X = FlxG.width - 56;
          super();
@@ -172,37 +197,11 @@ package
          this.updatePosition();
       }
       
-      override public function destroy() : void
-      {
-         var _loc1_:int = 0;
-         while(_loc1_ < this.texts.length)
-         {
-            this.texts[_loc1_] = null;
-            _loc1_++;
-         }
-         this.texts = null;
-         this.textY = null;
-         _loc1_ = 0;
-         while(_loc1_ < this.weaponText.length)
-         {
-            this.weaponText[_loc1_] = null;
-            _loc1_++;
-         }
-         this.tabText = null;
-         this.weaponText = null;
-         this.helixSprite = null;
-         this.helixText = null;
-         this.bg = null;
-         this.panel = null;
-         super.destroy();
-      }
-      
       private function makeText(param1:int, param2:int, param3:int, param4:String) : void
       {
-         var _loc7_:FlxText = null;
          var _loc5_:int = BASE_X;
          var _loc6_:int = GROUP_Y[param2] + BASE_Y + param3 * LINE_SPACING;
-         _loc7_ = new FlxText(_loc5_,_loc6_,200);
+         var _loc7_:FlxText = new FlxText(_loc5_,_loc6_,200);
          _loc7_.font = Fonts.normal;
          _loc7_.size = 10;
          _loc7_.color = 16777215;
@@ -218,7 +217,6 @@ package
       
       private function makeWeaponText(param1:int) : void
       {
-         var _loc5_:FlxText = null;
          var _loc2_:int = this.WEAPON_BASE_X;
          var _loc3_:int = 0;
          while(_loc3_ < param1)
@@ -231,7 +229,7 @@ package
             _loc2_--;
          }
          var _loc4_:int = this.WEAPON_Y;
-         _loc5_ = new FlxText(_loc2_,_loc4_,20);
+         var _loc5_:FlxText = new FlxText(_loc2_,_loc4_,20);
          _loc5_.font = Fonts.normal;
          _loc5_.size = 10;
          _loc5_.color = 16777215;
@@ -257,7 +255,7 @@ package
          _loc1_.scrollFactor.x = _loc1_.scrollFactor.y = 0;
          _loc1_.visible = true;
          add(_loc1_);
-         this.escText = _loc1_;
+         escText = _loc1_;
       }
       
       private function makeTabText() : void
@@ -272,21 +270,21 @@ package
          _loc1_.scrollFactor.x = _loc1_.scrollFactor.y = 0;
          _loc1_.visible = true;
          add(_loc1_);
-         this.tabText = _loc1_;
+         tabText = _loc1_;
       }
       
       public function hide() : void
       {
-         this.targetY = FlxG.height - TAB_HEIGHT - (PlayState.hideTab ? 0 : 14);
-         this.targetBgAlpha = 0;
-         this.helixSpriteTargetY = -30;
+         targetY = FlxG.height - TAB_HEIGHT - (PlayState.hideTab ? 0 : 14);
+         targetBgAlpha = 0;
+         helixSpriteTargetY = -30;
       }
       
       public function show() : void
       {
-         this.targetY = 0;
-         this.targetBgAlpha = 1;
-         this.helixSpriteTargetY = 4;
+         targetY = 0;
+         targetBgAlpha = 1;
+         helixSpriteTargetY = 4;
          this.helixSprite.visible = true;
          this.helixText.visible = true;
          this.helixText.text = "x " + PlayState.player.getHelixFragments().toString();

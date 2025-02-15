@@ -24,10 +24,8 @@ package
       
       public function placeRandom() : void
       {
-         var _loc1_:Number = NaN;
-         var _loc2_:Number = NaN;
-         _loc1_ = NaN;
-         _loc2_ = NaN;
+         var _loc3_:Number = NaN;
+         var _loc4_:Number = NaN;
          switch(int(FlxU.random() * 4))
          {
             case 0:
@@ -46,12 +44,12 @@ package
                x = FlxG.width;
                y = FlxU.random() * FlxG.height;
          }
-         var _loc3_:int = FlxG.width / 2;
-         var _loc4_:int = FlxG.height / 2;
-         _loc1_ = Math.atan2(_loc4_ - y,_loc3_ - x);
-         _loc2_ = FlxU.random() * 120 + 60;
-         velocity.x = _loc2_ * Math.cos(_loc1_);
-         velocity.y = _loc2_ * Math.sin(_loc1_);
+         var _loc1_:int = FlxG.width / 2;
+         var _loc2_:int = FlxG.height / 2;
+         _loc3_ = Math.atan2(_loc2_ - y,_loc1_ - x);
+         _loc4_ = FlxU.random() * 120 + 60;
+         velocity.x = _loc4_ * Math.cos(_loc3_);
+         velocity.y = _loc4_ * Math.sin(_loc3_);
       }
       
       override public function update() : void

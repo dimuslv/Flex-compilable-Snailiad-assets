@@ -38,7 +38,7 @@ package
       {
          method
          name null
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 6
@@ -67,12 +67,13 @@ package
          initproperty QName(PackageNamespace(""),"height")
          findpropstrict QName(PackageNamespace(""),"addAnimation")
          pushstring "normal"
-         findpropstrict QName(PackageNamespace(""),"int")
+         getlex QName(PackageNamespace(""),"int")
+         getglobalscope
          getlex QName(PackageNamespace("org.flixel"),"FlxU")
          callproperty QName(PackageNamespace(""),"random"), 0
          pushbyte 32
          multiply
-         callproperty QName(PackageNamespace(""),"int"), 1
+         call 1
          newarray 1
          callpropvoid QName(PackageNamespace(""),"addAnimation"), 2
          findpropstrict QName(PackageNamespace(""),"play")
@@ -115,12 +116,6 @@ package
          pushnan
          setlocal1
          pushnan
-         setlocal2
-         getlex QName(PackageNamespace(""),"NaN")
-         convert_d
-         setlocal1
-         getlex QName(PackageNamespace(""),"NaN")
-         convert_d
          setlocal2
          findproperty QName(PackageNamespace(""),"x")
          getlex QName(PackageNamespace("org.flixel"),"FlxG")

@@ -6,7 +6,7 @@ package
    {
       private var _stepHeight:int = 0;
       
-      public function Step(param1:int, param2:int, param3:int)
+      public function Step(param1:int, param2:int, param3:int) : void
       {
          super(param1,param2,false);
          active = true;

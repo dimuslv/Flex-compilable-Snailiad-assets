@@ -88,29 +88,29 @@ package
       
       override public function update() : void
       {
-         var _loc1_:Number = NaN;
          var _loc2_:Number = NaN;
+         var _loc3_:Number = NaN;
          this._elapsed += FlxG.elapsed * TIME_SCALE;
-         var _loc3_:int = 0;
-         while(_loc3_ < this._letters.length)
+         var _loc1_:int = 0;
+         while(_loc1_ < this._letters.length)
          {
-            _loc1_ = this._elapsed - LETTER_DELAY * _loc3_ + LETTER_START;
-            if(_loc1_ < LETTER_START)
+            _loc2_ = this._elapsed - LETTER_DELAY * _loc1_ + LETTER_START;
+            if(_loc2_ < LETTER_START)
             {
-               this._letters[_loc3_].visible = false;
+               this._letters[_loc1_].visible = false;
             }
-            else if(_loc1_ < 0)
+            else if(_loc2_ < 0)
             {
-               this._letters[_loc3_].visible = true;
-               _loc2_ = -Math.sin(-_loc1_ * Math.PI) * _loc1_ * X_SCALE;
-               this._letters[_loc3_].x = this._letters[_loc3_].targetX + _loc2_;
+               this._letters[_loc1_].visible = true;
+               _loc3_ = -Math.sin(-_loc2_ * Math.PI) * _loc2_ * X_SCALE;
+               this._letters[_loc1_].x = this._letters[_loc1_].targetX + _loc3_;
             }
             else
             {
-               this._letters[_loc3_].x = Utility.integrate(this._letters[_loc3_].x,this._letters[_loc3_].targetX,4,FlxG.elapsed);
+               this._letters[_loc1_].x = Utility.integrate(this._letters[_loc1_].x,this._letters[_loc1_].targetX,4,FlxG.elapsed);
             }
-            this._letters[_loc3_].y = Utility.integrate(this._letters[_loc3_].y,this._targetY,4,FlxG.elapsed);
-            _loc3_++;
+            this._letters[_loc1_].y = Utility.integrate(this._letters[_loc1_].y,this._targetY,4,FlxG.elapsed);
+            _loc1_++;
          }
          super.update();
       }

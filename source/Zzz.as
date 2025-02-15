@@ -12,7 +12,7 @@ package
       
       private static const IMG_OFS_Y:int = 0;
       
-      public function Zzz()
+      public function Zzz() : void
       {
          super();
          loadGraphic(Art.Zzz,true,true,IMG_WIDTH,IMG_HEIGHT);

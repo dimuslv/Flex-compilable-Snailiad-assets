@@ -26,7 +26,13 @@ package
       
       private var _targetY:Number = 0;
       
-      public function TitleText(param1:Boolean = false)
+      override public function destroy() : void
+      {
+         _letters = null;
+         super.destroy();
+      }
+      
+      public function TitleText(param1:Boolean = false) : void
       {
          super();
          this._letters = new Array();
@@ -65,16 +71,10 @@ package
          active = true;
       }
       
-      override public function destroy() : void
-      {
-         this._letters = null;
-         super.destroy();
-      }
-      
       public function setYOffset(param1:int, param2:Boolean = false) : void
       {
          var _loc3_:int = 0;
-         this._targetY = param1 + Y_POS;
+         _targetY = param1 + Y_POS;
          if(param2)
          {
             _loc3_ = 0;
@@ -88,13 +88,11 @@ package
       
       override public function update() : void
       {
-         var _loc2_:Number = NaN;
-         var _loc3_:Number = NaN;
-         this._elapsed += FlxG.elapsed * TIME_SCALE;
+         _elapsed += FlxG.elapsed * TIME_SCALE;
          var _loc1_:int = 0;
          while(_loc1_ < this._letters.length)
          {
-            _loc2_ = this._elapsed - LETTER_DELAY * _loc1_ + LETTER_START;
+            var _loc2_:Number = this._elapsed - LETTER_DELAY * _loc1_ + LETTER_START;
             if(_loc2_ < LETTER_START)
             {
                this._letters[_loc1_].visible = false;
@@ -102,7 +100,7 @@ package
             else if(_loc2_ < 0)
             {
                this._letters[_loc1_].visible = true;
-               _loc3_ = -Math.sin(-_loc2_ * Math.PI) * _loc2_ * X_SCALE;
+               var _loc3_:Number = -Math.sin(-_loc2_ * Math.PI) * _loc2_ * X_SCALE;
                this._letters[_loc1_].x = this._letters[_loc1_].targetX + _loc3_;
             }
             else

@@ -6,7 +6,7 @@ package
    {
       public var blocks:Array;
       
-      public function UniqueBlocks()
+      public function UniqueBlocks() : void
       {
          super();
          this.blocks = new Array();
@@ -19,7 +19,7 @@ package
          {
             this.blocks[_loc1_] = null;
          }
-         this.blocks = null;
+         blocks = null;
       }
       
       public function rememberBlock(param1:int, param2:int) : void
@@ -29,12 +29,11 @@ package
       
       public function saveAll() : void
       {
-         var _loc3_:XML = null;
          var _loc1_:XML = <uniqueBlocks/>;
          var _loc2_:int = 0;
          while(_loc2_ < this.blocks.length)
          {
-            _loc3_ = <b/>;
+            var _loc3_:XML = <b/>;
             _loc3_.@x = this.blocks[_loc2_].x;
             _loc3_.@y = this.blocks[_loc2_].y;
             _loc1_.appendChild(_loc3_);
@@ -52,15 +51,15 @@ package
          var _loc1_:XML = null;
          var _loc2_:int = 0;
          var _loc3_:int = 0;
-         this.blocks = new Array();
+         blocks = new Array();
          if(!PlayState.saveData.data)
          {
             return;
          }
          for each(_loc1_ in PlayState.saveData.xml.uniqueBlocks.b)
          {
-            _loc2_ = int(_loc1_.@x);
-            _loc3_ = int(_loc1_.@y);
+            _loc2_ = _loc1_.@x;
+            _loc3_ = _loc1_.@y;
             this.blocks.push(new FlxPoint(_loc2_,_loc3_));
             PlayState.worldMap.spmap.setTile(_loc2_,_loc3_,0);
          }

@@ -29,22 +29,22 @@ package
       
       public function saveAll() : void
       {
-         var _loc1_:XML = null;
-         var _loc2_:XML = <uniqueBlocks/>;
-         var _loc3_:int = 0;
-         while(_loc3_ < this.blocks.length)
+         var _loc3_:XML = null;
+         var _loc1_:XML = <uniqueBlocks/>;
+         var _loc2_:int = 0;
+         while(_loc2_ < this.blocks.length)
          {
-            _loc1_ = <b/>;
-            _loc1_.@x = this.blocks[_loc3_].x;
-            _loc1_.@y = this.blocks[_loc3_].y;
-            _loc2_.appendChild(_loc1_);
-            _loc3_++;
+            _loc3_ = <b/>;
+            _loc3_.@x = this.blocks[_loc2_].x;
+            _loc3_.@y = this.blocks[_loc2_].y;
+            _loc1_.appendChild(_loc3_);
+            _loc2_++;
          }
          if(PlayState.saveData.xml.uniqueBlocks != null)
          {
             delete PlayState.saveData.xml.uniqueBlocks;
          }
-         PlayState.saveData.xml.appendChild(_loc2_);
+         PlayState.saveData.xml.appendChild(_loc1_);
       }
       
       public function loadAll() : void

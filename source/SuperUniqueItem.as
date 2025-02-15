@@ -26,7 +26,7 @@ package
       
       private var _flickered:Boolean = false;
       
-      public function SuperUniqueItem(param1:int, param2:int, param3:Boolean, param4:Boolean = false)
+      public function SuperUniqueItem(param1:int, param2:int, param3:Boolean, param4:Boolean = false) : void
       {
          super(param1,param2,false);
          this._superAnim = true;
@@ -59,8 +59,8 @@ package
             PlayState.uniqueBlocks.rememberBlock(_loc2_,_loc3_);
          }
          solid = false;
-         this.gotten = true;
-         this.disappearTime = HOLD_TIMEOUT;
+         gotten = true;
+         disappearTime = HOLD_TIMEOUT;
          if(PlayState.bossRush)
          {
             Sfx.playPickup4();
@@ -72,7 +72,7 @@ package
          }
          if(this._superAnim)
          {
-            this.superAnimTime = SUPERANIM_TIMEOUT;
+            superAnimTime = SUPERANIM_TIMEOUT;
             PlayState.player.paralyze(true);
             PlayState.sprites.add(new DustRing(PlayState.player.x,PlayState.player.y,0,1));
          }
@@ -90,7 +90,7 @@ package
          {
             x = PlayState.player.x;
             y = PlayState.player.y - height;
-            this.disappearTime -= FlxG.elapsed;
+            disappearTime -= FlxG.elapsed;
             if(this.disappearTime < 0 && !this._superAnim)
             {
                if(!PlayState.bossRush)
@@ -99,7 +99,7 @@ package
                }
                kill();
             }
-            this.superAnimTime -= FlxG.elapsed;
+            superAnimTime -= FlxG.elapsed;
             if(this._superAnim && this.superAnimTime < 0)
             {
                if(!this._flickered)
@@ -109,11 +109,11 @@ package
                      Music.playPrevSong();
                   }
                   PlayState.player.flicker(1);
-                  this._flickered = true;
+                  _flickered = true;
                }
                if(this._customFinish)
                {
-                  this._customReady = true;
+                  _customReady = true;
                   visible = false;
                }
                else

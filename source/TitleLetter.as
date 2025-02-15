@@ -19,7 +19,7 @@ package
       
       private var animStopTimeout:Number = 0;
       
-      public function TitleLetter(param1:String)
+      public function TitleLetter(param1:String) : void
       {
          super();
          this.animStopTimeout = ANIM_STOP_TIMEOUT;
@@ -43,6 +43,7 @@ package
                break;
             case "D":
                _loc2_ = 5;
+			   break;
          }
          loadGraphic(Art.TitleLetter,true,true,IMG_WIDTH,IMG_HEIGHT);
          switch(_loc2_)
@@ -70,6 +71,7 @@ package
             case 5:
                width = 28;
                height = 43;
+			   break;
          }
          addAnimation("normal",[6 * 0 + _loc2_,6 * 3 + _loc2_,6 * 4 + _loc2_,6 * 3 + _loc2_,6 * 0 + _loc2_],10,false);
          addAnimation("flash1",[6 * 0 + _loc2_,6 * 1 + _loc2_,6 * 2 + _loc2_,6 * 3 + _loc2_,6 * 4 + _loc2_,6 * 5 + _loc2_,6 * 6 + _loc2_,6 * 7 + _loc2_],30,true);
@@ -84,7 +86,7 @@ package
       {
          if(visible)
          {
-            this.animStopTimeout -= FlxG.elapsed;
+            animStopTimeout -= FlxG.elapsed;
             if(this.animStopTimeout < 0)
             {
                play("normal");

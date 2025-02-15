@@ -331,51 +331,51 @@ package
       
       public function scanMiniMap() : void
       {
-         var _loc1_:int = 0;
          var _loc2_:int = 0;
          var _loc3_:int = 0;
          var _loc4_:int = 0;
          var _loc5_:int = 0;
-         var _loc6_:uint = 0;
-         var _loc7_:int = 0;
+         var _loc6_:int = 0;
+         var _loc7_:uint = 0;
          var _loc8_:int = 0;
          var _loc9_:int = 0;
-         while(_loc9_ < MiniMap.SIZE_X)
+         var _loc1_:int = 0;
+         while(_loc1_ < MiniMap.SIZE_X)
          {
-            _loc1_ = 0;
-            while(_loc1_ < MiniMap.SIZE_Y)
+            _loc2_ = 0;
+            while(_loc2_ < MiniMap.SIZE_Y)
             {
-               _loc2_ = 0;
-               while(_loc2_ < MiniMap.ROOM_WIDTH)
+               _loc3_ = 0;
+               while(_loc3_ < MiniMap.ROOM_WIDTH)
                {
-                  _loc3_ = 0;
-                  while(_loc3_ < MiniMap.ROOM_HEIGHT)
+                  _loc4_ = 0;
+                  while(_loc4_ < MiniMap.ROOM_HEIGHT)
                   {
-                     _loc4_ = _loc9_ * MiniMap.ROOM_WIDTH + _loc2_;
-                     _loc5_ = _loc1_ * MiniMap.ROOM_HEIGHT + _loc3_;
-                     _loc6_ = this.spmap.getTile(_loc4_,_loc5_);
-                     _loc7_ = _loc4_ * 16;
+                     _loc5_ = _loc1_ * MiniMap.ROOM_WIDTH + _loc3_;
+                     _loc6_ = _loc2_ * MiniMap.ROOM_HEIGHT + _loc4_;
+                     _loc7_ = this.spmap.getTile(_loc5_,_loc6_);
                      _loc8_ = _loc5_ * 16;
-                     if(_loc6_ >= 93 && _loc6_ <= 332)
+                     _loc9_ = _loc6_ * 16;
+                     if(_loc7_ >= 93 && _loc7_ <= 332)
                      {
-                        PlayState.miniMap.setTile(_loc7_,_loc8_,_loc6_ - 93);
-                        PlayState.miniMap.setKnown(_loc7_,_loc8_);
+                        PlayState.miniMap.setTile(_loc8_,_loc9_,_loc7_ - 93);
+                        PlayState.miniMap.setKnown(_loc8_,_loc9_);
                      }
-                     if(_loc6_ == 30)
+                     if(_loc7_ == 30)
                      {
-                        PlayState.miniMap.setSpecialSave(_loc7_,_loc8_);
+                        PlayState.miniMap.setSpecialSave(_loc8_,_loc9_);
                      }
-                     if(_loc6_ >= 24 && _loc6_ <= 27)
+                     if(_loc7_ >= 24 && _loc7_ <= 27)
                      {
-                        PlayState.miniMap.setSpecialBoss(_loc7_,_loc8_);
+                        PlayState.miniMap.setSpecialBoss(_loc8_,_loc9_);
                      }
-                     _loc3_++;
+                     _loc4_++;
                   }
-                  _loc2_++;
+                  _loc3_++;
                }
-               _loc1_++;
+               _loc2_++;
             }
-            _loc9_++;
+            _loc1_++;
          }
       }
       
