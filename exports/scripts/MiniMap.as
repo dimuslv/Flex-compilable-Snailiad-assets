@@ -396,7 +396,6 @@ package
       
       public function updateMiniMap(param1:Boolean = false) : void
       {
-         var _loc10_:int = 0;
          var _loc12_:int = 0;
          var _loc13_:int = 0;
          var _loc14_:int = 0;
@@ -418,7 +417,7 @@ package
          var _loc7_:int = this.getMapOfsX();
          var _loc8_:int = this.getMapOfsY();
          var _loc9_:int = this.getXPos();
-         _loc10_ = this.getYPos();
+         var _loc10_:int = this.getYPos();
          this._center.x = _loc9_ + TILE_WIDTH * _loc5_;
          this._center.y = _loc10_ + TILE_HEIGHT * _loc6_ + this.subOfsY;
          var _loc11_:int = 0;

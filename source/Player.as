@@ -316,9 +316,8 @@ package
       
       private var _sleepTimeout:Number;
       
-      public function Player(param1:PlayerBulletGroups)
+      public function Player(param1:PlayerBulletGroups) : void
       {
-         var _loc5_:int = 0;
          this.WEAPON_TIMEOUTS = [0.085,0.3,0.17];
          this.WEAPON_SPEED = [370,330,60];
          this._hasWeapon = [false,false,false];
@@ -393,7 +392,7 @@ package
             }
             if(!_loc2_.isVarSet("gameTime"))
             {
-               _loc3_.gameTime = 0;
+               _loc3_.gameTime = 0.0;
             }
             if(!_loc2_.isVarSet("easyMode"))
             {
@@ -624,19 +623,19 @@ package
             {
                NgMedal.unlockPilgrim();
             }
-            if(Boolean(PlayState.bossesKilled[1]) && !this._easyMode)
+            if(PlayState.bossesKilled[1] && !this._easyMode)
             {
                NgMedal.unlockFirstOfFour();
             }
-            if(Boolean(PlayState.bossesKilled[2]) && !this._easyMode)
+            if(PlayState.bossesKilled[2] && !this._easyMode)
             {
                NgMedal.unlockStinkyToe();
             }
-            if(Boolean(PlayState.bossesKilled[3]) && !this._easyMode)
+            if(PlayState.bossesKilled[3] && !this._easyMode)
             {
                NgMedal.unlockGravityBattle();
             }
-            if(Boolean(PlayState.bossesKilled[4]) && !this._easyMode)
+            if(PlayState.bossesKilled[4] && !this._easyMode)
             {
                NgMedal.unlockVictory();
             }
@@ -678,7 +677,7 @@ package
          var _loc4_:int = 0;
          while(_loc4_ < 4)
          {
-            _loc5_ = _loc4_ * 20;
+            var _loc5_:int = _loc4_ * 20;
             if(this._slugMode)
             {
                _loc5_ += 4 * 20;
@@ -715,32 +714,32 @@ package
       {
          clearInterval(this.deathFadeInterval);
          clearInterval(this.reviveInterval);
-         this._bulletGroups = null;
-         this._curHp = null;
-         this._gravity = null;
-         this._hasArmor = null;
-         this._hasColdFoot = null;
-         this._hasDevastator = null;
-         this._hasGravityJump = null;
-         this._hasGravityShock = null;
-         this._hasHighJump = null;
-         this._hasShellShield = null;
-         this._hasTurbo = null;
-         this._hasWeapon = null;
-         this._helixFragments = null;
-         this._jumpPower = null;
-         this._maxHp = null;
-         this._maxSpeed = null;
-         this._runSpeed = null;
-         this._snailType = null;
-         this._turboMultiplier = null;
-         this._weaponTimeout = null;
-         this.bestBossRushTime = null;
-         this.bestMainTime = null;
-         this.bestHardTime = null;
-         this.bestInsaneTime = null;
-         this.gameTime = null;
-         this.clearTime = null;
+         _bulletGroups = null;
+         _curHp = null;
+         _gravity = null;
+         _hasArmor = null;
+         _hasColdFoot = null;
+         _hasDevastator = null;
+         _hasGravityJump = null;
+         _hasGravityShock = null;
+         _hasHighJump = null;
+         _hasShellShield = null;
+         _hasTurbo = null;
+         _hasWeapon = null;
+         _helixFragments = null;
+         _jumpPower = null;
+         _maxHp = null;
+         _maxSpeed = null;
+         _runSpeed = null;
+         _snailType = null;
+         _turboMultiplier = null;
+         _weaponTimeout = null;
+         bestBossRushTime = null;
+         bestMainTime = null;
+         bestHardTime = null;
+         bestInsaneTime = null;
+         gameTime = null;
+         clearTime = null;
          super.destroy();
       }
       
@@ -770,7 +769,7 @@ package
          {
             return;
          }
-         if(FlxG.keys.getLastKeys(6) == "SKYFIS" && (Boolean(PlayState.bossesKilled[1]) || Boolean(PlayState.bossesKilled[2]) || Boolean(PlayState.bossesKilled[3]) || Boolean(PlayState.bossesKilled[4])))
+         if(FlxG.keys.getLastKeys(6) == "SKYFIS" && (PlayState.bossesKilled[1] || PlayState.bossesKilled[2] || PlayState.bossesKilled[3] || PlayState.bossesKilled[4]))
          {
             Sfx.playSlugMode();
             PlayState.bossesKilled[1] = false;
@@ -795,8 +794,8 @@ package
             Sfx.playSlugMode();
             this.hideInShell(false);
             this._maxHp.value /= this.hpPerHeart();
-            this._slugMode = true;
-            this._hardMode = true;
+            _slugMode = true;
+            _hardMode = true;
             this._maxHp.value *= this.hpPerHeart();
             this.setMaxHp(this.getMaxHp());
             this.setCurHp(999999999);
@@ -923,28 +922,28 @@ package
       {
          if(this.noCollide)
          {
-            this.noCollide = false;
+            noCollide = false;
             acceleration.y = 1200;
          }
          if(this.justPressedUp())
          {
-            this._mostRecentDir = DIR_UP;
-            this._mostRecentUpDown = DIR_UP;
+            _mostRecentDir = DIR_UP;
+            _mostRecentUpDown = DIR_UP;
          }
          if(this.justPressedDown())
          {
-            this._mostRecentDir = DIR_DOWN;
-            this._mostRecentUpDown = DIR_DOWN;
+            _mostRecentDir = DIR_DOWN;
+            _mostRecentUpDown = DIR_DOWN;
          }
          if(this.justPressedLeft())
          {
-            this._mostRecentDir = DIR_LEFT;
-            this._mostRecentLeftRight = DIR_LEFT;
+            _mostRecentDir = DIR_LEFT;
+            _mostRecentLeftRight = DIR_LEFT;
          }
          if(this.justPressedRight())
          {
-            this._mostRecentDir = DIR_RIGHT;
-            this._mostRecentLeftRight = DIR_RIGHT;
+            _mostRecentDir = DIR_RIGHT;
+            _mostRecentLeftRight = DIR_RIGHT;
          }
          var _loc1_:Boolean = this._hidingInShell && !this._jumping;
          switch(this._gravityDir)
@@ -1068,6 +1067,7 @@ package
                   facing = RIGHT;
                   this.setFaceDir(FACE_RWALL_DOWN);
                }
+			   break;
          }
       }
       
@@ -1119,6 +1119,7 @@ package
                   {
                      velocity.x = Utility.integrate(velocity.x,0,4,FlxG.elapsed);
                   }
+				  break;
             }
          }
       }
@@ -1129,13 +1130,13 @@ package
          {
             this.setHelixFragments(this._helixFragments.value);
             this.setSaveCoords(x,y,true);
-            this.saveOnNextFrame = false;
-            this.hasSetHpBar = false;
+            saveOnNextFrame = false;
+            hasSetHpBar = false;
             this.setCurHp(9999);
          }
          if(this.hasSetHpBar == false)
          {
-            this.hasSetHpBar = true;
+            hasSetHpBar = true;
             this.setCurHp(9999);
             this.setMaxHp(this._maxHp.value);
          }
@@ -1157,16 +1158,16 @@ package
          this._weaponTimeout.value -= FlxG.elapsed;
          if(this.justPressedLeft())
          {
-            this.pressedLeftSinceJump = true;
+            pressedLeftSinceJump = true;
          }
          else if(this.justPressedRight())
          {
-            this.pressedRightSinceJump = true;
+            pressedRightSinceJump = true;
          }
          else if(this.justPressedJump())
          {
-            this.pressedLeftSinceJump = false;
-            this.pressedRightSinceJump = false;
+            pressedLeftSinceJump = false;
+            pressedRightSinceJump = false;
          }
          if(!dead)
          {
@@ -1185,14 +1186,14 @@ package
          }
          if(this.pressedUp() || this.pressedDown() || this.pressedLeft() || this.pressedRight() || this.pressedShoot() || this.pressedStrafe() || this.pressedJump() || flickering())
          {
-            this._sleepTimeout = SLEEP_TIMEOUT;
+            _sleepTimeout = SLEEP_TIMEOUT;
          }
-         this._sleepTimeout -= FlxG.elapsed;
+         _sleepTimeout -= FlxG.elapsed;
          if(this._sleepTimeout <= 0 && !PlayState.zzz.visible && !this._slugMode)
          {
             this.hideInShell(true);
             PlayState.zzz.visible = true;
-            this._sleepTimeout = SLEEP_TIMEOUT;
+            _sleepTimeout = SLEEP_TIMEOUT;
          }
          if(!dead)
          {
@@ -1207,7 +1208,7 @@ package
          {
             return;
          }
-         this._sleepTimeout = SLEEP_TIMEOUT;
+         _sleepTimeout = SLEEP_TIMEOUT;
          if(this._hidingInShell)
          {
             this.hideInShell(false);
@@ -1263,7 +1264,7 @@ package
          {
             return;
          }
-         this._sleepTimeout = SLEEP_TIMEOUT;
+         _sleepTimeout = SLEEP_TIMEOUT;
          dead = true;
          solid = false;
          if(PlayState.bossRush)
@@ -1279,8 +1280,8 @@ package
          if(!this._invincible)
          {
             Utility.stackTrace("setting timer for kill()");
-            this.deathFadeInterval = setInterval(this.deathFade,DEATHFADE_DELAY);
-            this.reviveInterval = setInterval(this.revive,REVIVE_DELAY);
+            deathFadeInterval = setInterval(this.deathFade,DEATHFADE_DELAY);
+            reviveInterval = setInterval(this.revive,REVIVE_DELAY);
             this.setFaceDir(FACE_FLOOR_RIGHT,true);
          }
       }
@@ -1296,12 +1297,12 @@ package
          clearInterval(this.reviveInterval);
          this.setFaceDir(FACE_FLOOR_RIGHT,true);
          facing = right;
-         this._faceDir = FACE_FLOOR_RIGHT;
-         this._mostRecentDir = DIR_RIGHT;
-         this._mostRecentUpDown = DIR_DOWN;
-         this._mostRecentLeftRight = DIR_RIGHT;
+         _faceDir = FACE_FLOOR_RIGHT;
+         _mostRecentDir = DIR_RIGHT;
+         _mostRecentUpDown = DIR_DOWN;
+         _mostRecentLeftRight = DIR_RIGHT;
          this.teleportTo(32,32);
-         this.teleportInterval = setInterval(this.realTeleport,TELEPORT_DELAY);
+         teleportInterval = setInterval(this.realTeleport,TELEPORT_DELAY);
          if(PlayState.bossRush)
          {
             Music.playBoss1();
@@ -1317,7 +1318,7 @@ package
       
       override public function hitLeft(param1:FlxObject, param2:Number) : void
       {
-         this._justHitHeadOrWall = true;
+         _justHitHeadOrWall = true;
          if(this.findNotSolidHeight() < 8)
          {
             return;
@@ -1348,6 +1349,7 @@ package
                      this.setGravityDir(GRAV_LEFT);
                      this.setFaceDir(FACE_LWALL_UP,true);
                   }
+				  break;
             }
          }
          super.hitLeft(param1,param2);
@@ -1355,7 +1357,7 @@ package
       
       override public function hitRight(param1:FlxObject, param2:Number) : void
       {
-         this._justHitHeadOrWall = true;
+         _justHitHeadOrWall = true;
          super.hitRight(param1,param2);
          if(this._paralyzed)
          {
@@ -1390,13 +1392,14 @@ package
                      x += 11;
                      this.moveSnailCheckFullBounds(0,11);
                   }
+				  break;
             }
          }
       }
       
       override public function hitBottom(param1:FlxObject, param2:Number) : void
       {
-         this._justHitHeadOrWall = false;
+         _justHitHeadOrWall = false;
          super.hitBottom(param1,param2);
          if(this.findNotSolidWidth() < 8)
          {
@@ -1427,6 +1430,7 @@ package
                      this.moveSnailCheckBounds(0,11);
                      facing = LEFT;
                   }
+				  break;
             }
          }
          if(this._faceDir == FACE_CEIL_RIGHT || this._faceDir == FACE_CEIL_LEFT)
@@ -1441,7 +1445,7 @@ package
       
       override public function hitTop(param1:FlxObject, param2:Number) : void
       {
-         this._justHitHeadOrWall = true;
+         _justHitHeadOrWall = true;
          super.hitTop(param1,param2);
          if(this.findNotSolidWidth() < 8)
          {
@@ -1473,6 +1477,7 @@ package
                         this.setFaceDir(FACE_CEIL_LEFT,true);
                         facing = LEFT;
                      }
+					 break;
                }
             }
          }
@@ -1488,12 +1493,12 @@ package
       
       public function hasAnyWeapon() : Boolean
       {
-         return Boolean(this._hasWeapon[0]) || Boolean(this._hasWeapon[1]) || Boolean(this._hasWeapon[2]);
+         return this._hasWeapon[0] || this._hasWeapon[1] || this._hasWeapon[2];
       }
       
       public function hasAnyTwoWeapons() : Boolean
       {
-         return Boolean(this._hasWeapon[0]) && (Boolean(this._hasWeapon[1]) || Boolean(this._hasWeapon[2])) || Boolean(this._hasWeapon[1]) && Boolean(this._hasWeapon[2]);
+         return this._hasWeapon[0] && (this._hasWeapon[1] || this._hasWeapon[2]) || this._hasWeapon[1] && this._hasWeapon[2];
       }
       
       public function getHasWeapon(param1:int) : Boolean
@@ -1508,7 +1513,7 @@ package
       
       public function switchToWeapon(param1:int) : void
       {
-         if(Boolean(this._hasWeapon[param1]) || param1 == WEAPON_NONE)
+         if(this._hasWeapon[param1] || param1 == WEAPON_NONE)
          {
             this._currentWeapon.value = param1;
          }
@@ -1521,7 +1526,7 @@ package
       
       private function switchToNextWeapon() : void
       {
-         if(!(Boolean(this._hasWeapon[0]) || Boolean(this._hasWeapon[1]) || Boolean(this._hasWeapon[2])))
+         if(!(this._hasWeapon[0] || this._hasWeapon[1] || this._hasWeapon[2]))
          {
             return;
          }
@@ -1538,7 +1543,7 @@ package
       
       private function switchToPrevWeapon() : void
       {
-         if(!(Boolean(this._hasWeapon[0]) || Boolean(this._hasWeapon[1]) || Boolean(this._hasWeapon[2])))
+         if(!(this._hasWeapon[0] || this._hasWeapon[1] || this._hasWeapon[2]))
          {
             return;
          }
@@ -1567,14 +1572,6 @@ package
       
       public function shootCurrentWeapon() : void
       {
-         var _loc2_:int = 0;
-         var _loc3_:Array = null;
-         var _loc4_:Boolean = false;
-         var _loc5_:Array = null;
-         var _loc6_:int = 0;
-         var _loc7_:int = 0;
-         var _loc8_:int = 0;
-         var _loc9_:int = 0;
          while(this._currentWeapon.value > WEAPON_NONE && !this._hasWeapon[this._currentWeapon.value])
          {
             --this._currentWeapon.value;
@@ -1590,8 +1587,9 @@ package
          var _loc1_:PlayerBullet = this._bulletGroups.getBullet(this._currentWeapon.value,this._hasDevastator.value);
          if(_loc1_)
          {
-            _loc2_ = -1;
-            _loc4_ = false;
+            var _loc2_:int = -1;
+			var _loc3_:Array;
+            var _loc4_:Boolean = false;
             if(this._jumping || this._hasDevastator.value || _loc4_)
             {
                _loc3_ = [1,1,1,1,1,1,1,1];
@@ -1611,41 +1609,42 @@ package
                      break;
                   case GRAV_DOWN:
                      _loc3_ = [1,1,1,1,1,0,0,0];
+					 break;
                }
             }
             else
             {
                _loc3_ = [1,1,1,1,1,1,1,1];
             }
-            if(this.pressedUp() && this.pressedLeft() && Boolean(_loc3_[3]))
+            if(this.pressedUp() && this.pressedLeft() && _loc3_[3])
             {
                _loc2_ = 3;
             }
-            else if(this.pressedUp() && this.pressedRight() && Boolean(_loc3_[1]))
+            else if(this.pressedUp() && this.pressedRight() && _loc3_[1])
             {
                _loc2_ = 1;
             }
-            else if(this.pressedDown() && this.pressedLeft() && Boolean(_loc3_[5]))
+            else if(this.pressedDown() && this.pressedLeft() && _loc3_[5])
             {
                _loc2_ = 5;
             }
-            else if(this.pressedDown() && this.pressedRight() && Boolean(_loc3_[7]))
+            else if(this.pressedDown() && this.pressedRight() && _loc3_[7])
             {
                _loc2_ = 7;
             }
-            else if(this.pressedUp() && Boolean(_loc3_[2]))
+            else if(this.pressedUp() && _loc3_[2])
             {
                _loc2_ = 2;
             }
-            else if(this.pressedDown() && Boolean(_loc3_[6]))
+            else if(this.pressedDown() && _loc3_[6])
             {
                _loc2_ = 6;
             }
-            else if(this.pressedLeft() && Boolean(_loc3_[4]))
+            else if(this.pressedLeft() && _loc3_[4])
             {
                _loc2_ = 4;
             }
-            else if(this.pressedRight() && Boolean(_loc3_[0]))
+            else if(this.pressedRight() && _loc3_[0])
             {
                _loc2_ = 0;
             }
@@ -1676,13 +1675,14 @@ package
                      break;
                   case FACE_LWALL_DOWN:
                      _loc2_ = 6;
+					 break;
                }
             }
-            _loc5_ = [0,40,90,140,180,-140,-90,-40];
-            _loc6_ = int(_loc5_[_loc2_]);
-            _loc7_ = this.WEAPON_SPEED[this._currentWeapon.value] / this._turboMultiplier.value;
-            _loc8_ = Math.cos(_loc6_ * Math.PI / 180) * _loc7_;
-            _loc9_ = -Math.sin(_loc6_ * Math.PI / 180) * _loc7_;
+            var _loc5_:Array = [0,40,90,140,180,-140,-90,-40];
+            var _loc6_:int = _loc5_[_loc2_];
+            var _loc7_:int = this.WEAPON_SPEED[this._currentWeapon.value] / this._turboMultiplier.value;
+            var _loc8_:int = Math.cos(_loc6_ * Math.PI / 180) * _loc7_;
+            var _loc9_:int = -Math.sin(_loc6_ * Math.PI / 180) * _loc7_;
             _loc1_.shoot(x + width / 2,y + height / 2,_loc8_,_loc9_);
             this._weaponTimeout.value = this.WEAPON_TIMEOUTS[this._currentWeapon.value] * this._turboMultiplier.value;
          }
@@ -1704,7 +1704,7 @@ package
                      return;
                   }
                   this.setFaceDir(facing == RIGHT ? FACE_CEIL_RIGHT : FACE_CEIL_LEFT);
-                  this._desiredGravity = GRAV_UP;
+                  _desiredGravity = GRAV_UP;
                }
                else if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_RIGHT) && this.pressedRight())
                {
@@ -1713,7 +1713,7 @@ package
                      return;
                   }
                   this.setFaceDir(FACE_RWALL_UP);
-                  this._desiredGravity = GRAV_RIGHT;
+                  _desiredGravity = GRAV_RIGHT;
                }
                else if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_LEFT) && this.pressedLeft())
                {
@@ -1722,7 +1722,7 @@ package
                      return;
                   }
                   this.setFaceDir(FACE_LWALL_UP);
-                  this._desiredGravity = GRAV_LEFT;
+                  _desiredGravity = GRAV_LEFT;
                }
                break;
             case GRAV_UP:
@@ -1733,7 +1733,7 @@ package
                      return;
                   }
                   this.setFaceDir(FACE_RWALL_DOWN);
-                  this._desiredGravity = GRAV_RIGHT;
+                  _desiredGravity = GRAV_RIGHT;
                }
                else if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_LEFT) && this.pressedLeft())
                {
@@ -1742,7 +1742,7 @@ package
                      return;
                   }
                   this.setFaceDir(FACE_LWALL_DOWN);
-                  this._desiredGravity = GRAV_LEFT;
+                  _desiredGravity = GRAV_LEFT;
                }
                else if(this.pressedDown())
                {
@@ -1751,7 +1751,7 @@ package
                      return;
                   }
                   this.setFaceDir(facing == RIGHT ? FACE_FLOOR_RIGHT : FACE_FLOOR_LEFT);
-                  this._desiredGravity = GRAV_DOWN;
+                  _desiredGravity = GRAV_DOWN;
                }
                break;
             case GRAV_RIGHT:
@@ -1762,9 +1762,12 @@ package
                      return;
                   }
                   this.setFaceDir(FACE_CEIL_RIGHT);
-                  this._desiredGravity = GRAV_UP;
+                  _desiredGravity = GRAV_UP;
                }
-               else if(!((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_RIGHT) && this.pressedRight()))
+               else if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_RIGHT) && this.pressedRight())
+			   {
+			   }
+			   else
                {
                   if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_LEFT) && this.pressedLeft())
                   {
@@ -1773,7 +1776,7 @@ package
                         return;
                      }
                      this.setFaceDir(this._faceDir == FACE_RWALL_UP ? FACE_LWALL_UP : FACE_LWALL_DOWN);
-                     this._desiredGravity = GRAV_LEFT;
+                     _desiredGravity = GRAV_LEFT;
                   }
                   else if((!this.pressedLeft() && !this.pressedRight() || this._mostRecentDir == DIR_DOWN) && this.pressedDown())
                   {
@@ -1782,7 +1785,7 @@ package
                         return;
                      }
                      this.setFaceDir(FACE_FLOOR_RIGHT);
-                     this._desiredGravity = GRAV_DOWN;
+                     _desiredGravity = GRAV_DOWN;
                   }
                }
                break;
@@ -1794,9 +1797,12 @@ package
                      return;
                   }
                   this.setFaceDir(FACE_CEIL_LEFT);
-                  this._desiredGravity = GRAV_UP;
+                  _desiredGravity = GRAV_UP;
                }
-               else if(!((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_LEFT) && this.pressedLeft()))
+               else if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_LEFT) && this.pressedLeft())
+			   {
+			   }
+			   else
                {
                   if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_RIGHT) && this.pressedRight())
                   {
@@ -1805,7 +1811,7 @@ package
                         return;
                      }
                      this.setFaceDir(this._faceDir == FACE_LWALL_UP ? FACE_RWALL_UP : FACE_RWALL_DOWN);
-                     this._desiredGravity = GRAV_RIGHT;
+                     _desiredGravity = GRAV_RIGHT;
                   }
                   else if((!this.pressedLeft() && !this.pressedRight() || this._mostRecentDir == DIR_DOWN) && this.pressedDown())
                   {
@@ -1814,11 +1820,12 @@ package
                         return;
                      }
                      this.setFaceDir(FACE_FLOOR_LEFT);
-                     this._desiredGravity = GRAV_DOWN;
+                     _desiredGravity = GRAV_DOWN;
                   }
                }
+			   break;
          }
-         this._desiredGravity = GRAV_DOWN;
+         _desiredGravity = GRAV_DOWN;
       }
       
       public function changeSnailSizeCheckBounds(param1:int, param2:int, param3:int, param4:int) : void
@@ -1929,20 +1936,20 @@ package
       {
          if(this._justHitSteps)
          {
-            this._justHitSteps = false;
+            _justHitSteps = false;
             return;
          }
          switch(this._gravityDir)
          {
             case GRAV_UP:
-               this._jumping = velocity.y != 0;
+               _jumping = velocity.y != 0;
                if(this._jumping)
                {
                   ++this._fallFrames;
                }
                else
                {
-                  this._fallFrames = 0;
+                  _fallFrames = 0;
                }
                if(!this._hasGravityJump.value && this._fallFrames >= 1 || flickering() && !this._hasGravityJump.value)
                {
@@ -1960,7 +1967,7 @@ package
                }
                else if(this._hasGravityJump.value && !this.pressedJump() && this._fallFrames == 1 && !this.pressedUp())
                {
-                  this._desiredGravity = GRAV_UP;
+                  _desiredGravity = GRAV_UP;
                   switch(this._desiredGravity)
                   {
                      case GRAV_DOWN:
@@ -1974,6 +1981,7 @@ package
                         break;
                      case GRAV_RIGHT:
                         this.setFaceDir(this._mostRecentUpDown == DIR_UP ? FACE_RWALL_UP : FACE_RWALL_DOWN);
+						break;
                   }
                }
                break;
@@ -1994,14 +2002,14 @@ package
                   }
                   break;
                }
-               this._jumping = velocity.y != 0;
+               _jumping = velocity.y != 0;
                if(this._jumping)
                {
                   ++this._fallFrames;
                }
                else
                {
-                  this._fallFrames = 0;
+                  _fallFrames = 0;
                }
                if(this._fallFrames == 1 || flickering())
                {
@@ -2016,14 +2024,14 @@ package
                }
                break;
             case GRAV_LEFT:
-               this._jumping = velocity.x != 0;
+               _jumping = velocity.x != 0;
                if(this._jumping)
                {
                   ++this._fallFrames;
                }
                else
                {
-                  this._fallFrames = 0;
+                  _fallFrames = 0;
                }
                if(!this._hasGravityJump.value && this._fallFrames >= 1 || flickering() && !this._hasGravityJump.value)
                {
@@ -2042,7 +2050,7 @@ package
                }
                else if(this._hasGravityJump.value && !this.pressedJump() && this._fallFrames == 1 && !this.pressedLeft())
                {
-                  this._desiredGravity = GRAV_LEFT;
+                  _desiredGravity = GRAV_LEFT;
                   switch(this._desiredGravity)
                   {
                      case GRAV_DOWN:
@@ -2056,18 +2064,19 @@ package
                         break;
                      case GRAV_RIGHT:
                         this.setFaceDir(this._mostRecentUpDown == DIR_UP ? FACE_RWALL_UP : FACE_RWALL_DOWN);
+						break;
                   }
                }
                break;
             case GRAV_RIGHT:
-               this._jumping = velocity.x != 0;
+               _jumping = velocity.x != 0;
                if(this._jumping)
                {
                   ++this._fallFrames;
                }
                else
                {
-                  this._fallFrames = 0;
+                  _fallFrames = 0;
                }
                if(!this._hasGravityJump.value && this._fallFrames >= 1 || flickering() && !this._hasGravityJump.value)
                {
@@ -2086,7 +2095,7 @@ package
                }
                else if(this._hasGravityJump.value && !this.pressedJump() && this._fallFrames == 1 && !this.pressedRight())
                {
-                  this._desiredGravity = GRAV_RIGHT;
+                  _desiredGravity = GRAV_RIGHT;
                   switch(this._desiredGravity)
                   {
                      case GRAV_DOWN:
@@ -2100,8 +2109,10 @@ package
                         break;
                      case GRAV_RIGHT:
                         this.setFaceDir(this._mostRecentUpDown == DIR_UP ? FACE_RWALL_UP : FACE_RWALL_DOWN);
+						break;
                   }
                }
+			   break;
          }
       }
       
@@ -2140,7 +2151,7 @@ package
             case GRAV_DOWN:
                if(this.findNotSolidHeight() >= 8)
                {
-                  --y;
+                  y -= 1;
                   velocity.y = -this._jumpPower.value;
                   return true;
                }
@@ -2148,7 +2159,7 @@ package
             case GRAV_LEFT:
                if(this.findNotSolidWidth() >= 8)
                {
-                  --x;
+                  x -= 1;
                   velocity.x = this._jumpPower.value;
                   return true;
                }
@@ -2181,7 +2192,7 @@ package
             case GRAV_DOWN:
                if(this.findNotSolidHeight() >= 8)
                {
-                  --y;
+                  y -= 1;
                   velocity.y = -this._jumpPower.value;
                   return true;
                }
@@ -2223,7 +2234,7 @@ package
       public function setSnailType(param1:int) : void
       {
          this._snailType.value = param1;
-         this._snailTypePrefix = "snail" + param1.toString() + "_";
+         _snailTypePrefix = "snail" + param1.toString() + "_";
          this._hasColdFoot.value = param1 >= SNAILTYPE_ICE;
          this._hasGravityJump.value = param1 >= SNAILTYPE_GRAVITY;
          this._hasArmor.value = param1 >= SNAILTYPE_METAL;
@@ -2261,7 +2272,7 @@ package
       
       public function setGravityDir(param1:int) : void
       {
-         this._gravityDir = param1;
+         _gravityDir = param1;
          switch(this._gravityDir)
          {
             case GRAV_DOWN:
@@ -2287,6 +2298,7 @@ package
                acceleration.y = 0;
                drag.y = this._runSpeed.value * 200;
                drag.x = 0;
+			   break;
          }
       }
       
@@ -2296,7 +2308,7 @@ package
          {
             Sfx.playShell();
          }
-         this._hidingInShell = param1;
+         _hidingInShell = param1;
          PlayState.zzz.visible = false;
          this.setFaceDir(this._faceDir,true);
       }
@@ -2346,9 +2358,9 @@ package
                height = 16 - 3;
                this.setGravityDir(GRAV_DOWN);
                this.playAnim("floor_right_hide");
-               this._hideOfsX = 9;
+               _hideOfsX = 9;
                x += this._hideOfsX;
-               this._hideOfsY = 0;
+               _hideOfsY = 0;
                y += this._hideOfsY;
                break;
             case FACE_FLOOR_RIGHT:
@@ -2357,9 +2369,9 @@ package
                offset.y = 16 + 3;
                height = 16 - 3;
                this.setGravityDir(GRAV_DOWN);
-               this._hideOfsX = 3;
+               _hideOfsX = 3;
                x += this._hideOfsX;
-               this._hideOfsY = 0;
+               _hideOfsY = 0;
                y += this._hideOfsY;
                this.playAnim("floor_right_hide");
                break;
@@ -2370,7 +2382,7 @@ package
                height = 16 - 6;
                this.setGravityDir(GRAV_UP);
                this.playAnim("ceil_right_hide");
-               this._hideOfsX = 9;
+               _hideOfsX = 9;
                x += this._hideOfsX;
                break;
             case FACE_CEIL_RIGHT:
@@ -2380,7 +2392,7 @@ package
                height = 16 - 6;
                this.setGravityDir(GRAV_UP);
                this.playAnim("ceil_right_hide");
-               this._hideOfsX = 3;
+               _hideOfsX = 3;
                x += this._hideOfsX;
                break;
             case FACE_RWALL_UP:
@@ -2391,9 +2403,9 @@ package
                this.setGravityDir(GRAV_RIGHT);
                this.playAnim("rwall_up_hide");
                facing = RIGHT;
-               this._hideOfsY = 9;
+               _hideOfsY = 9;
                y += this._hideOfsY;
-               this._hideOfsX = 3;
+               _hideOfsX = 3;
                x += this._hideOfsX;
                break;
             case FACE_RWALL_DOWN:
@@ -2404,9 +2416,9 @@ package
                this.setGravityDir(GRAV_RIGHT);
                this.playAnim("rwall_down_hide");
                facing = RIGHT;
-               this._hideOfsY = 3;
+               _hideOfsY = 3;
                y += this._hideOfsY;
-               this._hideOfsX = 3;
+               _hideOfsX = 3;
                x += this._hideOfsX;
                break;
             case FACE_LWALL_UP:
@@ -2417,7 +2429,7 @@ package
                this.setGravityDir(GRAV_LEFT);
                this.playAnim("rwall_up_hide");
                facing = LEFT;
-               this._hideOfsY = 9;
+               _hideOfsY = 9;
                y += this._hideOfsY;
                break;
             case FACE_LWALL_DOWN:
@@ -2428,8 +2440,9 @@ package
                this.setGravityDir(GRAV_LEFT);
                this.playAnim("rwall_down_hide");
                facing = LEFT;
-               this._hideOfsY = 3;
+               _hideOfsY = 3;
                y += this._hideOfsY;
+			   break;
          }
       }
       
@@ -2512,6 +2525,7 @@ package
                this.setGravityDir(GRAV_LEFT);
                this.playAnim("rwall_down_move");
                facing = LEFT;
+			   break;
          }
       }
       
@@ -2521,10 +2535,10 @@ package
          {
             return;
          }
-         this._faceDir = param1;
+         _faceDir = param1;
          this.moveSnailCheckBounds(-this._hideOfsX,-this._hideOfsY);
-         this._hideOfsX = 0;
-         this._hideOfsY = 0;
+         _hideOfsX = 0;
+         _hideOfsY = 0;
          if(this._hidingInShell)
          {
             this.setFaceDirHiding(this._faceDir);
@@ -2652,8 +2666,8 @@ package
       public function saveGame() : void
       {
          var _loc1_:XMLList = PlayState.saveData.xml.vars;
-         var _loc2_:int = int(_loc1_.savex);
-         var _loc3_:int = int(_loc1_.savey);
+         var _loc2_:int = _loc1_.savex;
+         var _loc3_:int = _loc1_.savey;
          this.setSaveCoords(_loc2_,_loc3_,true);
       }
       
@@ -2668,11 +2682,11 @@ package
          var _loc3_:SaveData = PlayState.saveData;
          if(_loc3_.isVarSet("savex"))
          {
-            _loc1_ = int(_loc3_.xml.vars.savex);
+            _loc1_ = _loc3_.xml.vars.savex;
          }
          if(_loc3_.isVarSet("savey"))
          {
-            _loc2_ = int(_loc3_.xml.vars.savey);
+            _loc2_ = _loc3_.xml.vars.savey;
          }
          this.setSaveCoords(_loc1_,_loc2_,true);
       }
@@ -2948,17 +2962,17 @@ package
       
       public function setEasyMode(param1:Boolean) : void
       {
-         this._easyMode = param1;
+         _easyMode = param1;
       }
       
       public function setHardMode(param1:Boolean) : void
       {
-         this._hardMode = param1;
+         _hardMode = param1;
       }
       
       public function setInsaneMode(param1:Boolean) : void
       {
-         this._insaneMode = param1;
+         _insaneMode = param1;
       }
       
       public function hasGravityShock() : Boolean
@@ -2981,7 +2995,7 @@ package
       
       public function getPercentComplete() : int
       {
-         var _loc1_:int = (!!this._hasWeapon[0] ? 1 : 0) + (!!this._hasWeapon[1] ? 1 : 0) + (!!this._hasWeapon[2] ? 1 : 0) + (this._hasDevastator.value ? 1 : 0) + (this._hasTurbo.value ? 1 : 0) + (this._hasHighJump.value ? 1 : 0) + this._maxHp.value / this.hpPerHeart() - STARTING_MAX_HEARTS + (this._hasColdFoot.value ? 1 : 0) + (this._hasGravityJump.value ? 1 : 0) + (this._hasArmor.value ? 1 : 0) + (this._hasShellShield.value ? 1 : 0) + this._helixFragments.value;
+         var _loc1_:int = (this._hasWeapon[0] ? 1 : 0) + (this._hasWeapon[1] ? 1 : 0) + (this._hasWeapon[2] ? 1 : 0) + (this._hasDevastator.value ? 1 : 0) + (this._hasTurbo.value ? 1 : 0) + (this._hasHighJump.value ? 1 : 0) + this._maxHp.value / this.hpPerHeart() - STARTING_MAX_HEARTS + (this._hasColdFoot.value ? 1 : 0) + (this._hasGravityJump.value ? 1 : 0) + (this._hasArmor.value ? 1 : 0) + (this._hasShellShield.value ? 1 : 0) + this._helixFragments.value;
          return _loc1_ * 100 / (this._slugMode ? 50 : 51);
       }
       
@@ -2992,7 +3006,7 @@ package
       
       public function paralyze(param1:Boolean) : void
       {
-         this._paralyzed = param1;
+         _paralyzed = param1;
       }
       
       public function addArmor() : void

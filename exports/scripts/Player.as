@@ -318,7 +318,7 @@ package
       
       public function Player(param1:PlayerBulletGroups)
       {
-         var _loc2_:int = 0;
+         var _loc5_:int = 0;
          this.WEAPON_TIMEOUTS = [0.085,0.3,0.17];
          this.WEAPON_SPEED = [370,330,60];
          this._hasWeapon = [false,false,false];
@@ -359,8 +359,8 @@ package
          maxVelocity.y = this._maxSpeed.value;
          this.setMaxHp(STARTING_MAX_HEARTS * this.hpPerHeart());
          this.setCurHp(STARTING_MAX_HEARTS * this.hpPerHeart());
-         var _loc3_:SaveData = PlayState.saveData;
-         var _loc4_:XMLList = _loc3_.xml.vars;
+         var _loc2_:SaveData = PlayState.saveData;
+         var _loc3_:XMLList = _loc2_.xml.vars;
          if(PlayState.bossRush)
          {
             this.setEasyMode(false);
@@ -383,181 +383,181 @@ package
             this.setEasyMode(false);
             this.setHardMode(false);
             this.setInsaneMode(false);
-            if(!_loc3_.isVarSet("savex"))
+            if(!_loc2_.isVarSet("savex"))
             {
-               _loc4_.savex = PlayState.config.getPlayerStartX() * 16;
+               _loc3_.savex = PlayState.config.getPlayerStartX() * 16;
             }
-            if(!_loc3_.isVarSet("savey"))
+            if(!_loc2_.isVarSet("savey"))
             {
-               _loc4_.savey = PlayState.config.getPlayerStartY() * 16;
+               _loc3_.savey = PlayState.config.getPlayerStartY() * 16;
             }
-            if(!_loc3_.isVarSet("gameTime"))
+            if(!_loc2_.isVarSet("gameTime"))
             {
-               _loc4_.gameTime = 0;
+               _loc3_.gameTime = 0;
             }
-            if(!_loc3_.isVarSet("easyMode"))
+            if(!_loc2_.isVarSet("easyMode"))
             {
-               _loc4_.easyMode = false;
+               _loc3_.easyMode = false;
             }
-            if(!_loc3_.isVarSet("hardMode"))
+            if(!_loc2_.isVarSet("hardMode"))
             {
-               _loc4_.hardMode = false;
+               _loc3_.hardMode = false;
             }
-            if(!_loc3_.isVarSet("insaneMode"))
+            if(!_loc2_.isVarSet("insaneMode"))
             {
-               _loc4_.insaneMode = false;
+               _loc3_.insaneMode = false;
             }
-            if(!_loc3_.isVarSet("hasDevastator"))
+            if(!_loc2_.isVarSet("hasDevastator"))
             {
-               _loc4_.hasDevastator = false;
+               _loc3_.hasDevastator = false;
             }
-            if(!_loc3_.isVarSet("hasGravityShock"))
+            if(!_loc2_.isVarSet("hasGravityShock"))
             {
-               _loc4_.hasGravityShock = false;
+               _loc3_.hasGravityShock = false;
             }
-            if(!_loc3_.isVarSet("hasShellShield"))
+            if(!_loc2_.isVarSet("hasShellShield"))
             {
-               _loc4_.hasShellShield = false;
+               _loc3_.hasShellShield = false;
             }
-            if(!_loc3_.isVarSet("hasTurbo"))
+            if(!_loc2_.isVarSet("hasTurbo"))
             {
-               _loc4_.hasTurbo = false;
+               _loc3_.hasTurbo = false;
             }
-            if(!_loc3_.isVarSet("toggleFire"))
+            if(!_loc2_.isVarSet("toggleFire"))
             {
-               _loc4_.toggleFire = false;
+               _loc3_.toggleFire = false;
             }
-            if(!_loc3_.isVarSet("hasHighJump"))
+            if(!_loc2_.isVarSet("hasHighJump"))
             {
-               _loc4_.hasHighJump = false;
+               _loc3_.hasHighJump = false;
             }
-            if(!_loc3_.isVarSet("hasWeaponZero"))
+            if(!_loc2_.isVarSet("hasWeaponZero"))
             {
-               _loc4_.hasWeaponZero = false;
+               _loc3_.hasWeaponZero = false;
             }
-            if(!_loc3_.isVarSet("hasWeaponOne"))
+            if(!_loc2_.isVarSet("hasWeaponOne"))
             {
-               _loc4_.hasWeaponOne = false;
+               _loc3_.hasWeaponOne = false;
             }
-            if(!_loc3_.isVarSet("hasWeaponTwo"))
+            if(!_loc2_.isVarSet("hasWeaponTwo"))
             {
-               _loc4_.hasWeaponTwo = false;
+               _loc3_.hasWeaponTwo = false;
             }
-            if(!_loc3_.isVarSet("helixFragments"))
+            if(!_loc2_.isVarSet("helixFragments"))
             {
-               _loc4_.helixFragments = 0;
+               _loc3_.helixFragments = 0;
             }
-            if(!_loc3_.isVarSet("lastWeapon"))
+            if(!_loc2_.isVarSet("lastWeapon"))
             {
-               _loc4_.lastWeapon = -1;
+               _loc3_.lastWeapon = -1;
             }
-            if(!_loc3_.isVarSet("snailType"))
+            if(!_loc2_.isVarSet("snailType"))
             {
-               _loc4_.snailType = SNAILTYPE_NORMAL;
+               _loc3_.snailType = SNAILTYPE_NORMAL;
             }
-            if(!_loc3_.isVarSet("hideTab"))
+            if(!_loc2_.isVarSet("hideTab"))
             {
-               _loc4_.hideTab = false;
+               _loc3_.hideTab = false;
             }
-            if(!_loc3_.isVarSet("hideMiniMap"))
+            if(!_loc2_.isVarSet("hideMiniMap"))
             {
-               _loc4_.hideMiniMap = false;
+               _loc3_.hideMiniMap = false;
             }
-            if(!_loc3_.isVarSet("hasGoodEnding"))
+            if(!_loc2_.isVarSet("hasGoodEnding"))
             {
-               _loc4_.hasGoodEnding = false;
+               _loc3_.hasGoodEnding = false;
             }
-            if(!_loc3_.isVarSet("mapKey"))
+            if(!_loc2_.isVarSet("mapKey"))
             {
-               _loc4_.mapKey = DEFAULT_MAP_KEY;
+               _loc3_.mapKey = DEFAULT_MAP_KEY;
             }
-            if(!_loc3_.isVarSet("jumpKey"))
+            if(!_loc2_.isVarSet("jumpKey"))
             {
-               _loc4_.jumpKey = DEFAULT_JUMP_KEY;
+               _loc3_.jumpKey = DEFAULT_JUMP_KEY;
             }
-            if(!_loc3_.isVarSet("shootKey"))
+            if(!_loc2_.isVarSet("shootKey"))
             {
-               _loc4_.shootKey = DEFAULT_SHOOT_KEY;
+               _loc3_.shootKey = DEFAULT_SHOOT_KEY;
             }
-            if(!_loc3_.isVarSet("strafeKey"))
+            if(!_loc2_.isVarSet("strafeKey"))
             {
-               _loc4_.strafeKey = DEFAULT_STRAFE_KEY;
+               _loc3_.strafeKey = DEFAULT_STRAFE_KEY;
             }
-            if(!_loc3_.isVarSet("upKey"))
+            if(!_loc2_.isVarSet("upKey"))
             {
-               _loc4_.upKey = DEFAULT_UP_KEY;
+               _loc3_.upKey = DEFAULT_UP_KEY;
             }
-            if(!_loc3_.isVarSet("leftKey"))
+            if(!_loc2_.isVarSet("leftKey"))
             {
-               _loc4_.leftKey = DEFAULT_LEFT_KEY;
+               _loc3_.leftKey = DEFAULT_LEFT_KEY;
             }
-            if(!_loc3_.isVarSet("downKey"))
+            if(!_loc2_.isVarSet("downKey"))
             {
-               _loc4_.downKey = DEFAULT_DOWN_KEY;
+               _loc3_.downKey = DEFAULT_DOWN_KEY;
             }
-            if(!_loc3_.isVarSet("rightKey"))
+            if(!_loc2_.isVarSet("rightKey"))
             {
-               _loc4_.rightKey = DEFAULT_RIGHT_KEY;
+               _loc3_.rightKey = DEFAULT_RIGHT_KEY;
             }
-            if(!_loc3_.isVarSet("jumpAltKey"))
+            if(!_loc2_.isVarSet("jumpAltKey"))
             {
-               _loc4_.jumpAltKey = DEFAULT_ALT_JUMP_KEY;
+               _loc3_.jumpAltKey = DEFAULT_ALT_JUMP_KEY;
             }
-            if(!_loc3_.isVarSet("shootAltKey"))
+            if(!_loc2_.isVarSet("shootAltKey"))
             {
-               _loc4_.shootAltKey = DEFAULT_ALT_SHOOT_KEY;
+               _loc3_.shootAltKey = DEFAULT_ALT_SHOOT_KEY;
             }
-            if(!_loc3_.isVarSet("strafeAltKey"))
+            if(!_loc2_.isVarSet("strafeAltKey"))
             {
-               _loc4_.strafeAltKey = DEFAULT_ALT_STRAFE_KEY;
+               _loc3_.strafeAltKey = DEFAULT_ALT_STRAFE_KEY;
             }
-            if(!_loc3_.isVarSet("upAltKey"))
+            if(!_loc2_.isVarSet("upAltKey"))
             {
-               _loc4_.upAltKey = DEFAULT_ALT_UP_KEY;
+               _loc3_.upAltKey = DEFAULT_ALT_UP_KEY;
             }
-            if(!_loc3_.isVarSet("leftAltKey"))
+            if(!_loc2_.isVarSet("leftAltKey"))
             {
-               _loc4_.leftAltKey = DEFAULT_ALT_LEFT_KEY;
+               _loc3_.leftAltKey = DEFAULT_ALT_LEFT_KEY;
             }
-            if(!_loc3_.isVarSet("downAltKey"))
+            if(!_loc2_.isVarSet("downAltKey"))
             {
-               _loc4_.downAltKey = DEFAULT_ALT_DOWN_KEY;
+               _loc3_.downAltKey = DEFAULT_ALT_DOWN_KEY;
             }
-            if(!_loc3_.isVarSet("rightAltKey"))
+            if(!_loc2_.isVarSet("rightAltKey"))
             {
-               _loc4_.rightAltKey = DEFAULT_ALT_RIGHT_KEY;
+               _loc3_.rightAltKey = DEFAULT_ALT_RIGHT_KEY;
             }
-            if(!_loc3_.isVarSet("weap1Key"))
+            if(!_loc2_.isVarSet("weap1Key"))
             {
-               _loc4_.weap1Key = DEFAULT_WEAPON_1_KEY;
+               _loc3_.weap1Key = DEFAULT_WEAPON_1_KEY;
             }
-            if(!_loc3_.isVarSet("weap2Key"))
+            if(!_loc2_.isVarSet("weap2Key"))
             {
-               _loc4_.weap2Key = DEFAULT_WEAPON_2_KEY;
+               _loc3_.weap2Key = DEFAULT_WEAPON_2_KEY;
             }
-            if(!_loc3_.isVarSet("weap3Key"))
+            if(!_loc2_.isVarSet("weap3Key"))
             {
-               _loc4_.weap3Key = DEFAULT_WEAPON_3_KEY;
+               _loc3_.weap3Key = DEFAULT_WEAPON_3_KEY;
             }
-            if(!_loc3_.isVarSet("weapNextKey"))
+            if(!_loc2_.isVarSet("weapNextKey"))
             {
-               _loc4_.weapNextKey = DEFAULT_WEAPON_NEXT_KEY;
+               _loc3_.weapNextKey = DEFAULT_WEAPON_NEXT_KEY;
             }
-            if(!_loc3_.isVarSet("weapPrevKey"))
+            if(!_loc2_.isVarSet("weapPrevKey"))
             {
-               _loc4_.weapPrevKey = DEFAULT_WEAPON_PREV_KEY;
+               _loc3_.weapPrevKey = DEFAULT_WEAPON_PREV_KEY;
             }
-            this.hasWonGame = _loc3_.isVarTrue("hasWonGame");
-            this.hasWonHardMode = _loc3_.isVarTrue("hasWonHardMode");
-            this.hasWonInsaneMode = _loc3_.isVarTrue("hasWonInsaneMode");
-            this.hasFullClear = _loc3_.isVarTrue("hasFullClear");
-            this.hasWonBossRush = _loc3_.isVarTrue("hasWonBossRush");
-            PlayState.hideTab = _loc3_.isVarTrue("hideTab");
-            PlayState.hideMiniMap = _loc3_.isVarTrue("hideMiniMap");
-            PlayState.hasGoodEnding = _loc3_.isVarTrue("hasGoodEnding");
-            this.setEasyMode(_loc3_.isVarTrue("easyMode"));
-            this.setHardMode(_loc3_.isVarTrue("hardMode"));
-            this.setInsaneMode(_loc3_.isVarTrue("insaneMode"));
+            this.hasWonGame = _loc2_.isVarTrue("hasWonGame");
+            this.hasWonHardMode = _loc2_.isVarTrue("hasWonHardMode");
+            this.hasWonInsaneMode = _loc2_.isVarTrue("hasWonInsaneMode");
+            this.hasFullClear = _loc2_.isVarTrue("hasFullClear");
+            this.hasWonBossRush = _loc2_.isVarTrue("hasWonBossRush");
+            PlayState.hideTab = _loc2_.isVarTrue("hideTab");
+            PlayState.hideMiniMap = _loc2_.isVarTrue("hideMiniMap");
+            PlayState.hasGoodEnding = _loc2_.isVarTrue("hasGoodEnding");
+            this.setEasyMode(_loc2_.isVarTrue("easyMode"));
+            this.setHardMode(_loc2_.isVarTrue("hardMode"));
+            this.setInsaneMode(_loc2_.isVarTrue("insaneMode"));
             this._slugMode = this._hardMode && !this._insaneMode;
             if(this._slugMode)
             {
@@ -565,22 +565,22 @@ package
                this.WEAPON_TIMEOUTS[1] = 0.23;
                this.WEAPON_TIMEOUTS[2] = 0.13;
             }
-            if(!_loc3_.isVarSet("maxHp"))
+            if(!_loc2_.isVarSet("maxHp"))
             {
-               _loc4_.maxHp = STARTING_MAX_HEARTS * this.hpPerHeart();
+               _loc3_.maxHp = STARTING_MAX_HEARTS * this.hpPerHeart();
             }
-            this.setMaxHp(_loc4_.maxHp);
+            this.setMaxHp(_loc3_.maxHp);
             this.setCurHp(999999999);
-            this.bestMainTime.value = _loc4_.bestMainTime;
-            this.bestHardTime.value = _loc4_.bestHardTime;
-            this.bestBossRushTime.value = _loc4_.bestBossRushTime;
-            this.bestInsaneTime.value = _loc4_.bestInsaneTime;
-            this.gameTime.value = _loc4_.gameTime;
-            this.setHasWeapon(0,_loc3_.isVarTrue("hasWeaponZero"));
-            this.setHasWeapon(1,_loc3_.isVarTrue("hasWeaponOne"));
-            this.setHasWeapon(2,_loc3_.isVarTrue("hasWeaponTwo"));
-            this.setHasTurbo(_loc3_.isVarTrue("hasTurbo"));
-            if(_loc3_.isVarTrue("toggleFire"))
+            this.bestMainTime.value = _loc3_.bestMainTime;
+            this.bestHardTime.value = _loc3_.bestHardTime;
+            this.bestBossRushTime.value = _loc3_.bestBossRushTime;
+            this.bestInsaneTime.value = _loc3_.bestInsaneTime;
+            this.gameTime.value = _loc3_.gameTime;
+            this.setHasWeapon(0,_loc2_.isVarTrue("hasWeaponZero"));
+            this.setHasWeapon(1,_loc2_.isVarTrue("hasWeaponOne"));
+            this.setHasWeapon(2,_loc2_.isVarTrue("hasWeaponTwo"));
+            this.setHasTurbo(_loc2_.isVarTrue("hasTurbo"));
+            if(_loc2_.isVarTrue("toggleFire"))
             {
                firingMode = FIRING_MODE_TOGGLE;
             }
@@ -588,19 +588,19 @@ package
             {
                firingMode = FIRING_MODE_NORMAL;
             }
-            this.setHighJump(_loc3_.isVarTrue("hasHighJump"));
-            this.setHasDevastator(_loc3_.isVarTrue("hasDevastator"));
-            this.setHasGravityShock(_loc3_.isVarTrue("hasGravityShock"));
-            this.setHasShellShield(_loc3_.isVarTrue("hasShellShield"));
-            this.switchToWeapon(_loc4_.lastWeapon);
-            this.setHelixFragments(_loc4_.helixFragments);
-            this.setSnailType(_loc4_.snailType);
-            this.hasSeenIsis = _loc3_.isVarTrue("hasSeenIsis");
-            this.hasSeenHelp = _loc3_.isVarTrue("hasSeenHelp");
-            PlayState.bossesKilled[1] = _loc3_.isVarTrue("bossesKilledOne");
-            PlayState.bossesKilled[2] = _loc3_.isVarTrue("bossesKilledTwo");
-            PlayState.bossesKilled[3] = _loc3_.isVarTrue("bossesKilledThree");
-            PlayState.bossesKilled[4] = _loc3_.isVarTrue("bossesKilledFour");
+            this.setHighJump(_loc2_.isVarTrue("hasHighJump"));
+            this.setHasDevastator(_loc2_.isVarTrue("hasDevastator"));
+            this.setHasGravityShock(_loc2_.isVarTrue("hasGravityShock"));
+            this.setHasShellShield(_loc2_.isVarTrue("hasShellShield"));
+            this.switchToWeapon(_loc3_.lastWeapon);
+            this.setHelixFragments(_loc3_.helixFragments);
+            this.setSnailType(_loc3_.snailType);
+            this.hasSeenIsis = _loc2_.isVarTrue("hasSeenIsis");
+            this.hasSeenHelp = _loc2_.isVarTrue("hasSeenHelp");
+            PlayState.bossesKilled[1] = _loc2_.isVarTrue("bossesKilledOne");
+            PlayState.bossesKilled[2] = _loc2_.isVarTrue("bossesKilledTwo");
+            PlayState.bossesKilled[3] = _loc2_.isVarTrue("bossesKilledThree");
+            PlayState.bossesKilled[4] = _loc2_.isVarTrue("bossesKilledFour");
             if(this.bestMainTime.value > 0 || this.bestHardTime.value > 0)
             {
                NgMedal.unlockFirstOfFour();
@@ -640,28 +640,28 @@ package
             {
                NgMedal.unlockVictory();
             }
-            MAP_KEY = _loc4_.mapKey;
-            JUMP_KEY = _loc4_.jumpKey;
-            SHOOT_KEY = _loc4_.shootKey;
-            STRAFE_KEY = _loc4_.strafeKey;
-            UP_KEY = _loc4_.upKey;
-            LEFT_KEY = _loc4_.leftKey;
-            DOWN_KEY = _loc4_.downKey;
-            RIGHT_KEY = _loc4_.rightKey;
-            ALT_JUMP_KEY = _loc4_.jumpAltKey;
-            ALT_SHOOT_KEY = _loc4_.shootAltKey;
-            ALT_STRAFE_KEY = _loc4_.strafeAltKey;
-            ALT_UP_KEY = _loc4_.upAltKey;
-            ALT_LEFT_KEY = _loc4_.leftAltKey;
-            ALT_DOWN_KEY = _loc4_.downAltKey;
-            ALT_RIGHT_KEY = _loc4_.rightAltKey;
-            WEAPON_1_KEY = _loc4_.weap1Key;
-            WEAPON_2_KEY = _loc4_.weap2Key;
-            WEAPON_3_KEY = _loc4_.weap3Key;
-            WEAPON_NEXT_KEY = _loc4_.weapNextKey;
-            WEAPON_PREV_KEY = _loc4_.weapPrevKey;
-            x = _loc4_.savex;
-            y = _loc4_.savey;
+            MAP_KEY = _loc3_.mapKey;
+            JUMP_KEY = _loc3_.jumpKey;
+            SHOOT_KEY = _loc3_.shootKey;
+            STRAFE_KEY = _loc3_.strafeKey;
+            UP_KEY = _loc3_.upKey;
+            LEFT_KEY = _loc3_.leftKey;
+            DOWN_KEY = _loc3_.downKey;
+            RIGHT_KEY = _loc3_.rightKey;
+            ALT_JUMP_KEY = _loc3_.jumpAltKey;
+            ALT_SHOOT_KEY = _loc3_.shootAltKey;
+            ALT_STRAFE_KEY = _loc3_.strafeAltKey;
+            ALT_UP_KEY = _loc3_.upAltKey;
+            ALT_LEFT_KEY = _loc3_.leftAltKey;
+            ALT_DOWN_KEY = _loc3_.downAltKey;
+            ALT_RIGHT_KEY = _loc3_.rightAltKey;
+            WEAPON_1_KEY = _loc3_.weap1Key;
+            WEAPON_2_KEY = _loc3_.weap2Key;
+            WEAPON_3_KEY = _loc3_.weap3Key;
+            WEAPON_NEXT_KEY = _loc3_.weapNextKey;
+            WEAPON_PREV_KEY = _loc3_.weapPrevKey;
+            x = _loc3_.savex;
+            y = _loc3_.savey;
             if(PlayState.startFromTown)
             {
                x = PlayState.config.getPlayerStartX() * 16;
@@ -675,24 +675,24 @@ package
          this.setGravityDir(GRAV_DOWN);
          this._slugMode = this._hardMode;
          loadGraphic(Art.SnailySnail,true,true,SPRITE_WIDTH,SPRITE_HEIGHT);
-         var _loc5_:int = 0;
-         while(_loc5_ < 4)
+         var _loc4_:int = 0;
+         while(_loc4_ < 4)
          {
-            _loc2_ = _loc5_ * 20;
+            _loc5_ = _loc4_ * 20;
             if(this._slugMode)
             {
-               _loc2_ += 4 * 20;
+               _loc5_ += 4 * 20;
             }
-            addAnimation("snail" + (_loc5_ + 1).toString() + "_floor_right_move",[0 + _loc2_,1 + _loc2_],3,true);
-            addAnimation("snail" + (_loc5_ + 1).toString() + "_floor_right_hide",[3 + _loc2_],9,false);
-            addAnimation("snail" + (_loc5_ + 1).toString() + "_rwall_up_move",[4 + _loc2_,5 + _loc2_],3,true);
-            addAnimation("snail" + (_loc5_ + 1).toString() + "_rwall_up_hide",[7 + _loc2_],9,false);
-            addAnimation("snail" + (_loc5_ + 1).toString() + "_rwall_down_move",[8 + _loc2_,9 + _loc2_],3,true);
-            addAnimation("snail" + (_loc5_ + 1).toString() + "_rwall_down_hide",[11 + _loc2_],9,false);
-            addAnimation("snail" + (_loc5_ + 1).toString() + "_ceil_right_move",[12 + _loc2_,13 + _loc2_],3,true);
-            addAnimation("snail" + (_loc5_ + 1).toString() + "_ceil_right_hide",[15 + _loc2_],9,false);
-            addAnimation("snail" + (_loc5_ + 1).toString() + "_death",[16 + _loc2_,17 + _loc2_,18 + _loc2_,19 + _loc2_],30,true);
-            _loc5_++;
+            addAnimation("snail" + (_loc4_ + 1).toString() + "_floor_right_move",[0 + _loc5_,1 + _loc5_],3,true);
+            addAnimation("snail" + (_loc4_ + 1).toString() + "_floor_right_hide",[3 + _loc5_],9,false);
+            addAnimation("snail" + (_loc4_ + 1).toString() + "_rwall_up_move",[4 + _loc5_,5 + _loc5_],3,true);
+            addAnimation("snail" + (_loc4_ + 1).toString() + "_rwall_up_hide",[7 + _loc5_],9,false);
+            addAnimation("snail" + (_loc4_ + 1).toString() + "_rwall_down_move",[8 + _loc5_,9 + _loc5_],3,true);
+            addAnimation("snail" + (_loc4_ + 1).toString() + "_rwall_down_hide",[11 + _loc5_],9,false);
+            addAnimation("snail" + (_loc4_ + 1).toString() + "_ceil_right_move",[12 + _loc5_,13 + _loc5_],3,true);
+            addAnimation("snail" + (_loc4_ + 1).toString() + "_ceil_right_hide",[15 + _loc5_],9,false);
+            addAnimation("snail" + (_loc4_ + 1).toString() + "_death",[16 + _loc5_,17 + _loc5_,18 + _loc5_,19 + _loc5_],30,true);
+            _loc4_++;
          }
          this.setFaceDir(FACE_FLOOR_RIGHT,true);
          this.playAnim("floor_right_move");
@@ -1567,14 +1567,14 @@ package
       
       public function shootCurrentWeapon() : void
       {
-         var _loc1_:int = 0;
-         var _loc2_:Array = null;
-         var _loc3_:Boolean = false;
-         var _loc4_:Array = null;
-         var _loc5_:int = 0;
+         var _loc2_:int = 0;
+         var _loc3_:Array = null;
+         var _loc4_:Boolean = false;
+         var _loc5_:Array = null;
          var _loc6_:int = 0;
          var _loc7_:int = 0;
          var _loc8_:int = 0;
+         var _loc9_:int = 0;
          while(this._currentWeapon.value > WEAPON_NONE && !this._hasWeapon[this._currentWeapon.value])
          {
             --this._currentWeapon.value;
@@ -1587,103 +1587,103 @@ package
          {
             return;
          }
-         var _loc9_:PlayerBullet = this._bulletGroups.getBullet(this._currentWeapon.value,this._hasDevastator.value);
-         if(_loc9_)
+         var _loc1_:PlayerBullet = this._bulletGroups.getBullet(this._currentWeapon.value,this._hasDevastator.value);
+         if(_loc1_)
          {
-            _loc1_ = -1;
-            _loc3_ = false;
-            if(this._jumping || this._hasDevastator.value || _loc3_)
+            _loc2_ = -1;
+            _loc4_ = false;
+            if(this._jumping || this._hasDevastator.value || _loc4_)
             {
-               _loc2_ = [1,1,1,1,1,1,1,1];
+               _loc3_ = [1,1,1,1,1,1,1,1];
             }
             else if(this._currentWeapon.value == WEAPON_PEA_SHOOTER)
             {
                switch(this._gravityDir)
                {
                   case GRAV_LEFT:
-                     _loc2_ = [1,1,1,0,0,0,1,1];
+                     _loc3_ = [1,1,1,0,0,0,1,1];
                      break;
                   case GRAV_RIGHT:
-                     _loc2_ = [0,0,1,1,1,1,1,0];
+                     _loc3_ = [0,0,1,1,1,1,1,0];
                      break;
                   case GRAV_UP:
-                     _loc2_ = [1,0,0,0,1,1,1,1];
+                     _loc3_ = [1,0,0,0,1,1,1,1];
                      break;
                   case GRAV_DOWN:
-                     _loc2_ = [1,1,1,1,1,0,0,0];
+                     _loc3_ = [1,1,1,1,1,0,0,0];
                }
             }
             else
             {
-               _loc2_ = [1,1,1,1,1,1,1,1];
+               _loc3_ = [1,1,1,1,1,1,1,1];
             }
-            if(this.pressedUp() && this.pressedLeft() && Boolean(_loc2_[3]))
+            if(this.pressedUp() && this.pressedLeft() && Boolean(_loc3_[3]))
             {
-               _loc1_ = 3;
+               _loc2_ = 3;
             }
-            else if(this.pressedUp() && this.pressedRight() && Boolean(_loc2_[1]))
+            else if(this.pressedUp() && this.pressedRight() && Boolean(_loc3_[1]))
             {
-               _loc1_ = 1;
+               _loc2_ = 1;
             }
-            else if(this.pressedDown() && this.pressedLeft() && Boolean(_loc2_[5]))
+            else if(this.pressedDown() && this.pressedLeft() && Boolean(_loc3_[5]))
             {
-               _loc1_ = 5;
+               _loc2_ = 5;
             }
-            else if(this.pressedDown() && this.pressedRight() && Boolean(_loc2_[7]))
+            else if(this.pressedDown() && this.pressedRight() && Boolean(_loc3_[7]))
             {
-               _loc1_ = 7;
+               _loc2_ = 7;
             }
-            else if(this.pressedUp() && Boolean(_loc2_[2]))
+            else if(this.pressedUp() && Boolean(_loc3_[2]))
             {
-               _loc1_ = 2;
+               _loc2_ = 2;
             }
-            else if(this.pressedDown() && Boolean(_loc2_[6]))
+            else if(this.pressedDown() && Boolean(_loc3_[6]))
             {
-               _loc1_ = 6;
+               _loc2_ = 6;
             }
-            else if(this.pressedLeft() && Boolean(_loc2_[4]))
+            else if(this.pressedLeft() && Boolean(_loc3_[4]))
             {
-               _loc1_ = 4;
+               _loc2_ = 4;
             }
-            else if(this.pressedRight() && Boolean(_loc2_[0]))
+            else if(this.pressedRight() && Boolean(_loc3_[0]))
             {
-               _loc1_ = 0;
+               _loc2_ = 0;
             }
-            if(_loc1_ == -1)
+            if(_loc2_ == -1)
             {
                switch(this._faceDir)
                {
                   case FACE_FLOOR_LEFT:
-                     _loc1_ = 4;
+                     _loc2_ = 4;
                      break;
                   case FACE_CEIL_LEFT:
-                     _loc1_ = 4;
+                     _loc2_ = 4;
                      break;
                   case FACE_FLOOR_RIGHT:
-                     _loc1_ = 0;
+                     _loc2_ = 0;
                      break;
                   case FACE_CEIL_RIGHT:
-                     _loc1_ = 0;
+                     _loc2_ = 0;
                      break;
                   case FACE_RWALL_UP:
-                     _loc1_ = 2;
+                     _loc2_ = 2;
                      break;
                   case FACE_LWALL_UP:
-                     _loc1_ = 2;
+                     _loc2_ = 2;
                      break;
                   case FACE_RWALL_DOWN:
-                     _loc1_ = 6;
+                     _loc2_ = 6;
                      break;
                   case FACE_LWALL_DOWN:
-                     _loc1_ = 6;
+                     _loc2_ = 6;
                }
             }
-            _loc4_ = [0,40,90,140,180,-140,-90,-40];
-            _loc5_ = int(_loc4_[_loc1_]);
-            _loc6_ = this.WEAPON_SPEED[this._currentWeapon.value] / this._turboMultiplier.value;
-            _loc7_ = Math.cos(_loc5_ * Math.PI / 180) * _loc6_;
-            _loc8_ = -Math.sin(_loc5_ * Math.PI / 180) * _loc6_;
-            _loc9_.shoot(x + width / 2,y + height / 2,_loc7_,_loc8_);
+            _loc5_ = [0,40,90,140,180,-140,-90,-40];
+            _loc6_ = int(_loc5_[_loc2_]);
+            _loc7_ = this.WEAPON_SPEED[this._currentWeapon.value] / this._turboMultiplier.value;
+            _loc8_ = Math.cos(_loc6_ * Math.PI / 180) * _loc7_;
+            _loc9_ = -Math.sin(_loc6_ * Math.PI / 180) * _loc7_;
+            _loc1_.shoot(x + width / 2,y + height / 2,_loc8_,_loc9_);
             this._weaponTimeout.value = this.WEAPON_TIMEOUTS[this._currentWeapon.value] * this._turboMultiplier.value;
          }
       }
