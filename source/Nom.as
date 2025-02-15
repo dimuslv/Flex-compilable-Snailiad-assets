@@ -17,7 +17,7 @@ package
       
       private var disappearTimer:Number;
       
-      public function Nom(param1:int, param2:int)
+      public function Nom(param1:int, param2:int) : void
       {
          super();
          x = param1;
@@ -37,7 +37,7 @@ package
          {
             return;
          }
-         this.disappearTimer -= FlxG.elapsed;
+         disappearTimer -= FlxG.elapsed;
          if(this.disappearTimer <= 0)
          {
             kill();

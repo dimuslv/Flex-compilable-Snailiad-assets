@@ -4,7 +4,7 @@ package
    
    public class Npc extends FlxSprite
    {
-      public function Npc(param1:int, param2:int)
+      public function Npc(param1:int, param2:int) : void
       {
          super();
          x = param1;

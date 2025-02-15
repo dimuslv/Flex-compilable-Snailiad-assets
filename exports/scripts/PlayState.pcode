@@ -5,6 +5,60 @@ package
    
    public class PlayState extends FlxState
    {
+      public static var STATE_MENU:int = 1;
+      
+      public static var STATE_GAME:int = 2;
+      
+      public static var STATE_ENDING:int = 3;
+      
+      public static var STATE_SUBSCREEN:int = 4;
+      
+      public static var STATE_INTRO:int = 5;
+      
+      public static var STATE_SPLASH:int = 6;
+      
+      public static var realState:int;
+      
+      public static var startedGame:Boolean = false;
+      
+      public static var endingFromMenu:Boolean = false;
+      
+      public static var endingNum:int = 0;
+      
+      public static var startFromTown:Boolean = false;
+      
+      public static var hasGoodEnding:Boolean = false;
+      
+      public static var introSlugMode:Boolean = false;
+      
+      public static var hideMiniMap:Boolean = false;
+      
+      public static var hideTab:Boolean = false;
+      
+      public static var hideableHidden:Boolean = false;
+      
+      public static var area:int = -1;
+      
+      public static var hasJumped:Boolean = false;
+      
+      public static var bossRush:Boolean = false;
+      
+      public static var isBossRushComplete:Boolean = false;
+      
+      public static var bossRushFade:Boolean = false;
+      
+      public static var bossRushCompleteTimeout:Number = 0;
+      
+      public static const BOSS_RUSH_COMPLETE_TIMEOUT:Number = 9;
+      
+      public static var isGameComplete:Boolean = false;
+      
+      public static var gameFade:Boolean = false;
+      
+      public static var gameCompleteTimeout:Number = 0;
+      
+      public static const GAME_COMPLETE_TIMEOUT:Number = 9;
+      
       public static var aiTriggerPool:AiTriggerPool;
       
       public static var boss4BulletGroups:Boss4BulletGroups;
@@ -90,60 +144,6 @@ package
       public static var boss2rush:Boss;
       
       public static var This:PlayState;
-      
-      public static var STATE_MENU:int = 1;
-      
-      public static var STATE_GAME:int = 2;
-      
-      public static var STATE_ENDING:int = 3;
-      
-      public static var STATE_SUBSCREEN:int = 4;
-      
-      public static var STATE_INTRO:int = 5;
-      
-      public static var STATE_SPLASH:int = 6;
-      
-      public static var realState:int;
-      
-      public static var startedGame:Boolean = false;
-      
-      public static var endingFromMenu:Boolean = false;
-      
-      public static var endingNum:int = 0;
-      
-      public static var startFromTown:Boolean = false;
-      
-      public static var hasGoodEnding:Boolean = false;
-      
-      public static var introSlugMode:Boolean = false;
-      
-      public static var hideMiniMap:Boolean = false;
-      
-      public static var hideTab:Boolean = false;
-      
-      public static var hideableHidden:Boolean = false;
-      
-      public static var area:int = -1;
-      
-      public static var hasJumped:Boolean = false;
-      
-      public static var bossRush:Boolean = false;
-      
-      public static var isBossRushComplete:Boolean = false;
-      
-      public static var bossRushFade:Boolean = false;
-      
-      public static var bossRushCompleteTimeout:Number = 0;
-      
-      public static const BOSS_RUSH_COMPLETE_TIMEOUT:Number = 9;
-      
-      public static var isGameComplete:Boolean = false;
-      
-      public static var gameFade:Boolean = false;
-      
-      public static var gameCompleteTimeout:Number = 0;
-      
-      public static const GAME_COMPLETE_TIMEOUT:Number = 9;
       
       method
       name null
@@ -1278,11 +1278,9 @@ package
          newarray 6
          coerce QName(PackageNamespace(""),"Array")
          setlocal2
-         findpropstrict QName(PackageNamespace(""),"int")
          getlocal2
          getlocal1
          getproperty MultinameL([PrivateNamespace(null,"#PlayState/1"),PackageNamespace(""),PackageNamespace("org.flixel"),PrivateNamespace(null,"#PlayState/2"),PackageInternalNs(""),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("PlayState"),StaticProtectedNs("PlayState"),StaticProtectedNs("org.flixel:FlxState"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         callproperty QName(PackageNamespace(""),"int"), 1
          convert_i
          setlocal3
          getlocal1
@@ -1354,8 +1352,7 @@ package
          getlocal1
          getlocal2
          callproperty QName(PackageNamespace(""),"getTile"), 2
-         not
-         iftrue ofs3
+         iffalse ofs3
          pushbyte 1
          jump ofs4
          ofs3:
@@ -1851,6 +1848,7 @@ package
          add
          convert_i
          setlocal2
+         jump ofs3
          ofs9:
          label
          jump ofs3
@@ -1968,6 +1966,7 @@ package
          label
          getlex QName(PackageNamespace(""),"Music")
          callpropvoid QName(PackageNamespace(""),"playBoss1"), 0
+         jump ofs2
          ofs10:
          label
          jump ofs2
@@ -2157,7 +2156,7 @@ package
          coerce_a
          ofs1:
          add
-         coerce_a
+         coerce_s
          setlocal 4
          getlocal2
          convert_b
@@ -2204,7 +2203,7 @@ package
          callproperty QName(PackageNamespace(""),"formatExact"), 1
          add
          add
-         coerce_a
+         coerce_s
          setlocal 4
          getlex QName(PackageNamespace(""),"player")
          pushtrue
@@ -2247,7 +2246,7 @@ package
          callproperty QName(PackageNamespace(""),"formatExact"), 1
          add
          add
-         coerce_a
+         coerce_s
          setlocal 4
          ofs9:
          getlex QName(PackageNamespace(""),"player")
@@ -2290,7 +2289,7 @@ package
          callproperty QName(PackageNamespace(""),"formatExact"), 1
          add
          add
-         coerce_a
+         coerce_s
          setlocal 4
          ofs12:
          jump ofs3
@@ -2348,7 +2347,7 @@ package
          callproperty QName(PackageNamespace(""),"formatExact"), 1
          add
          add
-         coerce_a
+         coerce_s
          setlocal 4
          ofs17:
          getlex QName(PackageNamespace(""),"player")
@@ -2391,7 +2390,7 @@ package
          callproperty QName(PackageNamespace(""),"formatExact"), 1
          add
          add
-         coerce_a
+         coerce_s
          setlocal 4
          ofs20:
          getlex QName(PackageNamespace(""),"player")
@@ -2400,7 +2399,6 @@ package
          getlocal 4
          pushstring "\nBOSS RUSH UNLOCKED!"
          add
-         coerce_a
          setlocal 4
          getlex QName(PackageNamespace(""),"player")
          pushtrue
@@ -2834,9 +2832,7 @@ package
          pushfalse
          setproperty QName(PackageNamespace(""),"visible")
          ofs4:
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlex QName(PackageNamespace(""),"mainMenu")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs5

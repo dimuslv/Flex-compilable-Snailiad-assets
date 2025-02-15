@@ -5,6 +5,60 @@ package
    
    public class PlayState extends FlxState
    {
+      public static var STATE_MENU:int = 1;
+      
+      public static var STATE_GAME:int = 2;
+      
+      public static var STATE_ENDING:int = 3;
+      
+      public static var STATE_SUBSCREEN:int = 4;
+      
+      public static var STATE_INTRO:int = 5;
+      
+      public static var STATE_SPLASH:int = 6;
+      
+      public static var realState:int = STATE_SPLASH;
+      
+      public static var startedGame:Boolean = false;
+      
+      public static var endingFromMenu:Boolean = false;
+      
+      public static var endingNum:int = 0;
+      
+      public static var startFromTown:Boolean = false;
+      
+      public static var hasGoodEnding:Boolean = false;
+      
+      public static var introSlugMode:Boolean = false;
+      
+      public static var hideMiniMap:Boolean = false;
+      
+      public static var hideTab:Boolean = false;
+      
+      public static var hideableHidden:Boolean = false;
+      
+      public static var area:int = -1;
+      
+      public static var hasJumped:Boolean = false;
+      
+      public static var bossRush:Boolean = false;
+      
+      public static var isBossRushComplete:Boolean = false;
+      
+      public static var bossRushFade:Boolean = false;
+      
+      public static var bossRushCompleteTimeout:Number = 0;
+      
+      public static const BOSS_RUSH_COMPLETE_TIMEOUT:Number = 9;
+      
+      public static var isGameComplete:Boolean = false;
+      
+      public static var gameFade:Boolean = false;
+      
+      public static var gameCompleteTimeout:Number = 0;
+      
+      public static const GAME_COMPLETE_TIMEOUT:Number = 9;
+      
       public static var aiTriggerPool:AiTriggerPool;
       
       public static var boss4BulletGroups:Boss4BulletGroups;
@@ -90,60 +144,6 @@ package
       public static var boss2rush:Boss;
       
       public static var This:PlayState;
-      
-      public static var STATE_MENU:int = 1;
-      
-      public static var STATE_GAME:int = 2;
-      
-      public static var STATE_ENDING:int = 3;
-      
-      public static var STATE_SUBSCREEN:int = 4;
-      
-      public static var STATE_INTRO:int = 5;
-      
-      public static var STATE_SPLASH:int = 6;
-      
-      public static var realState:int = STATE_SPLASH;
-      
-      public static var startedGame:Boolean = false;
-      
-      public static var endingFromMenu:Boolean = false;
-      
-      public static var endingNum:int = 0;
-      
-      public static var startFromTown:Boolean = false;
-      
-      public static var hasGoodEnding:Boolean = false;
-      
-      public static var introSlugMode:Boolean = false;
-      
-      public static var hideMiniMap:Boolean = false;
-      
-      public static var hideTab:Boolean = false;
-      
-      public static var hideableHidden:Boolean = false;
-      
-      public static var area:int = -1;
-      
-      public static var hasJumped:Boolean = false;
-      
-      public static var bossRush:Boolean = false;
-      
-      public static var isBossRushComplete:Boolean = false;
-      
-      public static var bossRushFade:Boolean = false;
-      
-      public static var bossRushCompleteTimeout:Number = 0;
-      
-      public static const BOSS_RUSH_COMPLETE_TIMEOUT:Number = 9;
-      
-      public static var isGameComplete:Boolean = false;
-      
-      public static var gameFade:Boolean = false;
-      
-      public static var gameCompleteTimeout:Number = 0;
-      
-      public static const GAME_COMPLETE_TIMEOUT:Number = 9;
       
       public function PlayState()
       {
@@ -420,7 +420,7 @@ package
             _loc1_ = 5;
          }
          var _loc2_:Array = [9,12,10,11,8,1];
-         var _loc3_:int = int(_loc2_[_loc1_]);
+         var _loc3_:int = _loc2_[_loc1_];
          if(_loc1_ == 1 && player._slugMode)
          {
             _loc3_--;
@@ -434,7 +434,7 @@ package
          {
             return 0;
          }
-         return !!PlayState.worldMap.spmap.getTile(param1,param2) ? 1 : 0;
+         return PlayState.worldMap.spmap.getTile(param1,param2) ? 1 : 0;
       }
       
       public static function gottenItemsInArea() : int
@@ -514,6 +514,7 @@ package
                break;
             case 5:
                _loc2_ += numOfItemsAt(159,173);
+			   break;
          }
          return _loc2_;
       }
@@ -545,6 +546,7 @@ package
                break;
             case 7:
                Music.playBoss1();
+			   break;
          }
          if(param1 == 6)
          {
@@ -573,7 +575,7 @@ package
       public static function showBossName(param1:int, param2:Boolean = false) : void
       {
          var _loc3_:Array = ["there is no boss #0","SHELLBREAKER","STOMPY","SPACE BOX","MOON SNAIL"];
-         var _loc4_:* = _loc3_[param1] + (param2 ? " DEFEATED!" : "");
+         var _loc4_:String = _loc3_[param1] + (param2 ? " DEFEATED!" : "");
          if(param2 && param1 == 4)
          {
             if(player._insaneMode)
@@ -746,7 +748,7 @@ package
             {
                menuHideable.visible = false;
             }
-            if(Boolean(mainMenu) && mainMenu.endingShow)
+            if(mainMenu && mainMenu.endingShow)
             {
                FlxG.mouse.hide();
             }

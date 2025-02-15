@@ -33,7 +33,7 @@ package
       
       private var _elapsed:Number = 0;
       
-      public function Platform4(param1:int, param2:int)
+      public function Platform4(param1:int, param2:int) : void
       {
          super(param1,param2,false);
          loadGraphic(Art.Platform4,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -59,12 +59,12 @@ package
       
       override public function triggerAi1() : void
       {
-         this._accy = ACCEL;
+         _accy = ACCEL;
       }
       
       override public function triggerAi2() : void
       {
-         this._accy = -ACCEL;
+         _accy = -ACCEL;
       }
       
       override public function touch(param1:Player) : void
@@ -82,20 +82,20 @@ package
          {
             return;
          }
-         this._elapsed += FlxG.elapsed;
+         _elapsed += FlxG.elapsed;
          while(this._elapsed > 0)
          {
-            this._elapsed -= SEC_PER_TICK;
-            this._vely += this._accy;
+            _elapsed -= SEC_PER_TICK;
+            _vely += this._accy;
             if(this._vely > SPEED)
             {
-               this._vely = SPEED;
+               _vely = SPEED;
             }
             if(this._vely < -SPEED)
             {
-               this._vely = -SPEED;
+               _vely = -SPEED;
             }
-            this._posy += this._vely;
+            _posy += this._vely;
             _loc1_ = int(this._posy);
             _loc2_ = int(y);
             _loc3_ = _loc1_ - _loc2_;

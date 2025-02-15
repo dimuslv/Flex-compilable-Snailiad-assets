@@ -12,7 +12,7 @@ package
       
       private var _collidedThisFrame:Boolean;
       
-      public function Muck(param1:int, param2:int)
+      public function Muck(param1:int, param2:int) : void
       {
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
@@ -32,8 +32,11 @@ package
          {
             return;
          }
-         this._collidedThisFrame = true;
-         if(!param1.hasArmor())
+         _collidedThisFrame = true;
+         if(param1.hasArmor())
+		 {
+		 }
+		 else
          {
             param1.hurt(3);
          }
@@ -45,7 +48,7 @@ package
          {
             return;
          }
-         this._collidedThisFrame = false;
+         _collidedThisFrame = false;
          super.update();
       }
    }

@@ -15,7 +15,7 @@ package
       
       public var bg2:FlxSprite;
       
-      public function PauseLayer()
+      public function PauseLayer() : void
       {
          super();
          scrollFactor.x = scrollFactor.y = 0;

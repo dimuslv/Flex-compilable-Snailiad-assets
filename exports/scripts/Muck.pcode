@@ -48,7 +48,7 @@ package
          name null
          param QName(PackageNamespace(""),"int")
          param QName(PackageNamespace(""),"int")
-         returns null
+         returns QName(PackageNamespace(""),"void")
          
          body
          maxstack 12
@@ -190,14 +190,16 @@ package
          ofs0:
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#Muck"),"_collidedThisFrame")
+         initproperty QName(PrivateNamespace(null,"#Muck"),"_collidedThisFrame")
          getlocal1
          callproperty QName(PackageNamespace(""),"hasArmor"), 0
-         iftrue ofs1
+         iffalse ofs1
+         jump ofs2
+         ofs1:
          getlocal1
          pushbyte 3
          callpropvoid QName(PackageNamespace(""),"hurt"), 1
-         ofs1:
+         ofs2:
          returnvoid
          end ; code
          end ; body
@@ -231,7 +233,7 @@ package
          ofs0:
          getlocal0
          pushfalse
-         setproperty QName(PrivateNamespace(null,"#Muck"),"_collidedThisFrame")
+         initproperty QName(PrivateNamespace(null,"#Muck"),"_collidedThisFrame")
          getlocal0
          callsupervoid QName(PackageNamespace(""),"update"), 0
          returnvoid
