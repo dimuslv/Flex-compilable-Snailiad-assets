@@ -47,24 +47,24 @@ package com.newgrounds
       
       public static function createFromObject(param1:Object) : SaveGroup
       {
-         var _loc2_:Object = null;
-         var _loc3_:Object = null;
-         var _loc4_:SaveGroup = new SaveGroup(param1.group_id,param1.group_name,param1.group_type);
-         var _loc5_:uint = 0;
-         while(_loc5_ < param1.keys.length)
+         var _loc4_:Object = null;
+         var _loc5_:Object = null;
+         var _loc2_:SaveGroup = new SaveGroup(param1.group_id,param1.group_name,param1.group_type);
+         var _loc3_:uint = 0;
+         while(_loc3_ < param1.keys.length)
          {
-            _loc2_ = param1.keys[_loc5_];
-            _loc4_.addKey(new SaveKey(_loc2_.id,_loc2_.name,_loc2_.type));
-            _loc5_++;
+            _loc4_ = param1.keys[_loc3_];
+            _loc2_.addKey(new SaveKey(_loc4_.id,_loc4_.name,_loc4_.type));
+            _loc3_++;
          }
-         _loc5_ = 0;
-         while(_loc5_ < param1.ratings.length)
+         _loc3_ = 0;
+         while(_loc3_ < param1.ratings.length)
          {
-            _loc3_ = param1.ratings[_loc5_];
-            _loc4_.addRating(new SaveRating(_loc3_.id,_loc3_.name,_loc3_.float,_loc3_.min,_loc3_.max));
-            _loc5_++;
+            _loc5_ = param1.ratings[_loc3_];
+            _loc2_.addRating(new SaveRating(_loc5_.id,_loc5_.name,_loc5_.float,_loc5_.min,_loc5_.max));
+            _loc3_++;
          }
-         return _loc4_;
+         return _loc2_;
       }
       
       public function get name() : String

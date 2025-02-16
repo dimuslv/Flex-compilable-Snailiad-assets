@@ -2,7 +2,7 @@ package org.flixel
 {
    import mx.core.FontAsset;
    
-   [Embed(source="/_assets/207_org.flixel.FlxGame_junk_system.ttf",
+   [Embed(source="/_assets/224_org.flixel.FlxGame_junk_system.ttf",
    fontName="system",
    fontFamily="Snailplanes",
    mimeType="application/x-font",

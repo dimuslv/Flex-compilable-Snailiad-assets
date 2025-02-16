@@ -414,10 +414,12 @@ package com.newgrounds
          var _loc3_:SaveRating = this._group.getRatingName(param1);
          if(!_loc3_)
          {
+            trace("[NewgroundsAPISaveFile] " + param1 + " is not a recognized save file");
             return;
          }
          if(param2 < _loc3_.minValue || param2 > _loc3_.maxValue)
          {
+            trace("[NewgroundsAPISaveFile] Vote must be between " + _loc3_.minValue + " and " + _loc3_.maxValue);
             return;
          }
          _loc3_.voted = true;
@@ -426,38 +428,38 @@ package com.newgrounds
       
       override public function toString() : String
       {
-         var _loc1_:Object = null;
          var _loc2_:Object = null;
-         var _loc3_:* = "Save File " + this._filename + "   ID: " + this._id + "\n  " + this._description + "\n";
-         for each(_loc1_ in this._keys)
+         var _loc3_:Object = null;
+         var _loc1_:* = "Save File " + this._filename + "   ID: " + this._id + "\n  " + this._description + "\n";
+         for each(_loc2_ in this._keys)
          {
-            _loc3_ += "  " + this._group.getKeyID(_loc1_.id).name + ": " + _loc1_.val + "\n";
+            _loc1_ += "  " + this._group.getKeyID(_loc2_.id).name + ": " + _loc2_.val + "\n";
          }
-         for each(_loc2_ in this._ratings)
+         for each(_loc3_ in this._ratings)
          {
-            _loc3_ += "  " + this._group.getRatingID(_loc2_.id).name + "\n    Score: " + _loc2_.score + " Votes: " + _loc2_.votes + "\n";
+            _loc1_ += "  " + this._group.getRatingID(_loc3_.id).name + "\n    Score: " + _loc3_.score + " Votes: " + _loc3_.votes + "\n";
          }
-         return _loc3_;
+         return _loc1_;
       }
       
       public function toObject() : Object
       {
-         var _loc1_:Object = null;
-         var _loc2_:Object = {
+         var _loc2_:Object = null;
+         var _loc1_:Object = {
             "group":this.groupId,
             "filename":this.name,
             "description":this.description,
             "shared":true
          };
-         _loc2_.keys = [];
-         for each(_loc1_ in this._keys)
+         _loc1_.keys = [];
+         for each(_loc2_ in this._keys)
          {
-            _loc2_.keys.push({
-               "id":_loc1_.id,
-               "value":_loc1_.val
+            _loc1_.keys.push({
+               "id":_loc2_.id,
+               "value":_loc2_.val
             });
          }
-         return _loc2_;
+         return _loc1_;
       }
       
       public function save(param1:Boolean = false, param2:Boolean = false) : void

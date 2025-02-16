@@ -36,8 +36,8 @@ package com.newgrounds
       
       private static function initialize(param1:Array) : void
       {
-         var _loc2_:uint = 0;
          var _loc3_:uint = 0;
+         var _loc2_:uint = 0;
          var _loc4_:uint = param1.length;
          var _loc5_:uint = 0;
          while(_loc5_ <= 255)
@@ -49,39 +49,39 @@ package com.newgrounds
          _loc5_ = 0;
          while(_loc5_ <= 255)
          {
-            _loc3_ = (_loc3_ + sbox[_loc5_] + mykey[_loc5_]) % 256;
-            _loc2_ = uint(sbox[_loc5_]);
-            sbox[_loc5_] = sbox[_loc3_];
-            sbox[_loc3_] = _loc2_;
+            _loc2_ = (_loc2_ + sbox[_loc5_] + mykey[_loc5_]) % 256;
+            _loc3_ = uint(sbox[_loc5_]);
+            sbox[_loc5_] = sbox[_loc2_];
+            sbox[_loc2_] = _loc3_;
             _loc5_++;
          }
       }
       
       private static function calculate(param1:Array, param2:Array) : Array
       {
-         var _loc3_:uint = 0;
-         var _loc4_:uint = 0;
-         var _loc5_:uint = 0;
          var _loc6_:uint = 0;
-         initialize(param2);
          var _loc7_:uint = 0;
          var _loc8_:uint = 0;
-         var _loc9_:Array = new Array();
          var _loc10_:uint = 0;
-         while(_loc10_ < param1.length)
+         initialize(param2);
+         var _loc3_:uint = 0;
+         var _loc4_:uint = 0;
+         var _loc5_:Array = new Array();
+         var _loc9_:uint = 0;
+         while(_loc9_ < param1.length)
          {
-            _loc7_ = (_loc7_ + 1) % 256;
-            _loc8_ = (_loc8_ + sbox[_loc7_]) % 256;
-            _loc4_ = uint(sbox[_loc7_]);
-            sbox[_loc7_] = sbox[_loc8_];
-            sbox[_loc8_] = _loc4_;
-            _loc6_ = (sbox[_loc7_] + sbox[_loc8_]) % 256;
-            _loc3_ = uint(sbox[_loc6_]);
-            _loc5_ = uint(param1[_loc10_] ^ _loc3_);
-            _loc9_.push(_loc5_);
-            _loc10_++;
+            _loc3_ = (_loc3_ + 1) % 256;
+            _loc4_ = (_loc4_ + sbox[_loc3_]) % 256;
+            _loc7_ = uint(sbox[_loc3_]);
+            sbox[_loc3_] = sbox[_loc4_];
+            sbox[_loc4_] = _loc7_;
+            _loc10_ = (sbox[_loc3_] + sbox[_loc4_]) % 256;
+            _loc6_ = uint(sbox[_loc10_]);
+            _loc8_ = uint(param1[_loc9_] ^ _loc6_);
+            _loc5_.push(_loc8_);
+            _loc9_++;
          }
-         return _loc9_;
+         return _loc5_;
       }
       
       private static function charsToHex(param1:Array) : String

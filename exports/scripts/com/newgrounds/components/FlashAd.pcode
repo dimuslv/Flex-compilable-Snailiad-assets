@@ -20,13 +20,14 @@ package com.newgrounds.components
    import flash.utils.getQualifiedClassName;
    import flash.utils.getTimer;
    
+   [Embed]
    public class FlashAd extends Sprite
    {
-      private static var _adURL:URLRequest;
-      
       private static const DEBUG_AD_URL:String = "http://www.ngads.com/adtest.php";
       
       private static var _adResetTime:uint = 0;
+      
+      private static var _adURL:URLRequest;
       
       private static const REMOVED_FROM_STAGE:String = "removedFromStage";
       
@@ -334,7 +335,7 @@ package com.newgrounds.components
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#FlashAd"),"_showBackground")
+         initproperty QName(PrivateNamespace(null,"#FlashAd"),"_showBackground")
          getlocal0
          getproperty QName(PackageNamespace(""),"background")
          iffalse ofs0
@@ -390,19 +391,15 @@ package com.newgrounds.components
          getlocal0
          getproperty QName(PrivateNamespace(null,"#FlashAd"),"onRemovedFromStage")
          callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlocal0
          getproperty QName(PackageNamespace(""),"background")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs0
          pop
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlocal0
          getproperty QName(PackageNamespace(""),"background")
          getproperty Multiname("loadingClip",[PrivateNamespace(null,"#FlashAd"),PackageNamespace(""),PrivateNamespace(null,"#FlashAd/1"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          ofs0:
          iffalse ofs1
@@ -447,6 +444,9 @@ package com.newgrounds.components
          getlocal0
          getproperty QName(PrivateNamespace(null,"#FlashAd"),"_ad")
          iffalse ofs7
+         findpropstrict QName(PackageNamespace(""),"trace")
+         pushstring "[NewgroundsAPI] :: Ad removed"
+         callpropvoid QName(PackageNamespace(""),"trace"), 1
          ofs8:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#FlashAd"),"_ad")
@@ -506,7 +506,7 @@ package com.newgrounds.components
          ofs7:
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#FlashAd"),"_ad")
+         initproperty QName(PrivateNamespace(null,"#FlashAd"),"_ad")
          returnvoid
          end ; code
          try from ofs3 to ofs4 target ofs5 type QName(PackageNamespace(""),"Error") name QName(PackageNamespace(""),"e") end
@@ -548,8 +548,12 @@ package com.newgrounds.components
          getlex QName(PackageNamespace("com.newgrounds"),"API")
          getproperty QName(PackageNamespace(""),"adFeedURL")
          callpropvoid QName(PrivateNamespace(null,"#FlashAd"),"loadAdFeed"), 1
-         jump ofs0
+         jump ofs1
          ofs0:
+         findpropstrict QName(PackageNamespace(""),"trace")
+         pushstring "[NewgroundsAPI] :: No ad feed URL supplied to Newgrounds API ad!"
+         callpropvoid QName(PackageNamespace(""),"trace"), 1
+         ofs1:
          returnvoid
          end ; code
          end ; body
@@ -571,12 +575,8 @@ package com.newgrounds.components
          localcount 4
          initscopedepth 10
          maxscopedepth 15
-         trait slot QName(PackageInternalNs("com.newgrounds.components"),"param1")
-         slotid 1
-         type QName(PackageNamespace(""),"String")
-         end ; trait
          trait slot QName(PackageInternalNs("com.newgrounds.components"),"adFeedURL")
-         slotid 2
+         slotid 1
          type QName(PackageNamespace(""),"String")
          end ; trait
          
@@ -590,15 +590,10 @@ package com.newgrounds.components
          getscopeobject 1
          getlocal1
          setslot 1
-         getscopeobject 1
-         getscopeobject 1
-         getslot 1
-         coerce_s
-         setslot 2
          getlocal0
          findpropstrict QName(PackageNamespace("flash.net"),"URLLoader")
          constructprop QName(PackageNamespace("flash.net"),"URLLoader"), 0
-         setproperty QName(PrivateNamespace(null,"#FlashAd"),"_adURLLoader")
+         initproperty QName(PrivateNamespace(null,"#FlashAd"),"_adURLLoader")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#FlashAd"),"_adURLLoader")
          getlex QName(PackageNamespace("flash.events"),"Event")
@@ -621,15 +616,18 @@ package com.newgrounds.components
          getproperty QName(PrivateNamespace(null,"#FlashAd"),"onAdError")
          callpropvoid QName(PackageNamespace(""),"addEventListener"), 2
          getscopeobject 1
-         getslot 2
+         getslot 1
          iftrue ofs0
+         findpropstrict QName(PackageNamespace(""),"trace")
+         pushstring "[Newgrounds API] :: Invalid feed URL!"
+         callpropvoid QName(PackageNamespace(""),"trace"), 1
          returnvoid
          ofs0:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#FlashAd"),"hasAdElapsed")
          iffalse ofs1
          getscopeobject 1
-         getslot 2
+         getslot 1
          pushstring "?"
          callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"indexOf"), 1
          pushbyte -1
@@ -637,7 +635,7 @@ package com.newgrounds.components
          findproperty QName(PrivateNamespace(null,"#FlashAd"),"_adURL")
          findpropstrict QName(PackageNamespace("flash.net"),"URLRequest")
          getscopeobject 1
-         getslot 2
+         getslot 1
          pushstring "&random="
          add
          getlex QName(PackageNamespace(""),"Math")
@@ -650,7 +648,7 @@ package com.newgrounds.components
          findproperty QName(PrivateNamespace(null,"#FlashAd"),"_adURL")
          findpropstrict QName(PackageNamespace("flash.net"),"URLRequest")
          getscopeobject 1
-         getslot 2
+         getslot 1
          pushstring "?random="
          add
          getlex QName(PackageNamespace(""),"Math")
@@ -683,19 +681,15 @@ package com.newgrounds.components
          popscope
          kill 3
          ofs4:
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlocal0
          getproperty QName(PackageNamespace(""),"background")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs6
          pop
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlocal0
          getproperty QName(PackageNamespace(""),"background")
          getproperty Multiname("loadingClip",[PrivateNamespace(null,"#FlashAd"),PackageNamespace(""),PrivateNamespace(null,"#FlashAd/1"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          ofs6:
          iffalse ofs7
@@ -727,12 +721,8 @@ package com.newgrounds.components
          localcount 4
          initscopedepth 10
          maxscopedepth 15
-         trait slot QName(PackageInternalNs("com.newgrounds.components"),"param1")
-         slotid 1
-         type QName(PackageNamespace(""),"String")
-         end ; trait
          trait slot QName(PackageInternalNs("com.newgrounds.components"),"url")
-         slotid 2
+         slotid 1
          type QName(PackageNamespace(""),"String")
          end ; trait
          
@@ -746,11 +736,6 @@ package com.newgrounds.components
          getscopeobject 1
          getlocal1
          setslot 1
-         getscopeobject 1
-         getscopeobject 1
-         getslot 1
-         coerce_s
-         setslot 2
          getlocal0
          getproperty QName(PrivateNamespace(null,"#FlashAd"),"_ad")
          iffalse ofs0
@@ -760,7 +745,7 @@ package com.newgrounds.components
          getlocal0
          findpropstrict QName(PackageNamespace("flash.display"),"Loader")
          constructprop QName(PackageNamespace("flash.display"),"Loader"), 0
-         setproperty QName(PrivateNamespace(null,"#FlashAd"),"_ad")
+         initproperty QName(PrivateNamespace(null,"#FlashAd"),"_ad")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#FlashAd"),"_ad")
          getproperty QName(PackageNamespace(""),"contentLoaderInfo")
@@ -808,7 +793,7 @@ package com.newgrounds.components
          getproperty QName(PrivateNamespace(null,"#FlashAd"),"_ad")
          findpropstrict QName(PackageNamespace("flash.net"),"URLRequest")
          getscopeobject 1
-         getslot 2
+         getslot 1
          constructprop QName(PackageNamespace("flash.net"),"URLRequest"), 1
          findpropstrict QName(PackageNamespace("flash.system"),"LoaderContext")
          pushfalse
@@ -817,19 +802,15 @@ package com.newgrounds.components
          constructprop QName(PackageNamespace("flash.system"),"ApplicationDomain"), 1
          constructprop QName(PackageNamespace("flash.system"),"LoaderContext"), 2
          callpropvoid QName(PackageNamespace(""),"load"), 2
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlocal0
          getproperty QName(PackageNamespace(""),"background")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs5
          pop
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlocal0
          getproperty QName(PackageNamespace(""),"background")
          getproperty Multiname("loadingClip",[PrivateNamespace(null,"#FlashAd"),PackageNamespace(""),PrivateNamespace(null,"#FlashAd/1"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          ofs5:
          iffalse ofs6
@@ -902,19 +883,15 @@ package com.newgrounds.components
          constructprop QName(PackageNamespace("com.newgrounds"),"APIError"), 2
          constructprop QName(PackageNamespace("com.newgrounds"),"APIEvent"), 3
          callpropvoid QName(PackageNamespace(""),"dispatchEvent"), 1
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlocal0
          getproperty QName(PackageNamespace(""),"background")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs3
          pop
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlocal0
          getproperty QName(PackageNamespace(""),"background")
          getproperty Multiname("loadingClip",[PrivateNamespace(null,"#FlashAd"),PackageNamespace(""),PrivateNamespace(null,"#FlashAd/1"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          ofs3:
          iffalse ofs2
@@ -948,19 +925,18 @@ package com.newgrounds.components
          code
          getlocal0
          pushscope
-         findpropstrict QName(PackageNamespace(""),"Boolean")
+         findpropstrict QName(PackageNamespace(""),"trace")
+         pushstring "[NewgroundsAPI] :: Unable to load ad feed!"
+         callpropvoid QName(PackageNamespace(""),"trace"), 1
          getlocal0
          getproperty QName(PackageNamespace(""),"background")
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          dup
          iffalse ofs0
          pop
-         findpropstrict QName(PackageNamespace(""),"Boolean")
          getlocal0
          getproperty QName(PackageNamespace(""),"background")
          getproperty Multiname("loadingClip",[PrivateNamespace(null,"#FlashAd"),PackageNamespace(""),PrivateNamespace(null,"#FlashAd/1"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         callproperty QName(PackageNamespace(""),"Boolean"), 1
          convert_b
          ofs0:
          iffalse ofs1
@@ -1068,6 +1044,9 @@ package com.newgrounds.components
          pushfalse
          setproperty Multiname("visible",[PrivateNamespace(null,"#FlashAd"),PackageNamespace(""),PrivateNamespace(null,"#FlashAd/1"),PackageNamespace("com.newgrounds.components"),PackageInternalNs("com.newgrounds.components"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds.components:FlashAd"),StaticProtectedNs("com.newgrounds.components:FlashAd"),StaticProtectedNs("flash.display:Sprite"),StaticProtectedNs("flash.display:DisplayObjectContainer"),StaticProtectedNs("flash.display:InteractiveObject"),StaticProtectedNs("flash.display:DisplayObject"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          ofs0:
+         findpropstrict QName(PackageNamespace(""),"trace")
+         pushstring "[NewgroundsAPI] :: Ad loaded!"
+         callpropvoid QName(PackageNamespace(""),"trace"), 1
          findpropstrict QName(PackageNamespace(""),"dispatchEvent")
          findpropstrict QName(PackageNamespace("com.newgrounds"),"APIEvent")
          getlex QName(PackageNamespace("com.newgrounds"),"APIEvent")

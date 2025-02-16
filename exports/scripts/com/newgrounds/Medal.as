@@ -151,6 +151,7 @@ package com.newgrounds
       
       private function onIconLoaderError(param1:IOErrorEvent) : void
       {
+         trace("[NewgroundsAPI WARNING] :: Failed to load medal icon for " + this.name + " (" + this._iconUrl.url.split("/").pop() + ")");
          this._iconLoader.unload();
          this._iconLoader = null;
       }

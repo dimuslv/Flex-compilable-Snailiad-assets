@@ -46,16 +46,16 @@ package com.newgrounds
       
       public function scrubParameters(param1:Object) : Object
       {
-         var _loc2_:String = null;
-         var _loc3_:Object = new Object();
-         for(_loc2_ in param1)
+         var _loc3_:String = null;
+         var _loc2_:Object = new Object();
+         for(_loc3_ in param1)
          {
-            if(param1[_loc2_] is String || param1[_loc2_] is Number || param1[_loc2_] is uint || param1[_loc2_] is int || param1[_loc2_] is Boolean)
+            if(param1[_loc3_] is String || param1[_loc3_] is Number || param1[_loc3_] is uint || param1[_loc3_] is int || param1[_loc3_] is Boolean)
             {
-               _loc3_[_loc2_] = param1[_loc2_];
+               _loc2_[_loc3_] = param1[_loc3_];
             }
          }
-         return _loc3_;
+         return _loc2_;
       }
       
       private function onStatus(param1:Event) : void

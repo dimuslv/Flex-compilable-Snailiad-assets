@@ -20,6 +20,7 @@ package com.newgrounds.components
    import flash.utils.getQualifiedClassName;
    import flash.utils.getTimer;
    
+   [Embed]
    public class FlashAd extends Sprite
    {
       private static var _adURL:URLRequest;
@@ -137,6 +138,7 @@ package com.newgrounds.components
          }
          if(this._ad)
          {
+            trace("[NewgroundsAPI] :: Ad removed");
             try
             {
                this._ad.close();
@@ -167,6 +169,10 @@ package com.newgrounds.components
          {
             this.loadAdFeed(API.adFeedURL);
          }
+         else
+         {
+            trace("[NewgroundsAPI] :: No ad feed URL supplied to Newgrounds API ad!");
+         }
       }
       
       private function loadAdFeed(param1:String) : void
@@ -178,6 +184,7 @@ package com.newgrounds.components
          this._adURLLoader.addEventListener(SecurityErrorEvent.SECURITY_ERROR,this.onAdError);
          if(!adFeedURL)
          {
+            trace("[Newgrounds API] :: Invalid feed URL!");
             return;
          }
          if(this.hasAdElapsed)
@@ -250,6 +257,7 @@ package com.newgrounds.components
       
       private function onAdFeedError(param1:Event) : void
       {
+         trace("[NewgroundsAPI] :: Unable to load ad feed!");
          if(Boolean(this.background) && Boolean(this.background.loadingClip))
          {
             this.background.loadingClip.visible = false;
@@ -278,6 +286,7 @@ package com.newgrounds.components
                this.background.loadingClip.visible = false;
             }
          }
+         trace("[NewgroundsAPI] :: Ad loaded!");
          dispatchEvent(new APIEvent(APIEvent.AD_ATTACHED,true));
       }
       

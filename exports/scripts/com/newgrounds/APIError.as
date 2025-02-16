@@ -51,31 +51,31 @@ package com.newgrounds
       
       private static function init_names() : Array
       {
-         var _loc1_:Array = null;
+         var _loc3_:Array = null;
+         var _loc4_:uint = 0;
+         var _loc5_:String = null;
+         var _loc1_:Array = new Array();
          var _loc2_:uint = 0;
-         var _loc3_:String = null;
-         var _loc4_:Array = new Array();
-         var _loc5_:uint = 0;
-         while(_loc5_ < aliases.length)
+         while(_loc2_ < aliases.length)
          {
-            _loc1_ = aliases[_loc5_].toLowerCase().split("_");
-            _loc2_ = 0;
-            while(_loc2_ < _loc1_.length)
+            _loc3_ = aliases[_loc2_].toLowerCase().split("_");
+            _loc4_ = 0;
+            while(_loc4_ < _loc3_.length)
             {
-               _loc1_[_loc2_] = _loc1_[_loc2_].substr(0,1).toUpperCase() + _loc1_[_loc2_].substr(1,_loc1_[_loc2_].length);
-               for each(_loc3_ in always_caps)
+               _loc3_[_loc4_] = _loc3_[_loc4_].substr(0,1).toUpperCase() + _loc3_[_loc4_].substr(1,_loc3_[_loc4_].length);
+               for each(_loc5_ in always_caps)
                {
-                  if(_loc1_[_loc2_].toUpperCase() == _loc3_)
+                  if(_loc3_[_loc4_].toUpperCase() == _loc5_)
                   {
-                     _loc1_[_loc2_] = _loc1_[_loc2_].toUpperCase();
+                     _loc3_[_loc4_] = _loc3_[_loc4_].toUpperCase();
                   }
                }
-               _loc2_++;
+               _loc4_++;
             }
-            _loc4_[_loc5_] = _loc1_.join(" ");
-            _loc5_++;
+            _loc1_[_loc2_] = _loc3_.join(" ");
+            _loc2_++;
          }
-         return _loc4_;
+         return _loc1_;
       }
       
       public function isError() : Boolean

@@ -198,7 +198,7 @@ package com.newgrounds
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_dataFormat")
+         initproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_dataFormat")
          returnvoid
          end ; code
          end ; body
@@ -320,7 +320,7 @@ package com.newgrounds
          ofs1:
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_method")
+         initproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_method")
          returnvoid
          end ; code
          end ; body
@@ -372,7 +372,7 @@ package com.newgrounds
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_openBrowser")
+         initproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_openBrowser")
          returnvoid
          end ; code
          end ; body
@@ -424,7 +424,7 @@ package com.newgrounds
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_preventCache")
+         initproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_preventCache")
          returnvoid
          end ; code
          end ; body
@@ -450,8 +450,7 @@ package com.newgrounds
          pushscope
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_urlLoader")
-         not
-         iftrue ofs0
+         iffalse ofs0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_urlLoader")
          getproperty QName(PackageNamespace(""),"bytesLoaded")
@@ -486,8 +485,7 @@ package com.newgrounds
          pushscope
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_urlLoader")
-         not
-         iftrue ofs0
+         iffalse ofs0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_urlLoader")
          getproperty QName(PackageNamespace(""),"bytesTotal")
@@ -533,7 +531,7 @@ package com.newgrounds
          iffalse ofs0
          getlocal0
          pushtrue
-         setproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_hasVariables")
+         initproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_hasVariables")
          ofs0:
          returnvoid
          end ; code
@@ -567,14 +565,14 @@ package com.newgrounds
          getlocal0
          getlex QName(PackageNamespace("flash.net"),"URLRequestMethod")
          getproperty QName(PackageNamespace(""),"POST")
-         setproperty QName(PackageNamespace(""),"method")
+         initproperty QName(PackageNamespace(""),"method")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_files")
          iftrue ofs0
          getlocal0
          findpropstrict QName(PackageNamespace("flash.utils"),"Dictionary")
          constructprop QName(PackageNamespace("flash.utils"),"Dictionary"), 0
-         setproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_files")
+         initproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_files")
          ofs0:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_files")
@@ -612,7 +610,7 @@ package com.newgrounds
          getlocal0
          findpropstrict QName(PackageNamespace("flash.utils"),"Dictionary")
          constructprop QName(PackageNamespace("flash.utils"),"Dictionary"), 0
-         setproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_variables")
+         initproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_variables")
          returnvoid
          end ; code
          end ; body
@@ -638,7 +636,7 @@ package com.newgrounds
          pushscope
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_files")
+         initproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_files")
          returnvoid
          end ; code
          end ; body
@@ -660,7 +658,7 @@ package com.newgrounds
          localcount 5
          initscopedepth 6
          maxscopedepth 11
-         trait slot QName(PackageInternalNs("com.newgrounds"),"param1")
+         trait slot QName(PackageInternalNs("com.newgrounds"),"url")
          slotid 1
          type QName(PackageNamespace(""),"String")
          end ; trait
@@ -684,10 +682,6 @@ package com.newgrounds
          slotid 6
          type QName(PackageNamespace("flash.events"),"SecurityErrorEvent")
          end ; trait
-         trait slot QName(PackageInternalNs("com.newgrounds"),"url")
-         slotid 7
-         type QName(PackageNamespace(""),"String")
-         end ; trait
          
          code
          getlocal0
@@ -696,13 +690,6 @@ package com.newgrounds
          dup
          setlocal2
          pushscope
-         getscopeobject 1
-         pushnull
-         coerce QName(PackageNamespace("flash.events"),"SecurityErrorEvent")
-         setslot 6
-         getscopeobject 1
-         getlocal1
-         setslot 1
          getscopeobject 1
          pushnull
          coerce QName(PackageNamespace("flash.net"),"URLVariables")
@@ -724,37 +711,35 @@ package com.newgrounds
          coerce QName(PackageNamespace("flash.events"),"SecurityErrorEvent")
          setslot 6
          getscopeobject 1
-         getscopeobject 1
-         getslot 1
-         coerce_s
-         setslot 7
+         getlocal1
+         setslot 1
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_urlRequest")
          getscopeobject 1
-         getslot 7
+         getslot 1
          setproperty QName(PackageNamespace(""),"url")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_preventCache")
          iffalse ofs0
          getscopeobject 1
          getscopeobject 1
-         getslot 7
+         getslot 1
          pushstring "?seed="
          getlex QName(PackageNamespace(""),"Math")
          callproperty QName(PackageNamespace(""),"random"), 0
          add
          add
          coerce_s
-         setslot 7
+         setslot 1
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_hasVariables")
          iffalse ofs0
          getscopeobject 1
          getscopeobject 1
-         getslot 7
+         getslot 1
          pushstring "&"
          add
-         setslot 7
+         setslot 1
          ofs0:
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_urlRequest")
@@ -893,7 +878,7 @@ package com.newgrounds
          getlocal0
          findpropstrict QName(PackageNamespace("flash.net"),"URLLoader")
          constructprop QName(PackageNamespace("flash.net"),"URLLoader"), 0
-         setproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_urlLoader")
+         initproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_urlLoader")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_urlLoader")
          getlocal0
@@ -1056,10 +1041,10 @@ package com.newgrounds
          callpropvoid QName(PackageNamespace(""),"close"), 0
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_files")
+         initproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_files")
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_variables")
+         initproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_variables")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_urlLoader")
          iffalse ofs0
@@ -1100,11 +1085,11 @@ package com.newgrounds
          callpropvoid QName(PackageNamespace(""),"removeEventListener"), 2
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_urlLoader")
+         initproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_urlLoader")
          ofs0:
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_urlRequest")
+         initproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_urlRequest")
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"_loaders")
          getlocal0
          deleteproperty MultinameL([PrivateNamespace(null,"#SmartURLLoader"),PackageNamespace("com.newgrounds"),PackageNamespace(""),PrivateNamespace(null,"#File"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SmartURLLoader"),StaticProtectedNs("com.newgrounds:SmartURLLoader"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
@@ -1135,15 +1120,15 @@ package com.newgrounds
          pushscope
          pushnull
          coerce_s
-         setlocal2
+         setlocal3
          pushnull
          coerce QName(PrivateNamespace(null,"#File"),"File")
-         setlocal3
+         setlocal 4
          findpropstrict QName(PackageNamespace("flash.utils"),"ByteArray")
          constructprop QName(PackageNamespace("flash.utils"),"ByteArray"), 0
          coerce QName(PackageNamespace("flash.utils"),"ByteArray")
-         dup
-         setlocal 4
+         setlocal2
+         getlocal2
          getlex QName(PackageNamespace("flash.utils"),"Endian")
          getproperty QName(PackageNamespace(""),"BIG_ENDIAN")
          setproperty QName(PackageNamespace(""),"endian")
@@ -1165,28 +1150,28 @@ package com.newgrounds
          getlocal 5
          nextname
          coerce_s
-         setlocal2
-         getlocal 4
+         setlocal3
+         getlocal2
          getlocal1
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"CRLF")
          add
          callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
-         getlocal 4
-         pushstring "Content-Disposition: form-data; name=\""
          getlocal2
+         pushstring "Content-Disposition: form-data; name=\""
+         getlocal3
          add
          pushstring "\""
          add
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"CRLF")
          add
          callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
-         getlocal 4
+         getlocal2
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"CRLF")
          callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
-         getlocal 4
+         getlocal2
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SmartURLLoader"),"_variables")
-         getlocal2
+         getlocal3
          getproperty MultinameL([PrivateNamespace(null,"#SmartURLLoader"),PackageNamespace("com.newgrounds"),PackageNamespace(""),PrivateNamespace(null,"#File"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SmartURLLoader"),StaticProtectedNs("com.newgrounds:SmartURLLoader"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"CRLF")
          add
@@ -1212,39 +1197,39 @@ package com.newgrounds
          getlocal 5
          nextvalue
          coerce QName(PrivateNamespace(null,"#File"),"File")
-         setlocal3
-         getlocal 4
+         setlocal 4
+         getlocal2
          getlocal1
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"CRLF")
          add
          callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
-         getlocal 4
+         getlocal2
          pushstring "Content-Disposition: form-data; name=\"Filename\""
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"CRLF")
          add
          callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
-         getlocal 4
+         getlocal2
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"CRLF")
          callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         getlocal2
          getlocal 4
-         getlocal3
          getproperty QName(PrivateNamespace(null,"#File"),"fileName")
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"CRLF")
          add
          callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
-         getlocal 4
+         getlocal2
          getlocal1
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"CRLF")
          add
          callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
-         getlocal 4
+         getlocal2
          pushstring "Content-Disposition: form-data; name=\""
-         getlocal3
+         getlocal 4
          getproperty QName(PrivateNamespace(null,"#File"),"dataField")
          add
          pushstring "\"; filename=\""
          add
-         getlocal3
+         getlocal 4
          getproperty QName(PrivateNamespace(null,"#File"),"fileName")
          add
          pushstring "\""
@@ -1252,22 +1237,22 @@ package com.newgrounds
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"CRLF")
          add
          callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
-         getlocal 4
+         getlocal2
          pushstring "Content-Type: "
-         getlocal3
+         getlocal 4
          getproperty QName(PrivateNamespace(null,"#File"),"contentType")
          add
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"CRLF")
          add
          callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
-         getlocal 4
+         getlocal2
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"CRLF")
          callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
+         getlocal2
          getlocal 4
-         getlocal3
          getproperty QName(PrivateNamespace(null,"#File"),"data")
          callpropvoid QName(PackageNamespace(""),"writeBytes"), 1
-         getlocal 4
+         getlocal2
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"CRLF")
          callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
          ofs3:
@@ -1275,37 +1260,37 @@ package com.newgrounds
          iftrue ofs4
          kill 6
          kill 5
-         getlocal 4
+         getlocal2
          getlocal1
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"CRLF")
          add
          callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
-         getlocal 4
+         getlocal2
          pushstring "Content-Disposition: form-data; name=\"Upload\""
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"CRLF")
          add
          callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
-         getlocal 4
+         getlocal2
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"CRLF")
          callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
-         getlocal 4
+         getlocal2
          pushstring "Submit Query"
          getlex QName(PrivateNamespace(null,"#SmartURLLoader"),"CRLF")
          add
          callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
          ofs2:
-         getlocal 4
+         getlocal2
          getlocal1
          pushstring "--"
          add
          callpropvoid QName(PackageNamespace(""),"writeUTFBytes"), 1
-         getlocal 4
+         getlocal2
          pushbyte 0
          setproperty QName(PackageNamespace(""),"position")
-         getlocal 4
+         getlocal2
          pushbyte 0
          setproperty QName(PackageNamespace(""),"position")
-         getlocal 4
+         getlocal2
          returnvalue
          end ; code
          end ; body

@@ -47,14 +47,13 @@ package
       
       public function addText() : void
       {
-         var _loc2_:TextFormat = null;
          var _loc1_:TextFormat = new TextFormat();
          _loc1_.color = 0;
          _loc1_.size = 20;
          _loc1_.align = "center";
          _loc1_.bold = true;
          _loc1_.font = "system";
-         _loc2_ = new TextFormat();
+         var _loc2_:TextFormat = new TextFormat();
          _loc2_.color = 16777215;
          _loc2_.size = 20;
          _loc2_.align = "center";

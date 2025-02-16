@@ -159,12 +159,11 @@ package com.newgrounds
       
       public function load(param1:String) : void
       {
-         var event:SecurityErrorEvent = null;
          var urlVariables:URLVariables = null;
          var key:String = null;
          var boundary:String = null;
          var i:uint = 0;
-         event = null;
+         var event:SecurityErrorEvent = null;
          var url:String = param1;
          this._urlRequest.url = url;
          if(this._preventCache)
@@ -258,42 +257,42 @@ package com.newgrounds
       
       private function buildMultipartData(param1:String) : ByteArray
       {
-         var _loc2_:String = null;
-         var _loc3_:File = null;
-         var _loc4_:ByteArray = new ByteArray();
-         _loc4_.endian = Endian.BIG_ENDIAN;
+         var _loc3_:String = null;
+         var _loc4_:File = null;
+         var _loc2_:ByteArray = new ByteArray();
+         _loc2_.endian = Endian.BIG_ENDIAN;
          param1 = "--" + param1;
-         for(_loc2_ in this._variables)
+         for(_loc3_ in this._variables)
          {
-            _loc4_.writeUTFBytes(param1 + CRLF);
-            _loc4_.writeUTFBytes("Content-Disposition: form-data; name=\"" + _loc2_ + "\"" + CRLF);
-            _loc4_.writeUTFBytes(CRLF);
-            _loc4_.writeUTFBytes(this._variables[_loc2_] + CRLF);
+            _loc2_.writeUTFBytes(param1 + CRLF);
+            _loc2_.writeUTFBytes("Content-Disposition: form-data; name=\"" + _loc3_ + "\"" + CRLF);
+            _loc2_.writeUTFBytes(CRLF);
+            _loc2_.writeUTFBytes(this._variables[_loc3_] + CRLF);
          }
          if(this.hasFiles)
          {
-            for each(_loc3_ in this._files)
+            for each(_loc4_ in this._files)
             {
-               _loc4_.writeUTFBytes(param1 + CRLF);
-               _loc4_.writeUTFBytes("Content-Disposition: form-data; name=\"Filename\"" + CRLF);
-               _loc4_.writeUTFBytes(CRLF);
-               _loc4_.writeUTFBytes(_loc3_.fileName + CRLF);
-               _loc4_.writeUTFBytes(param1 + CRLF);
-               _loc4_.writeUTFBytes("Content-Disposition: form-data; name=\"" + _loc3_.dataField + "\"; filename=\"" + _loc3_.fileName + "\"" + CRLF);
-               _loc4_.writeUTFBytes("Content-Type: " + _loc3_.contentType + CRLF);
-               _loc4_.writeUTFBytes(CRLF);
-               _loc4_.writeBytes(_loc3_.data);
-               _loc4_.writeUTFBytes(CRLF);
+               _loc2_.writeUTFBytes(param1 + CRLF);
+               _loc2_.writeUTFBytes("Content-Disposition: form-data; name=\"Filename\"" + CRLF);
+               _loc2_.writeUTFBytes(CRLF);
+               _loc2_.writeUTFBytes(_loc4_.fileName + CRLF);
+               _loc2_.writeUTFBytes(param1 + CRLF);
+               _loc2_.writeUTFBytes("Content-Disposition: form-data; name=\"" + _loc4_.dataField + "\"; filename=\"" + _loc4_.fileName + "\"" + CRLF);
+               _loc2_.writeUTFBytes("Content-Type: " + _loc4_.contentType + CRLF);
+               _loc2_.writeUTFBytes(CRLF);
+               _loc2_.writeBytes(_loc4_.data);
+               _loc2_.writeUTFBytes(CRLF);
             }
-            _loc4_.writeUTFBytes(param1 + CRLF);
-            _loc4_.writeUTFBytes("Content-Disposition: form-data; name=\"Upload\"" + CRLF);
-            _loc4_.writeUTFBytes(CRLF);
-            _loc4_.writeUTFBytes("Submit Query" + CRLF);
+            _loc2_.writeUTFBytes(param1 + CRLF);
+            _loc2_.writeUTFBytes("Content-Disposition: form-data; name=\"Upload\"" + CRLF);
+            _loc2_.writeUTFBytes(CRLF);
+            _loc2_.writeUTFBytes("Submit Query" + CRLF);
          }
-         _loc4_.writeUTFBytes(param1 + "--");
-         _loc4_.position = 0;
-         _loc4_.position = 0;
-         return _loc4_;
+         _loc2_.writeUTFBytes(param1 + "--");
+         _loc2_.position = 0;
+         _loc2_.position = 0;
+         return _loc2_;
       }
       
       private function onComplete(param1:Event) : void

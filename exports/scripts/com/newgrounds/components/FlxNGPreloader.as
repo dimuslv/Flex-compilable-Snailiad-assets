@@ -46,9 +46,9 @@ package com.newgrounds.components
       
       protected function create() : void
       {
-         var _loc1_:Bitmap = null;
          if(!this.NewgroundsAPIId)
          {
+            trace("[NewgroundsAPI] :: No API ID set! Please set NewgroundsAPIId in your preloader.");
             return;
          }
          if(this.NewgroundsAPIShowAds)
@@ -66,7 +66,7 @@ package com.newgrounds.components
          }
          this._preloader.addChild(this._adContainer);
          this._adContainer.visible = false;
-         _loc1_ = new Bitmap(new FlxLoaderFrame(0,0));
+         var _loc1_:Bitmap = new Bitmap(new FlxLoaderFrame(0,0));
          _loc1_.y = 260;
          this._preloader.addChild(_loc1_);
          this._loadBarMask.graphics.beginFill(0);
@@ -99,7 +99,7 @@ package com.newgrounds.components
       
       protected function enterFrameHandler(param1:Event) : void
       {
-         var _loc2_:Sprite = null;
+         var _loc3_:Sprite = null;
          if(!this._initialized)
          {
             if(stage)
@@ -108,9 +108,9 @@ package com.newgrounds.components
             }
             return;
          }
-         var _loc3_:Number = loaderInfo.bytesLoaded / loaderInfo.bytesTotal;
-         this._loadBarMask.scaleX = uint(_loc3_ * 200) / 200;
-         if(_loc3_ >= 1)
+         var _loc2_:Number = loaderInfo.bytesLoaded / loaderInfo.bytesTotal;
+         this._loadBarMask.scaleX = uint(_loc2_ * 200) / 200;
+         if(_loc2_ >= 1)
          {
             removeEventListener(Event.ENTER_FRAME,this.enterFrameHandler);
             if(this.autoPlay)
@@ -119,27 +119,27 @@ package com.newgrounds.components
             }
             else
             {
-               _loc2_ = new Sprite();
-               _loc2_.addChild(new Bitmap(new FlxLoaderPlay(0,0)));
-               _loc2_.x = this._loadBarMask.x;
-               _loc2_.y = this._loadBarMask.y;
-               _loc2_.buttonMode = true;
+               _loc3_ = new Sprite();
+               _loc3_.addChild(new Bitmap(new FlxLoaderPlay(0,0)));
+               _loc3_.x = this._loadBarMask.x;
+               _loc3_.y = this._loadBarMask.y;
+               _loc3_.buttonMode = true;
                this._loadBar.visible = false;
-               _loc2_.addEventListener(MouseEvent.CLICK,this.playButtonClickHandler);
-               this._preloader.addChild(_loc2_);
+               _loc3_.addEventListener(MouseEvent.CLICK,this.playButtonClickHandler);
+               this._preloader.addChild(_loc3_);
             }
          }
       }
       
       protected function startGame() : void
       {
-         var _loc1_:Object = null;
+         var _loc2_:Object = null;
          nextFrame();
-         var _loc2_:Class = Class(getDefinitionByName(this.className));
-         if(_loc2_)
+         var _loc1_:Class = Class(getDefinitionByName(this.className));
+         if(_loc1_)
          {
-            _loc1_ = new _loc2_();
-            addChild(_loc1_ as DisplayObject);
+            _loc2_ = new _loc1_();
+            addChild(_loc2_ as DisplayObject);
          }
          removeChild(this._preloader);
          if(this._ad)

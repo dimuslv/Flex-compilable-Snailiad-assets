@@ -170,7 +170,7 @@ package com.newgrounds
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_filename")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_filename")
          returnvoid
          end ; code
          end ; body
@@ -222,7 +222,7 @@ package com.newgrounds
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_id")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_id")
          returnvoid
          end ; code
          end ; body
@@ -274,7 +274,7 @@ package com.newgrounds
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_description")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_description")
          returnvoid
          end ; code
          end ; body
@@ -326,10 +326,10 @@ package com.newgrounds
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_contents")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_contents")
          getlocal0
          pushbyte 0
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_contentSize")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_contentSize")
          returnvoid
          end ; code
          end ; body
@@ -381,7 +381,7 @@ package com.newgrounds
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_thumbnailUrl")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_thumbnailUrl")
          returnvoid
          end ; code
          end ; body
@@ -433,7 +433,7 @@ package com.newgrounds
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_fileUrl")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_fileUrl")
          returnvoid
          end ; code
          end ; body
@@ -493,7 +493,7 @@ package com.newgrounds
          getlocal0
          getlocal1
          callproperty QName(PackageNamespace(""),"clone"), 0
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_thumbnail")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_thumbnail")
          returnvoid
          end ; code
          end ; body
@@ -557,8 +557,7 @@ package com.newgrounds
          pushscope
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SaveFile"),"_loader")
-         not
-         iftrue ofs0
+         iffalse ofs0
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SaveFile"),"_loader")
          getproperty QName(PackageNamespace(""),"bytesLoaded")
@@ -645,7 +644,7 @@ package com.newgrounds
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_status")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_status")
          returnvoid
          end ; code
          end ; body
@@ -775,7 +774,7 @@ package com.newgrounds
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_authorName")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_authorName")
          returnvoid
          end ; code
          end ; body
@@ -827,7 +826,7 @@ package com.newgrounds
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_authorId")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_authorId")
          returnvoid
          end ; code
          end ; body
@@ -879,7 +878,7 @@ package com.newgrounds
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_draft")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_draft")
          returnvoid
          end ; code
          end ; body
@@ -1129,7 +1128,7 @@ package com.newgrounds
          setlocal2
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_status")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_status")
          returnvoid
          end ; code
          end ; body
@@ -1156,7 +1155,7 @@ package com.newgrounds
          pushscope
          getlocal0
          getlocal1
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_contentSize")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_contentSize")
          returnvoid
          end ; code
          end ; body
@@ -1420,6 +1419,7 @@ package com.newgrounds
          newobject 2
          setproperty MultinameL([PrivateNamespace(null,"#SaveFile"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PrivateNamespace(null,"#SaveFile/1"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SaveFile"),StaticProtectedNs("com.newgrounds:SaveFile"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          jump ofs2
+         jump ofs3
          ofs3:
          getlocal3
          getproperty QName(PackageNamespace(""),"type")
@@ -1670,6 +1670,13 @@ package com.newgrounds
          setlocal3
          getlocal3
          iftrue ofs0
+         findpropstrict QName(PackageNamespace(""),"trace")
+         pushstring "[NewgroundsAPISaveFile] "
+         getlocal1
+         add
+         pushstring " is not a recognized save file"
+         add
+         callpropvoid QName(PackageNamespace(""),"trace"), 1
          returnvoid
          ofs0:
          getlocal2
@@ -1685,6 +1692,17 @@ package com.newgrounds
          greaterthan
          ofs1:
          iffalse ofs2
+         findpropstrict QName(PackageNamespace(""),"trace")
+         pushstring "[NewgroundsAPISaveFile] Vote must be between "
+         getlocal3
+         getproperty QName(PackageNamespace(""),"minValue")
+         add
+         pushstring " and "
+         add
+         getlocal3
+         getproperty QName(PackageNamespace(""),"maxValue")
+         add
+         callpropvoid QName(PackageNamespace(""),"trace"), 1
          returnvoid
          ofs2:
          getlocal3
@@ -1721,10 +1739,10 @@ package com.newgrounds
          pushscope
          pushnull
          coerce QName(PackageNamespace(""),"Object")
-         setlocal1
+         setlocal2
          pushnull
          coerce QName(PackageNamespace(""),"Object")
-         setlocal2
+         setlocal3
          pushstring "Save File "
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SaveFile"),"_filename")
@@ -1741,8 +1759,7 @@ package com.newgrounds
          add
          pushstring "\n"
          add
-         coerce_a
-         setlocal3
+         setlocal1
          pushbyte 0
          setlocal 4
          getlocal0
@@ -1756,26 +1773,26 @@ package com.newgrounds
          getlocal 4
          nextvalue
          coerce QName(PackageNamespace(""),"Object")
-         setlocal1
-         getlocal3
+         setlocal2
+         getlocal1
          pushstring "  "
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SaveFile"),"_group")
-         getlocal1
+         getlocal2
          getproperty Multiname("id",[PrivateNamespace(null,"#SaveFile"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PrivateNamespace(null,"#SaveFile/1"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SaveFile"),StaticProtectedNs("com.newgrounds:SaveFile"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          callproperty QName(PackageNamespace(""),"getKeyID"), 1
          getproperty QName(PackageNamespace(""),"name")
          add
          pushstring ": "
          add
-         getlocal1
+         getlocal2
          getproperty Multiname("val",[PrivateNamespace(null,"#SaveFile"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PrivateNamespace(null,"#SaveFile/1"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SaveFile"),StaticProtectedNs("com.newgrounds:SaveFile"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          add
          pushstring "\n"
          add
          add
-         coerce_a
-         setlocal3
+         coerce_s
+         setlocal1
          ofs0:
          hasnext2 5, 4
          iftrue ofs1
@@ -1794,37 +1811,37 @@ package com.newgrounds
          getlocal 4
          nextvalue
          coerce QName(PackageNamespace(""),"Object")
-         setlocal2
-         getlocal3
+         setlocal3
+         getlocal1
          pushstring "  "
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SaveFile"),"_group")
-         getlocal2
+         getlocal3
          getproperty Multiname("id",[PrivateNamespace(null,"#SaveFile"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PrivateNamespace(null,"#SaveFile/1"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SaveFile"),StaticProtectedNs("com.newgrounds:SaveFile"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          callproperty QName(PackageNamespace(""),"getRatingID"), 1
          getproperty QName(PackageNamespace(""),"name")
          add
          pushstring "\n    Score: "
          add
-         getlocal2
+         getlocal3
          getproperty Multiname("score",[PrivateNamespace(null,"#SaveFile"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PrivateNamespace(null,"#SaveFile/1"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SaveFile"),StaticProtectedNs("com.newgrounds:SaveFile"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          add
          pushstring " Votes: "
          add
-         getlocal2
+         getlocal3
          getproperty Multiname("votes",[PrivateNamespace(null,"#SaveFile"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PrivateNamespace(null,"#SaveFile/1"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SaveFile"),StaticProtectedNs("com.newgrounds:SaveFile"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          add
          pushstring "\n"
          add
          add
-         coerce_a
-         setlocal3
+         coerce_s
+         setlocal1
          ofs2:
          hasnext2 5, 4
          iftrue ofs3
          kill 5
          kill 4
-         getlocal3
+         getlocal1
          returnvalue
          end ; code
          end ; body
@@ -1850,7 +1867,7 @@ package com.newgrounds
          pushscope
          pushnull
          coerce QName(PackageNamespace(""),"Object")
-         setlocal1
+         setlocal2
          pushstring "group"
          getlocal0
          getproperty QName(PackageNamespace(""),"groupId")
@@ -1864,8 +1881,8 @@ package com.newgrounds
          pushtrue
          newobject 4
          coerce QName(PackageNamespace(""),"Object")
-         setlocal2
-         getlocal2
+         setlocal1
+         getlocal1
          newarray 0
          setproperty Multiname("keys",[PrivateNamespace(null,"#SaveFile"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PrivateNamespace(null,"#SaveFile/1"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SaveFile"),StaticProtectedNs("com.newgrounds:SaveFile"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pushbyte 0
@@ -1881,14 +1898,14 @@ package com.newgrounds
          getlocal3
          nextvalue
          coerce QName(PackageNamespace(""),"Object")
-         setlocal1
-         getlocal2
+         setlocal2
+         getlocal1
          getproperty Multiname("keys",[PrivateNamespace(null,"#SaveFile"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PrivateNamespace(null,"#SaveFile/1"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SaveFile"),StaticProtectedNs("com.newgrounds:SaveFile"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pushstring "id"
-         getlocal1
+         getlocal2
          getproperty Multiname("id",[PrivateNamespace(null,"#SaveFile"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PrivateNamespace(null,"#SaveFile/1"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SaveFile"),StaticProtectedNs("com.newgrounds:SaveFile"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          pushstring "value"
-         getlocal1
+         getlocal2
          getproperty Multiname("val",[PrivateNamespace(null,"#SaveFile"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PrivateNamespace(null,"#SaveFile/1"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SaveFile"),StaticProtectedNs("com.newgrounds:SaveFile"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
          newobject 2
          callpropvoid Multiname("push",[PrivateNamespace(null,"#SaveFile"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PrivateNamespace(null,"#SaveFile/1"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SaveFile"),StaticProtectedNs("com.newgrounds:SaveFile"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")]), 1
@@ -1897,7 +1914,7 @@ package com.newgrounds
          iftrue ofs1
          kill 4
          kill 3
-         getlocal2
+         getlocal1
          returnvalue
          end ; code
          end ; body
@@ -1960,7 +1977,7 @@ package com.newgrounds
          getlocal0
          findpropstrict QName(PackageNamespace("com.newgrounds"),"SmartURLLoader")
          constructprop QName(PackageNamespace("com.newgrounds"),"SmartURLLoader"), 0
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_loader")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_loader")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SaveFile"),"_loader")
          getlex QName(PackageNamespace("flash.net"),"URLLoaderDataFormat")
@@ -2019,7 +2036,7 @@ package com.newgrounds
          pushscope
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_loader")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_loader")
          findpropstrict QName(PackageNamespace(""),"dispatchEvent")
          findpropstrict QName(PackageNamespace("com.newgrounds"),"APIEvent")
          getlex QName(PackageNamespace("com.newgrounds"),"APIEvent")
@@ -2064,7 +2081,7 @@ package com.newgrounds
          getlocal0
          getlocal2
          getproperty QName(PackageNamespace(""),"length")
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_contentSize")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_contentSize")
          getlocal2
          callpropvoid QName(PackageNamespace(""),"uncompress"), 0
          getlocal2
@@ -2077,7 +2094,7 @@ package com.newgrounds
          getlocal0
          findpropstrict QName(PackageNamespace("flash.utils"),"ByteArray")
          constructprop QName(PackageNamespace("flash.utils"),"ByteArray"), 0
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_contents")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_contents")
          getlocal0
          getproperty QName(PrivateNamespace(null,"#SaveFile"),"_contents")
          getlocal2
@@ -2088,11 +2105,11 @@ package com.newgrounds
          getlocal0
          getlocal2
          callproperty QName(PackageNamespace(""),"readObject"), 0
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_contents")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_contents")
          ofs1:
          getlocal0
          pushnull
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_loader")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_loader")
          findpropstrict QName(PackageNamespace(""),"dispatchEvent")
          findpropstrict QName(PackageNamespace("com.newgrounds"),"APIEvent")
          getlex QName(PackageNamespace("com.newgrounds"),"APIEvent")
@@ -2167,15 +2184,15 @@ package com.newgrounds
          getlocal0
          getlocal1
          getproperty Multiname("save_id",[PrivateNamespace(null,"#SaveFile"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PrivateNamespace(null,"#SaveFile/1"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SaveFile"),StaticProtectedNs("com.newgrounds:SaveFile"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_id")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_id")
          getlocal0
          getlocal1
          getproperty Multiname("thumbnail",[PrivateNamespace(null,"#SaveFile"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PrivateNamespace(null,"#SaveFile/1"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SaveFile"),StaticProtectedNs("com.newgrounds:SaveFile"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_thumbnailUrl")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_thumbnailUrl")
          getlocal0
          getlocal1
          getproperty Multiname("file_url",[PrivateNamespace(null,"#SaveFile"),PackageNamespace(""),PackageNamespace("com.newgrounds"),PrivateNamespace(null,"#SaveFile/1"),PackageInternalNs("com.newgrounds"),Namespace("http://adobe.com/AS3/2006/builtin"),ProtectedNamespace("com.newgrounds:SaveFile"),StaticProtectedNs("com.newgrounds:SaveFile"),StaticProtectedNs("flash.events:EventDispatcher"),StaticProtectedNs("Object")])
-         setproperty QName(PrivateNamespace(null,"#SaveFile"),"_fileUrl")
+         initproperty QName(PrivateNamespace(null,"#SaveFile"),"_fileUrl")
          returnvoid
          end ; code
          end ; body

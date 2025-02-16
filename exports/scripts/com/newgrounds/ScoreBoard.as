@@ -132,21 +132,21 @@ package com.newgrounds
       
       internal function setScores(param1:Array, param2:String, param3:Number, param4:Number, param5:uint) : void
       {
-         var _loc6_:uint = 0;
+         var _loc7_:uint = 0;
          this._period = param2;
          this._page = param3;
          this._num_results = param4;
          this._numScores = param5;
          this._scores = [];
-         var _loc7_:uint = 0;
-         while(_loc7_ < param1.length)
+         var _loc6_:uint = 0;
+         while(_loc6_ < param1.length)
          {
-            _loc6_ = uint(this._num_results * (this._page - 1) + 1 + _loc7_);
-            if(!this._desiredNumResults || _loc6_ >= this._startRank && _loc6_ <= this._endRank)
+            _loc7_ = uint(this._num_results * (this._page - 1) + 1 + _loc6_);
+            if(!this._desiredNumResults || _loc7_ >= this._startRank && _loc7_ <= this._endRank)
             {
-               this._scores.push(new Score(this,_loc6_,param1[_loc7_].username,param1[_loc7_].value,param1[_loc7_].numeric_value,param1[_loc7_].tag));
+               this._scores.push(new Score(this,_loc7_,param1[_loc6_].username,param1[_loc6_].value,param1[_loc6_].numeric_value,param1[_loc6_].tag));
             }
-            _loc7_++;
+            _loc6_++;
          }
          this._num_results = this._scores.length;
       }

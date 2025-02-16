@@ -264,7 +264,7 @@ package com.newgrounds
       
       public static function connect(param1:LoaderInfo, param2:String, param3:String = null) : void
       {
-         var flashVars:Object = null;
+         var flashVars:Object;
          var loaderInfo:LoaderInfo = param1;
          var m_id:String = param2;
          var encrypt_key:String = param3;
@@ -554,14 +554,14 @@ package com.newgrounds
       
       private static function populateSaveGroups(param1:Array) : void
       {
-         var _loc2_:SaveGroup = null;
+         var _loc3_:SaveGroup = null;
          _saveGroups = [];
-         var _loc3_:uint = 0;
-         while(_loc3_ < param1.length)
+         var _loc2_:uint = 0;
+         while(_loc2_ < param1.length)
          {
-            _loc2_ = SaveGroup.createFromObject(param1[_loc3_]);
-            _saveGroups.push(_loc2_);
-            _loc3_++;
+            _loc3_ = SaveGroup.createFromObject(param1[_loc2_]);
+            _saveGroups.push(_loc3_);
+            _loc2_++;
          }
       }
       
@@ -609,48 +609,48 @@ package com.newgrounds
       
       public static function unlockMedal(param1:String) : void
       {
-         var _loc2_:Object = null;
          var _loc3_:Object = null;
+         var _loc4_:Object = null;
          if(!param1 || param1 == "")
          {
             sendError({"command_id":getCommandID("unlockMedal")},new APIError("MISSING_PARAM","missing required medal name"));
             return;
          }
-         var _loc4_:Medal = getMedal(param1);
-         if(!_loc4_)
+         var _loc2_:Medal = getMedal(param1);
+         if(!_loc2_)
          {
             sendMessage("No medal with name: " + param1);
             return;
          }
          if(hasUserSession() || debugMode)
          {
-            sendMessage("Attempting to unlock \'" + _loc4_.name + "\'");
-            if(_loc4_.unlocked)
+            sendMessage("Attempting to unlock \'" + _loc2_.name + "\'");
+            if(_loc2_.unlocked)
             {
-               sendWarning("Medal \'" + _loc4_.name + "\' is already unlocked!");
+               sendWarning("Medal \'" + _loc2_.name + "\' is already unlocked!");
                return;
             }
-            _loc2_ = new Object();
-            _loc2_.medal_id = _loc4_.id;
-            sendSecureCommand("unlockMedal",_loc2_);
+            _loc3_ = new Object();
+            _loc3_.medal_id = _loc2_.id;
+            sendSecureCommand("unlockMedal",_loc3_);
          }
          else
          {
-            sendMessage("Locally unlocking " + _loc4_.name);
-            if(_loc4_.unlocked)
+            sendMessage("Locally unlocking " + _loc2_.name);
+            if(_loc2_.unlocked)
             {
-               sendWarning("Medal \'" + _loc4_.name + "\' is already unlocked!");
+               sendWarning("Medal \'" + _loc2_.name + "\' is already unlocked!");
                return;
             }
-            _loc4_.unlocked = true;
-            _loc3_ = loadLocal("medals_unlocked");
-            if(!_loc3_)
+            _loc2_.unlocked = true;
+            _loc4_ = loadLocal("medals_unlocked");
+            if(!_loc4_)
             {
-               _loc3_ = new Object();
+               _loc4_ = new Object();
             }
-            _loc3_[_loc4_.id.toString()] = true;
-            saveLocal("medals_unlocked",_loc3_);
-            callListener(APIEvent.UNLOCK_MEDAL,true,{"medal":_loc4_});
+            _loc4_[_loc2_.id.toString()] = true;
+            saveLocal("medals_unlocked",_loc4_);
+            callListener(APIEvent.UNLOCK_MEDAL,true,{"medal":_loc2_});
          }
       }
       
@@ -741,34 +741,34 @@ package com.newgrounds
       
       private static function uncompressHex(param1:String) : String
       {
-         var _loc2_:uint = 0;
-         var _loc3_:String = null;
          var _loc4_:uint = 0;
-         var _loc5_:String = null;
-         var _loc6_:uint = uint(param1.charAt(0));
-         var _loc7_:String = "";
-         var _loc8_:uint = 1;
-         while(_loc8_ < param1.length)
+         var _loc6_:String = null;
+         var _loc7_:uint = 0;
+         var _loc8_:String = null;
+         var _loc2_:uint = uint(param1.charAt(0));
+         var _loc3_:String = "";
+         var _loc5_:uint = 1;
+         while(_loc5_ < param1.length)
          {
-            _loc3_ = param1.substr(_loc8_,4);
-            _loc4_ = uint(compressor.decode(_loc3_));
-            _loc5_ = _loc4_.toString(16);
-            if(_loc8_ + 4 < param1.length)
+            _loc6_ = param1.substr(_loc5_,4);
+            _loc7_ = uint(compressor.decode(_loc6_));
+            _loc8_ = _loc7_.toString(16);
+            if(_loc5_ + 4 < param1.length)
             {
-               _loc2_ = 6;
+               _loc4_ = 6;
             }
             else
             {
-               _loc2_ = _loc6_;
+               _loc4_ = _loc2_;
             }
-            while(_loc5_.length < _loc2_)
+            while(_loc8_.length < _loc4_)
             {
-               _loc5_ = "0" + _loc5_;
+               _loc8_ = "0" + _loc8_;
             }
-            _loc7_ += _loc5_;
-            _loc8_ += 4;
+            _loc3_ += _loc8_;
+            _loc5_ += 4;
          }
-         return _loc7_;
+         return _loc3_;
       }
       
       public static function getSaveGroupById(param1:uint) : SaveGroup
@@ -928,59 +928,59 @@ package com.newgrounds
       
       public static function loadFilesByDate(param1:String, param2:Boolean = true, param3:String = null, param4:* = null) : void
       {
-         var _loc5_:* = undefined;
-         var _loc6_:SaveGroup = getSaveGroup(param1);
-         if(!_loc6_)
+         var _loc7_:* = undefined;
+         var _loc5_:SaveGroup = getSaveGroup(param1);
+         if(!_loc5_)
          {
-            _loc5_ = new APIError("QUERY_INCOMPLETE","The query could not be preformed, check the spelling of your save group name.");
-            sendError({"command_id":"loadFilesByDate"},_loc5_);
+            _loc7_ = new APIError("QUERY_INCOMPLETE","The query could not be preformed, check the spelling of your save group name.");
+            sendError({"command_id":"loadFilesByDate"},_loc7_);
             return;
          }
-         var _loc7_:SaveGroupQuery = _loc6_.newQuery();
+         var _loc6_:SaveGroupQuery = _loc5_.newQuery();
          if(param3)
          {
-            _loc7_.addKeyCondition(param3,"=",param4);
+            _loc6_.addKeyCondition(param3,"=",param4);
          }
-         _loc7_.sortOn(SaveGroupQuery.CREATED_ON,param2);
-         _loc7_.execute();
+         _loc6_.sortOn(SaveGroupQuery.CREATED_ON,param2);
+         _loc6_.execute();
       }
       
       public static function loadFilesByViews(param1:String, param2:Boolean = true, param3:String = null, param4:* = null) : void
       {
-         var _loc5_:* = undefined;
-         var _loc6_:SaveGroup = getSaveGroup(param1);
-         if(!_loc6_)
+         var _loc7_:* = undefined;
+         var _loc5_:SaveGroup = getSaveGroup(param1);
+         if(!_loc5_)
          {
-            _loc5_ = new APIError("QUERY_INCOMPLETE","The query could not be preformed, check the spelling of your save group name.");
-            sendError({"command_id":"loadFilesByViews"},_loc5_);
+            _loc7_ = new APIError("QUERY_INCOMPLETE","The query could not be preformed, check the spelling of your save group name.");
+            sendError({"command_id":"loadFilesByViews"},_loc7_);
             return;
          }
-         var _loc7_:SaveGroupQuery = _loc6_.newQuery();
+         var _loc6_:SaveGroupQuery = _loc5_.newQuery();
          if(param3)
          {
-            _loc7_.addKeyCondition(param3,"=",param4);
+            _loc6_.addKeyCondition(param3,"=",param4);
          }
-         _loc7_.sortOn(SaveGroupQuery.TOTAL_VIEWS,param2);
-         _loc7_.execute();
+         _loc6_.sortOn(SaveGroupQuery.TOTAL_VIEWS,param2);
+         _loc6_.execute();
       }
       
       public static function loadFilesByRating(param1:String, param2:String, param3:Boolean = true, param4:String = null, param5:* = null) : void
       {
-         var _loc6_:* = undefined;
-         var _loc7_:SaveGroup = getSaveGroup(param1);
-         if(!_loc7_)
+         var _loc8_:* = undefined;
+         var _loc6_:SaveGroup = getSaveGroup(param1);
+         if(!_loc6_)
          {
-            _loc6_ = new APIError("QUERY_INCOMPLETE","The query could not be preformed, check the spelling of your save group name.");
-            sendError({"command_id":"loadFilesByDate"},_loc6_);
+            _loc8_ = new APIError("QUERY_INCOMPLETE","The query could not be preformed, check the spelling of your save group name.");
+            sendError({"command_id":"loadFilesByDate"},_loc8_);
             return;
          }
-         var _loc8_:SaveGroupQuery = _loc7_.newQuery();
+         var _loc7_:SaveGroupQuery = _loc6_.newQuery();
          if(param4)
          {
-            _loc8_.addKeyCondition(param4,"=",param5);
+            _loc7_.addKeyCondition(param4,"=",param5);
          }
-         _loc8_.sortOnRating(param2,param3);
-         _loc8_.execute();
+         _loc7_.sortOnRating(param2,param3);
+         _loc7_.execute();
       }
       
       public static function onRemoteAuthentication(param1:String) : *
@@ -1457,13 +1457,13 @@ package com.newgrounds
       
       private static function getPeriodAliases() : Object
       {
-         var _loc1_:String = null;
-         var _loc2_:Object = new Object();
-         for(_loc1_ in period_aliases)
+         var _loc2_:String = null;
+         var _loc1_:Object = new Object();
+         for(_loc2_ in period_aliases)
          {
-            _loc2_[period_aliases[_loc1_].alias] = _loc1_;
+            _loc1_[period_aliases[_loc2_].alias] = _loc2_;
          }
-         return _loc2_;
+         return _loc1_;
       }
       
       public static function getPeriodName(param1:String) : String
@@ -1495,6 +1495,7 @@ package com.newgrounds
       private static function sendError(param1:Object, param2:APIError) : void
       {
          var _loc3_:String = "[NewgroundsAPI ERROR] :: " + getCommandName(param1.command_id) + "() - " + param2.name + ":\n\t\t\t\t" + param2.message;
+         trace(_loc3_);
          if(_bridge)
          {
             _bridge.sendEvent("trace",{"data":_loc3_});
@@ -1507,6 +1508,7 @@ package com.newgrounds
          {
             param1 += "\n[NewgroundsAPI WARNING] :: \tSee " + COMMANDS_WIKI_URL + param2.toLowerCase() + " for additional information.";
          }
+         trace(param1);
          if(_bridge)
          {
             _bridge.sendEvent("trace",{"data":param1});
@@ -1520,6 +1522,7 @@ package com.newgrounds
          {
             param1 += "\n[NewgroundsAPI NOTICE] :: \tSee " + COMMANDS_WIKI_URL + param2.toLowerCase() + " for additional information.";
          }
+         trace(param1);
          if(_bridge)
          {
             _bridge.sendEvent("trace",{"data":param1});
@@ -1532,6 +1535,7 @@ package com.newgrounds
          {
             param1 += "\n\tSee " + COMMANDS_WIKI_URL + param2.toLowerCase() + " for additional information.";
          }
+         trace("***ERROR*** class=API\n\n" + param1);
       }
       
       public static function openLoginPage() : *
@@ -1596,7 +1600,7 @@ package com.newgrounds
       
       private static function onCommandComplete(param1:Event) : void
       {
-         var i:uint = 0;
+         var i:uint;
          var response:Object = null;
          var error:APIError = null;
          var e:Event = param1;
@@ -1674,66 +1678,66 @@ package com.newgrounds
       
       private static function sendCommand(param1:String, param2:Object, param3:Boolean = false, param4:Object = null, param5:* = null) : void
       {
-         var _loc6_:* = null;
-         var _loc7_:String = null;
+         var _loc7_:* = null;
          var _loc8_:String = null;
+         var _loc9_:String = null;
          if(!connected && param1 != "connectMovie")
          {
-            _loc6_ = "NewgroundsAPI." + param1 + "() - NewgroundsAPI.connectMovie() must be called before this command can be called\n";
-            fatalError(_loc6_,"connectMovie");
+            _loc7_ = "NewgroundsAPI." + param1 + "() - NewgroundsAPI.connectMovie() must be called before this command can be called\n";
+            fatalError(_loc7_,"connectMovie");
          }
-         var _loc9_:SmartURLLoader = new SmartURLLoader();
-         _loc9_.addVariable("command_id",getCommandID(param1));
-         _loc9_.addVariable("tracker_id",_movieId);
+         var _loc6_:SmartURLLoader = new SmartURLLoader();
+         _loc6_.addVariable("command_id",getCommandID(param1));
+         _loc6_.addVariable("tracker_id",_movieId);
          if(debugMode)
          {
-            _loc9_.addVariable("debug",1);
+            _loc6_.addVariable("debug",1);
          }
          if(param2)
          {
-            for(_loc7_ in param2)
+            for(_loc8_ in param2)
             {
-               _loc9_.addVariable(_loc7_,param2[_loc7_]);
+               _loc6_.addVariable(_loc8_,param2[_loc8_]);
             }
          }
          if(param4)
          {
-            for(_loc8_ in param4)
+            for(_loc9_ in param4)
             {
-               _loc9_.addFile(_loc8_,param4[_loc8_],_loc8_);
+               _loc6_.addFile(_loc9_,param4[_loc9_],_loc9_);
             }
          }
          if(param3)
          {
-            _loc9_.method = URLRequestMethod.GET;
+            _loc6_.method = URLRequestMethod.GET;
          }
          else
          {
-            _loc9_.method = URLRequestMethod.POST;
+            _loc6_.method = URLRequestMethod.POST;
          }
-         _loc9_.preventCache = true;
+         _loc6_.preventCache = true;
          if(param3)
          {
-            _loc9_.openBrowser = true;
-            _loc9_.method = URLRequestMethod.GET;
+            _loc6_.openBrowser = true;
+            _loc6_.method = URLRequestMethod.GET;
          }
          else
          {
-            _loc9_.addEventListener(Event.COMPLETE,onCommandComplete);
-            _loc9_.addEventListener(IOErrorEvent.IO_ERROR,onCommandError);
-            _loc9_.addEventListener(SecurityErrorEvent.SECURITY_ERROR,onCommandError);
-            _loc9_.method = URLRequestMethod.POST;
+            _loc6_.addEventListener(Event.COMPLETE,onCommandComplete);
+            _loc6_.addEventListener(IOErrorEvent.IO_ERROR,onCommandError);
+            _loc6_.addEventListener(SecurityErrorEvent.SECURITY_ERROR,onCommandError);
+            _loc6_.method = URLRequestMethod.POST;
          }
          if(param2.secure)
          {
-            _loc9_._command = secureCommand;
+            _loc6_._command = secureCommand;
          }
          else
          {
-            _loc9_._command = getCommandID(param1);
+            _loc6_._command = getCommandID(param1);
          }
-         _loc9_.owner = param5;
-         _loc9_.load(GATEWAY_URL);
+         _loc6_.owner = param5;
+         _loc6_.load(GATEWAY_URL);
       }
       
       public static function isFlashVersion(param1:uint, param2:uint = 0, param3:uint = 0, param4:uint = 0) : Boolean
@@ -1771,6 +1775,7 @@ package com.newgrounds
       public static function sendMessage(param1:String, param2:Boolean = false) : void
       {
          var _loc3_:String = "[NewgroundsAPI] :: " + param1;
+         trace(_loc3_);
          if(_bridge)
          {
             _bridge.sendEvent("trace",{"data":_loc3_});
@@ -1781,6 +1786,7 @@ package com.newgrounds
       {
          if(do_echo)
          {
+            trace(param1);
          }
       }
    }
