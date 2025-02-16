@@ -4,13 +4,12 @@ package
    
    public class Configurable
    {
-      private var configXmlFile:Class;
+      [Embed(source = 'data/configXmlFile.txt',mimeType="application/octet-stream")] private var configXmlFile:Class;
       
       private var _xml:XML;
       
       public function Configurable()
       {
-         this.configXmlFile = Configurable_configXmlFile;
          super();
          var _loc1_:ByteArray = new this.configXmlFile();
          var _loc2_:String = _loc1_.readUTFBytes(_loc1_.length);
