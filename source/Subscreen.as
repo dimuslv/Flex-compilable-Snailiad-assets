@@ -84,6 +84,31 @@ package
       
       public var escText:FlxText;
       
+      override public function destroy() : void
+      {
+         var _loc1_:int = 0;
+         while(_loc1_ < this.texts.length)
+         {
+            this.texts[_loc1_] = null;
+            _loc1_++;
+         }
+         texts = null;
+         textY = null;
+         _loc1_ = 0;
+         while(_loc1_ < this.weaponText.length)
+         {
+            this.weaponText[_loc1_] = null;
+            _loc1_++;
+         }
+         tabText = null;
+         weaponText = null;
+         helixSprite = null;
+         helixText = null;
+         bg = null;
+         panel = null;
+         super.destroy();
+      }
+      
       public function Subscreen() : void
       {
          super();
@@ -169,31 +194,6 @@ package
          this.panel.scrollFactor.x = this.panel.scrollFactor.y = 0;
          scrollFactor.x = scrollFactor.y = 0;
          this.updatePosition();
-      }
-      
-      override public function destroy() : void
-      {
-         var _loc1_:int = 0;
-         while(_loc1_ < this.texts.length)
-         {
-            this.texts[_loc1_] = null;
-            _loc1_++;
-         }
-         texts = null;
-         textY = null;
-         _loc1_ = 0;
-         while(_loc1_ < this.weaponText.length)
-         {
-            this.weaponText[_loc1_] = null;
-            _loc1_++;
-         }
-         tabText = null;
-         weaponText = null;
-         helixSprite = null;
-         helixText = null;
-         bg = null;
-         panel = null;
-         super.destroy();
       }
       
       private function makeText(param1:int, param2:int, param3:int, param4:String) : void
