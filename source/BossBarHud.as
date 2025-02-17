@@ -26,6 +26,15 @@ package
       
       private var _shown:Boolean = false;
       
+      override public function destroy() : void
+      {
+         _border = null;
+         _bg = null;
+         _bar = null;
+         _leftSide = null;
+         super.destroy();
+      }
+      
       public function BossBarHud() : void
       {
          super();
@@ -35,15 +44,6 @@ package
          this._leftSide = new FlxSprite();
          add(this._border);
          add(this._bar);
-      }
-      
-      override public function destroy() : void
-      {
-         _border = null;
-         _bg = null;
-         _bar = null;
-         _leftSide = null;
-         super.destroy();
       }
       
       public function makeBar(param1:int) : void

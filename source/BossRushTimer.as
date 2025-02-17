@@ -10,6 +10,12 @@ package
       
       public var going:Boolean = false;
       
+      override public function destroy() : void
+      {
+         now = null;
+         super.destroy();
+      }
+      
       public function BossRushTimer() : void
       {
          super(0,4,FlxG.width - 4);
@@ -24,12 +30,6 @@ package
          this.now.value = 0;
          this.going = false;
          this.started = false;
-      }
-      
-      override public function destroy() : void
-      {
-         now = null;
-         super.destroy();
       }
       
       public function padZero(param1:int) : String

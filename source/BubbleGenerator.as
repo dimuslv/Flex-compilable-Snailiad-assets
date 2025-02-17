@@ -32,6 +32,13 @@ package
       
       private var MAX_BUBBLES:int = 20;
       
+      override public function destroy() : void
+      {
+         PlayState.bubbles.remove(this.group);
+         group = null;
+         super.destroy();
+      }
+      
       public function BubbleGenerator(param1:int, param2:int) : void
       {
          super(param1,param2,9999,0,0);
@@ -47,13 +54,6 @@ package
          this.timeout %= param1 % 20;
          this.group = new FlxGroup();
          PlayState.bubbles.add(this.group);
-      }
-      
-      override public function destroy() : void
-      {
-         PlayState.bubbles.remove(this.group);
-         group = null;
-         super.destroy();
       }
       
       override public function collideTerrain() : Boolean

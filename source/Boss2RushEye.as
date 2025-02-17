@@ -52,6 +52,13 @@ package
       
       public var shouldAttack:Boolean = false;
       
+      override public function destroy() : void
+      {
+         eyelid = null;
+         pupil = null;
+         super.destroy();
+      }
+      
       public function Boss2RushEye(param1:int, param2:int, param3:Boolean) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE,true);
@@ -66,13 +73,6 @@ package
          this._clusterTimeout = CLUSTER_TIMEOUT;
          this._shotTimeout = SHOT_TIMEOUT;
          this._shooting = false;
-      }
-      
-      override public function destroy() : void
-      {
-         eyelid = null;
-         pupil = null;
-         super.destroy();
       }
       
       public function setMode(param1:int) : void

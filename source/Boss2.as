@@ -165,6 +165,22 @@ package
       private var ltheta:Number = 0;
       
       private var rtheta:Number = 0;
+      
+      override public function destroy() : void
+      {
+         var _loc1_:String = null;
+         for(_loc1_ in this.cannons)
+         {
+            this.cannons[_loc1_] = null;
+         }
+         cannons = null;
+         lfoot = null;
+         rfoot = null;
+         leye = null;
+         reye = null;
+         PlayState.boss2 = null;
+         super.destroy();
+      }
 	  
       public function Boss2(param1:int, param2:int) : void
       {
@@ -207,22 +223,6 @@ package
          PlayState.player.velocity.x = -PlayState.player._runSpeed.value;
          PlayState.player.paralyze(true);
          this.moveChildren();
-      }
-      
-      override public function destroy() : void
-      {
-         var _loc1_:String = null;
-         for(_loc1_ in this.cannons)
-         {
-            this.cannons[_loc1_] = null;
-         }
-         cannons = null;
-         lfoot = null;
-         rfoot = null;
-         leye = null;
-         reye = null;
-         PlayState.boss2 = null;
-         super.destroy();
       }
       
       public function moveChildren() : void

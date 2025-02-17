@@ -52,6 +52,13 @@ package
       
       private var SHOT_NUM:Number = 2;
       
+      override public function destroy() : void
+      {
+         eyelid = null;
+         pupil = null;
+         super.destroy();
+      }
+      
       public function Boss2Eye(param1:int, param2:int, param3:Boolean) : void
       {
          if(PlayState.player && PlayState.player._insaneMode)
@@ -76,13 +83,6 @@ package
          this._clusterTimeout = CLUSTER_TIMEOUT;
          this._shotTimeout = this.SHOT_TIMEOUT;
          this._shooting = false;
-      }
-      
-      override public function destroy() : void
-      {
-         eyelid = null;
-         pupil = null;
-         super.destroy();
       }
       
       public function setMode(param1:int) : void

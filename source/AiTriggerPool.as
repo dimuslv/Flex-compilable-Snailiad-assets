@@ -8,6 +8,16 @@ package
       
       private const MAX_TRIGGERS:int = 250;
       
+      override public function destroy() : void
+      {
+         var _loc1_:String = null;
+         for(_loc1_ in this.triggers)
+         {
+            this.triggers[_loc1_].destroy();
+         }
+         super.destroy();
+      }
+      
       public function AiTriggerPool() : void
       {
          this.triggers = new Array();
@@ -19,16 +29,6 @@ package
             add(this.triggers[_loc1_]);
             _loc1_++;
          }
-      }
-      
-      override public function destroy() : void
-      {
-         var _loc1_:String = null;
-         for(_loc1_ in this.triggers)
-         {
-            this.triggers[_loc1_].destroy();
-         }
-         super.destroy();
       }
       
       public function destroyAll() : void

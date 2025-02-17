@@ -28,6 +28,21 @@ package
          bulletLists = null;
       }
       
+      public function destroyAll() : void
+      {
+         var _loc1_:int = 0;
+         while(_loc1_ < MAX_WEAPON)
+         {
+            var _loc2_:int = 0;
+            while(_loc2_ < MAX_BULLET[_loc1_])
+            {
+               this.bulletLists[_loc1_][_loc2_].kill();
+               _loc2_++;
+            }
+            _loc1_++;
+         }
+      }
+      
       public function Boss4BulletGroups() : void
       {
          this.groups = new Array();
@@ -46,21 +61,6 @@ package
                _loc2_++;
             }
             add(this.groups[_loc1_]);
-            _loc1_++;
-         }
-      }
-      
-      public function destroyAll() : void
-      {
-         var _loc1_:int = 0;
-         while(_loc1_ < MAX_WEAPON)
-         {
-            var _loc2_:int = 0;
-            while(_loc2_ < MAX_BULLET[_loc1_])
-            {
-               this.bulletLists[_loc1_][_loc2_].kill();
-               _loc2_++;
-            }
             _loc1_++;
          }
       }

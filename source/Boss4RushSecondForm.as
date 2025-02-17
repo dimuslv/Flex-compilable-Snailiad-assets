@@ -146,6 +146,20 @@ package
       
       private var _zzzNum:Number = 0;
       
+      public function blank(param1:int, param2:int) : void
+      {
+         PlayState.fixBlocks.rememberBlock(param1,param2,PlayState.worldMap.bgmap.getTile(param1,param2),PlayState.worldMap.fgmap.getTile(param1,param2));
+         PlayState.worldMap.bgmap.setTile(param1,param2,0);
+      }
+      
+      override public function destroy() : void
+      {
+         bg = null;
+         _bulletGroups = null;
+         _zzz = null;
+         super.destroy();
+      }
+      
       public function Boss4RushSecondForm(param1:int, param2:int) : void
       {
          this._healAmount = PlayState.player.hpPerHeart() / 2;
@@ -177,20 +191,6 @@ package
          solid = false;
          this.bg = new Boss4SecondFormBg();
          PlayState.bossBgLayer.add(this.bg);
-      }
-      
-      public function blank(param1:int, param2:int) : void
-      {
-         PlayState.fixBlocks.rememberBlock(param1,param2,PlayState.worldMap.bgmap.getTile(param1,param2),PlayState.worldMap.fgmap.getTile(param1,param2));
-         PlayState.worldMap.bgmap.setTile(param1,param2,0);
-      }
-      
-      override public function destroy() : void
-      {
-         bg = null;
-         _bulletGroups = null;
-         _zzz = null;
-         super.destroy();
       }
       
       public function getDecision() : Number
