@@ -1,6 +1,7 @@
 package
 {
-   import flash.utils.*;
+   import flash.utils.clearInterval;
+   import flash.utils.setInterval;
    import org.flixel.*;
    
    public class Player extends FlxSprite
