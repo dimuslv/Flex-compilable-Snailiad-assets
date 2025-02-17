@@ -1,14 +1,14 @@
 package
 {
+   import org.flixel.FlxState;
+   import org.flixel.FlxG;
+   import org.flixel.FlxGame;
    import com.newgrounds.API;
    import flash.events.ContextMenuEvent;
    import flash.net.URLRequest;
    import flash.net.navigateToURL;
    import flash.ui.ContextMenu;
    import flash.ui.ContextMenuItem;
-   import org.flixel.FlxG;
-   import org.flixel.FlxGame;
-   import org.flixel.FlxState;
    
    [Frame(factoryClass="Preloader")]
    [SWF(width="800", height="480", backgroundColor="#000000")]
@@ -16,23 +16,6 @@ package
    public class main extends FlxGame
    {
       private static const myPageUrl:String = "http://auriplane.newgrounds.com/";
-      
-      public function main() : void
-      {
-         if(!Preloader.fail)
-         {
-            var _loc1_:uint = 400;
-            var _loc2_:uint = 240;
-            var _loc3_:uint = 2;
-            super(_loc1_,_loc2_,PlayState,_loc3_);
-            pause = new PauseLayer();
-            FlxState.bgColor = 4278190080;
-            FlxG.framerate = 120;
-            FlxG.showBounds = false;
-            useDefaultHotKeys = false;
-         }
-         this.createContextMenu();
-      }
       
       public function createContextMenu() : void
       {
@@ -58,6 +41,23 @@ package
          menuCopyright.enabled = false;
          myContextMenu.customItems.push(menuCopyright,menuEmail,menuUrl);
          contextMenu = myContextMenu;
+      }
+      
+      public function main() : void
+      {
+         if(!Preloader.fail)
+         {
+            var _loc1_:uint = 400;
+            var _loc2_:uint = 240;
+            var _loc3_:uint = 2;
+            super(_loc1_,_loc2_,PlayState,_loc3_);
+            pause = new PauseLayer();
+            FlxState.bgColor = 4278190080;
+            FlxG.framerate = 120;
+            FlxG.showBounds = false;
+            useDefaultHotKeys = false;
+         }
+         this.createContextMenu();
       }
    }
 }
