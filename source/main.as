@@ -1,14 +1,10 @@
 package
 {
-   import org.flixel.FlxState;
-   import org.flixel.FlxG;
-   import org.flixel.FlxGame;
+   import org.flixel.*;
    import com.newgrounds.API;
    import flash.events.ContextMenuEvent;
-   import flash.net.URLRequest;
-   import flash.net.navigateToURL;
-   import flash.ui.ContextMenu;
-   import flash.ui.ContextMenuItem;
+   import flash.net.*;
+   import flash.ui.*;
    
    [Frame(factoryClass="Preloader")]
    [SWF(width="800", height="480", backgroundColor="#000000")]
