@@ -1,6 +1,6 @@
 package
 {
-   import org.flixel.FlxG;
+   import org.flixel.*;
    
    public class EnemyBird2 extends Enemy
    {

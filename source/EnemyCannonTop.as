@@ -1,6 +1,6 @@
 package
 {
-   import org.flixel.FlxObject;
+   import org.flixel.*;
    
    public class EnemyCannonTop extends Enemy
    {

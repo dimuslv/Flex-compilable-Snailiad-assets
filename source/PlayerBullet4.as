@@ -1,6 +1,6 @@
 package
 {
-   import org.flixel.FlxG;
+   import org.flixel.*;
    
    public class PlayerBullet4 extends PlayerBullet
    {

@@ -1,8 +1,8 @@
 package
 {
    import org.flixel.*;
-   import com.newgrounds.API;
-   import flash.events.ContextMenuEvent;
+   import com.newgrounds.*;
+   import flash.events.*;
    import flash.net.*;
    import flash.ui.*;
    

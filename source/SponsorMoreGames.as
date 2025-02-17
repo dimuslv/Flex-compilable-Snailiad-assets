@@ -1,9 +1,8 @@
 package
 {
-   import com.newgrounds.API;
-   import flash.events.MouseEvent;
-   import org.flixel.FlxG;
-   import org.flixel.FlxSprite;
+   import com.newgrounds.*;
+   import flash.events.*;
+   import org.flixel.*;
    
    public class SponsorMoreGames extends FlxSprite
    {

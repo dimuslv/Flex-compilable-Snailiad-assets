@@ -1,8 +1,7 @@
 package
 {
-   import flash.utils.getTimer;
-   import org.flixel.FlxG;
-   import org.flixel.FlxText;
+   import flash.utils.*;
+   import org.flixel.*;
    
    public class AreaName extends FlxText
    {

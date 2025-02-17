@@ -1,6 +1,6 @@
 package
 {
-   import org.flixel.FlxGroup;
+   import org.flixel.*;
    
    public class Hud extends FlxGroup
    {

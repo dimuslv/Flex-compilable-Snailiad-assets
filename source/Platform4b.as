@@ -1,7 +1,6 @@
 package
 {
-   import org.flixel.FlxG;
-   import org.flixel.FlxObject;
+   import org.flixel.*;
    
    public class Platform4b extends Item
    {

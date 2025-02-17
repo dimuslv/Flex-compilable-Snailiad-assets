@@ -1,6 +1,6 @@
 package
 {
-   import org.flixel.FlxU;
+   import org.flixel.*;
    
    public class Boss4Bullet extends EnemyBullet
    {

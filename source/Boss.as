@@ -1,7 +1,7 @@
 package
 {
-   import flash.utils.getTimer;
-   import org.flixel.FlxG;
+   import flash.utils.*;
+   import org.flixel.*;
    
    public class Boss extends Enemy
    {

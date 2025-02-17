@@ -1,6 +1,6 @@
 package
 {
-   import flash.utils.clearInterval;
+   import flash.utils.*;
    import org.flixel.*;
    
    public class PlayState extends FlxState

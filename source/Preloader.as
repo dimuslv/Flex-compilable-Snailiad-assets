@@ -1,12 +1,10 @@
 package
 {
-   import com.newgrounds.API;
-   import com.newgrounds.APIEvent;
-   import com.newgrounds.components.FlxNGPreloader;
-   import flash.display.Bitmap;
-   import flash.events.MouseEvent;
-   import flash.text.TextField;
-   import flash.text.TextFormat;
+   import com.newgrounds.*;
+   import com.newgrounds.components.*;
+   import flash.display.*;
+   import flash.events.*;
+   import flash.text.*;
    
    public class Preloader extends FlxNGPreloader
    {

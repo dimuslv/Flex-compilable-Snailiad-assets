@@ -1,6 +1,6 @@
 package
 {
-   import org.flixel.FlxU;
+   import org.flixel.*;
    
    public class GiantBlock1 extends Item
    {

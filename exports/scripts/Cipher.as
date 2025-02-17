@@ -1,6 +1,6 @@
 package
 {
-   import flash.utils.ByteArray;
+   import flash.utils.*;
    import mx.utils.*;
    import org.flixel.*;
    

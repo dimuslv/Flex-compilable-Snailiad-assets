@@ -1,7 +1,6 @@
 package
 {
-   import org.flixel.FlxGroup;
-   import org.flixel.FlxU;
+   import org.flixel.*;
    
    public class DamageNumberPool extends FlxGroup
    {

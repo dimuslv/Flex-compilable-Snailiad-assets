@@ -1,9 +1,6 @@
 package
 {
-   import org.flixel.FlxG;
-   import org.flixel.FlxGroup;
-   import org.flixel.FlxObject;
-   import org.flixel.FlxText;
+   import org.flixel.*;
    
    public class EndingCredits extends FlxGroup
    {

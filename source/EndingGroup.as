@@ -1,7 +1,6 @@
 package
 {
-   import org.flixel.FlxG;
-   import org.flixel.FlxGroup;
+   import org.flixel.*;
    
    public class EndingGroup extends FlxGroup
    {

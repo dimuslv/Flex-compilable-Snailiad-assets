@@ -1,9 +1,7 @@
 package
 {
-   import flash.utils.getTimer;
-   import org.flixel.FlxG;
-   import org.flixel.FlxSound;
-   import org.flixel.FlxU;
+   import flash.utils.*;
+   import org.flixel.*;
    
    public class Sfx
    {

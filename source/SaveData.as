@@ -1,6 +1,6 @@
 package
 {
-   import flash.utils.ByteArray;
+   import flash.utils.*;
    import org.flixel.*;
    
    public class SaveData extends FlxSave

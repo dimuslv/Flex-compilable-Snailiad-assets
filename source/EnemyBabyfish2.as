@@ -1,8 +1,6 @@
 package
 {
-   import org.flixel.FlxG;
-   import org.flixel.FlxObject;
-   import org.flixel.FlxU;
+   import org.flixel.*;
    
    public class EnemyBabyfish2 extends Enemy
    {

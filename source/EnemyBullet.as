@@ -1,8 +1,6 @@
 package
 {
-   import org.flixel.FlxG;
-   import org.flixel.FlxObject;
-   import org.flixel.FlxSprite;
+   import org.flixel.*;
    
    public class EnemyBullet extends FlxSprite
    {

@@ -1,6 +1,6 @@
 package
 {
-   import flash.utils.getTimer;
+   import flash.utils.*;
    import org.flixel.*;
    
    public class CheckBool

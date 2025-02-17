@@ -1,7 +1,6 @@
 package
 {
-   import org.flixel.FlxG;
-   import org.flixel.FlxText;
+   import org.flixel.*;
    
    public class SavingText extends FlxText
    {

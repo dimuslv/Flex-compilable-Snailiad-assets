@@ -91,8 +91,6 @@ package org.flixel
       
       public static function rotatePoint(param1:Number, param2:Number, param3:Number, param4:Number, param5:Number, param6:FlxPoint = null) : FlxPoint
       {
-         var _loc10_:Number = NaN;
-         var _loc11_:Number = NaN;
          var _loc7_:Number = 0;
          var _loc8_:Number = 0;
          var _loc9_:Number = param5 * -0.017453293;
@@ -157,8 +155,8 @@ package org.flixel
                _loc8_ = 0.225 * (_loc8_ * _loc8_ - _loc8_) + _loc8_;
             }
          }
-         _loc10_ = param1 - param3;
-         _loc11_ = param4 - param2;
+         var _loc10_:Number = param1 - param3;
+         var _loc11_:Number = param4 - param2;
          if(param6 == null)
          {
             param6 = new FlxPoint();

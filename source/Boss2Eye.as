@@ -1,7 +1,6 @@
 package
 {
-   import org.flixel.FlxG;
-   import org.flixel.FlxU;
+   import org.flixel.*;
    
    public class Boss2Eye extends Enemy
    {

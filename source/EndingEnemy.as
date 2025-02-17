@@ -1,7 +1,6 @@
 package
 {
-   import org.flixel.FlxG;
-   import org.flixel.FlxSprite;
+   import org.flixel.*;
    
    public class EndingEnemy extends FlxSprite
    {

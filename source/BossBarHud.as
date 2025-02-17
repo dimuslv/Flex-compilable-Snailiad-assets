@@ -1,8 +1,6 @@
 package
 {
-   import org.flixel.FlxG;
-   import org.flixel.FlxGroup;
-   import org.flixel.FlxSprite;
+   import org.flixel.*;
    
    public class BossBarHud extends FlxGroup
    {
