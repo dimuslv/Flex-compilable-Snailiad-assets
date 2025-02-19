@@ -23,7 +23,6 @@ package
       
       public function ShadowNumber(param1:Number = 0) : void
       {
-         super();
          if(_globalCipherIndex == -1)
          {
             _globalCipherIndex = 13 + getTimer() * 7;

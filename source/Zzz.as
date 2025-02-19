@@ -14,7 +14,6 @@ package
       
       public function Zzz() : void
       {
-         super();
          loadGraphic(Art.Zzz,true,true,IMG_WIDTH,IMG_HEIGHT);
          addAnimation("normal",[0,1],2,true);
          play("normal");

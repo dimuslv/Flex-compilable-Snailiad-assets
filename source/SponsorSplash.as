@@ -10,7 +10,6 @@ package
       
       public function SponsorSplash() : void
       {
-         super();
          x = FlxG.width / 2 - IMG_WIDTH / 2;
          y = FlxG.height / 2 - IMG_HEIGHT / 2;
          scrollFactor.x = 0;

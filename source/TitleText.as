@@ -49,7 +49,6 @@ package
       
       public function TitleText(param1:Boolean = false) : void
       {
-         super();
          this._letters = new Array();
          this._letters.push(new TitleLetter("S"));
          this._letters.push(new TitleLetter("N"));

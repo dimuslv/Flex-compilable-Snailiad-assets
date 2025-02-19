@@ -145,11 +145,6 @@ package
       
       public static var This:PlayState;
       
-      public function PlayState()
-      {
-         super();
-      }
-      
       public static function loadGame(param1:Boolean = false) : void
       {
          if(player)

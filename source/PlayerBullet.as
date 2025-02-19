@@ -12,7 +12,6 @@ package
       
       public function PlayerBullet(param1:int) : void
       {
-         super();
          exists = false;
          offset.x = 0;
          offset.y = 0;

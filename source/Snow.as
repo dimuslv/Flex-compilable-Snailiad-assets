@@ -18,7 +18,6 @@ package
       
       public function Snow() : void
       {
-         super();
          this.oldScrollX = FlxG.scroll.x;
          this.oldScrollY = FlxG.scroll.y;
          loadGraphic(Art.Snow,true,true,IMG_WIDTH,IMG_HEIGHT);
