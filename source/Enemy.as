@@ -22,7 +22,6 @@ package
       
       public function Enemy(param1:int, param2:int, param3:int, param4:int, param5:int, param6:Boolean = false) : void
       {
-         super();
          x = param1;
          y = param2;
          this._hp = param3;

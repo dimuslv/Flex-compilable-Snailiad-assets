@@ -56,6 +56,35 @@ package
       
       private var _aiTriggerTimeout:Number = 0;
       
+      public function EnemySeahorse(param1:int, param2:int) : void
+      {
+         if(PlayState.player && PlayState.player._insaneMode)
+         {
+            this.MOVE_TIME = 1.3;
+            this.X_RADIUS = 130;
+            this.Y_RADIUS = 40;
+         }
+         else if(PlayState.player && PlayState.player._hardMode)
+         {
+            this.MOVE_TIME = 1.9;
+            this.X_RADIUS = 140;
+            this.Y_RADIUS = 50;
+         }
+         super(param1,param2,MAX_HP,DEFENSE,OFFENSE,true);
+         loadGraphic(Art.EnemySeahorse,true,true,IMG_WIDTH,IMG_HEIGHT);
+         width = IMG_WIDTH;
+         height = IMG_HEIGHT;
+         param1 -= IMG_OFS_X;
+         param2 -= IMG_OFS_Y;
+         this.originX = param1;
+         this.originY = param2;
+         this.elapsed = this.MOVE_TIME;
+         addAnimation("normal",[0]);
+         play("normal");
+         active = true;
+         visible = true;
+      }
+      
       private function normalizedSigmoid(param1:Number) : Number
       {
          return 1 / (1 + Math.exp(-(param1 * 12 - 6)));
@@ -96,35 +125,6 @@ package
          {
             mode = MODE_SEMICIRCLE_LEFT_DOWN;
          }
-      }
-      
-      public function EnemySeahorse(param1:int, param2:int) : void
-      {
-         if(PlayState.player && PlayState.player._insaneMode)
-         {
-            this.MOVE_TIME = 1.3;
-            this.X_RADIUS = 130;
-            this.Y_RADIUS = 40;
-         }
-         else if(PlayState.player && PlayState.player._hardMode)
-         {
-            this.MOVE_TIME = 1.9;
-            this.X_RADIUS = 140;
-            this.Y_RADIUS = 50;
-         }
-         super(param1,param2,MAX_HP,DEFENSE,OFFENSE,true);
-         loadGraphic(Art.EnemySeahorse,true,true,IMG_WIDTH,IMG_HEIGHT);
-         width = IMG_WIDTH;
-         height = IMG_HEIGHT;
-         param1 -= IMG_OFS_X;
-         param2 -= IMG_OFS_Y;
-         this.originX = param1;
-         this.originY = param2;
-         this.elapsed = this.MOVE_TIME;
-         addAnimation("normal",[0]);
-         play("normal");
-         active = true;
-         visible = true;
       }
       
       public function updatePosition() : void

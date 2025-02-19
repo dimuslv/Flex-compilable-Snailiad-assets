@@ -28,6 +28,12 @@ package
       
       private var actualCannon:FlxObject;
       
+      override public function destroy() : void
+      {
+         actualCannon = null;
+         super.destroy();
+      }
+      
       public function EnemyCannonLeft2(param1:int, param2:int, param3:Boolean) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
@@ -52,12 +58,6 @@ package
          }
          solid = false;
          active = true;
-      }
-      
-      override public function destroy() : void
-      {
-         actualCannon = null;
-         super.destroy();
       }
       
       override public function touch(param1:Player) : void

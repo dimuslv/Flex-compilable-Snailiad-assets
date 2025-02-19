@@ -30,7 +30,6 @@ package
       
       public function EnemyBulletPool() : void
       {
-         super();
          var _loc1_:int = 0;
          while(_loc1_ < this.MAX_WEAPON)
          {

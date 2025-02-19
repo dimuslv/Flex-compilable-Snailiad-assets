@@ -28,6 +28,12 @@ package
       
       private var actualCannonBossRush:FlxObject;
       
+      override public function destroy() : void
+      {
+         actualCannonBossRush = null;
+         super.destroy();
+      }
+      
       public function EnemyCannonTopBossRush(param1:int, param2:int) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
@@ -42,12 +48,6 @@ package
          solid = false;
          addAnimation("normal",[0]);
          play("normal");
-      }
-      
-      override public function destroy() : void
-      {
-         actualCannonBossRush = null;
-         super.destroy();
       }
       
       override public function touch(param1:Player) : void
