@@ -23,7 +23,6 @@ package
       
       public function CipherInt(param1:int = 0) : void
       {
-         super();
          if(_globalCipherIndex == -1)
          {
             _globalCipherIndex = 13 + getTimer() * 7;
