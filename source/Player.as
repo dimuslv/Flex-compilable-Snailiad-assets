@@ -196,9 +196,9 @@ package
       
       public var _justHitSteps:Boolean = false;
       
-      private var WEAPON_TIMEOUTS:Array;
+      private var WEAPON_TIMEOUTS:Array = [0.085,0.3,0.17];
       
-      private var WEAPON_SPEED:Array;
+      private var WEAPON_SPEED:Array = [370,330,60];
       
       public var pressedRightSinceJump:Boolean = false;
       
@@ -240,7 +240,7 @@ package
       
       private var _hideOfsY:int = 0;
       
-      private var _hasWeapon:Array;
+      private var _hasWeapon:Array = [false,false,false];
       
       private var _hasColdFoot:CheckBool;
       
@@ -316,12 +316,54 @@ package
       
       private var _sleepTimeout:Number;
       
+      public function hpPerHeart() : int
+      {
+         if(this._easyMode)
+         {
+            return 8;
+         }
+         if(this._hardMode)
+         {
+            return 2;
+         }
+         return 4;
+      }
+      
+      override public function destroy() : void
+      {
+         clearInterval(this.deathFadeInterval);
+         clearInterval(this.reviveInterval);
+         _bulletGroups = null;
+         _curHp = null;
+         _gravity = null;
+         _hasArmor = null;
+         _hasColdFoot = null;
+         _hasDevastator = null;
+         _hasGravityJump = null;
+         _hasGravityShock = null;
+         _hasHighJump = null;
+         _hasShellShield = null;
+         _hasTurbo = null;
+         _hasWeapon = null;
+         _helixFragments = null;
+         _jumpPower = null;
+         _maxHp = null;
+         _maxSpeed = null;
+         _runSpeed = null;
+         _snailType = null;
+         _turboMultiplier = null;
+         _weaponTimeout = null;
+         bestBossRushTime = null;
+         bestMainTime = null;
+         bestHardTime = null;
+         bestInsaneTime = null;
+         gameTime = null;
+         clearTime = null;
+         super.destroy();
+      }
+      
       public function Player(param1:PlayerBulletGroups) : void
       {
-         this.WEAPON_TIMEOUTS = [0.085,0.3,0.17];
-         this.WEAPON_SPEED = [370,330,60];
-         this._hasWeapon = [false,false,false];
-         super();
          this._easyMode = false;
          this._hardMode = false;
          this._insaneMode = false;
@@ -695,52 +737,6 @@ package
          }
          this.setFaceDir(FACE_FLOOR_RIGHT,true);
          this.playAnim("floor_right_move");
-      }
-      
-      public function hpPerHeart() : int
-      {
-         if(this._easyMode)
-         {
-            return 8;
-         }
-         if(this._hardMode)
-         {
-            return 2;
-         }
-         return 4;
-      }
-      
-      override public function destroy() : void
-      {
-         clearInterval(this.deathFadeInterval);
-         clearInterval(this.reviveInterval);
-         _bulletGroups = null;
-         _curHp = null;
-         _gravity = null;
-         _hasArmor = null;
-         _hasColdFoot = null;
-         _hasDevastator = null;
-         _hasGravityJump = null;
-         _hasGravityShock = null;
-         _hasHighJump = null;
-         _hasShellShield = null;
-         _hasTurbo = null;
-         _hasWeapon = null;
-         _helixFragments = null;
-         _jumpPower = null;
-         _maxHp = null;
-         _maxSpeed = null;
-         _runSpeed = null;
-         _snailType = null;
-         _turboMultiplier = null;
-         _weaponTimeout = null;
-         bestBossRushTime = null;
-         bestMainTime = null;
-         bestHardTime = null;
-         bestInsaneTime = null;
-         gameTime = null;
-         clearTime = null;
-         super.destroy();
       }
       
       public function checkInput_handleMenu() : void

@@ -14,7 +14,6 @@ package
       
       public function PauseLayer() : void
       {
-         super();
          scrollFactor.x = scrollFactor.y = 0;
          this.bg1 = new FlxSprite();
          this.bg1.x = FlxG.width / 4 - 1;

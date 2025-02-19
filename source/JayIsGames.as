@@ -14,9 +14,16 @@ package
       
       private var _initialized:Boolean = false;
       
+      override public function destroy() : void
+      {
+         if(FlxG.stage != null)
+         {
+            FlxG.stage.removeEventListener(MouseEvent.MOUSE_UP,this.onMouseUp);
+         }
+      }
+      
       public function JayIsGames() : void
       {
-         super();
          x = 0;
          y = FlxG.height - IMG_HEIGHT;
          scrollFactor.x = 0;
@@ -25,14 +32,6 @@ package
          loadGraphic(Art.JayIsGames,false,false,IMG_WIDTH,IMG_HEIGHT);
          addAnimation("normal",[0]);
          play("normal");
-      }
-      
-      override public function destroy() : void
-      {
-         if(FlxG.stage != null)
-         {
-            FlxG.stage.removeEventListener(MouseEvent.MOUSE_UP,this.onMouseUp);
-         }
       }
       
       public function show() : void

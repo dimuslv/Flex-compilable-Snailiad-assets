@@ -116,7 +116,7 @@ package
       
       public var hasScores:Boolean = false;
       
-      public var hasEnding:Array;
+      public var hasEnding:Array = [false,false,false,false,false,false];
       
       public var isMenuMain:Boolean = false;
       
@@ -192,10 +192,28 @@ package
       
       public var fadeInterval:uint = 0;
       
+      override public function destroy() : void
+      {
+         clickToPlayText = null;
+         titleText = null;
+         starLayer = null;
+         bg = null;
+         red = null;
+         textGroup = null;
+         cursorL = null;
+         cursorR = null;
+         miniGame_ball = null;
+         enterKeyLayer = null;
+         optionTextY = null;
+         optionText = null;
+         optionTextWidth = null;
+         sponsorMoreGames = null;
+         jayIsGames = null;
+         super.destroy();
+      }
+      
       public function MainMenu() : void
       {
-         this.hasEnding = [false,false,false,false,false,false];
-         super();
          this.timeSinceLastMove = 0;
          this.miniGame = false;
          this.checkSaveVars();
@@ -229,26 +247,6 @@ package
          this.escToOptions = false;
          this.escToMain = false;
          this.makeEnterKeyGraphic();
-      }
-      
-      override public function destroy() : void
-      {
-         clickToPlayText = null;
-         titleText = null;
-         starLayer = null;
-         bg = null;
-         red = null;
-         textGroup = null;
-         cursorL = null;
-         cursorR = null;
-         miniGame_ball = null;
-         enterKeyLayer = null;
-         optionTextY = null;
-         optionText = null;
-         optionTextWidth = null;
-         sponsorMoreGames = null;
-         jayIsGames = null;
-         super.destroy();
       }
       
       public function checkSaveVars() : void

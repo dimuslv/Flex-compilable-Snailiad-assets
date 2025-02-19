@@ -3,12 +3,7 @@ package
    import com.newgrounds.*;
    
    public class NgMedal
-   {
-      public function NgMedal()
-      {
-         super();
-      }
-      
+   {      
       public static function unlockVictory() : void
       {
          API.unlockMedal("Victory");

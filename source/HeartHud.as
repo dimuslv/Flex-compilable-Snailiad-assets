@@ -24,8 +24,7 @@ package
       
       override public function destroy() : void
       {
-         var _loc1_:String = null;
-         for(_loc1_ in this._hearts)
+         for(var _loc1_:String in this._hearts)
          {
             this._hearts[_loc1_] = null;
          }
@@ -35,7 +34,6 @@ package
       
       public function HeartHud() : void
       {
-         super();
          this._hearts = new Array();
          var _loc1_:int = 0;
          while(_loc1_ < HEARTS_MAX)

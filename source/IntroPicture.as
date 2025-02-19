@@ -20,7 +20,6 @@ package
       
       public function IntroPicture(param1:int) : void
       {
-         super();
          x = X_POS;
          y = Y_POS;
          if(param1 == 5 && PlayState.introSlugMode)

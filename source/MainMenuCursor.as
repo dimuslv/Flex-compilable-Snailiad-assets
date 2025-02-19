@@ -18,7 +18,6 @@ package
       
       public function MainMenuCursor() : void
       {
-         super();
          loadGraphic(Art.SnailySnail,true,true,IMG_WIDTH,IMG_HEIGHT);
          width = IMG_WIDTH;
          height = IMG_HEIGHT;

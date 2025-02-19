@@ -52,7 +52,7 @@ package
       
       private var DEFAULT_OFS_Y:int = 0;
       
-      private var subOfsY:int;
+      private var subOfsY:int = DEFAULT_OFS_Y;
       
       private var fullAlpha:Number = 0;
       
@@ -92,10 +92,30 @@ package
       
       private var _center:FlxSprite;
       
+      private function getXPos() : int
+      {
+         return FlxG.width - MARGIN - TILE_WIDTH * this.mapCols;
+      }
+      
+      private function getYPos() : int
+      {
+         return MARGIN;
+      }
+      
+      override public function destroy() : void
+      {
+         mapRate = null;
+         totalKnownText = null;
+         skillText = null;
+         knownList = null;
+         tabSprite = null;
+         tabText = null;
+         subscreen = null;
+         super.destroy();
+      }
+      
       public function MiniMap() : void
       {
-         this.subOfsY = this.DEFAULT_OFS_Y;
-         super();
          this.subscreen = new Subscreen();
          add(this.subscreen);
          this.subscreen.hide();
@@ -234,28 +254,6 @@ package
          this.totalKnownText.visible = false;
          add(this.totalKnownText);
          this.resizeMiniMap(DEFAULT_MAP_COLS,DEFAULT_MAP_ROWS,this.DEFAULT_OFS_Y);
-      }
-      
-      private function getXPos() : int
-      {
-         return FlxG.width - MARGIN - TILE_WIDTH * this.mapCols;
-      }
-      
-      private function getYPos() : int
-      {
-         return MARGIN;
-      }
-      
-      override public function destroy() : void
-      {
-         mapRate = null;
-         totalKnownText = null;
-         skillText = null;
-         knownList = null;
-         tabSprite = null;
-         tabText = null;
-         subscreen = null;
-         super.destroy();
       }
       
       private function getCenterCol() : int

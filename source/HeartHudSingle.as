@@ -14,7 +14,6 @@ package
       
       public function HeartHudSingle(param1:int, param2:int) : void
       {
-         super();
          x = param1;
          y = param2;
          loadGraphic(Art.HeartHudSingle,true,true,IMG_WIDTH,IMG_HEIGHT);

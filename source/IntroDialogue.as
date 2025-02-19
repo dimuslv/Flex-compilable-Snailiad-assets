@@ -30,9 +30,19 @@ package
       
       private var _speed:Number = 1;
       
+      public function setAlpha(param1:Number) : void
+      {
+         this._msg.alpha = param1;
+      }
+      
+      override public function destroy() : void
+      {
+         _msg = null;
+         super.destroy();
+      }
+      
       public function IntroDialogue() : void
       {
-         super();
          this._active = false;
          this._msg = new FlxText(0,170,FlxG.width);
          this._msg.font = Fonts.normal;
@@ -43,17 +53,6 @@ package
          this._msg.scrollFactor.x = this._msg.scrollFactor.y = 0;
          this._msg.visible = false;
          add(this._msg);
-      }
-      
-      public function setAlpha(param1:Number) : void
-      {
-         this._msg.alpha = param1;
-      }
-      
-      override public function destroy() : void
-      {
-         _msg = null;
-         super.destroy();
       }
       
       public function start(param1:String, param2:int = 1, param3:Number = 1.0) : void

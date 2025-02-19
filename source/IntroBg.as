@@ -25,7 +25,6 @@ package
       
       public function IntroBg() : void
       {
-         super();
          this._bg = new FlxSprite();
          this._bg.scrollFactor.x = this._bg.scrollFactor.y = 0;
          this._bg.createGraphic(FlxG.width,FlxG.height,4278202416);

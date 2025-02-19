@@ -38,9 +38,21 @@ package
       
       private var _dialogueLayer:IntroDialogue;
       
+      override public function destroy() : void
+      {
+         _bg = null;
+         _picture = null;
+         _picture2 = null;
+         _picture3 = null;
+         _pictureLayer = null;
+         _targetAlpha = null;
+         _dialogueLayer = null;
+         _skipText = null;
+         super.destroy();
+      }
+      
       public function Intro() : void
       {
-         super();
          FlxG.noPause = true;
          FlxG.mouse.hide();
          this.setMode(MODE_WAIT_START);
@@ -60,19 +72,6 @@ package
          this._skipText = _loc1_;
          add(this._skipText);
          Music.playTitle();
-      }
-      
-      override public function destroy() : void
-      {
-         _bg = null;
-         _picture = null;
-         _picture2 = null;
-         _picture3 = null;
-         _pictureLayer = null;
-         _targetAlpha = null;
-         _dialogueLayer = null;
-         _skipText = null;
-         super.destroy();
       }
       
       public function setMode(param1:int) : void

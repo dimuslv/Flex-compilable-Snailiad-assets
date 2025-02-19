@@ -18,7 +18,6 @@ package
       
       public function MenuBall() : void
       {
-         super();
          loadGraphic(Art.PlayerBullet1,true,true,WIDTH,HEIGHT);
          width = WIDTH;
          height = HEIGHT;

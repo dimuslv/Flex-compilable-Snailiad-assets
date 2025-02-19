@@ -16,7 +16,6 @@ package
       
       public function Item(param1:int, param2:int, param3:Boolean = false) : void
       {
-         super();
          x = param1;
          y = param2;
          if(param3)
