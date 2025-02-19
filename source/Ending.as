@@ -78,7 +78,6 @@ package
       
       public function Ending() : void
       {
-         super();
          FlxG.mouse.hide();
          FlxG.noPause = true;
          this.setMode(MODE_WAIT_START);

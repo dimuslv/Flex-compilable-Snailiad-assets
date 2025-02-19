@@ -10,7 +10,6 @@ package
       
       public function EndingBg() : void
       {
-         super();
          x = 0;
          y = 0;
          offset.x = 100;

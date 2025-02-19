@@ -10,22 +10,21 @@ package
       
       public var elapsed:Number = 0;
       
+      override public function destroy() : void
+      {
+         super.destroy();
+         picture = null;
+         bg = null;
+      }
+      
       public function EndingGroup(param1:int) : void
       {
-         super();
          this.picture = new EndingPicture(param1);
          this.bg = new EndingBg();
          this.updatePositions();
          add(this.bg);
          add(this.picture);
          active = true;
-      }
-      
-      override public function destroy() : void
-      {
-         super.destroy();
-         picture = null;
-         bg = null;
       }
       
       public function updatePositions() : void

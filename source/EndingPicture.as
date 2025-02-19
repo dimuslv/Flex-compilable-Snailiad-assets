@@ -10,7 +10,6 @@ package
       
       public function EndingPicture(param1:int) : void
       {
-         super();
          x = 0;
          y = 0;
          switch(param1)

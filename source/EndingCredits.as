@@ -10,16 +10,20 @@ package
       
       private static const SPACING_Y_MAJOR:Number = 32;
       
-      private var createY:Number;
+      private var createY:Number = FlxG.height + 4;
       
       private var _theEnd:FlxObject;
       
       public var scrollDone:Boolean = false;
       
+      override public function destroy() : void
+      {
+         _theEnd = null;
+         super.destroy();
+      }
+      
       public function EndingCredits() : void
       {
-         this.createY = FlxG.height + 4;
-         super();
          this.addEnemy(0,EndingEnemy.TYPE_NONE,"CREDITS");
          this.createY += 40;
          this.addEnemy(-30,EndingEnemy.TYPE_SPIKEY,"");
@@ -109,12 +113,6 @@ package
          this.addEnemy(0,EndingEnemy.TYPE_NONE,"AND YOU\n\n\n" + "BECAUSE SERIOUSLY, WHY NOT\n\n\n" + "ALL THE OTHER GAMES\n" + "PUT \"AND YOU\" IN THE CREDITS\n" + "SO I FIGURE, \"AND YOU\" MUST BE\n" + "SOMEONE PRETTY COOL\n\n\n" + "THANKS, AND YOU!!");
          this.createY += 40;
          this._theEnd = this.addEnemy(0,EndingEnemy.TYPE_THE_END,"");
-      }
-      
-      override public function destroy() : void
-      {
-         _theEnd = null;
-         super.destroy();
       }
       
       public function addEnemy(param1:int, param2:int, param3:String) : FlxObject

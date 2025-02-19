@@ -24,7 +24,6 @@ package
       
       public function DustRing(param1:int, param2:int, param3:int = 0, param4:Number = 1.0) : void
       {
-         super();
          this.originX = param1;
          this.originY = param2;
          this.radius = RADIUS + param3;
