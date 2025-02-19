@@ -111,6 +111,7 @@ package
       
       public function Subscreen() : void
       {
+         super();
          this.hide();
          this.bg = new FlxSprite();
          this.bg.y = 0;

@@ -18,6 +18,7 @@ package
       
       public function PowerNom(param1:int, param2:int) : void
       {
+         super();
          x = param1;
          y = param2;
          solid = false;

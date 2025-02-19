@@ -12,6 +12,7 @@ package
       
       public function QueuedExplosion(param1:int, param2:int, param3:Boolean = false) : void
       {
+         super();
          x = param1;
          y = param2;
          this._huge = param3;

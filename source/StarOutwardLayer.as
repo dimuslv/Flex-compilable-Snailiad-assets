@@ -6,7 +6,13 @@ package
    {
       private const MAX_STARS:int = 24;
       
-      public var stars:Array = new Array();
+      public var stars:Array;
+      
+      public function StarOutwardLayer() : void
+      {
+         this.stars = new Array();
+         super();
+      }
       
       override public function destroy() : void
       {
@@ -17,10 +23,6 @@ package
             this.stars[_loc1_] = null;
          }
          stars = null;
-      }
-      
-      public function StarOutwardLayer() : void
-      {
       }
       
       public function destroyAll() : void

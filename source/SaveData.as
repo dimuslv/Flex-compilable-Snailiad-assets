@@ -7,18 +7,19 @@ package
    {
       public var xml:XML;
       
-      public function destroy() : void
-      {
-         xml = null;
-      }
-      
       public function SaveData() : void
       {
+         super();
          bind("Snailiad");
          if(this.xml == null)
          {
             this.loadAll();
          }
+      }
+      
+      public function destroy() : void
+      {
+         xml = null;
       }
       
       public function isVarSet(param1:String) : Boolean
