@@ -6,20 +6,19 @@ package
    {
       private const MAX_NUMBER:int = 80;
       
+      override public function destroy() : void
+      {
+         super.destroy();
+      }
+      
       public function DamageNumberPool() : void
       {
-         super();
          var _loc1_:int = 0;
          while(_loc1_ < this.MAX_NUMBER)
          {
             add(new DamageNumber());
             _loc1_++;
          }
-      }
-      
-      override public function destroy() : void
-      {
-         super.destroy();
       }
       
       public function makeText(param1:int, param2:int, param3:String, param4:int = 1, param5:int = 0, param6:int = 0) : DamageNumber

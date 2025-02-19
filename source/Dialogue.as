@@ -34,9 +34,15 @@ package
       
       public var _diaNum:int = 0;
       
+      override public function destroy() : void
+      {
+         _bg = null;
+         _msg = null;
+         super.destroy();
+      }
+      
       public function Dialogue() : void
       {
-         super();
          this._active = false;
          this._msg = new FlxText(20,20,FlxG.width);
          this._msg.font = Fonts.normal;
@@ -56,13 +62,6 @@ package
          this._bg.scrollFactor.x = this._bg.scrollFactor.y = 0;
          add(this._bg);
          add(this._msg);
-      }
-      
-      override public function destroy() : void
-      {
-         _bg = null;
-         _msg = null;
-         super.destroy();
       }
       
       public function start(param1:String, param2:int, param3:Boolean = false, param4:Number = 1.0, param5:int = 0) : void

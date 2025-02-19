@@ -8,18 +8,17 @@ package
       
       private var _xml:XML;
       
-      public function Configurable()
-      {
-         super();
-         var _loc1_:ByteArray = new this.configXmlFile();
-         var _loc2_:String = _loc1_.readUTFBytes(_loc1_.length);
-         this._xml = new XML(_loc2_);
-      }
-      
       public function destroy() : void
       {
          _xml = null;
          configXmlFile = null;
+      }
+      
+      public function Configurable()
+      {
+         var _loc1_:ByteArray = new this.configXmlFile();
+         var _loc2_:String = _loc1_.readUTFBytes(_loc1_.length);
+         this._xml = new XML(_loc2_);
       }
       
       public function getPlayerStartX(areaNum:int=0):int

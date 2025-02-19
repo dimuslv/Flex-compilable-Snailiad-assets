@@ -50,7 +50,7 @@ package
       
       public var textY:Array;
       
-      public var targetX:int;
+      public var targetX:int = -IMG_WIDTH;
       
       public var targetXv:Number = 0;
       
@@ -90,8 +90,6 @@ package
       
       public function ControlHelp(param1:Boolean = false) : void
       {
-         this.targetX = -IMG_WIDTH;
-         super();
          this.bg = new FlxSprite();
          this.bg.loadGraphic(Art.ControlHelpBg,false,false,IMG_WIDTH,IMG_HEIGHT);
          this.bg.width = IMG_WIDTH;
