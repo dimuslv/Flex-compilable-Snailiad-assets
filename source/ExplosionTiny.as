@@ -12,7 +12,6 @@ package
       
       public function ExplosionTiny() : void
       {
-         super();
          loadGraphic(Art.ExplosionTiny,true,true,IMG_WIDTH,IMG_HEIGHT);
          width = IMG_WIDTH;
          height = IMG_HEIGHT;

@@ -14,11 +14,6 @@ package
       )] public static const normalFont:Class;
       
       public static const normal:String = "Snailplanes";
-      
-      public function Fonts()
-      {
-         super();
-      }
    }
 }
 

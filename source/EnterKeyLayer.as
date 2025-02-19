@@ -14,7 +14,6 @@ package
       
       public function EnterKeyLayer() : void
       {
-         super();
          scrollFactor.x = scrollFactor.y = 0;
          this.shown = false;
          visible = false;

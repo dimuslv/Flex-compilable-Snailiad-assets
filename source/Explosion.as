@@ -6,7 +6,6 @@ package
    {
       public function Explosion() : void
       {
-         super();
          exists = false;
          solid = false;
          visible = false;

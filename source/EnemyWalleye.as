@@ -24,6 +24,11 @@ package
       
       private var shotTimeout:Number = 0;
       
+      override public function destroy() : void
+      {
+         super.destroy();
+      }
+      
       public function EnemyWalleye(param1:int, param2:int, param3:Boolean) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
@@ -44,11 +49,6 @@ package
          }
          solid = false;
          active = true;
-      }
-      
-      override public function destroy() : void
-      {
-         super.destroy();
       }
       
       override public function touch(param1:Player) : void

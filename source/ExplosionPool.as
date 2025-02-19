@@ -35,7 +35,6 @@ package
       
       public function ExplosionPool() : void
       {
-         super();
          var _loc1_:int = 0;
          while(_loc1_ < this.TYPE_NUM)
          {
