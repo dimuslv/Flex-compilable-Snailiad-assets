@@ -67,6 +67,26 @@ package
          spmap = null;
       }
       
+      public function WorldMap() : void
+      {
+         this.skymap = new FlxTilemap();
+         this.skymap.collideIndex = FG_OFFSET + 1;
+         this.skymap.startingIndex = 1;
+         this.skymap.loadMap(new this.WorldMapSkyTxt(),Art.TileSheet,TILE_SIZE,TILE_SIZE,"sky");
+         this.bgmap = new FlxTilemap();
+         this.bgmap.collideIndex = FG_OFFSET + 1;
+         this.bgmap.startingIndex = 1;
+         this.bgmap.loadMap(new this.WorldMapBgTxt(),Art.TileSheet,TILE_SIZE,TILE_SIZE,"bg");
+         this.fgmap = new FlxTilemap();
+         this.fgmap.collideIndex = FG_OFFSET + 1;
+         this.fgmap.startingIndex = 1;
+         this.fgmap.loadMap(new this.WorldMapFgTxt(),Art.TileSheet,TILE_SIZE,TILE_SIZE,"fg");
+         this.spmap = new FlxTilemap();
+         this.spmap.collideIndex = FG_OFFSET + 1;
+         this.spmap.startingIndex = 1;
+         this.spmap.loadMap(new this.WorldMapSpTxt(),Art.TileSheet,TILE_SIZE,TILE_SIZE,"sp");
+      }
+      
       public function checkRoomBounds(param1:Player) : void
       {
          var _loc2_:int = param1.x + param1.width / 2;
@@ -1155,27 +1175,6 @@ package
             }
             this.setTileBounds(this.tileMinX,this.fakeMinY / 16,this.tileMaxX,this.tileMaxY,false);
          }
-      }
-      
-      public function WorldMap() : void
-      {
-         super();
-         this.skymap = new FlxTilemap();
-         this.skymap.collideIndex = FG_OFFSET + 1;
-         this.skymap.startingIndex = 1;
-         this.skymap.loadMap(new this.WorldMapSkyTxt(),Art.TileSheet,TILE_SIZE,TILE_SIZE,"sky");
-         this.bgmap = new FlxTilemap();
-         this.bgmap.collideIndex = FG_OFFSET + 1;
-         this.bgmap.startingIndex = 1;
-         this.bgmap.loadMap(new this.WorldMapBgTxt(),Art.TileSheet,TILE_SIZE,TILE_SIZE,"bg");
-         this.fgmap = new FlxTilemap();
-         this.fgmap.collideIndex = FG_OFFSET + 1;
-         this.fgmap.startingIndex = 1;
-         this.fgmap.loadMap(new this.WorldMapFgTxt(),Art.TileSheet,TILE_SIZE,TILE_SIZE,"fg");
-         this.spmap = new FlxTilemap();
-         this.spmap.collideIndex = FG_OFFSET + 1;
-         this.spmap.startingIndex = 1;
-         this.spmap.loadMap(new this.WorldMapSpTxt(),Art.TileSheet,TILE_SIZE,TILE_SIZE,"sp");
       }
    }
 }

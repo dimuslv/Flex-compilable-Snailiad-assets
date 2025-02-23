@@ -6,13 +6,7 @@ package
    {
       private const MAX_SNOWS:int = 60;
       
-      public var snows:Array;
-      
-      public function SnowLayer() : void
-      {
-         this.snows = new Array();
-         super();
-      }
+      public var snows:Array = new Array();
       
       override public function destroy() : void
       {
@@ -23,6 +17,10 @@ package
             this.snows[_loc1_] = null;
          }
          snows = null;
+      }
+      
+      public function SnowLayer() : void
+      {
       }
       
       public function destroyAll() : void

@@ -20,7 +20,6 @@ package
       
       public function TitleLetter(param1:String) : void
       {
-         super();
          this.animStopTimeout = ANIM_STOP_TIMEOUT;
          var _loc2_:int = 0;
          switch(param1)
