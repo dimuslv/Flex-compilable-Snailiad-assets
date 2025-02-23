@@ -67,11 +67,6 @@ package
       
       public static var nextPing:int = 0;
       
-      public function Sfx()
-      {
-         super();
-      }
-      
       public static function playMenuBeep1() : void
       {
          var _loc1_:int = getTimer();
