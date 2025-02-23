@@ -4,11 +4,6 @@ package
    
    public class Utility
    {
-      public function Utility()
-      {
-         super();
-      }
-      
       public static function dist(param1:Number, param2:Number, param3:Number, param4:Number) : Number
       {
          return Math.sqrt((param3 - param1) * (param3 - param1) + (param4 - param2) * (param4 - param2));
