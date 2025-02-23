@@ -302,7 +302,7 @@ package
       
       [Embed(source = 'data/art/SponsorMoreGames.png')] public static const SponsorMoreGames:Class;
       
-      [Embed(source = 'data/art/JayIsGamesAlt.png')] public static const JayIsGames:Class;
+      [Embed(source = 'data/art/JayIsGames.png')] public static const JayIsGames:Class;
    }
 }
 
