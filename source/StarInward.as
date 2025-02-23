@@ -10,7 +10,6 @@ package
       
       public function StarInward() : void
       {
-         super();
          loadGraphic(Art.Star,true,true,IMG_WIDTH,IMG_HEIGHT);
          width = IMG_WIDTH;
          height = IMG_HEIGHT;

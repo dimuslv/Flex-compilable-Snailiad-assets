@@ -12,9 +12,16 @@ package
       
       private var _initialized:Boolean = false;
       
+      override public function destroy() : void
+      {
+         if(FlxG.stage != null)
+         {
+            FlxG.stage.removeEventListener(MouseEvent.MOUSE_UP,this.onMouseUp);
+         }
+      }
+      
       public function SponsorMoreGames() : void
       {
-         super();
          x = FlxG.width - IMG_WIDTH;
          y = FlxG.height - IMG_HEIGHT;
          scrollFactor.x = 0;
@@ -23,14 +30,6 @@ package
          loadGraphic(Art.SponsorMoreGames,false,false,IMG_WIDTH,IMG_HEIGHT);
          addAnimation("normal",[0]);
          play("normal");
-      }
-      
-      override public function destroy() : void
-      {
-         if(FlxG.stage != null)
-         {
-            FlxG.stage.removeEventListener(MouseEvent.MOUSE_UP,this.onMouseUp);
-         }
       }
       
       protected function onMouseUp(param1:MouseEvent) : void
