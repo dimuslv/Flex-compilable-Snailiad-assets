@@ -16,15 +16,9 @@ package
       
       private var elapsed:Number = 0;
       
-      override public function destroy() : void
-      {
-         splash = null;
-         bg = null;
-         super.destroy();
-      }
-      
       public function SplashLayer() : void
       {
+         super();
          FlxG.mouse.show();
          FlxG.noPause = true;
          this.bg = new FlxSprite();
@@ -36,6 +30,13 @@ package
          this.splash = new SponsorSplash();
          this.splash.alpha = 0;
          add(this.splash);
+      }
+      
+      override public function destroy() : void
+      {
+         splash = null;
+         bg = null;
+         super.destroy();
       }
       
       override public function update() : void

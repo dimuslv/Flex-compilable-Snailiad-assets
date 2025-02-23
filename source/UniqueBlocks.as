@@ -6,6 +6,12 @@ package
    {
       public var blocks:Array;
       
+      public function UniqueBlocks() : void
+      {
+         super();
+         this.blocks = new Array();
+      }
+      
       public function destroy() : void
       {
          var _loc1_:String = null;
@@ -14,11 +20,6 @@ package
             this.blocks[_loc1_] = null;
          }
          blocks = null;
-      }
-      
-      public function UniqueBlocks() : void
-      {
-         this.blocks = new Array();
       }
       
       public function rememberBlock(param1:int, param2:int) : void

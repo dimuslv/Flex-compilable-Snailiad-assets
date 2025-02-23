@@ -14,8 +14,9 @@ package
       
       override public function destroy() : void
       {
+         var _loc1_:String = null;
          super.destroy();
-         for(var _loc1_:String in this.groups)
+         for(_loc1_ in this.groups)
          {
             this.groups[_loc1_] = null;
          }
@@ -29,6 +30,7 @@ package
       
       public function PlayerBulletGroups() : void
       {
+         super();
          var _loc1_:int = 0;
          while(_loc1_ < this.MAX_WEAPON)
          {
