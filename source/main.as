@@ -6,8 +6,8 @@ package
    import flash.net.*;
    import flash.ui.*;
    
-   [Frame(factoryClass="Preloader")]
    [SWF(width="800", height="480", backgroundColor="#000000")]
+   [Frame(factoryClass="Preloader")]
    
    public class main extends FlxGame
    {
