@@ -69,9 +69,9 @@ package
       override public function destroy() : void
       {
          var _loc1_:String = null;
-         for(_loc1_ in this._hand)
+         for(_loc1_ in _hand)
          {
-            this._hand[_loc1_] = null;
+            _hand[_loc1_] = null;
          }
          _hand = null;
          _eyes = null;
@@ -84,18 +84,18 @@ package
       {
          if(PlayState.player && PlayState.player._hardMode)
          {
-            this.HAND_NUM += 24;
+            HAND_NUM += 24;
          }
-         super(param1,param2,this.MAX_HP,DEFENSE,OFFENSE);
+         super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.Boss1Rush,true,true,IMGBODY_WIDTH,IMGBODY_HEIGHT);
          width = IMGBODY_WIDTH;
          height = IMGBODY_HEIGHT;
-         this._turboMultiplier = 0.6;
-         this._originX = param1;
-         this._originY = param2;
-         this._radiusMultTarget = 1;
-         this._radiusMultCur = 1;
-         this._attackMode = 0;
+         _turboMultiplier = 0.6;
+         _originX = param1;
+         _originY = param2;
+         _radiusMultTarget = 1;
+         _radiusMultCur = 1;
+         _attackMode = 0;
          addAnimation("normal0",[0]);
          addAnimation("shoot0",[1]);
          addAnimation("normal1",[2]);
@@ -103,16 +103,16 @@ package
          addAnimation("normal2",[4]);
          addAnimation("shoot2",[5]);
          play("normal0");
-         this._hand = new Array();
-         this._handThetaCur = new Array();
-         this._handThetaSpeed = new Array();
+         _hand = new Array();
+         _handThetaCur = new Array();
+         _handThetaSpeed = new Array();
          var _loc3_:int = 0;
-         while(_loc3_ < this.HAND_NUM)
+         while(_loc3_ < HAND_NUM)
          {
-            this._handThetaCur[_loc3_] = 2 * Math.PI / this.HAND_NUM;
-            this._handThetaSpeed[_loc3_] = 2.5 + _loc3_ * 0.75;
-            this._hand[_loc3_] = new Boss1RushHand(x,y);
-            PlayState.enemies.add(this._hand[_loc3_]);
+            _handThetaCur[_loc3_] = 2 * Math.PI / HAND_NUM;
+            _handThetaSpeed[_loc3_] = 2.5 + _loc3_ * 0.75;
+            _hand[_loc3_] = new Boss1RushHand(x,y);
+            PlayState.enemies.add(_hand[_loc3_]);
             _loc3_++;
          }
          PlayState.player.x += 28;
@@ -121,7 +121,7 @@ package
       
       public function now() : Number
       {
-         return this._totalElapsed * 1.15;
+         return _totalElapsed * 1.15;
       }
       
       override public function touch(param1:Player) : void
@@ -136,47 +136,47 @@ package
             return;
          }
          _totalElapsed += FlxG.elapsed;
-         if(!this._createdChildren)
+         if(!_createdChildren)
          {
             _eyes = new Boss1Eyes(x,y);
-            PlayState.enemies.add(this._eyes);
+            PlayState.enemies.add(_eyes);
             _createdChildren = true;
          }
-         var _loc1_:Number = this.now();
+         var _loc1_:Number = now();
          var _loc2_:Number = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
          var _loc3_:Number;
 		 _loc3_ = _loc1_;
          var _loc4_:Number = Math.sin(3 / 7 * _loc3_);
-         x = this._originX + 9 * 16 * Math.cos(_loc3_) * _loc4_;
-         y = this._originY + 7 * 16 * Math.sin(_loc3_) * _loc4_;
-         this._eyes.x = x - Math.cos(_loc2_) * 2 + 0.5;
-         this._eyes.y = y - Math.sin(_loc2_) * 2.5;
-         this.fire(_loc1_);
+         x = _originX + 9 * 16 * Math.cos(_loc3_) * _loc4_;
+         y = _originY + 7 * 16 * Math.sin(_loc3_) * _loc4_;
+         _eyes.x = x - Math.cos(_loc2_) * 2 + 0.5;
+         _eyes.y = y - Math.sin(_loc2_) * 2.5;
+         fire(_loc1_);
          _handRadius = 40 + 90 * Math.sin(Math.sin(_loc1_ * 5 / 3));
-         if(this._handRadius < 50)
+         if(_handRadius < 50)
          {
             _handRadius = 50;
          }
-         _handRadius *= this._radiusMultCur;
-         _radiusMultCur = this._radiusMultCur * 0.9 + this._radiusMultTarget * 0.1;
+         _handRadius *= _radiusMultCur;
+         _radiusMultCur = _radiusMultCur * 0.9 + _radiusMultTarget * 0.1;
          var _loc5_:int = 0;
-         while(_loc5_ < this.HAND_NUM)
+         while(_loc5_ < HAND_NUM)
          {
-            this._handThetaCur[_loc5_] += this._handThetaSpeed[_loc5_] * FlxG.elapsed * (1 + Math.sin(_loc1_ * 5 / 4)) * 1.2;
-            this._hand[_loc5_].x = x - 12 + 24 - Math.sin(this._handThetaCur[_loc5_]) * this._handRadius;
-            this._hand[_loc5_].y = y - 12 + 24 + Math.cos(this._handThetaCur[_loc5_]) * this._handRadius;
-            if(this._radiusMultTarget == 0)
+            _handThetaCur[_loc5_] += _handThetaSpeed[_loc5_] * FlxG.elapsed * (1 + Math.sin(_loc1_ * 5 / 4)) * 1.2;
+            _hand[_loc5_].x = x - 12 + 24 - Math.sin(_handThetaCur[_loc5_]) * _handRadius;
+            _hand[_loc5_].y = y - 12 + 24 + Math.cos(_handThetaCur[_loc5_]) * _handRadius;
+            if(_radiusMultTarget == 0)
             {
-               this._hand[_loc5_].solid = false;
+               _hand[_loc5_].solid = false;
             }
             else
             {
-               this._hand[_loc5_].solid = true;
+               _hand[_loc5_].solid = true;
             }
             _loc5_++;
          }
          super.update();
-         if(_introDone && !PlayState.player.dead && !this.started)
+         if(_introDone && !PlayState.player.dead && !started)
          {
             started = true;
             PlayState.bossRushTimer.going = true;
@@ -203,36 +203,36 @@ package
             return;
          }
          var _loc2_:Number = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
-         if(param1 > this._firingPatternTimeout)
+         if(param1 > _firingPatternTimeout)
          {
-            play("shoot" + this._attackMode.toString());
+            play("shoot" + _attackMode.toString());
             _radiusMultTarget = 0.0;
-            if(param1 > this._shotTimeout)
+            if(param1 > _shotTimeout)
             {
-               _shotTimeout = param1 + this.SHOT_DELAY * this._turboMultiplier;
-               ++this._shotNum;
-               switch(this._firingPattern)
+               _shotTimeout = param1 + SHOT_DELAY * _turboMultiplier;
+               ++_shotNum;
+               switch(_firingPattern)
                {
                   case 0:
-                     this.shoot(_loc2_);
+                     shoot(_loc2_);
                      break;
                   case 1:
-                     this.shoot(_loc2_ + (Math.PI / this._shotMax - Math.PI / 2) * this._shotNum / 8);
+                     shoot(_loc2_ + (Math.PI / _shotMax - Math.PI / 2) * _shotNum / 8);
                      break;
                   case 2:
-                     this.shoot(_loc2_ + Math.PI);
+                     shoot(_loc2_ + Math.PI);
                      break;
                   case 3:
-                     this.shoot(_loc2_ - (Math.PI / this._shotMax - Math.PI / 2) * this._shotNum / 8);
+                     shoot(_loc2_ - (Math.PI / _shotMax - Math.PI / 2) * _shotNum / 8);
 					 break;
                }
-               if(this._shotNum >= this._shotMax)
+               if(_shotNum >= _shotMax)
                {
-                  _firingPattern = (this._firingPattern + 1) % 4;
+                  _firingPattern = (_firingPattern + 1) % 4;
                   _firingPatternTimeout = param1 + PATTERN_DELAY;
                   _radiusMultTarget = 1;
                   _shotNum = 0;
-                  play("normal" + this._attackMode.toString());
+                  play("normal" + _attackMode.toString());
                }
             }
          }
@@ -247,11 +247,11 @@ package
             PlayState.showBossRushName(1,true);
             PlayState.sprites.add(new QueuedExplosion(x,y));
          }
-         this._eyes.kill();
+         _eyes.kill();
          var _loc1_:int = 0;
-         while(_loc1_ < this.HAND_NUM)
+         while(_loc1_ < HAND_NUM)
          {
-            this._hand[_loc1_].kill();
+            _hand[_loc1_].kill();
             _loc1_++;
          }
          PlayState.enemyBulletPool.destroyAll();
@@ -263,14 +263,14 @@ package
       
       override public function hurt(param1:Number) : void
       {
-         if(_hp <= this.MAX_HP * 0.33 && this._attackMode < 2)
+         if(_hp <= MAX_HP * 0.33 && _attackMode < 2)
          {
             _shotMax += 27;
             _turboMultiplier = 0.19;
             _attackMode = 2;
             play("normal2");
          }
-         else if(_hp <= this.MAX_HP * 0.66 && this._attackMode < 1)
+         else if(_hp <= MAX_HP * 0.66 && _attackMode < 1)
          {
             _shotMax += 9;
             _turboMultiplier = 0.28;

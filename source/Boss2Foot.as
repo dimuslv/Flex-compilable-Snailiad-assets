@@ -20,8 +20,8 @@ package
          loadGraphic(Art.Boss2Foot,true,true,IMG_WIDTH,IMG_HEIGHT);
          width = IMG_WIDTH;
          height = IMG_HEIGHT;
-         this._isLeftFoot = param3;
-         if(this._isLeftFoot)
+         _isLeftFoot = param3;
+         if(_isLeftFoot)
          {
             facing = LEFT;
          }
@@ -33,19 +33,19 @@ package
       
       override public function touch(param1:Player) : void
       {
-         if(this._isLeftFoot && param1.x + param1.width < x + 118 && param1.y + param1.height < y + 112)
+         if(_isLeftFoot && param1.x + param1.width < x + 118 && param1.y + param1.height < y + 112)
          {
             return;
          }
-         if(!this._isLeftFoot && param1.x > x + 72 && param1.y + param1.height < y + 112)
+         if(!_isLeftFoot && param1.x > x + 72 && param1.y + param1.height < y + 112)
          {
             return;
          }
-         if(this._isLeftFoot && param1.x > x + width - 15)
+         if(_isLeftFoot && param1.x > x + width - 15)
          {
             return;
          }
-         if(!this._isLeftFoot && param1.x + param1.width < x + 15)
+         if(!_isLeftFoot && param1.x + param1.width < x + 15)
          {
             return;
          }

@@ -169,9 +169,9 @@ package
       override public function destroy() : void
       {
          var _loc1_:String = null;
-         for(_loc1_ in this.cannons)
+         for(_loc1_ in cannons)
          {
-            this.cannons[_loc1_] = null;
+            cannons[_loc1_] = null;
          }
          cannons = null;
          lfoot = null;
@@ -186,35 +186,35 @@ package
       {
          if(PlayState.player && PlayState.player._insaneMode)
          {
-            this._bossSpeed = 1;
-            this.MAX_HP *= 2;
+            _bossSpeed = 1;
+            MAX_HP *= 2;
          }
          else if(PlayState.player && PlayState.player._hardMode)
          {
-            this._bossSpeed = 0.9;
-            this.MAX_HP *= 1.4;
+            _bossSpeed = 0.9;
+            MAX_HP *= 1.4;
          }
-         super(param1,param2,this.MAX_HP,DEFENSE,OFFENSE,true);
+         super(param1,param2,MAX_HP,DEFENSE,OFFENSE,true);
          y += 41;
-         this.mineyey = y - 80;
+         mineyey = y - 80;
          PlayState.boss2 = this;
-         this.eyesOnFeet = true;
-         this.lfooty = RAISED_Y;
-         this.rfooty = RAISED_Y;
+         eyesOnFeet = true;
+         lfooty = RAISED_Y;
+         rfooty = RAISED_Y;
          solid = false;
-         this.lfoot = new Boss2Foot(x + LFOOT_OFS_X,y + this.lfooty,true);
-         this.rfoot = new Boss2Foot(x,y + this.rfooty,false);
-         PlayState.enemies.add(this.lfoot);
-         PlayState.enemies.add(this.rfoot);
-         this.leye = new Boss2Eye(this.lfoot.x + LEYE_OFS_X,this.lfoot.y + LEYE_OFS_Y,true);
-         this.reye = new Boss2Eye(this.rfoot.x + REYE_OFS_X,this.rfoot.y + REYE_OFS_Y,false);
-         PlayState.enemies.add(this.leye);
-         PlayState.enemies.add(this.reye);
-         this.cannons = new Array();
-         this.cannons[0] = PlayState.enemies.add(new EnemyCannonTop(x - 160 - 32,y - 25));
-         this.cannons[1] = PlayState.enemies.add(new EnemyCannonTop(x + 160 - 32,y - 25));
-         this.cannons[2] = PlayState.enemies.add(new EnemyCannonTop(x - 256 - 32,y - 25));
-         this.cannons[3] = PlayState.enemies.add(new EnemyCannonTop(x + 256 - 32,y - 25));
+         lfoot = new Boss2Foot(x + LFOOT_OFS_X,y + lfooty,true);
+         rfoot = new Boss2Foot(x,y + rfooty,false);
+         PlayState.enemies.add(lfoot);
+         PlayState.enemies.add(rfoot);
+         leye = new Boss2Eye(lfoot.x + LEYE_OFS_X,lfoot.y + LEYE_OFS_Y,true);
+         reye = new Boss2Eye(rfoot.x + REYE_OFS_X,rfoot.y + REYE_OFS_Y,false);
+         PlayState.enemies.add(leye);
+         PlayState.enemies.add(reye);
+         cannons = new Array();
+         cannons[0] = PlayState.enemies.add(new EnemyCannonTop(x - 160 - 32,y - 25));
+         cannons[1] = PlayState.enemies.add(new EnemyCannonTop(x + 160 - 32,y - 25));
+         cannons[2] = PlayState.enemies.add(new EnemyCannonTop(x - 256 - 32,y - 25));
+         cannons[3] = PlayState.enemies.add(new EnemyCannonTop(x + 256 - 32,y - 25));
          visible = false;
          addAnimation("normal",[0]);
          play("normal");
@@ -222,20 +222,20 @@ package
          PlayState.player.setFaceDir(Player.FACE_FLOOR_LEFT);
          PlayState.player.velocity.x = -PlayState.player._runSpeed.value;
          PlayState.player.paralyze(true);
-         this.moveChildren();
+         moveChildren();
       }
       
       public function moveChildren() : void
       {
-         if(this.lmode == FOOTMODE_STOMP)
+         if(lmode == FOOTMODE_STOMP)
          {
             lfootyVel += 0.2;
-            lfooty += this.lfootyVel;
-            if(this.lfooty > 0)
+            lfooty += lfootyVel;
+            if(lfooty > 0)
             {
                lfooty = 0;
                lmode = FOOTMODE_WAITRAISE;
-               if(this.mode == MODE_STEP)
+               if(mode == MODE_STEP)
                {
                   lmode = FOOTMODE_STEP;
                }
@@ -246,9 +246,9 @@ package
                FlxG.quake.start(0.03);
             }
          }
-         else if(this.mode > MODE_INTRO3 && this.lmode == FOOTMODE_WAITRAISE && --this.lfootRaiseTimeout <= 0)
+         else if(mode > MODE_INTRO3 && lmode == FOOTMODE_WAITRAISE && --lfootRaiseTimeout <= 0)
          {
-            if(this.mode != MODE_STEP)
+            if(mode != MODE_STEP)
             {
                lmode = FOOTMODE_RAISE;
             }
@@ -257,32 +257,32 @@ package
                lmode = FOOTMODE_STEP;
             }
          }
-         if(this.mode > MODE_INTRO3 && this.lmode == FOOTMODE_RAISE)
+         if(mode > MODE_INTRO3 && lmode == FOOTMODE_RAISE)
          {
             lfootyVel -= 0.2;
-            lfooty += this.lfootyVel;
-            if(this.lfooty < RAISED_Y)
+            lfooty += lfootyVel;
+            if(lfooty < RAISED_Y)
             {
                lfooty = RAISED_Y;
                lmode = FOOTMODE_MOVE;
-               this.leye.shouldAttack = true;
+               leye.shouldAttack = true;
                lfootRaiseTimeout = 1000000;
-               lfootStompTimeout = int(this.TIMEOUTS[++this.lfootStompTimeoutIndex % this.TIMEOUTS.length] * 360) + 60;
-               if(this.mode == MODE_SYNC)
+               lfootStompTimeout = int(TIMEOUTS[++lfootStompTimeoutIndex % TIMEOUTS.length] * 360) + 60;
+               if(mode == MODE_SYNC)
                {
                   lfootStompTimeout = 10;
                }
             }
          }
-         if(this.rmode == FOOTMODE_STOMP)
+         if(rmode == FOOTMODE_STOMP)
          {
             rfootyVel += 0.2;
-            rfooty += this.rfootyVel;
-            if(this.rfooty > 0)
+            rfooty += rfootyVel;
+            if(rfooty > 0)
             {
                rfooty = 0;
                rmode = FOOTMODE_WAITRAISE;
-               if(this.mode == MODE_STEP)
+               if(mode == MODE_STEP)
                {
                   rmode = FOOTMODE_STEP;
                }
@@ -293,9 +293,9 @@ package
                FlxG.quake.start(0.03);
             }
          }
-         else if(this.mode > MODE_INTRO3 && this.rmode == FOOTMODE_WAITRAISE && --this.rfootRaiseTimeout <= 0)
+         else if(mode > MODE_INTRO3 && rmode == FOOTMODE_WAITRAISE && --rfootRaiseTimeout <= 0)
          {
-            if(this.mode != MODE_STEP)
+            if(mode != MODE_STEP)
             {
                rmode = FOOTMODE_RAISE;
             }
@@ -304,84 +304,84 @@ package
                rmode = FOOTMODE_STEP;
             }
          }
-         if(this.mode > MODE_INTRO3 && this.rmode == FOOTMODE_RAISE)
+         if(mode > MODE_INTRO3 && rmode == FOOTMODE_RAISE)
          {
             rfootyVel -= 0.2;
-            rfooty += this.rfootyVel;
-            if(this.rfooty < RAISED_Y)
+            rfooty += rfootyVel;
+            if(rfooty < RAISED_Y)
             {
                rfooty = RAISED_Y;
                rmode = FOOTMODE_MOVE;
-               this.reye.shouldAttack = true;
+               reye.shouldAttack = true;
                rfootRaiseTimeout = 1000000;
-               rfootStompTimeout = int(this.TIMEOUTS[++this.lfootStompTimeoutIndex % this.TIMEOUTS.length] * 360) + 60;
-               if(this.mode == MODE_SYNC)
+               rfootStompTimeout = int(TIMEOUTS[++lfootStompTimeoutIndex % TIMEOUTS.length] * 360) + 60;
+               if(mode == MODE_SYNC)
                {
                   rfootStompTimeout = 10;
                }
             }
          }
-         if(this.mode > MODE_INTRO3 && this.lmode == FOOTMODE_MOVE)
+         if(mode > MODE_INTRO3 && lmode == FOOTMODE_MOVE)
          {
             ltheta += 0.2;
-            if(this.mode == MODE_HUNT)
+            if(mode == MODE_HUNT)
             {
                lfootxtarget = PlayState.player.x - x;
             }
             else
             {
-               lfootxtarget = Math.sin(this.ltheta / 15) * 160;
+               lfootxtarget = Math.sin(ltheta / 15) * 160;
             }
-            if(this.rfootx - this.lfootxtarget < MIN_DIST)
+            if(rfootx - lfootxtarget < MIN_DIST)
             {
-               lfootxtarget = this.rfootx - MIN_DIST;
+               lfootxtarget = rfootx - MIN_DIST;
             }
             if(PlayState.player.x - x < -320)
             {
                lfootxtarget = PlayState.player.x - x + 100;
             }
             lfootStompTimeout -= 1;
-            lfootxvel = this.lfootxtarget - this.lfootx;
-            lfootx += this.lfootxvel * 0.1;
-            if(this.lfootStompTimeout <= 0 && this.lfooty <= RAISED_Y + 10 && this.lfootyVel < 1)
+            lfootxvel = lfootxtarget - lfootx;
+            lfootx += lfootxvel * 0.1;
+            if(lfootStompTimeout <= 0 && lfooty <= RAISED_Y + 10 && lfootyVel < 1)
             {
                lmode = FOOTMODE_STOMP;
                lfootyVel = 10;
-               this.leye.shouldAttack = false;
+               leye.shouldAttack = false;
             }
          }
-         if(this.mode > MODE_INTRO3 && this.rmode == FOOTMODE_MOVE)
+         if(mode > MODE_INTRO3 && rmode == FOOTMODE_MOVE)
          {
             rtheta += 0.2;
-            if(this.mode == MODE_HUNT)
+            if(mode == MODE_HUNT)
             {
                rfootxtarget = PlayState.player.x - x;
             }
             else
             {
-               rfootxtarget = Math.sin(this.rtheta / 15.5 + Math.PI / 3) * 160;
+               rfootxtarget = Math.sin(rtheta / 15.5 + Math.PI / 3) * 160;
             }
-            if(this.rfootxtarget - this.lfootx < MIN_DIST)
+            if(rfootxtarget - lfootx < MIN_DIST)
             {
-               rfootxtarget = this.lfootx + MIN_DIST;
+               rfootxtarget = lfootx + MIN_DIST;
             }
             if(PlayState.player.x - x > 302)
             {
                rfootxtarget = PlayState.player.x - x - 40;
             }
-            rfootxvel = this.rfootxtarget - this.rfootx;
-            rfootx += this.rfootxvel * 0.1;
+            rfootxvel = rfootxtarget - rfootx;
+            rfootx += rfootxvel * 0.1;
             rfootStompTimeout -= 1;
-            if(this.rfootStompTimeout <= 0 && this.rfooty <= RAISED_Y + 10 && this.rfootyVel < 1)
+            if(rfootStompTimeout <= 0 && rfooty <= RAISED_Y + 10 && rfootyVel < 1)
             {
                rmode = FOOTMODE_STOMP;
                rfootyVel = 10;
-               this.reye.shouldAttack = false;
+               reye.shouldAttack = false;
             }
          }
-         if(this.lmode == FOOTMODE_STEP && this.rmode == FOOTMODE_STEP)
+         if(lmode == FOOTMODE_STEP && rmode == FOOTMODE_STEP)
          {
-            if(this.lfootx < x)
+            if(lfootx < x)
             {
                stepDirIsLeft = true;
                lmode = FOOTMODE_STEPNOW;
@@ -389,7 +389,7 @@ package
                lsteptheta = 0;
                rsteptheta = 0;
                lsteporiginx = NO_ORIGIN;
-               lsteporiginy = this.lfooty;
+               lsteporiginy = lfooty;
             }
             else
             {
@@ -399,24 +399,24 @@ package
                lsteptheta = 0;
                rsteptheta = 0;
                rsteporiginx = NO_ORIGIN;
-               rsteporiginy = this.rfooty;
+               rsteporiginy = rfooty;
             }
          }
-         if(this.lmode == FOOTMODE_STEPNOW)
+         if(lmode == FOOTMODE_STEPNOW)
          {
-            if(this.stepDirIsLeft && this.lsteptheta == 0 && this.lfootx < -170)
+            if(stepDirIsLeft && lsteptheta == 0 && lfootx < -170)
             {
                stepDirIsLeft = false;
                lmode = FOOTMODE_STEPWAIT;
                rmode = FOOTMODE_STEPNOW;
                rsteptheta = 0;
                rsteporiginx = NO_ORIGIN;
-               rsteporiginy = this.rfooty;
+               rsteporiginy = rfooty;
             }
             else
             {
                lsteptheta += 0.05;
-               if(this.lsteptheta >= Math.PI)
+               if(lsteptheta >= Math.PI)
                {
                   lsteptheta = Math.PI;
                   Sfx.playStomp();
@@ -425,43 +425,43 @@ package
                   rmode = FOOTMODE_STEPNOW;
                   rsteptheta = 0;
                   rsteporiginx = NO_ORIGIN;
-                  rsteporiginy = this.rfooty;
+                  rsteporiginy = rfooty;
                }
-               if(this.stepDirIsLeft)
+               if(stepDirIsLeft)
                {
-                  if(this.lsteporiginx == NO_ORIGIN)
+                  if(lsteporiginx == NO_ORIGIN)
                   {
-                     lsteporiginx = this.lfootx - this.stepradius;
+                     lsteporiginx = lfootx - stepradius;
                   }
-                  lfootx = this.lsteporiginx + Math.cos(this.lsteptheta) * this.stepradius;
-                  lfooty = this.lsteporiginy - Math.sin(this.lsteptheta) * this.stepradius * 3.4;
+                  lfootx = lsteporiginx + Math.cos(lsteptheta) * stepradius;
+                  lfooty = lsteporiginy - Math.sin(lsteptheta) * stepradius * 3.4;
                }
                else
                {
-                  if(this.lsteporiginx == NO_ORIGIN)
+                  if(lsteporiginx == NO_ORIGIN)
                   {
-                     lsteporiginx = this.lfootx + this.stepradius;
+                     lsteporiginx = lfootx + stepradius;
                   }
-                  lfootx = this.lsteporiginx - Math.cos(this.lsteptheta) * this.stepradius;
-                  lfooty = this.lsteporiginy - Math.sin(this.lsteptheta) * this.stepradius * 3.4;
+                  lfootx = lsteporiginx - Math.cos(lsteptheta) * stepradius;
+                  lfooty = lsteporiginy - Math.sin(lsteptheta) * stepradius * 3.4;
                }
             }
          }
-         else if(this.rmode == FOOTMODE_STEPNOW)
+         else if(rmode == FOOTMODE_STEPNOW)
          {
-            if(!this.stepDirIsLeft && this.rsteptheta == 0 && this.rfootx > 170)
+            if(!stepDirIsLeft && rsteptheta == 0 && rfootx > 170)
             {
                stepDirIsLeft = true;
                rmode = FOOTMODE_STEPWAIT;
                lmode = FOOTMODE_STEPNOW;
                lsteptheta = 0;
                lsteporiginx = NO_ORIGIN;
-               lsteporiginy = this.lfooty;
+               lsteporiginy = lfooty;
             }
             else
             {
                rsteptheta += 0.05;
-               if(this.rsteptheta >= Math.PI)
+               if(rsteptheta >= Math.PI)
                {
                   rsteptheta = Math.PI;
                   Sfx.playStomp();
@@ -469,37 +469,37 @@ package
                   lmode = FOOTMODE_STEPNOW;
                   rmode = FOOTMODE_STEPWAIT;
                   lsteporiginx = NO_ORIGIN;
-                  lsteporiginy = this.lfooty;
+                  lsteporiginy = lfooty;
                   lsteptheta = 0;
                }
-               if(this.stepDirIsLeft)
+               if(stepDirIsLeft)
                {
-                  if(this.rsteporiginx == NO_ORIGIN)
+                  if(rsteporiginx == NO_ORIGIN)
                   {
-                     rsteporiginx = this.rfootx - this.stepradius;
+                     rsteporiginx = rfootx - stepradius;
                   }
-                  rfootx = this.rsteporiginx + Math.cos(this.rsteptheta) * this.stepradius;
-                  rfooty = this.rsteporiginy - Math.sin(this.rsteptheta) * this.stepradius * 3.4;
+                  rfootx = rsteporiginx + Math.cos(rsteptheta) * stepradius;
+                  rfooty = rsteporiginy - Math.sin(rsteptheta) * stepradius * 3.4;
                }
                else
                {
-                  if(this.rsteporiginx == NO_ORIGIN)
+                  if(rsteporiginx == NO_ORIGIN)
                   {
-                     rsteporiginx = this.rfootx + this.stepradius;
+                     rsteporiginx = rfootx + stepradius;
                   }
-                  rfootx = this.rsteporiginx - Math.cos(this.rsteptheta) * this.stepradius;
-                  rfooty = this.rsteporiginy - Math.sin(this.rsteptheta) * this.stepradius * 3.4;
+                  rfootx = rsteporiginx - Math.cos(rsteptheta) * stepradius;
+                  rfooty = rsteporiginy - Math.sin(rsteptheta) * stepradius * 3.4;
                }
             }
          }
-         if(this.rfootx - this.lfootx < MIN_DIST)
+         if(rfootx - lfootx < MIN_DIST)
          {
-            var _loc1_:Number = MIN_DIST - (this.rfootx - this.lfootx);
-            if(this.lmode == FOOTMODE_MOVE && this.rmode == FOOTMODE_STOMP)
+            var _loc1_:Number = MIN_DIST - (rfootx - lfootx);
+            if(lmode == FOOTMODE_MOVE && rmode == FOOTMODE_STOMP)
             {
                lfootx -= _loc1_;
             }
-            else if(this.rmode == FOOTMODE_MOVE && this.lmode == FOOTMODE_STOMP)
+            else if(rmode == FOOTMODE_MOVE && lmode == FOOTMODE_STOMP)
             {
                rfootx += _loc1_;
             }
@@ -509,34 +509,34 @@ package
                rfootx += _loc1_ / 2;
             }
          }
-         this.lfoot.x = x + LFOOT_OFS_X + this.lfootx;
-         this.lfoot.y = y + this.lfooty;
-         this.rfoot.x = x + RFOOT_OFS_X + this.rfootx;
-         this.rfoot.y = y + this.rfooty;
-         if(this.eyesOnFeet)
+         lfoot.x = x + LFOOT_OFS_X + lfootx;
+         lfoot.y = y + lfooty;
+         rfoot.x = x + RFOOT_OFS_X + rfootx;
+         rfoot.y = y + rfooty;
+         if(eyesOnFeet)
          {
-            this.leye.x = this.lfoot.x + LEYE_OFS_X;
-            this.leye.y = this.lfoot.y + LEYE_OFS_Y;
-            this.reye.x = this.rfoot.x + REYE_OFS_X;
-            this.reye.y = this.rfoot.y + REYE_OFS_Y;
+            leye.x = lfoot.x + LEYE_OFS_X;
+            leye.y = lfoot.y + LEYE_OFS_Y;
+            reye.x = rfoot.x + REYE_OFS_X;
+            reye.y = rfoot.y + REYE_OFS_Y;
          }
-         if(this.leye.y <= this.mineyey)
+         if(leye.y <= mineyey)
          {
-            this.leye.y = this.mineyey;
-            this.leye.solid = false;
-         }
-         else
-         {
-            this.leye.solid = true;
-         }
-         if(this.reye.y <= this.mineyey)
-         {
-            this.reye.y = this.mineyey;
-            this.reye.solid = false;
+            leye.y = mineyey;
+            leye.solid = false;
          }
          else
          {
-            this.reye.solid = true;
+            leye.solid = true;
+         }
+         if(reye.y <= mineyey)
+         {
+            reye.y = mineyey;
+            reye.solid = false;
+         }
+         else
+         {
+            reye.solid = true;
          }
       }
       
@@ -551,15 +551,15 @@ package
          {
             return;
          }
-         _elapsed += FlxG.elapsed * this._bossSpeed;
-         while(this._elapsed > SEC_PER_TICK)
+         _elapsed += FlxG.elapsed * _bossSpeed;
+         while(_elapsed > SEC_PER_TICK)
          {
             _elapsed -= SEC_PER_TICK;
-            this.moveChildren();
+            moveChildren();
          }
          if(_delayIntro)
          {
-            switch(this.mode)
+            switch(mode)
             {
                case MODE_INTRO1:
                   if(PlayState.player.x < x - 89)
@@ -603,55 +603,55 @@ package
          }
          else
          {
-            switch(this.mode)
+            switch(mode)
             {
                case MODE_INTRO3:
                   if(_introDone)
                   {
                      mode = MODE_MOVESTOMP;
-                     stepModeTimeout = this.STEP_MODE_TIMEOUT;
+                     stepModeTimeout = STEP_MODE_TIMEOUT;
                   }
                   break;
                case MODE_MOVESTOMP:
-                  stepModeTimeout -= FlxG.elapsed * this._bossSpeed;
-                  if(this.stepModeTimeout < 0)
+                  stepModeTimeout -= FlxG.elapsed * _bossSpeed;
+                  if(stepModeTimeout < 0)
                   {
                      mode = MODE_HUNT;
                   }
                   break;
                case MODE_HUNT:
-                  if(this.rfootx - this.lfootx <= MIN_DIST + 2)
+                  if(rfootx - lfootx <= MIN_DIST + 2)
                   {
-                     stepModeTimeout = this.SYNC_MODE_TIMEOUT;
+                     stepModeTimeout = SYNC_MODE_TIMEOUT;
                      mode = MODE_SYNC;
                   }
                   break;
                case MODE_SYNC:
-                  if(this.lmode == FOOTMODE_MOVE && this.rmode == FOOTMODE_MOVE)
+                  if(lmode == FOOTMODE_MOVE && rmode == FOOTMODE_MOVE)
                   {
                      lmode = FOOTMODE_STOMP;
                      rmode = FOOTMODE_STOMP;
                   }
-                  stepModeTimeout -= FlxG.elapsed * this._bossSpeed;
-                  if(this.stepModeTimeout < 0)
+                  stepModeTimeout -= FlxG.elapsed * _bossSpeed;
+                  if(stepModeTimeout < 0)
                   {
-                     stepModeTimeout = this.STEP_MODE_TIMEOUT;
+                     stepModeTimeout = STEP_MODE_TIMEOUT;
                      mode = MODE_STEP;
                   }
                   break;
                case MODE_STEP:
-                  if(this.lmode == FOOTMODE_MOVE)
+                  if(lmode == FOOTMODE_MOVE)
                   {
                      lmode = FOOTMODE_STOMP;
                   }
-                  if(this.rmode == FOOTMODE_MOVE)
+                  if(rmode == FOOTMODE_MOVE)
                   {
                      rmode = FOOTMODE_STOMP;
                   }
-                  stepModeTimeout -= FlxG.elapsed * this._bossSpeed;
-                  if(this.stepModeTimeout < 0)
+                  stepModeTimeout -= FlxG.elapsed * _bossSpeed;
+                  if(stepModeTimeout < 0)
                   {
-                     stepModeTimeout = this.STEP_MODE_TIMEOUT;
+                     stepModeTimeout = STEP_MODE_TIMEOUT;
                      mode = MODE_MOVESTOMP;
                      lmode = FOOTMODE_RAISE;
                      rmode = FOOTMODE_RAISE;
@@ -663,17 +663,17 @@ package
 				  break;
             }
          }
-         _totalElapsed += FlxG.elapsed * this._bossSpeed;
-         if(!this._createdChildren)
+         _totalElapsed += FlxG.elapsed * _bossSpeed;
+         if(!_createdChildren)
          {
             _createdChildren = true;
          }
-         this.attack(this._totalElapsed);
+         attack(_totalElapsed);
          super.update();
          if(_justFlashed <= 0)
          {
-            this.leye.eyelid.unFlashColor();
-            this.reye.eyelid.unFlashColor();
+            leye.eyelid.unFlashColor();
+            reye.eyelid.unFlashColor();
          }
       }
       
@@ -698,7 +698,7 @@ package
       
       override public function kill() : void
       {
-         if(this.beingKilled)
+         if(beingKilled)
          {
             return;
          }
@@ -710,20 +710,20 @@ package
             NgMedal.unlockStinkyToe();
             PlayState.setBossDead(2);
             PlayState.showBossName(2,true);
-            this.cannons[0].kill();
-            this.cannons[1].kill();
-            this.cannons[2].kill();
-            this.cannons[3].kill();
-            PlayState.sprites.add(new QueuedExplosion(this.lfoot.x + this.lfoot.width / 2,this.lfoot.y + this.lfoot.height / 2));
-            PlayState.sprites.add(new QueuedExplosion(this.rfoot.x + this.rfoot.width / 2,this.rfoot.y + this.rfoot.height / 2));
+            cannons[0].kill();
+            cannons[1].kill();
+            cannons[2].kill();
+            cannons[3].kill();
+            PlayState.sprites.add(new QueuedExplosion(lfoot.x + lfoot.width / 2,lfoot.y + lfoot.height / 2));
+            PlayState.sprites.add(new QueuedExplosion(rfoot.x + rfoot.width / 2,rfoot.y + rfoot.height / 2));
             PlayState.player.saveGame();
          }
          Music.playArea2();
          PlayState.miniMap.setMapLittle();
-         this.leye.kill();
-         this.reye.kill();
-         this.lfoot.kill();
-         this.rfoot.kill();
+         leye.kill();
+         reye.kill();
+         lfoot.kill();
+         rfoot.kill();
          PlayState.enemyBulletPool.destroyAll();
          dead = true;
          exists = false;
@@ -733,21 +733,21 @@ package
       
       override public function hurt(param1:Number) : void
       {
-         if(_hp <= this.MAX_HP * 0.28 && this._attackMode < 2)
+         if(_hp <= MAX_HP * 0.28 && _attackMode < 2)
          {
             _bossSpeed += 0.3;
             _attackMode = 2;
-            this.leye.setMode(this._attackMode);
-            this.reye.setMode(this._attackMode);
-            this.lfoot.play("hurt");
-            this.rfoot.play("hurt");
+            leye.setMode(_attackMode);
+            reye.setMode(_attackMode);
+            lfoot.play("hurt");
+            rfoot.play("hurt");
          }
-         else if(_hp <= this.MAX_HP * 0.66 && this._attackMode < 1)
+         else if(_hp <= MAX_HP * 0.66 && _attackMode < 1)
          {
             _bossSpeed += 0.2;
             _attackMode = 1;
-            this.leye.setMode(this._attackMode);
-            this.reye.setMode(this._attackMode);
+            leye.setMode(_attackMode);
+            reye.setMode(_attackMode);
          }
          super.hurt(param1);
       }

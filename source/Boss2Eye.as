@@ -63,38 +63,38 @@ package
       {
          if(PlayState.player && PlayState.player._insaneMode)
          {
-            this.SHOT_TIMEOUT /= 2;
-            this.SHOT_NUM *= 2;
+            SHOT_TIMEOUT /= 2;
+            SHOT_NUM *= 2;
          }
          else if(PlayState.player && PlayState.player._hardMode)
          {
-            this.SHOT_TIMEOUT /= 3;
-            this.SHOT_NUM *= 3;
+            SHOT_TIMEOUT /= 3;
+            SHOT_NUM *= 3;
          }
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE,true);
          loadGraphic(Art.Boss2Eye,true,true,IMG_WIDTH,IMG_HEIGHT);
          width = IMG_WIDTH;
          height = IMG_HEIGHT;
-         this._isLeft = param3;
-         this._addedChildren = false;
+         _isLeft = param3;
+         _addedChildren = false;
          addAnimation("normal",[0]);
          play("normal");
-         this.isOpen = true;
-         this._clusterTimeout = CLUSTER_TIMEOUT;
-         this._shotTimeout = this.SHOT_TIMEOUT;
-         this._shooting = false;
+         isOpen = true;
+         _clusterTimeout = CLUSTER_TIMEOUT;
+         _shotTimeout = SHOT_TIMEOUT;
+         _shooting = false;
       }
       
       public function setMode(param1:int) : void
       {
          mode = param1;
-         if(this.isOpen)
+         if(isOpen)
          {
-            this.eyelid.playOpen(this.mode);
+            eyelid.playOpen(mode);
          }
          else
          {
-            this.eyelid.playClose(this.mode);
+            eyelid.playClose(mode);
          }
       }
       
@@ -106,7 +106,7 @@ package
          var _loc7_:EnemyBullet = PlayState.enemyBulletPool.getBullet(4);
          if(_loc7_)
          {
-            _loc7_.shoot(param1 + this.pupil.width / 2,param2 + this.pupil.height / 2,_loc5_,_loc6_);
+            _loc7_.shoot(param1 + pupil.width / 2,param2 + pupil.height / 2,_loc5_,_loc6_);
          }
       }
       
@@ -121,68 +121,68 @@ package
          {
             return;
          }
-         if(!this._addedChildren)
+         if(!_addedChildren)
          {
             pupil = new Boss2Pupil(x,y);
-            PlayState.enemies.add(this.pupil);
+            PlayState.enemies.add(pupil);
             eyelid = new Boss2Eyelid(x,y);
-            PlayState.enemies.add(this.eyelid);
+            PlayState.enemies.add(eyelid);
             _addedChildren = true;
          }
          var _loc1_:Number = Math.atan2(PlayState.player.y - (y - 20),PlayState.player.x - x);
-         this.pupil.x = x + Math.cos(_loc1_) * 20;
-         this.pupil.y = y + Math.sin(_loc1_) * 10;
-         if(this.shouldAttack)
+         pupil.x = x + Math.cos(_loc1_) * 20;
+         pupil.y = y + Math.sin(_loc1_) * 10;
+         if(shouldAttack)
          {
             _clusterTimeout -= FlxG.elapsed;
-            if(this._clusterTimeout < 0)
+            if(_clusterTimeout < 0)
             {
                _clusterTimeout = CLUSTER_TIMEOUT;
-               _shotTimeout = this.SHOT_TIMEOUT;
-               _shots = this.SHOT_NUM;
+               _shotTimeout = SHOT_TIMEOUT;
+               _shots = SHOT_NUM;
                _shooting = true;
             }
-            if(this._shooting)
+            if(_shooting)
             {
                _shotTimeout -= FlxG.elapsed;
-               if(this._shotTimeout < 0)
+               if(_shotTimeout < 0)
                {
-                  _shotTimeout = this.SHOT_TIMEOUT;
-                  --this._shots;
-                  if(this._shots == 0)
+                  _shotTimeout = SHOT_TIMEOUT;
+                  --_shots;
+                  if(_shots == 0)
                   {
                      _shooting = false;
                   }
-                  if(this._isLeft)
+                  if(_isLeft)
                   {
-                     var _loc2_:Number = -Math.PI / this.SHOT_NUM * this._shots;
+                     var _loc2_:Number = -Math.PI / SHOT_NUM * _shots;
                   }
                   else
                   {
-                     _loc2_ = -Math.PI / this.SHOT_NUM * (this.SHOT_NUM - this._shots);
+                     _loc2_ = -Math.PI / SHOT_NUM * (SHOT_NUM - _shots);
                   }
-                  this.shoot(this.pupil.x,this.pupil.y,_loc2_);
+                  shoot(pupil.x,pupil.y,_loc2_);
                }
             }
          }
-         this.eyelid.x = x;
-         this.eyelid.y = y;
-         if(this.isOpen)
+         eyelid.x = x;
+         eyelid.y = y;
+         if(isOpen)
          {
             _blinkTimeout -= FlxG.elapsed;
-            if(this._blinkTimeout < 0)
+            if(_blinkTimeout < 0)
             {
                _blinkTimeout = FlxU.random() * 8 + 1;
-               this.eyelid.playBlink(this.mode);
+               eyelid.playBlink(mode);
             }
-            if(this._willClose)
+            if(_willClose)
             {
                _closeTimeout -= FlxG.elapsed;
-               if(this._closeTimeout < 0)
+               if(_closeTimeout < 0)
                {
                   _willClose = false;
                   isOpen = false;
-                  this.eyelid.playClose(this.mode);
+                  eyelid.playClose(mode);
                   _openTimeout = 0.8;
                }
             }
@@ -190,17 +190,17 @@ package
          else
          {
             _openTimeout -= FlxG.elapsed;
-            if(this._openTimeout < 0)
+            if(_openTimeout < 0)
             {
                isOpen = true;
-               this.eyelid.playOpen(this.mode);
+               eyelid.playOpen(mode);
             }
          }
          if(--_justFlashed <= 0)
          {
-            this.eyelid.unFlashColor();
-            this.pupil.unFlashColor();
-            if(this._isLeft)
+            eyelid.unFlashColor();
+            pupil.unFlashColor();
+            if(_isLeft)
             {
                (PlayState.boss2 as Boss2).lfoot.unFlashColor();
             }
@@ -214,29 +214,29 @@ package
       
       override public function kill() : void
       {
-         this.pupil.kill();
-         this.eyelid.kill();
+         pupil.kill();
+         eyelid.kill();
          super.kill();
       }
       
       override public function hurt(param1:Number) : void
       {
-         if(!this.isOpen)
+         if(!isOpen)
          {
             param1 -= 190;
          }
          else
          {
-            if(!this._willClose)
+            if(!_willClose)
             {
                _willClose = true;
                _closeTimeout = 0.3;
             }
-            if(--this._lastFlashed <= 0 && param1 > Boss2.DEFENSE)
+            if(--_lastFlashed <= 0 && param1 > Boss2.DEFENSE)
             {
-               this.eyelid.flashColor(16777215);
-               this.pupil.flashColor(16777215);
-               if(this._isLeft)
+               eyelid.flashColor(16777215);
+               pupil.flashColor(16777215);
+               if(_isLeft)
                {
                   (PlayState.boss2 as Boss2).lfoot.flashColor(16777215);
                }

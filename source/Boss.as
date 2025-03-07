@@ -28,10 +28,10 @@ package
       public function Boss(param1:int, param2:int, param3:int, param4:int, param5:int, param6:Boolean = false) : void
       {
          super(param1,param2,param3,param4,param5);
-         this._startTime = getTimer();
-         this._introDone = false;
-         this._delayIntro = param6;
-         if(!this._delayIntro)
+         _startTime = getTimer();
+         _introDone = false;
+         _delayIntro = param6;
+         if(!_delayIntro)
          {
             PlayState.hud.bossBarHud.makeBar(param3);
             PlayState.miniMap.setMapLittle();
@@ -56,19 +56,19 @@ package
          {
             return;
          }
-         if(!this._introDone && !this._delayIntro)
+         if(!_introDone && !_delayIntro)
          {
-            if(!this._noParalyze)
+            if(!_noParalyze)
             {
                PlayState.player.paralyze(true);
             }
-            _loc1_ = getTimer() - this._startTime;
+            _loc1_ = getTimer() - _startTime;
             if(_loc1_ > DELAY_VULNERABLE)
             {
                _vulnerable = true;
                PlayState.hud.bossBarHud.makeBar(_hp);
                _introDone = true;
-               if(!this._noParalyze)
+               if(!_noParalyze)
                {
                   PlayState.player.paralyze(false);
                }
@@ -110,7 +110,7 @@ package
       
       override public function hurt(param1:Number) : void
       {
-         if(!this._vulnerable)
+         if(!_vulnerable)
          {
             param1 = -10;
             super.hurt(param1);
