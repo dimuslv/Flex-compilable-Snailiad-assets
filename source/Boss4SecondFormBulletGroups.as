@@ -8,9 +8,9 @@ package
       
       private static const MAX_WEAPON:int = 2;
       
-      public var groups:Array;
+      public var groups:Array = new Array();
       
-      public var bulletLists:Array;
+      public var bulletLists:Array = new Array();
       
       override public function destroy() : void
       {
@@ -29,9 +29,6 @@ package
       
       public function Boss4SecondFormBulletGroups() : void
       {
-         groups = new Array();
-         bulletLists = new Array();
-         super();
          for (var i:int = 0; i < MAX_WEAPON; i++)
          {
             groups[i] = new FlxGroup();

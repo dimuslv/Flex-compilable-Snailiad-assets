@@ -37,7 +37,6 @@ package
       
       public function BossBarHud() : void
       {
-         super();
          _border = new FlxSprite();
          _bg = new FlxSprite();
          _bar = new FlxSprite();
