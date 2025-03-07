@@ -34,7 +34,7 @@ package
       
       public function getNumber() : int
       {
-         return this._number;
+         return _number;
       }
       
       override public function update() : void

@@ -4,40 +4,33 @@ package
    
    public class AiTriggerPool extends FlxGroup
    {
-      public var triggers:Array;
+      public var triggers:Array = new Array();
       
       private const MAX_TRIGGERS:int = 250;
       
       override public function destroy() : void
       {
-         var _loc1_:String = null;
-         for(_loc1_ in this.triggers)
+         for(var i:String in triggers)
          {
-            this.triggers[_loc1_].destroy();
+            triggers[i].destroy();
          }
          super.destroy();
       }
       
       public function AiTriggerPool() : void
       {
-         this.triggers = new Array();
-         super();
-         var _loc1_:int = 0;
-         while(_loc1_ < this.MAX_TRIGGERS)
+         for (var i:int = 0; i < MAX_TRIGGERS; i++)
          {
-            this.triggers[_loc1_] = new AiTrigger();
-            add(this.triggers[_loc1_]);
-            _loc1_++;
+            triggers[i] = new AiTrigger();
+            add(triggers[i]);
          }
       }
       
       public function destroyAll() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < this.MAX_TRIGGERS)
+         for (var i:int = 0; i < MAX_TRIGGERS; i++)
          {
-            this.triggers[_loc1_].kill();
-            _loc1_++;
+            triggers[i].kill();
          }
       }
       
