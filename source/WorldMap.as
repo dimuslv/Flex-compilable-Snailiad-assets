@@ -4,10 +4,10 @@ package
    
    public class WorldMap
    {
-      [Embed(source="data/map_sky.txt",mimeType="application/octet-stream")] private const WorldMapSkyTxt:Class;
-      [Embed(source="data/map_bg.txt",mimeType="application/octet-stream")] private const WorldMapBgTxt:Class;
-      [Embed(source="data/map_fg.txt",mimeType="application/octet-stream")] private const WorldMapFgTxt:Class;
-      [Embed(source="data/map_sp.txt",mimeType="application/octet-stream")] private const WorldMapSpTxt:Class;
+      [Embed(source="data/bin/map_sky.txt",mimeType="application/octet-stream")] private const WorldMapSkyTxt:Class;
+      [Embed(source="data/bin/map_bg.txt",mimeType="application/octet-stream")] private const WorldMapBgTxt:Class;
+      [Embed(source="data/bin/map_fg.txt",mimeType="application/octet-stream")] private const WorldMapFgTxt:Class;
+      [Embed(source="data/bin/map_sp.txt",mimeType="application/octet-stream")] private const WorldMapSpTxt:Class;
       
 	  private static const FG_OFFSET:int = 1000;
       

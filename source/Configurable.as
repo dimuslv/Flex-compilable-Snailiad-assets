@@ -4,7 +4,7 @@ package
    
    public class Configurable
    {
-      [Embed(source = 'data/configXmlFile.txt',mimeType="application/octet-stream")] private var configXmlFile:Class;
+      [Embed(source = 'data/bin/configXmlFile.txt',mimeType="application/octet-stream")] private var configXmlFile:Class;
       
       private var _xml:XML;
       
