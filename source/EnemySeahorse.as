@@ -60,15 +60,15 @@ package
       {
          if(PlayState.player && PlayState.player._insaneMode)
          {
-            this.MOVE_TIME = 1.3;
-            this.X_RADIUS = 130;
-            this.Y_RADIUS = 40;
+            MOVE_TIME = 1.3;
+            X_RADIUS = 130;
+            Y_RADIUS = 40;
          }
          else if(PlayState.player && PlayState.player._hardMode)
          {
-            this.MOVE_TIME = 1.9;
-            this.X_RADIUS = 140;
-            this.Y_RADIUS = 50;
+            MOVE_TIME = 1.9;
+            X_RADIUS = 140;
+            Y_RADIUS = 50;
          }
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE,true);
          loadGraphic(Art.EnemySeahorse,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -76,9 +76,9 @@ package
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this.originX = param1;
-         this.originY = param2;
-         this.elapsed = this.MOVE_TIME;
+         originX = param1;
+         originY = param2;
+         elapsed = MOVE_TIME;
          addAnimation("normal",[0]);
          play("normal");
          active = true;
@@ -98,11 +98,11 @@ package
       override public function triggerAi3() : void
       {
          _aiTriggerTimeout -= FlxG.elapsed;
-         if(this._aiTriggerTimeout > 0)
+         if(_aiTriggerTimeout > 0)
          {
             return;
          }
-         _aiTriggerTimeout = this.AI_TRIGGER_TIMEOUT;
+         _aiTriggerTimeout = AI_TRIGGER_TIMEOUT;
          elapsed = 0;
          originX = x;
          originY = y;
@@ -129,56 +129,56 @@ package
       
       public function updatePosition() : void
       {
-         if(this.mode == MODE_WAIT)
+         if(mode == MODE_WAIT)
          {
             return;
          }
-         var _loc1_:Number = this.normalizedSigmoid(this.elapsed / this.MOVE_TIME);
-         switch(this.mode)
+         var _loc1_:Number = normalizedSigmoid(elapsed / MOVE_TIME);
+         switch(mode)
          {
             case MODE_COS_UP_LEFT:
-               x = this.originX - this.X_RADIUS * _loc1_;
-               y = this.originY - this.Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
+               x = originX - X_RADIUS * _loc1_;
+               y = originY - Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
                break;
             case MODE_COS_DOWN_LEFT:
-               x = this.originX - this.X_RADIUS * _loc1_;
-               y = this.originY + this.Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
+               x = originX - X_RADIUS * _loc1_;
+               y = originY + Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
                break;
             case MODE_COS_UP_RIGHT:
-               x = this.originX + this.X_RADIUS * _loc1_;
-               y = this.originY - this.Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
+               x = originX + X_RADIUS * _loc1_;
+               y = originY - Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
                break;
             case MODE_COS_DOWN_RIGHT:
-               x = this.originX + this.X_RADIUS * _loc1_;
-               y = this.originY + this.Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
+               x = originX + X_RADIUS * _loc1_;
+               y = originY + Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
                break;
             case MODE_SEMICIRCLE_LEFT_UP:
-               x = this.originX - this.Y_RADIUS * Math.sin(_loc1_ * Math.PI);
-               y = this.originY - this.Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
+               x = originX - Y_RADIUS * Math.sin(_loc1_ * Math.PI);
+               y = originY - Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
                if(_loc1_ > 0.5)
                {
                   facing = RIGHT;
                }
                break;
             case MODE_SEMICIRCLE_LEFT_DOWN:
-               x = this.originX - this.Y_RADIUS * Math.sin(_loc1_ * Math.PI);
-               y = this.originY + this.Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
+               x = originX - Y_RADIUS * Math.sin(_loc1_ * Math.PI);
+               y = originY + Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
                if(_loc1_ > 0.5)
                {
                   facing = RIGHT;
                }
                break;
             case MODE_SEMICIRCLE_RIGHT_UP:
-               x = this.originX + this.Y_RADIUS * Math.sin(_loc1_ * Math.PI);
-               y = this.originY - this.Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
+               x = originX + Y_RADIUS * Math.sin(_loc1_ * Math.PI);
+               y = originY - Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
                if(_loc1_ > 0.5)
                {
                   facing = LEFT;
                }
                break;
             case MODE_SEMICIRCLE_RIGHT_DOWN:
-               x = this.originX + this.Y_RADIUS * Math.sin(_loc1_ * Math.PI);
-               y = this.originY + this.Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
+               x = originX + Y_RADIUS * Math.sin(_loc1_ * Math.PI);
+               y = originY + Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
                if(_loc1_ > 0.5)
                {
                   facing = LEFT;
@@ -196,8 +196,8 @@ package
          if(onScreen())
          {
             elapsed += FlxG.elapsed;
-            this.updatePosition();
-            if(this.elapsed >= this.MOVE_TIME)
+            updatePosition();
+            if(elapsed >= MOVE_TIME)
             {
                elapsed = 0;
                originX = x;

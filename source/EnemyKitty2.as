@@ -50,8 +50,8 @@ package
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this.hopNum = param1 % HOP_TIMEOUTS.length;
-         this.hopTimeout = HOP_TIMEOUTS[this.hopNum];
+         hopNum = param1 % HOP_TIMEOUTS.length;
+         hopTimeout = HOP_TIMEOUTS[hopNum];
          addAnimation("normal",[0]);
          addAnimation("up",[1]);
          addAnimation("down",[2]);
@@ -96,18 +96,18 @@ package
          if(onScreen())
          {
             shotTimeout -= FlxG.elapsed;
-            if(this.attacking && this.shotTimeout < 0 && this.shots >= 0)
+            if(attacking && shotTimeout < 0 && shots >= 0)
             {
-               --this.shots;
+               --shots;
                shotTimeout = SHOT_TIMEOUT;
-               this.shoot(Math.PI - Math.PI * 0.6 * this.shots / MAX_SHOTS);
+               shoot(Math.PI - Math.PI * 0.6 * shots / MAX_SHOTS);
             }
-            if(this.shots <= 0)
+            if(shots <= 0)
             {
                hopTimeout -= FlxG.elapsed;
-               if(this.hopTimeout < 0)
+               if(hopTimeout < 0)
                {
-                  if(!this.attacking && this.nextAttack == 0)
+                  if(!attacking && nextAttack == 0)
                   {
                      attacking = true;
                      shots = MAX_SHOTS;
@@ -116,22 +116,22 @@ package
                   }
                   else
                   {
-                     --this.nextAttack;
+                     --nextAttack;
                      attacking = false;
                      if(x > PlayState.player.x)
                      {
                         velocity.x = -120;
-                        velocity.y = -310 * HOP_HEIGHT[this.hopNum];
+                        velocity.y = -310 * HOP_HEIGHT[hopNum];
                      }
                      else
                      {
                         velocity.x = 120;
-                        velocity.y = -310 * HOP_HEIGHT[this.hopNum];
+                        velocity.y = -310 * HOP_HEIGHT[hopNum];
                      }
                   }
-                  ++this.hopNum;
+                  ++hopNum;
                   hopNum %= HOP_TIMEOUTS.length;
-                  hopTimeout = HOP_TIMEOUTS[this.hopNum];
+                  hopTimeout = HOP_TIMEOUTS[hopNum];
                }
             }
          }

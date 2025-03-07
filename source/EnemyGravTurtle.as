@@ -46,7 +46,7 @@ package
       {
          if(PlayState.player && PlayState.player._hardMode)
          {
-            this.WALKSPEED *= 1.9;
+            WALKSPEED *= 1.9;
          }
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE,true);
          loadGraphic(Art.EnemyGravTurtle,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -54,11 +54,11 @@ package
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this.elapsed = 0;
-         this.jumpTimeoutIndex = y / 16;
-         this.jumpTimeoutIndex %= JUMP_TIMEOUT.length;
-         this.jumpTimeout = JUMP_TIMEOUT[this.jumpTimeoutIndex];
-         this.flipTimeout = 99999999;
+         elapsed = 0;
+         jumpTimeoutIndex = y / 16;
+         jumpTimeoutIndex %= JUMP_TIMEOUT.length;
+         jumpTimeout = JUMP_TIMEOUT[jumpTimeoutIndex];
+         flipTimeout = 99999999;
          if(param3)
          {
             facing = LEFT;
@@ -76,12 +76,12 @@ package
          if(PlayState.player.y < y)
          {
             play("up");
-            velocity.y = -this.WALKSPEED;
+            velocity.y = -WALKSPEED;
          }
          else
          {
             play("down");
-            velocity.y = this.WALKSPEED;
+            velocity.y = WALKSPEED;
          }
       }
       
@@ -103,11 +103,11 @@ package
          if(onScreen())
          {
             jumpTimeout -= FlxG.elapsed;
-            if(this.jumpTimeout < 0)
+            if(jumpTimeout < 0)
             {
-               ++this.jumpTimeoutIndex;
+               ++jumpTimeoutIndex;
                jumpTimeoutIndex %= JUMP_TIMEOUT.length;
-               jumpTimeout = JUMP_TIMEOUT[this.jumpTimeoutIndex];
+               jumpTimeout = JUMP_TIMEOUT[jumpTimeoutIndex];
                flipTimeout = FLIP_TIMEOUT;
                if(facing == RIGHT)
                {
@@ -120,7 +120,7 @@ package
                Sfx.playJump1();
             }
             flipTimeout -= FlxG.elapsed;
-            if(this.flipTimeout < 0)
+            if(flipTimeout < 0)
             {
                flipTimeout = 9999999;
                if(facing == RIGHT)
@@ -135,19 +135,19 @@ package
                }
             }
             upDownTimeout -= FlxG.elapsed;
-            if(this.upDownTimeout <= 0)
+            if(upDownTimeout <= 0)
             {
                upDownTimeout = UPDOWN_TIMEOUT;
-               if(this.facingUp && PlayState.player.y > y)
+               if(facingUp && PlayState.player.y > y)
                {
-                  velocity.y = this.WALKSPEED;
+                  velocity.y = WALKSPEED;
                   facingUp = false;
                   play("down");
                }
-               else if(!this.facingUp && PlayState.player.y < y)
+               else if(!facingUp && PlayState.player.y < y)
                {
                   facingUp = true;
-                  velocity.y = -this.WALKSPEED;
+                  velocity.y = -WALKSPEED;
                   play("up");
                }
             }
@@ -161,14 +161,14 @@ package
       override public function hitBottom(param1:FlxObject, param2:Number) : void
       {
          facingUp = true;
-         velocity.y = -this.WALKSPEED;
+         velocity.y = -WALKSPEED;
          play("up");
       }
       
       override public function hitTop(param1:FlxObject, param2:Number) : void
       {
          facingUp = false;
-         velocity.y = this.WALKSPEED;
+         velocity.y = WALKSPEED;
          play("down");
       }
    }

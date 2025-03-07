@@ -46,8 +46,8 @@ package
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this.moveTimeoutIndex = int(param1 / 16 + param2 / 8) % MOVE_TIMEOUT.length;
-         this.moveTimeout = MOVE_TIMEOUT[this.moveTimeoutIndex];
+         moveTimeoutIndex = int(param1 / 16 + param2 / 8) % MOVE_TIMEOUT.length;
+         moveTimeout = MOVE_TIMEOUT[moveTimeoutIndex];
          addAnimation("normal",[0,1],10,true);
          play("normal");
          acceleration.y = -1200;
@@ -83,14 +83,14 @@ package
          if(onScreen())
          {
             moveTimeout -= FlxG.elapsed;
-            if(this.moveTimeout < 0 && Math.abs(PlayState.player.x - x) < this.REACT_DISTANCE)
+            if(moveTimeout < 0 && Math.abs(PlayState.player.x - x) < REACT_DISTANCE)
             {
-               ++this.moveTimeoutIndex;
+               ++moveTimeoutIndex;
                moveTimeoutIndex %= MOVE_TIMEOUT.length;
-               moveTimeout = MOVE_TIMEOUT[this.moveTimeoutIndex];
-               if(FlxU.random() > 0.9 && this.landed)
+               moveTimeout = MOVE_TIMEOUT[moveTimeoutIndex];
+               if(FlxU.random() > 0.9 && landed)
                {
-                  velocity.y = 130 * JUMP_HEIGHT[this.moveTimeoutIndex];
+                  velocity.y = 130 * JUMP_HEIGHT[moveTimeoutIndex];
                   landed = false;
                }
                if(FlxU.random() > 0.77)
@@ -107,11 +107,11 @@ package
                }
             }
             shotTimeout -= FlxG.elapsed;
-            if(this.shotTimeout <= 0)
+            if(shotTimeout <= 0)
             {
                shotTimeout = SHOT_TIMEOUT;
                var _loc1_:Number = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
-               this.shoot(_loc1_);
+               shoot(_loc1_);
             }
          }
          if(velocity.x < 0)

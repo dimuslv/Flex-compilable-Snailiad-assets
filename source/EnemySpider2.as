@@ -43,8 +43,8 @@ package
          {
             globalMoveIndex = 0;
          }
-         this.moveIndex = globalMoveIndex;
-         this.moveTimeout = WAIT_TABLE[this.moveIndex] * MOVE_TIMEOUT;
+         moveIndex = globalMoveIndex;
+         moveTimeout = WAIT_TABLE[moveIndex] * MOVE_TIMEOUT;
          addAnimation("normal",[0,1],8,true);
          play("normal");
       }
@@ -63,11 +63,11 @@ package
          if(onScreen())
          {
             moveTimeout -= FlxG.elapsed;
-            if(this.moveTimeout < 0)
+            if(moveTimeout < 0)
             {
-               ++this.moveIndex;
+               ++moveIndex;
                moveIndex %= WAIT_TABLE.length;
-               moveTimeout = WAIT_TABLE[this.moveIndex] * MOVE_TIMEOUT;
+               moveTimeout = WAIT_TABLE[moveIndex] * MOVE_TIMEOUT;
                var _loc1_:Number = Math.atan2(PlayState.player.y - y,PlayState.player.x - x);
                velocity.x = Math.cos(_loc1_) * SPEED;
                velocity.y = Math.sin(_loc1_) * SPEED;

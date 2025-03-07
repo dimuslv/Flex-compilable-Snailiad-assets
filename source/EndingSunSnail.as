@@ -25,7 +25,7 @@ package
       override public function update() : void
       {
          _elapsed += FlxG.elapsed;
-         offset.y = Math.sin(this._elapsed * 2) * 3;
+         offset.y = Math.sin(_elapsed * 2) * 3;
          super.update();
       }
    }

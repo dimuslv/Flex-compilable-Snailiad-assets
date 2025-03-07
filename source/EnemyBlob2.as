@@ -34,14 +34,14 @@ package
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this.hopNum = param1 % HOP_TIMEOUTS.length;
+         hopNum = param1 % HOP_TIMEOUTS.length;
          if(PlayState.player && PlayState.player._hardMode)
          {
-            this.hopTimeout = HOP_TIMEOUTS[this.hopNum] / 2;
+            hopTimeout = HOP_TIMEOUTS[hopNum] / 2;
          }
          else
          {
-            this.hopTimeout = HOP_TIMEOUTS[this.hopNum];
+            hopTimeout = HOP_TIMEOUTS[hopNum];
          }
          addAnimation("normal",[4]);
          addAnimation("quiver",[5,6,7,4,5,6,7,4,5,5,6,6,7,7,4,4,5,5,6,6,7,7,4],12,false);
@@ -63,27 +63,27 @@ package
          if(onScreen())
          {
             hopTimeout -= FlxG.elapsed;
-            if(this.hopTimeout < 0)
+            if(hopTimeout < 0)
             {
                if(x > PlayState.player.x)
                {
                   velocity.x = -100;
-                  velocity.y = -240 * HOP_HEIGHT[this.hopNum];
+                  velocity.y = -240 * HOP_HEIGHT[hopNum];
                }
                else
                {
                   velocity.x = 100;
-                  velocity.y = -240 * HOP_HEIGHT[this.hopNum];
+                  velocity.y = -240 * HOP_HEIGHT[hopNum];
                }
-               ++this.hopNum;
+               ++hopNum;
                hopNum %= HOP_TIMEOUTS.length;
                if(PlayState.player && PlayState.player._hardMode)
                {
-                  hopTimeout = HOP_TIMEOUTS[this.hopNum] / 2;
+                  hopTimeout = HOP_TIMEOUTS[hopNum] / 2;
                }
                else
                {
-                  hopTimeout = HOP_TIMEOUTS[this.hopNum];
+                  hopTimeout = HOP_TIMEOUTS[hopNum];
                }
             }
          }

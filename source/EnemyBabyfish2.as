@@ -36,8 +36,8 @@ package
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this.originY = param2;
-         this.moveTimeout = MOVE_TIMEOUT / 4;
+         originY = param2;
+         moveTimeout = MOVE_TIMEOUT / 4;
          addAnimation("normal",[0]);
          addAnimation("swim",[2,3,2,3,2,3,2,2,3,3,2,2,2,3,3,3,3,3,2],12,false);
          play("swim");
@@ -61,11 +61,11 @@ package
             return;
          }
          elapsed += FlxG.elapsed;
-         y = this.originY + 4 * Math.sin(this.elapsed * 2);
+         y = originY + 4 * Math.sin(elapsed * 2);
          if(onScreen())
          {
             moveTimeout -= FlxG.elapsed;
-            if(this.moveTimeout < 0)
+            if(moveTimeout < 0)
             {
                if(PlayState.player.x < x)
                {

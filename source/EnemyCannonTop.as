@@ -42,9 +42,9 @@ package
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this.originX = param1;
-         this.originY = param2;
-         this.actualCannon = PlayState.enemies.add(new EnemyCannon(param1 - 16,param2 - 16));
+         originX = param1;
+         originY = param2;
+         actualCannon = PlayState.enemies.add(new EnemyCannon(param1 - 16,param2 - 16));
          solid = false;
          addAnimation("normal",[0]);
          play("normal");
@@ -66,7 +66,7 @@ package
       
       override public function kill() : void
       {
-         this.actualCannon.kill();
+         actualCannon.kill();
          super.kill();
       }
       

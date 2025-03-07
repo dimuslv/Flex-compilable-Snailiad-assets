@@ -42,9 +42,9 @@ package
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this.originX = param1;
-         this.originY = param2;
-         this.updatePosition();
+         originX = param1;
+         originY = param2;
+         updatePosition();
          addAnimation("normal",[0]);
          play("normal");
          active = true;
@@ -57,8 +57,8 @@ package
       
       public function updatePosition() : void
       {
-         x = this.originX + 96 * Math.sin(this.theta * 1.2);
-         y = this.originY - 24 * this.elapsed;
+         x = originX + 96 * Math.sin(theta * 1.2);
+         y = originY - 24 * elapsed;
       }
       
       override public function update() : void
@@ -69,15 +69,15 @@ package
          }
          theta += FlxG.elapsed;
          elapsed += FlxG.elapsed;
-         this.updatePosition();
+         updatePosition();
          if(onScreen())
          {
             shotTimeout -= FlxG.elapsed;
-            if(this.shotTimeout <= 0)
+            if(shotTimeout <= 0)
             {
                shotTimeout = SHOT_TIMEOUT;
                var _loc1_:Number = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
-               this.shoot(_loc1_);
+               shoot(_loc1_);
             }
          }
          super.update();

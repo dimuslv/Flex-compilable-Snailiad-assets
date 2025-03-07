@@ -14,7 +14,7 @@ package
       public function DamageNumberPool() : void
       {
          var _loc1_:int = 0;
-         while(_loc1_ < this.MAX_NUMBER)
+         while(_loc1_ < MAX_NUMBER)
          {
             add(new DamageNumber());
             _loc1_++;

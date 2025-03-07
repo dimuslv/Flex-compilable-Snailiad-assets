@@ -32,7 +32,7 @@ package
       
       override public function update() : void
       {
-         alpha = Utility.integrate(alpha,this._targetAlpha,ALPHA_RATE,FlxG.elapsed,0.025);
+         alpha = Utility.integrate(alpha,_targetAlpha,ALPHA_RATE,FlxG.elapsed,0.025);
          super.update();
       }
    }

@@ -52,8 +52,8 @@ package
             _loc4_++;
          }
          play(_loc3_[0]);
-         this.aimTimeout = x / 38.2 % 0.25;
-         this.shotTimeout = SHOT_TIMEOUT + x / 96 % 6;
+         aimTimeout = x / 38.2 % 0.25;
+         shotTimeout = SHOT_TIMEOUT + x / 96 % 6;
       }
       
       public function aimCannon() : void
@@ -62,13 +62,13 @@ package
          _loc1_ = int((_loc1_ + Math.PI / 8) * 4 / Math.PI) / 4 * Math.PI;
          velx = Math.cos(_loc1_) * SHOT_SPEED;
          vely = Math.sin(_loc1_) * SHOT_SPEED;
-         if(this.velx < -0.1)
+         if(velx < -0.1)
          {
-            if(this.vely < -0.1)
+            if(vely < -0.1)
             {
                play("left_up");
             }
-            else if(this.vely > 0.1)
+            else if(vely > 0.1)
             {
                play("left_down");
             }
@@ -77,13 +77,13 @@ package
                play("left");
             }
          }
-         else if(this.velx > 0.1)
+         else if(velx > 0.1)
          {
-            if(this.vely < -0.1)
+            if(vely < -0.1)
             {
                play("right_up");
             }
-            else if(this.vely > 0.1)
+            else if(vely > 0.1)
             {
                play("right_down");
             }
@@ -92,11 +92,11 @@ package
                play("right");
             }
          }
-         else if(this.vely < -0.1)
+         else if(vely < -0.1)
          {
             play("up");
          }
-         else if(this.vely > 0.1)
+         else if(vely > 0.1)
          {
             play("down");
          }
@@ -123,18 +123,18 @@ package
             return;
          }
          aimTimeout -= FlxG.elapsed;
-         if(this.aimTimeout < 0)
+         if(aimTimeout < 0)
          {
             aimTimeout = AIM_TIMEOUT;
-            this.aimCannon();
+            aimCannon();
          }
          if(onScreen())
          {
             shotTimeout -= FlxG.elapsed * 0.6;
-            if(this.shotTimeout < 0)
+            if(shotTimeout < 0)
             {
                shotTimeout = SHOT_TIMEOUT;
-               this.shoot(this.velx,this.vely);
+               shoot(velx,vely);
             }
          }
          super.update();

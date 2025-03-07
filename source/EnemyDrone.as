@@ -68,15 +68,15 @@ package
       {
          if(PlayState.player && PlayState.player._insaneMode)
          {
-            this.MOVE_TIME = 1.3;
-            this.X_RADIUS = 110;
-            this.Y_RADIUS = 60;
+            MOVE_TIME = 1.3;
+            X_RADIUS = 110;
+            Y_RADIUS = 60;
          }
          else if(PlayState.player && PlayState.player._hardMode)
          {
-            this.MOVE_TIME = 1.6;
-            this.X_RADIUS = 100;
-            this.Y_RADIUS = 50;
+            MOVE_TIME = 1.6;
+            X_RADIUS = 100;
+            Y_RADIUS = 50;
          }
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE,true);
          loadGraphic(Art.EnemyDrone,true,true,IMG_WIDTH,IMG_HEIGHT);
@@ -84,9 +84,9 @@ package
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this.originX = param1;
-         this.originY = param2;
-         this.elapsed = this.MOVE_TIME;
+         originX = param1;
+         originY = param2;
+         elapsed = MOVE_TIME;
          addAnimation("normal",[0,1],18,true);
          play("normal");
          active = true;
@@ -105,44 +105,44 @@ package
       
       public function updatePosition() : void
       {
-         if(this.mode == MODE_WAIT || this.mode == MODE_ATTACK)
+         if(mode == MODE_WAIT || mode == MODE_ATTACK)
          {
             return;
          }
-         var _loc1_:Number = this.normalizedSigmoid(this.elapsed / this.MOVE_TIME);
-         switch(this.mode)
+         var _loc1_:Number = normalizedSigmoid(elapsed / MOVE_TIME);
+         switch(mode)
          {
             case MODE_COS_UP_LEFT:
-               x = this.originX - this.X_RADIUS * _loc1_;
-               y = this.originY - this.Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
+               x = originX - X_RADIUS * _loc1_;
+               y = originY - Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
                break;
             case MODE_COS_DOWN_LEFT:
-               x = this.originX - this.X_RADIUS * _loc1_;
-               y = this.originY + this.Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
+               x = originX - X_RADIUS * _loc1_;
+               y = originY + Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
                break;
             case MODE_COS_UP_RIGHT:
-               x = this.originX + this.X_RADIUS * _loc1_;
-               y = this.originY - this.Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
+               x = originX + X_RADIUS * _loc1_;
+               y = originY - Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
                break;
             case MODE_COS_DOWN_RIGHT:
-               x = this.originX + this.X_RADIUS * _loc1_;
-               y = this.originY + this.Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
+               x = originX + X_RADIUS * _loc1_;
+               y = originY + Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
                break;
             case MODE_SEMICIRCLE_LEFT_UP:
-               x = this.originX - this.Y_RADIUS * Math.sin(_loc1_ * Math.PI);
-               y = this.originY - this.Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
+               x = originX - Y_RADIUS * Math.sin(_loc1_ * Math.PI);
+               y = originY - Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
                break;
             case MODE_SEMICIRCLE_LEFT_DOWN:
-               x = this.originX - this.Y_RADIUS * Math.sin(_loc1_ * Math.PI);
-               y = this.originY + this.Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
+               x = originX - Y_RADIUS * Math.sin(_loc1_ * Math.PI);
+               y = originY + Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
                break;
             case MODE_SEMICIRCLE_RIGHT_UP:
-               x = this.originX + this.Y_RADIUS * Math.sin(_loc1_ * Math.PI);
-               y = this.originY - this.Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
+               x = originX + Y_RADIUS * Math.sin(_loc1_ * Math.PI);
+               y = originY - Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
                break;
             case MODE_SEMICIRCLE_RIGHT_DOWN:
-               x = this.originX + this.Y_RADIUS * Math.sin(_loc1_ * Math.PI);
-               y = this.originY + this.Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
+               x = originX + Y_RADIUS * Math.sin(_loc1_ * Math.PI);
+               y = originY + Y_RADIUS * (1 - Math.cos(_loc1_ * Math.PI));
 			   break;
          }
       }
@@ -200,32 +200,32 @@ package
             {
                facing = RIGHT;
             }
-            if(this.mode == MODE_ATTACK)
+            if(mode == MODE_ATTACK)
             {
                shotTimeout -= FlxG.elapsed;
-               if(this.shotTimeout <= 0)
+               if(shotTimeout <= 0)
                {
                   shotTimeout = SHOT_TIMEOUT;
-                  --this.shotNum;
-                  if(this.shotNum <= 0)
+                  --shotNum;
+                  if(shotNum <= 0)
                   {
                      mode = MODE_WAIT;
-                     this.shootDonuts();
+                     shootDonuts();
                   }
-                  this.shoot();
+                  shoot();
                }
                elapsed += FlxG.elapsed;
             }
             else
             {
                elapsed += FlxG.elapsed;
-               this.updatePosition();
-               if(this.elapsed >= this.MOVE_TIME && this.mode != MODE_WAIT)
+               updatePosition();
+               if(elapsed >= MOVE_TIME && mode != MODE_WAIT)
                {
                   mode = MODE_ATTACK;
                   shotNum = SHOT_NUM;
                }
-               else if(this.mode == MODE_WAIT)
+               else if(mode == MODE_WAIT)
                {
                   elapsed = 0;
                   originX = x;

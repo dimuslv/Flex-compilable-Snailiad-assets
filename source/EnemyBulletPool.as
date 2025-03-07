@@ -16,13 +16,13 @@ package
       {
          var _loc1_:String = null;
          super.destroy();
-         for(_loc1_ in this.groups)
+         for(_loc1_ in groups)
          {
-            this.groups[_loc1_] = null;
+            groups[_loc1_] = null;
          }
-         for(_loc1_ in this.bulletLists)
+         for(_loc1_ in bulletLists)
          {
-            this.bulletLists[_loc1_] = null;
+            bulletLists[_loc1_] = null;
          }
          groups = null;
          bulletLists = null;
@@ -31,18 +31,18 @@ package
       public function EnemyBulletPool() : void
       {
          var _loc1_:int = 0;
-         while(_loc1_ < this.MAX_WEAPON)
+         while(_loc1_ < MAX_WEAPON)
          {
-            this.groups[_loc1_] = new FlxGroup();
-            this.bulletLists[_loc1_] = new Array();
+            groups[_loc1_] = new FlxGroup();
+            bulletLists[_loc1_] = new Array();
             var _loc2_:int = 0;
-            while(_loc2_ < this.MAX_BULLET[_loc1_])
+            while(_loc2_ < MAX_BULLET[_loc1_])
             {
-               this.bulletLists[_loc1_][_loc2_] = this.makeBullet(_loc1_);
-               this.groups[_loc1_].add(this.bulletLists[_loc1_][_loc2_]);
+               bulletLists[_loc1_][_loc2_] = makeBullet(_loc1_);
+               groups[_loc1_].add(bulletLists[_loc1_][_loc2_]);
                _loc2_++;
             }
-            add(this.groups[_loc1_]);
+            add(groups[_loc1_]);
             _loc1_++;
          }
       }
@@ -50,12 +50,12 @@ package
       public function destroyAll() : void
       {
          var _loc1_:int = 0;
-         while(_loc1_ < this.MAX_WEAPON)
+         while(_loc1_ < MAX_WEAPON)
          {
             var _loc2_:int = 0;
-            while(_loc2_ < this.MAX_BULLET[_loc1_])
+            while(_loc2_ < MAX_BULLET[_loc1_])
             {
-               this.bulletLists[_loc1_][_loc2_].kill();
+               bulletLists[_loc1_][_loc2_].kill();
                _loc2_++;
             }
             _loc1_++;
@@ -90,7 +90,7 @@ package
       
       public function getBullet(param1:int) : EnemyBullet
       {
-         return this.groups[param1].getFirstAvail();
+         return groups[param1].getFirstAvail();
       }
       
       override public function update() : void

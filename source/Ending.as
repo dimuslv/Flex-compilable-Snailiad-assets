@@ -80,13 +80,13 @@ package
       {
          FlxG.mouse.hide();
          FlxG.noPause = true;
-         this.setMode(MODE_WAIT_START);
-         this._targetAlpha = new Array();
-         this._moonSprite = new Array();
-         this.bg = new EndingStarBg();
-         add(this.bg);
-         this._dialogueLayer = new EndingDialogue();
-         add(this._dialogueLayer);
+         setMode(MODE_WAIT_START);
+         _targetAlpha = new Array();
+         _moonSprite = new Array();
+         bg = new EndingStarBg();
+         add(bg);
+         _dialogueLayer = new EndingDialogue();
+         add(_dialogueLayer);
          FlxG.fade.stop();
          FlxG.flash.start(4278190080,1.4);
          if(PlayState.player.getHelixFragments() == 30)
@@ -110,9 +110,9 @@ package
       
       public function updateEndingWaitStart() : void
       {
-         if(this._modeElapsed > 0.8)
+         if(_modeElapsed > 0.8)
          {
-            this.setMode(MODE_DIALOGUE);
+            setMode(MODE_DIALOGUE);
          }
       }
       
@@ -121,162 +121,162 @@ package
          var _loc1_:int = 0;
          while(_loc1_ < 4)
          {
-            this._moonSprite[_loc1_].setTargetAlpha(0);
-            this._moonSprite[_loc1_].alpha = 0;
+            _moonSprite[_loc1_].setTargetAlpha(0);
+            _moonSprite[_loc1_].alpha = 0;
             _loc1_++;
          }
          FlxG.fade.stop();
          FlxG.flash.start(4294967295,1.4);
-         this.bg.setTargetRgb(228,0,96);
+         bg.setTargetRgb(228,0,96);
          _sunSnailSprite = new EndingSunSnail(264,140);
-         add(this._sunSnailSprite);
+         add(_sunSnailSprite);
       }
       
       public function updateEndingDialogue() : void
       {
          var _loc1_:int = 0;
-         if(!this._modeInitialized)
+         if(!_modeInitialized)
          {
             _modeInitialized = true;
             FlxG.fade.stop();
             FlxG.flash.start(4278190080,1.4);
-            this.bg.setRgb(0,0,0);
+            bg.setRgb(0,0,0);
             if(PlayState.player.getHelixFragments() == 30)
             {
-               this.bg.setTargetRgb(21,0,0);
+               bg.setTargetRgb(21,0,0);
             }
             else
             {
-               this.bg.setTargetRgb(0,48,48);
+               bg.setTargetRgb(0,48,48);
             }
-            this.bg.fadeIn();
+            bg.fadeIn();
             _dialogueMode = 0;
             _loc1_ = 0;
             while(_loc1_ < 4)
             {
-               this._moonSprite[_loc1_] = new EndingMoonSnail(FlxG.width / 2 + 30,FlxG.height / 2 + 10,_loc1_);
-               add(this._moonSprite[_loc1_]);
+               _moonSprite[_loc1_] = new EndingMoonSnail(FlxG.width / 2 + 30,FlxG.height / 2 + 10,_loc1_);
+               add(_moonSprite[_loc1_]);
                _loc1_++;
             }
          }
-         if(this._modeElapsed > 0.9 && !this._ending1SongPlaying)
+         if(_modeElapsed > 0.9 && !_ending1SongPlaying)
          {
             Sfx.playEnding1();
             _ending1SongPlaying = true;
          }
-         if(this._modeElapsed < 5)
+         if(_modeElapsed < 5)
          {
-            this._moonSprite[0].setTargetAlpha(1);
+            _moonSprite[0].setTargetAlpha(1);
          }
-         else if(this._modeElapsed < 10.5)
+         else if(_modeElapsed < 10.5)
          {
-            this._moonSprite[0].setTargetAlpha(0);
-            this._moonSprite[1].setTargetAlpha(1);
+            _moonSprite[0].setTargetAlpha(0);
+            _moonSprite[1].setTargetAlpha(1);
          }
-         else if(this._modeElapsed < 16.5)
+         else if(_modeElapsed < 16.5)
          {
-            this._moonSprite[1].setTargetAlpha(0);
-            this._moonSprite[2].setTargetAlpha(1);
+            _moonSprite[1].setTargetAlpha(0);
+            _moonSprite[2].setTargetAlpha(1);
          }
-         else if(this._modeElapsed < 23)
+         else if(_modeElapsed < 23)
          {
             if(PlayState.player.getHelixFragments() == 30)
             {
-               if(!this._hasSunSnailAppeared)
+               if(!_hasSunSnailAppeared)
                {
                   _hasSunSnailAppeared = true;
-                  FlxG.fade.start(4294967295,0.6,this.makeSunSnail);
+                  FlxG.fade.start(4294967295,0.6,makeSunSnail);
                }
             }
             else
             {
-               this._moonSprite[2].setTargetAlpha(0);
-               this._moonSprite[3].setTargetAlpha(1);
-               if(this._moonSprite[3].alpha == 1 && !this._zzz)
+               _moonSprite[2].setTargetAlpha(0);
+               _moonSprite[3].setTargetAlpha(1);
+               if(_moonSprite[3].alpha == 1 && !_zzz)
                {
                   _zzz = new EndingZzz(277,155);
-                  this._zzz.scrollFactor.x = this._zzz.scrollFactor.y = 0;
-                  add(this._zzz);
+                  _zzz.scrollFactor.x = _zzz.scrollFactor.y = 0;
+                  add(_zzz);
                }
             }
          }
-         if(this._modeElapsed > 0.6 && this._dialogueMode <= 1)
+         if(_modeElapsed > 0.6 && _dialogueMode <= 1)
          {
-            if(this._dialogueMode < 1)
+            if(_dialogueMode < 1)
             {
                _dialogueMode = 1;
-               this._dialogueLayer.start("     AND SO...\n");
+               _dialogueLayer.start("     AND SO...\n");
             }
          }
-         if(this._modeElapsed > 6 && this._dialogueMode <= 1)
+         if(_modeElapsed > 6 && _dialogueMode <= 1)
          {
-            this._dialogueLayer.setAlpha(7 - this._modeElapsed);
+            _dialogueLayer.setAlpha(7 - _modeElapsed);
          }
-         if(this._modeElapsed > 7 && this._dialogueMode <= 2)
+         if(_modeElapsed > 7 && _dialogueMode <= 2)
          {
-            if(this._dialogueMode < 2)
+            if(_dialogueMode < 2)
             {
                _dialogueMode = 2;
                if(PlayState.player.getHelixFragments() == 30)
                {
-                  this._dialogueLayer.start("   MOON SNAIL ONCE AGAIN\n" + "     REGAINED HIS LIGHT\n");
+                  _dialogueLayer.start("   MOON SNAIL ONCE AGAIN\n" + "     REGAINED HIS LIGHT\n");
                }
                else
                {
-                  this._dialogueLayer.start("   DEFEATED, MOON SNAIL\n" + "          LOST HIS POWERS\n");
+                  _dialogueLayer.start("   DEFEATED, MOON SNAIL\n" + "          LOST HIS POWERS\n");
                }
             }
          }
-         if(this._modeElapsed > 13 && this._dialogueMode <= 2)
+         if(_modeElapsed > 13 && _dialogueMode <= 2)
          {
-            this._dialogueLayer.setAlpha(14 - this._modeElapsed);
+            _dialogueLayer.setAlpha(14 - _modeElapsed);
          }
-         if(this._modeElapsed > 14 && this._dialogueMode <= 3)
+         if(_modeElapsed > 14 && _dialogueMode <= 3)
          {
-            if(this._dialogueMode < 3)
+            if(_dialogueMode < 3)
             {
                _dialogueMode = 3;
                if(PlayState.player.getHelixFragments() == 30)
                {
-                  this._dialogueLayer.start("     AND BECAME THE\n" + "  LEGENDARY SUN SNAIL\n");
+                  _dialogueLayer.start("     AND BECAME THE\n" + "  LEGENDARY SUN SNAIL\n");
                }
                else
                {
-                  this._dialogueLayer.start("BUT COULD HE EVER BECOME\n" + "      SUN SNAIL ONCE MORE?\n");
+                  _dialogueLayer.start("BUT COULD HE EVER BECOME\n" + "      SUN SNAIL ONCE MORE?\n");
                }
             }
          }
-         if(this._modeElapsed > 25)
+         if(_modeElapsed > 25)
          {
-            this._dialogueLayer.setAlpha(26 - this._modeElapsed);
+            _dialogueLayer.setAlpha(26 - _modeElapsed);
          }
          if(FlxG.keys.justPressed("ESCAPE"))
          {
             Sfx.stopEnding1();
-            this._dialogueLayer.setAlpha(0);
-            this.setMode(MODE_WAIT_CREDITS);
-            this._moonSprite[0].setTargetAlpha(0);
-            this._moonSprite[1].setTargetAlpha(0);
-            this._moonSprite[2].setTargetAlpha(0);
-            this._moonSprite[3].setTargetAlpha(0);
+            _dialogueLayer.setAlpha(0);
+            setMode(MODE_WAIT_CREDITS);
+            _moonSprite[0].setTargetAlpha(0);
+            _moonSprite[1].setTargetAlpha(0);
+            _moonSprite[2].setTargetAlpha(0);
+            _moonSprite[3].setTargetAlpha(0);
             return;
          }
-         if(this._modeElapsed > 26)
+         if(_modeElapsed > 26)
          {
-            this.setMode(MODE_WAIT_CREDITS);
+            setMode(MODE_WAIT_CREDITS);
          }
       }
       
       public function updateEndingWaitCredits() : void
       {
-         if(!this._modeInitialized)
+         if(!_modeInitialized)
          {
             _modeInitialized = true;
             FlxG.fade.start(4278190080,1.9);
          }
-         if(this._modeElapsed > 2)
+         if(_modeElapsed > 2)
          {
-            this.setMode(MODE_CREDITS);
+            setMode(MODE_CREDITS);
          }
       }
       
@@ -284,117 +284,117 @@ package
       {
          var _loc1_:StarLayer = null;
          var _loc2_:int = 0;
-         if(!this._modeInitialized)
+         if(!_modeInitialized)
          {
             _modeInitialized = true;
             Music.playEnding2();
             _loc1_ = new StarLayer();
             _loc1_.makeStars();
             add(_loc1_);
-            if(this._sunSnailSprite)
+            if(_sunSnailSprite)
             {
-               this._sunSnailSprite.kill();
-               remove(this._sunSnailSprite);
+               _sunSnailSprite.kill();
+               remove(_sunSnailSprite);
             }
-            this.bg.setAlpha(0);
-            this.bg.setRgb(0,0,48);
-            this.bg.setTargetRgb(0,0,48);
+            bg.setAlpha(0);
+            bg.setRgb(0,0,48);
+            bg.setTargetRgb(0,0,48);
             FlxG.fade.stop();
             FlxG.flash.start(4278190080,1.4);
             _loc2_ = 0;
             while(_loc2_ < 4)
             {
-               remove(this._moonSprite[_loc2_]);
-               this._moonSprite[_loc2_] = null;
+               remove(_moonSprite[_loc2_]);
+               _moonSprite[_loc2_] = null;
                _loc2_++;
             }
-            if(this._zzz)
+            if(_zzz)
             {
-               remove(this._zzz);
+               remove(_zzz);
                _zzz = null;
             }
             _credits = new EndingCredits();
-            add(this._credits);
+            add(_credits);
             _creditsDoneTimer = CREDITS_DONE_TIME;
          }
          if(FlxG.keys.justPressed("ESCAPE"))
          {
-            this._credits.scrollDone = true;
+            _credits.scrollDone = true;
             _creditsDoneTimer = 0;
          }
-         if(this._credits.scrollDone)
+         if(_credits.scrollDone)
          {
             _creditsDoneTimer -= FlxG.elapsed;
-            if(this._creditsDoneTimer < 0)
+            if(_creditsDoneTimer < 0)
             {
-               this.setMode(MODE_WAIT_PICTURE);
+               setMode(MODE_WAIT_PICTURE);
             }
          }
       }
       
       public function updateEndingWaitPicture() : void
       {
-         if(!this._modeInitialized)
+         if(!_modeInitialized)
          {
             _modeInitialized = true;
             FlxG.fade.start(4278190080,1.9);
          }
-         if(this._modeElapsed > 2)
+         if(_modeElapsed > 2)
          {
-            this.setMode(MODE_PICTURE);
+            setMode(MODE_PICTURE);
          }
       }
       
       public function updateEndingPicture() : void
       {
-         if(!this._modeInitialized)
+         if(!_modeInitialized)
          {
             _modeInitialized = true;
-            if(this._credits)
+            if(_credits)
             {
-               remove(this._credits);
+               remove(_credits);
                _credits = null;
             }
             pictureLayer = new EndingGroup(PlayState.endingNum);
-            add(this.pictureLayer);
+            add(pictureLayer);
             FlxG.fade.stop();
             FlxG.flash.start(4278190080,1.4);
          }
-         if(this._modeElapsed > 3 && !this._finalText)
+         if(_modeElapsed > 3 && !_finalText)
          {
             _finalText = new FlxText(-4,FlxG.height / 2 - 30,FlxG.width);
-            this._finalText.font = Fonts.normal;
-            this._finalText.size = 20;
-            this._finalText.color = 16777215;
-            this._finalText.shadow = 4278190081;
-            this._finalText.setShadowDistance(2);
-            this._finalText.outline = true;
-            this._finalText.outlineColor = 4278190080;
-            this._finalText.alignment = "center";
-            this._finalText.text = "CONGRATULATIONS!!\n\n" + "ITEMS COLLECTED: " + PlayState.player.getPercentComplete() + "%\n" + "CLEAR TIME: " + GameTimeDisplay.formatExact(PlayState.player.clearTime.value) + "\n";
-            this._finalText.scrollFactor.x = this._finalText.scrollFactor.y = 0;
-            this._finalText.alpha = 0;
-            add(this._finalText);
+            _finalText.font = Fonts.normal;
+            _finalText.size = 20;
+            _finalText.color = 16777215;
+            _finalText.shadow = 4278190081;
+            _finalText.setShadowDistance(2);
+            _finalText.outline = true;
+            _finalText.outlineColor = 4278190080;
+            _finalText.alignment = "center";
+            _finalText.text = "CONGRATULATIONS!!\n\n" + "ITEMS COLLECTED: " + PlayState.player.getPercentComplete() + "%\n" + "CLEAR TIME: " + GameTimeDisplay.formatExact(PlayState.player.clearTime.value) + "\n";
+            _finalText.scrollFactor.x = _finalText.scrollFactor.y = 0;
+            _finalText.alpha = 0;
+            add(_finalText);
             PauseLayer.hideMe = true;
          }
-         if(this._finalText)
+         if(_finalText)
          {
-            var _loc1_:Number = this._modeElapsed - 3;
+            var _loc1_:Number = _modeElapsed - 3;
             if(_loc1_ > 1)
             {
                _loc1_ = 1;
                if(Utility.justPressedAnyKey() || FlxG.mouse.justPressed())
                {
-                  this.setMode(MODE_END);
+                  setMode(MODE_END);
                }
             }
-            this._finalText.alpha = _loc1_;
+            _finalText.alpha = _loc1_;
          }
       }
       
       public function updateEndingEnd() : void
       {
-         if(!this._modeInitialized)
+         if(!_modeInitialized)
          {
             PauseLayer.hideMe = false;
             _modeInitialized = true;
@@ -403,7 +403,7 @@ package
             FlxG.music.fadeOut(ENDING_FADE_TIMEOUT);
          }
          endingFadeTimeout -= FlxG.elapsed;
-         if(this.endingFadeTimeout < 0)
+         if(endingFadeTimeout < 0)
          {
             FlxG.noPause = false;
             PlayState.endEnding();
@@ -414,31 +414,31 @@ package
       {
          elapsed += FlxG.elapsed;
          _modeElapsed += FlxG.elapsed;
-         switch(this._mode)
+         switch(_mode)
          {
             case MODE_NONE:
-               this.setMode(MODE_WAIT_START);
+               setMode(MODE_WAIT_START);
                break;
             case MODE_WAIT_START:
-               this.updateEndingWaitStart();
+               updateEndingWaitStart();
                break;
             case MODE_DIALOGUE:
-               this.updateEndingDialogue();
+               updateEndingDialogue();
                break;
             case MODE_WAIT_CREDITS:
-               this.updateEndingWaitCredits();
+               updateEndingWaitCredits();
                break;
             case MODE_CREDITS:
-               this.updateEndingCredits();
+               updateEndingCredits();
                break;
             case MODE_WAIT_PICTURE:
-               this.updateEndingWaitPicture();
+               updateEndingWaitPicture();
                break;
             case MODE_PICTURE:
-               this.updateEndingPicture();
+               updateEndingPicture();
                break;
             case MODE_END:
-               this.updateEndingEnd();
+               updateEndingEnd();
 			   break;
          }
          super.update();

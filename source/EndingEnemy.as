@@ -145,7 +145,7 @@ package
          super(param1,param2);
          active = true;
          scrollFactor.x = scrollFactor.y = 0;
-         this._type = param3;
+         _type = param3;
          if(param3 == TYPE_NONE)
          {
             width = 0;
@@ -326,38 +326,38 @@ package
             case TYPE_SHELLBREAKER_HAND1:
                loadGraphic(Art.Boss1Hand,true,true,24,24);
                addAnimation("normal",[5]);
-               this._hand = true;
-               this._handTheta = 2 * Math.PI / 6 * 1;
+               _hand = true;
+               _handTheta = 2 * Math.PI / 6 * 1;
                break;
             case TYPE_SHELLBREAKER_HAND2:
                loadGraphic(Art.Boss1Hand,true,true,24,24);
                addAnimation("normal",[5]);
-               this._hand = true;
-               this._handTheta = 2 * Math.PI / 6 * 2;
+               _hand = true;
+               _handTheta = 2 * Math.PI / 6 * 2;
                break;
             case TYPE_SHELLBREAKER_HAND3:
                loadGraphic(Art.Boss1Hand,true,true,24,24);
                addAnimation("normal",[5]);
-               this._hand = true;
-               this._handTheta = 2 * Math.PI / 6 * 3;
+               _hand = true;
+               _handTheta = 2 * Math.PI / 6 * 3;
                break;
             case TYPE_SHELLBREAKER_HAND4:
                loadGraphic(Art.Boss1Hand,true,true,24,24);
                addAnimation("normal",[5]);
-               this._hand = true;
-               this._handTheta = 2 * Math.PI / 6 * 4;
+               _hand = true;
+               _handTheta = 2 * Math.PI / 6 * 4;
                break;
             case TYPE_SHELLBREAKER_HAND5:
                loadGraphic(Art.Boss1Hand,true,true,24,24);
                addAnimation("normal",[5]);
-               this._hand = true;
-               this._handTheta = 2 * Math.PI / 6 * 5;
+               _hand = true;
+               _handTheta = 2 * Math.PI / 6 * 5;
                break;
             case TYPE_SHELLBREAKER_HAND6:
                loadGraphic(Art.Boss1Hand,true,true,24,24);
                addAnimation("normal",[5]);
-               this._hand = true;
-               this._handTheta = 2 * Math.PI / 6 * 6;
+               _hand = true;
+               _handTheta = 2 * Math.PI / 6 * 6;
                break;
             case TYPE_STOMPY_LFOOT:
                loadGraphic(Art.Boss2Foot,true,true,190,156);
@@ -427,7 +427,7 @@ package
          }
          play("normal");
          x = FlxG.width / 2 - width / 2 + param1;
-         if(this._hand)
+         if(_hand)
          {
             y += 24 - height / 2;
          }
@@ -439,26 +439,26 @@ package
          {
             kill();
          }
-         if(this._hand)
+         if(_hand)
          {
             _handTheta += FlxG.elapsed * 4;
-            offset.x = 48 * Math.cos(this._handTheta);
-            offset.y = 48 * Math.sin(this._handTheta);
+            offset.x = 48 * Math.cos(_handTheta);
+            offset.y = 48 * Math.sin(_handTheta);
          }
-         if(this._type == TYPE_FLOATSPIKE)
+         if(_type == TYPE_FLOATSPIKE)
          {
             _handTheta += FlxG.elapsed * 0.8;
-            offset.y = 2 * Math.sin(this._handTheta);
+            offset.y = 2 * Math.sin(_handTheta);
          }
-         if(this._type == TYPE_FLOATSPIKE2)
+         if(_type == TYPE_FLOATSPIKE2)
          {
             _handTheta += FlxG.elapsed * 0.85;
-            offset.y = 2 * Math.cos(this._handTheta);
+            offset.y = 2 * Math.cos(_handTheta);
          }
-         if(this._type == TYPE_DANDELION || this._type == TYPE_BALLOON)
+         if(_type == TYPE_DANDELION || _type == TYPE_BALLOON)
          {
             _handTheta += FlxG.elapsed * 0.8;
-            offset.x = 36 * Math.cos(this._handTheta);
+            offset.x = 36 * Math.cos(_handTheta);
          }
          super.update();
       }

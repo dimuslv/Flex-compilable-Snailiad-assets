@@ -52,7 +52,7 @@ package
          {
             return;
          }
-         this.fixBlocks.rememberBlock(param1,param2,PlayState.worldMap.bgmap.getTile(param1,param2),PlayState.worldMap.fgmap.getTile(param1,param2));
+         fixBlocks.rememberBlock(param1,param2,PlayState.worldMap.bgmap.getTile(param1,param2),PlayState.worldMap.fgmap.getTile(param1,param2));
          PlayState.worldMap.bgmap.setTile(param1,param2,SOLIDBLANK);
       }
       
@@ -65,38 +65,38 @@ package
       public function Door(param1:int, param2:int, param3:int, param4:int, param5:int = 0) : void
       {
          super(param1,param2,false);
-         this._doorType = param4;
-         this.fixBlocks = new FixBlocks();
-         this._bossNum = param5;
-         if(this._bossNum != 0 && PlayState.isBossDead(this._bossNum))
+         _doorType = param4;
+         fixBlocks = new FixBlocks();
+         _bossNum = param5;
+         if(_bossNum != 0 && PlayState.isBossDead(_bossNum))
          {
-            this._doorType = 0;
-            this._bossNum = 0;
+            _doorType = 0;
+            _bossNum = 0;
          }
          PlayState.doors.push(this);
-         this._openTime = 0;
-         this._willOpen = false;
-         switch(this._doorType)
+         _openTime = 0;
+         _willOpen = false;
+         switch(_doorType)
          {
             case 0:
-               this._defense = 0;
+               _defense = 0;
                break;
             case 1:
-               this._defense = 10;
+               _defense = 10;
                break;
             case 2:
-               this._defense = 20;
+               _defense = 20;
                break;
             case 3:
-               this._defense = 190;
+               _defense = 190;
                break;
             case 4:
-               this._defense = 44;
+               _defense = 44;
 			   break;
          }
-         if(this._bossNum == 4 && !PlayState.bossRush)
+         if(_bossNum == 4 && !PlayState.bossRush)
          {
-            this.BOSSDOOR_OPEN_DELAY = 11.3;
+            BOSSDOOR_OPEN_DELAY = 11.3;
          }
          var _loc6_:int = 0;
          var _loc7_:int = 0;
@@ -108,13 +108,13 @@ package
                height = LEFTRIGHTDOOR_HEIGHT;
                param1 -= LEFTRIGHTDOOR_OFS_X;
                param2 -= LEFTRIGHTDOOR_OFS_Y;
-               if(this._bossNum != 0)
+               if(_bossNum != 0)
                {
-                  this.blank(param1 / 16,param2 / 16);
-                  this.blank(param1 / 16,param2 / 16 + 1);
-                  this.blank(param1 / 16,param2 / 16 + 2);
+                  blank(param1 / 16,param2 / 16);
+                  blank(param1 / 16,param2 / 16 + 1);
+                  blank(param1 / 16,param2 / 16 + 2);
                }
-               _loc6_ = this._doorType * 2;
+               _loc6_ = _doorType * 2;
                _loc7_ = 10;
                break;
             case SIDE_LEFT:
@@ -123,13 +123,13 @@ package
                height = LEFTRIGHTDOOR_HEIGHT;
                param1 -= LEFTRIGHTDOOR_OFS_X;
                param2 -= LEFTRIGHTDOOR_OFS_Y;
-               if(this._bossNum != 0 && this._bossNum != 5)
+               if(_bossNum != 0 && _bossNum != 5)
                {
-                  this.blank(param1 / 16,param2 / 16);
-                  this.blank(param1 / 16,param2 / 16 + 1);
-                  this.blank(param1 / 16,param2 / 16 + 2);
+                  blank(param1 / 16,param2 / 16);
+                  blank(param1 / 16,param2 / 16 + 1);
+                  blank(param1 / 16,param2 / 16 + 2);
                }
-               _loc6_ = this._doorType * 2 + 1;
+               _loc6_ = _doorType * 2 + 1;
                _loc7_ = 10;
                break;
             case SIDE_TOP:
@@ -138,7 +138,7 @@ package
                height = TOPBOTTOMDOOR_HEIGHT;
                param1 -= TOPBOTTOMDOOR_OFS_X;
                param2 -= TOPBOTTOMDOOR_OFS_Y;
-               _loc6_ = this._doorType * 12 + 6;
+               _loc6_ = _doorType * 12 + 6;
                _loc7_ = 1;
                break;
             case SIDE_BOTTOM:
@@ -147,7 +147,7 @@ package
                height = TOPBOTTOMDOOR_HEIGHT;
                param1 -= TOPBOTTOMDOOR_OFS_X;
                param2 -= TOPBOTTOMDOOR_OFS_Y;
-               _loc6_ = this._doorType * 12;
+               _loc6_ = _doorType * 12;
                _loc7_ = 1;
                break;
             default:
@@ -160,7 +160,7 @@ package
          addAnimation("close",[5 * _loc7_ + _loc6_,4 * _loc7_ + _loc6_,3 * _loc7_ + _loc6_,2 * _loc7_ + _loc6_,1 * _loc7_ + _loc6_,0 * _loc7_ + _loc6_],30,false);
          fixed = true;
          solid = true;
-         this._waiting = false;
+         _waiting = false;
          if(PlayState.player)
          {
             var _loc8_:int = PlayState.player.x - param1;
@@ -169,7 +169,7 @@ package
             {
                visible = false;
                solid = false;
-               this._waiting = true;
+               _waiting = true;
             }
          }
          play("normal");
@@ -189,21 +189,21 @@ package
          {
             return;
          }
-         if(this._bossNum != 0 && PlayState.isBossDead(this._bossNum) && this._doorType == 3)
+         if(_bossNum != 0 && PlayState.isBossDead(_bossNum) && _doorType == 3)
          {
             _doorType = 0;
             _bossNum = 0;
-            _openTime = this.BOSSDOOR_OPEN_DELAY;
+            _openTime = BOSSDOOR_OPEN_DELAY;
             _willOpen = true;
          }
          _openTime -= FlxG.elapsed;
-         if(this._willOpen && this._openTime <= 0)
+         if(_willOpen && _openTime <= 0)
          {
-            this.fixBlocks.repairAll();
-            this.hurt(2000);
+            fixBlocks.repairAll();
+            hurt(2000);
             _willOpen = false;
          }
-         if(this._waiting)
+         if(_waiting)
          {
             _loc1_ = PlayState.player.x - x;
             _loc2_ = PlayState.player.y - y;
@@ -237,19 +237,19 @@ package
       
       override public function kill() : void
       {
-         this.fixBlocks.repairAll();
+         fixBlocks.repairAll();
          super.kill();
       }
       
       override public function hurt(param1:Number) : void
       {
-         if(this._waiting)
+         if(_waiting)
          {
             return;
          }
-         if(param1 <= this._defense)
+         if(param1 <= _defense)
          {
-            if(this._bossNum == 0)
+            if(_bossNum == 0)
             {
                Sfx.playEnemyPingOffArmor();
             }
@@ -259,7 +259,7 @@ package
          solid = false;
          dead = true;
          Sfx.playOpenDoor();
-         this.fixBlocks.repairAll();
+         fixBlocks.repairAll();
       }
    }
 }

@@ -34,7 +34,7 @@ package
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this.moveTimeout = 0;
+         moveTimeout = 0;
          addAnimation("normal",[0]);
          play("normal");
          addAnimation("flying",[1,2],6,true);
@@ -54,7 +54,7 @@ package
          if(onScreen())
          {
             moveTimeout -= FlxG.elapsed;
-            if(this.moveTimeout < 0 && Math.abs(PlayState.player.x - x) < REACT_DISTANCE)
+            if(moveTimeout < 0 && Math.abs(PlayState.player.x - x) < REACT_DISTANCE)
             {
                if(PlayState.player.x < x)
                {

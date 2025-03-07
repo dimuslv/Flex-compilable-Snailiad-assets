@@ -43,41 +43,41 @@ package
       
       public function Dialogue() : void
       {
-         this._active = false;
-         this._msg = new FlxText(20,20,FlxG.width);
-         this._msg.font = Fonts.normal;
-         this._msg.size = 20;
-         this._msg.color = 16777215;
-         this._msg.shadow = 1;
-         this._msg.alignment = "left";
-         this._msg.scrollFactor.x = this._msg.scrollFactor.y = 0;
-         this._msg.visible = false;
-         this._bg = new FlxSprite(16,20);
-         this._bg.loadGraphic(Art.Dialogue,true,true,IMG_WIDTH,IMG_HEIGHT);
-         this._bg.visible = false;
-         this._bg.addAnimation("normal",[0,1,2,3],60,false);
-         this._bg.addAnimation("alt",[4,5,6,7],60,false);
-         this._bg.exists = true;
-         this._bg.solid = false;
-         this._bg.scrollFactor.x = this._bg.scrollFactor.y = 0;
-         add(this._bg);
-         add(this._msg);
+         _active = false;
+         _msg = new FlxText(20,20,FlxG.width);
+         _msg.font = Fonts.normal;
+         _msg.size = 20;
+         _msg.color = 16777215;
+         _msg.shadow = 1;
+         _msg.alignment = "left";
+         _msg.scrollFactor.x = _msg.scrollFactor.y = 0;
+         _msg.visible = false;
+         _bg = new FlxSprite(16,20);
+         _bg.loadGraphic(Art.Dialogue,true,true,IMG_WIDTH,IMG_HEIGHT);
+         _bg.visible = false;
+         _bg.addAnimation("normal",[0,1,2,3],60,false);
+         _bg.addAnimation("alt",[4,5,6,7],60,false);
+         _bg.exists = true;
+         _bg.solid = false;
+         _bg.scrollFactor.x = _bg.scrollFactor.y = 0;
+         add(_bg);
+         add(_msg);
       }
       
       public function start(param1:String, param2:int, param3:Boolean = false, param4:Number = 1.0, param5:int = 0) : void
       {
-         if(this._active)
+         if(_active)
          {
             return;
          }
          _diaNum = param5;
-         this._bg.play(param3 ? "alt" : "normal");
-         this._msg.text = "";
+         _bg.play(param3 ? "alt" : "normal");
+         _msg.text = "";
          _fullMsg = param1;
          _active = true;
-         this.moveWindow(true);
-         this._msg.visible = true;
-         this._bg.visible = true;
+         moveWindow(true);
+         _msg.visible = true;
+         _bg.visible = true;
          _oldLetters = 0;
          _voice = param2;
          _elapsed = 0;
@@ -97,24 +97,24 @@ package
          }
          if(param1)
          {
-            this._bg.y = _loc2_;
+            _bg.y = _loc2_;
          }
          else
          {
-            this._bg.y = (this._bg.y * 9 + _loc2_) / 10;
+            _bg.y = (_bg.y * 9 + _loc2_) / 10;
          }
-         this._msg.y = this._bg.y;
+         _msg.y = _bg.y;
       }
       
       public function stop(param1:int = -1) : void
       {
-         if(param1 != this._diaNum && param1 != -1)
+         if(param1 != _diaNum && param1 != -1)
          {
             return;
          }
          _active = false;
-         this._msg.visible = false;
-         this._bg.visible = false;
+         _msg.visible = false;
+         _bg.visible = false;
       }
       
       override public function update() : void
@@ -127,20 +127,20 @@ package
          }
          _elapsed += FlxG.elapsed;
          super.update();
-         if(this._active)
+         if(_active)
          {
-            this.moveWindow(false);
-            _loc1_ = this._elapsed / (this.LETTER_DELAY / this._speed);
-            if(_loc1_ != this._oldLetters)
+            moveWindow(false);
+            _loc1_ = _elapsed / (LETTER_DELAY / _speed);
+            if(_loc1_ != _oldLetters)
             {
-               _loc2_ = this._fullMsg.charAt(_loc1_).toLowerCase();
+               _loc2_ = _fullMsg.charAt(_loc1_).toLowerCase();
                if(_loc2_ >= "a" && _loc2_ <= "z")
                {
-                  Sfx.playDialogueLetter(this._voice);
+                  Sfx.playDialogueLetter(_voice);
                }
                _oldLetters = _loc1_;
             }
-            this._msg.text = this._fullMsg.substr(0,_loc1_);
+            _msg.text = _fullMsg.substr(0,_loc1_);
          }
       }
    }

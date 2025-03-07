@@ -34,26 +34,26 @@ package
          }
          _globalHashIndex += 53;
          _globalHashIndex %= NOISE.length;
-         this._localHashIndex = _globalHashIndex;
+         _localHashIndex = _globalHashIndex;
          _globalCipherIndex += 59;
          _globalCipherIndex %= NOISE.length;
-         this._localCipherIndex = _globalCipherIndex;
-         this.value = param1;
+         _localCipherIndex = _globalCipherIndex;
+         value = param1;
       }
       
       public function set value(param1:Boolean) : void
       {
          _localCipherIndex += 67;
          _localCipherIndex %= NOISE.length;
-         _value = NOISE[(this._localCipherIndex + (param1 ? 409 : 0)) % NOISE.length];
+         _value = NOISE[(_localCipherIndex + (param1 ? 409 : 0)) % NOISE.length];
          _localHashIndex += 113;
          _localHashIndex %= NOISE.length;
-         _hash = this._value ^ NOISE[this._localHashIndex];
+         _hash = _value ^ NOISE[_localHashIndex];
       }
       
       public function get value() : Boolean
       {
-         if((this._value ^ NOISE[this._localHashIndex]) != this._hash)
+         if((_value ^ NOISE[_localHashIndex]) != _hash)
          {
             FlxG.cheated = true;
             if(dieOnCheating)
@@ -61,7 +61,7 @@ package
                return false;
             }
          }
-         return this._value == NOISE[(this._localCipherIndex + 409) % NOISE.length];
+         return _value == NOISE[(_localCipherIndex + 409) % NOISE.length];
       }
    }
 }

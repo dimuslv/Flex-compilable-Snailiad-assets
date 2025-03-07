@@ -17,9 +17,9 @@ package
          super(param1,param2,9999,0,0);
          solid = false;
          visible = false;
-         this.listPos = (param1 * 4 + param2 * 20) % this.TIMEOUTS.length;
-         this.timeout = this.TIMEOUTS[this.listPos] * this.BASE_TIMEOUT;
-         this.timeout %= param1 % 20;
+         listPos = (param1 * 4 + param2 * 20) % TIMEOUTS.length;
+         timeout = TIMEOUTS[listPos] * BASE_TIMEOUT;
+         timeout %= param1 % 20;
       }
       
       override public function collideTerrain() : Boolean
@@ -39,11 +39,11 @@ package
             return;
          }
          timeout -= FlxG.elapsed;
-         if(this.timeout < 0)
+         if(timeout < 0)
          {
-            ++this.listPos;
-            listPos %= this.TIMEOUTS.length;
-            timeout = this.TIMEOUTS[this.listPos] * this.BASE_TIMEOUT;
+            ++listPos;
+            listPos %= TIMEOUTS.length;
+            timeout = TIMEOUTS[listPos] * BASE_TIMEOUT;
             var _loc1_:Number = -FlxG.scroll.x + FlxU.random() * FlxG.width;
             var _loc2_:Number = -FlxG.scroll.y + FlxG.height - 8;
             var _loc3_:Enemy = new EnemyDandelion(_loc1_,_loc2_);

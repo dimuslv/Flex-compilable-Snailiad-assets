@@ -42,12 +42,12 @@ package
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this.hopNum = param1 % HOP_TIMEOUTS.length;
-         this.hopTimeout = HOP_TIMEOUTS[this.hopNum];
+         hopNum = param1 % HOP_TIMEOUTS.length;
+         hopTimeout = HOP_TIMEOUTS[hopNum];
          addAnimation("normal",[12]);
          addAnimation("quiver",[12,13,14,15,12,13,14,15,12,12,13,13,14,14,15,15,12,12,12,13,13,13,14,14,14,15],12,false);
          play("normal");
-         this.shotTimeout = SHOT_TIMEOUT;
+         shotTimeout = SHOT_TIMEOUT;
          acceleration.y = 1200;
       }
       
@@ -67,24 +67,24 @@ package
          if(onScreen())
          {
             hopTimeout -= FlxG.elapsed;
-            if(this.hopTimeout < 0)
+            if(hopTimeout < 0)
             {
                if(x > PlayState.player.x)
                {
                   velocity.x = -100;
-                  velocity.y = -200 * HOP_HEIGHT[this.hopNum];
+                  velocity.y = -200 * HOP_HEIGHT[hopNum];
                }
                else
                {
                   velocity.x = 100;
-                  velocity.y = -200 * HOP_HEIGHT[this.hopNum];
+                  velocity.y = -200 * HOP_HEIGHT[hopNum];
                }
-               ++this.hopNum;
+               ++hopNum;
                hopNum %= HOP_TIMEOUTS.length;
-               hopTimeout = HOP_TIMEOUTS[this.hopNum];
+               hopTimeout = HOP_TIMEOUTS[hopNum];
             }
             shotTimeout -= FlxG.elapsed;
-            if(this.shotTimeout <= 0)
+            if(shotTimeout <= 0)
             {
                shotTimeout = SHOT_TIMEOUT;
                Sfx.playShot7();

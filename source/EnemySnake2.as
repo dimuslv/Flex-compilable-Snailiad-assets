@@ -40,7 +40,7 @@ package
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this.moveTimeout = MOVE_TIMEOUT;
+         moveTimeout = MOVE_TIMEOUT;
          addAnimation("normal",[0,1],10,true);
          play("normal");
          acceleration.y = 1200;
@@ -76,7 +76,7 @@ package
          if(onScreen())
          {
             moveTimeout -= FlxG.elapsed;
-            if(this.moveTimeout < 0 && Math.abs(PlayState.player.x - x) < this.REACT_DISTANCE)
+            if(moveTimeout < 0 && Math.abs(PlayState.player.x - x) < REACT_DISTANCE)
             {
                if(PlayState.player.x < x)
                {
@@ -89,11 +89,11 @@ package
                moveTimeout = MOVE_TIMEOUT;
             }
             shotTimeout -= FlxG.elapsed;
-            if(this.shotTimeout <= 0)
+            if(shotTimeout <= 0)
             {
                shotTimeout = SHOT_TIMEOUT;
                var _loc1_:Number = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
-               this.shoot(_loc1_);
+               shoot(_loc1_);
             }
          }
          if(velocity.x < 0)

@@ -30,8 +30,8 @@ package
          loadGraphic(Art.EnemyBulletDonut,true,true,WIDTH,HEIGHT);
          width = WIDTH;
          height = HEIGHT;
-         this._originX = x;
-         this._originY = y;
+         _originX = x;
+         _originY = y;
          addAnimation("normal",[0,1,2,3],30,true);
       }
       
@@ -68,8 +68,8 @@ package
          }
          super.update();
          _elapsed += FlxG.elapsed;
-         x = this._originX + this._velocityR * this._elapsed * Math.cos(this._elapsed * this._velocityTheta + this._offsetTheta);
-         y = this._originY + this._velocityR * this._elapsed * Math.sin(this._elapsed * this._velocityTheta + this._offsetTheta);
+         x = _originX + _velocityR * _elapsed * Math.cos(_elapsed * _velocityTheta + _offsetTheta);
+         y = _originY + _velocityR * _elapsed * Math.sin(_elapsed * _velocityTheta + _offsetTheta);
          if(!onScreen())
          {
             kill();

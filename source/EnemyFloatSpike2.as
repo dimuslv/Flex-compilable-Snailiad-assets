@@ -32,8 +32,8 @@ package
          param2 -= IMG_OFS_Y;
          addAnimation("normal",[0]);
          play("normal");
-         this.theta = param1 * param1 * 1.1 + param2 * 3.2 + 0.7;
-         this.originY = param2;
+         theta = param1 * param1 * 1.1 + param2 * 3.2 + 0.7;
+         originY = param2;
       }
       
       override public function touch(param1:Player) : void
@@ -48,7 +48,7 @@ package
             return;
          }
          theta += FlxG.elapsed;
-         y = this.originY + Math.sin(this.theta) * 1.8;
+         y = originY + Math.sin(theta) * 1.8;
          super.update();
       }
    }

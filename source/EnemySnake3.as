@@ -44,24 +44,24 @@ package
       {
          if(PlayState.player && PlayState.player._easyMode)
          {
-            this.MAX_HP *= 0.7;
-            this.Y_SPEED = 120;
+            MAX_HP *= 0.7;
+            Y_SPEED = 120;
          }
-         super(param1,param2,this.MAX_HP,DEFENSE,OFFENSE);
+         super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.EnemySnake3,true,true,IMG_WIDTH,IMG_HEIGHT);
          width = IMG_WIDTH;
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this.thetaOffsetIndex = int(x / 16 + y / 4);
-         this.thetaOffsetIndex %= THETA_OFFSET.length;
-         this.moveTimeoutIndex = int(x / 16 + y / 4);
-         this.moveTimeoutIndex %= MOVE_TIMEOUT.length;
-         this.moveTimeout = MOVE_TIMEOUT[this.moveTimeoutIndex] / 4;
+         thetaOffsetIndex = int(x / 16 + y / 4);
+         thetaOffsetIndex %= THETA_OFFSET.length;
+         moveTimeoutIndex = int(x / 16 + y / 4);
+         moveTimeoutIndex %= MOVE_TIMEOUT.length;
+         moveTimeout = MOVE_TIMEOUT[moveTimeoutIndex] / 4;
          addAnimation("normal",[0,1],10,true);
          play("normal");
-         drag.x = this.X_SPEED * 0.7;
-         drag.y = this.Y_SPEED * 0.6;
+         drag.x = X_SPEED * 0.7;
+         drag.y = Y_SPEED * 0.6;
       }
       
       override public function touch(param1:Player) : void
@@ -93,23 +93,23 @@ package
          if(onScreen())
          {
             moveTimeout -= FlxG.elapsed;
-            if(this.moveTimeout < 0 && Math.abs(PlayState.player.x - x) < this.REACT_DISTANCE && Math.abs(PlayState.player.y - y) < this.REACT_DISTANCE)
+            if(moveTimeout < 0 && Math.abs(PlayState.player.x - x) < REACT_DISTANCE && Math.abs(PlayState.player.y - y) < REACT_DISTANCE)
             {
                var _loc1_:Number = Math.atan2(PlayState.player.y - y,PlayState.player.x - x);
-               _loc1_ += THETA_OFFSET[this.thetaOffsetIndex];
-               ++this.thetaOffsetIndex;
+               _loc1_ += THETA_OFFSET[thetaOffsetIndex];
+               ++thetaOffsetIndex;
                thetaOffsetIndex %= THETA_OFFSET.length;
-               velocity.x = Math.cos(_loc1_) * this.X_SPEED;
-               velocity.y = Math.sin(_loc1_) * this.Y_SPEED;
-               ++this.moveTimeout;
+               velocity.x = Math.cos(_loc1_) * X_SPEED;
+               velocity.y = Math.sin(_loc1_) * Y_SPEED;
+               ++moveTimeout;
                moveTimeout %= MOVE_TIMEOUT.length;
-               moveTimeout = MOVE_TIMEOUT[this.moveTimeoutIndex];
+               moveTimeout = MOVE_TIMEOUT[moveTimeoutIndex];
                shotTimeout -= FlxG.elapsed;
-               if(this.shotTimeout <= 0)
+               if(shotTimeout <= 0)
                {
                   shotTimeout = SHOT_TIMEOUT;
                   _loc1_ = Math.atan2(y - PlayState.player.y,x - PlayState.player.x);
-                  this.shoot(_loc1_);
+                  shoot(_loc1_);
                }
             }
          }

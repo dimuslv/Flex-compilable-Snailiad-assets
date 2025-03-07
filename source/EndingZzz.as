@@ -23,7 +23,7 @@ package
       
       override public function update() : void
       {
-         alpha = Utility.integrate(alpha,this._targetAlpha,ALPHA_RATE,FlxG.elapsed);
+         alpha = Utility.integrate(alpha,_targetAlpha,ALPHA_RATE,FlxG.elapsed);
          super.update();
       }
    }

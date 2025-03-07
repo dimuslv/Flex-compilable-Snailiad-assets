@@ -16,9 +16,9 @@ package
       
       public function Configurable()
       {
-         var _loc1_:ByteArray = new this.configXmlFile();
+         var _loc1_:ByteArray = new configXmlFile();
          var _loc2_:String = _loc1_.readUTFBytes(_loc1_.length);
-         this._xml = new XML(_loc2_);
+         _xml = new XML(_loc2_);
       }
       
       public function getPlayerStartX(areaNum:int=0):int

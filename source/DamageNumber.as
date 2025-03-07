@@ -36,7 +36,7 @@ package
          _originY = param2;
          velocity.y = 0;
          _lifetime = DEFAULT_LIFETIME;
-         this.updatePosition();
+         updatePosition();
          _elapsed = 0;
          visible = true;
          exists = true;
@@ -46,12 +46,12 @@ package
       
       public function updatePosition() : void
       {
-         x = this._originX;
-         var _loc1_:Number = this._elapsed * 6 - 2;
-         y = this._originY + _loc1_ * _loc1_ * 10 - 10;
-         if(y > this._originY)
+         x = _originX;
+         var _loc1_:Number = _elapsed * 6 - 2;
+         y = _originY + _loc1_ * _loc1_ * 10 - 10;
+         if(y > _originY)
          {
-            y = this._originY;
+            y = _originY;
          }
       }
       
@@ -60,9 +60,9 @@ package
          if(!dead)
          {
             _elapsed += FlxG.elapsed;
-            this.updatePosition();
+            updatePosition();
             _lifetime -= FlxG.elapsed;
-            if(this._lifetime <= 0)
+            if(_lifetime <= 0)
             {
                kill();
             }

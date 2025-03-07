@@ -34,8 +34,8 @@ package
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this.hopNum = param1 % HOP_TIMEOUTS.length;
-         this.hopTimeout = HOP_TIMEOUTS[this.hopNum] / 3;
+         hopNum = param1 % HOP_TIMEOUTS.length;
+         hopTimeout = HOP_TIMEOUTS[hopNum] / 3;
          addAnimation("normal",[0]);
          addAnimation("quiver",[1,2,3,0,1,2,3,0,1,1,2,2,3,3,0,0,1,1,1,2,2,2,3,3,3,0],12,false);
          play("normal");
@@ -64,27 +64,27 @@ package
          if(onScreen())
          {
             hopTimeout -= FlxG.elapsed;
-            if(this.hopTimeout < 0)
+            if(hopTimeout < 0)
             {
                if(x > PlayState.player.x)
                {
                   velocity.x = -100;
-                  velocity.y = -240 * HOP_HEIGHT[this.hopNum];
+                  velocity.y = -240 * HOP_HEIGHT[hopNum];
                }
                else
                {
                   velocity.x = 100;
-                  velocity.y = -240 * HOP_HEIGHT[this.hopNum];
+                  velocity.y = -240 * HOP_HEIGHT[hopNum];
                }
-               ++this.hopNum;
+               ++hopNum;
                hopNum %= HOP_TIMEOUTS.length;
                if(PlayState.player && PlayState.player._hardMode)
                {
-                  hopTimeout = HOP_TIMEOUTS[this.hopNum] / 2;
+                  hopTimeout = HOP_TIMEOUTS[hopNum] / 2;
                }
                else
                {
-                  hopTimeout = HOP_TIMEOUTS[this.hopNum];
+                  hopTimeout = HOP_TIMEOUTS[hopNum];
                }
             }
          }

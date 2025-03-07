@@ -34,8 +34,8 @@ package
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this.hopNum = param1 % HOP_HEIGHT.length;
-         this._alwaysRun = param3;
+         hopNum = param1 % HOP_HEIGHT.length;
+         _alwaysRun = param3;
          addAnimation("normal",[0]);
          play("normal");
          if(x < PlayState.player.x)
@@ -64,14 +64,14 @@ package
          {
             return;
          }
-         if(this.hopTimeout < 0)
+         if(hopTimeout < 0)
          {
             if(onScreen() && FlxU.random() > 0.4)
             {
                Sfx.playSnelk();
             }
             _loc1_ = -100;
-            if(!this._alwaysRun)
+            if(!_alwaysRun)
             {
                if(x > PlayState.player.x)
                {
@@ -95,8 +95,8 @@ package
                _loc1_ = -140;
             }
             velocity.x = _loc1_;
-            velocity.y = -240 * HOP_HEIGHT[this.hopNum];
-            ++this.hopNum;
+            velocity.y = -240 * HOP_HEIGHT[hopNum];
+            ++hopNum;
             hopNum %= HOP_HEIGHT.length;
             hopTimeout = 1;
          }

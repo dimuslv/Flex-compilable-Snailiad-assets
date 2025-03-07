@@ -38,15 +38,15 @@ package
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this.originY = param2;
+         originY = param2;
          addAnimation("down",[0]);
          addAnimation("up",[0,1],20,true);
          play("up");
-         this.theta = param1 + param2 * 13.7;
+         theta = param1 + param2 * 13.7;
          velocity.x = 0;
-         this.thetaMult += Math.sin(param1 * 1.732 - param2 * 3.2);
-         this.flySpeed += Math.sin(param1 * 2.332 - param2 * 1.9) * 10;
-         this.flyAmplitude += Math.sin(param1 * 7.3 + param2) * 5;
+         thetaMult += Math.sin(param1 * 1.732 - param2 * 3.2);
+         flySpeed += Math.sin(param1 * 2.332 - param2 * 1.9) * 10;
+         flyAmplitude += Math.sin(param1 * 7.3 + param2) * 5;
       }
       
       override public function collideTerrain() : Boolean
@@ -67,7 +67,7 @@ package
          }
          if(velocity.x == 0)
          {
-            velocity.x = PlayState.player.x < x ? -this.flySpeed : this.flySpeed;
+            velocity.x = PlayState.player.x < x ? -flySpeed : flySpeed;
             if(velocity.x <= 0)
             {
                facing = RIGHT;
@@ -79,13 +79,13 @@ package
          }
          theta += FlxG.elapsed;
          var _loc1_:Number = y;
-         y = this.originY + Math.sin(this.theta * this.thetaMult) * this.flyAmplitude;
-         if(y < _loc1_ && !this.goingUp)
+         y = originY + Math.sin(theta * thetaMult) * flyAmplitude;
+         if(y < _loc1_ && !goingUp)
          {
             goingUp = true;
             play("up");
          }
-         if(y > _loc1_ && this.goingUp)
+         if(y > _loc1_ && goingUp)
          {
             goingUp = false;
             play("down");

@@ -24,18 +24,18 @@ package
       {
          x = param1;
          y = param2;
-         this._hp = param3;
-         this._defense = param4;
-         this._offense = param5;
-         this._noBoundsChecking = param6;
-         this._hurtTimeout = 0;
+         _hp = param3;
+         _defense = param4;
+         _offense = param5;
+         _noBoundsChecking = param6;
+         _hurtTimeout = 0;
       }
       
       public function touch(param1:Player) : void
       {
-         if(this._offense > 0)
+         if(_offense > 0)
          {
-            param1.hurt(this._offense);
+            param1.hurt(_offense);
          }
       }
       
@@ -51,7 +51,7 @@ package
             return;
          }
          super.update();
-         if(!this._noBoundsChecking)
+         if(!_noBoundsChecking)
          {
             if(x > PlayState.worldMap.maxX || x + width < PlayState.worldMap.minX || y > PlayState.worldMap.maxY || y + height < PlayState.worldMap.minY)
             {
@@ -59,7 +59,7 @@ package
             }
          }
          _hurtTimeout -= FlxG.elapsed;
-         if(--this._justFlashed == 0)
+         if(--_justFlashed == 0)
          {
             unFlashColor();
          }
@@ -70,16 +70,16 @@ package
          switch(param1)
          {
             case 1:
-               this.triggerAi1();
+               triggerAi1();
                break;
             case 2:
-               this.triggerAi2();
+               triggerAi2();
                break;
             case 3:
-               this.triggerAi3();
+               triggerAi3();
                break;
             case 4:
-               this.triggerAi4();
+               triggerAi4();
 			   break;
          }
       }
@@ -102,16 +102,16 @@ package
       
       public function getDefense() : int
       {
-         return this._defense;
+         return _defense;
       }
       
       override public function hurt(param1:Number) : void
       {
-         if(this._hurtTimeout > 0)
+         if(_hurtTimeout > 0)
          {
             return;
          }
-         param1 -= this._defense;
+         param1 -= _defense;
          if(param1 < 0)
          {
             param1 = 0;
@@ -128,7 +128,7 @@ package
          else
          {
             _hp -= param1;
-            if(this._hp <= 0)
+            if(_hp <= 0)
             {
                Sfx.playEnemyKilled();
                PlayState.explosionPool.boom(x,y,0,10,FlxU.random() * 3 + 1);

@@ -47,7 +47,7 @@ package
       public function EnemySpikey(param1:int, param2:int, param3:Boolean) : void
       {
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
-         this._clockwise = param3;
+         _clockwise = param3;
          loadGraphic(Art.EnemySpikey,true,true,IMG_WIDTH,IMG_HEIGHT);
          width = IMG_WIDTH;
          height = IMG_HEIGHT;
@@ -59,34 +59,34 @@ package
          addAnimation("left",[12,13,14,15],6,true);
          if(PlayState.worldMap.enemySolidAt(param1,param2 + 16))
          {
-            this.mode = MODE_BOTTOM;
-            this.vx = this._clockwise ? -SPEED : SPEED;
+            mode = MODE_BOTTOM;
+            vx = _clockwise ? -SPEED : SPEED;
             play("bottom");
          }
          else if(PlayState.worldMap.enemySolidAt(param1 + 16,param2))
          {
-            this.mode = MODE_RIGHT;
-            this.vy = this._clockwise ? SPEED : -SPEED;
+            mode = MODE_RIGHT;
+            vy = _clockwise ? SPEED : -SPEED;
             play("right");
          }
          else if(PlayState.worldMap.enemySolidAt(param1,param2 - 16))
          {
-            this.mode = MODE_TOP;
-            this.vx = this._clockwise ? SPEED : -SPEED;
+            mode = MODE_TOP;
+            vx = _clockwise ? SPEED : -SPEED;
             play("top");
          }
          else if(PlayState.worldMap.enemySolidAt(param1 - 16,param2))
          {
-            this.mode = MODE_LEFT;
-            this.vy = this._clockwise ? -SPEED : SPEED;
+            mode = MODE_LEFT;
+            vy = _clockwise ? -SPEED : SPEED;
             play("left");
          }
          else
          {
-            this.mode = MODE_FALLING;
+            mode = MODE_FALLING;
             acceleration.y = 1200;
-            this.vx = 0;
-            this.vy = 0;
+            vx = 0;
+            vy = 0;
             play("bottom");
          }
       }
@@ -103,12 +103,12 @@ package
             return;
          }
          _elapsed += FlxG.elapsed;
-         while(this._elapsed > SEC_PER_TICK)
+         while(_elapsed > SEC_PER_TICK)
          {
             _elapsed -= SEC_PER_TICK;
-            x += this.vx;
-            y += this.vy;
-            if(this.turns >= 4)
+            x += vx;
+            y += vy;
+            if(turns >= 4)
             {
                turns = 0;
                mode = MODE_FALLING;
@@ -116,9 +116,9 @@ package
                vy = 0;
                acceleration.y = 1200;
             }
-            if(this._clockwise)
+            if(_clockwise)
             {
-               switch(this.mode)
+               switch(mode)
                {
                   case MODE_BOTTOM:
                      if(!PlayState.worldMap.enemySolidAt(x + 15,y + 16) && !PlayState.worldMap.enemySolidAt(x,y + 16))
@@ -129,7 +129,7 @@ package
                         play("right");
                         x = int(x / 16) * 16;
                         y += 2;
-                        ++this.turns;
+                        ++turns;
                      }
                      else if(PlayState.worldMap.enemySolidAt(x - 1,y))
                      {
@@ -137,7 +137,7 @@ package
                         vx = 0;
                         vy = -SPEED;
                         play("left");
-                        ++this.turns;
+                        ++turns;
                      }
                      else
                      {
@@ -152,7 +152,7 @@ package
                         vy = 0;
                         play("top");
                         x += 2;
-                        ++this.turns;
+                        ++turns;
                      }
                      else if(PlayState.worldMap.enemySolidAt(x,y + 16))
                      {
@@ -160,7 +160,7 @@ package
                         vx = -SPEED;
                         vy = 0;
                         play("bottom");
-                        ++this.turns;
+                        ++turns;
                      }
                      else
                      {
@@ -175,7 +175,7 @@ package
                         vy = -SPEED;
                         play("left");
                         y -= 2;
-                        ++this.turns;
+                        ++turns;
                      }
                      else if(PlayState.worldMap.enemySolidAt(x + 16,y))
                      {
@@ -183,7 +183,7 @@ package
                         vx = 0;
                         vy = SPEED;
                         play("right");
-                        ++this.turns;
+                        ++turns;
                      }
                      else
                      {
@@ -199,7 +199,7 @@ package
                         play("bottom");
                         x -= 2;
                         y = int(y / 16) * 16;
-                        ++this.turns;
+                        ++turns;
                      }
                      else if(PlayState.worldMap.enemySolidAt(x,y - 1))
                      {
@@ -207,7 +207,7 @@ package
                         vx = SPEED;
                         vy = 0;
                         play("top");
-                        ++this.turns;
+                        ++turns;
                      }
                      else
                      {
@@ -217,7 +217,7 @@ package
                }
                continue;
             }
-            switch(this.mode)
+            switch(mode)
             {
                case MODE_BOTTOM:
                   if(!PlayState.worldMap.enemySolidAt(x + 15,y + 16) && !PlayState.worldMap.enemySolidAt(x,y + 16))
@@ -228,7 +228,7 @@ package
                      play("left");
                      x = int(x / 16) * 16;
                      y += 1;
-                     ++this.turns;
+                     ++turns;
                   }
                   else if(PlayState.worldMap.enemySolidAt(x + 16,y))
                   {
@@ -236,7 +236,7 @@ package
                      vx = 0;
                      vy = -SPEED;
                      play("right");
-                     ++this.turns;
+                     ++turns;
                   }
                   else
                   {
@@ -251,7 +251,7 @@ package
                      vy = 0;
                      play("bottom");
                      x += 1;
-                     ++this.turns;
+                     ++turns;
                   }
                   else if(PlayState.worldMap.enemySolidAt(x,y - 1))
                   {
@@ -259,7 +259,7 @@ package
                      vx = -SPEED;
                      vy = 0;
                      play("top");
-                     ++this.turns;
+                     ++turns;
                   }
                   else
                   {
@@ -274,7 +274,7 @@ package
                      vy = -SPEED;
                      play("right");
                      y -= 1;
-                     ++this.turns;
+                     ++turns;
                   }
                   else if(PlayState.worldMap.enemySolidAt(x - 1,y))
                   {
@@ -282,7 +282,7 @@ package
                      vx = 0;
                      vy = SPEED;
                      play("left");
-                     ++this.turns;
+                     ++turns;
                   }
                   else
                   {
@@ -297,7 +297,7 @@ package
                      vy = 0;
                      play("top");
                      x -= 1;
-                     ++this.turns;
+                     ++turns;
                   }
                   else if(PlayState.worldMap.enemySolidAt(x,y + 16))
                   {
@@ -305,7 +305,7 @@ package
                      vx = SPEED;
                      vy = 0;
                      play("bottom");
-                     ++this.turns;
+                     ++turns;
                   }
                   else
                   {
@@ -319,12 +319,12 @@ package
       
       override public function hitBottom(param1:FlxObject, param2:Number) : void
       {
-         if(this.mode == MODE_FALLING)
+         if(mode == MODE_FALLING)
          {
             mode = MODE_BOTTOM;
             acceleration.y = 0;
             velocity.y = 0;
-            vx = this._clockwise ? -SPEED : SPEED;
+            vx = _clockwise ? -SPEED : SPEED;
             vy = 0;
             play("bottom");
          }

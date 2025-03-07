@@ -17,8 +17,8 @@ package
          super(param1,param2,9999,0,0);
          solid = false;
          visible = false;
-         this.listPos = Math.abs(int(param1 * 23 - param2 * 17)) % this.TIMEOUTS.length;
-         this.timeout = this.TIMEOUTS[this.listPos] * this.BASE_TIMEOUT;
+         listPos = Math.abs(int(param1 * 23 - param2 * 17)) % TIMEOUTS.length;
+         timeout = TIMEOUTS[listPos] * BASE_TIMEOUT;
          active = true;
       }
       
@@ -39,11 +39,11 @@ package
             return;
          }
          timeout -= FlxG.elapsed;
-         if(this.timeout < 0)
+         if(timeout < 0)
          {
-            ++this.listPos;
-            listPos %= this.TIMEOUTS.length;
-            timeout = this.TIMEOUTS[this.listPos] * this.BASE_TIMEOUT;
+            ++listPos;
+            listPos %= TIMEOUTS.length;
+            timeout = TIMEOUTS[listPos] * BASE_TIMEOUT;
             var _loc1_:Number = (FlxU.random() > 0.5)? -FlxG.scroll.x + FlxG.width - 8 : -FlxG.scroll.x - 8;
             if(Math.abs(PlayState.player.x - _loc1_) < 75)
             {

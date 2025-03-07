@@ -48,15 +48,15 @@ package
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this._direction = param3;
-         this._wait = param4;
-         if(!this._wait)
+         _direction = param3;
+         _wait = param4;
+         if(!_wait)
          {
-            this.startMoving();
+            startMoving();
          }
          else
          {
-            switch(this._direction)
+            switch(_direction)
             {
                case DIR_UP:
                   y += START_DISTANCE;
@@ -79,7 +79,7 @@ package
       
       public function startMoving() : void
       {
-         switch(this._direction)
+         switch(_direction)
          {
             case DIR_UP:
                velocity.y = -Y_SPEED;
@@ -111,20 +111,20 @@ package
          {
             return;
          }
-         if(this._wait && (this._direction == DIR_UP || this._direction == DIR_DOWN))
+         if(_wait && (_direction == DIR_UP || _direction == DIR_DOWN))
          {
             if(Math.abs(PlayState.player.x - x - width / 2) < ACTIVATE_DISTANCE)
             {
                _wait = false;
-               this.startMoving();
+               startMoving();
             }
          }
-         else if(this._wait && (this._direction == DIR_LEFT || this._direction == DIR_RIGHT))
+         else if(_wait && (_direction == DIR_LEFT || _direction == DIR_RIGHT))
          {
             if(Math.abs(PlayState.player.y - y - height / 2) < ACTIVATE_DISTANCE)
             {
                _wait = false;
-               this.startMoving();
+               startMoving();
             }
          }
          super.update();

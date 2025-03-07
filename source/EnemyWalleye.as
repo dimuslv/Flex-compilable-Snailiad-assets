@@ -67,7 +67,7 @@ package
          {
             if(facing == RIGHT && PlayState.player.x > x)
             {
-               if(this.shotTimeout <= 0)
+               if(shotTimeout <= 0)
                {
                   shotTimeout = SHOT_TIMEOUT;
                   _loc1_ = PlayState.enemyBulletPool.getBullet(5);
@@ -79,7 +79,7 @@ package
             }
             else if(facing == LEFT && PlayState.player.x < x)
             {
-               if(this.shotTimeout <= 0)
+               if(shotTimeout <= 0)
                {
                   shotTimeout = SHOT_TIMEOUT;
                   _loc1_ = PlayState.enemyBulletPool.getBullet(5);

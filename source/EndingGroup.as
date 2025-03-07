@@ -19,34 +19,34 @@ package
       
       public function EndingGroup(param1:int) : void
       {
-         this.picture = new EndingPicture(param1);
-         this.bg = new EndingBg();
-         this.updatePositions();
-         add(this.bg);
-         add(this.picture);
+         picture = new EndingPicture(param1);
+         bg = new EndingBg();
+         updatePositions();
+         add(bg);
+         add(picture);
          active = true;
       }
       
       public function updatePositions() : void
       {
-         var _loc1_:int = -30 + this.elapsed * 10;
+         var _loc1_:int = -30 + elapsed * 10;
          if(_loc1_ > 0)
          {
             _loc1_ = 0;
          }
-         var _loc2_:int = 30 - this.elapsed * 10;
+         var _loc2_:int = 30 - elapsed * 10;
          if(_loc2_ < 0)
          {
             _loc2_ = 0;
          }
-         this.bg.x = _loc2_;
-         this.picture.x = _loc1_;
+         bg.x = _loc2_;
+         picture.x = _loc1_;
       }
       
       override public function update() : void
       {
          elapsed += FlxG.elapsed;
-         this.updatePositions();
+         updatePositions();
          super.update();
       }
    }
