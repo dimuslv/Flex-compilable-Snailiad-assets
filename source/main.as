@@ -53,7 +53,7 @@ package
             FlxG.showBounds = false;
             useDefaultHotKeys = false;
          }
-         this.createContextMenu();
+         createContextMenu();
       }
    }
 }

@@ -32,23 +32,23 @@ package
       public function bounceX(param1:int) : void
       {
          velocity.x *= -1;
-         this.playBounceFx(param1);
+         playBounceFx(param1);
       }
       
       public function bounceY(param1:int) : void
       {
          velocity.y *= -1;
-         this.playBounceFx(param1);
+         playBounceFx(param1);
       }
       
       override public function update() : void
       {
          if(PlayState.realState != PlayState.STATE_MENU)
          {
-            this.kill();
+            kill();
          }
          elapsed += FlxG.elapsed;
-         while(this.elapsed > 0)
+         while(elapsed > 0)
          {
             elapsed -= SEC_PER_TICK;
             x += velocity.x * SEC_PER_TICK;
@@ -56,19 +56,19 @@ package
          }
          if(x > FlxG.width && velocity.x > 0)
          {
-            this.bounceX(BOUNCE_WALL);
+            bounceX(BOUNCE_WALL);
          }
          else if(x < 0 && velocity.x < 0)
          {
-            this.bounceX(BOUNCE_WALL);
+            bounceX(BOUNCE_WALL);
          }
          else if(y > FlxG.height && velocity.y > 0)
          {
-            this.bounceY(BOUNCE_WALL);
+            bounceY(BOUNCE_WALL);
          }
          else if(y < 0 && velocity.y < 0)
          {
-            this.bounceY(BOUNCE_WALL);
+            bounceY(BOUNCE_WALL);
          }
       }
       

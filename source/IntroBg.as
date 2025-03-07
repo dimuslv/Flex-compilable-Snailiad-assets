@@ -25,36 +25,36 @@ package
       
       public function IntroBg() : void
       {
-         this._bg = new FlxSprite();
-         this._bg.scrollFactor.x = this._bg.scrollFactor.y = 0;
-         this._bg.createGraphic(FlxG.width,FlxG.height,4278202416);
-         this._bg.alpha = 0;
-         add(this._bg);
-         this.fadeIn();
-         this._spirals = new Array();
+         _bg = new FlxSprite();
+         _bg.scrollFactor.x = _bg.scrollFactor.y = 0;
+         _bg.createGraphic(FlxG.width,FlxG.height,4278202416);
+         _bg.alpha = 0;
+         add(_bg);
+         fadeIn();
+         _spirals = new Array();
          var _loc1_:int = 0;
          while(_loc1_ < 6)
          {
             var _loc3_:int = 0;
             while(_loc3_ < 6)
             {
-               this._spirals.push(new IntroSpiral(82 * _loc3_ + _loc1_ % 2 * 41,56 * _loc1_));
+               _spirals.push(new IntroSpiral(82 * _loc3_ + _loc1_ % 2 * 41,56 * _loc1_));
                _loc3_++;
             }
             _loc1_++;
          }
          var _loc2_:int = 0;
-         while(_loc2_ < this._spirals.length)
+         while(_loc2_ < _spirals.length)
          {
-            this._spirals[_loc2_].alpha = this._bg.alpha / 7;
-            add(this._spirals[_loc2_]);
+            _spirals[_loc2_].alpha = _bg.alpha / 7;
+            add(_spirals[_loc2_]);
             _loc2_++;
          }
       }
       
       public function isFadingIn() : Boolean
       {
-         return this._fadingIn;
+         return _fadingIn;
       }
       
       public function fadeIn() : void
@@ -71,30 +71,30 @@ package
       
       override public function update() : void
       {
-         if(this._fadingOut)
+         if(_fadingOut)
          {
             _fade -= FlxG.elapsed * FADE_SPEED;
-            if(this._fade < 0)
+            if(_fade < 0)
             {
                _fade = 0;
                _fadingOut = false;
             }
-            this._bg.alpha = this._fade;
+            _bg.alpha = _fade;
          }
-         else if(this._fadingIn)
+         else if(_fadingIn)
          {
             _fade += FlxG.elapsed * FADE_SPEED;
-            if(this._fade >= 1)
+            if(_fade >= 1)
             {
                _fade = 1;
                _fadingIn = false;
             }
-            this._bg.alpha = this._fade;
+            _bg.alpha = _fade;
          }
          var _loc1_:int = 0;
-         while(_loc1_ < this._spirals.length)
+         while(_loc1_ < _spirals.length)
          {
-            this._spirals[_loc1_].alpha = this._bg.alpha / 7;
+            _spirals[_loc1_].alpha = _bg.alpha / 7;
             _loc1_++;
          }
          super.update();

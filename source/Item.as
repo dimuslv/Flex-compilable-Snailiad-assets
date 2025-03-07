@@ -20,9 +20,9 @@ package
          y = param2;
          if(param3)
          {
-            this._disappearTime = DISAPPEAR_TIME;
-            this._flickerTime = FLICKER_TIME;
-            this._willThisDisappear = true;
+            _disappearTime = DISAPPEAR_TIME;
+            _flickerTime = FLICKER_TIME;
+            _willThisDisappear = true;
          }
          fixed = true;
       }
@@ -38,15 +38,15 @@ package
             return;
          }
          super.update();
-         if(this._willThisDisappear)
+         if(_willThisDisappear)
          {
             _disappearTime -= FlxG.elapsed;
             _flickerTime -= FlxG.elapsed;
-            if(this._disappearTime <= 0)
+            if(_disappearTime <= 0)
             {
                kill();
             }
-            else if(this._flickerTime <= 0)
+            else if(_flickerTime <= 0)
             {
                flicker();
             }
@@ -62,16 +62,16 @@ package
          switch(param1)
          {
             case 1:
-               this.triggerAi1();
+               triggerAi1();
                break;
             case 2:
-               this.triggerAi2();
+               triggerAi2();
                break;
             case 3:
-               this.triggerAi3();
+               triggerAi3();
                break;
             case 4:
-               this.triggerAi4();
+               triggerAi4();
 			   break;
          }
       }

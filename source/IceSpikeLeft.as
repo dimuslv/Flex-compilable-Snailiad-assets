@@ -32,13 +32,13 @@ package
          {
             facing = LEFT;
          }
-         this._collidedThisFrame = false;
+         _collidedThisFrame = false;
          active = true;
       }
       
       override public function touch(param1:Player) : void
       {
-         if(this._collidedThisFrame)
+         if(_collidedThisFrame)
          {
             return;
          }

@@ -16,18 +16,18 @@ package
       {
          var _loc1_:String = null;
          var _loc2_:String = null;
-         for(_loc1_ in this.groups)
+         for(_loc1_ in groups)
          {
-            this.groups[_loc1_] = null;
+            groups[_loc1_] = null;
          }
          groups = null;
-         for(_loc1_ in this.explosionLists)
+         for(_loc1_ in explosionLists)
          {
-            for(_loc2_ in this.explosionLists[_loc1_])
+            for(_loc2_ in explosionLists[_loc1_])
             {
-               this.explosionLists[_loc1_][_loc2_] = null;
+               explosionLists[_loc1_][_loc2_] = null;
             }
-            this.explosionLists[_loc1_] = null;
+            explosionLists[_loc1_] = null;
          }
          explosionLists = null;
          super.destroy();
@@ -36,18 +36,18 @@ package
       public function ExplosionPool() : void
       {
          var _loc1_:int = 0;
-         while(_loc1_ < this.TYPE_NUM)
+         while(_loc1_ < TYPE_NUM)
          {
-            this.groups[_loc1_] = new FlxGroup();
-            this.explosionLists[_loc1_] = new Array();
+            groups[_loc1_] = new FlxGroup();
+            explosionLists[_loc1_] = new Array();
             var _loc2_:int = 0;
-            while(_loc2_ < this.MAX_EXPLOSIONS[_loc1_])
+            while(_loc2_ < MAX_EXPLOSIONS[_loc1_])
             {
-               this.explosionLists[_loc1_][_loc2_] = this.makeExplosion(_loc1_);
-               this.groups[_loc1_].add(this.explosionLists[_loc1_][_loc2_]);
+               explosionLists[_loc1_][_loc2_] = makeExplosion(_loc1_);
+               groups[_loc1_].add(explosionLists[_loc1_][_loc2_]);
                _loc2_++;
             }
-            add(this.groups[_loc1_]);
+            add(groups[_loc1_]);
             _loc1_++;
          }
       }
@@ -74,7 +74,7 @@ package
          var _loc6_:int = 0;
          while(_loc6_ < param5)
          {
-            var _loc7_:Explosion = this.groups[param3].getFirstAvail();
+            var _loc7_:Explosion = groups[param3].getFirstAvail();
             if(_loc7_)
             {
                _loc7_.boom(param1 + FlxU.random() * param4 * 2 - param4,param2 + FlxU.random() * param4 * 2 - param4);
@@ -88,7 +88,7 @@ package
          var _loc6_:int = 0;
          while(_loc6_ < param5)
          {
-            var _loc7_:Explosion = this.groups[param3].getFirstAvail();
+            var _loc7_:Explosion = groups[param3].getFirstAvail();
             if(_loc7_)
             {
                var _loc8_:int = FlxU.random() * param4;

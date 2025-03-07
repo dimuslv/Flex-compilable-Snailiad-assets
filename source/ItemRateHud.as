@@ -11,7 +11,7 @@ package
       public function ItemRateHud() : void
       {
          super(0,FlxG.height - 27,FlxG.width - 7 - 55 * 1);
-         this.relY = FlxG.height - 27;
+         relY = FlxG.height - 27;
          font = Fonts.normal;
          size = 10;
          color = 16777215;
@@ -20,7 +20,7 @@ package
          scrollFactor.x = scrollFactor.y = 0;
          setShadowDistance(1);
          visible = false;
-         this.setRate(PlayState.player.getPercentComplete());
+         setRate(PlayState.player.getPercentComplete());
       }
       
       public function setRate(param1:int) : void
@@ -32,7 +32,7 @@ package
       {
          if(PlayState.miniMap && PlayState.miniMap.subscreen)
          {
-            y = this.relY + PlayState.miniMap.subscreen.panel.y;
+            y = relY + PlayState.miniMap.subscreen.panel.y;
          }
       }
    }

@@ -9,7 +9,7 @@ package
       public function MapRate() : void
       {
          super(0,FlxG.height - 27,FlxG.width - 7 - 57 * 2);
-         this.relY = FlxG.height - 27;
+         relY = FlxG.height - 27;
          font = Fonts.normal;
          size = 10;
          color = 16777215;
@@ -38,7 +38,7 @@ package
       {
          if(PlayState.miniMap && PlayState.miniMap.subscreen)
          {
-            y = this.relY + PlayState.miniMap.subscreen.panel.y;
+            y = relY + PlayState.miniMap.subscreen.panel.y;
          }
       }
    }

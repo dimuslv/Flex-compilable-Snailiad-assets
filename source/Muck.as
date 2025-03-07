@@ -22,13 +22,13 @@ package
          height = IMG_HEIGHT;
          addAnimation("anim",[(0 + param1 / 16) % 16,(2 + param1 / 16) % 16,(4 + param1 / 16) % 16,(6 + param1 / 16) % 16,(8 + param1 / 16) % 16,(10 + param1 / 16) % 16,(12 + param1 / 16) % 16,(14 + param1 / 16) % 16],4);
          play("anim");
-         this._collidedThisFrame = false;
+         _collidedThisFrame = false;
          active = true;
       }
       
       override public function touch(param1:Player) : void
       {
-         if(this._collidedThisFrame)
+         if(_collidedThisFrame)
          {
             return;
          }

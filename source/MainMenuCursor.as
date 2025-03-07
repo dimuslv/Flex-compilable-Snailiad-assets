@@ -41,8 +41,8 @@ package
       
       override public function update() : void
       {
-         x = Utility.integrate(x,this.targetX,10,FlxG.elapsed);
-         y = Utility.integrate(y,this.targetY,10,FlxG.elapsed);
+         x = Utility.integrate(x,targetX,10,FlxG.elapsed);
+         y = Utility.integrate(y,targetY,10,FlxG.elapsed);
          super.update();
       }
    }

@@ -45,7 +45,7 @@ package
       
       override public function touch(param1:Player) : void
       {
-         if(this._collidedThisFrame)
+         if(_collidedThisFrame)
          {
             return;
          }

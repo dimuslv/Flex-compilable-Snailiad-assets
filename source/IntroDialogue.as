@@ -32,7 +32,7 @@ package
       
       public function setAlpha(param1:Number) : void
       {
-         this._msg.alpha = param1;
+         _msg.alpha = param1;
       }
       
       override public function destroy() : void
@@ -43,25 +43,25 @@ package
       
       public function IntroDialogue() : void
       {
-         this._active = false;
-         this._msg = new FlxText(0,170,FlxG.width);
-         this._msg.font = Fonts.normal;
-         this._msg.size = 20;
-         this._msg.color = 16777215;
-         this._msg.shadow = 1;
-         this._msg.alignment = "left";
-         this._msg.scrollFactor.x = this._msg.scrollFactor.y = 0;
-         this._msg.visible = false;
-         add(this._msg);
+         _active = false;
+         _msg = new FlxText(0,170,FlxG.width);
+         _msg.font = Fonts.normal;
+         _msg.size = 20;
+         _msg.color = 16777215;
+         _msg.shadow = 1;
+         _msg.alignment = "left";
+         _msg.scrollFactor.x = _msg.scrollFactor.y = 0;
+         _msg.visible = false;
+         add(_msg);
       }
       
       public function start(param1:String, param2:int = 1, param3:Number = 1.0) : void
       {
-         this._msg.alpha = 1;
-         this._msg.text = "";
+         _msg.alpha = 1;
+         _msg.text = "";
          _fullMsg = param1;
          _active = true;
-         this._msg.visible = true;
+         _msg.visible = true;
          _oldLetters = 0;
          _voice = param2;
          _elapsed = 0;
@@ -71,7 +71,7 @@ package
       public function stop() : void
       {
          _active = false;
-         this._msg.visible = false;
+         _msg.visible = false;
       }
       
       override public function update() : void
@@ -80,22 +80,22 @@ package
          var _loc2_:String = null;
          _elapsed += FlxG.elapsed;
          super.update();
-         if(this._active)
+         if(_active)
          {
-            _loc1_ = this._elapsed / (this.LETTER_DELAY / this._speed);
-            if(_loc1_ != this._oldLetters)
+            _loc1_ = _elapsed / (LETTER_DELAY / _speed);
+            if(_loc1_ != _oldLetters)
             {
-               _loc2_ = this._fullMsg.charAt(_loc1_).toLowerCase();
+               _loc2_ = _fullMsg.charAt(_loc1_).toLowerCase();
                if(_loc2_ >= "a" && _loc2_ <= "z")
                {
-                  if(this._voice > -1)
+                  if(_voice > -1)
                   {
-                     Sfx.playDialogueLetter(this._voice);
+                     Sfx.playDialogueLetter(_voice);
                   }
                }
                _oldLetters = _loc1_;
             }
-            this._msg.text = this._fullMsg.substr(0,_loc1_);
+            _msg.text = _fullMsg.substr(0,_loc1_);
          }
       }
    }

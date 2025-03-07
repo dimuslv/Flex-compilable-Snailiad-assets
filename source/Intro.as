@@ -55,11 +55,11 @@ package
       {
          FlxG.noPause = true;
          FlxG.mouse.hide();
-         this.setMode(MODE_WAIT_START);
-         this._bg = new IntroBg();
-         add(this._bg);
-         this._dialogueLayer = new IntroDialogue();
-         add(this._dialogueLayer);
+         setMode(MODE_WAIT_START);
+         _bg = new IntroBg();
+         add(_bg);
+         _dialogueLayer = new IntroDialogue();
+         add(_dialogueLayer);
          var _loc1_:FlxText = new FlxText(0,-1,FlxG.width - 2);
          _loc1_.font = Fonts.normal;
          _loc1_.size = 10;
@@ -69,8 +69,8 @@ package
          _loc1_.scrollFactor.x = _loc1_.scrollFactor.y = 0;
          _loc1_.text = "ESC TO SKIP";
          _loc1_.alpha = 0;
-         this._skipText = _loc1_;
-         add(this._skipText);
+         _skipText = _loc1_;
+         add(_skipText);
          Music.playTitle();
       }
       
@@ -83,149 +83,149 @@ package
       
       public function updateIntroWaitStart() : void
       {
-         if(!this._bg.isFadingIn())
+         if(!_bg.isFadingIn())
          {
-            this.setMode(MODE_STORY);
+            setMode(MODE_STORY);
          }
       }
       
       public function updateIntroStory() : void
       {
          var _loc1_:String = null;
-         if(!this._modeInitialized)
+         if(!_modeInitialized)
          {
             _modeInitialized = true;
             _dialogueMode = 0;
             _picture = new IntroPicture(1);
-            add(this._picture);
+            add(_picture);
          }
-         switch(this._dialogueMode)
+         switch(_dialogueMode)
          {
             case 0:
-               this._skipText.alpha = this._picture.alpha;
-               if(this._picture.alpha > 0.7)
+               _skipText.alpha = _picture.alpha;
+               if(_picture.alpha > 0.7)
                {
-                  ++this._dialogueMode;
+                  ++_dialogueMode;
                   _modeElapsed = 0;
-                  this._dialogueLayer.start("  ALL WAS PEACEFUL IN SNAIL TOWN...\n");
+                  _dialogueLayer.start("  ALL WAS PEACEFUL IN SNAIL TOWN...\n");
                }
                break;
             case 1:
-               this._skipText.alpha = this._picture.alpha;
-               if(this._modeElapsed >= 5.4)
+               _skipText.alpha = _picture.alpha;
+               if(_modeElapsed >= 5.4)
                {
-                  ++this._dialogueMode;
-                  this._picture.fadeOut();
+                  ++_dialogueMode;
+                  _picture.fadeOut();
                }
                break;
             case 2:
-               if(this._picture.alpha == 0)
+               if(_picture.alpha == 0)
                {
-                  ++this._dialogueMode;
-                  remove(this._picture);
+                  ++_dialogueMode;
+                  remove(_picture);
                   _picture = new IntroPicture(2);
-                  add(this._picture);
+                  add(_picture);
                }
                break;
             case 3:
-               if(this._picture.alpha >= 0.1)
+               if(_picture.alpha >= 0.1)
                {
-                  ++this._dialogueMode;
+                  ++_dialogueMode;
                   _modeElapsed = 0;
-                  this._dialogueLayer.start(" UNTIL ONE DAY...\n" + "     MOON SNAIL LEFT ON A JOURNEY");
+                  _dialogueLayer.start(" UNTIL ONE DAY...\n" + "     MOON SNAIL LEFT ON A JOURNEY");
                }
                break;
             case 4:
-               if(this._modeElapsed >= 6)
+               if(_modeElapsed >= 6)
                {
-                  ++this._dialogueMode;
-                  this._picture.fadeOut();
+                  ++_dialogueMode;
+                  _picture.fadeOut();
                }
                break;
             case 5:
-               if(this._picture.alpha == 0)
+               if(_picture.alpha == 0)
                {
-                  ++this._dialogueMode;
-                  remove(this._picture);
+                  ++_dialogueMode;
+                  remove(_picture);
                   _picture = new IntroPicture(1);
-                  add(this._picture);
+                  add(_picture);
                }
                break;
             case 6:
-               if(this._picture.alpha > 0.1)
+               if(_picture.alpha > 0.1)
                {
-                  ++this._dialogueMode;
+                  ++_dialogueMode;
                   _modeElapsed = 0;
-                  this._dialogueLayer.start(" SOON AFTER...\n" + "     THE SNAILS BEGAN TO DISAPPEAR\n" + "                   ONE BY ONE");
+                  _dialogueLayer.start(" SOON AFTER...\n" + "     THE SNAILS BEGAN TO DISAPPEAR\n" + "                   ONE BY ONE");
                }
                break;
             case 7:
-               if(this._modeElapsed >= 3)
+               if(_modeElapsed >= 3)
                {
-                  ++this._dialogueMode;
+                  ++_dialogueMode;
                   _picture2 = new IntroPicture(3);
-                  add(this._picture2);
+                  add(_picture2);
                }
                break;
             case 8:
-               if(this._modeElapsed >= 5.5)
+               if(_modeElapsed >= 5.5)
                {
-                  ++this._dialogueMode;
+                  ++_dialogueMode;
                   _picture3 = new IntroPicture(4);
-                  add(this._picture3);
+                  add(_picture3);
                }
                break;
             case 9:
-               if(this._modeElapsed >= 8.5)
+               if(_modeElapsed >= 8.5)
                {
-                  ++this._dialogueMode;
+                  ++_dialogueMode;
                   _modeElapsed = 0;
-                  this._dialogueLayer.start("WILL ANYONE HELP?  CAN ANYONE\n" + "        RESCUE THE MISSING SNAILS??\n");
+                  _dialogueLayer.start("WILL ANYONE HELP?  CAN ANYONE\n" + "        RESCUE THE MISSING SNAILS??\n");
                }
                break;
             case 10:
-               if(this._modeElapsed >= 6.5)
+               if(_modeElapsed >= 6.5)
                {
-                  ++this._dialogueMode;
-                  remove(this._picture);
-                  remove(this._picture2);
-                  this._picture3.fadeOut();
+                  ++_dialogueMode;
+                  remove(_picture);
+                  remove(_picture2);
+                  _picture3.fadeOut();
                }
                break;
             case 11:
-               if(this._picture3.alpha == 0)
+               if(_picture3.alpha == 0)
                {
-                  ++this._dialogueMode;
-                  remove(this._picture3);
+                  ++_dialogueMode;
+                  remove(_picture3);
                   _picture = new IntroPicture(5);
-                  add(this._picture);
+                  add(_picture);
                }
                break;
             case 12:
-               if(this._picture.alpha > 0.1)
+               if(_picture.alpha > 0.1)
                {
-                  ++this._dialogueMode;
+                  ++_dialogueMode;
                   _modeElapsed = 0;
                   _loc1_ = PlayState.introSlugMode ? "SLUGGY SLUG" : "SNAILY SNAIL";
-                  this._dialogueLayer.start("YOU CAN DO IT, " + _loc1_ + "!!\n" + "        IT\'S UP TO YOU!!  GOOD LUCK!!\n");
+                  _dialogueLayer.start("YOU CAN DO IT, " + _loc1_ + "!!\n" + "        IT\'S UP TO YOU!!  GOOD LUCK!!\n");
                }
                break;
             case 13:
-               if(this._modeElapsed >= 7.6)
+               if(_modeElapsed >= 7.6)
                {
-                  this.setMode(MODE_END);
+                  setMode(MODE_END);
                }
 			   break;
          }
          if(FlxG.keys.pressed("ESCAPE"))
          {
-            this.setMode(MODE_END);
+            setMode(MODE_END);
          }
       }
       
       public function updateIntroEnd() : void
       {
-         if(!this._modeInitialized)
+         if(!_modeInitialized)
          {
             FlxG.noPause = false;
             _modeInitialized = true;
@@ -237,19 +237,19 @@ package
       override public function update() : void
       {
          _modeElapsed += FlxG.elapsed;
-         switch(this._mode)
+         switch(_mode)
          {
             case MODE_NONE:
-               this.setMode(MODE_WAIT_START);
+               setMode(MODE_WAIT_START);
                break;
             case MODE_WAIT_START:
-               this.updateIntroWaitStart();
+               updateIntroWaitStart();
                break;
             case MODE_STORY:
-               this.updateIntroStory();
+               updateIntroStory();
                break;
             case MODE_END:
-               this.updateIntroEnd();
+               updateIntroEnd();
 			   break;
          }
          super.update();

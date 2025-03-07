@@ -24,9 +24,9 @@ package
       
       override public function destroy() : void
       {
-         for(var _loc1_:String in this._hearts)
+         for(var _loc1_:String in _hearts)
          {
-            this._hearts[_loc1_] = null;
+            _hearts[_loc1_] = null;
          }
          _hearts = null;
          super.destroy();
@@ -34,18 +34,18 @@ package
       
       public function HeartHud() : void
       {
-         this._hearts = new Array();
+         _hearts = new Array();
          var _loc1_:int = 0;
          while(_loc1_ < HEARTS_MAX)
          {
             var _loc2_:int = POS_X + _loc1_ % HEARTS_PER_ROW * HEART_WIDTH;
             var _loc3_:int = POS_Y + (int)(_loc1_ / HEARTS_PER_ROW) * HEART_HEIGHT;
-            this._hearts[_loc1_] = new HeartHudSingle(_loc2_,_loc3_);
-            add(this._hearts[_loc1_]);
+            _hearts[_loc1_] = new HeartHudSingle(_loc2_,_loc3_);
+            add(_hearts[_loc1_]);
             _loc1_++;
          }
-         this.setMaxHp(6);
-         this.setCurHp(6);
+         setMaxHp(6);
+         setCurHp(6);
       }
       
       public function setMaxHp(param1:int, param2:Player = null) : void
@@ -64,7 +64,7 @@ package
          var _loc4_:int = 0;
          while(_loc4_ < HEARTS_MAX)
          {
-            this._hearts[_loc4_].visible = _loc4_ < _loc3_ / 4;
+            _hearts[_loc4_].visible = _loc4_ < _loc3_ / 4;
             _loc4_++;
          }
       }
@@ -87,17 +87,17 @@ package
          {
             if(int(_loc3_ / 4) == _loc4_)
             {
-               this._hearts[_loc4_].play((_loc3_ % 4).toString());
+               _hearts[_loc4_].play((_loc3_ % 4).toString());
             }
             else
             {
-               this._hearts[_loc4_].play(_loc4_ < _loc3_ / 4 ? "full" : "empty");
+               _hearts[_loc4_].play(_loc4_ < _loc3_ / 4 ? "full" : "empty");
             }
             _loc4_++;
          }
          if(_loc3_ <= 0)
          {
-            this._hearts[0].play("empty");
+            _hearts[0].play("empty");
          }
       }
       

@@ -29,34 +29,34 @@ package
       
       public function Hud() : void
       {
-         this.heartHud = new HeartHud();
-         add(this.heartHud);
-         this.bossBarHud = new BossBarHud();
-         add(this.bossBarHud);
-         this.areaName = new AreaName();
-         add(this.areaName);
-         this.itemName = new ItemName();
-         add(this.itemName);
-         this.itemRate = new ItemRate();
-         add(this.itemRate);
-         this.radar = new Radar();
-         add(this.radar);
+         heartHud = new HeartHud();
+         add(heartHud);
+         bossBarHud = new BossBarHud();
+         add(bossBarHud);
+         areaName = new AreaName();
+         add(areaName);
+         itemName = new ItemName();
+         add(itemName);
+         itemRate = new ItemRate();
+         add(itemRate);
+         radar = new Radar();
+         add(radar);
       }
       
       override public function update() : void
       {
          if(PlayState.realState != PlayState.STATE_GAME)
          {
-            this.itemRate.visible = false;
-            this.itemName.visible = false;
-            this.bossBarHud.visible = false;
-            this.radar.visible = false;
+            itemRate.visible = false;
+            itemName.visible = false;
+            bossBarHud.visible = false;
+            radar.visible = false;
             return;
          }
-         this.itemRate.visible = true;
-         this.itemName.visible = true;
-         this.bossBarHud.visible = true;
-         this.radar.visible = true;
+         itemRate.visible = true;
+         itemName.visible = true;
+         bossBarHud.visible = true;
+         radar.visible = true;
          super.update();
       }
    }

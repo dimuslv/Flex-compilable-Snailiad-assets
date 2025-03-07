@@ -28,13 +28,13 @@ package
          height -= 4;
          addAnimation("normal",[0]);
          play("normal");
-         this._collidedThisFrame = false;
+         _collidedThisFrame = false;
          active = true;
       }
       
       override public function touch(param1:Player) : void
       {
-         if(this._collidedThisFrame)
+         if(_collidedThisFrame)
          {
             return;
          }

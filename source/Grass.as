@@ -34,25 +34,25 @@ package
          loadGraphic(Art.Grass,true,true,IMG_WIDTH,IMG_HEIGHT);
          width = IMG_WIDTH;
          height = IMG_HEIGHT;
-         this.hp = MAX_HP;
-         this.nextNom = 0;
+         hp = MAX_HP;
+         nextNom = 0;
          if(PlayState.player && PlayState.player._hardMode)
          {
-            this.hp = 1;
+            hp = 1;
          }
          else if(PlayState.player && PlayState.player._easyMode)
          {
-            this.hp *= 2;
+            hp *= 2;
          }
          addAnimation("normal",[0]);
          play("normal");
-         this._collidedThisFrame = false;
+         _collidedThisFrame = false;
          active = true;
       }
       
       override public function touch(param1:Player) : void
       {
-         if(this._collidedThisFrame)
+         if(_collidedThisFrame)
          {
             return;
          }
@@ -62,14 +62,14 @@ package
          }
          _collidedThisFrame = true;
          nextNom -= FlxG.elapsed;
-         if(this.nextNom > 0)
+         if(nextNom > 0)
          {
             return;
          }
          nextNom = NOM_DELAY;
          PlayState.sprites.add(new Nom(x,y));
          param1.heal(1);
-         if(--this.hp <= 0)
+         if(--hp <= 0)
          {
             visible = false;
             solid = false;
@@ -88,7 +88,7 @@ package
             return;
          }
          growDelay -= FlxG.elapsed;
-         if(!visible && this.growDelay < 0)
+         if(!visible && growDelay < 0)
          {
             solid = true;
             visible = true;

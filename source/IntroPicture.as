@@ -51,7 +51,7 @@ package
          scrollFactor.x = scrollFactor.y = 0;
          play("normal");
          alpha = 0;
-         this.fadeIn();
+         fadeIn();
       }
       
       public function fadeOut() : void
@@ -68,7 +68,7 @@ package
       
       override public function update() : void
       {
-         if(this._fadingOut)
+         if(_fadingOut)
          {
             alpha -= FlxG.elapsed * FADE_SPEED;
             if(alpha < 0)
@@ -77,7 +77,7 @@ package
                _fadingOut = false;
             }
          }
-         else if(this._fadingIn)
+         else if(_fadingIn)
          {
             alpha += FlxG.elapsed * FADE_SPEED;
             if(alpha >= 1)

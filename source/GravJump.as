@@ -78,20 +78,20 @@ package
          if(_customReady)
          {
             _totalElapsed += FlxG.elapsed;
-            if(this._totalElapsed > 7)
+            if(_totalElapsed > 7)
             {
                PlayState.player.paralyze(false);
                kill();
                return;
             }
-            if(this._mode == MODE_NONE)
+            if(_mode == MODE_NONE)
             {
                _mode = MODE_GORIGHT;
             }
-            switch(this._mode)
+            switch(_mode)
             {
                case MODE_GORIGHT:
-                  if(this._modeFrames == 0)
+                  if(_modeFrames == 0)
                   {
                      PlayState.player.setFaceDir(Player.FACE_FLOOR_RIGHT,true);
                      PlayState.player.playAnim("floor_right_move");
@@ -115,7 +115,7 @@ package
                   {
                      PlayState.player.doJump();
                      _gravTimer = GRAV_TIMER;
-                     if(!this._shot)
+                     if(!_shot)
                      {
                         _shot = true;
                         PlayState.player._weaponTimeout.value = 0;
@@ -133,7 +133,7 @@ package
                      }
                   }
                   _gravTimer -= FlxG.elapsed;
-                  if(this._gravTimer <= 0)
+                  if(_gravTimer <= 0)
                   {
                      FlxG.keys.unpress(Player.ALT_UP_KEY);
                      FlxG.keys.unpress(Player.ALT_LEFT_KEY);
@@ -207,13 +207,13 @@ package
                   break;
                case MODE_GRAVDONE:
                   _doneTimeout -= FlxG.elapsed;
-                  if(this._doneTimeout < 0)
+                  if(_doneTimeout < 0)
                   {
                      PlayState.player.paralyze(false);
                      kill();
                   }
             }
-            ++this._modeFrames;
+            ++_modeFrames;
          }
       }
    }

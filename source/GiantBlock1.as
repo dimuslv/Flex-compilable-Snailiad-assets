@@ -29,7 +29,7 @@ package
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
          super(param1,param2,false);
-         this._hp = MAX_HP;
+         _hp = MAX_HP;
          loadGraphic(Art.GiantBlock1,true,true,IMG_WIDTH,IMG_HEIGHT);
          width = IMG_WIDTH;
          height = IMG_HEIGHT;
@@ -37,8 +37,8 @@ package
          play("normal");
          solid = true;
          acceleration.y = 1200;
-         this._lastHurt = 0;
-         this._defense = DEFENSE;
+         _lastHurt = 0;
+         _defense = DEFENSE;
       }
       
       override public function touch(param1:Player) : void
@@ -47,11 +47,11 @@ package
       
       override public function hurt(param1:Number) : void
       {
-         if(this._lastHurt > 0)
+         if(_lastHurt > 0)
          {
             return;
          }
-         param1 -= this._defense;
+         param1 -= _defense;
          if(param1 <= 0)
          {
             Sfx.playEnemyPingOffArmor();
@@ -59,7 +59,7 @@ package
          else
          {
             _hp -= param1;
-            if(this._hp <= 0)
+            if(_hp <= 0)
             {
                Sfx.playEnemyKilled();
                PlayState.explosionPool.boom(x,y,0,10,FlxU.random() * 3 + 1);
@@ -82,8 +82,8 @@ package
             return;
          }
          super.update();
-         --this._lastHurt;
-         if(--this._justFlashed == 0)
+         --_lastHurt;
+         if(--_justFlashed == 0)
          {
             unFlashColor();
          }

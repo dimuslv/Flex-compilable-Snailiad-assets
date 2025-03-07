@@ -214,39 +214,39 @@ package
       
       public function MainMenu() : void
       {
-         this.timeSinceLastMove = 0;
-         this.miniGame = false;
-         this.checkSaveVars();
-         this.setupBackground();
-         this.sponsorMoreGames = new SponsorMoreGames();
-         add(this.sponsorMoreGames);
-         this.jayIsGames = new JayIsGames();
-         add(this.jayIsGames);
-         this.setupCursors();
+         timeSinceLastMove = 0;
+         miniGame = false;
+         checkSaveVars();
+         setupBackground();
+         sponsorMoreGames = new SponsorMoreGames();
+         add(sponsorMoreGames);
+         jayIsGames = new JayIsGames();
+         add(jayIsGames);
+         setupCursors();
          if(clickedToPlay)
          {
-            this.makeMainOptions();
+            makeMainOptions();
          }
          else
          {
-            this.makeClickToPlay();
+            makeClickToPlay();
          }
-         if(this.loadGameOption >= 0)
+         if(loadGameOption >= 0)
          {
-            this.setOption(this.loadGameOption,true);
+            setOption(loadGameOption,true);
          }
-         if(this.returnToGameOption >= 0)
+         if(returnToGameOption >= 0)
          {
-            this.setOption(this.returnToGameOption,true);
+            setOption(returnToGameOption,true);
          }
-         this.loadGameOption = -1;
-         this.returnToGameOption = -1;
-         this.musicVolOption = -1;
-         this.soundVolOption = -1;
-         this.endingOption = -1;
-         this.escToOptions = false;
-         this.escToMain = false;
-         this.makeEnterKeyGraphic();
+         loadGameOption = -1;
+         returnToGameOption = -1;
+         musicVolOption = -1;
+         soundVolOption = -1;
+         endingOption = -1;
+         escToOptions = false;
+         escToMain = false;
+         makeEnterKeyGraphic();
       }
       
       public function checkSaveVars() : void
@@ -279,7 +279,7 @@ package
          if(_loc1_.xml.vars && _loc1_.isVarTrue("hasWonGame"))
          {
             hasBossRush = true;
-            this.hasEnding[0] = true;
+            hasEnding[0] = true;
             bgColor = 4278202384;
          }
          if(_loc1_.xml.vars && _loc1_.isVarTrue("toggleFire"))
@@ -291,40 +291,40 @@ package
             hasHardMode = true;
             if(_loc1_.xml.vars.bestBossRushTime > 0)
             {
-               this.hasEnding[1] = true;
+               hasEnding[1] = true;
             }
             bgColor = 4281335856;
          }
          if(_loc1_.xml.vars && _loc1_.isVarTrue("hasWonHardMode"))
          {
             hasInsaneMode = false;
-            this.hasEnding[2] = true;
+            hasEnding[2] = true;
             bgColor = 4278202416;
          }
-         if(this.bestNormalTime > 0 && this.bestNormalTime < FAST_ENDING_CUTOFF || this.bestHardTime > 0 && this.bestHardTime < FAST_ENDING_CUTOFF || this.bestInsaneTime > 0 && this.bestInsaneTime < FAST_ENDING_CUTOFF)
+         if(bestNormalTime > 0 && bestNormalTime < FAST_ENDING_CUTOFF || bestHardTime > 0 && bestHardTime < FAST_ENDING_CUTOFF || bestInsaneTime > 0 && bestInsaneTime < FAST_ENDING_CUTOFF)
          {
-            this.hasEnding[3] = true;
+            hasEnding[3] = true;
          }
          if(_loc1_.xml.vars && _loc1_.isVarTrue("hasWonInsaneMode"))
          {
             bgColor = 4278202416;
          }
-         if(this.bestInsaneTime > 0)
+         if(bestInsaneTime > 0)
          {
-            this.hasEnding[4] = true;
+            hasEnding[4] = true;
          }
       }
       
       public function makeEnterKeyGraphic() : void
       {
          enterKeyLayer = new EnterKeyLayer();
-         add(this.enterKeyLayer);
+         add(enterKeyLayer);
       }
       
       public function putEnterKeyGraphicOnTop() : void
       {
-         remove(this.enterKeyLayer);
-         add(this.enterKeyLayer);
+         remove(enterKeyLayer);
+         add(enterKeyLayer);
       }
       
       public function makeClickToPlay() : void
@@ -348,13 +348,13 @@ package
          isMenuMain = false;
          escToMain = false;
          escToOptions = false;
-         if(this.textGroup)
+         if(textGroup)
          {
-            this.textGroup.kill();
+            textGroup.kill();
          }
          textGroup = new FlxGroup();
-         add(this.textGroup);
-         this.putEnterKeyGraphicOnTop();
+         add(textGroup);
+         putEnterKeyGraphicOnTop();
          optionText = new Array();
          optionTextY = new Array();
          optionTextWidth = new Array();
@@ -365,7 +365,7 @@ package
       
       public function addOption(param1:String, param2:Function, param3:Boolean = false, param4:int = 0) : int
       {
-         var _loc5_:FlxText = new FlxText(0,20 * this.optionNum,FlxG.width);
+         var _loc5_:FlxText = new FlxText(0,20 * optionNum,FlxG.width);
          _loc5_.font = Fonts.normal;
          _loc5_.size = 20;
          _loc5_.color = 16777215;
@@ -373,30 +373,30 @@ package
          _loc5_.alignment = "center";
          _loc5_.text = param1;
          _loc5_.scrollFactor.x = _loc5_.scrollFactor.y = 0;
-         this.textGroup.add(_loc5_);
+         textGroup.add(_loc5_);
          if(param1 == "LOAD GAME")
          {
-            loadGameOption = this.optionNum;
+            loadGameOption = optionNum;
          }
          if(param1 == "RETURN TO GAME")
          {
-            returnToGameOption = this.optionNum;
+            returnToGameOption = optionNum;
          }
-         this.optionTextWidth[this.optionNum] = _loc5_.realWidth;
-         this.optionText[this.optionNum] = _loc5_;
-         this.optionText[this.optionNum].x = param4;
-         this.actions[this.optionNum] = param2;
-         this.doFade[this.optionNum] = param3;
-         return this.optionNum++;
+         optionTextWidth[optionNum] = _loc5_.realWidth;
+         optionText[optionNum] = _loc5_;
+         optionText[optionNum].x = param4;
+         actions[optionNum] = param2;
+         doFade[optionNum] = param3;
+         return optionNum++;
       }
       
       public function changeOption(param1:int, param2:String, param3:Function, param4:int = 0) : void
       {
-         this.optionText[param1].text = param2;
-         this.actions[param1] = param3;
-         this.optionText[param1].x = param4;
-         this.optionTextWidth[param1] = this.optionText[param1].realWidth;
-         this.setOption(this.curOption);
+         optionText[param1].text = param2;
+         actions[param1] = param3;
+         optionText[param1].x = param4;
+         optionTextWidth[param1] = optionText[param1].realWidth;
+         setOption(curOption);
       }
       
       public function setOption(param1:int, param2:Boolean = false) : void
@@ -404,60 +404,60 @@ package
          timeSinceLastMove = 0;
          if(!param2)
          {
-            this.optionText[this.curOption].color = 16777215;
+            optionText[curOption].color = 16777215;
          }
          curOption = param1;
-         while(this.curOption < 0)
+         while(curOption < 0)
          {
-            curOption += this.optionNum;
+            curOption += optionNum;
          }
-         while(this.curOption >= this.optionNum)
+         while(curOption >= optionNum)
          {
-            curOption -= this.optionNum;
+            curOption -= optionNum;
          }
-         while(this.actions[this.curOption] == null)
+         while(actions[curOption] == null)
          {
-            curOption = (this.curOption + 1) % this.optionNum;
+            curOption = (curOption + 1) % optionNum;
          }
          curOption = param1;
-         this.cursorL.moveTo(FlxG.width / 2 - this.optionTextWidth[this.curOption] / 2 - this.cursorL.width - 4 + this.optionText[this.curOption].x,this.optionText[this.curOption].y,param2);
-         this.cursorR.moveTo(FlxG.width / 2 + this.optionTextWidth[this.curOption] / 2 + 4 + this.optionText[this.curOption].x,this.optionText[this.curOption].y,param2);
+         cursorL.moveTo(FlxG.width / 2 - optionTextWidth[curOption] / 2 - cursorL.width - 4 + optionText[curOption].x,optionText[curOption].y,param2);
+         cursorR.moveTo(FlxG.width / 2 + optionTextWidth[curOption] / 2 + 4 + optionText[curOption].x,optionText[curOption].y,param2);
       }
       
       public function moveOption(param1:int) : void
       {
          curOption += param1;
-         while(this.curOption < 0)
+         while(curOption < 0)
          {
-            curOption += this.optionNum;
+            curOption += optionNum;
          }
-         while(this.curOption >= this.optionNum)
+         while(curOption >= optionNum)
          {
-            curOption -= this.optionNum;
+            curOption -= optionNum;
          }
          if(param1 > 0)
          {
-            while(this.curOption < this.optionNum && this.actions[this.curOption] == null)
+            while(curOption < optionNum && actions[curOption] == null)
             {
-               ++this.curOption;
-               if(this.curOption >= this.optionNum)
+               ++curOption;
+               if(curOption >= optionNum)
                {
-                  curOption -= this.optionNum;
+                  curOption -= optionNum;
                }
             }
          }
          if(param1 < 0)
          {
-            while(this.curOption >= 0 && this.actions[this.curOption] == null)
+            while(curOption >= 0 && actions[curOption] == null)
             {
-               --this.curOption;
-               if(this.curOption < 0)
+               --curOption;
+               if(curOption < 0)
                {
-                  curOption += this.optionNum;
+                  curOption += optionNum;
                }
             }
          }
-         this.setOption(this.curOption);
+         setOption(curOption);
       }
       
       public function setupBackground() : void
@@ -465,42 +465,42 @@ package
          if(PlayState.startedGame)
          {
             bg = new FlxSprite();
-            this.bg.y = 0;
-            this.bg.x = 0;
-            this.bg.createGraphic(FlxG.width,FlxG.height,4278190080);
-            this.bg.scrollFactor.x = this.bg.scrollFactor.y = 0;
+            bg.y = 0;
+            bg.x = 0;
+            bg.createGraphic(FlxG.width,FlxG.height,4278190080);
+            bg.scrollFactor.x = bg.scrollFactor.y = 0;
             targetAlpha = 0.65;
-            add(this.bg);
-            this.bg.alpha = 0.0;
+            add(bg);
+            bg.alpha = 0.0;
             elapsed = 0;
             menuOfsY = 0;
             titleText = new TitleText();
-            add(this.titleText);
+            add(titleText);
             menuOfsY = 27;
          }
          else
          {
             FlxG.flash.start(4278190080,0.34);
             bg = new FlxSprite();
-            this.bg.y = 0;
-            this.bg.x = 0;
+            bg.y = 0;
+            bg.x = 0;
             targetAlpha = 1;
-            this.bg.createGraphic(FlxG.width,FlxG.height,this.bgColor);
-            this.bg.scrollFactor.x = this.bg.scrollFactor.y = 0;
-            add(this.bg);
+            bg.createGraphic(FlxG.width,FlxG.height,bgColor);
+            bg.scrollFactor.x = bg.scrollFactor.y = 0;
+            add(bg);
             starLayer = new StarLayer();
-            this.starLayer.makeStars();
-            add(this.starLayer);
-            this.bg.alpha = 1;
+            starLayer.makeStars();
+            add(starLayer);
+            bg.alpha = 1;
             elapsed = 9;
             menuOfsY = 0;
             titleText = new TitleText(true);
-            add(this.titleText);
+            add(titleText);
             menuOfsY = 27;
             Music.playTitle();
             if(!clickedToPlay)
             {
-               this.titleText.setYOffset(60,true);
+               titleText.setYOffset(60,true);
             }
          }
       }
@@ -508,27 +508,27 @@ package
       public function eraseFade() : void
       {
          fading = true;
-         FlxG.fade.start(4289658880,0.34,this.eraseFade2);
+         FlxG.fade.start(4289658880,0.34,eraseFade2);
       }
       
       public function eraseFade2() : void
       {
          FlxG.fade.stop();
          red = new FlxSprite();
-         this.red.y = 0;
-         this.red.x = 0;
-         this.red.createGraphic(FlxG.width,FlxG.height,4289658880);
-         this.red.scrollFactor.x = this.red.scrollFactor.y = 0;
-         add(this.red);
-         fadeInterval = setInterval(this.eraseFade3,1000);
+         red.y = 0;
+         red.x = 0;
+         red.createGraphic(FlxG.width,FlxG.height,4289658880);
+         red.scrollFactor.x = red.scrollFactor.y = 0;
+         add(red);
+         fadeInterval = setInterval(eraseFade3,1000);
       }
       
       public function eraseFade3() : void
       {
-         this.red.visible = false;
+         red.visible = false;
          FlxG.flash.start(4289658880,0.34);
-         clearInterval(this.fadeInterval);
-         this.eraseSaveData();
+         clearInterval(fadeInterval);
+         eraseSaveData();
       }
       
       public function resetMenu() : void
@@ -541,48 +541,48 @@ package
          oldMenuOption = 0;
          PlayState.startedGame = false;
          PlayState.bossRush = false;
-         if(this.bg)
+         if(bg)
          {
-            remove(this.bg).destroy();
+            remove(bg).destroy();
             bg = null;
          }
-         if(this.starLayer)
+         if(starLayer)
          {
-            remove(this.starLayer).destroy();
+            remove(starLayer).destroy();
             starLayer = null;
          }
-         if(this.red)
+         if(red)
          {
-            remove(this.red).destroy();
+            remove(red).destroy();
             red = null;
          }
-         if(this.titleText)
+         if(titleText)
          {
-            remove(this.titleText).destroy();
+            remove(titleText).destroy();
             titleText = null;
          }
-         if(this.cursorL)
+         if(cursorL)
          {
-            remove(this.cursorL).destroy();
+            remove(cursorL).destroy();
             cursorL = null;
          }
-         if(this.cursorR)
+         if(cursorR)
          {
-            remove(this.cursorR).destroy();
+            remove(cursorR).destroy();
             cursorR = null;
          }
-         this.checkSaveVars();
-         this.setupBackground();
-         this.sponsorMoreGames.kill();
-         remove(this.sponsorMoreGames);
+         checkSaveVars();
+         setupBackground();
+         sponsorMoreGames.kill();
+         remove(sponsorMoreGames);
          sponsorMoreGames = new SponsorMoreGames();
-         add(this.sponsorMoreGames);
-         this.jayIsGames.kill();
-         remove(this.jayIsGames);
+         add(sponsorMoreGames);
+         jayIsGames.kill();
+         remove(jayIsGames);
          jayIsGames = new JayIsGames();
-         add(this.jayIsGames);
-         this.setupCursors();
-         this.makeMainOptions();
+         add(jayIsGames);
+         setupCursors();
+         makeMainOptions();
       }
       
       public function eraseSaveData() : void
@@ -598,50 +598,50 @@ package
          hasHardMode = false;
          hasInsaneMode = false;
          erasedSave = true;
-         this.resetMenu();
+         resetMenu();
       }
       
       public function centerMenu() : void
       {
-         var _loc1_:int = FlxG.height / 2 - (20 * this.optionNum - 5) / 2 + this.menuOfsY;
-         if(_loc1_ < this.menuOfsY)
+         var _loc1_:int = FlxG.height / 2 - (20 * optionNum - 5) / 2 + menuOfsY;
+         if(_loc1_ < menuOfsY)
          {
-            _loc1_ = this.menuOfsY;
+            _loc1_ = menuOfsY;
          }
          var _loc2_:int = 0;
-         while(_loc2_ < this.optionNum)
+         while(_loc2_ < optionNum)
          {
-            this.optionTextY[_loc2_] = _loc1_ + 20 * _loc2_;
-            this.optionText[_loc2_].y = this.optionTextY[_loc2_];
+            optionTextY[_loc2_] = _loc1_ + 20 * _loc2_;
+            optionText[_loc2_].y = optionTextY[_loc2_];
             _loc2_++;
          }
-         this.setOption(this.curOption,true);
+         setOption(curOption,true);
       }
       
       public function updateMenuScroll() : void
       {
-         var _loc1_:int = this.optionNum - 9;
-         if(_loc1_ <= 0 || this.optionNum < 8)
+         var _loc1_:int = optionNum - 9;
+         if(_loc1_ <= 0 || optionNum < 8)
          {
             justScrolled = false;
-            if(this.titleText)
+            if(titleText)
             {
-               this.titleText.visible = true;
+               titleText.visible = true;
             }
             return;
          }
-         if(this.miniGame)
+         if(miniGame)
          {
             miniGame = false;
-            this.miniGame_destroyBall();
+            miniGame_destroyBall();
          }
-         if(this.titleText)
+         if(titleText)
          {
-            this.titleText.visible = false;
+            titleText.visible = false;
          }
-         var _loc2_:int = this.optionTextY[_loc1_] - this.optionTextY[0];
-         var _loc3_:Number = this.curOption / this.optionNum;
-         if(this.lastWasMouse)
+         var _loc2_:int = optionTextY[_loc1_] - optionTextY[0];
+         var _loc3_:Number = curOption / optionNum;
+         if(lastWasMouse)
          {
             _loc3_ = FlxG.mouse.screenY / FlxG.height;
          }
@@ -656,29 +656,29 @@ package
             _loc3_ = 0.0;
          }
          var _loc5_:int = _loc2_ * _loc3_;
-         var _loc6_:int = this.menuScrollY;
-         menuScrollY = Utility.integrate(this.menuScrollY,_loc5_,3,FlxG.elapsed);
-         if(this.menuScrollY < 0)
+         var _loc6_:int = menuScrollY;
+         menuScrollY = Utility.integrate(menuScrollY,_loc5_,3,FlxG.elapsed);
+         if(menuScrollY < 0)
          {
             menuScrollY = 0;
          }
-         justScrolled = _loc6_ != this.menuScrollY;
+         justScrolled = _loc6_ != menuScrollY;
          var _loc7_:int = 0;
-         while(_loc7_ < this.optionNum)
+         while(_loc7_ < optionNum)
          {
-            this.optionText[_loc7_].y = this.optionTextY[_loc7_] - this.menuScrollY;
+            optionText[_loc7_].y = optionTextY[_loc7_] - menuScrollY;
             _loc7_++;
          }
-         this.setOption(this.curOption,true);
+         setOption(curOption,true);
       }
       
       public function setupCursors() : void
       {
          cursorL = new MainMenuCursor();
          cursorR = new MainMenuCursor();
-         this.cursorR.facing = left;
-         add(this.cursorL);
-         add(this.cursorR);
+         cursorR.facing = left;
+         add(cursorL);
+         add(cursorR);
       }
       
       public function doNothing() : void
@@ -687,17 +687,17 @@ package
       
       public function confirmEraseSave() : void
       {
-         this.sponsorMoreGames.hide();
-         this.jayIsGames.hide();
-         this.clearMenu();
+         sponsorMoreGames.hide();
+         jayIsGames.hide();
+         clearMenu();
          escToMain = true;
-         oldOptionsMenuOption = this.curOption;
-         this.addOption("ARE YOU SURE??",null,false);
-         this.addOption("",null,false);
-         this.addOption("YES, ERASE EVERYTHING!",this.eraseFade,false);
-         this.addOption("NO WAY, I LIKE MY GAME!",this.makeOptionsMenu,false);
+         oldOptionsMenuOption = curOption;
+         addOption("ARE YOU SURE??",null,false);
+         addOption("",null,false);
+         addOption("YES, ERASE EVERYTHING!",eraseFade,false);
+         addOption("NO WAY, I LIKE MY GAME!",makeOptionsMenu,false);
          curOption = 2;
-         this.centerMenu();
+         centerMenu();
       }
       
       public function addKeyOption(param1:String, param2:String, param3:Function) : void
@@ -710,7 +710,7 @@ package
          _loc4_.text = param2;
          var _loc5_:int = _loc4_.realWidth;
          _loc4_ = null;
-         this.addOption(param1 + param2,param3,false,_loc5_ / 2 - 20);
+         addOption(param1 + param2,param3,false,_loc5_ / 2 - 20);
       }
       
       public function changeKeyOption(param1:String, param2:String, param3:Function) : void
@@ -723,7 +723,7 @@ package
          _loc4_.text = param2;
          var _loc5_:int = _loc4_.realWidth;
          _loc4_ = null;
-         this.changeOption(this.curOption,param1 + param2,param3,_loc5_ / 2 - 20);
+         changeOption(curOption,param1 + param2,param3,_loc5_ / 2 - 20);
       }
       
       public function reallySetKey(param1:int, param2:String) : void
@@ -832,64 +832,64 @@ package
          switch(param1)
          {
             case KEY_MAP:
-               this.changeKeyOption("OPEN MINIMAP && ",Player.MAP_KEY,this.setKeyMap);
+               changeKeyOption("OPEN MINIMAP && ",Player.MAP_KEY,setKeyMap);
                break;
             case KEY_JUMP:
-               this.changeKeyOption("JUMP         ",Player.JUMP_KEY,this.setKeyJump);
+               changeKeyOption("JUMP         ",Player.JUMP_KEY,setKeyJump);
                break;
             case KEY_SHOOT:
-               this.changeKeyOption("SHOOT        ",Player.SHOOT_KEY,this.setKeyShoot);
+               changeKeyOption("SHOOT        ",Player.SHOOT_KEY,setKeyShoot);
                break;
             case KEY_STRAFE:
-               this.changeKeyOption("STRAFE       ",Player.STRAFE_KEY,this.setKeyStrafe);
+               changeKeyOption("STRAFE       ",Player.STRAFE_KEY,setKeyStrafe);
                break;
             case KEY_UP:
-               this.changeKeyOption("MOVE UP      ",Player.UP_KEY,this.setKeyUp);
+               changeKeyOption("MOVE UP      ",Player.UP_KEY,setKeyUp);
                break;
             case KEY_LEFT:
-               this.changeKeyOption("MOVE LEFT    ",Player.LEFT_KEY,this.setKeyLeft);
+               changeKeyOption("MOVE LEFT    ",Player.LEFT_KEY,setKeyLeft);
                break;
             case KEY_DOWN:
-               this.changeKeyOption("MOVE DOWN    ",Player.DOWN_KEY,this.setKeyDown);
+               changeKeyOption("MOVE DOWN    ",Player.DOWN_KEY,setKeyDown);
                break;
             case KEY_RIGHT:
-               this.changeKeyOption("MOVE RIGHT  &&&& ",Player.RIGHT_KEY,this.setKeyRight);
+               changeKeyOption("MOVE RIGHT  &&&& ",Player.RIGHT_KEY,setKeyRight);
                break;
             case KEY_ALT_JUMP:
-               this.changeKeyOption("JUMP         ",Player.ALT_JUMP_KEY,this.setAltKeyJump);
+               changeKeyOption("JUMP         ",Player.ALT_JUMP_KEY,setAltKeyJump);
                break;
             case KEY_ALT_SHOOT:
-               this.changeKeyOption("SHOOT        ",Player.ALT_SHOOT_KEY,this.setAltKeyShoot);
+               changeKeyOption("SHOOT        ",Player.ALT_SHOOT_KEY,setAltKeyShoot);
                break;
             case KEY_ALT_STRAFE:
-               this.changeKeyOption("STRAFE       ",Player.ALT_STRAFE_KEY,this.setAltKeyStrafe);
+               changeKeyOption("STRAFE       ",Player.ALT_STRAFE_KEY,setAltKeyStrafe);
                break;
             case KEY_ALT_UP:
-               this.changeKeyOption("MOVE UP      ",Player.ALT_UP_KEY,this.setAltKeyUp);
+               changeKeyOption("MOVE UP      ",Player.ALT_UP_KEY,setAltKeyUp);
                break;
             case KEY_ALT_LEFT:
-               this.changeKeyOption("MOVE LEFT    ",Player.ALT_LEFT_KEY,this.setAltKeyLeft);
+               changeKeyOption("MOVE LEFT    ",Player.ALT_LEFT_KEY,setAltKeyLeft);
                break;
             case KEY_ALT_DOWN:
-               this.changeKeyOption("MOVE DOWN    ",Player.ALT_DOWN_KEY,this.setAltKeyDown);
+               changeKeyOption("MOVE DOWN    ",Player.ALT_DOWN_KEY,setAltKeyDown);
                break;
             case KEY_ALT_RIGHT:
-               this.changeKeyOption("MOVE RIGHT  &&&& ",Player.ALT_RIGHT_KEY,this.setAltKeyRight);
+               changeKeyOption("MOVE RIGHT  &&&& ",Player.ALT_RIGHT_KEY,setAltKeyRight);
                break;
             case KEY_WEAP_1:
-               this.changeKeyOption("WEAPON ONE   ",Player.WEAPON_1_KEY,this.setKeyWeap1);
+               changeKeyOption("WEAPON ONE   ",Player.WEAPON_1_KEY,setKeyWeap1);
                break;
             case KEY_WEAP_2:
-               this.changeKeyOption("WEAPON TWO   ",Player.WEAPON_2_KEY,this.setKeyWeap2);
+               changeKeyOption("WEAPON TWO   ",Player.WEAPON_2_KEY,setKeyWeap2);
                break;
             case KEY_WEAP_3:
-               this.changeKeyOption("WEAPON THREE ",Player.WEAPON_3_KEY,this.setKeyWeap3);
+               changeKeyOption("WEAPON THREE ",Player.WEAPON_3_KEY,setKeyWeap3);
                break;
             case KEY_WEAP_NEXT:
-               this.changeKeyOption("NEXT WEAPON  ",Player.WEAPON_NEXT_KEY,this.setKeyWeapNext);
+               changeKeyOption("NEXT WEAPON  ",Player.WEAPON_NEXT_KEY,setKeyWeapNext);
                break;
             case KEY_WEAP_PREV:
-               this.changeKeyOption("PREV WEAPON  ",Player.WEAPON_PREV_KEY,this.setKeyWeapPrev);
+               changeKeyOption("PREV WEAPON  ",Player.WEAPON_PREV_KEY,setKeyWeapPrev);
 			   break;
          }
          if(PlayState.controlHelp)
@@ -907,226 +907,226 @@ package
       
       public function setKeyMap() : void
       {
-         this.setKey(KEY_MAP);
+         setKey(KEY_MAP);
       }
       
       public function setKeyJump() : void
       {
-         this.setKey(KEY_JUMP);
+         setKey(KEY_JUMP);
       }
       
       public function setKeyShoot() : void
       {
-         this.setKey(KEY_SHOOT);
+         setKey(KEY_SHOOT);
       }
       
       public function setKeyStrafe() : void
       {
-         this.setKey(KEY_STRAFE);
+         setKey(KEY_STRAFE);
       }
       
       public function setKeyUp() : void
       {
-         this.setKey(KEY_UP);
+         setKey(KEY_UP);
       }
       
       public function setKeyLeft() : void
       {
-         this.setKey(KEY_LEFT);
+         setKey(KEY_LEFT);
       }
       
       public function setKeyDown() : void
       {
-         this.setKey(KEY_DOWN);
+         setKey(KEY_DOWN);
       }
       
       public function setKeyRight() : void
       {
-         this.setKey(KEY_RIGHT);
+         setKey(KEY_RIGHT);
       }
       
       public function setAltKeyJump() : void
       {
-         this.setKey(KEY_ALT_JUMP);
+         setKey(KEY_ALT_JUMP);
       }
       
       public function setAltKeyShoot() : void
       {
-         this.setKey(KEY_ALT_SHOOT);
+         setKey(KEY_ALT_SHOOT);
       }
       
       public function setAltKeyStrafe() : void
       {
-         this.setKey(KEY_ALT_STRAFE);
+         setKey(KEY_ALT_STRAFE);
       }
       
       public function setAltKeyUp() : void
       {
-         this.setKey(KEY_ALT_UP);
+         setKey(KEY_ALT_UP);
       }
       
       public function setAltKeyLeft() : void
       {
-         this.setKey(KEY_ALT_LEFT);
+         setKey(KEY_ALT_LEFT);
       }
       
       public function setAltKeyDown() : void
       {
-         this.setKey(KEY_ALT_DOWN);
+         setKey(KEY_ALT_DOWN);
       }
       
       public function setAltKeyRight() : void
       {
-         this.setKey(KEY_ALT_RIGHT);
+         setKey(KEY_ALT_RIGHT);
       }
       
       public function setKeyWeap1() : void
       {
-         this.setKey(KEY_WEAP_1);
+         setKey(KEY_WEAP_1);
       }
       
       public function setKeyWeap2() : void
       {
-         this.setKey(KEY_WEAP_2);
+         setKey(KEY_WEAP_2);
       }
       
       public function setKeyWeap3() : void
       {
-         this.setKey(KEY_WEAP_3);
+         setKey(KEY_WEAP_3);
       }
       
       public function setKeyWeapNext() : void
       {
-         this.setKey(KEY_WEAP_NEXT);
+         setKey(KEY_WEAP_NEXT);
       }
       
       public function setKeyWeapPrev() : void
       {
-         this.setKey(KEY_WEAP_PREV);
+         setKey(KEY_WEAP_PREV);
       }
       
       public function resetControls() : void
       {
-         this.reallySetKey(KEY_MAP,Player.DEFAULT_MAP_KEY);
-         this.reallySetKey(KEY_JUMP,Player.DEFAULT_JUMP_KEY);
-         this.reallySetKey(KEY_SHOOT,Player.DEFAULT_SHOOT_KEY);
-         this.reallySetKey(KEY_STRAFE,Player.DEFAULT_STRAFE_KEY);
-         this.reallySetKey(KEY_UP,Player.DEFAULT_UP_KEY);
-         this.reallySetKey(KEY_LEFT,Player.DEFAULT_LEFT_KEY);
-         this.reallySetKey(KEY_DOWN,Player.DEFAULT_DOWN_KEY);
-         this.reallySetKey(KEY_RIGHT,Player.DEFAULT_RIGHT_KEY);
-         this.reallySetKey(KEY_ALT_JUMP,Player.DEFAULT_ALT_JUMP_KEY);
-         this.reallySetKey(KEY_ALT_SHOOT,Player.DEFAULT_ALT_SHOOT_KEY);
-         this.reallySetKey(KEY_ALT_STRAFE,Player.DEFAULT_ALT_STRAFE_KEY);
-         this.reallySetKey(KEY_ALT_UP,Player.DEFAULT_ALT_UP_KEY);
-         this.reallySetKey(KEY_ALT_LEFT,Player.DEFAULT_ALT_LEFT_KEY);
-         this.reallySetKey(KEY_ALT_DOWN,Player.DEFAULT_ALT_DOWN_KEY);
-         this.reallySetKey(KEY_ALT_RIGHT,Player.DEFAULT_ALT_RIGHT_KEY);
-         this.reallySetKey(KEY_WEAP_1,Player.DEFAULT_WEAPON_1_KEY);
-         this.reallySetKey(KEY_WEAP_2,Player.DEFAULT_WEAPON_2_KEY);
-         this.reallySetKey(KEY_WEAP_3,Player.DEFAULT_WEAPON_3_KEY);
-         this.reallySetKey(KEY_WEAP_NEXT,Player.DEFAULT_WEAPON_NEXT_KEY);
-         this.reallySetKey(KEY_WEAP_PREV,Player.DEFAULT_WEAPON_PREV_KEY);
-         curOption = this.oldOptionsMenuOption;
-         this.controlMenu();
+         reallySetKey(KEY_MAP,Player.DEFAULT_MAP_KEY);
+         reallySetKey(KEY_JUMP,Player.DEFAULT_JUMP_KEY);
+         reallySetKey(KEY_SHOOT,Player.DEFAULT_SHOOT_KEY);
+         reallySetKey(KEY_STRAFE,Player.DEFAULT_STRAFE_KEY);
+         reallySetKey(KEY_UP,Player.DEFAULT_UP_KEY);
+         reallySetKey(KEY_LEFT,Player.DEFAULT_LEFT_KEY);
+         reallySetKey(KEY_DOWN,Player.DEFAULT_DOWN_KEY);
+         reallySetKey(KEY_RIGHT,Player.DEFAULT_RIGHT_KEY);
+         reallySetKey(KEY_ALT_JUMP,Player.DEFAULT_ALT_JUMP_KEY);
+         reallySetKey(KEY_ALT_SHOOT,Player.DEFAULT_ALT_SHOOT_KEY);
+         reallySetKey(KEY_ALT_STRAFE,Player.DEFAULT_ALT_STRAFE_KEY);
+         reallySetKey(KEY_ALT_UP,Player.DEFAULT_ALT_UP_KEY);
+         reallySetKey(KEY_ALT_LEFT,Player.DEFAULT_ALT_LEFT_KEY);
+         reallySetKey(KEY_ALT_DOWN,Player.DEFAULT_ALT_DOWN_KEY);
+         reallySetKey(KEY_ALT_RIGHT,Player.DEFAULT_ALT_RIGHT_KEY);
+         reallySetKey(KEY_WEAP_1,Player.DEFAULT_WEAPON_1_KEY);
+         reallySetKey(KEY_WEAP_2,Player.DEFAULT_WEAPON_2_KEY);
+         reallySetKey(KEY_WEAP_3,Player.DEFAULT_WEAPON_3_KEY);
+         reallySetKey(KEY_WEAP_NEXT,Player.DEFAULT_WEAPON_NEXT_KEY);
+         reallySetKey(KEY_WEAP_PREV,Player.DEFAULT_WEAPON_PREV_KEY);
+         curOption = oldOptionsMenuOption;
+         controlMenu();
       }
       
       public function controlMenu() : void
       {
-         this.clearMenu();
-         oldOptionsMenuOption = this.curOption;
+         clearMenu();
+         oldOptionsMenuOption = curOption;
          escToOptions = true;
-         this.sponsorMoreGames.hide();
-         this.jayIsGames.hide();
+         sponsorMoreGames.hide();
+         jayIsGames.hide();
          scrollingMenu = true;
          isWaitingForControls = false;
          var _loc1_:Number = 340;
-         this.addOption("CUSTOM CONTROLS (SET 1)",null,false);
-         this.addOption("",null,false);
-         this.addKeyOption("JUMP         ",Player.JUMP_KEY,this.setKeyJump);
-         this.addKeyOption("SHOOT        ",Player.SHOOT_KEY,this.setKeyShoot);
-         this.addKeyOption("STRAFE       ",Player.STRAFE_KEY,this.setKeyStrafe);
-         this.addKeyOption("MOVE UP      ",Player.UP_KEY,this.setKeyUp);
-         this.addKeyOption("MOVE LEFT    ",Player.LEFT_KEY,this.setKeyLeft);
-         this.addKeyOption("MOVE DOWN    ",Player.DOWN_KEY,this.setKeyDown);
-         this.addKeyOption("MOVE RIGHT  &&&& ",Player.RIGHT_KEY,this.setKeyRight);
-         this.addOption("",null,false);
-         this.addOption("CUSTOM CONTROLS (SET 2)",null,false);
-         this.addOption("",null,false);
-         this.addKeyOption("JUMP         ",Player.ALT_JUMP_KEY,this.setAltKeyJump);
-         this.addKeyOption("SHOOT        ",Player.ALT_SHOOT_KEY,this.setAltKeyShoot);
-         this.addKeyOption("STRAFE       ",Player.ALT_STRAFE_KEY,this.setAltKeyStrafe);
-         this.addKeyOption("MOVE UP      ",Player.ALT_UP_KEY,this.setAltKeyUp);
-         this.addKeyOption("MOVE LEFT    ",Player.ALT_LEFT_KEY,this.setAltKeyLeft);
-         this.addKeyOption("MOVE DOWN    ",Player.ALT_DOWN_KEY,this.setAltKeyDown);
-         this.addKeyOption("MOVE RIGHT  &&&& ",Player.ALT_RIGHT_KEY,this.setAltKeyRight);
-         this.addOption("",null,false);
-         this.addOption("CUSTOM CONTROLS (OTHER)",null,false);
-         this.addOption("",null,false);
-         this.addKeyOption("WEAPON ONE   ",Player.WEAPON_1_KEY,this.setKeyWeap1);
-         this.addKeyOption("WEAPON TWO   ",Player.WEAPON_2_KEY,this.setKeyWeap2);
-         this.addKeyOption("WEAPON THREE ",Player.WEAPON_3_KEY,this.setKeyWeap3);
-         this.addKeyOption("NEXT WEAPON  ",Player.WEAPON_NEXT_KEY,this.setKeyWeapNext);
-         this.addKeyOption("PREV WEAPON  ",Player.WEAPON_PREV_KEY,this.setKeyWeapPrev);
-         this.addOption("",null,false);
-         this.addKeyOption("OPEN MINIMAP && ",Player.MAP_KEY,this.setKeyMap);
-         this.addOption("",null,false);
-         this.addOption("RESET CONTROLS TO DEFAULTS",this.resetControls,false);
-         this.addOption("",null,false);
-         this.addOption("BACK TO OPTIONS",this.makeOptionsMenu,false);
+         addOption("CUSTOM CONTROLS (SET 1)",null,false);
+         addOption("",null,false);
+         addKeyOption("JUMP         ",Player.JUMP_KEY,setKeyJump);
+         addKeyOption("SHOOT        ",Player.SHOOT_KEY,setKeyShoot);
+         addKeyOption("STRAFE       ",Player.STRAFE_KEY,setKeyStrafe);
+         addKeyOption("MOVE UP      ",Player.UP_KEY,setKeyUp);
+         addKeyOption("MOVE LEFT    ",Player.LEFT_KEY,setKeyLeft);
+         addKeyOption("MOVE DOWN    ",Player.DOWN_KEY,setKeyDown);
+         addKeyOption("MOVE RIGHT  &&&& ",Player.RIGHT_KEY,setKeyRight);
+         addOption("",null,false);
+         addOption("CUSTOM CONTROLS (SET 2)",null,false);
+         addOption("",null,false);
+         addKeyOption("JUMP         ",Player.ALT_JUMP_KEY,setAltKeyJump);
+         addKeyOption("SHOOT        ",Player.ALT_SHOOT_KEY,setAltKeyShoot);
+         addKeyOption("STRAFE       ",Player.ALT_STRAFE_KEY,setAltKeyStrafe);
+         addKeyOption("MOVE UP      ",Player.ALT_UP_KEY,setAltKeyUp);
+         addKeyOption("MOVE LEFT    ",Player.ALT_LEFT_KEY,setAltKeyLeft);
+         addKeyOption("MOVE DOWN    ",Player.ALT_DOWN_KEY,setAltKeyDown);
+         addKeyOption("MOVE RIGHT  &&&& ",Player.ALT_RIGHT_KEY,setAltKeyRight);
+         addOption("",null,false);
+         addOption("CUSTOM CONTROLS (OTHER)",null,false);
+         addOption("",null,false);
+         addKeyOption("WEAPON ONE   ",Player.WEAPON_1_KEY,setKeyWeap1);
+         addKeyOption("WEAPON TWO   ",Player.WEAPON_2_KEY,setKeyWeap2);
+         addKeyOption("WEAPON THREE ",Player.WEAPON_3_KEY,setKeyWeap3);
+         addKeyOption("NEXT WEAPON  ",Player.WEAPON_NEXT_KEY,setKeyWeapNext);
+         addKeyOption("PREV WEAPON  ",Player.WEAPON_PREV_KEY,setKeyWeapPrev);
+         addOption("",null,false);
+         addKeyOption("OPEN MINIMAP && ",Player.MAP_KEY,setKeyMap);
+         addOption("",null,false);
+         addOption("RESET CONTROLS TO DEFAULTS",resetControls,false);
+         addOption("",null,false);
+         addOption("BACK TO OPTIONS",makeOptionsMenu,false);
          curOption = 2;
-         this.centerMenu();
+         centerMenu();
       }
       
       public function confirmBossRush() : void
       {
-         this.clearMenu();
+         clearMenu();
          escToMain = true;
-         oldMenuOption = this.curOption;
-         this.sponsorMoreGames.hide();
-         this.jayIsGames.hide();
-         this.addOption("ARE YOU SURE?",null,false);
-         this.addOption("BOSS RUSH IS REALLY HARD!!",null,false);
-         this.addOption("",null,false);
-         this.addOption("YES, I\'M READY!!",PlayState.startBossRush,true);
-         this.addOption("NO, I\'M AFRAID:(",this.makeMainOptions,false);
-         this.addOption("",null,false);
-         this.addOption("",null,false);
+         oldMenuOption = curOption;
+         sponsorMoreGames.hide();
+         jayIsGames.hide();
+         addOption("ARE YOU SURE?",null,false);
+         addOption("BOSS RUSH IS REALLY HARD!!",null,false);
+         addOption("",null,false);
+         addOption("YES, I\'M READY!!",PlayState.startBossRush,true);
+         addOption("NO, I\'M AFRAID:(",makeMainOptions,false);
+         addOption("",null,false);
+         addOption("",null,false);
          curOption = 3;
-         this.centerMenu();
+         centerMenu();
       }
       
       public function confirmNewGame() : void
       {
-         this.clearMenu();
+         clearMenu();
          escToMain = true;
-         oldMenuOption = this.curOption;
-         this.sponsorMoreGames.hide();
-         this.jayIsGames.hide();
-         this.addOption("REALLY START A NEW GAME?",null,false);
-         this.addOption("",null,false);
-         this.addOption("YES, I WANT TO START OVER!",this.selectNewGameMode,false);
-         this.addOption("NO WAY, I LIKE MY GAME!",this.makeMainOptions,false);
+         oldMenuOption = curOption;
+         sponsorMoreGames.hide();
+         jayIsGames.hide();
+         addOption("REALLY START A NEW GAME?",null,false);
+         addOption("",null,false);
+         addOption("YES, I WANT TO START OVER!",selectNewGameMode,false);
+         addOption("NO WAY, I LIKE MY GAME!",makeMainOptions,false);
          curOption = 2;
-         this.centerMenu();
+         centerMenu();
       }
       
       public function selectNewGameMode() : void
       {
-         this.clearMenu();
+         clearMenu();
          escToMain = true;
-         this.sponsorMoreGames.hide();
-         this.jayIsGames.hide();
-         this.addOption("SELECT A DIFFICULTY:",null,false);
-         this.addOption("",null,false);
-         this.addOption("EASY",PlayState.startEasyNewGame,false);
-         this.addOption("NORMAL",PlayState.startNewGame,false);
-         if(TESTING_ALL_MODES_AVAILABLE || this.hasHardMode)
+         sponsorMoreGames.hide();
+         jayIsGames.hide();
+         addOption("SELECT A DIFFICULTY:",null,false);
+         addOption("",null,false);
+         addOption("EASY",PlayState.startEasyNewGame,false);
+         addOption("NORMAL",PlayState.startNewGame,false);
+         if(TESTING_ALL_MODES_AVAILABLE || hasHardMode)
          {
-            this.addOption("SLUG",this.justinSnailyAnim,false);
+            addOption("SLUG",justinSnailyAnim,false);
          }
          curOption = 3;
-         this.centerMenu();
+         centerMenu();
       }
       
       public function justinSnailyAnim() : void
@@ -1134,42 +1134,42 @@ package
          justinSnaily = true;
          justinSnailyElapsed = 0;
          miniGame = false;
-         this.cursorL.visible = false;
-         this.cursorR.visible = false;
-         this.clearMenu();
-         this.addOption("ENTER PASSWORD:",null,false);
-         this.addOption("",null,false);
-         this.addOption("------",null,false);
-         this.addOption("------",null,false);
-         this.addOption("",null,false);
-         this.addOption("",PlayState.startHardNewGame,false);
-         this.centerMenu();
+         cursorL.visible = false;
+         cursorR.visible = false;
+         clearMenu();
+         addOption("ENTER PASSWORD:",null,false);
+         addOption("",null,false);
+         addOption("------",null,false);
+         addOption("------",null,false);
+         addOption("",null,false);
+         addOption("",PlayState.startHardNewGame,false);
+         centerMenu();
          curOption = 5;
       }
       
       public function selectNewGameModeSetOldOption() : void
       {
          isMenuMain = false;
-         oldMenuOption = this.curOption;
-         this.selectNewGameMode();
+         oldMenuOption = curOption;
+         selectNewGameMode();
       }
       
       public function soundOptionsMenu(param1:int = 0, param2:Boolean = false) : void
       {
-         this.clearMenu();
+         clearMenu();
          escToOptions = true;
          if(!param2)
          {
-            oldOptionsMenuOption = this.curOption;
+            oldOptionsMenuOption = curOption;
          }
-         this.sponsorMoreGames.hide();
-         this.jayIsGames.hide();
-         soundVolOption = this.addOption("VOLUME: " + int(FlxG.volume * 10 + 0.0001).toString(),this.doNothing,false);
-         musicVolOption = this.addOption("MUSIC: " + (FlxG.musicVolume == 0 ? "OFF" : "ON"),this.toggleMusicVol,false);
-         this.addOption("",null,false);
-         this.addOption("BACK TO OPTIONS",this.makeOptionsMenu,false);
+         sponsorMoreGames.hide();
+         jayIsGames.hide();
+         soundVolOption = addOption("VOLUME: " + int(FlxG.volume * 10 + 0.0001).toString(),doNothing,false);
+         musicVolOption = addOption("MUSIC: " + (FlxG.musicVolume == 0 ? "OFF" : "ON"),toggleMusicVol,false);
+         addOption("",null,false);
+         addOption("BACK TO OPTIONS",makeOptionsMenu,false);
          curOption = param1;
-         this.centerMenu();
+         centerMenu();
       }
       
       public function toggleHideMiniMap() : void
@@ -1191,7 +1191,7 @@ package
          }
          _loc1_.xml.vars.appendChild(<hideMiniMap>{PlayState.hideMiniMap}</hideMiniMap>);
          _loc1_.saveAll();
-         this.changeOption(this.curOption,"HIDE MINIMAP: " + (PlayState.hideMiniMap ? "HIDE" : "SHOW"),this.toggleHideMiniMap);
+         changeOption(curOption,"HIDE MINIMAP: " + (PlayState.hideMiniMap ? "HIDE" : "SHOW"),toggleHideMiniMap);
       }
       
       public function toggleHideTab() : void
@@ -1213,198 +1213,198 @@ package
          }
          _loc1_.xml.vars.appendChild(<hideTab>{PlayState.hideTab}</hideTab>);
          _loc1_.saveAll();
-         this.changeOption(this.curOption,"HIDE BOTTOM KEYS: " + (PlayState.hideTab ? "HIDE" : "SHOW"),this.toggleHideTab);
+         changeOption(curOption,"HIDE BOTTOM KEYS: " + (PlayState.hideTab ? "HIDE" : "SHOW"),toggleHideTab);
       }
       
       public function displayOptionsMenu(param1:int = 0, param2:Boolean = false) : void
       {
-         this.clearMenu();
+         clearMenu();
          escToOptions = true;
          if(!param2)
          {
-            oldOptionsMenuOption = this.curOption;
+            oldOptionsMenuOption = curOption;
          }
-         this.sponsorMoreGames.hide();
-         this.jayIsGames.hide();
-         this.addOption("HIDE MINIMAP: " + (PlayState.hideMiniMap ? "HIDE" : "SHOW"),this.toggleHideMiniMap,false);
-         this.addOption("HIDE BOTTOM KEYS: " + (PlayState.hideTab ? "HIDE" : "SHOW"),this.toggleHideTab,false);
-         this.addOption("",null,false);
-         this.addOption("BACK TO OPTIONS",this.makeOptionsMenu,false);
+         sponsorMoreGames.hide();
+         jayIsGames.hide();
+         addOption("HIDE MINIMAP: " + (PlayState.hideMiniMap ? "HIDE" : "SHOW"),toggleHideMiniMap,false);
+         addOption("HIDE BOTTOM KEYS: " + (PlayState.hideTab ? "HIDE" : "SHOW"),toggleHideTab,false);
+         addOption("",null,false);
+         addOption("BACK TO OPTIONS",makeOptionsMenu,false);
          curOption = param1;
-         this.centerMenu();
+         centerMenu();
       }
       
       public function makeOptionsMenuPreserveOption() : void
       {
-         oldMenuOption = this.curOption;
-         this.makeOptionsMenu();
+         oldMenuOption = curOption;
+         makeOptionsMenu();
       }
       
       public function showCredits() : void
       {
-         this.clearMenu();
+         clearMenu();
          escToMain = true;
-         oldMenuOption = this.curOption;
-         this.sponsorMoreGames.hide();
-         this.jayIsGames.hide();
-         this.addOption("SNAILIAD - A SNAILY GAME",null,false);
-         this.addOption("BY CRYSTAL JACOBS (AURIPLANE)",null,false);
-         this.addOption("",null,false);
-         this.addOption("SPONSORED BY NEWGROUNDS",null,false);
-         this.addOption("",null,false);
-         this.addOption("",null,false);
-         this.addOption("NEXT PAGE",this.showCreditsPageTwo,false);
+         oldMenuOption = curOption;
+         sponsorMoreGames.hide();
+         jayIsGames.hide();
+         addOption("SNAILIAD - A SNAILY GAME",null,false);
+         addOption("BY CRYSTAL JACOBS (AURIPLANE)",null,false);
+         addOption("",null,false);
+         addOption("SPONSORED BY NEWGROUNDS",null,false);
+         addOption("",null,false);
+         addOption("",null,false);
+         addOption("NEXT PAGE",showCreditsPageTwo,false);
          curOption = 6;
-         this.centerMenu();
+         centerMenu();
       }
       
       public function showCreditsPageTwo() : void
       {
-         this.clearMenu();
+         clearMenu();
          escToMain = true;
-         this.sponsorMoreGames.hide();
-         this.jayIsGames.hide();
-         this.addOption("SPECIAL THANKS TO",null,false);
-         this.addOption("",null,false);
-         this.addOption("ADAMATOMIC (FLIXEL)",null,false);
-         this.addOption("NEWSTARSHIPSMELL (TESTING)",null,false);
-         this.addOption("XDANOND (ADDITIONAL ART)",null,false);
-         this.addOption("",null,false);
-         this.addOption("BACK TO MAIN MENU",this.makeMainOptions,false);
+         sponsorMoreGames.hide();
+         jayIsGames.hide();
+         addOption("SPECIAL THANKS TO",null,false);
+         addOption("",null,false);
+         addOption("ADAMATOMIC (FLIXEL)",null,false);
+         addOption("NEWSTARSHIPSMELL (TESTING)",null,false);
+         addOption("XDANOND (ADDITIONAL ART)",null,false);
+         addOption("",null,false);
+         addOption("BACK TO MAIN MENU",makeMainOptions,false);
          curOption = 6;
-         this.centerMenu();
+         centerMenu();
       }
       
       public function showHighScores() : void
       {
-         this.clearMenu();
+         clearMenu();
          escToMain = true;
-         oldMenuOption = this.curOption;
-         this.sponsorMoreGames.show();
-         this.jayIsGames.hide();
-         this.addOption("YOUR BEST CLEAR TIMES",null,false);
-         this.addOption("",null,false);
-         if(this.bestNormalTime > 0)
+         oldMenuOption = curOption;
+         sponsorMoreGames.show();
+         jayIsGames.hide();
+         addOption("YOUR BEST CLEAR TIMES",null,false);
+         addOption("",null,false);
+         if(bestNormalTime > 0)
          {
-            this.addOption("NORMAL MODE   " + GameTimeDisplay.formatExact(this.bestNormalTime),null,false);
+            addOption("NORMAL MODE   " + GameTimeDisplay.formatExact(bestNormalTime),null,false);
          }
-         if(this.bestInsaneTime > 0)
+         if(bestInsaneTime > 0)
          {
-            this.addOption("100% CLEAR    " + GameTimeDisplay.formatExact(this.bestInsaneTime),null,false);
+            addOption("100% CLEAR    " + GameTimeDisplay.formatExact(bestInsaneTime),null,false);
          }
-         if(this.bestHardTime > 0)
+         if(bestHardTime > 0)
          {
-            this.addOption("SLUG MODE     " + GameTimeDisplay.formatExact(this.bestHardTime),null,false);
+            addOption("SLUG MODE     " + GameTimeDisplay.formatExact(bestHardTime),null,false);
          }
-         if(this.bestBossRushTime > 0)
+         if(bestBossRushTime > 0)
          {
-            this.addOption("BOSS RUSH     " + GameTimeDisplay.formatExact(this.bestBossRushTime),null,false);
+            addOption("BOSS RUSH     " + GameTimeDisplay.formatExact(bestBossRushTime),null,false);
          }
-         this.addOption("",null,false);
-         this.addOption("BACK TO MAIN MENU",this.makeMainOptions,false);
-         curOption = this.optionNum - 1;
-         this.centerMenu();
+         addOption("",null,false);
+         addOption("BACK TO MAIN MENU",makeMainOptions,false);
+         curOption = optionNum - 1;
+         centerMenu();
       }
       
       public function showEnding(param1:int) : void
       {
          FlxG.mouse.hide();
-         endingOption = this.curOption;
-         this.clearMenu();
+         endingOption = curOption;
+         clearMenu();
          endingShow = true;
-         this.addOption("",this.showEndingsMenu,false);
+         addOption("",showEndingsMenu,false);
          endingGroup = new EndingGroup(param1);
-         add(this.endingGroup);
-         this.miniGame_destroyBall();
+         add(endingGroup);
+         miniGame_destroyBall();
          miniGame = false;
          curOption = 0;
       }
       
       public function showEnding1() : void
       {
-         this.showEnding(1);
+         showEnding(1);
       }
       
       public function showEnding2() : void
       {
-         this.showEnding(2);
+         showEnding(2);
       }
       
       public function showEnding3() : void
       {
-         this.showEnding(3);
+         showEnding(3);
       }
       
       public function showEnding4() : void
       {
-         this.showEnding(4);
+         showEnding(4);
       }
       
       public function showEnding5() : void
       {
-         this.showEnding(5);
+         showEnding(5);
       }
       
       public function showEndingsMenu() : void
       {
-         this.sponsorMoreGames.hide();
-         this.jayIsGames.hide();
+         sponsorMoreGames.hide();
+         jayIsGames.hide();
          FlxG.mouse.show();
-         this.clearMenu();
+         clearMenu();
          escToMain = true;
-         if(!this.endingGroup && !this.endingShow)
+         if(!endingGroup && !endingShow)
          {
-            oldMenuOption = this.curOption;
+            oldMenuOption = curOption;
          }
-         if(this.endingShow)
+         if(endingShow)
          {
             endingShow = false;
          }
-         if(this.endingGroup)
+         if(endingGroup)
          {
-            remove(this.endingGroup);
-            this.endingGroup.destroy();
+            remove(endingGroup);
+            endingGroup.destroy();
             endingGroup = null;
          }
          var _loc1_:Array = ["REGULAR CLEAR","BOSS RUSH CLEAR","SLUG MODE CLEAR","CLEAR < 30 MIN","100% CLEAR"];
-         if(this.hasEnding[0])
+         if(hasEnding[0])
          {
-            this.addOption(_loc1_[0],this.showEnding1,false);
+            addOption(_loc1_[0],showEnding1,false);
          }
-         if(this.hasEnding[1])
+         if(hasEnding[1])
          {
-            this.addOption(_loc1_[1],this.showEnding2,false);
+            addOption(_loc1_[1],showEnding2,false);
          }
-         if(this.hasEnding[4])
+         if(hasEnding[4])
          {
-            this.addOption(_loc1_[4],this.showEnding3,false);
+            addOption(_loc1_[4],showEnding3,false);
          }
-         if(this.hasEnding[3])
+         if(hasEnding[3])
          {
-            this.addOption(_loc1_[3],this.showEnding4,false);
+            addOption(_loc1_[3],showEnding4,false);
          }
-         if(this.hasEnding[2])
+         if(hasEnding[2])
          {
-            this.addOption(_loc1_[2],this.showEnding5,false);
+            addOption(_loc1_[2],showEnding5,false);
          }
-         this.addOption("",null,false);
-         this.addOption("BACK TO MAIN MENU",this.makeMainOptions,false);
-         if(this.endingOption != -1)
+         addOption("",null,false);
+         addOption("BACK TO MAIN MENU",makeMainOptions,false);
+         if(endingOption != -1)
          {
-            curOption = this.endingOption;
+            curOption = endingOption;
          }
          else
          {
-            curOption = this.optionNum - 1;
+            curOption = optionNum - 1;
          }
          endingOption = -1;
-         this.centerMenu();
+         centerMenu();
       }
       
       public function toggleShootingMode() : void
       {
          Player.firingMode ^= 1;
-         this.changeOption(this.curOption,"SHOOTING: " + (Player.firingMode == Player.FIRING_MODE_NORMAL ? "NORMAL" : "TOGGLE"),this.toggleShootingMode);
+         changeOption(curOption,"SHOOTING: " + (Player.firingMode == Player.FIRING_MODE_NORMAL ? "NORMAL" : "TOGGLE"),toggleShootingMode);
          var _loc1_:String = "toggleFire";
          var _loc2_:SaveData = new SaveData();
          _loc2_.loadAll();
@@ -1425,101 +1425,101 @@ package
       
       public function makeOptionsMenu() : void
       {
-         this.clearMenu();
+         clearMenu();
          escToMain = true;
          musicVolOption = -1;
          soundVolOption = -1;
-         this.sponsorMoreGames.hide();
-         this.jayIsGames.hide();
-         this.addOption("SOUND OPTIONS",this.soundOptionsMenu,false);
-         this.addOption("DISPLAY OPTIONS",this.displayOptionsMenu,false);
-         this.addOption("SET CONTROLS",this.controlMenu,false);
-         this.addOption("SHOOTING: " + (Player.firingMode == Player.FIRING_MODE_NORMAL ? "NORMAL" : "TOGGLE"),this.toggleShootingMode,false);
-         this.addOption("",null,false);
-         this.addOption("ERASE SAVE DATA",this.confirmEraseSave);
-         this.addOption("",null,false);
-         this.addOption("BACK TO MAIN MENU",this.makeMainOptions,false);
-         this.setOption(this.oldOptionsMenuOption,true);
-         this.centerMenu();
+         sponsorMoreGames.hide();
+         jayIsGames.hide();
+         addOption("SOUND OPTIONS",soundOptionsMenu,false);
+         addOption("DISPLAY OPTIONS",displayOptionsMenu,false);
+         addOption("SET CONTROLS",controlMenu,false);
+         addOption("SHOOTING: " + (Player.firingMode == Player.FIRING_MODE_NORMAL ? "NORMAL" : "TOGGLE"),toggleShootingMode,false);
+         addOption("",null,false);
+         addOption("ERASE SAVE DATA",confirmEraseSave);
+         addOption("",null,false);
+         addOption("BACK TO MAIN MENU",makeMainOptions,false);
+         setOption(oldOptionsMenuOption,true);
+         centerMenu();
       }
       
       public function confirmLoadGame() : void
       {
-         this.clearMenu();
+         clearMenu();
          escToMain = true;
-         oldMenuOption = this.curOption;
-         this.sponsorMoreGames.hide();
-         this.jayIsGames.hide();
-         this.addOption("OKAY, WHERE WOULD YOU",null,false);
-         this.addOption("LIKE TO START FROM?",null,false);
-         this.addOption("",null,false);
-         this.addOption("START FROM SAVE POINT",PlayState.loadGame,true);
-         this.addOption("START FROM SNAIL TOWN",PlayState.loadGameFromTown,true);
+         oldMenuOption = curOption;
+         sponsorMoreGames.hide();
+         jayIsGames.hide();
+         addOption("OKAY, WHERE WOULD YOU",null,false);
+         addOption("LIKE TO START FROM?",null,false);
+         addOption("",null,false);
+         addOption("START FROM SAVE POINT",PlayState.loadGame,true);
+         addOption("START FROM SNAIL TOWN",PlayState.loadGameFromTown,true);
          curOption = 3;
-         this.centerMenu();
+         centerMenu();
       }
       
       public function makeMainOptions() : void
       {
          curOption = 0;
-         this.sponsorMoreGames.show();
-         this.jayIsGames.show();
-         this.clearMenu();
+         sponsorMoreGames.show();
+         jayIsGames.show();
+         clearMenu();
          isMenuMain = true;
          scrollingMenu = false;
          isWaitingForControls = false;
-         if(PlayState.startedGame && !this.erasedSave)
+         if(PlayState.startedGame && !erasedSave)
          {
             if(PlayState.bossRush)
             {
-               this.addOption("EXIT BOSS RUSH",this.resetMenu,true);
+               addOption("EXIT BOSS RUSH",resetMenu,true);
             }
-            this.addOption("RETURN TO GAME",PlayState.returnToGame,false);
+            addOption("RETURN TO GAME",PlayState.returnToGame,false);
             if(!PlayState.bossRush)
             {
-               this.addOption("NEW GAME",this.confirmNewGame,false);
+               addOption("NEW GAME",confirmNewGame,false);
             }
-            if(this.hasSave)
+            if(hasSave)
             {
-               this.addOption("LOAD GAME",this.confirmLoadGame,false);
+               addOption("LOAD GAME",confirmLoadGame,false);
             }
          }
-         else if(this.hasSave)
+         else if(hasSave)
          {
             if(!PlayState.bossRush)
             {
-               this.addOption("NEW GAME",this.confirmNewGame,false);
+               addOption("NEW GAME",confirmNewGame,false);
             }
-            this.addOption("LOAD GAME",this.confirmLoadGame,false);
+            addOption("LOAD GAME",confirmLoadGame,false);
          }
          else if(!PlayState.bossRush)
          {
-            this.addOption("NEW GAME",this.selectNewGameModeSetOldOption,false);
+            addOption("NEW GAME",selectNewGameModeSetOldOption,false);
          }
-         if(TESTING_ALL_MODES_AVAILABLE || this.hasBossRush)
+         if(TESTING_ALL_MODES_AVAILABLE || hasBossRush)
          {
             if(PlayState.bossRush)
             {
-               this.addOption("RESTART BOSS RUSH",PlayState.startBossRush,true);
+               addOption("RESTART BOSS RUSH",PlayState.startBossRush,true);
             }
             else
             {
-               this.addOption("BOSS RUSH",this.confirmBossRush,false);
+               addOption("BOSS RUSH",confirmBossRush,false);
             }
          }
-         this.addOption("",null);
-         this.addOption("OPTIONS",this.makeOptionsMenuPreserveOption,false);
-         this.addOption("CREDITS",this.showCredits,false);
-         if(this.hasScores && !this.erasedSave)
+         addOption("",null);
+         addOption("OPTIONS",makeOptionsMenuPreserveOption,false);
+         addOption("CREDITS",showCredits,false);
+         if(hasScores && !erasedSave)
          {
-            this.addOption("RECORDS",this.showHighScores,false);
+            addOption("RECORDS",showHighScores,false);
          }
-         if((this.hasEnding[0] || this.hasEnding[1] || this.hasEnding[2] || this.hasEnding[3] || this.hasEnding[4]) && !this.erasedSave)
+         if((hasEnding[0] || hasEnding[1] || hasEnding[2] || hasEnding[3] || hasEnding[4]) && !erasedSave)
          {
-            this.addOption("GALLERY",this.showEndingsMenu,false);
+            addOption("GALLERY",showEndingsMenu,false);
          }
-         curOption = this.oldMenuOption;
-         this.centerMenu();
+         curOption = oldMenuOption;
+         centerMenu();
          musicVolOption = -1;
          soundVolOption = -1;
       }
@@ -1534,13 +1534,13 @@ package
          {
             FlxG.musicVolume = 0;
          }
-         this.soundOptionsMenu(this.curOption,true);
+         soundOptionsMenu(curOption,true);
       }
       
       public function setVol(param1:Number) : void
       {
          FlxG.volume += param1 * 0.1;
-         this.soundOptionsMenu(this.curOption,true);
+         soundOptionsMenu(curOption,true);
       }
       
       public function miniGame_pickRandomTarget() : void
@@ -1548,53 +1548,53 @@ package
          var _loc1_:int = 30;
          do
          {
-            miniGame_targetNum = int(FlxU.random() * this.optionNum);
+            miniGame_targetNum = int(FlxU.random() * optionNum);
             if(--_loc1_ < 0)
             {
-               miniGame_targetNum = this.curOption;
+               miniGame_targetNum = curOption;
                break;
             }
          }
-         while(this.actions[this.miniGame_targetNum] == null || this.miniGame_targetNum == this.curOption);
+         while(actions[miniGame_targetNum] == null || miniGame_targetNum == curOption);
          
-         if(this.miniGame_right)
+         if(miniGame_right)
          {
-            miniGame_targetX = FlxG.width / 2 + this.optionTextWidth[this.miniGame_targetNum] / 2 + this.cursorR.width;
+            miniGame_targetX = FlxG.width / 2 + optionTextWidth[miniGame_targetNum] / 2 + cursorR.width;
          }
          else
          {
-            miniGame_targetX = FlxG.width / 2 - this.optionTextWidth[this.miniGame_targetNum] / 2 - this.cursorL.width;
+            miniGame_targetX = FlxG.width / 2 - optionTextWidth[miniGame_targetNum] / 2 - cursorL.width;
          }
-         miniGame_targetY = this.optionText[this.miniGame_targetNum].y + this.optionText[this.miniGame_targetNum].height / 2 - 1;
+         miniGame_targetY = optionText[miniGame_targetNum].y + optionText[miniGame_targetNum].height / 2 - 1;
       }
       
       public function miniGame_destroyBall() : void
       {
-         if(this.miniGame_ball)
+         if(miniGame_ball)
          {
-            remove(this.miniGame_ball);
-            this.miniGame_ball.destroy();
+            remove(miniGame_ball);
+            miniGame_ball.destroy();
             miniGame_ball = null;
          }
       }
       
       public function miniGame_makeNewBall() : void
       {
-         this.miniGame_destroyBall();
+         miniGame_destroyBall();
          miniGame_ball = new MenuBall();
-         this.miniGame_ball.x = this.miniGame_right ? FlxG.width - this.MINIGAME_BALL_START_DISTANCE : 0 + this.MINIGAME_BALL_START_DISTANCE;
-         this.miniGame_ball.y = int(FlxU.random() * FlxG.height);
-         add(this.miniGame_ball);
+         miniGame_ball.x = miniGame_right ? FlxG.width - MINIGAME_BALL_START_DISTANCE : 0 + MINIGAME_BALL_START_DISTANCE;
+         miniGame_ball.y = int(FlxU.random() * FlxG.height);
+         add(miniGame_ball);
       }
       
       public function miniGame_getBallSpeed() : Number
       {
-         return 100 + this.miniGame_skill;
+         return 100 + miniGame_skill;
       }
       
       public function miniGame_getBallBounces() : int
       {
-         var _loc1_:Number = 2.2 + 0.01 * this.miniGame_skill;
+         var _loc1_:Number = 2.2 + 0.01 * miniGame_skill;
          var _loc2_:int = int(FlxU.random() * _loc1_);
          if(_loc2_ > 2)
          {
@@ -1611,18 +1611,18 @@ package
       {
          var _loc1_:Boolean = true;
 		 var _loc2_:Boolean;
-         if(this.miniGame_ball.velocity.y == 0 || _loc1_)
+         if(miniGame_ball.velocity.y == 0 || _loc1_)
          {
             _loc2_ = FlxU.random() > 0.5;
          }
          else
          {
-            _loc2_ = this.miniGame_ball.velocity.y < 0;
+            _loc2_ = miniGame_ball.velocity.y < 0;
          }
-         var _loc3_:Number = this.miniGame_getBallSpeed();
-         var _loc4_:int = this.miniGame_getBallBounces();
-         var _loc5_:int = this.miniGame_right ? FlxG.width * 2 - this.miniGame_targetX : 0 - this.miniGame_targetX;
-         var _loc6_:int = _loc4_ % 2 == 1 ? FlxG.height - this.miniGame_targetY : 0 + this.miniGame_targetY;
+         var _loc3_:Number = miniGame_getBallSpeed();
+         var _loc4_:int = miniGame_getBallBounces();
+         var _loc5_:int = miniGame_right ? FlxG.width * 2 - miniGame_targetX : 0 - miniGame_targetX;
+         var _loc6_:int = _loc4_ % 2 == 1 ? FlxG.height - miniGame_targetY : 0 + miniGame_targetY;
          if(_loc2_)
          {
             _loc6_ -= FlxG.height * _loc4_;
@@ -1631,26 +1631,26 @@ package
          {
             _loc6_ += FlxG.height * _loc4_;
          }
-         var _loc7_:Number = Math.atan2(_loc6_ - this.miniGame_ball.y,_loc5_ - this.miniGame_ball.x);
-         this.miniGame_ball.velocity.x = Math.cos(_loc7_) * _loc3_;
-         this.miniGame_ball.velocity.y = Math.sin(_loc7_) * _loc3_;
+         var _loc7_:Number = Math.atan2(_loc6_ - miniGame_ball.y,_loc5_ - miniGame_ball.x);
+         miniGame_ball.velocity.x = Math.cos(_loc7_) * _loc3_;
+         miniGame_ball.velocity.y = Math.sin(_loc7_) * _loc3_;
       }
       
       public function miniGame_start() : void
       {
          miniGame_right = FlxU.random() > 0.5;
          miniGame_missed = false;
-         this.miniGame_makeNewBall();
-         this.miniGame_startRound();
+         miniGame_makeNewBall();
+         miniGame_startRound();
       }
       
       public function miniGame_paddleBounce() : void
       {
-         this.miniGame_ball.bounceX(MenuBall.BOUNCE_PADDLE);
-         this.miniGame_pickRandomTarget();
-         this.miniGame_aimBall();
+         miniGame_ball.bounceX(MenuBall.BOUNCE_PADDLE);
+         miniGame_pickRandomTarget();
+         miniGame_aimBall();
          miniGame_skill += 10;
-         if(this.miniGame_skill > 400)
+         if(miniGame_skill > 400)
          {
             miniGame_skill = 400;
          }
@@ -1665,82 +1665,82 @@ package
       public function miniGame_startRound() : void
       {
          miniGame_missed = false;
-         this.miniGame_pickRandomTarget();
-         this.miniGame_aimBall();
+         miniGame_pickRandomTarget();
+         miniGame_aimBall();
       }
       
       public function miniGame_isBallInPaddle() : Boolean
       {
-         return this.miniGame_ball.x > this.cursorL.x && this.miniGame_ball.x < this.cursorL.x + this.cursorR.width && this.miniGame_ball.y > this.cursorL.y - 1 && this.miniGame_ball.y < this.cursorL.y + this.cursorR.height + 1 || this.miniGame_ball.x > this.cursorR.x && this.miniGame_ball.x < this.cursorR.x + this.cursorR.width && this.miniGame_ball.y > this.cursorR.y - 1 && this.miniGame_ball.y < this.cursorR.y + this.cursorR.height + 1;
+         return miniGame_ball.x > cursorL.x && miniGame_ball.x < cursorL.x + cursorR.width && miniGame_ball.y > cursorL.y - 1 && miniGame_ball.y < cursorL.y + cursorR.height + 1 || miniGame_ball.x > cursorR.x && miniGame_ball.x < cursorR.x + cursorR.width && miniGame_ball.y > cursorR.y - 1 && miniGame_ball.y < cursorR.y + cursorR.height + 1;
       }
       
       public function miniGame_updateRight() : void
       {
-         if(this.miniGame_ball.velocity.x < 0 && !this.miniGame_missed)
+         if(miniGame_ball.velocity.x < 0 && !miniGame_missed)
          {
-            if(this.miniGame_isBallInPaddle())
+            if(miniGame_isBallInPaddle())
             {
-               this.miniGame_paddleBounce();
+               miniGame_paddleBounce();
             }
-            else if(this.miniGame_ball.x < FlxG.width / 2)
+            else if(miniGame_ball.x < FlxG.width / 2)
             {
-               this.miniGame_miss();
+               miniGame_miss();
             }
          }
-         else if(this.miniGame_missed && this.miniGame_ball.x < this.MINIGAME_BALL_START_DISTANCE)
+         else if(miniGame_missed && miniGame_ball.x < MINIGAME_BALL_START_DISTANCE)
          {
             miniGame_right = false;
-            this.miniGame_startRound();
+            miniGame_startRound();
          }
       }
       
       public function miniGame_updateLeft() : void
       {
-         if(this.miniGame_ball.velocity.x > 0 && !this.miniGame_missed)
+         if(miniGame_ball.velocity.x > 0 && !miniGame_missed)
          {
-            if(this.miniGame_isBallInPaddle())
+            if(miniGame_isBallInPaddle())
             {
-               this.miniGame_paddleBounce();
+               miniGame_paddleBounce();
             }
-            else if(this.miniGame_ball.x > FlxG.width / 2)
+            else if(miniGame_ball.x > FlxG.width / 2)
             {
-               this.miniGame_miss();
+               miniGame_miss();
             }
          }
-         else if(this.miniGame_missed && this.miniGame_ball.x > FlxG.width - this.MINIGAME_BALL_START_DISTANCE)
+         else if(miniGame_missed && miniGame_ball.x > FlxG.width - MINIGAME_BALL_START_DISTANCE)
          {
             miniGame_right = true;
-            this.miniGame_startRound();
+            miniGame_startRound();
          }
       }
       
       public function miniGame_update() : void
       {
-         if(this.miniGame_right)
+         if(miniGame_right)
          {
-            this.miniGame_updateRight();
+            miniGame_updateRight();
          }
          else
          {
-            this.miniGame_updateLeft();
+            miniGame_updateLeft();
          }
       }
       
       public function miniGame_checkStartStop() : void
       {
          var _loc1_:Boolean = true;
-         if(this.isMenuMain || _loc1_)
+         if(isMenuMain || _loc1_)
          {
             timeSinceLastMove += FlxG.elapsed;
-            if(this.timeSinceLastMove > MINIGAME_IDLE_TRIGGER_SECONDS && !this.miniGame)
+            if(timeSinceLastMove > MINIGAME_IDLE_TRIGGER_SECONDS && !miniGame)
             {
                miniGame = true;
-               this.miniGame_start();
+               miniGame_start();
             }
          }
-         else if(this.miniGame)
+         else if(miniGame)
          {
-            this.miniGame_destroyBall();
+            miniGame_destroyBall();
             miniGame = false;
          }
       }
@@ -1753,7 +1753,7 @@ package
 		 var _loc3_:int = 0;
          while(_loc3_ < _loc1_.length)
          {
-            if(this.justinSnailyElapsed > _loc1_[_loc3_])
+            if(justinSnailyElapsed > _loc1_[_loc3_])
             {
                _loc2_ = _loc3_;
             }
@@ -1763,75 +1763,75 @@ package
          {
             _loc2_ = 13;
          }
-         if(_loc2_ > this.justinSnailyLetters)
+         if(_loc2_ > justinSnailyLetters)
          {
             justinSnailyLetters = _loc2_;
             switch(_loc2_)
             {
                case 1:
                   Sfx.playMenuBeep1();
-                  this.changeOption(2,"J-----",null);
-                  this.changeOption(3,"------",null);
+                  changeOption(2,"J-----",null);
+                  changeOption(3,"------",null);
                   break;
                case 2:
                   Sfx.playMenuBeep1();
-                  this.changeOption(2,"JU----",null);
-                  this.changeOption(3,"------",null);
+                  changeOption(2,"JU----",null);
+                  changeOption(3,"------",null);
                   break;
                case 3:
                   Sfx.playMenuBeep1();
-                  this.changeOption(2,"JUS---",null);
-                  this.changeOption(3,"------",null);
+                  changeOption(2,"JUS---",null);
+                  changeOption(3,"------",null);
                   break;
                case 4:
                   Sfx.playMenuBeep1();
-                  this.changeOption(2,"JUST--",null);
-                  this.changeOption(3,"------",null);
+                  changeOption(2,"JUST--",null);
+                  changeOption(3,"------",null);
                   break;
                case 5:
                   Sfx.playMenuBeep1();
-                  this.changeOption(2,"JUSTI-",null);
-                  this.changeOption(3,"------",null);
+                  changeOption(2,"JUSTI-",null);
+                  changeOption(3,"------",null);
                   break;
                case 6:
                   Sfx.playMenuBeep1();
-                  this.changeOption(2,"JUSTIN",null);
-                  this.changeOption(3,"------",null);
+                  changeOption(2,"JUSTIN",null);
+                  changeOption(3,"------",null);
                   break;
                case 7:
                   Sfx.playMenuBeep1();
-                  this.changeOption(2,"JUSTIN",null);
-                  this.changeOption(3,"S-----",null);
+                  changeOption(2,"JUSTIN",null);
+                  changeOption(3,"S-----",null);
                   break;
                case 8:
                   Sfx.playMenuBeep1();
-                  this.changeOption(2,"JUSTIN",null);
-                  this.changeOption(3,"SN----",null);
+                  changeOption(2,"JUSTIN",null);
+                  changeOption(3,"SN----",null);
                   break;
                case 9:
                   Sfx.playMenuBeep1();
-                  this.changeOption(2,"JUSTIN",null);
-                  this.changeOption(3,"SNA---",null);
+                  changeOption(2,"JUSTIN",null);
+                  changeOption(3,"SNA---",null);
                   break;
                case 10:
                   Sfx.playMenuBeep1();
-                  this.changeOption(2,"JUSTIN",null);
-                  this.changeOption(3,"SNAI--",null);
+                  changeOption(2,"JUSTIN",null);
+                  changeOption(3,"SNAI--",null);
                   break;
                case 11:
                   Sfx.playMenuBeep1();
-                  this.changeOption(2,"JUSTIN",null);
-                  this.changeOption(3,"SNAIL-",null);
+                  changeOption(2,"JUSTIN",null);
+                  changeOption(3,"SNAIL-",null);
                   break;
                case 12:
                   Sfx.playMenuBeep1();
-                  this.changeOption(2,"JUSTIN",null);
-                  this.changeOption(3,"SNAILY",null);
+                  changeOption(2,"JUSTIN",null);
+                  changeOption(3,"SNAILY",null);
                   break;
                case 13:
                   Sfx.playMenuBeep2();
-                  this.changeOption(2,"JUSTIN",null);
-                  this.changeOption(3,"SNAILY",null);
+                  changeOption(2,"JUSTIN",null);
+                  changeOption(3,"SNAILY",null);
                   PlayState.startHardNewGame();
 				  break;
             }
@@ -1847,75 +1847,75 @@ package
             super.update();
             return;
          }
-         colorNum += FlxG.elapsed * this.colorFps;
+         colorNum += FlxG.elapsed * colorFps;
          if(clickedToPlay)
          {
-            this.optionText[this.curOption].color = colors[int(this.colorNum) % colors.length];
+            optionText[curOption].color = colors[int(colorNum) % colors.length];
          }
-         if(this.justinSnaily)
+         if(justinSnaily)
          {
-            this.updateJustinSnaily();
+            updateJustinSnaily();
             super.update();
             return;
          }
-         if(this.bg)
+         if(bg)
          {
             elapsed += FlxG.elapsed;
-            this.bg.alpha = Utility.integrate(this.bg.alpha,this.targetAlpha,1,this.elapsed);
+            bg.alpha = Utility.integrate(bg.alpha,targetAlpha,1,elapsed);
          }
-         if(this.fading)
+         if(fading)
          {
             return;
          }
          if(!clickedToPlay)
          {
-            this.cursorL.visible = false;
-            this.cursorR.visible = false;
+            cursorL.visible = false;
+            cursorR.visible = false;
             if(Utility.justPressedAnyKey() || FlxG.mouse.justPressed())
             {
-               remove(this.clickToPlayText);
-               this.makeMainOptions();
-               if(this.loadGameOption >= 0)
+               remove(clickToPlayText);
+               makeMainOptions();
+               if(loadGameOption >= 0)
                {
-                  this.setOption(this.loadGameOption,true);
+                  setOption(loadGameOption,true);
                }
-               if(this.returnToGameOption >= 0)
+               if(returnToGameOption >= 0)
                {
-                  this.setOption(this.returnToGameOption,true);
+                  setOption(returnToGameOption,true);
                }
                clickedToPlay = true;
-               this.cursorL.visible = true;
-               this.cursorR.visible = true;
-               this.titleText.setYOffset(0);
+               cursorL.visible = true;
+               cursorR.visible = true;
+               titleText.setYOffset(0);
             }
             super.update();
             return;
          }
-         if(this.endingShow)
+         if(endingShow)
          {
             if(FlxG.keys.justPressed("Z") || FlxG.keys.justPressed("X") || FlxG.keys.justPressed("J") || FlxG.keys.justPressed("K") || FlxG.keys.justPressed("SPACE") || FlxG.keys.justPressed("ENTER") || FlxG.keys.justPressed("ESCAPE"))
             {
                lastWasMouse = false;
-               this.doOption(this.curOption);
+               doOption(curOption);
             }
             else if(FlxG.mouse.justPressed())
             {
                lastWasMouse = true;
-               this.doOption(this.curOption);
+               doOption(curOption);
             }
             super.update();
             return;
          }
-         if(this.isWaitingForControls)
+         if(isWaitingForControls)
          {
-            this.enterKeyLayer.visible = true;
+            enterKeyLayer.visible = true;
             if(FlxG.keys.justPressed("ESCAPE"))
             {
                isWaitingForControls = false;
             }
             else if(FlxG.keys.justPressed("A") || FlxG.keys.justPressed("B") || FlxG.keys.justPressed("C") || FlxG.keys.justPressed("D") || FlxG.keys.justPressed("E") || FlxG.keys.justPressed("F") || FlxG.keys.justPressed("G") || FlxG.keys.justPressed("H") || FlxG.keys.justPressed("I") || FlxG.keys.justPressed("J") || FlxG.keys.justPressed("K") || FlxG.keys.justPressed("L") || FlxG.keys.justPressed("M") || FlxG.keys.justPressed("N") || FlxG.keys.justPressed("O") || FlxG.keys.justPressed("P") || FlxG.keys.justPressed("Q") || FlxG.keys.justPressed("R") || FlxG.keys.justPressed("S") || FlxG.keys.justPressed("T") || FlxG.keys.justPressed("U") || FlxG.keys.justPressed("V") || FlxG.keys.justPressed("W") || FlxG.keys.justPressed("X") || FlxG.keys.justPressed("Y") || FlxG.keys.justPressed("Z") || FlxG.keys.justPressed("QUOTE") || FlxG.keys.justPressed("ONE") || FlxG.keys.justPressed("TWO") || FlxG.keys.justPressed("THREE") || FlxG.keys.justPressed("FOUR") || FlxG.keys.justPressed("FIVE") || FlxG.keys.justPressed("SIX") || FlxG.keys.justPressed("SEVEN") || FlxG.keys.justPressed("EIGHT") || FlxG.keys.justPressed("NINE") || FlxG.keys.justPressed("ZERO") || FlxG.keys.justPressed("MINUS") || FlxG.keys.justPressed("PLUS") || FlxG.keys.justPressed("TAB") || FlxG.keys.justPressed("LBRACKET") || FlxG.keys.justPressed("RBRACKET") || FlxG.keys.justPressed("SEMICOLON") || FlxG.keys.justPressed("BACKSLASH") || FlxG.keys.justPressed("SLASH") || FlxG.keys.justPressed("COMMA") || FlxG.keys.justPressed("PERIOD") || FlxG.keys.justPressed("ALT") || FlxG.keys.justPressed("CONTROL") || FlxG.keys.justPressed("SHIFT") || FlxG.keys.justPressed("ENTER") || FlxG.keys.justPressed("SPACE") || FlxG.keys.justPressed("UP") || FlxG.keys.justPressed("LEFT") || FlxG.keys.justPressed("DOWN") || FlxG.keys.justPressed("RIGHT"))
             {
-               this.reallySetKey(this.keyToSet,FlxG.keys.getLastKeys(1));
+               reallySetKey(keyToSet,FlxG.keys.getLastKeys(1));
             }
             super.update();
             return;
@@ -1924,109 +1924,109 @@ package
 		 {
 		    ;
 		 }
-         this.enterKeyLayer.visible = false;
-         this.updateMenuScroll();
-         this.miniGame_checkStartStop();
-         if(this.miniGame)
+         enterKeyLayer.visible = false;
+         updateMenuScroll();
+         miniGame_checkStartStop();
+         if(miniGame)
          {
-            this.miniGame_update();
+            miniGame_update();
          }
-         if(FlxG.keys.justPressed("LEFT") && this.curOption == this.soundVolOption)
+         if(FlxG.keys.justPressed("LEFT") && curOption == soundVolOption)
          {
             lastWasMouse = false;
-            this.setVol(-1);
+            setVol(-1);
             Sfx.playMenuBeep1();
          }
-         if(FlxG.keys.justPressed("RIGHT") && this.curOption == this.soundVolOption)
+         if(FlxG.keys.justPressed("RIGHT") && curOption == soundVolOption)
          {
             lastWasMouse = false;
-            this.setVol(1);
+            setVol(1);
             Sfx.playMenuBeep1();
          }
          if(FlxG.keys.justPressed("UP"))
          {
             lastWasMouse = false;
-            this.moveOption(-1);
+            moveOption(-1);
             Sfx.playMenuBeep1();
          }
          if(FlxG.keys.justPressed("DOWN"))
          {
             lastWasMouse = false;
-            this.moveOption(1);
+            moveOption(1);
             Sfx.playMenuBeep1();
          }
          if(FlxG.mouse.wheel > 0)
          {
             lastWasMouse = false;
-            this.moveOption(-1);
+            moveOption(-1);
             Sfx.playMenuBeep1();
          }
          if(FlxG.mouse.wheel < 0)
          {
             lastWasMouse = false;
-            this.moveOption(1);
+            moveOption(1);
             Sfx.playMenuBeep1();
          }
-         if((FlxG.keys.justPressed("P") || FlxG.keys.justPressed("ESCAPE") && !this.escToMain && !this.escToOptions) && PlayState.startedGame)
+         if((FlxG.keys.justPressed("P") || FlxG.keys.justPressed("ESCAPE") && !escToMain && !escToOptions) && PlayState.startedGame)
          {
             lastWasMouse = false;
             PlayState.realState = PlayState.STATE_GAME;
             FlxG.flash.start(2130706432,0.34);
             return;
          }
-         if(FlxG.keys.justPressed("ESCAPE") && this.escToMain)
+         if(FlxG.keys.justPressed("ESCAPE") && escToMain)
          {
             lastWasMouse = false;
-            this.makeMainOptions();
+            makeMainOptions();
             Sfx.playMenuBeep2();
          }
-         else if(FlxG.keys.justPressed("ESCAPE") && this.escToOptions)
+         else if(FlxG.keys.justPressed("ESCAPE") && escToOptions)
          {
             lastWasMouse = false;
-            this.makeOptionsMenu();
+            makeOptionsMenu();
             Sfx.playMenuBeep2();
          }
          if(FlxG.mouse.justPressed())
          {
             lastWasMouse = true;
             _loc1_ = 0;
-            while(_loc1_ < this.optionNum)
+            while(_loc1_ < optionNum)
             {
-               if(this.actions[_loc1_] == null)
+               if(actions[_loc1_] == null)
 			   {
 			   }
 			   else
                {
-                  _loc2_ = FlxG.width / 2 - this.optionTextWidth[_loc1_] / 2 + this.optionText[_loc1_].x;
-                  if(FlxG.mouse.screenX > _loc2_ && FlxG.mouse.screenX < _loc2_ + this.optionTextWidth[_loc1_] && FlxG.mouse.screenY > this.optionText[_loc1_].y && FlxG.mouse.screenY < this.optionText[_loc1_].y + this.optionText[_loc1_].height - 2)
+                  _loc2_ = FlxG.width / 2 - optionTextWidth[_loc1_] / 2 + optionText[_loc1_].x;
+                  if(FlxG.mouse.screenX > _loc2_ && FlxG.mouse.screenX < _loc2_ + optionTextWidth[_loc1_] && FlxG.mouse.screenY > optionText[_loc1_].y && FlxG.mouse.screenY < optionText[_loc1_].y + optionText[_loc1_].height - 2)
                   {
-                     this.doOption(_loc1_);
+                     doOption(_loc1_);
                      break;
                   }
                }
                _loc1_++;
             }
          }
-         else if(FlxG.mouse.justMoved || this.lastWasMouse && this.justScrolled)
+         else if(FlxG.mouse.justMoved || lastWasMouse && justScrolled)
          {
             lastWasMouse = true;
             _loc1_ = 0;
-            while(_loc1_ < this.optionNum)
+            while(_loc1_ < optionNum)
             {
-               if(this.actions[_loc1_] == null)
+               if(actions[_loc1_] == null)
 			   {
 			   }
 			   else
                {
-                  if(_loc1_ == this.curOption)
+                  if(_loc1_ == curOption)
 				  {
 				  }
 				  else
                   {
-                     _loc2_ = FlxG.width / 2 - this.optionTextWidth[_loc1_] / 2 + this.optionText[_loc1_].x;
-                     if(FlxG.mouse.screenX > _loc2_ && FlxG.mouse.screenX < _loc2_ + this.optionTextWidth[_loc1_] && FlxG.mouse.screenY > this.optionText[_loc1_].y && FlxG.mouse.screenY < this.optionText[_loc1_].y + this.optionText[_loc1_].height - 2)
+                     _loc2_ = FlxG.width / 2 - optionTextWidth[_loc1_] / 2 + optionText[_loc1_].x;
+                     if(FlxG.mouse.screenX > _loc2_ && FlxG.mouse.screenX < _loc2_ + optionTextWidth[_loc1_] && FlxG.mouse.screenY > optionText[_loc1_].y && FlxG.mouse.screenY < optionText[_loc1_].y + optionText[_loc1_].height - 2)
                      {
-                        this.setOption(_loc1_);
+                        setOption(_loc1_);
                         Sfx.playMenuBeep1();
                         break;
                      }
@@ -2035,32 +2035,32 @@ package
                _loc1_++;
             }
          }
-         if(FlxG.keys.justPressed("Z") || FlxG.keys.justPressed("X") || FlxG.keys.justPressed("J") || FlxG.keys.justPressed("K") || FlxG.keys.justPressed("SPACE") || FlxG.keys.justPressed("ENTER") || this.curOption == this.musicVolOption && (FlxG.keys.justPressed("LEFT") || FlxG.keys.justPressed("RIGHT")))
+         if(FlxG.keys.justPressed("Z") || FlxG.keys.justPressed("X") || FlxG.keys.justPressed("J") || FlxG.keys.justPressed("K") || FlxG.keys.justPressed("SPACE") || FlxG.keys.justPressed("ENTER") || curOption == musicVolOption && (FlxG.keys.justPressed("LEFT") || FlxG.keys.justPressed("RIGHT")))
          {
-            this.doOption(this.curOption);
+            doOption(curOption);
          }
          super.update();
       }
       
       public function doOption(param1:int) : void
       {
-         if(this.doFade[param1])
+         if(doFade[param1])
          {
             Sfx.playMenuBeep2();
             fading = true;
-            FlxG.fade.start(4278206591,0.34,this.onFade);
+            FlxG.fade.start(4278206591,0.34,onFade);
          }
          else
          {
             Sfx.playMenuBeep2();
-            this.actions[param1]();
+            actions[param1]();
          }
       }
       
       private function onFade() : void
       {
          FlxG.fade.stop();
-         this.actions[this.curOption]();
+         actions[curOption]();
          fading = false;
          FlxG.flash.start(2130706432,0.34);
       }
