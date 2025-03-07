@@ -68,10 +68,9 @@ package
       
       override public function destroy() : void
       {
-         var _loc1_:String = null;
-         for(_loc1_ in _hand)
+         for (var i:String in _hand)
          {
-            _hand[_loc1_] = null;
+            _hand[i] = null;
          }
          _hand = null;
          _eyes = null;
@@ -106,14 +105,12 @@ package
          _hand = new Array();
          _handThetaCur = new Array();
          _handThetaSpeed = new Array();
-         var _loc3_:int = 0;
-         while(_loc3_ < HAND_NUM)
+         for (var i:int = 0; i < HAND_NUM; i++)
          {
-            _handThetaCur[_loc3_] = 2 * Math.PI / HAND_NUM;
-            _handThetaSpeed[_loc3_] = 2.5 + _loc3_ * 0.75;
-            _hand[_loc3_] = new Boss1RushHand(x,y);
-            PlayState.enemies.add(_hand[_loc3_]);
-            _loc3_++;
+            _handThetaCur[i] = 2 * Math.PI / HAND_NUM;
+            _handThetaSpeed[i] = 2.5 + i * 0.75;
+            _hand[i] = new Boss1RushHand(x,y);
+            PlayState.enemies.add(_hand[i]);
          }
          PlayState.player.x += 28;
          PlayState.player.setFaceDir(Player.FACE_FLOOR_RIGHT);
@@ -159,21 +156,19 @@ package
          }
          _handRadius *= _radiusMultCur;
          _radiusMultCur = _radiusMultCur * 0.9 + _radiusMultTarget * 0.1;
-         var _loc5_:int = 0;
-         while(_loc5_ < HAND_NUM)
+         for (var i:int = 0; i < HAND_NUM; i++)
          {
-            _handThetaCur[_loc5_] += _handThetaSpeed[_loc5_] * FlxG.elapsed * (1 + Math.sin(_loc1_ * 5 / 4)) * 1.2;
-            _hand[_loc5_].x = x - 12 + 24 - Math.sin(_handThetaCur[_loc5_]) * _handRadius;
-            _hand[_loc5_].y = y - 12 + 24 + Math.cos(_handThetaCur[_loc5_]) * _handRadius;
+            _handThetaCur[i] += _handThetaSpeed[i] * FlxG.elapsed * (1 + Math.sin(_loc1_ * 5 / 4)) * 1.2;
+            _hand[i].x = x - 12 + 24 - Math.sin(_handThetaCur[i]) * _handRadius;
+            _hand[i].y = y - 12 + 24 + Math.cos(_handThetaCur[i]) * _handRadius;
             if(_radiusMultTarget == 0)
             {
-               _hand[_loc5_].solid = false;
+               _hand[i].solid = false;
             }
             else
             {
-               _hand[_loc5_].solid = true;
+               _hand[i].solid = true;
             }
-            _loc5_++;
          }
          super.update();
          if(_introDone && !PlayState.player.dead && !started)
@@ -248,11 +243,9 @@ package
             PlayState.sprites.add(new QueuedExplosion(x,y));
          }
          _eyes.kill();
-         var _loc1_:int = 0;
-         while(_loc1_ < HAND_NUM)
+         for (var i:int = 0; i < HAND_NUM; i++)
          {
-            _hand[_loc1_].kill();
-            _loc1_++;
+            _hand[i].kill();
          }
          PlayState.enemyBulletPool.destroyAll();
          dead = true;
