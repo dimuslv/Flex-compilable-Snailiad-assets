@@ -102,18 +102,14 @@ package
       
       override public function destroy() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < _shields.length)
+         for (var i:int = 0; i < _shields.length; i++)
          {
-            _shields[_loc1_] = null;
-            _loc1_++;
+            _shields[i] = null;
          }
          _shields = null;
-         _loc1_ = 0;
-         while(_loc1_ < _spawn.length)
+         for (i = 0; i < _spawn.length; i++)
          {
-            _spawn[_loc1_] = null;
-            _loc1_++;
+            _spawn[i] = null;
          }
          _spawn = null;
          super.destroy();
@@ -193,51 +189,45 @@ package
       
       public function createChildren() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < SHIELDS_REALMAX)
+         for (var i:int = 0; i < SHIELDS_REALMAX; i++)
          {
-            _shields[_loc1_] = new Boss3Shield();
-            PlayState.enemiesNoCollide.add(_shields[_loc1_]);
-            _loc1_++;
+            _shields[i] = new Boss3Shield();
+            PlayState.enemiesNoCollide.add(_shields[i]);
          }
          updateShieldPositions();
-         _loc1_ = 0;
-         while(_loc1_ < SHIELDS_START)
+         for (i = 0; i < SHIELDS_START; i++)
          {
-            _shields[_loc1_].create();
-            _loc1_++;
+            _shields[i].create();
          }
          _createdChildren = true;
       }
       
       public function updateShieldPositions() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < SHIELDS_REALMAX)
+         for (var i:int = 0; i < SHIELDS_REALMAX; i++)
          {
-            var _loc2_:Number = (_elapsed / SHIELDS_PERIOD % 1 * SHIELDS_MAX + 17 * (_loc1_ + 8) % SHIELDS_REALMAX) % SHIELDS_MAX;
+            var _loc2_:Number = (_elapsed / SHIELDS_PERIOD % 1 * SHIELDS_MAX + 17 * (i + 8) % SHIELDS_REALMAX) % SHIELDS_MAX;
             var _loc3_:Number = _loc2_ % 9;
             if(_loc2_ < 9)
             {
-               _shields[_loc1_].x = x - 16 + 16 * _loc3_;
-               _shields[_loc1_].y = y - 16;
+               _shields[i].x = x - 16 + 16 * _loc3_;
+               _shields[i].y = y - 16;
             }
             else if(_loc2_ < 18)
             {
-               _shields[_loc1_].x = x - 16 + 16 * 9;
-               _shields[_loc1_].y = y - 16 + 16 * _loc3_;
+               _shields[i].x = x - 16 + 16 * 9;
+               _shields[i].y = y - 16 + 16 * _loc3_;
             }
             else if(_loc2_ < 27)
             {
-               _shields[_loc1_].x = x - 16 + 16 * 9 - 16 * _loc3_;
-               _shields[_loc1_].y = y - 16 + 16 * 9;
+               _shields[i].x = x - 16 + 16 * 9 - 16 * _loc3_;
+               _shields[i].y = y - 16 + 16 * 9;
             }
             else
             {
-               _shields[_loc1_].x = x - 16;
-               _shields[_loc1_].y = y - 16 + 16 * 9 - 16 * _loc3_;
+               _shields[i].x = x - 16;
+               _shields[i].y = y - 16 + 16 * 9 - 16 * _loc3_;
             }
-            _loc1_++;
          }
       }
       
@@ -462,14 +452,12 @@ package
       public function countSpawn() : int
       {
          var _loc1_:int = 0;
-         var _loc2_:int = 0;
-         while(_loc2_ < _spawn.length)
+         for (var i:int = 0; i < _spawn.length; i++)
          {
-            if(_spawn[_loc2_] && !_spawn[_loc2_].dead)
+            if(_spawn[i] && !_spawn[i].dead)
             {
                _loc1_++;
             }
-            _loc2_++;
          }
          return _loc1_;
       }
@@ -487,17 +475,13 @@ package
          }
          PlayState.miniMap.setMapLittle();
          PlayState.enemyBulletPool.destroyAll();
-         var _loc1_:int = 0;
-         while(_loc1_ < SHIELDS_REALMAX)
+         for (var i:int = 0; i < SHIELDS_REALMAX; i++)
          {
-            _shields[_loc1_].kill();
-            _loc1_++;
+            _shields[i].kill();
          }
-         _loc1_ = 0;
-         while(_loc1_ < _spawn.length)
+         for (i = 0; i < _spawn.length; i++)
          {
-            _spawn[_loc1_].kill();
-            _loc1_++;
+            _spawn[i].kill();
          }
          Music.playArea3();
          dead = true;
@@ -508,19 +492,16 @@ package
       
       override public function hurt(param1:Number) : void
       {
-         var _loc2_:int = 0;
          if(_hp <= MAX_HP * 0.3 && _attackMode < 1)
          {
             _bossSpeed += 0.5;
             _attackMode = 1;
-            _loc2_ = 0;
-            while(_loc2_ < _spawn.length)
+            for (var i:int = 0; i < _spawn.length; i++)
             {
-               if(!_spawn[_loc2_].dead)
+               if(!_spawn[i].dead)
                {
-                  _spawn[_loc2_].makeBlue();
+                  _spawn[i].makeBlue();
                }
-               _loc2_++;
             }
             SHOT_NUM = 6;
             CLUSTER_TIMEOUT = 4.1;
