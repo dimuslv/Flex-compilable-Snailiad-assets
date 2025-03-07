@@ -318,11 +318,11 @@ package
       
       public function hpPerHeart() : int
       {
-         if(this._easyMode)
+         if(_easyMode)
          {
             return 8;
          }
-         if(this._hardMode)
+         if(_hardMode)
          {
             return 2;
          }
@@ -331,8 +331,8 @@ package
       
       override public function destroy() : void
       {
-         clearInterval(this.deathFadeInterval);
-         clearInterval(this.reviveInterval);
+         clearInterval(deathFadeInterval);
+         clearInterval(reviveInterval);
          _bulletGroups = null;
          _curHp = null;
          _gravity = null;
@@ -364,66 +364,66 @@ package
       
       public function Player(param1:PlayerBulletGroups) : void
       {
-         this._easyMode = false;
-         this._hardMode = false;
-         this._insaneMode = false;
-         this._curHp = new CipherInt(STARTING_MAX_HEARTS * this.hpPerHeart());
-         this._maxHp = new CipherInt(STARTING_MAX_HEARTS * this.hpPerHeart());
-         this._currentWeapon = new CipherInt(WEAPON_NONE);
-         this._gravity = new CipherInt(1200);
-         this._hasArmor = new CheckBool(false);
-         this._hasColdFoot = new CheckBool(false);
-         this._hasDevastator = new CheckBool(false);
-         this._hasGravityJump = new CheckBool(false);
-         this._hasGravityShock = new CheckBool(false);
-         this._hasHighJump = new CheckBool(false);
-         this._hasShellShield = new CheckBool(false);
-         this._hasTurbo = new CheckBool(false);
-         this._helixFragments = new CipherInt(0);
-         this._jumpPower = new CipherInt(REGULAR_JUMP);
-         this._maxSpeed = new CipherInt(500);
-         this._runSpeed = new CipherInt(260);
-         this._snailType = new CipherInt(SNAILTYPE_NORMAL);
-         this._turboMultiplier = new ShadowNumber(1);
-         this._weaponTimeout = new ShadowNumber(0);
-         this.bestBossRushTime = new ShadowNumber(0);
-         this.bestMainTime = new ShadowNumber(0);
-         this.bestHardTime = new ShadowNumber(0);
-         this.bestInsaneTime = new ShadowNumber(0);
-         this.gameTime = new ShadowNumber(0);
-         this.clearTime = new ShadowNumber(0);
-         this._sleepTimeout = SLEEP_TIMEOUT;
-         this._bulletGroups = param1;
-         this._paralyzed = false;
-         this.hasSetHpBar = false;
-         maxVelocity.x = this._maxSpeed.value;
-         maxVelocity.y = this._maxSpeed.value;
-         this.setMaxHp(STARTING_MAX_HEARTS * this.hpPerHeart());
-         this.setCurHp(STARTING_MAX_HEARTS * this.hpPerHeart());
+         _easyMode = false;
+         _hardMode = false;
+         _insaneMode = false;
+         _curHp = new CipherInt(STARTING_MAX_HEARTS * hpPerHeart());
+         _maxHp = new CipherInt(STARTING_MAX_HEARTS * hpPerHeart());
+         _currentWeapon = new CipherInt(WEAPON_NONE);
+         _gravity = new CipherInt(1200);
+         _hasArmor = new CheckBool(false);
+         _hasColdFoot = new CheckBool(false);
+         _hasDevastator = new CheckBool(false);
+         _hasGravityJump = new CheckBool(false);
+         _hasGravityShock = new CheckBool(false);
+         _hasHighJump = new CheckBool(false);
+         _hasShellShield = new CheckBool(false);
+         _hasTurbo = new CheckBool(false);
+         _helixFragments = new CipherInt(0);
+         _jumpPower = new CipherInt(REGULAR_JUMP);
+         _maxSpeed = new CipherInt(500);
+         _runSpeed = new CipherInt(260);
+         _snailType = new CipherInt(SNAILTYPE_NORMAL);
+         _turboMultiplier = new ShadowNumber(1);
+         _weaponTimeout = new ShadowNumber(0);
+         bestBossRushTime = new ShadowNumber(0);
+         bestMainTime = new ShadowNumber(0);
+         bestHardTime = new ShadowNumber(0);
+         bestInsaneTime = new ShadowNumber(0);
+         gameTime = new ShadowNumber(0);
+         clearTime = new ShadowNumber(0);
+         _sleepTimeout = SLEEP_TIMEOUT;
+         _bulletGroups = param1;
+         _paralyzed = false;
+         hasSetHpBar = false;
+         maxVelocity.x = _maxSpeed.value;
+         maxVelocity.y = _maxSpeed.value;
+         setMaxHp(STARTING_MAX_HEARTS * hpPerHeart());
+         setCurHp(STARTING_MAX_HEARTS * hpPerHeart());
          var _loc2_:SaveData = PlayState.saveData;
          var _loc3_:XMLList = _loc2_.xml.vars;
          if(PlayState.bossRush)
          {
-            this.setEasyMode(false);
-            this.setHardMode(false);
-            this.setInsaneMode(false);
-            this.setHasTurbo(false);
-            this.setHighJump(false);
-            this.setHasDevastator(false);
-            this.setHasGravityShock(false);
-            this.setHasShellShield(false);
-            this.switchToWeapon(-1);
-            this.setHelixFragments(0);
-            this.setSnailType(SNAILTYPE_NORMAL);
-            this.gameTime.value = 0;
+            setEasyMode(false);
+            setHardMode(false);
+            setInsaneMode(false);
+            setHasTurbo(false);
+            setHighJump(false);
+            setHasDevastator(false);
+            setHasGravityShock(false);
+            setHasShellShield(false);
+            switchToWeapon(-1);
+            setHelixFragments(0);
+            setSnailType(SNAILTYPE_NORMAL);
+            gameTime.value = 0;
             x = BOSSRUSH_STARTX * 16;
             y = BOSSRUSH_STARTY * 16;
          }
          else
          {
-            this.setEasyMode(false);
-            this.setHardMode(false);
-            this.setInsaneMode(false);
+            setEasyMode(false);
+            setHardMode(false);
+            setInsaneMode(false);
             if(!_loc2_.isVarSet("savex"))
             {
                _loc3_.savex = PlayState.config.getPlayerStartX() * 16;
@@ -588,39 +588,39 @@ package
             {
                _loc3_.weapPrevKey = DEFAULT_WEAPON_PREV_KEY;
             }
-            this.hasWonGame = _loc2_.isVarTrue("hasWonGame");
-            this.hasWonHardMode = _loc2_.isVarTrue("hasWonHardMode");
-            this.hasWonInsaneMode = _loc2_.isVarTrue("hasWonInsaneMode");
-            this.hasFullClear = _loc2_.isVarTrue("hasFullClear");
-            this.hasWonBossRush = _loc2_.isVarTrue("hasWonBossRush");
+            hasWonGame = _loc2_.isVarTrue("hasWonGame");
+            hasWonHardMode = _loc2_.isVarTrue("hasWonHardMode");
+            hasWonInsaneMode = _loc2_.isVarTrue("hasWonInsaneMode");
+            hasFullClear = _loc2_.isVarTrue("hasFullClear");
+            hasWonBossRush = _loc2_.isVarTrue("hasWonBossRush");
             PlayState.hideTab = _loc2_.isVarTrue("hideTab");
             PlayState.hideMiniMap = _loc2_.isVarTrue("hideMiniMap");
             PlayState.hasGoodEnding = _loc2_.isVarTrue("hasGoodEnding");
-            this.setEasyMode(_loc2_.isVarTrue("easyMode"));
-            this.setHardMode(_loc2_.isVarTrue("hardMode"));
-            this.setInsaneMode(_loc2_.isVarTrue("insaneMode"));
-            this._slugMode = this._hardMode && !this._insaneMode;
-            if(this._slugMode)
+            setEasyMode(_loc2_.isVarTrue("easyMode"));
+            setHardMode(_loc2_.isVarTrue("hardMode"));
+            setInsaneMode(_loc2_.isVarTrue("insaneMode"));
+            _slugMode = _hardMode && !_insaneMode;
+            if(_slugMode)
             {
-               this.WEAPON_TIMEOUTS[0] = 0.046;
-               this.WEAPON_TIMEOUTS[1] = 0.23;
-               this.WEAPON_TIMEOUTS[2] = 0.13;
+               WEAPON_TIMEOUTS[0] = 0.046;
+               WEAPON_TIMEOUTS[1] = 0.23;
+               WEAPON_TIMEOUTS[2] = 0.13;
             }
             if(!_loc2_.isVarSet("maxHp"))
             {
-               _loc3_.maxHp = STARTING_MAX_HEARTS * this.hpPerHeart();
+               _loc3_.maxHp = STARTING_MAX_HEARTS * hpPerHeart();
             }
-            this.setMaxHp(_loc3_.maxHp);
-            this.setCurHp(999999999);
-            this.bestMainTime.value = _loc3_.bestMainTime;
-            this.bestHardTime.value = _loc3_.bestHardTime;
-            this.bestBossRushTime.value = _loc3_.bestBossRushTime;
-            this.bestInsaneTime.value = _loc3_.bestInsaneTime;
-            this.gameTime.value = _loc3_.gameTime;
-            this.setHasWeapon(0,_loc2_.isVarTrue("hasWeaponZero"));
-            this.setHasWeapon(1,_loc2_.isVarTrue("hasWeaponOne"));
-            this.setHasWeapon(2,_loc2_.isVarTrue("hasWeaponTwo"));
-            this.setHasTurbo(_loc2_.isVarTrue("hasTurbo"));
+            setMaxHp(_loc3_.maxHp);
+            setCurHp(999999999);
+            bestMainTime.value = _loc3_.bestMainTime;
+            bestHardTime.value = _loc3_.bestHardTime;
+            bestBossRushTime.value = _loc3_.bestBossRushTime;
+            bestInsaneTime.value = _loc3_.bestInsaneTime;
+            gameTime.value = _loc3_.gameTime;
+            setHasWeapon(0,_loc2_.isVarTrue("hasWeaponZero"));
+            setHasWeapon(1,_loc2_.isVarTrue("hasWeaponOne"));
+            setHasWeapon(2,_loc2_.isVarTrue("hasWeaponTwo"));
+            setHasTurbo(_loc2_.isVarTrue("hasTurbo"));
             if(_loc2_.isVarTrue("toggleFire"))
             {
                firingMode = FIRING_MODE_TOGGLE;
@@ -629,55 +629,55 @@ package
             {
                firingMode = FIRING_MODE_NORMAL;
             }
-            this.setHighJump(_loc2_.isVarTrue("hasHighJump"));
-            this.setHasDevastator(_loc2_.isVarTrue("hasDevastator"));
-            this.setHasGravityShock(_loc2_.isVarTrue("hasGravityShock"));
-            this.setHasShellShield(_loc2_.isVarTrue("hasShellShield"));
-            this.switchToWeapon(_loc3_.lastWeapon);
-            this.setHelixFragments(_loc3_.helixFragments);
-            this.setSnailType(_loc3_.snailType);
-            this.hasSeenIsis = _loc2_.isVarTrue("hasSeenIsis");
-            this.hasSeenHelp = _loc2_.isVarTrue("hasSeenHelp");
+            setHighJump(_loc2_.isVarTrue("hasHighJump"));
+            setHasDevastator(_loc2_.isVarTrue("hasDevastator"));
+            setHasGravityShock(_loc2_.isVarTrue("hasGravityShock"));
+            setHasShellShield(_loc2_.isVarTrue("hasShellShield"));
+            switchToWeapon(_loc3_.lastWeapon);
+            setHelixFragments(_loc3_.helixFragments);
+            setSnailType(_loc3_.snailType);
+            hasSeenIsis = _loc2_.isVarTrue("hasSeenIsis");
+            hasSeenHelp = _loc2_.isVarTrue("hasSeenHelp");
             PlayState.bossesKilled[1] = _loc2_.isVarTrue("bossesKilledOne");
             PlayState.bossesKilled[2] = _loc2_.isVarTrue("bossesKilledTwo");
             PlayState.bossesKilled[3] = _loc2_.isVarTrue("bossesKilledThree");
             PlayState.bossesKilled[4] = _loc2_.isVarTrue("bossesKilledFour");
-            if(this.bestMainTime.value > 0 || this.bestHardTime.value > 0)
+            if(bestMainTime.value > 0 || bestHardTime.value > 0)
             {
                NgMedal.unlockFirstOfFour();
                NgMedal.unlockStinkyToe();
                NgMedal.unlockGravityBattle();
                NgMedal.unlockVictory();
             }
-            if(this.bestHardTime.value > 0)
+            if(bestHardTime.value > 0)
             {
                NgMedal.unlockHomeless();
             }
-            if(this.bestInsaneTime.value > 0)
+            if(bestInsaneTime.value > 0)
             {
                NgMedal.unlockHappyEnding();
             }
-            if(this.bestBossRushTime.value > 0)
+            if(bestBossRushTime.value > 0)
             {
                NgMedal.unlockTheGauntlet();
             }
-            if(this.hasSeenIsis)
+            if(hasSeenIsis)
             {
                NgMedal.unlockPilgrim();
             }
-            if(PlayState.bossesKilled[1] && !this._easyMode)
+            if(PlayState.bossesKilled[1] && !_easyMode)
             {
                NgMedal.unlockFirstOfFour();
             }
-            if(PlayState.bossesKilled[2] && !this._easyMode)
+            if(PlayState.bossesKilled[2] && !_easyMode)
             {
                NgMedal.unlockStinkyToe();
             }
-            if(PlayState.bossesKilled[3] && !this._easyMode)
+            if(PlayState.bossesKilled[3] && !_easyMode)
             {
                NgMedal.unlockGravityBattle();
             }
-            if(PlayState.bossesKilled[4] && !this._easyMode)
+            if(PlayState.bossesKilled[4] && !_easyMode)
             {
                NgMedal.unlockVictory();
             }
@@ -710,17 +710,17 @@ package
             }
             if(!PlayState.startFromTown)
             {
-               this.saveOnNextFrame = true;
+               saveOnNextFrame = true;
             }
          }
-         this.setGravityDir(GRAV_DOWN);
-         this._slugMode = this._hardMode;
+         setGravityDir(GRAV_DOWN);
+         _slugMode = _hardMode;
          loadGraphic(Art.SnailySnail,true,true,SPRITE_WIDTH,SPRITE_HEIGHT);
          var _loc4_:int = 0;
          while(_loc4_ < 4)
          {
             var _loc5_:int = _loc4_ * 20;
-            if(this._slugMode)
+            if(_slugMode)
             {
                _loc5_ += 4 * 20;
             }
@@ -735,13 +735,13 @@ package
             addAnimation("snail" + (_loc4_ + 1).toString() + "_death",[16 + _loc5_,17 + _loc5_,18 + _loc5_,19 + _loc5_],30,true);
             _loc4_++;
          }
-         this.setFaceDir(FACE_FLOOR_RIGHT,true);
-         this.playAnim("floor_right_move");
+         setFaceDir(FACE_FLOOR_RIGHT,true);
+         playAnim("floor_right_move");
       }
       
       public function checkInput_handleMenu() : void
       {
-         if((FlxG.keys.justPressed("P") || FlxG.keys.justPressed("ESCAPE")) && !dead && !PlayState.isBossRushComplete && !PlayState.isGameComplete && !this._paralyzed)
+         if((FlxG.keys.justPressed("P") || FlxG.keys.justPressed("ESCAPE")) && !dead && !PlayState.isBossRushComplete && !PlayState.isGameComplete && !_paralyzed)
          {
             if(PlayState.realState == PlayState.STATE_SUBSCREEN)
             {
@@ -753,7 +753,7 @@ package
       
       public function checkInput_handleHelp() : void
       {
-         if(FlxG.keys.justPressed("F1") && !this.cheatsEnabled)
+         if(FlxG.keys.justPressed("F1") && !cheatsEnabled)
          {
             PlayState.controlHelp.toggle();
          }
@@ -772,7 +772,7 @@ package
             PlayState.bossesKilled[2] = false;
             PlayState.bossesKilled[3] = false;
             PlayState.bossesKilled[4] = false;
-            this.saveNoCoords();
+            saveNoCoords();
             PlayState.hud.areaName.setArea("- SKYFISH FLIES AGAIN -");
          }
       }
@@ -781,29 +781,29 @@ package
       {
          var _loc1_:int = 0;
          var _loc2_:int = 0;
-         if(!PlayState.bossRush || PlayState.bossRushTimer.started || this._slugMode)
+         if(!PlayState.bossRush || PlayState.bossRushTimer.started || _slugMode)
          {
             return;
          }
          if(FlxG.keys.getLastKeys(4) == "SLUG")
          {
             Sfx.playSlugMode();
-            this.hideInShell(false);
-            this._maxHp.value /= this.hpPerHeart();
+            hideInShell(false);
+            _maxHp.value /= hpPerHeart();
             _slugMode = true;
             _hardMode = true;
-            this._maxHp.value *= this.hpPerHeart();
-            this.setMaxHp(this.getMaxHp());
-            this.setCurHp(999999999);
-            this.WEAPON_TIMEOUTS[0] = 0.046;
-            this.WEAPON_TIMEOUTS[1] = 0.23;
-            this.WEAPON_TIMEOUTS[2] = 0.13;
+            _maxHp.value *= hpPerHeart();
+            setMaxHp(getMaxHp());
+            setCurHp(999999999);
+            WEAPON_TIMEOUTS[0] = 0.046;
+            WEAPON_TIMEOUTS[1] = 0.23;
+            WEAPON_TIMEOUTS[2] = 0.13;
             _animations = new Array();
             _loc1_ = 0;
             while(_loc1_ < 4)
             {
                _loc2_ = _loc1_ * 20;
-               if(this._slugMode)
+               if(_slugMode)
                {
                   _loc2_ += 4 * 20;
                }
@@ -818,23 +818,23 @@ package
                addAnimation("snail" + (_loc1_ + 1).toString() + "_death",[16 + _loc2_,17 + _loc2_,18 + _loc2_,19 + _loc2_],30,true);
                _loc1_++;
             }
-            this.playAnim("death");
-            this.setSnailType(this._snailType.value);
+            playAnim("death");
+            setSnailType(_snailType.value);
             PlayState.hud.areaName.setArea("- OMEGA SLUG ENGAGE -");
          }
       }
       
       public function checkInput_hideInShell() : void
       {
-         if(this._slugMode)
+         if(_slugMode)
          {
             return;
          }
-         if(firingMode == FIRING_MODE_NORMAL && this.pressedShoot())
+         if(firingMode == FIRING_MODE_NORMAL && pressedShoot())
          {
             return;
          }
-         if(firingMode == FIRING_MODE_TOGGLE && this.pressedStrafe())
+         if(firingMode == FIRING_MODE_TOGGLE && pressedStrafe())
          {
             return;
          }
@@ -842,18 +842,18 @@ package
          {
             return;
          }
-         if(this._gravityDir == GRAV_DOWN && this.justPressedDown() || this._gravityDir == GRAV_UP && this.justPressedUp())
+         if(_gravityDir == GRAV_DOWN && justPressedDown() || _gravityDir == GRAV_UP && justPressedUp())
          {
-            if(!this.pressedLeft() && !this.pressedRight() || this._hidingInShell)
+            if(!pressedLeft() && !pressedRight() || _hidingInShell)
             {
-               this.hideInShell(!this._hidingInShell);
+               hideInShell(!_hidingInShell);
             }
          }
-         if(this._gravityDir == GRAV_LEFT && this.justPressedLeft() || this._gravityDir == GRAV_RIGHT && this.justPressedRight())
+         if(_gravityDir == GRAV_LEFT && justPressedLeft() || _gravityDir == GRAV_RIGHT && justPressedRight())
          {
-            if(!this.pressedUp() && !this.pressedDown() || this._hidingInShell)
+            if(!pressedUp() && !pressedDown() || _hidingInShell)
             {
-               this.hideInShell(!this._hidingInShell);
+               hideInShell(!_hidingInShell);
             }
          }
       }
@@ -862,23 +862,23 @@ package
       {
          if(firingMode == FIRING_MODE_TOGGLE)
          {
-            if(this.justPressedShoot() && this.hasAnyWeapon())
+            if(justPressedShoot() && hasAnyWeapon())
             {
                fireToggle = !fireToggle;
             }
          }
          else
          {
-            fireToggle = this.pressedShoot();
+            fireToggle = pressedShoot();
          }
-         if(fireToggle && !this._hidingInShell)
+         if(fireToggle && !_hidingInShell)
          {
-            this.shootCurrentWeapon();
+            shootCurrentWeapon();
          }
-         if(this.justPressedShoot() && this._hidingInShell && this.hasAnyWeapon())
+         if(justPressedShoot() && _hidingInShell && hasAnyWeapon())
          {
-            this.hideInShell(false);
-            this.shootCurrentWeapon();
+            hideInShell(false);
+            shootCurrentWeapon();
          }
       }
       
@@ -886,182 +886,182 @@ package
       {
          if(FlxG.keys.justPressed(WEAPON_1_KEY))
          {
-            this.switchToWeapon(0);
+            switchToWeapon(0);
          }
          if(FlxG.keys.justPressed(WEAPON_2_KEY))
          {
-            this.switchToWeapon(1);
+            switchToWeapon(1);
          }
          if(FlxG.keys.justPressed(WEAPON_3_KEY))
          {
-            this.switchToWeapon(2);
+            switchToWeapon(2);
          }
          if(FlxG.keys.justPressed(WEAPON_NEXT_KEY))
          {
-            this.switchToNextWeapon();
+            switchToNextWeapon();
          }
          if(FlxG.keys.justPressed(WEAPON_PREV_KEY))
          {
-            this.switchToPrevWeapon();
+            switchToPrevWeapon();
          }
       }
       
       public function checkInput_performGravityJump() : void
       {
-         if(this._hasGravityJump.value && this.justPressedJump() && this._jumping)
+         if(_hasGravityJump.value && justPressedJump() && _jumping)
          {
-            this.performGravityJump();
+            performGravityJump();
          }
       }
       
       private function checkInput_move() : void
       {
-         if(this.noCollide)
+         if(noCollide)
          {
             noCollide = false;
             acceleration.y = 1200;
          }
-         if(this.justPressedUp())
+         if(justPressedUp())
          {
             _mostRecentDir = DIR_UP;
             _mostRecentUpDown = DIR_UP;
          }
-         if(this.justPressedDown())
+         if(justPressedDown())
          {
             _mostRecentDir = DIR_DOWN;
             _mostRecentUpDown = DIR_DOWN;
          }
-         if(this.justPressedLeft())
+         if(justPressedLeft())
          {
             _mostRecentDir = DIR_LEFT;
             _mostRecentLeftRight = DIR_LEFT;
          }
-         if(this.justPressedRight())
+         if(justPressedRight())
          {
             _mostRecentDir = DIR_RIGHT;
             _mostRecentLeftRight = DIR_RIGHT;
          }
-         var _loc1_:Boolean = this._hidingInShell && !this._jumping;
-         switch(this._gravityDir)
+         var _loc1_:Boolean = _hidingInShell && !_jumping;
+         switch(_gravityDir)
          {
             case GRAV_UP:
                acceleration.x = 0;
-               if(this.pressedLeft() && !this.pressedStrafe())
+               if(pressedLeft() && !pressedStrafe())
                {
                   if(_loc1_)
                   {
-                     this.hideInShell(false);
+                     hideInShell(false);
                   }
                   facing = LEFT;
-                  if((PlayState.worldMap.solidAt(x - 1,y + 3) || PlayState.worldMap.solidAt(x - 1,y + height - 4)) && !(this.pressedUp() || this.pressedDown()))
+                  if((PlayState.worldMap.solidAt(x - 1,y + 3) || PlayState.worldMap.solidAt(x - 1,y + height - 4)) && !(pressedUp() || pressedDown()))
                   {
                      velocity.x = 0;
                   }
                   else
                   {
-                     velocity.x = -this._runSpeed.value;
+                     velocity.x = -_runSpeed.value;
                   }
-                  this.setFaceDir(FACE_CEIL_LEFT);
+                  setFaceDir(FACE_CEIL_LEFT);
                }
-               else if(this.pressedRight() && !this.pressedStrafe())
+               else if(pressedRight() && !pressedStrafe())
                {
                   if(_loc1_)
                   {
-                     this.hideInShell(false);
+                     hideInShell(false);
                   }
                   facing = RIGHT;
-                  if((PlayState.worldMap.solidAt(x + width,y + 3) || PlayState.worldMap.solidAt(x + width,y + height - 4)) && !(this.pressedUp() || this.pressedDown()))
+                  if((PlayState.worldMap.solidAt(x + width,y + 3) || PlayState.worldMap.solidAt(x + width,y + height - 4)) && !(pressedUp() || pressedDown()))
                   {
                      velocity.x = 0;
                   }
                   else
                   {
-                     velocity.x = this._runSpeed.value;
+                     velocity.x = _runSpeed.value;
                   }
-                  this.setFaceDir(FACE_CEIL_RIGHT);
+                  setFaceDir(FACE_CEIL_RIGHT);
                }
                break;
             case GRAV_DOWN:
                acceleration.x = 0;
-               if(this.pressedLeft() && !this.pressedStrafe())
+               if(pressedLeft() && !pressedStrafe())
                {
                   if(_loc1_)
                   {
-                     this.hideInShell(false);
+                     hideInShell(false);
                   }
                   facing = LEFT;
-                  if((PlayState.worldMap.solidAt(x - 1,y + 3) || PlayState.worldMap.solidAt(x - 1,y + height - 4)) && !(this.pressedUp() || this.pressedDown()))
+                  if((PlayState.worldMap.solidAt(x - 1,y + 3) || PlayState.worldMap.solidAt(x - 1,y + height - 4)) && !(pressedUp() || pressedDown()))
                   {
                      velocity.x = 0;
                   }
                   else
                   {
-                     velocity.x = -this._runSpeed.value;
+                     velocity.x = -_runSpeed.value;
                   }
-                  this.setFaceDir(FACE_FLOOR_LEFT);
+                  setFaceDir(FACE_FLOOR_LEFT);
                }
-               else if(this.pressedRight() && !this.pressedStrafe())
+               else if(pressedRight() && !pressedStrafe())
                {
                   if(_loc1_)
                   {
-                     this.hideInShell(false);
+                     hideInShell(false);
                   }
                   facing = RIGHT;
-                  if((PlayState.worldMap.solidAt(x + width,y + 3) || PlayState.worldMap.solidAt(x + width,y + height - 4)) && !(this.pressedUp() || this.pressedDown()))
+                  if((PlayState.worldMap.solidAt(x + width,y + 3) || PlayState.worldMap.solidAt(x + width,y + height - 4)) && !(pressedUp() || pressedDown()))
                   {
                      velocity.x = 0;
                   }
                   else
                   {
-                     velocity.x = this._runSpeed.value;
+                     velocity.x = _runSpeed.value;
                   }
-                  this.setFaceDir(FACE_FLOOR_RIGHT);
+                  setFaceDir(FACE_FLOOR_RIGHT);
                }
                break;
             case GRAV_LEFT:
                acceleration.y = 0;
-               if(this.pressedUp() && !this.pressedStrafe())
+               if(pressedUp() && !pressedStrafe())
                {
                   if(_loc1_)
                   {
-                     this.hideInShell(false);
+                     hideInShell(false);
                   }
-                  velocity.y = -this._runSpeed.value;
+                  velocity.y = -_runSpeed.value;
                   facing = LEFT;
-                  this.setFaceDir(FACE_LWALL_UP);
+                  setFaceDir(FACE_LWALL_UP);
                }
-               else if(this.pressedDown() && !this.pressedStrafe())
+               else if(pressedDown() && !pressedStrafe())
                {
                   if(_loc1_)
                   {
-                     this.hideInShell(false);
+                     hideInShell(false);
                   }
-                  velocity.y = this._runSpeed.value;
+                  velocity.y = _runSpeed.value;
                   facing = LEFT;
-                  this.setFaceDir(FACE_LWALL_DOWN);
+                  setFaceDir(FACE_LWALL_DOWN);
                }
                break;
             case GRAV_RIGHT:
                acceleration.y = 0;
-               if(this.pressedUp() && !this.pressedStrafe())
+               if(pressedUp() && !pressedStrafe())
                {
                   if(_loc1_)
                   {
-                     this.hideInShell(false);
+                     hideInShell(false);
                   }
-                  velocity.y = -this._runSpeed.value;
+                  velocity.y = -_runSpeed.value;
                   facing = RIGHT;
-                  this.setFaceDir(FACE_RWALL_UP);
+                  setFaceDir(FACE_RWALL_UP);
                }
-               else if(this.pressedDown() && !this.pressedStrafe())
+               else if(pressedDown() && !pressedStrafe())
                {
                   if(_loc1_)
                   {
-                     this.hideInShell(false);
+                     hideInShell(false);
                   }
-                  velocity.y = this._runSpeed.value;
+                  velocity.y = _runSpeed.value;
                   facing = RIGHT;
-                  this.setFaceDir(FACE_RWALL_DOWN);
+                  setFaceDir(FACE_RWALL_DOWN);
                }
 			   break;
          }
@@ -1069,7 +1069,7 @@ package
       
       public function checkInput_map() : void
       {
-         if((FlxG.keys.justPressed("TAB") || FlxG.keys.justPressed(MAP_KEY)) && !this._paralyzed && !dead && !PlayState.isBossRushComplete && !PlayState.isGameComplete)
+         if((FlxG.keys.justPressed("TAB") || FlxG.keys.justPressed(MAP_KEY)) && !_paralyzed && !dead && !PlayState.isBossRushComplete && !PlayState.isGameComplete)
          {
             PlayState.miniMap.toggleMapSize();
          }
@@ -1077,20 +1077,20 @@ package
       
       public function checkInput_jump() : void
       {
-         if(this.justPressedJump())
+         if(justPressedJump())
          {
-            if(this._hidingInShell)
+            if(_hidingInShell)
             {
-               this.hideInShell(false);
+               hideInShell(false);
             }
-            if(!this._jumping)
+            if(!_jumping)
             {
-               this.doJump();
+               doJump();
             }
          }
-         if(this._jumping && !this.pressedJump())
+         if(_jumping && !pressedJump())
          {
-            switch(this._gravityDir)
+            switch(_gravityDir)
             {
                case GRAV_UP:
                   if(velocity.y > 0)
@@ -1122,19 +1122,19 @@ package
       
       override public function update() : void
       {
-         if(this.saveOnNextFrame)
+         if(saveOnNextFrame)
          {
-            this.setHelixFragments(this._helixFragments.value);
-            this.setSaveCoords(x,y,true);
+            setHelixFragments(_helixFragments.value);
+            setSaveCoords(x,y,true);
             saveOnNextFrame = false;
             hasSetHpBar = false;
-            this.setCurHp(9999);
+            setCurHp(9999);
          }
-         if(this.hasSetHpBar == false)
+         if(hasSetHpBar == false)
          {
             hasSetHpBar = true;
-            this.setCurHp(9999);
-            this.setMaxHp(this._maxHp.value);
+            setCurHp(9999);
+            setMaxHp(_maxHp.value);
          }
          if(facing > 10)
          {
@@ -1142,52 +1142,52 @@ package
          }
          if(PlayState.realState == PlayState.STATE_GAME || PlayState.realState == PlayState.STATE_SUBSCREEN)
          {
-            this.checkInput_map();
-            this.checkInput_handleMenu();
-            this.checkInput_switchWeapons();
+            checkInput_map();
+            checkInput_handleMenu();
+            checkInput_switchWeapons();
          }
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
          }
-         this.gameTime.value += FlxG.elapsed;
-         this._weaponTimeout.value -= FlxG.elapsed;
-         if(this.justPressedLeft())
+         gameTime.value += FlxG.elapsed;
+         _weaponTimeout.value -= FlxG.elapsed;
+         if(justPressedLeft())
          {
             pressedLeftSinceJump = true;
          }
-         else if(this.justPressedRight())
+         else if(justPressedRight())
          {
             pressedRightSinceJump = true;
          }
-         else if(this.justPressedJump())
+         else if(justPressedJump())
          {
             pressedLeftSinceJump = false;
             pressedRightSinceJump = false;
          }
          if(!dead)
          {
-            this.fixGravity();
+            fixGravity();
          }
-         if(!dead && !this._paralyzed)
+         if(!dead && !_paralyzed)
          {
-            this.checkInput_handleHelp();
-            this.checkInput_handleSkyFishCheat();
-            this.checkInput_handleSlugCheat();
-            this.checkInput_hideInShell();
-            this.checkInput_shoot();
-            this.checkInput_performGravityJump();
-            this.checkInput_move();
-            this.checkInput_jump();
+            checkInput_handleHelp();
+            checkInput_handleSkyFishCheat();
+            checkInput_handleSlugCheat();
+            checkInput_hideInShell();
+            checkInput_shoot();
+            checkInput_performGravityJump();
+            checkInput_move();
+            checkInput_jump();
          }
-         if(this.pressedUp() || this.pressedDown() || this.pressedLeft() || this.pressedRight() || this.pressedShoot() || this.pressedStrafe() || this.pressedJump() || flickering())
+         if(pressedUp() || pressedDown() || pressedLeft() || pressedRight() || pressedShoot() || pressedStrafe() || pressedJump() || flickering())
          {
             _sleepTimeout = SLEEP_TIMEOUT;
          }
          _sleepTimeout -= FlxG.elapsed;
-         if(this._sleepTimeout <= 0 && !PlayState.zzz.visible && !this._slugMode)
+         if(_sleepTimeout <= 0 && !PlayState.zzz.visible && !_slugMode)
          {
-            this.hideInShell(true);
+            hideInShell(true);
             PlayState.zzz.visible = true;
             _sleepTimeout = SLEEP_TIMEOUT;
          }
@@ -1200,15 +1200,15 @@ package
       
       override public function hurt(param1:Number) : void
       {
-         if(this._invincible || this.noCollide || this._paralyzed)
+         if(_invincible || noCollide || _paralyzed)
          {
             return;
          }
          _sleepTimeout = SLEEP_TIMEOUT;
-         if(this._hidingInShell)
+         if(_hidingInShell)
          {
-            this.hideInShell(false);
-            if(this._hasShellShield.value)
+            hideInShell(false);
+            if(_hasShellShield.value)
             {
                flicker(1);
                Sfx.playEnemyPingOffArmor();
@@ -1219,7 +1219,7 @@ package
          {
             return;
          }
-         if(this._hasArmor.value)
+         if(_hasArmor.value)
          {
             param1 /= 2;
             if(param1 < 1)
@@ -1228,15 +1228,15 @@ package
                return;
             }
          }
-         this.setCurHp(this._curHp.value - param1);
+         setCurHp(_curHp.value - param1);
          if(dead)
          {
             Sfx.playDeath();
-            this.playAnim("death");
+            playAnim("death");
             velocity.x = facing == LEFT ? 110 : -110;
             velocity.y = -300;
             acceleration.x = 0;
-            acceleration.y = this._gravity.value;
+            acceleration.y = _gravity.value;
             drag.x = 0;
             drag.y = 0;
             dead = true;
@@ -1251,7 +1251,7 @@ package
       
       public function heal(param1:int) : void
       {
-         this.setCurHp(this._curHp.value + param1);
+         setCurHp(_curHp.value + param1);
       }
       
       override public function kill() : void
@@ -1273,32 +1273,32 @@ package
             PlayState.bossRushTimer.started = false;
             PlayState.bossRushTimer.now.value = 0;
          }
-         if(!this._invincible)
+         if(!_invincible)
          {
             Utility.stackTrace("setting timer for kill()");
-            deathFadeInterval = setInterval(this.deathFade,DEATHFADE_DELAY);
-            reviveInterval = setInterval(this.revive,REVIVE_DELAY);
-            this.setFaceDir(FACE_FLOOR_RIGHT,true);
+            deathFadeInterval = setInterval(deathFade,DEATHFADE_DELAY);
+            reviveInterval = setInterval(revive,REVIVE_DELAY);
+            setFaceDir(FACE_FLOOR_RIGHT,true);
          }
       }
       
       public function deathFade() : void
       {
          FlxG.fade.start(4278206591,0.44);
-         clearInterval(this.deathFadeInterval);
+         clearInterval(deathFadeInterval);
       }
       
       public function revive() : void
       {
-         clearInterval(this.reviveInterval);
-         this.setFaceDir(FACE_FLOOR_RIGHT,true);
+         clearInterval(reviveInterval);
+         setFaceDir(FACE_FLOOR_RIGHT,true);
          facing = right;
          _faceDir = FACE_FLOOR_RIGHT;
          _mostRecentDir = DIR_RIGHT;
          _mostRecentUpDown = DIR_DOWN;
          _mostRecentLeftRight = DIR_RIGHT;
-         this.teleportTo(32,32);
-         teleportInterval = setInterval(this.realTeleport,TELEPORT_DELAY);
+         teleportTo(32,32);
+         teleportInterval = setInterval(realTeleport,TELEPORT_DELAY);
          if(PlayState.bossRush)
          {
             Music.playBoss1();
@@ -1315,35 +1315,35 @@ package
       override public function hitLeft(param1:FlxObject, param2:Number) : void
       {
          _justHitHeadOrWall = true;
-         if(this.findNotSolidHeight() < 8)
+         if(findNotSolidHeight() < 8)
          {
             return;
          }
-         if(this._paralyzed)
+         if(_paralyzed)
          {
             return;
          }
-         if(this.pressedLeft() && (!flickering() || this._hasGravityJump.value))
+         if(pressedLeft() && (!flickering() || _hasGravityJump.value))
          {
-            switch(this._gravityDir)
+            switch(_gravityDir)
             {
                case GRAV_UP:
-                  if(this.pressedDown())
+                  if(pressedDown())
                   {
-                     this.setGravityDir(GRAV_LEFT);
-                     this.setFaceDir(FACE_LWALL_DOWN,true);
-                     this.moveSnailCheckBounds(0,2);
+                     setGravityDir(GRAV_LEFT);
+                     setFaceDir(FACE_LWALL_DOWN,true);
+                     moveSnailCheckBounds(0,2);
                   }
                   break;
                case GRAV_DOWN:
-                  if(this.pressedUp() || this._jumping && this.pressedDown())
+                  if(pressedUp() || _jumping && pressedDown())
                   {
-                     if(!this._hasGravityJump.value && this._jumping && this._fallFrames < 8)
+                     if(!_hasGravityJump.value && _jumping && _fallFrames < 8)
                      {
                         return;
                      }
-                     this.setGravityDir(GRAV_LEFT);
-                     this.setFaceDir(FACE_LWALL_UP,true);
+                     setGravityDir(GRAV_LEFT);
+                     setFaceDir(FACE_LWALL_UP,true);
                   }
 				  break;
             }
@@ -1355,38 +1355,38 @@ package
       {
          _justHitHeadOrWall = true;
          super.hitRight(param1,param2);
-         if(this._paralyzed)
+         if(_paralyzed)
          {
             return;
          }
-         if(this.findNotSolidHeight() < 8)
+         if(findNotSolidHeight() < 8)
          {
             return;
          }
-         if(this.pressedRight() && (!flickering() || this._hasGravityJump.value))
+         if(pressedRight() && (!flickering() || _hasGravityJump.value))
          {
-            switch(this._gravityDir)
+            switch(_gravityDir)
             {
                case GRAV_UP:
-                  if(this.pressedDown())
+                  if(pressedDown())
                   {
-                     this.setGravityDir(GRAV_RIGHT);
-                     this.setFaceDir(FACE_RWALL_DOWN,true);
-                     this.moveSnailCheckBounds(11,2);
+                     setGravityDir(GRAV_RIGHT);
+                     setFaceDir(FACE_RWALL_DOWN,true);
+                     moveSnailCheckBounds(11,2);
                   }
                   break;
                case GRAV_DOWN:
-                  if(this.pressedUp() || this._jumping && this.pressedDown())
+                  if(pressedUp() || _jumping && pressedDown())
                   {
-                     if(!this._hasGravityJump.value && this._jumping && this._fallFrames < 8)
+                     if(!_hasGravityJump.value && _jumping && _fallFrames < 8)
                      {
                         return;
                      }
-                     this.setGravityDir(GRAV_RIGHT);
-                     this.setFaceDir(FACE_RWALL_UP,true);
+                     setGravityDir(GRAV_RIGHT);
+                     setFaceDir(FACE_RWALL_UP,true);
                      y -= 11;
                      x += 11;
-                     this.moveSnailCheckFullBounds(0,11);
+                     moveSnailCheckFullBounds(0,11);
                   }
 				  break;
             }
@@ -1397,44 +1397,44 @@ package
       {
          _justHitHeadOrWall = false;
          super.hitBottom(param1,param2);
-         if(this.findNotSolidWidth() < 8)
+         if(findNotSolidWidth() < 8)
          {
             return;
          }
-         if(this._paralyzed)
+         if(_paralyzed)
          {
             return;
          }
-         if(this._faceDir == FACE_LWALL_DOWN || this._faceDir == FACE_RWALL_DOWN)
+         if(_faceDir == FACE_LWALL_DOWN || _faceDir == FACE_RWALL_DOWN)
          {
-            switch(this._gravityDir)
+            switch(_gravityDir)
             {
                case GRAV_LEFT:
-                  if(this.pressedLeft() || this.pressedRight() || !this.hasGravityJump())
+                  if(pressedLeft() || pressedRight() || !hasGravityJump())
                   {
-                     this.setGravityDir(GRAV_DOWN);
-                     this.setFaceDir(FACE_FLOOR_RIGHT,true);
+                     setGravityDir(GRAV_DOWN);
+                     setFaceDir(FACE_FLOOR_RIGHT,true);
                      facing = RIGHT;
-                     this.moveSnailCheckBounds(2,11);
+                     moveSnailCheckBounds(2,11);
                   }
                   break;
                case GRAV_RIGHT:
-                  if(this.pressedLeft() || this.pressedRight() || !this.hasGravityJump())
+                  if(pressedLeft() || pressedRight() || !hasGravityJump())
                   {
-                     this.setGravityDir(GRAV_DOWN);
-                     this.setFaceDir(FACE_FLOOR_LEFT,true);
-                     this.moveSnailCheckBounds(0,11);
+                     setGravityDir(GRAV_DOWN);
+                     setFaceDir(FACE_FLOOR_LEFT,true);
+                     moveSnailCheckBounds(0,11);
                      facing = LEFT;
                   }
 				  break;
             }
          }
-         if(this._faceDir == FACE_CEIL_RIGHT || this._faceDir == FACE_CEIL_LEFT)
+         if(_faceDir == FACE_CEIL_RIGHT || _faceDir == FACE_CEIL_LEFT)
          {
-            if(this.pressedDown())
+            if(pressedDown())
             {
-               this.setGravityDir(GRAV_DOWN);
-               this.setFaceDir(facing == RIGHT ? FACE_FLOOR_RIGHT : FACE_FLOOR_LEFT,true);
+               setGravityDir(GRAV_DOWN);
+               setFaceDir(facing == RIGHT ? FACE_FLOOR_RIGHT : FACE_FLOOR_LEFT,true);
             }
          }
       }
@@ -1443,156 +1443,156 @@ package
       {
          _justHitHeadOrWall = true;
          super.hitTop(param1,param2);
-         if(this.findNotSolidWidth() < 8)
+         if(findNotSolidWidth() < 8)
          {
             return;
          }
-         if(this._paralyzed)
+         if(_paralyzed)
          {
             return;
          }
-         if(this._faceDir == FACE_LWALL_UP || this._faceDir == FACE_RWALL_UP)
+         if(_faceDir == FACE_LWALL_UP || _faceDir == FACE_RWALL_UP)
          {
-            if(!this.pressedJump())
+            if(!pressedJump())
             {
-               switch(this._gravityDir)
+               switch(_gravityDir)
                {
                   case GRAV_LEFT:
-                     if(this.pressedRight())
+                     if(pressedRight())
                      {
-                        this.setGravityDir(GRAV_UP);
-                        this.setFaceDir(FACE_CEIL_RIGHT,true);
+                        setGravityDir(GRAV_UP);
+                        setFaceDir(FACE_CEIL_RIGHT,true);
                         facing = RIGHT;
                      }
                      break;
                   case GRAV_RIGHT:
-                     if(this.pressedLeft())
+                     if(pressedLeft())
                      {
-                        this.setGravityDir(GRAV_UP);
-                        this.moveSnailCheckBounds(-11,0);
-                        this.setFaceDir(FACE_CEIL_LEFT,true);
+                        setGravityDir(GRAV_UP);
+                        moveSnailCheckBounds(-11,0);
+                        setFaceDir(FACE_CEIL_LEFT,true);
                         facing = LEFT;
                      }
 					 break;
                }
             }
          }
-         if(this._faceDir == FACE_FLOOR_RIGHT || this._faceDir == FACE_FLOOR_LEFT)
+         if(_faceDir == FACE_FLOOR_RIGHT || _faceDir == FACE_FLOOR_LEFT)
          {
-            if(this.pressedUp())
+            if(pressedUp())
             {
-               this.setGravityDir(GRAV_UP);
-               this.setFaceDir(facing == RIGHT ? FACE_CEIL_RIGHT : FACE_CEIL_LEFT,true);
+               setGravityDir(GRAV_UP);
+               setFaceDir(facing == RIGHT ? FACE_CEIL_RIGHT : FACE_CEIL_LEFT,true);
             }
          }
       }
       
       public function hasAnyWeapon() : Boolean
       {
-         return this._hasWeapon[0] || this._hasWeapon[1] || this._hasWeapon[2];
+         return _hasWeapon[0] || _hasWeapon[1] || _hasWeapon[2];
       }
       
       public function hasAnyTwoWeapons() : Boolean
       {
-         return this._hasWeapon[0] && (this._hasWeapon[1] || this._hasWeapon[2]) || this._hasWeapon[1] && this._hasWeapon[2];
+         return _hasWeapon[0] && (_hasWeapon[1] || _hasWeapon[2]) || _hasWeapon[1] && _hasWeapon[2];
       }
       
       public function getHasWeapon(param1:int) : Boolean
       {
-         return this._hasWeapon[param1];
+         return _hasWeapon[param1];
       }
       
       public function setHasWeapon(param1:int, param2:Boolean) : void
       {
-         this._hasWeapon[param1] = param2;
+         _hasWeapon[param1] = param2;
       }
       
       public function switchToWeapon(param1:int) : void
       {
-         if(this._hasWeapon[param1] || param1 == WEAPON_NONE)
+         if(_hasWeapon[param1] || param1 == WEAPON_NONE)
          {
-            this._currentWeapon.value = param1;
+            _currentWeapon.value = param1;
          }
       }
       
       public function getCurrentWeapon() : int
       {
-         return this._currentWeapon.value;
+         return _currentWeapon.value;
       }
       
       private function switchToNextWeapon() : void
       {
-         if(!(this._hasWeapon[0] || this._hasWeapon[1] || this._hasWeapon[2]))
+         if(!(_hasWeapon[0] || _hasWeapon[1] || _hasWeapon[2]))
          {
             return;
          }
-         var _loc1_:int = this._currentWeapon.value;
+         var _loc1_:int = _currentWeapon.value;
          do
          {
             _loc1_++;
             _loc1_ %= 3;
          }
-         while(!this._hasWeapon[_loc1_]);
+         while(!_hasWeapon[_loc1_]);
          
-         this.switchToWeapon(_loc1_);
+         switchToWeapon(_loc1_);
       }
       
       private function switchToPrevWeapon() : void
       {
-         if(!(this._hasWeapon[0] || this._hasWeapon[1] || this._hasWeapon[2]))
+         if(!(_hasWeapon[0] || _hasWeapon[1] || _hasWeapon[2]))
          {
             return;
          }
-         var _loc1_:int = this._currentWeapon.value;
+         var _loc1_:int = _currentWeapon.value;
          do
          {
             _loc1_--;
             _loc1_ += 3;
             _loc1_ %= 3;
          }
-         while(!this._hasWeapon[_loc1_]);
+         while(!_hasWeapon[_loc1_]);
          
-         this.switchToWeapon(_loc1_);
+         switchToWeapon(_loc1_);
       }
       
       public function hasTurbo() : Boolean
       {
-         return this._hasTurbo.value;
+         return _hasTurbo.value;
       }
       
       private function setHasTurbo(param1:Boolean) : void
       {
-         this._hasTurbo.value = param1;
-         this._turboMultiplier.value = this._hasTurbo.value ? 0.5 : 1;
+         _hasTurbo.value = param1;
+         _turboMultiplier.value = _hasTurbo.value ? 0.5 : 1;
       }
       
       public function shootCurrentWeapon() : void
       {
-         while(this._currentWeapon.value > WEAPON_NONE && !this._hasWeapon[this._currentWeapon.value])
+         while(_currentWeapon.value > WEAPON_NONE && !_hasWeapon[_currentWeapon.value])
          {
-            --this._currentWeapon.value;
+            --_currentWeapon.value;
          }
-         if(this._currentWeapon.value == WEAPON_NONE)
-         {
-            return;
-         }
-         if(this._weaponTimeout.value > 0)
+         if(_currentWeapon.value == WEAPON_NONE)
          {
             return;
          }
-         var _loc1_:PlayerBullet = this._bulletGroups.getBullet(this._currentWeapon.value,this._hasDevastator.value);
+         if(_weaponTimeout.value > 0)
+         {
+            return;
+         }
+         var _loc1_:PlayerBullet = _bulletGroups.getBullet(_currentWeapon.value,_hasDevastator.value);
          if(_loc1_)
          {
             var _loc2_:int = -1;
 			var _loc3_:Array;
             var _loc4_:Boolean = false;
-            if(this._jumping || this._hasDevastator.value || _loc4_)
+            if(_jumping || _hasDevastator.value || _loc4_)
             {
                _loc3_ = [1,1,1,1,1,1,1,1];
             }
-            else if(this._currentWeapon.value == WEAPON_PEA_SHOOTER)
+            else if(_currentWeapon.value == WEAPON_PEA_SHOOTER)
             {
-               switch(this._gravityDir)
+               switch(_gravityDir)
                {
                   case GRAV_LEFT:
                      _loc3_ = [1,1,1,0,0,0,1,1];
@@ -1612,41 +1612,41 @@ package
             {
                _loc3_ = [1,1,1,1,1,1,1,1];
             }
-            if(this.pressedUp() && this.pressedLeft() && _loc3_[3])
+            if(pressedUp() && pressedLeft() && _loc3_[3])
             {
                _loc2_ = 3;
             }
-            else if(this.pressedUp() && this.pressedRight() && _loc3_[1])
+            else if(pressedUp() && pressedRight() && _loc3_[1])
             {
                _loc2_ = 1;
             }
-            else if(this.pressedDown() && this.pressedLeft() && _loc3_[5])
+            else if(pressedDown() && pressedLeft() && _loc3_[5])
             {
                _loc2_ = 5;
             }
-            else if(this.pressedDown() && this.pressedRight() && _loc3_[7])
+            else if(pressedDown() && pressedRight() && _loc3_[7])
             {
                _loc2_ = 7;
             }
-            else if(this.pressedUp() && _loc3_[2])
+            else if(pressedUp() && _loc3_[2])
             {
                _loc2_ = 2;
             }
-            else if(this.pressedDown() && _loc3_[6])
+            else if(pressedDown() && _loc3_[6])
             {
                _loc2_ = 6;
             }
-            else if(this.pressedLeft() && _loc3_[4])
+            else if(pressedLeft() && _loc3_[4])
             {
                _loc2_ = 4;
             }
-            else if(this.pressedRight() && _loc3_[0])
+            else if(pressedRight() && _loc3_[0])
             {
                _loc2_ = 0;
             }
             if(_loc2_ == -1)
             {
-               switch(this._faceDir)
+               switch(_faceDir)
                {
                   case FACE_FLOOR_LEFT:
                      _loc2_ = 4;
@@ -1676,146 +1676,146 @@ package
             }
             var _loc5_:Array = [0,40,90,140,180,-140,-90,-40];
             var _loc6_:int = _loc5_[_loc2_];
-            var _loc7_:int = this.WEAPON_SPEED[this._currentWeapon.value] / this._turboMultiplier.value;
+            var _loc7_:int = WEAPON_SPEED[_currentWeapon.value] / _turboMultiplier.value;
             var _loc8_:int = Math.cos(_loc6_ * Math.PI / 180) * _loc7_;
             var _loc9_:int = -Math.sin(_loc6_ * Math.PI / 180) * _loc7_;
             _loc1_.shoot(x + width / 2,y + height / 2,_loc8_,_loc9_);
-            this._weaponTimeout.value = this.WEAPON_TIMEOUTS[this._currentWeapon.value] * this._turboMultiplier.value;
+            _weaponTimeout.value = WEAPON_TIMEOUTS[_currentWeapon.value] * _turboMultiplier.value;
          }
       }
       
       public function performGravityJump() : void
       {
-         if(FlxG.keys.pressed("SHIFT") && this.cheatsEnabled)
+         if(FlxG.keys.pressed("SHIFT") && cheatsEnabled)
          {
             return;
          }
-         switch(this._gravityDir)
+         switch(_gravityDir)
          {
             case GRAV_DOWN:
-               if((!this.pressedLeft() && !this.pressedRight() || this._mostRecentDir == DIR_UP) && this.pressedUp())
+               if((!pressedLeft() && !pressedRight() || _mostRecentDir == DIR_UP) && pressedUp())
                {
-                  if(this.findNotSolidWidth() < 8)
+                  if(findNotSolidWidth() < 8)
                   {
                      return;
                   }
-                  this.setFaceDir(facing == RIGHT ? FACE_CEIL_RIGHT : FACE_CEIL_LEFT);
+                  setFaceDir(facing == RIGHT ? FACE_CEIL_RIGHT : FACE_CEIL_LEFT);
                   _desiredGravity = GRAV_UP;
                }
-               else if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_RIGHT) && this.pressedRight())
+               else if((!pressedDown() && !pressedUp() || _mostRecentDir == DIR_RIGHT) && pressedRight())
                {
-                  if(this.findNotSolidHeight() < 8)
+                  if(findNotSolidHeight() < 8)
                   {
                      return;
                   }
-                  this.setFaceDir(FACE_RWALL_UP);
+                  setFaceDir(FACE_RWALL_UP);
                   _desiredGravity = GRAV_RIGHT;
                }
-               else if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_LEFT) && this.pressedLeft())
+               else if((!pressedDown() && !pressedUp() || _mostRecentDir == DIR_LEFT) && pressedLeft())
                {
-                  if(this.findNotSolidHeight() < 8)
+                  if(findNotSolidHeight() < 8)
                   {
                      return;
                   }
-                  this.setFaceDir(FACE_LWALL_UP);
+                  setFaceDir(FACE_LWALL_UP);
                   _desiredGravity = GRAV_LEFT;
                }
                break;
             case GRAV_UP:
-               if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_RIGHT) && this.pressedRight())
+               if((!pressedDown() && !pressedUp() || _mostRecentDir == DIR_RIGHT) && pressedRight())
                {
-                  if(this.findNotSolidHeight() < 8)
+                  if(findNotSolidHeight() < 8)
                   {
                      return;
                   }
-                  this.setFaceDir(FACE_RWALL_DOWN);
+                  setFaceDir(FACE_RWALL_DOWN);
                   _desiredGravity = GRAV_RIGHT;
                }
-               else if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_LEFT) && this.pressedLeft())
+               else if((!pressedDown() && !pressedUp() || _mostRecentDir == DIR_LEFT) && pressedLeft())
                {
-                  if(this.findNotSolidHeight() < 8)
+                  if(findNotSolidHeight() < 8)
                   {
                      return;
                   }
-                  this.setFaceDir(FACE_LWALL_DOWN);
+                  setFaceDir(FACE_LWALL_DOWN);
                   _desiredGravity = GRAV_LEFT;
                }
-               else if(this.pressedDown())
+               else if(pressedDown())
                {
-                  if(this.findNotSolidWidth() < 8)
+                  if(findNotSolidWidth() < 8)
                   {
                      return;
                   }
-                  this.setFaceDir(facing == RIGHT ? FACE_FLOOR_RIGHT : FACE_FLOOR_LEFT);
+                  setFaceDir(facing == RIGHT ? FACE_FLOOR_RIGHT : FACE_FLOOR_LEFT);
                   _desiredGravity = GRAV_DOWN;
                }
                break;
             case GRAV_RIGHT:
-               if((!this.pressedLeft() && !this.pressedRight() || this._mostRecentDir == DIR_UP) && this.pressedUp())
+               if((!pressedLeft() && !pressedRight() || _mostRecentDir == DIR_UP) && pressedUp())
                {
-                  if(this.findNotSolidWidth() < 8)
+                  if(findNotSolidWidth() < 8)
                   {
                      return;
                   }
-                  this.setFaceDir(FACE_CEIL_RIGHT);
+                  setFaceDir(FACE_CEIL_RIGHT);
                   _desiredGravity = GRAV_UP;
                }
-               else if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_RIGHT) && this.pressedRight())
+               else if((!pressedDown() && !pressedUp() || _mostRecentDir == DIR_RIGHT) && pressedRight())
 			   {
 			   }
 			   else
                {
-                  if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_LEFT) && this.pressedLeft())
+                  if((!pressedDown() && !pressedUp() || _mostRecentDir == DIR_LEFT) && pressedLeft())
                   {
-                     if(this.findNotSolidHeight() < 8)
+                     if(findNotSolidHeight() < 8)
                      {
                         return;
                      }
-                     this.setFaceDir(this._faceDir == FACE_RWALL_UP ? FACE_LWALL_UP : FACE_LWALL_DOWN);
+                     setFaceDir(_faceDir == FACE_RWALL_UP ? FACE_LWALL_UP : FACE_LWALL_DOWN);
                      _desiredGravity = GRAV_LEFT;
                   }
-                  else if((!this.pressedLeft() && !this.pressedRight() || this._mostRecentDir == DIR_DOWN) && this.pressedDown())
+                  else if((!pressedLeft() && !pressedRight() || _mostRecentDir == DIR_DOWN) && pressedDown())
                   {
-                     if(this.findNotSolidWidth() < 8)
+                     if(findNotSolidWidth() < 8)
                      {
                         return;
                      }
-                     this.setFaceDir(FACE_FLOOR_RIGHT);
+                     setFaceDir(FACE_FLOOR_RIGHT);
                      _desiredGravity = GRAV_DOWN;
                   }
                }
                break;
             case GRAV_LEFT:
-               if((!this.pressedLeft() && !this.pressedRight() || this._mostRecentDir == DIR_UP) && this.pressedUp())
+               if((!pressedLeft() && !pressedRight() || _mostRecentDir == DIR_UP) && pressedUp())
                {
-                  if(this.findNotSolidWidth() < 8)
+                  if(findNotSolidWidth() < 8)
                   {
                      return;
                   }
-                  this.setFaceDir(FACE_CEIL_LEFT);
+                  setFaceDir(FACE_CEIL_LEFT);
                   _desiredGravity = GRAV_UP;
                }
-               else if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_LEFT) && this.pressedLeft())
+               else if((!pressedDown() && !pressedUp() || _mostRecentDir == DIR_LEFT) && pressedLeft())
 			   {
 			   }
 			   else
                {
-                  if((!this.pressedDown() && !this.pressedUp() || this._mostRecentDir == DIR_RIGHT) && this.pressedRight())
+                  if((!pressedDown() && !pressedUp() || _mostRecentDir == DIR_RIGHT) && pressedRight())
                   {
-                     if(this.findNotSolidHeight() < 8)
+                     if(findNotSolidHeight() < 8)
                      {
                         return;
                      }
-                     this.setFaceDir(this._faceDir == FACE_LWALL_UP ? FACE_RWALL_UP : FACE_RWALL_DOWN);
+                     setFaceDir(_faceDir == FACE_LWALL_UP ? FACE_RWALL_UP : FACE_RWALL_DOWN);
                      _desiredGravity = GRAV_RIGHT;
                   }
-                  else if((!this.pressedLeft() && !this.pressedRight() || this._mostRecentDir == DIR_DOWN) && this.pressedDown())
+                  else if((!pressedLeft() && !pressedRight() || _mostRecentDir == DIR_DOWN) && pressedDown())
                   {
-                     if(this.findNotSolidWidth() < 8)
+                     if(findNotSolidWidth() < 8)
                      {
                         return;
                      }
-                     this.setFaceDir(FACE_FLOOR_LEFT);
+                     setFaceDir(FACE_FLOOR_LEFT);
                      _desiredGravity = GRAV_DOWN;
                   }
                }
@@ -1834,17 +1834,17 @@ package
          {
             x -= _loc5_;
             y -= _loc6_;
-            this.moveSnailCheckBounds(_loc5_,_loc6_);
+            moveSnailCheckBounds(_loc5_,_loc6_);
          }
          else if(_loc5_ > 0)
          {
             x -= _loc5_;
-            this.moveSnailCheckBounds(_loc5_,0);
+            moveSnailCheckBounds(_loc5_,0);
          }
          else if(_loc6_ > 0)
          {
             y -= _loc6_;
-            this.moveSnailCheckBounds(0,_loc6_);
+            moveSnailCheckBounds(0,_loc6_);
          }
       }
       
@@ -1930,181 +1930,181 @@ package
       
       private function fixGravity() : void
       {
-         if(this._justHitSteps)
+         if(_justHitSteps)
          {
             _justHitSteps = false;
             return;
          }
-         switch(this._gravityDir)
+         switch(_gravityDir)
          {
             case GRAV_UP:
                _jumping = velocity.y != 0;
-               if(this._jumping)
+               if(_jumping)
                {
-                  ++this._fallFrames;
+                  ++_fallFrames;
                }
                else
                {
                   _fallFrames = 0;
                }
-               if(!this._hasGravityJump.value && this._fallFrames >= 1 || flickering() && !this._hasGravityJump.value)
+               if(!_hasGravityJump.value && _fallFrames >= 1 || flickering() && !_hasGravityJump.value)
                {
-                  this.setFaceDir(facing == RIGHT ? FACE_FLOOR_RIGHT : FACE_FLOOR_LEFT);
+                  setFaceDir(facing == RIGHT ? FACE_FLOOR_RIGHT : FACE_FLOOR_LEFT);
                }
-               else if(this._hasGravityJump.value && this._fallFrames == 1 && this.pressedUp() && this.pressedRight())
+               else if(_hasGravityJump.value && _fallFrames == 1 && pressedUp() && pressedRight())
                {
-                  this.setFaceDir(FACE_LWALL_UP);
-                  this.moveSnailCheckBounds(0,-1);
+                  setFaceDir(FACE_LWALL_UP);
+                  moveSnailCheckBounds(0,-1);
                }
-               else if(this._hasGravityJump.value && this._fallFrames == 1 && this.pressedUp() && this.pressedLeft())
+               else if(_hasGravityJump.value && _fallFrames == 1 && pressedUp() && pressedLeft())
                {
-                  this.setFaceDir(FACE_RWALL_UP);
-                  this.moveSnailCheckBounds(12,-1);
+                  setFaceDir(FACE_RWALL_UP);
+                  moveSnailCheckBounds(12,-1);
                }
-               else if(this._hasGravityJump.value && !this.pressedJump() && this._fallFrames == 1 && !this.pressedUp())
+               else if(_hasGravityJump.value && !pressedJump() && _fallFrames == 1 && !pressedUp())
                {
                   _desiredGravity = GRAV_UP;
-                  switch(this._desiredGravity)
+                  switch(_desiredGravity)
                   {
                      case GRAV_DOWN:
-                        this.setFaceDir(facing == RIGHT ? FACE_FLOOR_RIGHT : FACE_FLOOR_LEFT);
+                        setFaceDir(facing == RIGHT ? FACE_FLOOR_RIGHT : FACE_FLOOR_LEFT);
                         break;
                      case GRAV_UP:
-                        this.setFaceDir(facing == RIGHT ? FACE_CEIL_RIGHT : FACE_CEIL_LEFT);
+                        setFaceDir(facing == RIGHT ? FACE_CEIL_RIGHT : FACE_CEIL_LEFT);
                         break;
                      case GRAV_LEFT:
-                        this.setFaceDir(this._mostRecentUpDown == DIR_UP ? FACE_LWALL_UP : FACE_LWALL_DOWN);
+                        setFaceDir(_mostRecentUpDown == DIR_UP ? FACE_LWALL_UP : FACE_LWALL_DOWN);
                         break;
                      case GRAV_RIGHT:
-                        this.setFaceDir(this._mostRecentUpDown == DIR_UP ? FACE_RWALL_UP : FACE_RWALL_DOWN);
+                        setFaceDir(_mostRecentUpDown == DIR_UP ? FACE_RWALL_UP : FACE_RWALL_DOWN);
 						break;
                   }
                }
                break;
             case GRAV_DOWN:
-               if(this._fallFrames == 1 && this.pressedDown() && !this._justHitHeadOrWall && !flickering() && velocity.y > 0)
+               if(_fallFrames == 1 && pressedDown() && !_justHitHeadOrWall && !flickering() && velocity.y > 0)
                {
-                  if(facing == RIGHT && this.pressedRight())
+                  if(facing == RIGHT && pressedRight())
                   {
-                     this.setFaceDir(FACE_LWALL_DOWN,false,true);
-                     velocity.x = -this._runSpeed.value;
-                     this.moveSnailCheckBounds(0,-11);
+                     setFaceDir(FACE_LWALL_DOWN,false,true);
+                     velocity.x = -_runSpeed.value;
+                     moveSnailCheckBounds(0,-11);
                   }
-                  else if(facing == LEFT && this.pressedLeft())
+                  else if(facing == LEFT && pressedLeft())
                   {
-                     this.setFaceDir(FACE_RWALL_DOWN,false,true);
-                     velocity.x = this._runSpeed.value;
-                     this.moveSnailCheckBounds(15,-11);
+                     setFaceDir(FACE_RWALL_DOWN,false,true);
+                     velocity.x = _runSpeed.value;
+                     moveSnailCheckBounds(15,-11);
                   }
                   break;
                }
                _jumping = velocity.y != 0;
-               if(this._jumping)
+               if(_jumping)
                {
-                  ++this._fallFrames;
+                  ++_fallFrames;
                }
                else
                {
                   _fallFrames = 0;
                }
-               if(this._fallFrames == 1 || flickering())
+               if(_fallFrames == 1 || flickering())
                {
                   if(facing == RIGHT)
                   {
-                     this.setFaceDir(FACE_FLOOR_RIGHT);
+                     setFaceDir(FACE_FLOOR_RIGHT);
                   }
                   else
                   {
-                     this.setFaceDir(FACE_FLOOR_LEFT);
+                     setFaceDir(FACE_FLOOR_LEFT);
                   }
                }
                break;
             case GRAV_LEFT:
                _jumping = velocity.x != 0;
-               if(this._jumping)
+               if(_jumping)
                {
-                  ++this._fallFrames;
+                  ++_fallFrames;
                }
                else
                {
                   _fallFrames = 0;
                }
-               if(!this._hasGravityJump.value && this._fallFrames >= 1 || flickering() && !this._hasGravityJump.value)
+               if(!_hasGravityJump.value && _fallFrames >= 1 || flickering() && !_hasGravityJump.value)
                {
-                  this.setFaceDir(FACE_FLOOR_LEFT);
-                  this.moveSnailCheckBounds(0,13);
+                  setFaceDir(FACE_FLOOR_LEFT);
+                  moveSnailCheckBounds(0,13);
                }
-               else if(this._hasGravityJump.value && this._fallFrames == 1 && this.pressedUp() && this.pressedLeft())
+               else if(_hasGravityJump.value && _fallFrames == 1 && pressedUp() && pressedLeft())
                {
-                  this.setFaceDir(FACE_FLOOR_LEFT);
-                  this.moveSnailCheckBounds(0,13);
+                  setFaceDir(FACE_FLOOR_LEFT);
+                  moveSnailCheckBounds(0,13);
                }
-               else if(this._hasGravityJump.value && this._fallFrames == 1 && this.pressedDown() && this.pressedLeft())
+               else if(_hasGravityJump.value && _fallFrames == 1 && pressedDown() && pressedLeft())
                {
-                  this.setFaceDir(FACE_CEIL_LEFT);
-                  this.moveSnailCheckBounds(0,1);
+                  setFaceDir(FACE_CEIL_LEFT);
+                  moveSnailCheckBounds(0,1);
                }
-               else if(this._hasGravityJump.value && !this.pressedJump() && this._fallFrames == 1 && !this.pressedLeft())
+               else if(_hasGravityJump.value && !pressedJump() && _fallFrames == 1 && !pressedLeft())
                {
                   _desiredGravity = GRAV_LEFT;
-                  switch(this._desiredGravity)
+                  switch(_desiredGravity)
                   {
                      case GRAV_DOWN:
-                        this.setFaceDir(facing == RIGHT ? FACE_FLOOR_RIGHT : FACE_FLOOR_LEFT);
+                        setFaceDir(facing == RIGHT ? FACE_FLOOR_RIGHT : FACE_FLOOR_LEFT);
                         break;
                      case GRAV_UP:
-                        this.setFaceDir(facing == RIGHT ? FACE_CEIL_RIGHT : FACE_CEIL_LEFT);
+                        setFaceDir(facing == RIGHT ? FACE_CEIL_RIGHT : FACE_CEIL_LEFT);
                         break;
                      case GRAV_LEFT:
-                        this.setFaceDir(this._mostRecentUpDown == DIR_UP ? FACE_LWALL_UP : FACE_LWALL_DOWN);
+                        setFaceDir(_mostRecentUpDown == DIR_UP ? FACE_LWALL_UP : FACE_LWALL_DOWN);
                         break;
                      case GRAV_RIGHT:
-                        this.setFaceDir(this._mostRecentUpDown == DIR_UP ? FACE_RWALL_UP : FACE_RWALL_DOWN);
+                        setFaceDir(_mostRecentUpDown == DIR_UP ? FACE_RWALL_UP : FACE_RWALL_DOWN);
 						break;
                   }
                }
                break;
             case GRAV_RIGHT:
                _jumping = velocity.x != 0;
-               if(this._jumping)
+               if(_jumping)
                {
-                  ++this._fallFrames;
+                  ++_fallFrames;
                }
                else
                {
                   _fallFrames = 0;
                }
-               if(!this._hasGravityJump.value && this._fallFrames >= 1 || flickering() && !this._hasGravityJump.value)
+               if(!_hasGravityJump.value && _fallFrames >= 1 || flickering() && !_hasGravityJump.value)
                {
-                  this.setFaceDir(FACE_FLOOR_RIGHT);
-                  this.moveSnailCheckBounds(-6,13);
+                  setFaceDir(FACE_FLOOR_RIGHT);
+                  moveSnailCheckBounds(-6,13);
                }
-               else if(this._hasGravityJump.value && this._fallFrames == 1 && this.pressedUp() && this.pressedRight())
+               else if(_hasGravityJump.value && _fallFrames == 1 && pressedUp() && pressedRight())
                {
-                  this.setFaceDir(FACE_FLOOR_RIGHT);
-                  this.moveSnailCheckBounds(-6,13);
+                  setFaceDir(FACE_FLOOR_RIGHT);
+                  moveSnailCheckBounds(-6,13);
                }
-               else if(this._hasGravityJump.value && this._fallFrames == 1 && this.pressedDown() && this.pressedRight())
+               else if(_hasGravityJump.value && _fallFrames == 1 && pressedDown() && pressedRight())
                {
-                  this.setFaceDir(FACE_CEIL_RIGHT);
-                  this.moveSnailCheckBounds(-6,1);
+                  setFaceDir(FACE_CEIL_RIGHT);
+                  moveSnailCheckBounds(-6,1);
                }
-               else if(this._hasGravityJump.value && !this.pressedJump() && this._fallFrames == 1 && !this.pressedRight())
+               else if(_hasGravityJump.value && !pressedJump() && _fallFrames == 1 && !pressedRight())
                {
                   _desiredGravity = GRAV_RIGHT;
-                  switch(this._desiredGravity)
+                  switch(_desiredGravity)
                   {
                      case GRAV_DOWN:
-                        this.setFaceDir(facing == RIGHT ? FACE_FLOOR_RIGHT : FACE_FLOOR_LEFT);
+                        setFaceDir(facing == RIGHT ? FACE_FLOOR_RIGHT : FACE_FLOOR_LEFT);
                         break;
                      case GRAV_UP:
-                        this.setFaceDir(facing == RIGHT ? FACE_CEIL_RIGHT : FACE_CEIL_LEFT);
+                        setFaceDir(facing == RIGHT ? FACE_CEIL_RIGHT : FACE_CEIL_LEFT);
                         break;
                      case GRAV_LEFT:
-                        this.setFaceDir(this._mostRecentUpDown == DIR_UP ? FACE_LWALL_UP : FACE_LWALL_DOWN);
+                        setFaceDir(_mostRecentUpDown == DIR_UP ? FACE_LWALL_UP : FACE_LWALL_DOWN);
                         break;
                      case GRAV_RIGHT:
-                        this.setFaceDir(this._mostRecentUpDown == DIR_UP ? FACE_RWALL_UP : FACE_RWALL_DOWN);
+                        setFaceDir(_mostRecentUpDown == DIR_UP ? FACE_RWALL_UP : FACE_RWALL_DOWN);
 						break;
                   }
                }
@@ -2114,19 +2114,19 @@ package
       
       public function doJump() : void
       {
-         if(this._jumping)
+         if(_jumping)
          {
             return;
          }
-         this.hideInShell(false);
-         if(this._hasGravityJump.value)
+         hideInShell(false);
+         if(_hasGravityJump.value)
          {
-            if(this.doGravityJump())
+            if(doGravityJump())
             {
                Sfx.playJump1();
             }
          }
-         else if(this.doRegularJump())
+         else if(doRegularJump())
          {
             Sfx.playJump1();
          }
@@ -2134,37 +2134,37 @@ package
       
       private function doGravityJump() : Boolean
       {
-         switch(this._gravityDir)
+         switch(_gravityDir)
          {
             case GRAV_UP:
-               if(this.findNotSolidHeight() >= 8)
+               if(findNotSolidHeight() >= 8)
                {
                   y += 1;
-                  velocity.y = this._jumpPower.value;
+                  velocity.y = _jumpPower.value;
                   return true;
                }
                break;
             case GRAV_DOWN:
-               if(this.findNotSolidHeight() >= 8)
+               if(findNotSolidHeight() >= 8)
                {
                   y -= 1;
-                  velocity.y = -this._jumpPower.value;
+                  velocity.y = -_jumpPower.value;
                   return true;
                }
                break;
             case GRAV_LEFT:
-               if(this.findNotSolidWidth() >= 8)
+               if(findNotSolidWidth() >= 8)
                {
                   x -= 1;
-                  velocity.x = this._jumpPower.value;
+                  velocity.x = _jumpPower.value;
                   return true;
                }
                break;
             case GRAV_RIGHT:
-               if(this.findNotSolidWidth() >= 8)
+               if(findNotSolidWidth() >= 8)
                {
                   x += 1;
-                  velocity.x = -this._jumpPower.value;
+                  velocity.x = -_jumpPower.value;
                   return true;
                }
                break;
@@ -2174,41 +2174,41 @@ package
       
       private function doRegularJump() : Boolean
       {
-         switch(this._gravityDir)
+         switch(_gravityDir)
          {
             case GRAV_UP:
-               if(this.findNotSolidHeight() >= 8)
+               if(findNotSolidHeight() >= 8)
                {
                   y += 1;
                   velocity.y = 0;
-                  this.setFaceDir(facing == RIGHT ? FACE_FLOOR_RIGHT : FACE_FLOOR_LEFT);
+                  setFaceDir(facing == RIGHT ? FACE_FLOOR_RIGHT : FACE_FLOOR_LEFT);
                   return true;
                }
                break;
             case GRAV_DOWN:
-               if(this.findNotSolidHeight() >= 8)
+               if(findNotSolidHeight() >= 8)
                {
                   y -= 1;
-                  velocity.y = -this._jumpPower.value;
+                  velocity.y = -_jumpPower.value;
                   return true;
                }
                break;
             case GRAV_LEFT:
-               if(this.findNotSolidWidth() >= 8 && !(this.pressedLeft() && (this.pressedUp() || this.pressedDown())))
+               if(findNotSolidWidth() >= 8 && !(pressedLeft() && (pressedUp() || pressedDown())))
                {
                   velocity.y = 0;
                   velocity.x = 100;
-                  this.setFaceDir(FACE_FLOOR_LEFT);
+                  setFaceDir(FACE_FLOOR_LEFT);
                   return true;
                }
                break;
             case GRAV_RIGHT:
-               if(this.findNotSolidWidth() >= 8 && !(this.pressedRight() && (this.pressedUp() || this.pressedDown())))
+               if(findNotSolidWidth() >= 8 && !(pressedRight() && (pressedUp() || pressedDown())))
                {
                   velocity.y = 0;
                   velocity.x = -100;
                   x -= 11;
-                  this.setFaceDir(FACE_FLOOR_RIGHT);
+                  setFaceDir(FACE_FLOOR_RIGHT);
                   return true;
                }
                break;
@@ -2218,81 +2218,81 @@ package
       
       public function setHighJump(param1:Boolean) : void
       {
-         this._hasHighJump.value = param1;
-         this._jumpPower.value = this._hasHighJump.value ? HIGH_JUMP : REGULAR_JUMP;
+         _hasHighJump.value = param1;
+         _jumpPower.value = _hasHighJump.value ? HIGH_JUMP : REGULAR_JUMP;
       }
       
       public function isIcy() : Boolean
       {
-         return this._hasColdFoot.value;
+         return _hasColdFoot.value;
       }
       
       public function setSnailType(param1:int) : void
       {
-         this._snailType.value = param1;
+         _snailType.value = param1;
          _snailTypePrefix = "snail" + param1.toString() + "_";
-         this._hasColdFoot.value = param1 >= SNAILTYPE_ICE;
-         this._hasGravityJump.value = param1 >= SNAILTYPE_GRAVITY;
-         this._hasArmor.value = param1 >= SNAILTYPE_METAL;
-         if(this._hasArmor.value)
+         _hasColdFoot.value = param1 >= SNAILTYPE_ICE;
+         _hasGravityJump.value = param1 >= SNAILTYPE_GRAVITY;
+         _hasArmor.value = param1 >= SNAILTYPE_METAL;
+         if(_hasArmor.value)
          {
-            this._runSpeed.value = this._slugMode ? 480 : 330;
-            this._maxSpeed.value = 550;
-            this._gravity.value = this._slugMode ? 900 : 1200;
+            _runSpeed.value = _slugMode ? 480 : 330;
+            _maxSpeed.value = 550;
+            _gravity.value = _slugMode ? 900 : 1200;
          }
-         else if(this._hasGravityJump.value)
+         else if(_hasGravityJump.value)
          {
-            this._runSpeed.value = this._slugMode ? 370 : 260;
-            this._maxSpeed.value = 500;
-            this._gravity.value = this._slugMode ? 900 : 1200;
+            _runSpeed.value = _slugMode ? 370 : 260;
+            _maxSpeed.value = 500;
+            _gravity.value = _slugMode ? 900 : 1200;
          }
-         else if(this._hasColdFoot.value)
+         else if(_hasColdFoot.value)
          {
-            this._runSpeed.value = this._slugMode ? 370 : 260;
-            this._maxSpeed.value = 500;
-            this._gravity.value = this._slugMode ? 900 : 1200;
+            _runSpeed.value = _slugMode ? 370 : 260;
+            _maxSpeed.value = 500;
+            _gravity.value = _slugMode ? 900 : 1200;
          }
          else
          {
-            this._runSpeed.value = this._slugMode ? 370 : 260;
-            this._maxSpeed.value = 500;
-            this._gravity.value = this._slugMode ? 900 : 1200;
+            _runSpeed.value = _slugMode ? 370 : 260;
+            _maxSpeed.value = 500;
+            _gravity.value = _slugMode ? 900 : 1200;
          }
-         this.setFaceDir(this._faceDir,true);
+         setFaceDir(_faceDir,true);
       }
       
       public function playAnim(param1:String) : void
       {
-         play(this._snailTypePrefix + param1);
+         play(_snailTypePrefix + param1);
       }
       
       public function setGravityDir(param1:int) : void
       {
          _gravityDir = param1;
-         switch(this._gravityDir)
+         switch(_gravityDir)
          {
             case GRAV_DOWN:
                acceleration.x = 0;
-               acceleration.y = this._gravity.value;
-               drag.x = this._runSpeed.value * 200;
+               acceleration.y = _gravity.value;
+               drag.x = _runSpeed.value * 200;
                drag.y = 0;
                break;
             case GRAV_RIGHT:
-               acceleration.x = this._gravity.value;
+               acceleration.x = _gravity.value;
                acceleration.y = 0;
-               drag.y = this._runSpeed.value * 200;
+               drag.y = _runSpeed.value * 200;
                drag.x = 0;
                break;
             case GRAV_UP:
                acceleration.x = 0;
-               acceleration.y = -this._gravity.value;
-               drag.x = this._runSpeed.value * 200;
+               acceleration.y = -_gravity.value;
+               drag.x = _runSpeed.value * 200;
                drag.y = 0;
                break;
             case GRAV_LEFT:
-               acceleration.x = -this._gravity.value;
+               acceleration.x = -_gravity.value;
                acceleration.y = 0;
-               drag.y = this._runSpeed.value * 200;
+               drag.y = _runSpeed.value * 200;
                drag.x = 0;
 			   break;
          }
@@ -2300,144 +2300,144 @@ package
       
       public function hideInShell(param1:Boolean) : void
       {
-         if(!this._hidingInShell && param1)
+         if(!_hidingInShell && param1)
          {
             Sfx.playShell();
          }
          _hidingInShell = param1;
          PlayState.zzz.visible = false;
-         this.setFaceDir(this._faceDir,true);
+         setFaceDir(_faceDir,true);
       }
       
       public function realTeleport() : void
       {
          var _loc1_:XMLList = null;
-         this.setCurHp(PlayState.player._maxHp.value);
+         setCurHp(PlayState.player._maxHp.value);
          dead = false;
          solid = true;
          if(PlayState.bossRush)
          {
-            this.setCurHp(99999);
+            setCurHp(99999);
             x = BOSSRUSH_STARTX * 16;
             y = BOSSRUSH_STARTY * 16;
          }
          else
          {
             _loc1_ = PlayState.saveData.xml.vars;
-            this.teleportTo(_loc1_.savex,_loc1_.savey);
+            teleportTo(_loc1_.savex,_loc1_.savey);
          }
-         clearInterval(this.teleportInterval);
+         clearInterval(teleportInterval);
          FlxG.fade.stop();
          FlxG.flash.start(2130706432,0.34);
       }
       
       public function teleportTo(param1:int, param2:int) : void
       {
-         this.setFaceDir(FACE_FLOOR_RIGHT,true);
+         setFaceDir(FACE_FLOOR_RIGHT,true);
          x = param1;
          y = param2;
          velocity.x = 0;
          velocity.y = 0;
-         drag.x = this._runSpeed.value * 200;
+         drag.x = _runSpeed.value * 200;
          drag.y = 0;
          PlayState.worldMap.checkRoomBounds(this);
       }
       
       public function setFaceDirHiding(param1:int) : void
       {
-         switch(this._faceDir)
+         switch(_faceDir)
          {
             case FACE_FLOOR_LEFT:
                offset.x = 0 + 13;
                width = 32 - 13 - 7;
                offset.y = 16 + 3;
                height = 16 - 3;
-               this.setGravityDir(GRAV_DOWN);
-               this.playAnim("floor_right_hide");
+               setGravityDir(GRAV_DOWN);
+               playAnim("floor_right_hide");
                _hideOfsX = 9;
-               x += this._hideOfsX;
+               x += _hideOfsX;
                _hideOfsY = 0;
-               y += this._hideOfsY;
+               y += _hideOfsY;
                break;
             case FACE_FLOOR_RIGHT:
                offset.x = 0 + 7;
                width = 32 - 7 - 13;
                offset.y = 16 + 3;
                height = 16 - 3;
-               this.setGravityDir(GRAV_DOWN);
+               setGravityDir(GRAV_DOWN);
                _hideOfsX = 3;
-               x += this._hideOfsX;
+               x += _hideOfsX;
                _hideOfsY = 0;
-               y += this._hideOfsY;
-               this.playAnim("floor_right_hide");
+               y += _hideOfsY;
+               playAnim("floor_right_hide");
                break;
             case FACE_CEIL_LEFT:
                offset.x = 0 + 13;
                width = 32 - 13 - 7;
                offset.y = 0 + 0;
                height = 16 - 6;
-               this.setGravityDir(GRAV_UP);
-               this.playAnim("ceil_right_hide");
+               setGravityDir(GRAV_UP);
+               playAnim("ceil_right_hide");
                _hideOfsX = 9;
-               x += this._hideOfsX;
+               x += _hideOfsX;
                break;
             case FACE_CEIL_RIGHT:
                offset.x = 0 + 7;
                width = 32 - 7 - 13;
                offset.y = 0 + 0;
                height = 16 - 6;
-               this.setGravityDir(GRAV_UP);
-               this.playAnim("ceil_right_hide");
+               setGravityDir(GRAV_UP);
+               playAnim("ceil_right_hide");
                _hideOfsX = 3;
-               x += this._hideOfsX;
+               x += _hideOfsX;
                break;
             case FACE_RWALL_UP:
                offset.y = 0 + 13;
                height = 32 - 13 - 7;
                offset.x = 16 + 6;
                width = 16 - 6;
-               this.setGravityDir(GRAV_RIGHT);
-               this.playAnim("rwall_up_hide");
+               setGravityDir(GRAV_RIGHT);
+               playAnim("rwall_up_hide");
                facing = RIGHT;
                _hideOfsY = 9;
-               y += this._hideOfsY;
+               y += _hideOfsY;
                _hideOfsX = 3;
-               x += this._hideOfsX;
+               x += _hideOfsX;
                break;
             case FACE_RWALL_DOWN:
                offset.y = 0 + 7;
                height = 32 - 7 - 13;
                offset.x = 16 + 6;
                width = 16 - 6;
-               this.setGravityDir(GRAV_RIGHT);
-               this.playAnim("rwall_down_hide");
+               setGravityDir(GRAV_RIGHT);
+               playAnim("rwall_down_hide");
                facing = RIGHT;
                _hideOfsY = 3;
-               y += this._hideOfsY;
+               y += _hideOfsY;
                _hideOfsX = 3;
-               x += this._hideOfsX;
+               x += _hideOfsX;
                break;
             case FACE_LWALL_UP:
                offset.y = 0 + 13;
                height = 32 - 13 - 7;
                offset.x = 0 + 0;
                width = 16 - 6;
-               this.setGravityDir(GRAV_LEFT);
-               this.playAnim("rwall_up_hide");
+               setGravityDir(GRAV_LEFT);
+               playAnim("rwall_up_hide");
                facing = LEFT;
                _hideOfsY = 9;
-               y += this._hideOfsY;
+               y += _hideOfsY;
                break;
             case FACE_LWALL_DOWN:
                offset.y = 0 + 7;
                height = 32 - 7 - 13;
                offset.x = 0 + 0;
                width = 16 - 6;
-               this.setGravityDir(GRAV_LEFT);
-               this.playAnim("rwall_down_hide");
+               setGravityDir(GRAV_LEFT);
+               playAnim("rwall_down_hide");
                facing = LEFT;
                _hideOfsY = 3;
-               y += this._hideOfsY;
+               y += _hideOfsY;
 			   break;
          }
       }
@@ -2448,7 +2448,7 @@ package
          var _loc4_:int = offset.y;
          var _loc5_:int = width;
          var _loc6_:int = height;
-         switch(this._faceDir)
+         switch(_faceDir)
          {
             case FACE_FLOOR_LEFT:
             case FACE_FLOOR_RIGHT:
@@ -2456,9 +2456,9 @@ package
                width = 32 - 4 - 4;
                offset.y = 16 + 3;
                height = 16 - 3;
-               this.changeSnailSizeCheckBounds(width,height,_loc5_,_loc6_);
-               this.setGravityDir(GRAV_DOWN);
-               this.playAnim("floor_right_move");
+               changeSnailSizeCheckBounds(width,height,_loc5_,_loc6_);
+               setGravityDir(GRAV_DOWN);
+               playAnim("floor_right_move");
                break;
             case FACE_CEIL_LEFT:
             case FACE_CEIL_RIGHT:
@@ -2466,9 +2466,9 @@ package
                width = 32 - 4 - 4;
                offset.y = 0 + 0;
                height = 16 - 3;
-               this.changeSnailSizeCheckBounds(width,height,_loc5_,_loc6_);
-               this.setGravityDir(GRAV_UP);
-               this.playAnim("ceil_right_move");
+               changeSnailSizeCheckBounds(width,height,_loc5_,_loc6_);
+               setGravityDir(GRAV_UP);
+               playAnim("ceil_right_move");
                break;
             case FACE_RWALL_UP:
                offset.y = 0 + 4;
@@ -2477,10 +2477,10 @@ package
                width = 16 - 3;
                if(!param2)
                {
-                  this.changeSnailSizeCheckBounds(width,height,_loc5_,_loc6_);
+                  changeSnailSizeCheckBounds(width,height,_loc5_,_loc6_);
                }
-               this.setGravityDir(GRAV_RIGHT);
-               this.playAnim("rwall_up_move");
+               setGravityDir(GRAV_RIGHT);
+               playAnim("rwall_up_move");
                facing = RIGHT;
                break;
             case FACE_RWALL_DOWN:
@@ -2490,10 +2490,10 @@ package
                width = 16 - 3;
                if(!param2)
                {
-                  this.changeSnailSizeCheckBounds(width,height,_loc5_,_loc6_);
+                  changeSnailSizeCheckBounds(width,height,_loc5_,_loc6_);
                }
-               this.setGravityDir(GRAV_RIGHT);
-               this.playAnim("rwall_down_move");
+               setGravityDir(GRAV_RIGHT);
+               playAnim("rwall_down_move");
                facing = RIGHT;
                break;
             case FACE_LWALL_UP:
@@ -2503,10 +2503,10 @@ package
                width = 16 - 3;
                if(!param2)
                {
-                  this.changeSnailSizeCheckBounds(width,height,_loc5_,_loc6_);
+                  changeSnailSizeCheckBounds(width,height,_loc5_,_loc6_);
                }
-               this.setGravityDir(GRAV_LEFT);
-               this.playAnim("rwall_up_move");
+               setGravityDir(GRAV_LEFT);
+               playAnim("rwall_up_move");
                facing = LEFT;
                break;
             case FACE_LWALL_DOWN:
@@ -2516,10 +2516,10 @@ package
                width = 16 - 3;
                if(!param2)
                {
-                  this.changeSnailSizeCheckBounds(width,height,_loc5_,_loc6_);
+                  changeSnailSizeCheckBounds(width,height,_loc5_,_loc6_);
                }
-               this.setGravityDir(GRAV_LEFT);
-               this.playAnim("rwall_down_move");
+               setGravityDir(GRAV_LEFT);
+               playAnim("rwall_down_move");
                facing = LEFT;
 			   break;
          }
@@ -2527,63 +2527,63 @@ package
       
       public function setFaceDir(param1:int, param2:Boolean = false, param3:Boolean = false) : void
       {
-         if(this._faceDir == param1 && !param2)
+         if(_faceDir == param1 && !param2)
          {
             return;
          }
          _faceDir = param1;
-         this.moveSnailCheckBounds(-this._hideOfsX,-this._hideOfsY);
+         moveSnailCheckBounds(-_hideOfsX,-_hideOfsY);
          _hideOfsX = 0;
          _hideOfsY = 0;
-         if(this._hidingInShell)
+         if(_hidingInShell)
          {
-            this.setFaceDirHiding(this._faceDir);
+            setFaceDirHiding(_faceDir);
          }
          else
          {
-            this.setFaceDirNotHiding(this._faceDir,param3);
+            setFaceDirNotHiding(_faceDir,param3);
          }
       }
       
       public function setCurHp(param1:int) : void
       {
-         this._curHp.value = param1;
-         if(this._curHp.value > this._maxHp.value)
+         _curHp.value = param1;
+         if(_curHp.value > _maxHp.value)
          {
-            this._curHp.value = this._maxHp.value;
+            _curHp.value = _maxHp.value;
          }
-         PlayState.hud.heartHud.setCurHp(this._curHp.value,this);
-         if(this._curHp.value <= 0)
+         PlayState.hud.heartHud.setCurHp(_curHp.value,this);
+         if(_curHp.value <= 0)
          {
-            this.kill();
+            kill();
          }
       }
       
       public function getCurHp() : int
       {
-         return this._curHp.value;
+         return _curHp.value;
       }
       
       public function getMaxHp() : int
       {
-         return this._maxHp.value;
+         return _maxHp.value;
       }
       
       public function setMaxHp(param1:int) : void
       {
-         this._maxHp.value = param1;
-         if(this._maxHp.value > this.hpPerHeart() * MAX_HEART_CONTAINERS)
+         _maxHp.value = param1;
+         if(_maxHp.value > hpPerHeart() * MAX_HEART_CONTAINERS)
          {
-            this._maxHp.value = this.hpPerHeart() * MAX_HEART_CONTAINERS;
+            _maxHp.value = hpPerHeart() * MAX_HEART_CONTAINERS;
          }
-         this.setCurHp(this._maxHp.value);
-         PlayState.hud.heartHud.setMaxHp(this._maxHp.value,this);
-         PlayState.hud.heartHud.setCurHp(this._maxHp.value,this);
+         setCurHp(_maxHp.value);
+         PlayState.hud.heartHud.setMaxHp(_maxHp.value,this);
+         PlayState.hud.heartHud.setCurHp(_maxHp.value,this);
       }
       
       public function addHeartContainer() : void
       {
-         this.setMaxHp(this._maxHp.value + this.hpPerHeart());
+         setMaxHp(_maxHp.value + hpPerHeart());
       }
       
       public function justPressedShoot() : Boolean
@@ -2664,7 +2664,7 @@ package
          var _loc1_:XMLList = PlayState.saveData.xml.vars;
          var _loc2_:int = _loc1_.savex;
          var _loc3_:int = _loc1_.savey;
-         this.setSaveCoords(_loc2_,_loc3_,true);
+         setSaveCoords(_loc2_,_loc3_,true);
       }
       
       public function saveNoCoords() : void
@@ -2684,7 +2684,7 @@ package
          {
             _loc2_ = _loc3_.xml.vars.savey;
          }
-         this.setSaveCoords(_loc1_,_loc2_,true);
+         setSaveCoords(_loc1_,_loc2_,true);
       }
       
       public function setSaveCoords(param1:int, param2:int, param3:Boolean = false) : void
@@ -2700,28 +2700,28 @@ package
          var _loc4_:XML = new XML(<vars/>);
          _loc4_.appendChild(<savex>{param1}</savex>);
          _loc4_.appendChild(<savey>{param2}</savey>);
-         _loc4_.appendChild(<lastWeapon>{this._currentWeapon.value}</lastWeapon>);
+         _loc4_.appendChild(<lastWeapon>{_currentWeapon.value}</lastWeapon>);
          if(firingMode)
          {
             _loc4_.appendChild(<toggleFire>true</toggleFire>);
          }
-         if(this._hasTurbo.value)
+         if(_hasTurbo.value)
          {
             _loc4_.appendChild(<hasTurbo>true</hasTurbo>);
          }
-         if(this._hasHighJump.value)
+         if(_hasHighJump.value)
          {
             _loc4_.appendChild(<hasHighJump>true</hasHighJump>);
          }
-         if(this._hasDevastator.value)
+         if(_hasDevastator.value)
          {
             _loc4_.appendChild(<hasDevastator>true</hasDevastator>);
          }
-         if(this._hasGravityShock.value)
+         if(_hasGravityShock.value)
          {
             _loc4_.appendChild(<hasGravityShock>true</hasGravityShock>);
          }
-         if(this._hasShellShield.value)
+         if(_hasShellShield.value)
          {
             _loc4_.appendChild(<hasShellShield>true</hasShellShield>);
          }
@@ -2737,8 +2737,8 @@ package
          {
             _loc4_.appendChild(<hideTab>true</hideTab>);
          }
-         _loc4_.appendChild(<snailType>{this._snailType.value}</snailType>);
-         _loc4_.appendChild(<maxHp>{this._maxHp.value}</maxHp>);
+         _loc4_.appendChild(<snailType>{_snailType.value}</snailType>);
+         _loc4_.appendChild(<maxHp>{_maxHp.value}</maxHp>);
          if(PlayState.bossesKilled[1])
          {
             _loc4_.appendChild(<bossesKilledOne>true</bossesKilledOne>);
@@ -2755,49 +2755,49 @@ package
          {
             _loc4_.appendChild(<bossesKilledFour>true</bossesKilledFour>);
          }
-         if(this._easyMode)
+         if(_easyMode)
          {
             _loc4_.appendChild(<easyMode>true</easyMode>);
          }
-         if(this._hardMode)
+         if(_hardMode)
          {
             _loc4_.appendChild(<hardMode>true</hardMode>);
          }
-         if(this._insaneMode)
+         if(_insaneMode)
          {
             _loc4_.appendChild(<insaneMode>true</insaneMode>);
          }
-         if(this._hasWeapon[0])
+         if(_hasWeapon[0])
          {
             _loc4_.appendChild(<hasWeaponZero>true</hasWeaponZero>);
          }
-         if(this._hasWeapon[1])
+         if(_hasWeapon[1])
          {
             _loc4_.appendChild(<hasWeaponOne>true</hasWeaponOne>);
          }
-         if(this._hasWeapon[2])
+         if(_hasWeapon[2])
          {
             _loc4_.appendChild(<hasWeaponTwo>true</hasWeaponTwo>);
          }
-         _loc4_.appendChild(<gameTime>{this.gameTime.value}</gameTime>);
-         _loc4_.appendChild(<helixFragments>{this._helixFragments.value}</helixFragments>);
-         if(this.hasSeenIsis)
+         _loc4_.appendChild(<gameTime>{gameTime.value}</gameTime>);
+         _loc4_.appendChild(<helixFragments>{_helixFragments.value}</helixFragments>);
+         if(hasSeenIsis)
          {
-            _loc4_.appendChild(<hasSeenIsis>{this.hasSeenIsis}</hasSeenIsis>);
+            _loc4_.appendChild(<hasSeenIsis>{hasSeenIsis}</hasSeenIsis>);
          }
-         if(this.hasSeenHelp)
+         if(hasSeenHelp)
          {
-            _loc4_.appendChild(<hasSeenHelp>{this.hasSeenHelp}</hasSeenHelp>);
+            _loc4_.appendChild(<hasSeenHelp>{hasSeenHelp}</hasSeenHelp>);
          }
-         _loc4_.appendChild(<hasWonGame>{this.hasWonGame}</hasWonGame>);
-         _loc4_.appendChild(<hasWonHardMode>{this.hasWonHardMode}</hasWonHardMode>);
-         _loc4_.appendChild(<hasWonInsaneMode>{this.hasWonInsaneMode}</hasWonInsaneMode>);
-         _loc4_.appendChild(<hasFullClear>{this.hasFullClear}</hasFullClear>);
-         _loc4_.appendChild(<hasWonBossRush>{this.hasWonBossRush}</hasWonBossRush>);
-         _loc4_.appendChild(<bestBossRushTime>{this.bestBossRushTime.value}</bestBossRushTime>);
-         _loc4_.appendChild(<bestMainTime>{this.bestMainTime.value}</bestMainTime>);
-         _loc4_.appendChild(<bestHardTime>{this.bestHardTime.value}</bestHardTime>);
-         _loc4_.appendChild(<bestInsaneTime>{this.bestInsaneTime.value}</bestInsaneTime>);
+         _loc4_.appendChild(<hasWonGame>{hasWonGame}</hasWonGame>);
+         _loc4_.appendChild(<hasWonHardMode>{hasWonHardMode}</hasWonHardMode>);
+         _loc4_.appendChild(<hasWonInsaneMode>{hasWonInsaneMode}</hasWonInsaneMode>);
+         _loc4_.appendChild(<hasFullClear>{hasFullClear}</hasFullClear>);
+         _loc4_.appendChild(<hasWonBossRush>{hasWonBossRush}</hasWonBossRush>);
+         _loc4_.appendChild(<bestBossRushTime>{bestBossRushTime.value}</bestBossRushTime>);
+         _loc4_.appendChild(<bestMainTime>{bestMainTime.value}</bestMainTime>);
+         _loc4_.appendChild(<bestHardTime>{bestHardTime.value}</bestHardTime>);
+         _loc4_.appendChild(<bestInsaneTime>{bestInsaneTime.value}</bestInsaneTime>);
          _loc4_.appendChild(<mapKey>{MAP_KEY}</mapKey>);
          _loc4_.appendChild(<jumpKey>{JUMP_KEY}</jumpKey>);
          _loc4_.appendChild(<shootKey>{SHOOT_KEY}</shootKey>);
@@ -2831,11 +2831,11 @@ package
       
       public function addWeapon(param1:int) : void
       {
-         var _loc2_:Boolean = !this.hasAnyWeapon() && !PlayState.bossRush && !this._hardMode;
-         this._hasWeapon[param1] = true;
-         if(this._currentWeapon.value < param1)
+         var _loc2_:Boolean = !hasAnyWeapon() && !PlayState.bossRush && !_hardMode;
+         _hasWeapon[param1] = true;
+         if(_currentWeapon.value < param1)
          {
-            this.switchToWeapon(param1);
+            switchToWeapon(param1);
          }
          if(_loc2_)
          {
@@ -2846,113 +2846,113 @@ package
       
       public function hasWeapon(param1:int) : Boolean
       {
-         return this._hasWeapon[param1];
+         return _hasWeapon[param1];
       }
       
       public function getHasDevastator() : Boolean
       {
-         return this._hasDevastator.value;
+         return _hasDevastator.value;
       }
       
       public function hasArmor() : Boolean
       {
-         return this._hasArmor.value;
+         return _hasArmor.value;
       }
       
       public function hasGravityJump() : Boolean
       {
-         return this._hasGravityJump.value;
+         return _hasGravityJump.value;
       }
       
       public function hasHighJump() : Boolean
       {
-         return this._hasHighJump.value;
+         return _hasHighJump.value;
       }
       
       public function addTurbo() : void
       {
-         this.setHasTurbo(true);
+         setHasTurbo(true);
       }
       
       public function addDevastator() : void
       {
-         this.setHasDevastator(true);
+         setHasDevastator(true);
       }
       
       public function addGravityJump() : void
       {
-         if(!this.hasArmor())
+         if(!hasArmor())
          {
-            this.setSnailType(SNAILTYPE_GRAVITY);
+            setSnailType(SNAILTYPE_GRAVITY);
          }
       }
       
       public function addColdFoot() : void
       {
-         if(!this.hasGravityJump() && !this.hasArmor())
+         if(!hasGravityJump() && !hasArmor())
          {
-            this.setSnailType(SNAILTYPE_ICE);
+            setSnailType(SNAILTYPE_ICE);
          }
       }
       
       public function addHighJump() : void
       {
-         this.setHighJump(true);
+         setHighJump(true);
       }
       
       public function setHasDevastator(param1:Boolean) : void
       {
-         this._hasDevastator.value = param1;
+         _hasDevastator.value = param1;
       }
       
       public function setHelixFragments(param1:int) : void
       {
-         this._helixFragments.value = param1;
-         if(this._helixFragments.value > MAX_HELIX_FRAGMENTS)
+         _helixFragments.value = param1;
+         if(_helixFragments.value > MAX_HELIX_FRAGMENTS)
          {
-            this._helixFragments.value = MAX_HELIX_FRAGMENTS;
+            _helixFragments.value = MAX_HELIX_FRAGMENTS;
          }
          if(PlayState.miniMap)
          {
-            if(this._helixFragments.value == 0)
+            if(_helixFragments.value == 0)
             {
                PlayState.miniMap.subscreen.helixSprite.visible = false;
                PlayState.miniMap.subscreen.helixText.visible = false;
-               PlayState.miniMap.subscreen.helixText.text = "x " + this._helixFragments.value.toString();
+               PlayState.miniMap.subscreen.helixText.text = "x " + _helixFragments.value.toString();
             }
             else
             {
                PlayState.miniMap.subscreen.helixSprite.visible = true;
                PlayState.miniMap.subscreen.helixText.visible = true;
-               PlayState.miniMap.subscreen.helixText.text = "x " + this._helixFragments.value.toString();
+               PlayState.miniMap.subscreen.helixText.text = "x " + _helixFragments.value.toString();
             }
          }
       }
       
       public function getHelixFragments() : int
       {
-         return this._helixFragments.value;
+         return _helixFragments.value;
       }
       
       public function getHasShellShield() : Boolean
       {
-         return this._hasShellShield.value;
+         return _hasShellShield.value;
       }
       
       public function setHasShellShield(param1:Boolean) : void
       {
-         if(this._slugMode)
+         if(_slugMode)
          {
             return;
          }
-         this._hasShellShield.value = param1;
+         _hasShellShield.value = param1;
       }
       
       public function addShellShield() : void
       {
-         if(!this._slugMode)
+         if(!_slugMode)
          {
-            this.setHasShellShield(true);
+            setHasShellShield(true);
          }
       }
       
@@ -2973,7 +2973,7 @@ package
       
       public function hasGravityShock() : Boolean
       {
-         return this._hasGravityShock.value;
+         return _hasGravityShock.value;
       }
       
       public function setHasGravityShock(param1:Boolean) : void
@@ -2986,18 +2986,18 @@ package
       
       public function addHelixFragment() : void
       {
-         this.setHelixFragments(this._helixFragments.value + 1);
+         setHelixFragments(_helixFragments.value + 1);
       }
       
       public function getPercentComplete() : int
       {
-         var _loc1_:int = (this._hasWeapon[0] ? 1 : 0) + (this._hasWeapon[1] ? 1 : 0) + (this._hasWeapon[2] ? 1 : 0) + (this._hasDevastator.value ? 1 : 0) + (this._hasTurbo.value ? 1 : 0) + (this._hasHighJump.value ? 1 : 0) + this._maxHp.value / this.hpPerHeart() - STARTING_MAX_HEARTS + (this._hasColdFoot.value ? 1 : 0) + (this._hasGravityJump.value ? 1 : 0) + (this._hasArmor.value ? 1 : 0) + (this._hasShellShield.value ? 1 : 0) + this._helixFragments.value;
-         return _loc1_ * 100 / (this._slugMode ? 50 : 51);
+         var _loc1_:int = (_hasWeapon[0] ? 1 : 0) + (_hasWeapon[1] ? 1 : 0) + (_hasWeapon[2] ? 1 : 0) + (_hasDevastator.value ? 1 : 0) + (_hasTurbo.value ? 1 : 0) + (_hasHighJump.value ? 1 : 0) + _maxHp.value / hpPerHeart() - STARTING_MAX_HEARTS + (_hasColdFoot.value ? 1 : 0) + (_hasGravityJump.value ? 1 : 0) + (_hasArmor.value ? 1 : 0) + (_hasShellShield.value ? 1 : 0) + _helixFragments.value;
+         return _loc1_ * 100 / (_slugMode ? 50 : 51);
       }
       
       public function isParalyzed() : Boolean
       {
-         return this._paralyzed;
+         return _paralyzed;
       }
       
       public function paralyze(param1:Boolean) : void
@@ -3007,8 +3007,8 @@ package
       
       public function addArmor() : void
       {
-         this.setSnailType(SNAILTYPE_METAL);
-         this._hasArmor.value = true;
+         setSnailType(SNAILTYPE_METAL);
+         _hasArmor.value = true;
       }
    }
 }

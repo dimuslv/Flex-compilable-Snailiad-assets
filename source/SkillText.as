@@ -9,7 +9,7 @@ package
       public function SkillText() : void
       {
          super(194,FlxG.height - 27,100);
-         this.relY = FlxG.height - 27;
+         relY = FlxG.height - 27;
          font = Fonts.normal;
          size = 10;
          color = 16777215;
@@ -50,7 +50,7 @@ package
       {
          if(PlayState.miniMap && PlayState.miniMap.subscreen)
          {
-            y = this.relY + PlayState.miniMap.subscreen.panel.y;
+            y = relY + PlayState.miniMap.subscreen.panel.y;
          }
       }
    }

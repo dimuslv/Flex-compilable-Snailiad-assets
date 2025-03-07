@@ -17,7 +17,7 @@ package
          offset.y = 0;
          velocity.x = 0;
          velocity.y = 0;
-         this._firepower = param1;
+         _firepower = param1;
       }
       
       public function shoot(param1:int, param2:int, param3:int, param4:int) : void
@@ -44,17 +44,17 @@ package
          }
          else
          {
-            param1.hurt(this._firepower);
+            param1.hurt(_firepower);
          }
          if(param1.getDefense() >= 200)
          {
-            this.kill();
+            kill();
          }
       }
       
       public function hitItem(param1:Item) : void
       {
-         param1.hurt(this._firepower);
+         param1.hurt(_firepower);
       }
       
       override public function update() : void
@@ -70,25 +70,25 @@ package
          }
          super.update();
          _lifetime -= FlxG.elapsed;
-         if(this._lifetime <= 0)
+         if(_lifetime <= 0)
          {
-            this.kill();
+            kill();
          }
       }
       
       override public function hitSide(param1:FlxObject, param2:Number) : void
       {
-         this.kill();
+         kill();
       }
       
       override public function hitBottom(param1:FlxObject, param2:Number) : void
       {
-         this.kill();
+         kill();
       }
       
       override public function hitTop(param1:FlxObject, param2:Number) : void
       {
-         this.kill();
+         kill();
       }
       
       override public function kill() : void

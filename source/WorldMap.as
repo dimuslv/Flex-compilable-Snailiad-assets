@@ -71,30 +71,30 @@ package
       {
          var _loc2_:int = param1.x + param1.width / 2;
          var _loc3_:int = param1.y + param1.height / 2;
-         if(this.isLethalEdge(_loc2_ / 16,_loc3_ / 16) && !param1.noCollide)
+         if(isLethalEdge(_loc2_ / 16,_loc3_ / 16) && !param1.noCollide)
          {
             PlayState.player.hurt(9999);
             return;
          }
-         if(_loc2_ > this.maxX)
+         if(_loc2_ > maxX)
          {
             param1.x += 16;
-            this.findRoomBounds(param1.x + 16,param1.y);
+            findRoomBounds(param1.x + 16,param1.y);
          }
-         else if(_loc2_ < this.minX)
+         else if(_loc2_ < minX)
          {
             param1.x -= 16;
-            this.findRoomBounds(param1.x - 16,param1.y);
+            findRoomBounds(param1.x - 16,param1.y);
          }
-         else if(_loc3_ > this.maxY)
+         else if(_loc3_ > maxY)
          {
             param1.y += 16;
-            this.findRoomBounds(param1.x,param1.y + 16);
+            findRoomBounds(param1.x,param1.y + 16);
          }
-         else if(_loc3_ < this.minY)
+         else if(_loc3_ < minY)
 		 {
             param1.y -= 16;
-            this.findRoomBounds(param1.x,param1.y - 16);
+            findRoomBounds(param1.x,param1.y - 16);
          }
 		 else
 		 {
@@ -119,7 +119,7 @@ package
                _loc3_++;
             }
          }
-         return this.bgmap.getTile(int(param1 / 16),int(param2 / 16)) >= FG_OFFSET || this.spmap.getTile(int(param1 / 16),int(param2 / 16)) == 387 || this.spmap.getTile(int(param1 / 16),int(param2 / 16)) == 1 || this.spmap.getTile(int(param1 / 16),int(param2 / 16)) == 396 || this.spmap.getTile(int(param1 / 16),int(param2 / 16)) == 459;
+         return bgmap.getTile(int(param1 / 16),int(param2 / 16)) >= FG_OFFSET || spmap.getTile(int(param1 / 16),int(param2 / 16)) == 387 || spmap.getTile(int(param1 / 16),int(param2 / 16)) == 1 || spmap.getTile(int(param1 / 16),int(param2 / 16)) == 396 || spmap.getTile(int(param1 / 16),int(param2 / 16)) == 459;
       }
       
       public function solidAt(param1:int, param2:int) : Boolean
@@ -137,14 +137,14 @@ package
                _loc3_++;
             }
          }
-         return this.bgmap.getTile(int(param1 / 16),int(param2 / 16)) >= FG_OFFSET;
+         return bgmap.getTile(int(param1 / 16),int(param2 / 16)) >= FG_OFFSET;
       }
       
       public function findFirstFullNotSolidTop(param1:int, param2:int, param3:int, param4:int, param5:int) : int
       {
          while(param5 < 0)
          {
-            if(!this.solidAt(param1,param2 + param5) && !this.solidAt(param1 + param3 / 2,param2 + param5) && !this.solidAt(param1 + param3 - 1,param2 + param5))
+            if(!solidAt(param1,param2 + param5) && !solidAt(param1 + param3 / 2,param2 + param5) && !solidAt(param1 + param3 - 1,param2 + param5))
             {
                break;
             }
@@ -157,7 +157,7 @@ package
       {
          while(param5 > 0)
          {
-            if(!this.solidAt(param1,param2 + param4 - 1 + param5) && !this.solidAt(param1 + param3 / 2,param2 + param4 - 1 + param5) && !this.solidAt(param1 + param3 - 1,param2 + param4 - 1 + param5))
+            if(!solidAt(param1,param2 + param4 - 1 + param5) && !solidAt(param1 + param3 / 2,param2 + param4 - 1 + param5) && !solidAt(param1 + param3 - 1,param2 + param4 - 1 + param5))
             {
                break;
             }
@@ -170,7 +170,7 @@ package
       {
          while(param5 < 0)
          {
-            if(!this.solidAt(param1 + param5,param2) && !this.solidAt(param1 + param5,param2 + param4 / 2) && !this.solidAt(param1 + param5,param2 + param4 - 1))
+            if(!solidAt(param1 + param5,param2) && !solidAt(param1 + param5,param2 + param4 / 2) && !solidAt(param1 + param5,param2 + param4 - 1))
             {
                break;
             }
@@ -183,7 +183,7 @@ package
       {
          while(param5 > 0)
          {
-            if(!this.solidAt(param1 + param3 - 1 + param5,param2) && !this.solidAt(param1 + param3 - 1 + param5,param2 + param4 / 2) && !this.solidAt(param1 + param3 - 1 + param5,param2 + param4 - 1))
+            if(!solidAt(param1 + param3 - 1 + param5,param2) && !solidAt(param1 + param3 - 1 + param5,param2 + param4 / 2) && !solidAt(param1 + param3 - 1 + param5,param2 + param4 - 1))
             {
                break;
             }
@@ -196,7 +196,7 @@ package
       {
          while(param5 < 0)
          {
-            if(!this.solidAt(param1,param2 + param5) && !this.solidAt(param1 + param3 / 2,param2 + param5) && !this.solidAt(param1 + param3 - 1,param2 + param5))
+            if(!solidAt(param1,param2 + param5) && !solidAt(param1 + param3 / 2,param2 + param5) && !solidAt(param1 + param3 - 1,param2 + param5))
             {
                break;
             }
@@ -209,7 +209,7 @@ package
       {
          while(param5 > 0)
          {
-            if(!this.solidAt(param1 + param3 / 2,param2 + param4 - 1 + param5))
+            if(!solidAt(param1 + param3 / 2,param2 + param4 - 1 + param5))
             {
                break;
             }
@@ -222,7 +222,7 @@ package
       {
          while(param5 < 0)
          {
-            if(!this.solidAt(param1 + param5,param2 + param4 / 2))
+            if(!solidAt(param1 + param5,param2 + param4 / 2))
             {
                break;
             }
@@ -235,7 +235,7 @@ package
       {
          while(param5 > 0)
          {
-            if(!this.solidAt(param1 + param3 - 1 + param5,param2) && !this.solidAt(param1 + param3 - 1 + param5,param2 + param4 / 2) && !this.solidAt(param1 + param3 - 1 + param5,param2 + param4 - 1))
+            if(!solidAt(param1 + param3 - 1 + param5,param2) && !solidAt(param1 + param3 - 1 + param5,param2 + param4 / 2) && !solidAt(param1 + param3 - 1 + param5,param2 + param4 - 1))
             {
                break;
             }
@@ -246,12 +246,12 @@ package
       
       public function isLethalEdge(param1:int, param2:int) : Boolean
       {
-         return this.spmap.getTile(param1,param2) == 396;
+         return spmap.getTile(param1,param2) == 396;
       }
       
       public function isEdge(param1:int, param2:int) : Boolean
       {
-         return this.spmap.getTile(param1,param2) == 1 || this.spmap.getTile(param1,param2) == 396 || this.spmap.getTile(param1,param2) == 459;
+         return spmap.getTile(param1,param2) == 1 || spmap.getTile(param1,param2) == 396 || spmap.getTile(param1,param2) == 459;
       }
       
       public function findRoomBounds(param1:int, param2:int) : void
@@ -262,51 +262,51 @@ package
          param1 /= 16;
          param2 /= 16;
          tileMinX = param1;
-         while(this.tileMinX > 0)
+         while(tileMinX > 0)
          {
-            if(this.isEdge(this.tileMinX,param2))
+            if(isEdge(tileMinX,param2))
             {
                break;
             }
-            --this.tileMinX;
+            --tileMinX;
          }
          tileMaxX = param1;
-         while(this.tileMaxX < this.bgmap.widthInTiles)
+         while(tileMaxX < bgmap.widthInTiles)
          {
-            if(this.isEdge(this.tileMaxX,param2))
+            if(isEdge(tileMaxX,param2))
             {
                break;
             }
-            ++this.tileMaxX;
+            ++tileMaxX;
          }
          tileMinY = param2;
-         while(this.tileMinY > 0)
+         while(tileMinY > 0)
          {
-            if(this.isEdge(param1,this.tileMinY))
+            if(isEdge(param1,tileMinY))
             {
                break;
             }
-            --this.tileMinY;
+            --tileMinY;
          }
          tileMaxY = param2;
-         while(this.tileMaxY < this.bgmap.widthInTiles)
+         while(tileMaxY < bgmap.widthInTiles)
          {
-            if(this.isEdge(param1,this.tileMaxY))
+            if(isEdge(param1,tileMaxY))
             {
                break;
             }
-            ++this.tileMaxY;
+            ++tileMaxY;
          }
-         minX = this.tileMinX * 16 + 16;
-         minY = this.tileMinY * 16 + 16;
-         maxX = this.tileMaxX * 16 + 0;
-         maxY = this.tileMaxY * 16 + 0;
-         FlxG.followBounds(this.minX,this.minY,this.maxX,this.maxY);
+         minX = tileMinX * 16 + 16;
+         minY = tileMinY * 16 + 16;
+         maxX = tileMaxX * 16 + 0;
+         maxY = tileMaxY * 16 + 0;
+         FlxG.followBounds(minX,minY,maxX,maxY);
          if(PlayState.fixBlocks)
          {
             PlayState.fixBlocks.repairAll();
          }
-         this.processSpecialTiles();
+         processSpecialTiles();
       }
       
       public function scanMiniMap() : void
@@ -325,7 +325,7 @@ package
                   {
                      var _loc5_:int = _loc1_ * MiniMap.ROOM_WIDTH + _loc3_;
                      var _loc6_:int = _loc2_ * MiniMap.ROOM_HEIGHT + _loc4_;
-                     var _loc7_:uint = this.spmap.getTile(_loc5_,_loc6_);
+                     var _loc7_:uint = spmap.getTile(_loc5_,_loc6_);
                      var _loc8_:int = _loc5_ * 16;
                      var _loc9_:int = _loc6_ * 16;
                      if(_loc7_ >= 93 && _loc7_ <= 332)
@@ -405,17 +405,17 @@ package
          PlayState.snowLayer.destroyAll();
          PlayState.doors = new Array();
          waterLevelY = new Array();
-         fakeMinX = this.minX;
-         fakeMaxX = this.maxX;
-         fakeMinY = this.minY;
-         fakeMaxY = this.maxY;
-         _loc1_ = this.tileMinX + 1;
-         while(_loc1_ <= this.tileMaxX - 1)
+         fakeMinX = minX;
+         fakeMaxX = maxX;
+         fakeMinY = minY;
+         fakeMaxY = maxY;
+         _loc1_ = tileMinX + 1;
+         while(_loc1_ <= tileMaxX - 1)
          {
-            _loc2_ = this.tileMinY + 1;
-            for(; _loc2_ <= this.tileMaxY - 1; _loc2_++)
+            _loc2_ = tileMinY + 1;
+            for(; _loc2_ <= tileMaxY - 1; _loc2_++)
             {
-               _loc4_ = this.spmap.getTile(_loc1_,_loc2_);
+               _loc4_ = spmap.getTile(_loc1_,_loc2_);
                if(PlayState.player && PlayState.player._insaneMode)
                {
                   if(_loc4_ == 400)
@@ -439,17 +439,17 @@ package
                _loc6_ = _loc2_ * 16;
                if(_loc4_ >= 3 && _loc4_ <= 23)
                {
-                  this.makeEnemy(_loc5_,_loc6_,_loc4_ - 3);
+                  makeEnemy(_loc5_,_loc6_,_loc4_ - 3);
                   continue;
                }
                if(_loc4_ >= 24 && _loc4_ <= 27)
                {
-                  this.makeBoss(_loc5_,_loc6_,_loc4_ - 23);
+                  makeBoss(_loc5_,_loc6_,_loc4_ - 23);
                   continue;
                }
                if(_loc4_ >= 369 && _loc4_ <= 372)
                {
-                  this.makeBossRush(_loc5_,_loc6_,_loc4_ - 368);
+                  makeBossRush(_loc5_,_loc6_,_loc4_ - 368);
                   continue;
                }
                if(_loc4_ >= 33 && _loc4_ <= 72)
@@ -555,9 +555,9 @@ package
                      break;
                   case 336:
                      PlayState.aiTriggerPool.addNew(_loc5_,_loc6_,3);
-                     if(!this.waterLevelY[_loc5_ / 16] || this.waterLevelY[_loc5_ / 16] < _loc6_)
+                     if(!waterLevelY[_loc5_ / 16] || waterLevelY[_loc5_ / 16] < _loc6_)
                      {
-                        this.waterLevelY[_loc5_ / 16] = _loc6_;
+                        waterLevelY[_loc5_ / 16] = _loc6_;
                      }
                      break;
                   case 337:
@@ -654,24 +654,24 @@ package
                      if(_loc5_ > PlayState.player.x)
                      {
                         fakeMaxX = _loc5_;
-                        this.setTileBounds(this.tileMinX,this.tileMinY,_loc1_,this.tileMaxY,false);
+                        setTileBounds(tileMinX,tileMinY,_loc1_,tileMaxY,false);
                      }
                      else
                      {
                         fakeMinX = _loc5_;
-                        this.setTileBounds(_loc1_,this.tileMinY,this.tileMaxX,this.tileMaxY,false);
+                        setTileBounds(_loc1_,tileMinY,tileMaxX,tileMaxY,false);
                      }
                      break;
                   case 368:
                      if(_loc6_ > PlayState.player.y)
                      {
                         fakeMaxY = _loc6_;
-                        this.setTileBounds(this.tileMinX,this.tileMinY,this.tileMaxX,_loc2_,false);
+                        setTileBounds(tileMinX,tileMinY,tileMaxX,_loc2_,false);
                      }
                      else
                      {
                         fakeMinY = _loc6_;
-                        this.setTileBounds(this.tileMinX,_loc2_,this.tileMaxX,this.tileMaxY,false);
+                        setTileBounds(tileMinX,_loc2_,tileMaxX,tileMaxY,false);
                      }
                      break;
                   case 373:
@@ -754,7 +754,7 @@ package
                      if(_loc6_ > PlayState.player.y)
                      {
                         fakeMaxY = _loc6_;
-                        this.setTileBounds(this.tileMinX,this.tileMinY,this.tileMaxX,_loc2_,false);
+                        setTileBounds(tileMinX,tileMinY,tileMaxX,_loc2_,false);
                      }
                      break;
                   case 402:
@@ -930,47 +930,47 @@ package
             }
             _loc1_++;
          }
-         if(this.fakeMinX == this.minX)
+         if(fakeMinX == minX)
          {
             fakeMinX = -10000000;
          }
-         if(this.fakeMaxX == this.maxX)
+         if(fakeMaxX == maxX)
          {
             fakeMaxX = 10000000;
          }
-         if(this.fakeMinY == this.minY)
+         if(fakeMinY == minY)
          {
             fakeMinY = -10000000;
          }
-         if(this.fakeMaxY == this.maxY)
+         if(fakeMaxY == maxY)
          {
             fakeMaxY = 10000000;
          }
-         dFakeMinX = this.fakeMinX;
-         dFakeMaxX = this.fakeMaxX;
-         dFakeMinY = this.fakeMinY;
-         dFakeMaxY = this.fakeMaxY;
+         dFakeMinX = fakeMinX;
+         dFakeMaxX = fakeMaxX;
+         dFakeMinY = fakeMinY;
+         dFakeMaxY = fakeMaxY;
          PlayState.miniMap.setMapLittle();
       }
       
       public function WorldMap() : void
       {
-         this.skymap = new FlxTilemap();
-         this.skymap.collideIndex = FG_OFFSET + 1;
-         this.skymap.startingIndex = 1;
-         this.skymap.loadMap(new this.WorldMapSkyTxt(),Art.TileSheet,TILE_SIZE,TILE_SIZE,"sky");
-         this.bgmap = new FlxTilemap();
-         this.bgmap.collideIndex = FG_OFFSET + 1;
-         this.bgmap.startingIndex = 1;
-         this.bgmap.loadMap(new this.WorldMapBgTxt(),Art.TileSheet,TILE_SIZE,TILE_SIZE,"bg");
-         this.fgmap = new FlxTilemap();
-         this.fgmap.collideIndex = FG_OFFSET + 1;
-         this.fgmap.startingIndex = 1;
-         this.fgmap.loadMap(new this.WorldMapFgTxt(),Art.TileSheet,TILE_SIZE,TILE_SIZE,"fg");
-         this.spmap = new FlxTilemap();
-         this.spmap.collideIndex = FG_OFFSET + 1;
-         this.spmap.startingIndex = 1;
-         this.spmap.loadMap(new this.WorldMapSpTxt(),Art.TileSheet,TILE_SIZE,TILE_SIZE,"sp");
+         skymap = new FlxTilemap();
+         skymap.collideIndex = FG_OFFSET + 1;
+         skymap.startingIndex = 1;
+         skymap.loadMap(new WorldMapSkyTxt(),Art.TileSheet,TILE_SIZE,TILE_SIZE,"sky");
+         bgmap = new FlxTilemap();
+         bgmap.collideIndex = FG_OFFSET + 1;
+         bgmap.startingIndex = 1;
+         bgmap.loadMap(new WorldMapBgTxt(),Art.TileSheet,TILE_SIZE,TILE_SIZE,"bg");
+         fgmap = new FlxTilemap();
+         fgmap.collideIndex = FG_OFFSET + 1;
+         fgmap.startingIndex = 1;
+         fgmap.loadMap(new WorldMapFgTxt(),Art.TileSheet,TILE_SIZE,TILE_SIZE,"fg");
+         spmap = new FlxTilemap();
+         spmap.collideIndex = FG_OFFSET + 1;
+         spmap.startingIndex = 1;
+         spmap.loadMap(new WorldMapSpTxt(),Art.TileSheet,TILE_SIZE,TILE_SIZE,"sp");
       }
       
       public function makeEnemy(param1:int, param2:int, param3:int) : void
@@ -1123,57 +1123,57 @@ package
       
       public function checkFakeBounds(param1:int, param2:int) : void
       {
-         if(param1 >= this.fakeMaxX - 16)
+         if(param1 >= fakeMaxX - 16)
          {
-            dFakeMaxX = this.maxX;
+            dFakeMaxX = maxX;
          }
-         if(param1 < this.fakeMinX + 16)
+         if(param1 < fakeMinX + 16)
          {
-            dFakeMinX = this.minX - 16;
+            dFakeMinX = minX - 16;
          }
-         if(param2 >= this.fakeMaxY - 16)
+         if(param2 >= fakeMaxY - 16)
          {
-            dFakeMaxY = this.maxY;
+            dFakeMaxY = maxY;
          }
-         if(param2 < this.fakeMinY + 16)
+         if(param2 < fakeMinY + 16)
          {
-            dFakeMinY = this.minY - 16;
+            dFakeMinY = minY - 16;
          }
-         if(this.dFakeMaxX != this.fakeMaxX)
+         if(dFakeMaxX != fakeMaxX)
          {
-            fakeMaxX = (this.fakeMaxX * 90 + this.dFakeMaxX * 10) / 100 + 0.4;
-            if(this.fakeMaxX > this.maxX)
+            fakeMaxX = (fakeMaxX * 90 + dFakeMaxX * 10) / 100 + 0.4;
+            if(fakeMaxX > maxX)
             {
-               dFakeMaxX = fakeMaxX = this.maxX;
+               dFakeMaxX = fakeMaxX = maxX;
             }
-            this.setTileBounds(this.tileMinX,this.tileMinY,this.fakeMaxX / 16,this.tileMaxY,false);
+            setTileBounds(tileMinX,tileMinY,fakeMaxX / 16,tileMaxY,false);
          }
-         if(this.dFakeMaxY != this.fakeMaxY)
+         if(dFakeMaxY != fakeMaxY)
          {
-            fakeMaxY = (this.fakeMaxY * 90 + this.dFakeMaxY * 10) / 100 + 0.4;
-            if(this.fakeMaxY > this.maxY)
+            fakeMaxY = (fakeMaxY * 90 + dFakeMaxY * 10) / 100 + 0.4;
+            if(fakeMaxY > maxY)
             {
-               dFakeMaxY = fakeMaxY = this.maxY;
+               dFakeMaxY = fakeMaxY = maxY;
             }
-            this.setTileBounds(this.tileMinX,this.tileMinY,this.tileMaxX,this.fakeMaxY / 16,false);
+            setTileBounds(tileMinX,tileMinY,tileMaxX,fakeMaxY / 16,false);
          }
-         if(this.dFakeMinX != this.fakeMinX)
+         if(dFakeMinX != fakeMinX)
          {
-            fakeMinX = (this.fakeMinX * 90 + this.dFakeMinX * 10) / 100 - 0.4;
-            if(this.fakeMinX < this.minX - 16)
+            fakeMinX = (fakeMinX * 90 + dFakeMinX * 10) / 100 - 0.4;
+            if(fakeMinX < minX - 16)
             {
-               dFakeMinX = fakeMinX = this.minX - 16;
+               dFakeMinX = fakeMinX = minX - 16;
             }
-            this.setTileBounds(this.fakeMinX / 16,this.tileMinY,this.tileMaxX,this.tileMaxY,false);
+            setTileBounds(fakeMinX / 16,tileMinY,tileMaxX,tileMaxY,false);
          }
-         if(this.dFakeMinY != this.fakeMinY)
+         if(dFakeMinY != fakeMinY)
          {
-            fakeMinY = (this.fakeMinY * 90 + this.dFakeMinY * 10) / 100 - 0.4;
-            if(this.fakeMinY < this.minY - 16)
+            fakeMinY = (fakeMinY * 90 + dFakeMinY * 10) / 100 - 0.4;
+            if(fakeMinY < minY - 16)
             {
-               dFakeMinY = fakeMinY = this.minY - 16;
+               dFakeMinY = fakeMinY = minY - 16;
             }
-            this.setTileBounds(this.tileMinX,this.fakeMinY / 16,this.tileMaxX,this.tileMaxY,false);
+            setTileBounds(tileMinX,fakeMinY / 16,tileMaxX,tileMaxY,false);
          }
       }
    }

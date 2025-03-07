@@ -12,9 +12,9 @@ package
       {
          var _loc1_:String = null;
          super.destroy();
-         for(_loc1_ in this.snows)
+         for(_loc1_ in snows)
          {
-            this.snows[_loc1_] = null;
+            snows[_loc1_] = null;
          }
          snows = null;
       }
@@ -25,15 +25,15 @@ package
       
       public function destroyAll() : void
       {
-         if(!this.snows[0])
+         if(!snows[0])
          {
             return;
          }
          var _loc1_:int = 0;
-         while(_loc1_ < this.MAX_SNOWS)
+         while(_loc1_ < MAX_SNOWS)
          {
-            this.snows[_loc1_].kill();
-            remove(this.snows[_loc1_],true);
+            snows[_loc1_].kill();
+            remove(snows[_loc1_],true);
             _loc1_++;
          }
       }
@@ -41,10 +41,10 @@ package
       public function makeSnows() : void
       {
          var _loc1_:int = 0;
-         while(_loc1_ < this.MAX_SNOWS)
+         while(_loc1_ < MAX_SNOWS)
          {
-            this.snows[_loc1_] = new Snow();
-            add(this.snows[_loc1_]);
+            snows[_loc1_] = new Snow();
+            add(snows[_loc1_]);
             _loc1_++;
          }
       }

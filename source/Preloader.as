@@ -20,13 +20,13 @@ package
       
       public function Preloader() : void
       {
-         bg = new this.LoadBg();
+         bg = new LoadBg();
          bg.width = 800;
          bg.height = 480;
          addChild(bg);
          className = "main";
          super();
-         API.addEventListener(APIEvent.HOST_BLOCKED,this.onHostBlocked);
+         API.addEventListener(APIEvent.HOST_BLOCKED,onHostBlocked);
          NewgroundsAPIId = "18670:nrJul9g0";
          NewgroundsAPIEncryptionKey = "82p7QsSoR4Vf8gXTPtxFuN5GwX6T4zFq";
          NewgroundsAPIShowAds = true;
@@ -41,7 +41,7 @@ package
       private function onHostBlocked(param1:APIEvent) : void
       {
          fail = true;
-         stage.addEventListener(MouseEvent.MOUSE_UP,this.onMouseUp);
+         stage.addEventListener(MouseEvent.MOUSE_UP,onMouseUp);
       }
       
       public function addText() : void

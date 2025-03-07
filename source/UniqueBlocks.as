@@ -9,32 +9,32 @@ package
       public function destroy() : void
       {
          var _loc1_:String = null;
-         for(_loc1_ in this.blocks)
+         for(_loc1_ in blocks)
          {
-            this.blocks[_loc1_] = null;
+            blocks[_loc1_] = null;
          }
          blocks = null;
       }
       
       public function UniqueBlocks() : void
       {
-         this.blocks = new Array();
+         blocks = new Array();
       }
       
       public function rememberBlock(param1:int, param2:int) : void
       {
-         this.blocks.push(new FlxPoint(param1,param2));
+         blocks.push(new FlxPoint(param1,param2));
       }
       
       public function saveAll() : void
       {
          var _loc1_:XML = <uniqueBlocks/>;
          var _loc2_:int = 0;
-         while(_loc2_ < this.blocks.length)
+         while(_loc2_ < blocks.length)
          {
             var _loc3_:XML = <b/>;
-            _loc3_.@x = this.blocks[_loc2_].x;
-            _loc3_.@y = this.blocks[_loc2_].y;
+            _loc3_.@x = blocks[_loc2_].x;
+            _loc3_.@y = blocks[_loc2_].y;
             _loc1_.appendChild(_loc3_);
             _loc2_++;
          }
@@ -59,7 +59,7 @@ package
          {
             _loc2_ = _loc1_.@x;
             _loc3_ = _loc1_.@y;
-            this.blocks.push(new FlxPoint(_loc2_,_loc3_));
+            blocks.push(new FlxPoint(_loc2_,_loc3_));
             PlayState.worldMap.spmap.setTile(_loc2_,_loc3_,0);
          }
       }

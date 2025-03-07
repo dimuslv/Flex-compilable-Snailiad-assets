@@ -53,7 +53,7 @@ package
          }
          addAnimation("normal",[2 * param3,2 * param3 + 1],3,true);
          play("normal");
-         this._snailNum = param3;
+         _snailNum = param3;
          acceleration.y = 1200;
          if(param3 == 17)
          {
@@ -76,7 +76,7 @@ package
       
       override public function touch(param1:Player) : void
       {
-         var _loc2_:int = this._snailNum % 4;
+         var _loc2_:int = _snailNum % 4;
          var _loc3_:String = "Snaily";
          if(param1._slugMode)
          {
@@ -92,13 +92,13 @@ package
          {
             _loc5_ = "slug";
          }
-         if(!this._talkOpen)
+         if(!_talkOpen)
          {
             var _loc6_:int = PlayState.player.getPercentComplete();
             var _loc7_:int = PlayState.player.getHelixFragments();
             var _loc8_:Boolean = false;
-            var _loc9_:String = "[no text yet: NPC #" + this._snailNum.toString() + "]";
-            switch(this._snailNum)
+            var _loc9_:String = "[no text yet: NPC #" + _snailNum.toString() + "]";
+            switch(_snailNum)
             {
                case 0:
                   if(!PlayState.player.hasWeapon(0))
@@ -726,16 +726,16 @@ package
                   _loc8_ = true;
                   break;
                case 48:
-                  if(this._nexted == 0)
+                  if(_nexted == 0)
                   {
                      _loc9_ = "Hey, " + _loc3_ + ", what\'s up?\n";
                   }
-                  else if(this._nexted == 1)
+                  else if(_nexted == 1)
                   {
                      _loc2_ = 3;
                      _loc9_ = "YEEEEEEEEEEEEEEEEEEEEEEEEEE\n" + "EEEEEEEEEEEEEEEEEEEEEEEEEEE\n" + "EEEEEEEEEEEEEEEEEEEEEEEEEEE\n";
                   }
-                  else if(this._nexted == 2)
+                  else if(_nexted == 2)
                   {
                      _loc9_ = "Whew!!  That was scary!!\n";
                   }
@@ -747,14 +747,14 @@ package
                   _loc9_ = "Have you tried hitting the\n" + Player.STRAFE_KEY + " key yet?  It lets you\n" + "shoot while holding still!\n";
 				  break;
             }
-            PlayState.dialogue.start(_loc9_,_loc2_,_loc8_,this._speed,this._snailNum);
+            PlayState.dialogue.start(_loc9_,_loc2_,_loc8_,_speed,_snailNum);
          }
          _talkOpen = true;
       }
       
       public function stopTalking() : void
       {
-         PlayState.dialogue.stop(this._snailNum);
+         PlayState.dialogue.stop(_snailNum);
          _talkOpen = false;
       }
       
@@ -766,66 +766,66 @@ package
          {
             return;
          }
-         if(this._snailNum == 39 || this._snailNum == 38)
+         if(_snailNum == 39 || _snailNum == 38)
          {
             _elapsed += FlxG.elapsed;
-            offset.y = Math.sin(this._elapsed * 0.5) * 5;
+            offset.y = Math.sin(_elapsed * 0.5) * 5;
          }
-         if(this._talkOpen)
+         if(_talkOpen)
          {
-            switch(this._snailNum)
+            switch(_snailNum)
             {
                case 1:
-                  if(PlayState.hasJumped && this._nexted == 0)
+                  if(PlayState.hasJumped && _nexted == 0)
                   {
                      _nexted = 1;
-                     this.stopTalking();
+                     stopTalking();
                   }
                   break;
                case 4:
-                  if(PlayState.worldMap.bgmap.getTile(295,143) == 0 && this._nexted == 0)
+                  if(PlayState.worldMap.bgmap.getTile(295,143) == 0 && _nexted == 0)
                   {
                      _nexted = 1;
-                     this.stopTalking();
+                     stopTalking();
                   }
                   break;
                case 8:
-                  if(PlayState.worldMap.bgmap.getTile(328,185) == 0 && this._nexted == 0)
+                  if(PlayState.worldMap.bgmap.getTile(328,185) == 0 && _nexted == 0)
                   {
                      _nexted = 1;
-                     this.stopTalking();
+                     stopTalking();
                   }
                   break;
                case 16:
-                  if(y > 2656 && this._nexted == 0)
+                  if(y > 2656 && _nexted == 0)
                   {
                      _nexted = 1;
-                     this.stopTalking();
+                     stopTalking();
                   }
                   break;
                case 48:
-                  if(y > 198 * 16 && this._nexted == 0)
+                  if(y > 198 * 16 && _nexted == 0)
                   {
                      _speed = 2;
                      _nexted = 1;
-                     this.stopTalking();
+                     stopTalking();
                   }
-                  else if(y > 232 * 16 && velocity.y < 150 && this._nexted == 1)
+                  else if(y > 232 * 16 && velocity.y < 150 && _nexted == 1)
                   {
                      _speed = 1;
                      _nexted = 2;
-                     this.stopTalking();
+                     stopTalking();
                   }
             }
             _loc1_ = PlayState.player.x - x;
             _loc2_ = PlayState.player.y - y;
             if(_loc1_ * _loc1_ + _loc2_ * _loc2_ > 120 * 120)
             {
-               this.stopTalking();
+               stopTalking();
             }
          }
          super.update();
-         if(this._snailNum == 44 || this._snailNum == 49)
+         if(_snailNum == 44 || _snailNum == 49)
          {
             facing = RIGHT;
          }
@@ -838,7 +838,7 @@ package
       override public function kill() : void
       {
          super.kill();
-         if(this._talkOpen)
+         if(_talkOpen)
          {
             PlayState.dialogue.stop();
          }

@@ -31,7 +31,7 @@ package
          super.hitEnemy(param1);
          if(!(param1 is Bubble || param1 is EnemyBabyfish || param1 is EnemyBabyfish2))
          {
-            this.kill();
+            kill();
          }
       }
       
@@ -48,7 +48,7 @@ package
          }
          if(x > FlxG.MaxX || x + width < FlxG.MinX || y > FlxG.MaxY || y + height < FlxG.MinY)
          {
-            this.kill();
+            kill();
          }
       }
       

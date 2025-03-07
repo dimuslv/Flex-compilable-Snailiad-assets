@@ -31,7 +31,7 @@ package
       
       override public function touch(param1:Player) : void
       {
-         if(!this._talkOpen)
+         if(!_talkOpen)
          {
             var _loc2_:int = PlayState.player.getPercentComplete();
             var _loc3_:int = PlayState.player.getHelixFragments();
@@ -59,13 +59,13 @@ package
          {
             return;
          }
-         if(this._talkOpen)
+         if(_talkOpen)
          {
             _loc1_ = PlayState.player.x - x;
             _loc2_ = PlayState.player.y - y;
             if(_loc1_ * _loc1_ + _loc2_ * _loc2_ > 120 * 120)
             {
-               this.stopTalking();
+               stopTalking();
             }
          }
          super.update();
@@ -75,7 +75,7 @@ package
       override public function kill() : void
       {
          super.kill();
-         if(this._talkOpen)
+         if(_talkOpen)
          {
             PlayState.dialogue.stop();
          }

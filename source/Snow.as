@@ -18,8 +18,8 @@ package
       
       public function Snow() : void
       {
-         this.oldScrollX = FlxG.scroll.x;
-         this.oldScrollY = FlxG.scroll.y;
+         oldScrollX = FlxG.scroll.x;
+         oldScrollY = FlxG.scroll.y;
          loadGraphic(Art.Snow,true,true,IMG_WIDTH,IMG_HEIGHT);
          width = IMG_WIDTH;
          height = IMG_HEIGHT;
@@ -29,14 +29,14 @@ package
          y = FlxU.random() * FlxG.height;
          scrollFactor.x = scrollFactor.y = 0;
          velocity.y = 30 + FlxU.random() * 60;
-         this.elapsed = FlxU.random() * Math.PI * 2;
-         this.speed = 40;
+         elapsed = FlxU.random() * Math.PI * 2;
+         speed = 40;
       }
       
       override public function update() : void
       {
-         x += FlxG.scroll.x - this.oldScrollX;
-         y += FlxG.scroll.y - this.oldScrollY;
+         x += FlxG.scroll.x - oldScrollX;
+         y += FlxG.scroll.y - oldScrollY;
          oldScrollX = FlxG.scroll.x;
          oldScrollY = FlxG.scroll.y;
          elapsed += FlxG.elapsed;
@@ -56,7 +56,7 @@ package
          {
             y += FlxG.height;
          }
-         velocity.x = (Math.sin(this.elapsed * 4) - 1) * this.speed;
+         velocity.x = (Math.sin(elapsed * 4) - 1) * speed;
          super.update();
       }
    }

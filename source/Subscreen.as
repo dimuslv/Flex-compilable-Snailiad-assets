@@ -87,17 +87,17 @@ package
       override public function destroy() : void
       {
          var _loc1_:int = 0;
-         while(_loc1_ < this.texts.length)
+         while(_loc1_ < texts.length)
          {
-            this.texts[_loc1_] = null;
+            texts[_loc1_] = null;
             _loc1_++;
          }
          texts = null;
          textY = null;
          _loc1_ = 0;
-         while(_loc1_ < this.weaponText.length)
+         while(_loc1_ < weaponText.length)
          {
-            this.weaponText[_loc1_] = null;
+            weaponText[_loc1_] = null;
             _loc1_++;
          }
          tabText = null;
@@ -111,88 +111,88 @@ package
       
       public function Subscreen() : void
       {
-         this.hide();
-         this.bg = new FlxSprite();
-         this.bg.y = 0;
-         this.bg.x = 0;
-         this.bg.createGraphic(FlxG.width,FlxG.height,bgColor);
-         this.bg.scrollFactor.x = this.bg.scrollFactor.y = 0;
-         this.bg.alpha = 0;
-         add(this.bg);
-         this.helixSprite = new HelixHud(65,-30);
-         this.helixSprite.scrollFactor.x = this.helixSprite.scrollFactor.y = 0;
-         this.helixSprite.visible = false;
-         add(this.helixSprite);
-         this.helixText = new FlxText(84,-30,350);
-         this.helixText.font = Fonts.normal;
-         this.helixText.size = 10;
-         this.helixText.color = 16777215;
-         this.helixText.shadow = 1;
-         this.helixText.alignment = "left";
-         this.helixText.text = "x 0";
-         this.helixText.scrollFactor.x = this.helixText.scrollFactor.y = 0;
-         this.helixText.visible = false;
-         add(this.helixText);
-         this.panel = new FlxSprite();
+         hide();
+         bg = new FlxSprite();
+         bg.y = 0;
+         bg.x = 0;
+         bg.createGraphic(FlxG.width,FlxG.height,bgColor);
+         bg.scrollFactor.x = bg.scrollFactor.y = 0;
+         bg.alpha = 0;
+         add(bg);
+         helixSprite = new HelixHud(65,-30);
+         helixSprite.scrollFactor.x = helixSprite.scrollFactor.y = 0;
+         helixSprite.visible = false;
+         add(helixSprite);
+         helixText = new FlxText(84,-30,350);
+         helixText.font = Fonts.normal;
+         helixText.size = 10;
+         helixText.color = 16777215;
+         helixText.shadow = 1;
+         helixText.alignment = "left";
+         helixText.text = "x 0";
+         helixText.scrollFactor.x = helixText.scrollFactor.y = 0;
+         helixText.visible = false;
+         add(helixText);
+         panel = new FlxSprite();
          if(PlayState.player._slugMode)
          {
-            this.panel.loadGraphic(Art.SubscreenSlug,false,false,IMG_WIDTH,IMG_HEIGHT);
+            panel.loadGraphic(Art.SubscreenSlug,false,false,IMG_WIDTH,IMG_HEIGHT);
          }
          else
          {
-            this.panel.loadGraphic(Art.Subscreen,false,false,IMG_WIDTH,IMG_HEIGHT);
+            panel.loadGraphic(Art.Subscreen,false,false,IMG_WIDTH,IMG_HEIGHT);
          }
-         this.panel.width = IMG_WIDTH;
-         this.panel.height = IMG_HEIGHT - TAB_HEIGHT;
-         this.panel.offset.y = TAB_HEIGHT;
-         this.panel.x = 0;
-         this.panel.y = this.targetY;
-         this.panel.addAnimation("normal",[0]);
-         this.panel.play("normal");
-         add(this.panel);
-         this.texts = new Array();
-         this.textY = new Array();
-         this.makeText(TEXT_GUN1,GROUP_WEAPON,0,"PEA SHOOTER");
-         this.makeText(TEXT_GUN2,GROUP_WEAPON,1,"BOOMERANG");
-         this.makeText(TEXT_GUN3,GROUP_WEAPON,2,"RAINBOW WAVE");
+         panel.width = IMG_WIDTH;
+         panel.height = IMG_HEIGHT - TAB_HEIGHT;
+         panel.offset.y = TAB_HEIGHT;
+         panel.x = 0;
+         panel.y = targetY;
+         panel.addAnimation("normal",[0]);
+         panel.play("normal");
+         add(panel);
+         texts = new Array();
+         textY = new Array();
+         makeText(TEXT_GUN1,GROUP_WEAPON,0,"PEA SHOOTER");
+         makeText(TEXT_GUN2,GROUP_WEAPON,1,"BOOMERANG");
+         makeText(TEXT_GUN3,GROUP_WEAPON,2,"RAINBOW WAVE");
          if(PlayState.player._slugMode)
          {
-            this.makeText(TEXT_NORMAL,GROUP_SHELL,0,"NORMAL SLUG");
-            this.makeText(TEXT_ICE,GROUP_SHELL,1,"ICE SLUG");
-            this.makeText(TEXT_GRAVITY,GROUP_SHELL,2,"GRAVITY SLUG");
-            this.makeText(TEXT_ARMOR,GROUP_SHELL,3,"FULL POWER SLUG");
-            this.makeText(TEXT_HIGHJUMP,GROUP_ABILITY,0,"HIGH JUMP");
-            this.makeText(TEXT_RAPIDFIRE,GROUP_ABILITY,1,"RAPID FIRE");
-            this.makeText(TEXT_DEVASTATOR,GROUP_ABILITY,2,"DEVASTATOR");
-            this.makeText(TEXT_GRAVITYSHOCK,GROUP_ABILITY,3,"GRAVITY SHOCK");
-            this.makeText(TEXT_SHELLSHIELD,GROUP_ABILITY,4,"");
+            makeText(TEXT_NORMAL,GROUP_SHELL,0,"NORMAL SLUG");
+            makeText(TEXT_ICE,GROUP_SHELL,1,"ICE SLUG");
+            makeText(TEXT_GRAVITY,GROUP_SHELL,2,"GRAVITY SLUG");
+            makeText(TEXT_ARMOR,GROUP_SHELL,3,"FULL POWER SLUG");
+            makeText(TEXT_HIGHJUMP,GROUP_ABILITY,0,"HIGH JUMP");
+            makeText(TEXT_RAPIDFIRE,GROUP_ABILITY,1,"RAPID FIRE");
+            makeText(TEXT_DEVASTATOR,GROUP_ABILITY,2,"DEVASTATOR");
+            makeText(TEXT_GRAVITYSHOCK,GROUP_ABILITY,3,"GRAVITY SHOCK");
+            makeText(TEXT_SHELLSHIELD,GROUP_ABILITY,4,"");
          }
          else
          {
-            this.makeText(TEXT_NORMAL,GROUP_SHELL,0,"NORMAL SHELL");
-            this.makeText(TEXT_ICE,GROUP_SHELL,1,"ICE SHELL");
-            this.makeText(TEXT_GRAVITY,GROUP_SHELL,2,"GRAVITY SHELL");
-            this.makeText(TEXT_ARMOR,GROUP_SHELL,3,"FULL METAL SHELL");
-            this.makeText(TEXT_SHELLSHIELD,GROUP_ABILITY,0,"SHELL SHIELD");
-            this.makeText(TEXT_HIGHJUMP,GROUP_ABILITY,1,"HIGH JUMP");
-            this.makeText(TEXT_RAPIDFIRE,GROUP_ABILITY,2,"RAPID FIRE");
-            this.makeText(TEXT_DEVASTATOR,GROUP_ABILITY,3,"DEVASTATOR");
-            this.makeText(TEXT_GRAVITYSHOCK,GROUP_ABILITY,4,"GRAVITY SHOCK");
+            makeText(TEXT_NORMAL,GROUP_SHELL,0,"NORMAL SHELL");
+            makeText(TEXT_ICE,GROUP_SHELL,1,"ICE SHELL");
+            makeText(TEXT_GRAVITY,GROUP_SHELL,2,"GRAVITY SHELL");
+            makeText(TEXT_ARMOR,GROUP_SHELL,3,"FULL METAL SHELL");
+            makeText(TEXT_SHELLSHIELD,GROUP_ABILITY,0,"SHELL SHIELD");
+            makeText(TEXT_HIGHJUMP,GROUP_ABILITY,1,"HIGH JUMP");
+            makeText(TEXT_RAPIDFIRE,GROUP_ABILITY,2,"RAPID FIRE");
+            makeText(TEXT_DEVASTATOR,GROUP_ABILITY,3,"DEVASTATOR");
+            makeText(TEXT_GRAVITYSHOCK,GROUP_ABILITY,4,"GRAVITY SHOCK");
          }
-         this.weaponText = new Array();
+         weaponText = new Array();
          var _loc1_:int = 0;
          while(_loc1_ < 3)
          {
-            this.makeWeaponText(_loc1_);
+            makeWeaponText(_loc1_);
             _loc1_++;
          }
-         this.makeTabText();
-         this.makeEscText();
+         makeTabText();
+         makeEscText();
          x = 0;
          y = 0;
-         this.panel.scrollFactor.x = this.panel.scrollFactor.y = 0;
+         panel.scrollFactor.x = panel.scrollFactor.y = 0;
          scrollFactor.x = scrollFactor.y = 0;
-         this.updatePosition();
+         updatePosition();
       }
       
       private function makeText(param1:int, param2:int, param3:int, param4:String) : void
@@ -209,24 +209,24 @@ package
          _loc7_.scrollFactor.x = _loc7_.scrollFactor.y = 0;
          _loc7_.visible = false;
          add(_loc7_);
-         this.texts[param1] = _loc7_;
-         this.textY[param1] = _loc7_.y;
+         texts[param1] = _loc7_;
+         textY[param1] = _loc7_.y;
       }
       
       private function makeWeaponText(param1:int) : void
       {
-         var _loc2_:int = this.WEAPON_BASE_X;
+         var _loc2_:int = WEAPON_BASE_X;
          var _loc3_:int = 0;
          while(_loc3_ < param1)
          {
-            _loc2_ += this.weaponText[_loc3_].realWidth + this.WEAPON_SPACING;
+            _loc2_ += weaponText[_loc3_].realWidth + WEAPON_SPACING;
             _loc3_++;
          }
          if(param1 == 2)
          {
             _loc2_ -= 1;
          }
-         var _loc4_:int = this.WEAPON_Y;
+         var _loc4_:int = WEAPON_Y;
          var _loc5_:FlxText = new FlxText(_loc2_,_loc4_,20);
          _loc5_.font = Fonts.normal;
          _loc5_.size = 10;
@@ -237,12 +237,12 @@ package
          _loc5_.scrollFactor.x = _loc5_.scrollFactor.y = 0;
          _loc5_.visible = false;
          add(_loc5_);
-         this.weaponText[param1] = _loc5_;
+         weaponText[param1] = _loc5_;
       }
       
       private function makeEscText() : void
       {
-         var _loc1_:FlxText = new FlxText(0,this.WEAPON_Y,FlxG.width);
+         var _loc1_:FlxText = new FlxText(0,WEAPON_Y,FlxG.width);
          _loc1_.font = Fonts.normal;
          _loc1_.size = 10;
          _loc1_.color = 16777215;
@@ -257,7 +257,7 @@ package
       
       private function makeTabText() : void
       {
-         var _loc1_:FlxText = new FlxText(0,this.WEAPON_Y,FlxG.width);
+         var _loc1_:FlxText = new FlxText(0,WEAPON_Y,FlxG.width);
          _loc1_.font = Fonts.normal;
          _loc1_.size = 10;
          _loc1_.color = 16777215;
@@ -282,58 +282,58 @@ package
          targetY = 0;
          targetBgAlpha = 1;
          helixSpriteTargetY = 4;
-         this.helixSprite.visible = true;
-         this.helixText.visible = true;
-         this.helixText.text = "x " + PlayState.player.getHelixFragments().toString();
+         helixSprite.visible = true;
+         helixText.visible = true;
+         helixText.text = "x " + PlayState.player.getHelixFragments().toString();
          if(PlayState.isBossDead(4))
          {
-            this.helixText.text += "        AREA ITEMS FOUND: " + PlayState.gottenItemsInArea() + "/" + PlayState.totalItemsInArea().toString();
+            helixText.text += "        AREA ITEMS FOUND: " + PlayState.gottenItemsInArea() + "/" + PlayState.totalItemsInArea().toString();
          }
-         this.texts[TEXT_GUN1].visible = PlayState.player.getHasWeapon(0);
-         this.texts[TEXT_GUN2].visible = PlayState.player.getHasWeapon(1);
-         this.texts[TEXT_GUN3].visible = PlayState.player.getHasWeapon(2);
-         this.texts[TEXT_NORMAL].visible = true;
-         this.texts[TEXT_ICE].visible = PlayState.player.isIcy();
-         this.texts[TEXT_GRAVITY].visible = PlayState.player.hasGravityJump();
-         this.texts[TEXT_ARMOR].visible = PlayState.player.hasArmor();
-         this.texts[TEXT_SHELLSHIELD].visible = PlayState.player.getHasShellShield();
-         this.texts[TEXT_HIGHJUMP].visible = PlayState.player.hasHighJump();
-         this.texts[TEXT_RAPIDFIRE].visible = PlayState.player.hasTurbo();
-         this.texts[TEXT_DEVASTATOR].visible = PlayState.player.getHasDevastator();
-         this.texts[TEXT_GRAVITYSHOCK].visible = PlayState.player.hasGravityShock();
+         texts[TEXT_GUN1].visible = PlayState.player.getHasWeapon(0);
+         texts[TEXT_GUN2].visible = PlayState.player.getHasWeapon(1);
+         texts[TEXT_GUN3].visible = PlayState.player.getHasWeapon(2);
+         texts[TEXT_NORMAL].visible = true;
+         texts[TEXT_ICE].visible = PlayState.player.isIcy();
+         texts[TEXT_GRAVITY].visible = PlayState.player.hasGravityJump();
+         texts[TEXT_ARMOR].visible = PlayState.player.hasArmor();
+         texts[TEXT_SHELLSHIELD].visible = PlayState.player.getHasShellShield();
+         texts[TEXT_HIGHJUMP].visible = PlayState.player.hasHighJump();
+         texts[TEXT_RAPIDFIRE].visible = PlayState.player.hasTurbo();
+         texts[TEXT_DEVASTATOR].visible = PlayState.player.getHasDevastator();
+         texts[TEXT_GRAVITYSHOCK].visible = PlayState.player.hasGravityShock();
       }
       
       public function updatePosition() : void
       {
-         this.panel.y = Utility.integrate(this.panel.y,this.targetY,SCROLL_RATE,FlxG.elapsed,1.1);
-         this.bg.alpha = Utility.integrate(this.bg.alpha,this.targetBgAlpha,ALPHA_RATE,FlxG.elapsed);
+         panel.y = Utility.integrate(panel.y,targetY,SCROLL_RATE,FlxG.elapsed,1.1);
+         bg.alpha = Utility.integrate(bg.alpha,targetBgAlpha,ALPHA_RATE,FlxG.elapsed);
          var _loc1_:int = 0;
-         while(_loc1_ < this.texts.length)
+         while(_loc1_ < texts.length)
          {
-            this.texts[_loc1_].y = this.panel.y + this.textY[_loc1_];
+            texts[_loc1_].y = panel.y + textY[_loc1_];
             _loc1_++;
          }
-         this.helixSprite.y = Utility.integrate(this.helixSprite.y,this.helixSpriteTargetY,SCROLL_RATE,FlxG.elapsed,0.1);
-         this.helixText.y = this.helixSprite.y + 2;
+         helixSprite.y = Utility.integrate(helixSprite.y,helixSpriteTargetY,SCROLL_RATE,FlxG.elapsed,0.1);
+         helixText.y = helixSprite.y + 2;
       }
       
       public function updateWeapons() : void
       {
-         this.escText.y = this.WEAPON_Y + this.panel.y;
-         this.escText.alpha = (this.escText.y - 200) / 30;
-         this.tabText.y = this.WEAPON_Y + this.panel.y;
-         this.tabText.text = Player.MAP_KEY;
+         escText.y = WEAPON_Y + panel.y;
+         escText.alpha = (escText.y - 200) / 30;
+         tabText.y = WEAPON_Y + panel.y;
+         tabText.text = Player.MAP_KEY;
          if(!PlayState.player.hasAnyTwoWeapons())
          {
             return;
          }
          var _loc1_:int = PlayState.player.getCurrentWeapon();
          var _loc2_:int = 0;
-         while(_loc2_ < this.weaponText.length)
+         while(_loc2_ < weaponText.length)
          {
-            this.weaponText[_loc2_].visible = PlayState.player.hasWeapon(_loc2_);
-            this.weaponText[_loc2_].alpha = _loc1_ == _loc2_ ? 1 : 0.6;
-            this.weaponText[_loc2_].y = this.WEAPON_Y + this.panel.y;
+            weaponText[_loc2_].visible = PlayState.player.hasWeapon(_loc2_);
+            weaponText[_loc2_].alpha = _loc1_ == _loc2_ ? 1 : 0.6;
+            weaponText[_loc2_].y = WEAPON_Y + panel.y;
             _loc2_++;
          }
       }
@@ -342,10 +342,10 @@ package
       {
          if(PlayState.realState != PlayState.STATE_SUBSCREEN)
          {
-            this.hide();
+            hide();
          }
-         this.updateWeapons();
-         this.updatePosition();
+         updateWeapons();
+         updatePosition();
          super.update();
       }
    }

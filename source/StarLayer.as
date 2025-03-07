@@ -12,9 +12,9 @@ package
       {
          var _loc1_:String = null;
          super.destroy();
-         for(_loc1_ in this.stars)
+         for(_loc1_ in stars)
          {
-            this.stars[_loc1_] = null;
+            stars[_loc1_] = null;
          }
          stars = null;
       }
@@ -25,15 +25,15 @@ package
       
       public function destroyAll() : void
       {
-         if(!this.stars[0])
+         if(!stars[0])
          {
             return;
          }
          var _loc1_:int = 0;
-         while(_loc1_ < this.MAX_STARS)
+         while(_loc1_ < MAX_STARS)
          {
-            this.stars[_loc1_].kill();
-            remove(this.stars[_loc1_],true);
+            stars[_loc1_].kill();
+            remove(stars[_loc1_],true);
             _loc1_++;
          }
       }
@@ -41,10 +41,10 @@ package
       public function makeStars() : void
       {
          var _loc1_:int = 0;
-         while(_loc1_ < this.MAX_STARS)
+         while(_loc1_ < MAX_STARS)
          {
-            this.stars[_loc1_] = new Star();
-            add(this.stars[_loc1_]);
+            stars[_loc1_] = new Star();
+            add(stars[_loc1_]);
             _loc1_++;
          }
       }

@@ -16,7 +16,7 @@ package
       {
          if(FlxG.stage != null)
          {
-            FlxG.stage.removeEventListener(MouseEvent.MOUSE_UP,this.onMouseUp);
+            FlxG.stage.removeEventListener(MouseEvent.MOUSE_UP,onMouseUp);
          }
       }
       
@@ -62,11 +62,11 @@ package
       
       override public function update() : void
       {
-         if(!this._initialized)
+         if(!_initialized)
          {
             if(FlxG.stage != null)
             {
-               FlxG.stage.addEventListener(MouseEvent.MOUSE_UP,this.onMouseUp);
+               FlxG.stage.addEventListener(MouseEvent.MOUSE_UP,onMouseUp);
                _initialized = true;
             }
          }

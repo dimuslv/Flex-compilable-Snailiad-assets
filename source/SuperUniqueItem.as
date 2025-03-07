@@ -29,31 +29,31 @@ package
       public function SuperUniqueItem(param1:int, param2:int, param3:Boolean, param4:Boolean = false) : void
       {
          super(param1,param2,false);
-         this._superAnim = true;
-         this._customFinish = param4;
+         _superAnim = true;
+         _customFinish = param4;
          if(PlayState.bossRush)
          {
-            this._superAnim = false;
+            _superAnim = false;
          }
          x = param1;
          y = param2;
          PlayState.miniMap.setSpecialItem(param1,param2);
-         this._origX = x;
-         this._origY = y;
-         this.gotten = false;
+         _origX = x;
+         _origY = y;
+         gotten = false;
          active = true;
       }
       
       override public function touch(param1:Player) : void
       {
-         if(this.gotten)
+         if(gotten)
          {
             return;
          }
-         var _loc2_:int = this._origX / 16;
-         var _loc3_:int = this._origY / 16;
+         var _loc2_:int = _origX / 16;
+         var _loc3_:int = _origY / 16;
          PlayState.worldMap.spmap.setTile(_loc2_,_loc3_,0);
-         PlayState.miniMap.setSpecialItemGotten(this._origX,this._origY);
+         PlayState.miniMap.setSpecialItemGotten(_origX,_origY);
          if(!PlayState.bossRush)
          {
             PlayState.uniqueBlocks.rememberBlock(_loc2_,_loc3_);
@@ -70,7 +70,7 @@ package
             Music.playNone();
             Sfx.playSuperItemJingle();
          }
-         if(this._superAnim)
+         if(_superAnim)
          {
             superAnimTime = SUPERANIM_TIMEOUT;
             PlayState.player.paralyze(true);
@@ -86,12 +86,12 @@ package
             return;
          }
          super.update();
-         if(this.gotten)
+         if(gotten)
          {
             x = PlayState.player.x;
             y = PlayState.player.y - height;
             disappearTime -= FlxG.elapsed;
-            if(this.disappearTime < 0 && !this._superAnim)
+            if(disappearTime < 0 && !_superAnim)
             {
                if(!PlayState.bossRush)
                {
@@ -100,9 +100,9 @@ package
                kill();
             }
             superAnimTime -= FlxG.elapsed;
-            if(this._superAnim && this.superAnimTime < 0)
+            if(_superAnim && superAnimTime < 0)
             {
-               if(!this._flickered)
+               if(!_flickered)
                {
                   if(!PlayState.bossRush)
                   {
@@ -111,7 +111,7 @@ package
                   PlayState.player.flicker(1);
                   _flickered = true;
                }
-               if(this._customFinish)
+               if(_customFinish)
                {
                   _customReady = true;
                   visible = false;

@@ -39,9 +39,9 @@ package
          if(param2)
          {
             _loc3_ = 0;
-            while(_loc3_ < this._letters.length)
+            while(_loc3_ < _letters.length)
             {
-               this._letters[_loc3_].y = this._targetY;
+               _letters[_loc3_].y = _targetY;
                _loc3_++;
             }
          }
@@ -49,39 +49,39 @@ package
       
       public function TitleText(param1:Boolean = false) : void
       {
-         this._letters = new Array();
-         this._letters.push(new TitleLetter("S"));
-         this._letters.push(new TitleLetter("N"));
-         this._letters.push(new TitleLetter("A"));
-         this._letters.push(new TitleLetter("I"));
-         this._letters.push(new TitleLetter("L"));
-         this._letters.push(new TitleLetter("I"));
-         this._letters.push(new TitleLetter("A"));
-         this._letters.push(new TitleLetter("D"));
+         _letters = new Array();
+         _letters.push(new TitleLetter("S"));
+         _letters.push(new TitleLetter("N"));
+         _letters.push(new TitleLetter("A"));
+         _letters.push(new TitleLetter("I"));
+         _letters.push(new TitleLetter("L"));
+         _letters.push(new TitleLetter("I"));
+         _letters.push(new TitleLetter("A"));
+         _letters.push(new TitleLetter("D"));
          var _loc2_:int = 0;
-         while(_loc2_ < this._letters.length)
+         while(_loc2_ < _letters.length)
          {
-            add(this._letters[_loc2_]);
-            this._totalWidth += this._letters[_loc2_].width;
+            add(_letters[_loc2_]);
+            _totalWidth += _letters[_loc2_].width;
             _loc2_++;
          }
-         this._totalWidth += SPACING * (this._letters.length - 1);
-         this._targetX = (FlxG.width - this._totalWidth) / 2;
-         var _loc3_:Number = this._targetX;
+         _totalWidth += SPACING * (_letters.length - 1);
+         _targetX = (FlxG.width - _totalWidth) / 2;
+         var _loc3_:Number = _targetX;
          _loc2_ = 0;
-         while(_loc2_ < this._letters.length)
+         while(_loc2_ < _letters.length)
          {
-            this._letters[_loc2_].targetX = _loc3_;
-            _loc3_ += this._letters[_loc2_].width;
+            _letters[_loc2_].targetX = _loc3_;
+            _loc3_ += _letters[_loc2_].width;
             _loc3_ += SPACING;
-            this._letters[_loc2_].y = Y_POS;
+            _letters[_loc2_].y = Y_POS;
             if(param1)
             {
-               this._letters[_loc2_].x = this._letters[_loc2_].targetX;
+               _letters[_loc2_].x = _letters[_loc2_].targetX;
             }
             _loc2_++;
          }
-         this.setYOffset(0);
+         setYOffset(0);
          active = true;
       }
       
@@ -89,24 +89,24 @@ package
       {
          _elapsed += FlxG.elapsed * TIME_SCALE;
          var _loc1_:int = 0;
-         while(_loc1_ < this._letters.length)
+         while(_loc1_ < _letters.length)
          {
-            var _loc2_:Number = this._elapsed - LETTER_DELAY * _loc1_ + LETTER_START;
+            var _loc2_:Number = _elapsed - LETTER_DELAY * _loc1_ + LETTER_START;
             if(_loc2_ < LETTER_START)
             {
-               this._letters[_loc1_].visible = false;
+               _letters[_loc1_].visible = false;
             }
             else if(_loc2_ < 0)
             {
-               this._letters[_loc1_].visible = true;
+               _letters[_loc1_].visible = true;
                var _loc3_:Number = -Math.sin(-_loc2_ * Math.PI) * _loc2_ * X_SCALE;
-               this._letters[_loc1_].x = this._letters[_loc1_].targetX + _loc3_;
+               _letters[_loc1_].x = _letters[_loc1_].targetX + _loc3_;
             }
             else
             {
-               this._letters[_loc1_].x = Utility.integrate(this._letters[_loc1_].x,this._letters[_loc1_].targetX,4,FlxG.elapsed);
+               _letters[_loc1_].x = Utility.integrate(_letters[_loc1_].x,_letters[_loc1_].targetX,4,FlxG.elapsed);
             }
-            this._letters[_loc1_].y = Utility.integrate(this._letters[_loc1_].y,this._targetY,4,FlxG.elapsed);
+            _letters[_loc1_].y = Utility.integrate(_letters[_loc1_].y,_targetY,4,FlxG.elapsed);
             _loc1_++;
          }
          super.update();

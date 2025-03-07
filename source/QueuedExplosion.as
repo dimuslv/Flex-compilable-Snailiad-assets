@@ -14,11 +14,11 @@ package
       {
          x = param1;
          y = param2;
-         this._huge = param3;
-         this._disappearTimer = DISAPPEAR_TIME;
+         _huge = param3;
+         _disappearTimer = DISAPPEAR_TIME;
          if(param3)
          {
-            this._disappearTimer *= 4;
+            _disappearTimer *= 4;
          }
       }
       
@@ -29,11 +29,11 @@ package
             return;
          }
          _disappearTimer -= FlxG.elapsed;
-         if(this._disappearTimer <= 0)
+         if(_disappearTimer <= 0)
          {
             kill();
          }
-         if(this._huge)
+         if(_huge)
          {
             PlayState.explosionPool.boomRadial(x,y,1,FlxU.random() * 240,5);
             PlayState.explosionPool.boomRadial(x,y,0,FlxU.random() * 280,4);

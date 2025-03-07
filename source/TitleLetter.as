@@ -20,7 +20,7 @@ package
       
       public function TitleLetter(param1:String) : void
       {
-         this.animStopTimeout = ANIM_STOP_TIMEOUT;
+         animStopTimeout = ANIM_STOP_TIMEOUT;
          var _loc2_:int = 0;
          switch(param1)
          {
@@ -85,7 +85,7 @@ package
          if(visible)
          {
             animStopTimeout -= FlxG.elapsed;
-            if(this.animStopTimeout < 0)
+            if(animStopTimeout < 0)
             {
                play("normal");
             }

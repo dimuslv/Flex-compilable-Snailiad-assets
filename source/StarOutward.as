@@ -16,7 +16,7 @@ package
          addAnimation("normal",[(int)(FlxU.random() * 32)]);
          play("normal");
          scrollFactor.x = scrollFactor.y = 0;
-         this.placeRandom();
+         placeRandom();
       }
       
       public function placeRandom() : void
@@ -35,19 +35,19 @@ package
       {
          if(x < -width)
          {
-            this.placeRandom();
+            placeRandom();
          }
          if(y < -height)
          {
-            this.placeRandom();
+            placeRandom();
          }
          if(x > FlxG.width)
          {
-            this.placeRandom();
+            placeRandom();
          }
          if(y > FlxG.height)
          {
-            this.placeRandom();
+            placeRandom();
          }
          super.update();
       }

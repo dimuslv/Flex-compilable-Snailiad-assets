@@ -22,7 +22,7 @@ package
          y = param2;
          solid = false;
          velocity.y = -20;
-         this.disappearTimer = DISAPPEAR_TIME;
+         disappearTimer = DISAPPEAR_TIME;
          loadGraphic(Art.Nom,true,true,IMG_WIDTH,IMG_HEIGHT);
          addAnimation("normal",[0,1,2,3],5,true);
          Sfx.playPickup4();
@@ -36,7 +36,7 @@ package
             return;
          }
          disappearTimer -= FlxG.elapsed;
-         if(this.disappearTimer <= 0)
+         if(disappearTimer <= 0)
          {
             kill();
          }

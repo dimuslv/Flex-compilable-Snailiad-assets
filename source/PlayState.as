@@ -824,21 +824,21 @@ package
             FlxU.collide(worldMap.bgmap,solidItems);
             if(!player.noCollide)
             {
-               FlxU.overlap(player,items,this.overlapPlayerItem);
-               FlxU.overlap(player,npcs,this.overlapPlayerNpc);
-               FlxU.overlap(player,enemies,this.overlapPlayerEnemies);
-               FlxU.overlap(player,enemiesNoCollide,this.overlapPlayerEnemies);
+               FlxU.overlap(player,items,overlapPlayerItem);
+               FlxU.overlap(player,npcs,overlapPlayerNpc);
+               FlxU.overlap(player,enemies,overlapPlayerEnemies);
+               FlxU.overlap(player,enemiesNoCollide,overlapPlayerEnemies);
                FlxU.collide(player,solidItems);
             }
             FlxU.collide(enemies,solidItems);
-            FlxU.overlap(enemyBulletPool,player,this.overlapEnemyBulletPlayer);
-            FlxU.overlap(playerBulletGroups,enemiesNoCollide,this.overlapBulletEnemies);
-            FlxU.overlap(playerBulletGroups,enemies,this.overlapBulletEnemies);
-            FlxU.overlap(playerBulletGroups,solidItems,this.overlapBulletItems);
-            FlxU.overlap(aiTriggerPool,enemies,this.overlapAiTriggersEnemies);
-            FlxU.overlap(aiTriggerPool,enemiesNoCollide,this.overlapAiTriggersEnemies);
-            FlxU.overlap(aiTriggerPool,bubbles,this.overlapAiTriggersEnemies);
-            FlxU.overlap(aiTriggerPool,solidItems,this.overlapAiTriggersSolidItems);
+            FlxU.overlap(enemyBulletPool,player,overlapEnemyBulletPlayer);
+            FlxU.overlap(playerBulletGroups,enemiesNoCollide,overlapBulletEnemies);
+            FlxU.overlap(playerBulletGroups,enemies,overlapBulletEnemies);
+            FlxU.overlap(playerBulletGroups,solidItems,overlapBulletItems);
+            FlxU.overlap(aiTriggerPool,enemies,overlapAiTriggersEnemies);
+            FlxU.overlap(aiTriggerPool,enemiesNoCollide,overlapAiTriggersEnemies);
+            FlxU.overlap(aiTriggerPool,bubbles,overlapAiTriggersEnemies);
+            FlxU.overlap(aiTriggerPool,solidItems,overlapAiTriggersSolidItems);
             FlxU.collide(worldMap.bgmap,enemies);
             if(!player.dead)
             {

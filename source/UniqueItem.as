@@ -23,22 +23,22 @@ package
          {
             PlayState.miniMap.setSpecialItem(param1,param2);
          }
-         this._origX = x;
-         this._origY = y;
-         this.gotten = false;
+         _origX = x;
+         _origY = y;
+         gotten = false;
          active = true;
       }
       
       override public function touch(param1:Player) : void
       {
-         if(this.gotten)
+         if(gotten)
          {
             return;
          }
-         var _loc2_:int = this._origX / 16;
-         var _loc3_:int = this._origY / 16;
+         var _loc2_:int = _origX / 16;
+         var _loc3_:int = _origY / 16;
          PlayState.worldMap.spmap.setTile(_loc2_,_loc3_,0);
-         PlayState.miniMap.setSpecialItemGotten(this._origX,this._origY);
+         PlayState.miniMap.setSpecialItemGotten(_origX,_origY);
          if(!PlayState.bossRush)
          {
             PlayState.uniqueBlocks.rememberBlock(_loc2_,_loc3_);
@@ -64,7 +64,7 @@ package
             return;
          }
          super.update();
-         if(this.gotten)
+         if(gotten)
          {
             switch(PlayState.player._gravityDir)
             {
@@ -86,7 +86,7 @@ package
 				  break;
             }
             disappearTime -= FlxG.elapsed;
-            if(this.disappearTime < 0)
+            if(disappearTime < 0)
             {
                kill();
             }

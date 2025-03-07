@@ -15,20 +15,20 @@ package
       public function SaveData() : void
       {
          bind("Snailiad");
-         if(this.xml == null)
+         if(xml == null)
          {
-            this.loadAll();
+            loadAll();
          }
       }
       
       public function isVarSet(param1:String) : Boolean
       {
-         return this.xml.vars.child(param1).length();
+         return xml.vars.child(param1).length();
       }
       
       public function isVarTrue(param1:String) : Boolean
       {
-         return this.xml.vars.child(param1).length() && this.xml.vars.child(param1) == true;
+         return xml.vars.child(param1).length() && xml.vars.child(param1) == true;
       }
       
       public function eraseAll() : void
@@ -39,18 +39,18 @@ package
       
       public function initVars() : XML
       {
-         var _loc1_:Boolean = this.isVarTrue("hasWonGame");
-         var _loc2_:Boolean = this.isVarTrue("hasSeenHelp");
-         var _loc3_:Boolean = this.isVarTrue("hasWonHardMode");
-         var _loc4_:Boolean = this.isVarTrue("hasWonInsaneMode");
-         var _loc5_:Boolean = this.isVarTrue("hasWonBossRush");
-         var _loc6_:Boolean = this.isVarTrue("hasFullClear");
-         var _loc7_:Boolean = this.isVarTrue("hideTab");
-         var _loc8_:Boolean = this.isVarTrue("hideMiniMap");
-         var _loc9_:Number = this.xml.vars.bestBossRushTime;
-         var _loc10_:Number = this.xml.vars.bestMainTime;
-         var _loc11_:Number = this.xml.vars.bestHardTime;
-         var _loc12_:Number = this.xml.vars.bestInsaneTime;
+         var _loc1_:Boolean = isVarTrue("hasWonGame");
+         var _loc2_:Boolean = isVarTrue("hasSeenHelp");
+         var _loc3_:Boolean = isVarTrue("hasWonHardMode");
+         var _loc4_:Boolean = isVarTrue("hasWonInsaneMode");
+         var _loc5_:Boolean = isVarTrue("hasWonBossRush");
+         var _loc6_:Boolean = isVarTrue("hasFullClear");
+         var _loc7_:Boolean = isVarTrue("hideTab");
+         var _loc8_:Boolean = isVarTrue("hideMiniMap");
+         var _loc9_:Number = xml.vars.bestBossRushTime;
+         var _loc10_:Number = xml.vars.bestMainTime;
+         var _loc11_:Number = xml.vars.bestHardTime;
+         var _loc12_:Number = xml.vars.bestInsaneTime;
          var _loc13_:XML = new XML(<vars/>);
          if(Player.firingMode == Player.FIRING_MODE_TOGGLE)
          {
@@ -88,133 +88,133 @@ package
          _loc13_.appendChild(<bestMainTime>{_loc10_}</bestMainTime>);
          _loc13_.appendChild(<bestHardTime>{_loc11_}</bestHardTime>);
          _loc13_.appendChild(<bestInsaneTime>{_loc12_}</bestInsaneTime>);
-         if(this.isVarSet("mapKey"))
+         if(isVarSet("mapKey"))
          {
-            _loc13_.appendChild(this.xml.vars.mapKey);
+            _loc13_.appendChild(xml.vars.mapKey);
          }
-         if(this.isVarSet("jumpKey"))
+         if(isVarSet("jumpKey"))
          {
-            _loc13_.appendChild(this.xml.vars.jumpKey);
+            _loc13_.appendChild(xml.vars.jumpKey);
          }
-         if(this.isVarSet("shootKey"))
+         if(isVarSet("shootKey"))
          {
-            _loc13_.appendChild(this.xml.vars.shootKey);
+            _loc13_.appendChild(xml.vars.shootKey);
          }
-         if(this.isVarSet("strafeKey"))
+         if(isVarSet("strafeKey"))
          {
-            _loc13_.appendChild(this.xml.vars.strafeKey);
+            _loc13_.appendChild(xml.vars.strafeKey);
          }
-         if(this.isVarSet("upKey"))
+         if(isVarSet("upKey"))
          {
-            _loc13_.appendChild(this.xml.vars.upKey);
+            _loc13_.appendChild(xml.vars.upKey);
          }
-         if(this.isVarSet("downKey"))
+         if(isVarSet("downKey"))
          {
-            _loc13_.appendChild(this.xml.vars.downKey);
+            _loc13_.appendChild(xml.vars.downKey);
          }
-         if(this.isVarSet("leftKey"))
+         if(isVarSet("leftKey"))
          {
-            _loc13_.appendChild(this.xml.vars.leftKey);
+            _loc13_.appendChild(xml.vars.leftKey);
          }
-         if(this.isVarSet("rightKey"))
+         if(isVarSet("rightKey"))
          {
-            _loc13_.appendChild(this.xml.vars.rightKey);
+            _loc13_.appendChild(xml.vars.rightKey);
          }
-         if(this.isVarSet("jumpAltKey"))
+         if(isVarSet("jumpAltKey"))
          {
-            _loc13_.appendChild(this.xml.vars.jumpAltKey);
+            _loc13_.appendChild(xml.vars.jumpAltKey);
          }
-         if(this.isVarSet("shootAltKey"))
+         if(isVarSet("shootAltKey"))
          {
-            _loc13_.appendChild(this.xml.vars.shootAltKey);
+            _loc13_.appendChild(xml.vars.shootAltKey);
          }
-         if(this.isVarSet("strafeAltKey"))
+         if(isVarSet("strafeAltKey"))
          {
-            _loc13_.appendChild(this.xml.vars.strafeAltKey);
+            _loc13_.appendChild(xml.vars.strafeAltKey);
          }
-         if(this.isVarSet("upAltKey"))
+         if(isVarSet("upAltKey"))
          {
-            _loc13_.appendChild(this.xml.vars.upAltKey);
+            _loc13_.appendChild(xml.vars.upAltKey);
          }
-         if(this.isVarSet("downAltKey"))
+         if(isVarSet("downAltKey"))
          {
-            _loc13_.appendChild(this.xml.vars.downAltKey);
+            _loc13_.appendChild(xml.vars.downAltKey);
          }
-         if(this.isVarSet("leftAltKey"))
+         if(isVarSet("leftAltKey"))
          {
-            _loc13_.appendChild(this.xml.vars.leftAltKey);
+            _loc13_.appendChild(xml.vars.leftAltKey);
          }
-         if(this.isVarSet("rightAltKey"))
+         if(isVarSet("rightAltKey"))
          {
-            _loc13_.appendChild(this.xml.vars.rightAltKey);
+            _loc13_.appendChild(xml.vars.rightAltKey);
          }
-         if(this.isVarSet("weap1Key"))
+         if(isVarSet("weap1Key"))
          {
-            _loc13_.appendChild(this.xml.vars.weap1Key);
+            _loc13_.appendChild(xml.vars.weap1Key);
          }
-         if(this.isVarSet("weap2Key"))
+         if(isVarSet("weap2Key"))
          {
-            _loc13_.appendChild(this.xml.vars.weap2Key);
+            _loc13_.appendChild(xml.vars.weap2Key);
          }
-         if(this.isVarSet("weap3Key"))
+         if(isVarSet("weap3Key"))
          {
-            _loc13_.appendChild(this.xml.vars.weap3Key);
+            _loc13_.appendChild(xml.vars.weap3Key);
          }
-         if(this.isVarSet("weapNextKey"))
+         if(isVarSet("weapNextKey"))
          {
-            _loc13_.appendChild(this.xml.vars.weapNextKey);
+            _loc13_.appendChild(xml.vars.weapNextKey);
          }
-         if(this.isVarSet("weapPrevKey"))
+         if(isVarSet("weapPrevKey"))
          {
-            _loc13_.appendChild(this.xml.vars.weapPrevKey);
+            _loc13_.appendChild(xml.vars.weapPrevKey);
          }
          return _loc13_;
       }
       
       public function eraseMostHard() : void
       {
-         this.loadAll();
-         var _loc1_:XML = this.initVars();
+         loadAll();
+         var _loc1_:XML = initVars();
          _loc1_.appendChild(<hardMode>true</hardMode>);
          xml = new XML(<SaveData/>);
-         this.xml.appendChild(_loc1_);
-         this.saveAll();
+         xml.appendChild(_loc1_);
+         saveAll();
       }
       
       public function eraseMostInsane() : void
       {
-         this.loadAll();
-         var _loc1_:XML = this.initVars();
+         loadAll();
+         var _loc1_:XML = initVars();
          _loc1_.appendChild(<hardMode>true</hardMode>);
          _loc1_.appendChild(<insaneMode>true</insaneMode>);
          xml = new XML(<SaveData/>);
-         this.xml.appendChild(_loc1_);
-         this.saveAll();
+         xml.appendChild(_loc1_);
+         saveAll();
       }
       
       public function eraseMostEasy() : void
       {
-         this.loadAll();
-         var _loc1_:XML = this.initVars();
+         loadAll();
+         var _loc1_:XML = initVars();
          _loc1_.appendChild(<easyMode>true</easyMode>);
          xml = new XML(<SaveData/>);
-         this.xml.appendChild(_loc1_);
-         this.saveAll();
+         xml.appendChild(_loc1_);
+         saveAll();
       }
       
       public function eraseMost() : void
       {
-         this.loadAll();
-         var _loc1_:XML = this.initVars();
+         loadAll();
+         var _loc1_:XML = initVars();
          xml = new XML(<SaveData/>);
-         this.xml.appendChild(_loc1_);
-         this.saveAll();
+         xml.appendChild(_loc1_);
+         saveAll();
       }
       
       public function saveAll() : void
       {
-         var _loc1_:String = Cipher.cipherString(Cipher.compress(this.xml.toString()));
-         var _loc2_:String = Cipher.MD5(this.xml.toString());
+         var _loc1_:String = Cipher.cipherString(Cipher.compress(xml.toString()));
+         var _loc2_:String = Cipher.MD5(xml.toString());
          var _loc3_:ByteArray = new ByteArray();
          _loc3_.writeUTFBytes(_loc1_);
          write("z",_loc3_);
@@ -228,14 +228,14 @@ package
          if(data == null || !(data is ByteArray) || !data.length)
          {
             xml = new XML(<SaveData/>);
-            this.xml.appendChild(<vars/>);
+            xml.appendChild(<vars/>);
             return;
          }
          var checksumdata:Object = read("y");
          if(checksumdata == null || !(checksumdata is String) || !checksumdata.length)
          {
             xml = new XML(<SaveData/>);
-            this.xml.appendChild(<vars/>);
+            xml.appendChild(<vars/>);
             return;
          }
          var oldsum:String = checksumdata as String;
@@ -248,13 +248,13 @@ package
             {
                FlxG.log("Checksum failure");
                xml = new XML(<SaveData/>);
-               this.xml.appendChild(<vars/>);
+               xml.appendChild(<vars/>);
                return;
             }
             xml = new XML(Cipher.uncompress(Cipher.cipherString(ba.toString())));
-            if(!this.xml.hasOwnProperty("vars"))
+            if(!xml.hasOwnProperty("vars"))
             {
-               this.xml.appendChild(<vars/>);
+               xml.appendChild(<vars/>);
             }
          }
          catch(error:Error)

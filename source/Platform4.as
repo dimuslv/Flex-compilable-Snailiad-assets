@@ -40,9 +40,9 @@ package
          height = IMG_HEIGHT;
          addAnimation("normal",[0]);
          play("normal");
-         this._posy = y;
-         this._accy = 0;
-         this._vely = -SPEED;
+         _posy = y;
+         _accy = 0;
+         _vely = -SPEED;
          solid = true;
          active = true;
       }
@@ -82,20 +82,20 @@ package
             return;
          }
          _elapsed += FlxG.elapsed;
-         while(this._elapsed > 0)
+         while(_elapsed > 0)
          {
             _elapsed -= SEC_PER_TICK;
-            _vely += this._accy;
-            if(this._vely > SPEED)
+            _vely += _accy;
+            if(_vely > SPEED)
             {
                _vely = SPEED;
             }
-            if(this._vely < -SPEED)
+            if(_vely < -SPEED)
             {
                _vely = -SPEED;
             }
-            _posy += this._vely;
-            _loc1_ = int(this._posy);
+            _posy += _vely;
+            _loc1_ = int(_posy);
             _loc2_ = int(y);
             _loc3_ = _loc1_ - _loc2_;
             if(_loc2_ != _loc1_)

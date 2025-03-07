@@ -30,23 +30,23 @@ package
          loadGraphic(Art.PowerGrass,true,true,IMG_WIDTH,IMG_HEIGHT);
          width = IMG_WIDTH;
          height = IMG_HEIGHT;
-         this.hp = MAX_HP;
-         this.nextNom = 0;
+         hp = MAX_HP;
+         nextNom = 0;
          addAnimation("normal",[0]);
          play("normal");
-         this._collidedThisFrame = false;
+         _collidedThisFrame = false;
          active = true;
       }
       
       override public function touch(param1:Player) : void
       {
-         if(this._collidedThisFrame)
+         if(_collidedThisFrame)
          {
             return;
          }
          _collidedThisFrame = true;
          nextNom -= FlxG.elapsed;
-         if(this.nextNom > 0)
+         if(nextNom > 0)
          {
             return;
          }
@@ -60,7 +60,7 @@ package
          {
             param1.heal(3);
          }
-         if(--this.hp <= 0)
+         if(--hp <= 0)
          {
             kill();
          }

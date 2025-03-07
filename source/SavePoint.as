@@ -20,7 +20,7 @@ package
          loadGraphic(Art.SavePoint,true,true,IMG_WIDTH,IMG_HEIGHT);
          width = IMG_WIDTH;
          height = IMG_HEIGHT;
-         this._haveSavedYet = false;
+         _haveSavedYet = false;
          addAnimation("normal",[0,1,2,3],3,true);
          addAnimation("saved",[4,5,6,7],3,true);
          play("normal");
@@ -29,7 +29,7 @@ package
       
       override public function touch(param1:Player) : void
       {
-         if(!this._haveSavedYet)
+         if(!_haveSavedYet)
          {
             _haveSavedYet = true;
             play("saved");

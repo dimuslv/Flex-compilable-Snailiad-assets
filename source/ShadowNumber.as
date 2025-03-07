@@ -33,11 +33,11 @@ package
          }
          _globalHashIndex += 53;
          _globalHashIndex %= NOISE.length;
-         this._localHashIndex = _globalHashIndex;
+         _localHashIndex = _globalHashIndex;
          _globalCipherIndex += 59;
          _globalCipherIndex %= NOISE.length;
-         this._localCipherIndex = _globalCipherIndex;
-         this.value = param1;
+         _localCipherIndex = _globalCipherIndex;
+         value = param1;
       }
       
       public function set value(param1:Number) : void
@@ -47,12 +47,12 @@ package
          _value = param1;
          _localHashIndex += 113;
          _localHashIndex %= NOISE.length;
-         _hash = int(this._value) ^ NOISE[this._localHashIndex];
+         _hash = int(_value) ^ NOISE[_localHashIndex];
       }
       
       public function get value() : Number
       {
-         if((int(this._value) ^ NOISE[this._localHashIndex]) != this._hash)
+         if((int(_value) ^ NOISE[_localHashIndex]) != _hash)
          {
             FlxG.cheated = true;
             if(dieOnCheating)
@@ -60,7 +60,7 @@ package
                return 0;
             }
          }
-         return this._value;
+         return _value;
       }
    }
 }

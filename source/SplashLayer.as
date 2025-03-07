@@ -27,36 +27,36 @@ package
       {
          FlxG.mouse.show();
          FlxG.noPause = true;
-         this.bg = new FlxSprite();
-         this.bg.y = 0;
-         this.bg.x = 0;
-         this.bg.createGraphic(FlxG.width,FlxG.height,4278190080);
-         this.bg.scrollFactor.x = this.bg.scrollFactor.y = 0;
-         add(this.bg);
-         this.splash = new SponsorSplash();
-         this.splash.alpha = 0;
-         add(this.splash);
+         bg = new FlxSprite();
+         bg.y = 0;
+         bg.x = 0;
+         bg.createGraphic(FlxG.width,FlxG.height,4278190080);
+         bg.scrollFactor.x = bg.scrollFactor.y = 0;
+         add(bg);
+         splash = new SponsorSplash();
+         splash.alpha = 0;
+         add(splash);
       }
       
       override public function update() : void
       {
          elapsed += FlxG.elapsed;
-         if(this.elapsed < FADE_IN_TIME)
+         if(elapsed < FADE_IN_TIME)
          {
-            this.splash.alpha = this.elapsed / FADE_IN_TIME;
+            splash.alpha = elapsed / FADE_IN_TIME;
          }
-         else if(this.elapsed < FADE_IN_TIME + STATIC_TIME)
+         else if(elapsed < FADE_IN_TIME + STATIC_TIME)
          {
-            this.splash.alpha = 1;
+            splash.alpha = 1;
          }
          else
          {
-            if(this.elapsed < FADE_IN_TIME + STATIC_TIME + FADE_OUT_TIME)
+            if(elapsed < FADE_IN_TIME + STATIC_TIME + FADE_OUT_TIME)
             {
-			   this.splash.alpha = 1 - (this.elapsed - (FADE_IN_TIME + STATIC_TIME)) / FADE_OUT_TIME;
+			   splash.alpha = 1 - (elapsed - (FADE_IN_TIME + STATIC_TIME)) / FADE_OUT_TIME;
             } else {
-               this.bg.visible = false;
-               this.splash.visible = false;
+               bg.visible = false;
+               splash.visible = false;
                FlxG.noPause = false;
                kill();
                return;
