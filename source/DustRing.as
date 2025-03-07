@@ -28,11 +28,9 @@ package
          originY = param2;
          radius = RADIUS + param3;
          INWARD_SPEED *= param4;
-         var _loc5_:int = 0;
-         while(_loc5_ < DUST_NUM)
+         for (var i:int = 0; i < DUST_NUM; i++)
          {
             add(new Dust());
-            _loc5_++;
          }
          updatePositions();
       }
@@ -59,13 +57,11 @@ package
       
       public function updatePositions() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < DUST_NUM)
+         for (var i:int = 0; i < DUST_NUM; i++)
          {
-            var _loc2_:Number = Math.PI * 2 / DUST_NUM * _loc1_ + elapsed * SPIN_SPEED;
-            members[_loc1_].x = originX + Math.cos(_loc2_) * radius;
-            members[_loc1_].y = originY + Math.sin(_loc2_) * radius;
-            _loc1_++;
+            var _loc2_:Number = Math.PI * 2 / DUST_NUM * i + elapsed * SPIN_SPEED;
+            members[i].x = originX + Math.cos(_loc2_) * radius;
+            members[i].y = originY + Math.sin(_loc2_) * radius;
          }
       }
    }

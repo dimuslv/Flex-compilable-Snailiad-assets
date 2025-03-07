@@ -109,11 +109,9 @@ package
       
       public function updateLetterPositions() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < letters.length)
+         for (var i:int = 0; i < letters.length; i++)
          {
-            letters[_loc1_].x = textX[_loc1_] + bg.x;
-            _loc1_++;
+            letters[i].x = textX[i] + bg.x;
          }
       }
       
@@ -211,11 +209,9 @@ package
       
       override public function destroy() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < letters.length())
+         for (var i:int = 0; i < letters.length(); i++)
          {
-            letters[_loc1_] = null;
-            _loc1_++;
+            letters[i] = null;
          }
          letters = null;
          textX = null;

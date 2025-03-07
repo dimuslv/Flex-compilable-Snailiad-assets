@@ -74,8 +74,7 @@ package
          }
          if(!madeInitialBubbles)
          {
-            var _loc1_:int = 0;
-            while(_loc1_ < 8)
+            for (var i:int = 0; i < 8; i++)
             {
                var _loc2_:Number = minX + FlxU.random() * widthX;
                waterY = PlayState.worldMap.waterLevelY[int(_loc2_ / 16)];
@@ -87,7 +86,6 @@ package
                var _loc3_:Number = waterY + FlxU.random() * heightY;
                var _loc4_:Enemy = new Bubble(_loc2_,_loc3_);
                group.add(_loc4_);
-               _loc1_++;
             }
             madeInitialBubbles = true;
          }

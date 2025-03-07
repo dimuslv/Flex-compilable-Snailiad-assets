@@ -23,7 +23,6 @@ package
       
       public function CheckBool(param1:Boolean = false) : void
       {
-         super();
          if(_globalCipherIndex == -1)
          {
             _globalCipherIndex = 13 + getTimer() * 7;

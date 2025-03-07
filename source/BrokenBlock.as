@@ -14,7 +14,6 @@ package
       
       public function BrokenBlock(param1:int, param2:int, param3:int, param4:int) : void
       {
-         super();
          X = param1;
          Y = param2;
          bgtile = param3;
