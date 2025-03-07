@@ -8,21 +8,20 @@ package
       
       private static const MAX_WEAPON:int = 3;
       
-      public var groups:Array;
+      public var groups:Array = new Array();
       
-      public var bulletLists:Array;
+      public var bulletLists:Array = new Array();
       
       override public function destroy() : void
       {
-         var _loc1_:String = null;
          super.destroy();
-         for(_loc1_ in groups)
+         for(var i:String in this.groups)
          {
-            groups[_loc1_] = null;
+            this.groups[i] = null;
          }
-         for(_loc1_ in bulletLists)
+         for(i in this.bulletLists)
          {
-            bulletLists[_loc1_] = null;
+            this.bulletLists[i] = null;
          }
          groups = null;
          bulletLists = null;
@@ -30,38 +29,27 @@ package
       
       public function destroyAll() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < MAX_WEAPON)
+         for (var i:int = 0; i < MAX_WEAPON; i++)
          {
-            var _loc2_:int = 0;
-            while(_loc2_ < MAX_BULLET[_loc1_])
+            for (var j:int = 0; j < MAX_BULLET[i]; j++)
             {
-               bulletLists[_loc1_][_loc2_].kill();
-               _loc2_++;
+               this.bulletLists[i][j].kill();
             }
-            _loc1_++;
          }
       }
       
       public function Boss4BulletGroups() : void
       {
-         groups = new Array();
-         bulletLists = new Array();
-         super();
-         var _loc1_:int = 0;
-         while(_loc1_ < MAX_WEAPON)
+         for (var i:int = 0; i < MAX_WEAPON; i++)
          {
-            groups[_loc1_] = new FlxGroup();
-            bulletLists[_loc1_] = new Array();
-            var _loc2_:int = 0;
-            while(_loc2_ < MAX_BULLET[_loc1_])
+            this.groups[i] = new FlxGroup();
+            this.bulletLists[i] = new Array();
+            for (var j:int = 0; j < MAX_BULLET[i]; j++)
             {
-               bulletLists[_loc1_][_loc2_] = makeBullet(_loc1_);
-               groups[_loc1_].add(bulletLists[_loc1_][_loc2_]);
-               _loc2_++;
+               this.bulletLists[i][j] = this.makeBullet(i);
+               this.groups[i].add(this.bulletLists[i][j]);
             }
-            add(groups[_loc1_]);
-            _loc1_++;
+            add(this.groups[i]);
          }
       }
       
@@ -81,7 +69,7 @@ package
       
       public function getBullet(param1:int) : Boss4Bullet
       {
-         return groups[param1].getFirstAvail();
+         return this.groups[param1].getFirstAvail();
       }
       
       override public function update() : void

@@ -718,11 +718,9 @@ package
             return;
          }
          _strafeTimeout = STRAFE_TIMEOUT;
-         var _loc1_:int = 0;
-         while(_loc1_ < _strafeNum)
+         for (var i:int = 0; i < _strafeNum; i++)
          {
-            shootStrafeSingleShot(_strafeTheta + 2 * Math.PI / _strafeNum * _loc1_);
-            _loc1_++;
+            shootStrafeSingleShot(_strafeTheta + 2 * Math.PI / _strafeNum * i);
          }
       }
       

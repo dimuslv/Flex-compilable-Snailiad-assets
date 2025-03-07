@@ -251,11 +251,9 @@ package
          _modeInitialized = false;
          _isAttacking = false;
          _actionTimeout = ACTION_TIMEOUT;
-         var _loc3_:int = 0;
-         while(_loc3_ < _shadowBall.length)
+         for (var i:int = 0; i < _shadowBall.length; i++)
          {
-            _shadowBall[_loc3_].visible = false;
-            _loc3_++;
+            _shadowBall[i].visible = false;
          }
          visible = true;
          solid = true;
@@ -461,13 +459,11 @@ package
             pickTeleTarget();
             visible = false;
             solid = false;
-            var _loc4_:int = 0;
-            while(_loc4_ < _shadowBall.length)
+            for (var i:int = 0; i < _shadowBall.length; i++)
             {
-               _shadowBall[_loc4_].x = _teleStartX;
-               _shadowBall[_loc4_].y = _teleStartY;
-               _shadowBall[_loc4_].visible = true;
-               _loc4_++;
+               _shadowBall[i].x = _teleStartX;
+               _shadowBall[i].y = _teleStartY;
+               _shadowBall[i].visible = true;
             }
          }
          var _loc1_:Number = normalizedSigmoid(_modeElapsed / TELEPORT_TIME);
@@ -489,12 +485,10 @@ package
          {
             _loc3_ = Math.PI * 2 * normalizedSigmoid((1 - _modeElapsed / TELEPORT_TIME) * 2);
          }
-         _loc4_ = 0;
-         while(_loc4_ < _shadowBall.length)
+         for (i = 0; i < _shadowBall.length; i++)
          {
-            _shadowBall[_loc4_].x = _teleStartX * (1 - _loc1_) + _teleEndX * _loc1_ + Math.cos(_loc3_ + Math.PI * 2 / _shadowBall.length * _loc4_) * _loc2_;
-            _shadowBall[_loc4_].y = _teleStartY * (1 - _loc1_) + _teleEndY * _loc1_ - Math.sin(_loc3_ + Math.PI * 2 / _shadowBall.length * _loc4_) * _loc2_;
-            _loc4_++;
+            _shadowBall[i].x = _teleStartX * (1 - _loc1_) + _teleEndX * _loc1_ + Math.cos(_loc3_ + Math.PI * 2 / _shadowBall.length * i) * _loc2_;
+            _shadowBall[i].y = _teleStartY * (1 - _loc1_) + _teleEndY * _loc1_ - Math.sin(_loc3_ + Math.PI * 2 / _shadowBall.length * i) * _loc2_;
          }
          velocity.x = 0;
          velocity.y = 0;
@@ -1826,19 +1820,17 @@ package
          _decisionTableIndex = PlayState.player.getMaxHp() + PlayState.player.getPercentComplete();
          _decisionTableIndex %= DECISION_TABLE.length;
          loadGraphic(Art.Boss4Rush,true,true,IMG_WIDTH,IMG_HEIGHT);
-         var _loc3_:int = 0;
-         while(_loc3_ < 2)
+         for (var i:int = 0; i < 2; i++)
          {
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_floor_right_move",[0 + _loc3_ * 20,1 + _loc3_ * 20],3,true);
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_floor_right_hide",[3 + _loc3_ * 20],9,false);
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_rwall_up_move",[4 + _loc3_ * 20,5 + _loc3_ * 20],3,true);
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_rwall_up_hide",[7 + _loc3_ * 20],9,false);
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_rwall_down_move",[8 + _loc3_ * 20,9 + _loc3_ * 20],3,true);
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_rwall_down_hide",[11 + _loc3_ * 20],9,false);
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_ceil_right_move",[12 + _loc3_ * 20,13 + _loc3_ * 20],3,true);
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_ceil_right_hide",[15 + _loc3_ * 20],9,false);
-            addAnimation("snail" + (_loc3_ + 1).toString() + "_death",[16 + _loc3_ * 20,17 + _loc3_ * 20,18 + _loc3_ * 20,19 + _loc3_ * 20],30,true);
-            _loc3_++;
+            addAnimation("snail" + (i + 1).toString() + "_floor_right_move",[0 + i * 20,1 + i * 20],3,true);
+            addAnimation("snail" + (i + 1).toString() + "_floor_right_hide",[3 + i * 20],9,false);
+            addAnimation("snail" + (i + 1).toString() + "_rwall_up_move",[4 + i * 20,5 + i * 20],3,true);
+            addAnimation("snail" + (i + 1).toString() + "_rwall_up_hide",[7 + i * 20],9,false);
+            addAnimation("snail" + (i + 1).toString() + "_rwall_down_move",[8 + i * 20,9 + i * 20],3,true);
+            addAnimation("snail" + (i + 1).toString() + "_rwall_down_hide",[11 + i * 20],9,false);
+            addAnimation("snail" + (i + 1).toString() + "_ceil_right_move",[12 + i * 20,13 + i * 20],3,true);
+            addAnimation("snail" + (i + 1).toString() + "_ceil_right_hide",[15 + i * 20],9,false);
+            addAnimation("snail" + (i + 1).toString() + "_death",[16 + i * 20,17 + i * 20,18 + i * 20,19 + i * 20],30,true);
          }
          _runSpeed = 410;
          _maxSpeed = 600;
@@ -1846,12 +1838,10 @@ package
          maxVelocity.x = _maxSpeed;
          maxVelocity.y = _maxSpeed;
          _shadowBall = new Array();
-         _loc3_ = 0;
-         while(_loc3_ < SHADOW_BALL_NUM)
+         for (i = 0; i < SHADOW_BALL_NUM; i++)
          {
-            _shadowBall[_loc3_] = new Boss4ShadowBall();
-            PlayState.enemies.add(_shadowBall[_loc3_]);
-            _loc3_++;
+            _shadowBall[i] = new Boss4ShadowBall();
+            PlayState.enemies.add(_shadowBall[i]);
          }
          setGravityDir(GRAV_DOWN);
          setFaceDir(FACE_FLOOR_RIGHT,true);

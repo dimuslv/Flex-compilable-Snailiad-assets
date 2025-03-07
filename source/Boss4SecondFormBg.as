@@ -72,11 +72,9 @@ package
          _bg.alpha = param1;
          _stars.setAlpha(param1);
          _oldAlpha = param1;
-         var _loc2_:int = 0;
-         while(_loc2_ < PlayState.doors.length)
+         for (var i:int = 0; i < PlayState.doors.length; i++)
          {
-            PlayState.doors[_loc2_].alpha = 1 - param1;
-            _loc2_++;
+            PlayState.doors[i].alpha = 1 - param1;
          }
       }
       

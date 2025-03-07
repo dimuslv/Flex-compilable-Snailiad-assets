@@ -28,11 +28,9 @@ package
       
       override public function destroy() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < RING_NUM)
+         for (var i:int = 0; i < RING_NUM; i++)
          {
-            _rings[_loc1_] = null;
-            _loc1_++;
+            _rings[i] = null;
          }
          _rings = null;
          super.destroy();
@@ -42,15 +40,13 @@ package
       {
          super(param1,param2,99999,0,0,true);
          _rings = new Array();
-         var _loc3_:int = 0;
-         while(_loc3_ < RING_NUM)
+         for (var i:int = 0; i < RING_NUM; i++)
          {
-            _rings[_loc3_] = PlayState.enemyBulletPool.getBullet(8);
-            if(_rings[_loc3_])
+            _rings[i] = PlayState.enemyBulletPool.getBullet(8);
+            if(_rings[i])
             {
-               _rings[_loc3_].shoot(x,y,0,0,RING_LIFETIME);
+               _rings[i].shoot(x,y,0,0,RING_LIFETIME);
             }
-            _loc3_++;
          }
          _theta = Math.atan2(PlayState.player.y - y,PlayState.player.x - x);
          if(PlayState.player._slugMode)
@@ -64,12 +60,10 @@ package
       
       public function updateRingPos() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < RING_NUM)
+         for (var i:int = 0; i < RING_NUM; i++)
          {
-            _rings[_loc1_].x = x + _radius * Math.cos(_ringTheta + 2 * Math.PI / RING_NUM * _loc1_);
-            _rings[_loc1_].y = y + _radius * Math.sin(_ringTheta + 2 * Math.PI / RING_NUM * _loc1_);
-            _loc1_++;
+            _rings[i].x = x + _radius * Math.cos(_ringTheta + 2 * Math.PI / RING_NUM * i);
+            _rings[i].y = y + _radius * Math.sin(_ringTheta + 2 * Math.PI / RING_NUM * i);
          }
       }
       
