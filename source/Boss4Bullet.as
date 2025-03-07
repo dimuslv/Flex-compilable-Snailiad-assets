@@ -15,7 +15,7 @@ package
       {
          PlayState.explosionPool.boom(x,y,0,10,FlxU.random() * 3 + 1);
          param1.kill();
-         this.kill();
+         kill();
       }
       
       override public function kill() : void

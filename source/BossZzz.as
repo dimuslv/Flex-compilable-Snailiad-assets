@@ -33,10 +33,10 @@ package
       public function BossZzz(param1:int, param2:int, param3:int, param4:int) : void
       {
          super(param1,param2,100,0,6,true);
-         this._originX = param1;
-         this._originY = param2;
-         this._targetX = param3;
-         this._targetY = param4;
+         _originX = param1;
+         _originY = param2;
+         _targetX = param3;
+         _targetY = param4;
          loadGraphic(Art.BossZzz,true,true,IMG_WIDTH,IMG_HEIGHT);
          addAnimation("normal",[0]);
          play("normal");
@@ -51,20 +51,20 @@ package
          _theta += FlxG.elapsed;
          if(acceleration.x == 0 && acceleration.y == 0)
          {
-            _originX = Utility.integrate(this._originX,this._targetX,2,FlxG.elapsed);
-            _originY = Utility.integrate(this._originY,this._targetY,2,FlxG.elapsed);
-            x = this._originX;
-            y = this._originY + 14 * Math.sin(this._theta * Math.PI * 2);
+            _originX = Utility.integrate(_originX,_targetX,2,FlxG.elapsed);
+            _originY = Utility.integrate(_originY,_targetY,2,FlxG.elapsed);
+            x = _originX;
+            y = _originY + 14 * Math.sin(_theta * Math.PI * 2);
          }
          _attackTimeout -= FlxG.elapsed;
-         if(this._attackTimeout < 0)
+         if(_attackTimeout < 0)
          {
             _attackTimeout = 999999999;
-            this.shootAtPlayer();
+            shootAtPlayer();
          }
          if(x > FlxG.MaxX + 100 || x + width < FlxG.MinX - 100 || y > FlxG.MaxY + 100 || y + height < FlxG.MinY - 100)
          {
-            this.kill();
+            kill();
          }
          super.update();
       }

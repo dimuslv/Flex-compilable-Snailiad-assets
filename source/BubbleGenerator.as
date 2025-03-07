@@ -34,7 +34,7 @@ package
       
       override public function destroy() : void
       {
-         PlayState.bubbles.remove(this.group);
+         PlayState.bubbles.remove(group);
          group = null;
          super.destroy();
       }
@@ -42,18 +42,18 @@ package
       public function BubbleGenerator(param1:int, param2:int) : void
       {
          super(param1,param2,9999,0,0);
-         this.minX = PlayState.worldMap.minX;
-         this.minY = PlayState.worldMap.minY;
-         this.maxX = PlayState.worldMap.maxX;
-         this.maxY = PlayState.worldMap.maxY;
-         this.widthX = this.maxX - this.minX;
+         minX = PlayState.worldMap.minX;
+         minY = PlayState.worldMap.minY;
+         maxX = PlayState.worldMap.maxX;
+         maxY = PlayState.worldMap.maxY;
+         widthX = maxX - minX;
          solid = false;
          visible = false;
-         this.listPos = (param1 * 4 + param2 * 20) % this.TIMEOUTS.length;
-         this.timeout = this.TIMEOUTS[this.listPos] * this.BASE_TIMEOUT;
-         this.timeout %= param1 % 20;
-         this.group = new FlxGroup();
-         PlayState.bubbles.add(this.group);
+         listPos = (param1 * 4 + param2 * 20) % TIMEOUTS.length;
+         timeout = TIMEOUTS[listPos] * BASE_TIMEOUT;
+         timeout %= param1 % 20;
+         group = new FlxGroup();
+         PlayState.bubbles.add(group);
       }
       
       override public function collideTerrain() : Boolean
@@ -72,39 +72,39 @@ package
          {
             return;
          }
-         if(!this.madeInitialBubbles)
+         if(!madeInitialBubbles)
          {
             var _loc1_:int = 0;
             while(_loc1_ < 8)
             {
-               var _loc2_:Number = this.minX + FlxU.random() * this.widthX;
+               var _loc2_:Number = minX + FlxU.random() * widthX;
                waterY = PlayState.worldMap.waterLevelY[int(_loc2_ / 16)];
-               if(!this.waterY || this.waterY < this.minY)
+               if(!waterY || waterY < minY)
                {
-                  waterY = this.minY;
+                  waterY = minY;
                }
-               heightY = this.maxY - this.minY;
-               var _loc3_:Number = this.waterY + FlxU.random() * this.heightY;
+               heightY = maxY - minY;
+               var _loc3_:Number = waterY + FlxU.random() * heightY;
                var _loc4_:Enemy = new Bubble(_loc2_,_loc3_);
-               this.group.add(_loc4_);
+               group.add(_loc4_);
                _loc1_++;
             }
             madeInitialBubbles = true;
          }
          timeout -= FlxG.elapsed;
-         if(this.timeout < 0 && this.group.countLiving() < this.MAX_BUBBLES)
+         if(timeout < 0 && group.countLiving() < MAX_BUBBLES)
          {
-            ++this.listPos;
-            listPos %= this.TIMEOUTS.length;
-            timeout = this.TIMEOUTS[this.listPos] * this.BASE_TIMEOUT;
-            var _loc5_:Number = this.minX + FlxU.random() * this.widthX;
+            ++listPos;
+            listPos %= TIMEOUTS.length;
+            timeout = TIMEOUTS[listPos] * BASE_TIMEOUT;
+            var _loc5_:Number = minX + FlxU.random() * widthX;
             var _loc6_:Number = -FlxG.scroll.y + FlxG.height;
             waterY = PlayState.worldMap.waterLevelY[int(_loc5_ / 16)];
-            if(this.waterY < this.minY)
+            if(waterY < minY)
             {
-               waterY = this.minY;
+               waterY = minY;
             }
-            if(_loc6_ > this.waterY)
+            if(_loc6_ > waterY)
             {
                _loc4_ = new Bubble(_loc5_,_loc6_);
                if(_loc4_.collideTerrain())
@@ -122,7 +122,7 @@ package
       
       override public function kill() : void
       {
-         PlayState.bubbles.remove(this.group);
+         PlayState.bubbles.remove(group);
          group = null;
          super.kill();
       }

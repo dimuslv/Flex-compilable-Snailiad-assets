@@ -162,16 +162,16 @@ package
       
       public function Boss4RushSecondForm(param1:int, param2:int) : void
       {
-         this._healAmount = PlayState.player.hpPerHeart() / 2;
-         this._healNum = PlayState.player.getMaxHp() / this._healAmount;
+         _healAmount = PlayState.player.hpPerHeart() / 2;
+         _healNum = PlayState.player.getMaxHp() / _healAmount;
          param1 += 7 * 16 + 8;
          param2 -= 2 * 16 + 12;
-         this._originX = param1;
-         this._originY = param2;
+         _originX = param1;
+         _originY = param2;
          param1 -= 20;
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE,true);
-         this._decisionTableIndex = int(PlayState.player.x) % DECISION_TABLE.length;
-         this._zzz = new Array();
+         _decisionTableIndex = int(PlayState.player.x) % DECISION_TABLE.length;
+         _zzz = new Array();
          loadGraphic(Art.Boss4RushSecondForm,true,true,IMG_WIDTH,IMG_HEIGHT);
          width = IMG_WIDTH;
          height = IMG_HEIGHT;
@@ -183,27 +183,27 @@ package
          addAnimation("ceil1",[14,15],4,true);
          addAnimation("shell1",[23,22,21,20,19,18,17,16],30,true);
          addAnimation("sleep1",[16]);
-         this.playAnim("shell");
+         playAnim("shell");
          Music.playNone();
          _noParalyze = false;
-         this._bulletGroups = PlayState.boss4SecondFormBulletGroups;
+         _bulletGroups = PlayState.boss4SecondFormBulletGroups;
          alpha = 0;
          solid = false;
-         this.bg = new Boss4SecondFormBg();
-         PlayState.bossBgLayer.add(this.bg);
+         bg = new Boss4SecondFormBg();
+         PlayState.bossBgLayer.add(bg);
       }
       
       public function getDecision() : Number
       {
-         ++this._decisionTableIndex;
+         ++_decisionTableIndex;
          _decisionTableIndex %= DECISION_TABLE.length;
-         return DECISION_TABLE[this._decisionTableIndex];
+         return DECISION_TABLE[_decisionTableIndex];
       }
       
       override public function hitLeft(param1:FlxObject, param2:Number) : void
       {
          _lastHitDir = HIT_LEFT;
-         if(this._mode == MODE_STOMP)
+         if(_mode == MODE_STOMP)
          {
             velocity.x *= -1;
             if(velocity.x < 0)
@@ -217,14 +217,14 @@ package
          }
          else
          {
-            this.stomp();
+            stomp();
          }
       }
       
       override public function hitRight(param1:FlxObject, param2:Number) : void
       {
          _lastHitDir = HIT_RIGHT;
-         if(this._mode == MODE_STOMP)
+         if(_mode == MODE_STOMP)
          {
             velocity.x *= -1;
             if(velocity.x < 0)
@@ -238,23 +238,23 @@ package
          }
          else
          {
-            this.stomp();
+            stomp();
          }
       }
       
       public function stomp() : void
       {
-         if(this._stomped)
+         if(_stomped)
          {
             return;
          }
          velocity.x = 0;
          velocity.y = 0;
-         if(this._stompTimeout <= 0)
+         if(_stompTimeout <= 0)
          {
             FlxG.quake.start(0.02);
             Sfx.playStomp();
-            _stompTimeout = this.STOMP_TIMEOUT;
+            _stompTimeout = STOMP_TIMEOUT;
          }
          _stomped = true;
          _gravJumpTimeout = 999999;
@@ -263,13 +263,13 @@ package
       override public function hitBottom(param1:FlxObject, param2:Number) : void
       {
          _lastHitDir = HIT_BOTTOM;
-         this.stomp();
+         stomp();
       }
       
       override public function hitTop(param1:FlxObject, param2:Number) : void
       {
          _lastHitDir = HIT_TOP;
-         this.stomp();
+         stomp();
       }
       
       override public function touch(param1:Player) : void
@@ -297,29 +297,29 @@ package
             width = 80;
             offset.x = 0;
          }
-         play(param1 + this._attackPhase.toString());
+         play(param1 + _attackPhase.toString());
          _lastAnim = param1;
       }
       
       public function shootWave() : void
       {
-         if(this._waveTimeout > 0)
+         if(_waveTimeout > 0)
          {
             return;
          }
-         _waveTimeout = this.WAVE_TIMEOUT;
-         var _loc1_:Boss4Bullet = this._bulletGroups.getBullet(1);
+         _waveTimeout = WAVE_TIMEOUT;
+         var _loc1_:Boss4Bullet = _bulletGroups.getBullet(1);
          if(!_loc1_)
          {
             return;
          }
          if(PlayState.player.x < x)
          {
-            var _loc2_:Number = -this.WAVE_SPEED;
+            var _loc2_:Number = -WAVE_SPEED;
          }
          else
          {
-            _loc2_ = this.WAVE_SPEED;
+            _loc2_ = WAVE_SPEED;
          }
          _loc1_.shoot(x + width / 2,y,_loc2_,0);
       }
@@ -332,14 +332,14 @@ package
          }
          else
          {
-            ++this._lastStomp;
+            ++_lastStomp;
          }
-         if(this._lastStomp >= 4)
+         if(_lastStomp >= 4)
          {
             param1 = MODE_STOMP;
             _lastStomp = 0;
          }
-         _lastMode = this._mode;
+         _lastMode = _mode;
          _mode = param1;
          _modeInitialized = false;
          _stomped = false;
@@ -347,7 +347,7 @@ package
          acceleration.y = 0;
          velocity.x = 0;
          velocity.y = 0;
-         this.playAnim("shell");
+         playAnim("shell");
          _modeElapsed = 0;
          _waitingToJump = false;
       }
@@ -366,11 +366,11 @@ package
       
       private function updateAiIntro() : void
       {
-         if(this._elapsed > 2 && this._elapsed < 3)
+         if(_elapsed > 2 && _elapsed < 3)
          {
-            alpha = this._elapsed - 2;
+            alpha = _elapsed - 2;
          }
-         else if(this._elapsed > 3 && _delayIntro)
+         else if(_elapsed > 3 && _delayIntro)
          {
             alpha = 1;
             _delayIntro = false;
@@ -380,11 +380,11 @@ package
          }
          if(_introDone)
          {
-            this.blank(581,188);
-            this.blank(559,188);
-            this.blank(581,176);
-            this.blank(559,176);
-            this.setMode(MODE_STOMP);
+            blank(581,188);
+            blank(559,188);
+            blank(581,176);
+            blank(559,176);
+            setMode(MODE_STOMP);
             solid = true;
          }
       }
@@ -396,61 +396,61 @@ package
          _targetY = y;
          do
          {
-            _loc1_ = this.getDecision() * 8;
+            _loc1_ = getDecision() * 8;
             switch(_loc1_)
             {
                case 0:
-                  _targetX = this._originX + 16 * 7;
-                  _targetY = this._originY + 16 * 5;
+                  _targetX = _originX + 16 * 7;
+                  _targetY = _originY + 16 * 5;
                   break;
                case 1:
-                  _targetX = this._originX + 16 * -7;
-                  _targetY = this._originY + 16 * 5;
+                  _targetX = _originX + 16 * -7;
+                  _targetY = _originY + 16 * 5;
                   break;
                case 2:
-                  _targetX = this._originX + 16 * 7;
-                  _targetY = this._originY + 16 * -5;
+                  _targetX = _originX + 16 * 7;
+                  _targetY = _originY + 16 * -5;
                   break;
                case 3:
-                  _targetX = this._originX + 16 * -7;
-                  _targetY = this._originY + 16 * -5;
+                  _targetX = _originX + 16 * -7;
+                  _targetY = _originY + 16 * -5;
                   break;
                case 4:
-                  _targetX = this._originX + 16 * 7;
-                  _targetY = this._originY;
+                  _targetX = _originX + 16 * 7;
+                  _targetY = _originY;
                   break;
                case 5:
-                  _targetX = this._originX + 16 * -7;
-                  _targetY = this._originY;
+                  _targetX = _originX + 16 * -7;
+                  _targetY = _originY;
                   break;
                case 6:
-                  _targetX = this._originX;
-                  _targetY = this._originY + 16 * -5;
+                  _targetX = _originX;
+                  _targetY = _originY + 16 * -5;
                   break;
                case 7:
-                  _targetX = this._originX;
-                  _targetY = this._originY + 16 * -5;
+                  _targetX = _originX;
+                  _targetY = _originY + 16 * -5;
                   break;
             }
          }
-         while(Utility.dist(this._targetX + width / 2,this._targetY + height / 2,PlayState.player.x + PlayState.player.width / 2,PlayState.player.y + PlayState.player.height / 2) < 130);
+         while(Utility.dist(_targetX + width / 2,_targetY + height / 2,PlayState.player.x + PlayState.player.width / 2,PlayState.player.y + PlayState.player.height / 2) < 130);
          
       }
       
       private function updateAiSleep() : void
       {
-         if(!this._modeInitialized)
+         if(!_modeInitialized)
          {
             if(Math.abs(x + width / 2 - (PlayState.player.x + PlayState.player.width / 2)) < 40 && y < PlayState.player.y)
             {
-               this.setMode(MODE_STOMP);
+               setMode(MODE_STOMP);
                return;
             }
             _modeInitialized = true;
-            this.bg.setTargetRgb(176,174,0);
+            bg.setTargetRgb(176,174,0);
             _modeTimeout = 6.2;
-            this.bg.bgColorSpeed = 3;
-            this.playAnim("sleep");
+            bg.bgColorSpeed = 3;
+            playAnim("sleep");
             _zzzNum = 0;
             _zzzTimeout = ZZZ_TIMEOUT;
             if(PlayState.player._slugMode)
@@ -460,70 +460,70 @@ package
             acceleration.y = 900;
             Sfx.playShell();
          }
-         if(this._stomped)
+         if(_stomped)
          {
-            _zzzTimeout -= FlxG.elapsed * this._bossSpeed;
-            if(this._zzzTimeout < 0 && this._zzzNum < this.ZZZ_MAX)
+            _zzzTimeout -= FlxG.elapsed * _bossSpeed;
+            if(_zzzTimeout < 0 && _zzzNum < ZZZ_MAX)
             {
-               PlayState.enemiesNoCollide.add(new BossZzz(x + width / 2,y,x + width + 24 * this._zzzNum,y));
+               PlayState.enemiesNoCollide.add(new BossZzz(x + width / 2,y,x + width + 24 * _zzzNum,y));
                _zzzTimeout = ZZZ_TIMEOUT;
-               ++this._zzzNum;
+               ++_zzzNum;
             }
             acceleration.y = 0;
          }
-         if(this._modeTimeout <= 0)
+         if(_modeTimeout <= 0)
          {
-            if(this.getDecision() > 0.5)
+            if(getDecision() > 0.5)
             {
-               this.setMode(MODE_STOMP);
+               setMode(MODE_STOMP);
             }
             else
             {
-               this.setMode(MODE_SHELLSTRAFE);
+               setMode(MODE_SHELLSTRAFE);
             }
          }
       }
       
       private function updateAiStomp() : void
       {
-         if(!this._modeInitialized)
+         if(!_modeInitialized)
          {
             _modeInitialized = true;
-            this.bg.setTargetRgb(0,48,0);
+            bg.setTargetRgb(0,48,0);
             _modeTimeout = 6;
-            this.bg.bgColorSpeed = 3;
-            this.pickStompTarget();
+            bg.bgColorSpeed = 3;
+            pickStompTarget();
          }
-         if(this._lastAnim == "shell")
+         if(_lastAnim == "shell")
          {
-            if(Utility.dist(x,y,this._targetX,this._targetY) < 10)
+            if(Utility.dist(x,y,_targetX,_targetY) < 10)
             {
-               if(this.getDecision() > 0.5)
+               if(getDecision() > 0.5)
                {
                   acceleration.y = 900;
-                  this.playAnim("floor");
+                  playAnim("floor");
                }
                else
                {
                   acceleration.y = -900;
-                  this.playAnim("ceil");
+                  playAnim("ceil");
                }
             }
-            x = Utility.integrate(x,this._targetX,0.7,FlxG.elapsed * this._bossSpeed);
-            y = Utility.integrate(y,this._targetY,0.7,FlxG.elapsed * this._bossSpeed);
+            x = Utility.integrate(x,_targetX,0.7,FlxG.elapsed * _bossSpeed);
+            y = Utility.integrate(y,_targetY,0.7,FlxG.elapsed * _bossSpeed);
          }
          else
          {
-            this.facePlayer();
-            if(this._stomped)
+            facePlayer();
+            if(_stomped)
             {
-               if(!this._waitingToJump)
+               if(!_waitingToJump)
                {
                   _waitingToJump = true;
                   _jumpTimeout = JUMP_TIMEOUT;
                }
-               _jumpTimeout -= FlxG.elapsed * this._bossSpeed;
-               if(this._waitingToJump && this._jumpTimeout <= 0)
+               _jumpTimeout -= FlxG.elapsed * _bossSpeed;
+               if(_waitingToJump && _jumpTimeout <= 0)
                {
                   _waitingToJump = false;
                   _stomped = false;
@@ -549,19 +549,19 @@ package
                else if(velocity.y != 0)
                {
                   _gravJumpTimeout -= FlxG.elapsed;
-                  if(this._gravJumpTimeout < 0)
+                  if(_gravJumpTimeout < 0)
                   {
-                     if(this.getDecision() > 0.66)
+                     if(getDecision() > 0.66)
                      {
                         if(acceleration.y < 0)
                         {
                            acceleration.y = 900;
-                           this.playAnim("floor");
+                           playAnim("floor");
                         }
                         else
                         {
                            acceleration.y = -900;
-                           this.playAnim("ceil");
+                           playAnim("ceil");
                         }
                      }
                      _gravJumpTimeout = 999999;
@@ -569,31 +569,31 @@ package
                }
             }
          }
-         if(this._attackPhase == 0 && this._modeElapsed > START_ATTACK_TIME * 3)
+         if(_attackPhase == 0 && _modeElapsed > START_ATTACK_TIME * 3)
          {
-            this.shootWave();
+            shootWave();
          }
-         if(this._attackPhase == 1 && this._modeElapsed > START_ATTACK_TIME * 3.5)
+         if(_attackPhase == 1 && _modeElapsed > START_ATTACK_TIME * 3.5)
          {
-            this.shootWave();
+            shootWave();
          }
-         if(this._modeTimeout <= 0)
+         if(_modeTimeout <= 0)
          {
-            if(this._attackPhase == 1 && this.getDecision() > 0.7)
+            if(_attackPhase == 1 && getDecision() > 0.7)
             {
-               this.setMode(MODE_SLEEP);
+               setMode(MODE_SLEEP);
             }
-            else if(this.getDecision() > 0.7)
+            else if(getDecision() > 0.7)
             {
-               this.setMode(MODE_SHELLSMASH);
+               setMode(MODE_SHELLSMASH);
             }
-            else if(this.getDecision() > 0.8)
+            else if(getDecision() > 0.8)
             {
-               this.setMode(MODE_STOMP);
+               setMode(MODE_STOMP);
             }
             else
             {
-               this.setMode(MODE_SHELLSTRAFE);
+               setMode(MODE_SHELLSTRAFE);
             }
          }
       }
@@ -614,43 +614,43 @@ package
       {
          var _loc1_:Number = Math.atan2(PlayState.player.y - (y + height / 2),PlayState.player.x - (x + width / 2));
          _strafeNum = 2.3 + 5 * Number(MAX_HP - _hp) / MAX_HP;
-         if(this._strafeNum < 4)
+         if(_strafeNum < 4)
          {
             _strafeNum = 4;
          }
-         if(this._strafeNum > 7)
+         if(_strafeNum > 7)
          {
             _strafeNum = 7;
          }
-         _strafeTheta = _loc1_ - Math.PI / this._strafeNum;
+         _strafeTheta = _loc1_ - Math.PI / _strafeNum;
       }
       
       private function updateAiShellStrafe() : void
       {
-         if(!this._modeInitialized)
+         if(!_modeInitialized)
          {
             _modeInitialized = true;
-            if(this._attackPhase < 1)
+            if(_attackPhase < 1)
             {
-               this.bg.setTargetRgb(48,0,48);
+               bg.setTargetRgb(48,0,48);
             }
             else
             {
-               this.bg.setTargetRgb(0,48,48);
+               bg.setTargetRgb(0,48,48);
             }
-            this.bg.bgColorSpeed = 3;
+            bg.bgColorSpeed = 3;
             _modeTimeout = 5.2;
-            this.playAnim("shell");
-            _targetX = this._originX;
-            _targetY = this._originY;
+            playAnim("shell");
+            _targetX = _originX;
+            _targetY = _originY;
             _aimed = false;
          }
-         x = Utility.integrate(x,this._targetX,1.7,FlxG.elapsed * this._bossSpeed);
-         y = Utility.integrate(y,this._targetY,1.7,FlxG.elapsed * this._bossSpeed);
-         if(this._modeElapsed > START_ATTACK_TIME && !this._aimed && Utility.dist(x,y,this._targetX,this._targetY) < 10)
+         x = Utility.integrate(x,_targetX,1.7,FlxG.elapsed * _bossSpeed);
+         y = Utility.integrate(y,_targetY,1.7,FlxG.elapsed * _bossSpeed);
+         if(_modeElapsed > START_ATTACK_TIME && !_aimed && Utility.dist(x,y,_targetX,_targetY) < 10)
          {
-            this.aimStrafe();
-            if(this.getDecision() > 0.5)
+            aimStrafe();
+            if(getDecision() > 0.5)
             {
                _strafeThetaVel = Math.PI / 8;
             }
@@ -658,9 +658,9 @@ package
             {
                _strafeThetaVel = -Math.PI / 8;
             }
-            if(this.getDecision() > 0.5)
+            if(getDecision() > 0.5)
             {
-               _strafeThetaAcc = -this._strafeThetaVel * 1.3;
+               _strafeThetaAcc = -_strafeThetaVel * 1.3;
             }
             _aimed = true;
             if(PlayState.player._slugMode)
@@ -668,60 +668,60 @@ package
                _strafeThetaVel *= 1.6;
             }
          }
-         if(this._strafeThetaVel < -Math.PI / 5)
+         if(_strafeThetaVel < -Math.PI / 5)
          {
             _strafeThetaVel = -Math.PI / 5;
          }
-         if(this._strafeThetaVel > Math.PI / 5)
+         if(_strafeThetaVel > Math.PI / 5)
          {
             _strafeThetaVel = Math.PI / 5;
          }
-         _strafeTheta += this._strafeThetaVel * FlxG.elapsed * this._bossSpeed;
-         _strafeThetaVel += this._strafeThetaAcc * FlxG.elapsed * this._bossSpeed;
-         if(this._modeElapsed > START_ATTACK_TIME && this._aimed)
+         _strafeTheta += _strafeThetaVel * FlxG.elapsed * _bossSpeed;
+         _strafeThetaVel += _strafeThetaAcc * FlxG.elapsed * _bossSpeed;
+         if(_modeElapsed > START_ATTACK_TIME && _aimed)
          {
-            this.shootStrafeMultiWay();
+            shootStrafeMultiWay();
          }
-         if(this._modeTimeout <= 0)
+         if(_modeTimeout <= 0)
          {
-            if(this._attackPhase == 1 && this.getDecision() > 0.74)
+            if(_attackPhase == 1 && getDecision() > 0.74)
             {
-               this.setMode(MODE_SLEEP);
+               setMode(MODE_SLEEP);
             }
-            else if(this.getDecision() < 0.7)
+            else if(getDecision() < 0.7)
             {
-               this.setMode(MODE_STOMP);
+               setMode(MODE_STOMP);
             }
             else
             {
-               this.setMode(MODE_SHELLSMASH);
+               setMode(MODE_SHELLSMASH);
             }
          }
       }
       
       public function shootStrafeSingleShot(param1:Number) : void
       {
-         var _loc2_:Boss4Bullet = this._bulletGroups.getBullet(0);
+         var _loc2_:Boss4Bullet = _bulletGroups.getBullet(0);
          if(!_loc2_)
          {
             return;
          }
-         var _loc3_:Number = this.STRAFE_SPEED * Math.cos(param1);
-         var _loc4_:Number = this.STRAFE_SPEED * Math.sin(param1);
+         var _loc3_:Number = STRAFE_SPEED * Math.cos(param1);
+         var _loc4_:Number = STRAFE_SPEED * Math.sin(param1);
          _loc2_.shoot(x + width / 2,y + height / 2,_loc3_,_loc4_);
       }
       
       public function shootStrafeMultiWay() : void
       {
-         if(this._strafeTimeout > 0)
+         if(_strafeTimeout > 0)
          {
             return;
          }
-         _strafeTimeout = this.STRAFE_TIMEOUT;
+         _strafeTimeout = STRAFE_TIMEOUT;
          var _loc1_:int = 0;
-         while(_loc1_ < this._strafeNum)
+         while(_loc1_ < _strafeNum)
          {
-            this.shootStrafeSingleShot(this._strafeTheta + 2 * Math.PI / this._strafeNum * _loc1_);
+            shootStrafeSingleShot(_strafeTheta + 2 * Math.PI / _strafeNum * _loc1_);
             _loc1_++;
          }
       }
@@ -729,27 +729,27 @@ package
       private function pickSmashDir(param1:Boolean = false) : void
       {
          var _loc2_:Number = FlxU.random() * 2 * Math.PI;
-         if(this.getDecision() > 0.15 || param1)
+         if(getDecision() > 0.15 || param1)
          {
             _loc2_ = Math.atan2(PlayState.player.y + PlayState.player.height / 2 - (y + height / 2),PlayState.player.x + PlayState.player.width / 2 - (x + width / 2));
          }
          velocity.x = 0;
          velocity.y = 0;
-         acceleration.x = this.SMASH_SPEED * this._bossSpeed * Math.cos(_loc2_);
-         acceleration.y = this.SMASH_SPEED * this._bossSpeed * Math.sin(_loc2_);
-         if(this._lastHitDir == HIT_RIGHT && acceleration.x > 0)
+         acceleration.x = SMASH_SPEED * _bossSpeed * Math.cos(_loc2_);
+         acceleration.y = SMASH_SPEED * _bossSpeed * Math.sin(_loc2_);
+         if(_lastHitDir == HIT_RIGHT && acceleration.x > 0)
          {
             acceleration.x *= -1;
          }
-         if(this._lastHitDir == HIT_LEFT && acceleration.x < 0)
+         if(_lastHitDir == HIT_LEFT && acceleration.x < 0)
          {
             acceleration.x *= -1;
          }
-         if(this._lastHitDir == HIT_BOTTOM && acceleration.y > 0)
+         if(_lastHitDir == HIT_BOTTOM && acceleration.y > 0)
          {
             acceleration.y *= -1;
          }
-         if(this._lastHitDir == HIT_TOP && acceleration.y < 0)
+         if(_lastHitDir == HIT_TOP && acceleration.y < 0)
          {
             acceleration.y *= -1;
          }
@@ -757,21 +757,21 @@ package
       
       private function updateAiShellSmash() : void
       {
-         if(!this._modeInitialized)
+         if(!_modeInitialized)
          {
             _modeInitialized = true;
-            this.bg.setTargetRgb(48,0,0);
-            this.bg.bgColorSpeed = 3;
+            bg.setTargetRgb(48,0,0);
+            bg.bgColorSpeed = 3;
             _modeTimeout = 6;
-            this.playAnim("shell");
-            this.pickSmashDir();
+            playAnim("shell");
+            pickSmashDir();
          }
-         if(this._stomped)
+         if(_stomped)
          {
             _stomped = false;
-            if(this.getDecision() > 0.7 || this._attackPhase == 1)
+            if(getDecision() > 0.7 || _attackPhase == 1)
             {
-               this.pickSmashDir(true);
+               pickSmashDir(true);
             }
             else if(velocity.y == 0)
             {
@@ -782,15 +782,15 @@ package
                acceleration.x *= -1;
             }
          }
-         if(this._modeTimeout <= 0)
+         if(_modeTimeout <= 0)
          {
-            if(this.getDecision() > 0.5)
+            if(getDecision() > 0.5)
             {
-               this.setMode(MODE_STOMP);
+               setMode(MODE_STOMP);
             }
             else
             {
-               this.setMode(MODE_SHELLSTRAFE);
+               setMode(MODE_SHELLSTRAFE);
             }
          }
       }
@@ -801,14 +801,14 @@ package
          {
             return;
          }
-         if(this._healNum > 0)
+         if(_healNum > 0)
          {
             _healTimeout -= FlxG.elapsed;
-            if(this._healTimeout < 0)
+            if(_healTimeout < 0)
             {
-               _healTimeout = this.HEAL_TIMEOUT;
-               --this._healNum;
-               PlayState.player.heal(this._healAmount);
+               _healTimeout = HEAL_TIMEOUT;
+               --_healNum;
+               PlayState.player.heal(_healAmount);
                Sfx.playPickup4();
                if(PlayState.player.getCurHp() == PlayState.player.getMaxHp())
                {
@@ -816,31 +816,31 @@ package
                }
             }
          }
-         _waveTimeout -= FlxG.elapsed * this._bossSpeed;
-         _modeTimeout -= FlxG.elapsed * this._bossSpeed;
-         _strafeTimeout -= FlxG.elapsed * this._bossSpeed;
-         _stompTimeout -= FlxG.elapsed * this._bossSpeed;
-         _modeElapsed += FlxG.elapsed * this._bossSpeed;
-         switch(this._mode)
+         _waveTimeout -= FlxG.elapsed * _bossSpeed;
+         _modeTimeout -= FlxG.elapsed * _bossSpeed;
+         _strafeTimeout -= FlxG.elapsed * _bossSpeed;
+         _stompTimeout -= FlxG.elapsed * _bossSpeed;
+         _modeElapsed += FlxG.elapsed * _bossSpeed;
+         switch(_mode)
          {
             case MODE_INTRO:
-               this.updateAiIntro();
+               updateAiIntro();
                break;
             case MODE_STOMP:
-               this.updateAiStomp();
+               updateAiStomp();
                break;
             case MODE_SHELLSTRAFE:
-               this.updateAiShellStrafe();
+               updateAiShellStrafe();
                break;
             case MODE_SHELLSMASH:
-               this.updateAiShellSmash();
+               updateAiShellSmash();
                break;
             case MODE_SLEEP:
-               this.updateAiSleep();
+               updateAiSleep();
 			   break;
          }
-         FlxU.overlap(PlayState.playerBulletGroups,this._bulletGroups,this.overlapPlayerBulletBoss4Bullet);
-         FlxU.overlap(PlayState.player,this._bulletGroups,this.overlapPlayerBoss4Bullet);
+         FlxU.overlap(PlayState.playerBulletGroups,_bulletGroups,overlapPlayerBulletBoss4Bullet);
+         FlxU.overlap(PlayState.player,_bulletGroups,overlapPlayerBoss4Bullet);
          _elapsed += FlxG.elapsed;
          super.update();
          PlayState.player.paralyze(false);
@@ -866,7 +866,7 @@ package
             PlayState.setBossDead(4);
             PlayState.showBossRushName(4,true);
             PlayState.sprites.add(new QueuedExplosion(x,y,false));
-            this.bg.fadeOut();
+            bg.fadeOut();
             Music.playNone();
          }
          else
@@ -883,15 +883,15 @@ package
       
       override public function hurt(param1:Number) : void
       {
-         if(this._lastAnim == "shell" || this._lastAnim == "sleep")
+         if(_lastAnim == "shell" || _lastAnim == "sleep")
          {
             param1 = 0;
          }
-         if(_hp <= MAX_HP * 0.4 && this._attackPhase < 1)
+         if(_hp <= MAX_HP * 0.4 && _attackPhase < 1)
          {
             _bossSpeed += 0.3;
             _attackPhase = 1;
-            this.playAnim(this._lastAnim);
+            playAnim(_lastAnim);
          }
          super.hurt(param1);
       }

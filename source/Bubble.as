@@ -36,10 +36,10 @@ package
          height = IMG_HEIGHT;
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
-         this.originX = param1;
-         this.originY = param2;
-         this.speed = 4 + FlxU.random() * 16;
-         this.updatePosition();
+         originX = param1;
+         originY = param2;
+         speed = 4 + FlxU.random() * 16;
+         updatePosition();
          addAnimation("normal",[int(FlxU.random() * 8)]);
          play("normal");
          active = true;
@@ -56,8 +56,8 @@ package
       
       public function updatePosition() : void
       {
-         x = this.originX + 2 * Math.sin(this.theta / 1.2);
-         y = this.originY - this.speed * this.elapsed;
+         x = originX + 2 * Math.sin(theta / 1.2);
+         y = originY - speed * elapsed;
       }
       
       override public function update() : void
@@ -68,7 +68,7 @@ package
          }
          theta += FlxG.elapsed;
          elapsed += FlxG.elapsed;
-         this.updatePosition();
+         updatePosition();
          super.update();
       }
       

@@ -27,7 +27,7 @@ package
 			   break;
          }
          super(param1,param2,_loc5_,_loc6_,0);
-         this._silent = param4;
+         _silent = param4;
          width = IMG_WIDTH;
          height = IMG_HEIGHT;
          visible = false;
@@ -51,13 +51,13 @@ package
          param1 -= _defense;
          if(param1 <= 0)
          {
-            if(!this._silent)
+            if(!_silent)
             {
                Sfx.playEnemyPingOffArmor();
             }
             return;
          }
-         this.kill();
+         kill();
          var _loc2_:int = x / 16;
          var _loc3_:int = y / 16;
          PlayState.fixBlocks.rememberBlock(_loc2_,_loc3_,PlayState.worldMap.bgmap.getTile(_loc2_,_loc3_),PlayState.worldMap.fgmap.getTile(_loc2_,_loc3_));

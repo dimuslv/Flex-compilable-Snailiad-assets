@@ -38,66 +38,66 @@ package
       public function BossBarHud() : void
       {
          super();
-         this._border = new FlxSprite();
-         this._bg = new FlxSprite();
-         this._bar = new FlxSprite();
-         this._leftSide = new FlxSprite();
-         add(this._border);
-         add(this._bar);
+         _border = new FlxSprite();
+         _bg = new FlxSprite();
+         _bar = new FlxSprite();
+         _leftSide = new FlxSprite();
+         add(_border);
+         add(_bar);
       }
       
       public function makeBar(param1:int) : void
       {
          _maxHp = param1;
-         _pixelsPerHp = this.X_WIDTH / param1;
-         _pxWidth = (int)(param1 / 2 * this._pixelsPerHp);
-         this._border.y = this.Y_POS - 1;
-         this._border.x = FlxG.width / 2 - this._pxWidth - 1;
-         this._border.createGraphic(param1 * this._pixelsPerHp + 2,10,1073741823);
-         this._border.scrollFactor.x = this._border.scrollFactor.y = 0;
-         this._leftSide.y = this.Y_POS - 1;
-         this._leftSide.x = FlxG.width / 2 - this._pxWidth - 1;
-         this._leftSide.createGraphic(1,10,4294967295);
-         this._leftSide.scrollFactor.x = this._leftSide.scrollFactor.y = 0;
-         this._bg.y = this.Y_POS;
-         this._bg.x = FlxG.width / 2 - this._pxWidth;
-         this._bg.createGraphic(param1 * this._pixelsPerHp,8,419430400);
-         this._bg.scrollFactor.x = this._bg.scrollFactor.y = 0;
-         this._bg.scale.x = 1;
-         this._bar.y = this.Y_POS;
-         this._bar.x = FlxG.width / 2 - this._pxWidth;
-         this._bar.createGraphic(param1 * this._pixelsPerHp,8,4294736124);
-         this._bar.scrollFactor.x = this._bar.scrollFactor.y = 0;
-         this._bar.scale.x = 0.0;
-         this._border.visible = true;
-         this._bg.visible = true;
-         this._bar.visible = true;
-         this._leftSide.visible = true;
+         _pixelsPerHp = X_WIDTH / param1;
+         _pxWidth = (int)(param1 / 2 * _pixelsPerHp);
+         _border.y = Y_POS - 1;
+         _border.x = FlxG.width / 2 - _pxWidth - 1;
+         _border.createGraphic(param1 * _pixelsPerHp + 2,10,1073741823);
+         _border.scrollFactor.x = _border.scrollFactor.y = 0;
+         _leftSide.y = Y_POS - 1;
+         _leftSide.x = FlxG.width / 2 - _pxWidth - 1;
+         _leftSide.createGraphic(1,10,4294967295);
+         _leftSide.scrollFactor.x = _leftSide.scrollFactor.y = 0;
+         _bg.y = Y_POS;
+         _bg.x = FlxG.width / 2 - _pxWidth;
+         _bg.createGraphic(param1 * _pixelsPerHp,8,419430400);
+         _bg.scrollFactor.x = _bg.scrollFactor.y = 0;
+         _bg.scale.x = 1;
+         _bar.y = Y_POS;
+         _bar.x = FlxG.width / 2 - _pxWidth;
+         _bar.createGraphic(param1 * _pixelsPerHp,8,4294736124);
+         _bar.scrollFactor.x = _bar.scrollFactor.y = 0;
+         _bar.scale.x = 0.0;
+         _border.visible = true;
+         _bg.visible = true;
+         _bar.visible = true;
+         _leftSide.visible = true;
          _shown = true;
       }
       
       public function isShown() : Boolean
       {
-         return this._shown;
+         return _shown;
       }
       
       public function removeBar() : void
       {
-         this._bar.visible = false;
-         this._bg.visible = false;
-         this._border.visible = false;
-         this._leftSide.visible = false;
+         _bar.visible = false;
+         _bg.visible = false;
+         _border.visible = false;
+         _leftSide.visible = false;
          _shown = false;
       }
       
       public function setCurHp(param1:int) : void
       {
-         this._bar.x = FlxG.width / 2 - this._maxHp / 2 * this._pixelsPerHp * (1 + (1 - param1 / this._maxHp));
-         this._bar.scale.x = (int)(this._pxWidth * param1 / this._maxHp) / this._pxWidth;
+         _bar.x = FlxG.width / 2 - _maxHp / 2 * _pixelsPerHp * (1 + (1 - param1 / _maxHp));
+         _bar.scale.x = (int)(_pxWidth * param1 / _maxHp) / _pxWidth;
          _justFlashed = 1;
          if(param1 <= 0)
          {
-            this.removeBar();
+            removeBar();
          }
       }
       
@@ -108,9 +108,9 @@ package
             return;
          }
          super.update();
-         if(--this._justFlashed == 0)
+         if(--_justFlashed == 0)
          {
-            this._bar.unFlashColor();
+            _bar.unFlashColor();
          }
       }
    }

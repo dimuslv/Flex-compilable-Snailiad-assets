@@ -31,7 +31,7 @@ package
          var _loc1_:int = 0;
          while(_loc1_ < RING_NUM)
          {
-            this._rings[_loc1_] = null;
+            _rings[_loc1_] = null;
             _loc1_++;
          }
          _rings = null;
@@ -41,25 +41,25 @@ package
       public function Boss4RingCenter(param1:int, param2:int) : void
       {
          super(param1,param2,99999,0,0,true);
-         this._rings = new Array();
+         _rings = new Array();
          var _loc3_:int = 0;
          while(_loc3_ < RING_NUM)
          {
-            this._rings[_loc3_] = PlayState.enemyBulletPool.getBullet(8);
-            if(this._rings[_loc3_])
+            _rings[_loc3_] = PlayState.enemyBulletPool.getBullet(8);
+            if(_rings[_loc3_])
             {
-               this._rings[_loc3_].shoot(x,y,0,0,RING_LIFETIME);
+               _rings[_loc3_].shoot(x,y,0,0,RING_LIFETIME);
             }
             _loc3_++;
          }
-         this._theta = Math.atan2(PlayState.player.y - y,PlayState.player.x - x);
+         _theta = Math.atan2(PlayState.player.y - y,PlayState.player.x - x);
          if(PlayState.player._slugMode)
          {
-            this._acceleration = 170;
-            this.TURN_SPEED = 0.4;
+            _acceleration = 170;
+            TURN_SPEED = 0.4;
          }
          visible = false;
-         this.updateRingPos();
+         updateRingPos();
       }
       
       public function updateRingPos() : void
@@ -67,8 +67,8 @@ package
          var _loc1_:int = 0;
          while(_loc1_ < RING_NUM)
          {
-            this._rings[_loc1_].x = x + this._radius * Math.cos(this._ringTheta + 2 * Math.PI / RING_NUM * _loc1_);
-            this._rings[_loc1_].y = y + this._radius * Math.sin(this._ringTheta + 2 * Math.PI / RING_NUM * _loc1_);
+            _rings[_loc1_].x = x + _radius * Math.cos(_ringTheta + 2 * Math.PI / RING_NUM * _loc1_);
+            _rings[_loc1_].y = y + _radius * Math.sin(_ringTheta + 2 * Math.PI / RING_NUM * _loc1_);
             _loc1_++;
          }
       }
@@ -76,7 +76,7 @@ package
       public function updateAim() : void
       {
          var _loc1_:Number = Math.atan2(PlayState.player.y - y,PlayState.player.x - x);
-         var _loc2_:Number = _loc1_ - this._theta;
+         var _loc2_:Number = _loc1_ - _theta;
          while(_loc2_ > Math.PI)
          {
             _loc2_ -= 2 * Math.PI;
@@ -87,7 +87,7 @@ package
          }
          if(_loc2_ > 0)
          {
-            _theta += Math.PI * FlxG.elapsed * this.TURN_SPEED;
+            _theta += Math.PI * FlxG.elapsed * TURN_SPEED;
          }
       }
       
@@ -97,17 +97,17 @@ package
          {
             return;
          }
-         _radius += this.RADIUS_VEL * FlxG.elapsed;
+         _radius += RADIUS_VEL * FlxG.elapsed;
          _ringTheta += FlxG.elapsed * Math.PI * RING_THETA_VEL;
-         _velocity += this._acceleration * FlxG.elapsed;
-         velocity.x = this._velocity * Math.cos(this._theta);
-         velocity.y = this._velocity * Math.sin(this._theta);
-         this.updateRingPos();
-         this.updateAim();
+         _velocity += _acceleration * FlxG.elapsed;
+         velocity.x = _velocity * Math.cos(_theta);
+         velocity.y = _velocity * Math.sin(_theta);
+         updateRingPos();
+         updateAim();
          super.update();
          if(x > FlxG.MaxX + 250 || x + width < FlxG.MinX - 250 || y > FlxG.MaxY + 250 || y + height < FlxG.MinY - 250)
          {
-            this.kill();
+            kill();
          }
       }
       

@@ -433,6 +433,7 @@ package org.flixel
          var _loc9_:Boolean = false;
          var _loc16_:uint = 0;
          var _loc17_:uint = 0;
+         var _loc18_:FlxRect = null;
          var _loc24_:Number = NaN;
          var _loc25_:Number = NaN;
          var _loc26_:Number = NaN;
@@ -456,7 +457,7 @@ package org.flixel
          var _loc13_:* = _loc4_ == 0;
          var _loc14_:* = _loc4_ < 0;
          var _loc15_:* = _loc4_ > 0;
-         var _loc18_:FlxRect = param1.colHullX;
+         _loc18_ = param1.colHullX;
          var _loc19_:FlxRect = param2.colHullX;
          var _loc20_:Array = param1.colOffsets;
          var _loc21_:Array = param2.colOffsets;

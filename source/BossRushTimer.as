@@ -19,7 +19,7 @@ package
       public function BossRushTimer() : void
       {
          super(0,4,FlxG.width - 4);
-         this.now = new ShadowNumber();
+         now = new ShadowNumber();
          font = Fonts.normal;
          size = 20;
          color = 16777215;
@@ -27,9 +27,9 @@ package
          alignment = "right";
          scrollFactor.x = scrollFactor.y = 0;
          setShadowDistance(1);
-         this.now.value = 0;
-         this.going = false;
-         this.started = false;
+         now.value = 0;
+         going = false;
+         started = false;
       }
       
       public function padZero(param1:int) : String
@@ -43,12 +43,12 @@ package
       
       public function getTime() : String
       {
-         return int(this.now.value / 60).toString() + ":" + this.padZero(int(this.now.value % 60));
+         return int(now.value / 60).toString() + ":" + padZero(int(now.value % 60));
       }
       
       public function getTimeExact() : String
       {
-         return int(this.now.value / 60).toString() + ":" + this.padZero(int(this.now.value % 60)) + "." + this.padZero(int(this.now.value * 100 % 100));
+         return int(now.value / 60).toString() + ":" + padZero(int(now.value % 60)) + "." + padZero(int(now.value * 100 % 100));
       }
       
       override public function update() : void
@@ -57,12 +57,12 @@ package
          {
             return;
          }
-         if(this.going)
+         if(going)
          {
-            this.now.value += FlxG.elapsed;
-            text = this.getTime();
+            now.value += FlxG.elapsed;
+            text = getTime();
          }
-         visible = this.started;
+         visible = started;
          super.update();
       }
    }

@@ -35,29 +35,29 @@ package
       public function Boss4SecondFormBg() : void
       {
          super();
-         this._bg = new FlxSprite();
-         this._bg.scrollFactor.x = this._bg.scrollFactor.y = 0;
-         this._bg.createGraphic(FlxG.width,FlxG.height,4278190080);
-         this._bg.alpha = 0;
-         add(this._bg);
-         this._stars = new StarInwardLayer();
-         this._stars.makeStars();
-         this._stars.setAlpha(0);
-         add(this._stars);
-         this.r = 0;
-         this.g = 0;
-         this.b = 0;
-         this.setTargetRgb(48,0,48);
+         _bg = new FlxSprite();
+         _bg.scrollFactor.x = _bg.scrollFactor.y = 0;
+         _bg.createGraphic(FlxG.width,FlxG.height,4278190080);
+         _bg.alpha = 0;
+         add(_bg);
+         _stars = new StarInwardLayer();
+         _stars.makeStars();
+         _stars.setAlpha(0);
+         add(_stars);
+         r = 0;
+         g = 0;
+         b = 0;
+         setTargetRgb(48,0,48);
       }
       
       public function setColor(param1:uint) : void
       {
-         this._bg.flashColor(param1);
+         _bg.flashColor(param1);
       }
       
       public function setAlpha(param1:Number) : void
       {
-         if(this._oldAlpha == param1)
+         if(_oldAlpha == param1)
          {
             return;
          }
@@ -69,8 +69,8 @@ package
          {
             param1 = 0.0;
          }
-         this._bg.alpha = param1;
-         this._stars.setAlpha(param1);
+         _bg.alpha = param1;
+         _stars.setAlpha(param1);
          _oldAlpha = param1;
          var _loc2_:int = 0;
          while(_loc2_ < PlayState.doors.length)
@@ -95,7 +95,7 @@ package
       
       public function setRgb(param1:uint, param2:uint, param3:uint) : void
       {
-         var _loc4_:int = this._bg.alpha * 256;
+         var _loc4_:int = _bg.alpha * 256;
          if(_loc4_ > 255)
          {
             _loc4_ = 255;
@@ -128,7 +128,7 @@ package
          {
             param3 = 0;
          }
-         this.setColor((_loc4_ << 24) + (param1 << 16) + (param2 << 8) + param3);
+         setColor((_loc4_ << 24) + (param1 << 16) + (param2 << 8) + param3);
       }
       
       override public function update() : void
@@ -137,31 +137,31 @@ package
          {
             return;
          }
-         if(this._fadingOut)
+         if(_fadingOut)
          {
             _fade -= FlxG.elapsed * FADE_SPEED;
-            if(this._fade < 0)
+            if(_fade < 0)
             {
                _fade = 0;
             }
-            this.setAlpha(this._fade);
+            setAlpha(_fade);
          }
-         else if(this._fading)
+         else if(_fading)
          {
             _fade += FlxG.elapsed * FADE_SPEED;
-            if(this._fade >= 1)
+            if(_fade >= 1)
             {
                _fade = 1;
                _fading = false;
             }
-            this.setAlpha(this._fade);
+            setAlpha(_fade);
          }
          else
          {
-            r = Utility.integrate(this.r,this.targetR,this.bgColorSpeed,FlxG.elapsed);
-            g = Utility.integrate(this.g,this.targetG,this.bgColorSpeed,FlxG.elapsed);
-            b = Utility.integrate(this.b,this.targetB,this.bgColorSpeed,FlxG.elapsed);
-            this.setRgb(this.r,this.g,this.b);
+            r = Utility.integrate(r,targetR,bgColorSpeed,FlxG.elapsed);
+            g = Utility.integrate(g,targetG,bgColorSpeed,FlxG.elapsed);
+            b = Utility.integrate(b,targetB,bgColorSpeed,FlxG.elapsed);
+            setRgb(r,g,b);
          }
          super.update();
       }

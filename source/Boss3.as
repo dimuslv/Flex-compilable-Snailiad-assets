@@ -103,16 +103,16 @@ package
       override public function destroy() : void
       {
          var _loc1_:int = 0;
-         while(_loc1_ < this._shields.length)
+         while(_loc1_ < _shields.length)
          {
-            this._shields[_loc1_] = null;
+            _shields[_loc1_] = null;
             _loc1_++;
          }
          _shields = null;
          _loc1_ = 0;
-         while(_loc1_ < this._spawn.length)
+         while(_loc1_ < _spawn.length)
          {
-            this._spawn[_loc1_] = null;
+            _spawn[_loc1_] = null;
             _loc1_++;
          }
          _spawn = null;
@@ -121,7 +121,7 @@ package
       
       public function Boss3(param1:int, param2:int) : void
       {
-         this._shotNum = this.SHOT_NUM;
+         _shotNum = SHOT_NUM;
          super(param1,param2,MAX_HP,DEFENSE,OFFENSE);
          loadGraphic(Art.Boss3,true,true,IMG_WIDTH,IMG_HEIGHT);
          width = IMG_WIDTH;
@@ -136,23 +136,23 @@ package
          addAnimation("right1",[7]);
          addAnimation("down1",[8]);
          addAnimation("mid1",[9]);
-         this.playAnim("mid");
+         playAnim("mid");
          Music.playBoss1();
          PlayState.player.x += 20;
          if(PlayState.player._slugMode)
          {
-            this.SHOT_NUM += 2;
-            this._bossSpeed += 0.2;
+            SHOT_NUM += 2;
+            _bossSpeed += 0.2;
          }
-         this._spawn = new Array();
-         this._shields = new Array();
+         _spawn = new Array();
+         _shields = new Array();
       }
       
       public function getDecision() : Number
       {
-         ++this._decisionTableIndex;
+         ++_decisionTableIndex;
          _decisionTableIndex %= DECISION_TABLE.length;
-         return DECISION_TABLE[this._decisionTableIndex];
+         return DECISION_TABLE[_decisionTableIndex];
       }
       
       public function stomp() : void
@@ -166,24 +166,24 @@ package
          acceleration.y = 0;
          velocity.x = 0;
          velocity.y = 0;
-         _lastMode = this._mode;
+         _lastMode = _mode;
          _mode = MODE_WAIT;
          _modeTimeout = MODE_TIMEOUT;
       }
       
       override public function hitSide(param1:FlxObject, param2:Number) : void
       {
-         this.stomp();
+         stomp();
       }
       
       override public function hitBottom(param1:FlxObject, param2:Number) : void
       {
-         this.stomp();
+         stomp();
       }
       
       override public function hitTop(param1:FlxObject, param2:Number) : void
       {
-         this.stomp();
+         stomp();
       }
       
       override public function touch(param1:Player) : void
@@ -196,15 +196,15 @@ package
          var _loc1_:int = 0;
          while(_loc1_ < SHIELDS_REALMAX)
          {
-            this._shields[_loc1_] = new Boss3Shield();
-            PlayState.enemiesNoCollide.add(this._shields[_loc1_]);
+            _shields[_loc1_] = new Boss3Shield();
+            PlayState.enemiesNoCollide.add(_shields[_loc1_]);
             _loc1_++;
          }
-         this.updateShieldPositions();
+         updateShieldPositions();
          _loc1_ = 0;
          while(_loc1_ < SHIELDS_START)
          {
-            this._shields[_loc1_].create();
+            _shields[_loc1_].create();
             _loc1_++;
          }
          _createdChildren = true;
@@ -215,27 +215,27 @@ package
          var _loc1_:int = 0;
          while(_loc1_ < SHIELDS_REALMAX)
          {
-            var _loc2_:Number = (this._elapsed / SHIELDS_PERIOD % 1 * SHIELDS_MAX + 17 * (_loc1_ + 8) % SHIELDS_REALMAX) % SHIELDS_MAX;
+            var _loc2_:Number = (_elapsed / SHIELDS_PERIOD % 1 * SHIELDS_MAX + 17 * (_loc1_ + 8) % SHIELDS_REALMAX) % SHIELDS_MAX;
             var _loc3_:Number = _loc2_ % 9;
             if(_loc2_ < 9)
             {
-               this._shields[_loc1_].x = x - 16 + 16 * _loc3_;
-               this._shields[_loc1_].y = y - 16;
+               _shields[_loc1_].x = x - 16 + 16 * _loc3_;
+               _shields[_loc1_].y = y - 16;
             }
             else if(_loc2_ < 18)
             {
-               this._shields[_loc1_].x = x - 16 + 16 * 9;
-               this._shields[_loc1_].y = y - 16 + 16 * _loc3_;
+               _shields[_loc1_].x = x - 16 + 16 * 9;
+               _shields[_loc1_].y = y - 16 + 16 * _loc3_;
             }
             else if(_loc2_ < 27)
             {
-               this._shields[_loc1_].x = x - 16 + 16 * 9 - 16 * _loc3_;
-               this._shields[_loc1_].y = y - 16 + 16 * 9;
+               _shields[_loc1_].x = x - 16 + 16 * 9 - 16 * _loc3_;
+               _shields[_loc1_].y = y - 16 + 16 * 9;
             }
             else
             {
-               this._shields[_loc1_].x = x - 16;
-               this._shields[_loc1_].y = y - 16 + 16 * 9 - 16 * _loc3_;
+               _shields[_loc1_].x = x - 16;
+               _shields[_loc1_].y = y - 16 + 16 * 9 - 16 * _loc3_;
             }
             _loc1_++;
          }
@@ -248,66 +248,66 @@ package
          {
             _loc1_ = SHIELDS_REALMAX;
          }
-         while(_loc1_ > this._shieldNum)
+         while(_loc1_ > _shieldNum)
          {
-            this._shields[this._shieldNum++].create();
+            _shields[_shieldNum++].create();
          }
       }
       
       public function playAnim(param1:String) : void
       {
-         play(param1 + this._attackMode.toString());
+         play(param1 + _attackMode.toString());
          _lastAnim = param1;
       }
       
       public function attackUp() : void
       {
-         _lastMode = this._mode;
+         _lastMode = _mode;
          _mode = MODE_UP;
-         acceleration.y = -this.ACCEL * this._bossSpeed;
-         this.playAnim("up");
+         acceleration.y = -ACCEL * _bossSpeed;
+         playAnim("up");
       }
       
       public function attackDown() : void
       {
-         _lastMode = this._mode;
+         _lastMode = _mode;
          _mode = MODE_DOWN;
-         acceleration.y = this.ACCEL * this._bossSpeed;
-         this.playAnim("down");
+         acceleration.y = ACCEL * _bossSpeed;
+         playAnim("down");
       }
       
       public function attackLeft() : void
       {
-         _lastMode = this._mode;
+         _lastMode = _mode;
          _mode = MODE_LEFT;
-         acceleration.x = -this.ACCEL * this._bossSpeed;
-         this.playAnim("left");
+         acceleration.x = -ACCEL * _bossSpeed;
+         playAnim("left");
       }
       
       public function attackRight() : void
       {
-         _lastMode = this._mode;
+         _lastMode = _mode;
          _mode = MODE_RIGHT;
-         acceleration.x = this.ACCEL * this._bossSpeed;
-         this.playAnim("right");
+         acceleration.x = ACCEL * _bossSpeed;
+         playAnim("right");
       }
       
       public function makeSpawn() : void
       {
-         this.playAnim("mid");
-         if(this.countSpawn() < MAX_SPAWN)
+         playAnim("mid");
+         if(countSpawn() < MAX_SPAWN)
          {
-            if(this._attackMode == 0)
+            if(_attackMode == 0)
             {
-               this._spawn.push(PlayState.enemies.add(new Boss3Spawn(x + 32,y + 32,this._attackMode,true)));
-               this._spawn.push(PlayState.enemies.add(new Boss3Spawn(x + 32,y + 32,this._attackMode,false)));
+               _spawn.push(PlayState.enemies.add(new Boss3Spawn(x + 32,y + 32,_attackMode,true)));
+               _spawn.push(PlayState.enemies.add(new Boss3Spawn(x + 32,y + 32,_attackMode,false)));
             }
             else
             {
-               this._spawn.push(PlayState.enemies.add(new Boss3Spawn(x + 0,y + 0,this._attackMode,false)));
-               this._spawn.push(PlayState.enemies.add(new Boss3Spawn(x + 0,y + 64,this._attackMode,true)));
-               this._spawn.push(PlayState.enemies.add(new Boss3Spawn(x + 64,y + 64,this._attackMode,false)));
-               this._spawn.push(PlayState.enemies.add(new Boss3Spawn(x + 64,y + 0,this._attackMode,true)));
+               _spawn.push(PlayState.enemies.add(new Boss3Spawn(x + 0,y + 0,_attackMode,false)));
+               _spawn.push(PlayState.enemies.add(new Boss3Spawn(x + 0,y + 64,_attackMode,true)));
+               _spawn.push(PlayState.enemies.add(new Boss3Spawn(x + 64,y + 64,_attackMode,false)));
+               _spawn.push(PlayState.enemies.add(new Boss3Spawn(x + 64,y + 0,_attackMode,true)));
             }
          }
          _mode = MODE_WAIT;
@@ -319,7 +319,7 @@ package
          var _loc1_:EnemyBulletRotaryPea = PlayState.enemyBulletPool.getBullet(7) as EnemyBulletRotaryPea;
          if(_loc1_)
          {
-            _loc1_.shootRotary(x + width / 2,y + height / 2,60,4,Math.PI * 2 / this.SHOT_NUM * this._shotNum);
+            _loc1_.shootRotary(x + width / 2,y + height / 2,60,4,Math.PI * 2 / SHOT_NUM * _shotNum);
          }
          if(_loc1_.onScreen() && !_loc1_.dead)
          {
@@ -333,29 +333,29 @@ package
          {
             return;
          }
-         switch(this._shootMode)
+         switch(_shootMode)
          {
             case SHOOTMODE_WAIT_CLUSTER:
-               _clusterTimeout -= FlxG.elapsed * this._bossSpeed;
-               if(this._clusterTimeout <= 0)
+               _clusterTimeout -= FlxG.elapsed * _bossSpeed;
+               if(_clusterTimeout <= 0)
                {
                   _shootMode = SHOOTMODE_ATTACK;
-                  _shotNum = this.SHOT_NUM;
+                  _shotNum = SHOT_NUM;
                   _shotTimeout = 0;
                }
                break;
             case SHOOTMODE_ATTACK:
-               _shotTimeout -= FlxG.elapsed * this._bossSpeed;
-               if(this._shotTimeout <= 0)
+               _shotTimeout -= FlxG.elapsed * _bossSpeed;
+               if(_shotTimeout <= 0)
                {
-                  --this._shotNum;
-                  if(this._shotNum <= 0)
+                  --_shotNum;
+                  if(_shotNum <= 0)
                   {
                      _shootMode = SHOOTMODE_WAIT_CLUSTER;
-                     _clusterTimeout = this.CLUSTER_TIMEOUT;
+                     _clusterTimeout = CLUSTER_TIMEOUT;
                   }
-                  _shotTimeout = this.SHOT_TIMEOUT;
-                  this.shoot();
+                  _shotTimeout = SHOT_TIMEOUT;
+                  shoot();
                }
 			   break;
          }
@@ -365,11 +365,11 @@ package
       {
          if(PlayState.player.y < y + height / 2)
          {
-            this.attackUp();
+            attackUp();
          }
          else
          {
-            this.attackDown();
+            attackDown();
          }
       }
       
@@ -377,52 +377,52 @@ package
       {
          if(PlayState.player.x < x + width / 2)
          {
-            this.attackLeft();
+            attackLeft();
          }
          else
          {
-            this.attackRight();
+            attackRight();
          }
       }
       
       public function checkMode() : void
       {
-         _modeTimeout -= FlxG.elapsed * this._bossSpeed;
-         if(this._mode == MODE_WAIT && this._modeTimeout < 0)
+         _modeTimeout -= FlxG.elapsed * _bossSpeed;
+         if(_mode == MODE_WAIT && _modeTimeout < 0)
          {
-            --this._spawnCounter;
-            if(this._spawnCounter <= 0)
+            --_spawnCounter;
+            if(_spawnCounter <= 0)
             {
                _spawnCounter = SPAWN_COUNTER;
-               this.makeSpawn();
+               makeSpawn();
             }
             else
             {
-               switch(this._lastMode)
+               switch(_lastMode)
                {
                   case MODE_INTRO1:
-                     this.attackUp();
+                     attackUp();
                      break;
                   case MODE_RIGHT:
                   case MODE_LEFT:
-                     if(this.getDecision() < 0.75)
+                     if(getDecision() < 0.75)
                      {
-                        this.attackVert();
+                        attackVert();
                      }
                      else
                      {
-                        this.attackHoriz();
+                        attackHoriz();
                      }
                      break;
                   case MODE_UP:
                   case MODE_DOWN:
-                     if(this.getDecision() < 0.75)
+                     if(getDecision() < 0.75)
                      {
-                        this.attackHoriz();
+                        attackHoriz();
                      }
                      else
                      {
-                        this.attackVert();
+                        attackVert();
                      }
 					 break;
                }
@@ -438,24 +438,24 @@ package
          }
          if(PlayState.player._slugMode)
          {
-            if(this._elapsed > 2.2 && this._elapsed < 2.9)
+            if(_elapsed > 2.2 && _elapsed < 2.9)
             {
                PlayState.player.velocity.x = PlayState.player._runSpeed.value;
             }
          }
-         else if(this._elapsed > 2.7 && this._elapsed < 3.4)
+         else if(_elapsed > 2.7 && _elapsed < 3.4)
          {
             PlayState.player.velocity.x = PlayState.player._runSpeed.value;
          }
-         if(!this._createdChildren)
+         if(!_createdChildren)
          {
-            this.createChildren();
+            createChildren();
          }
          _elapsed += FlxG.elapsed;
-         this.checkMode();
-         this.checkShoot();
-         this.addNewShields();
-         this.updateShieldPositions();
+         checkMode();
+         checkShoot();
+         addNewShields();
+         updateShieldPositions();
          super.update();
       }
       
@@ -463,9 +463,9 @@ package
       {
          var _loc1_:int = 0;
          var _loc2_:int = 0;
-         while(_loc2_ < this._spawn.length)
+         while(_loc2_ < _spawn.length)
          {
-            if(this._spawn[_loc2_] && !this._spawn[_loc2_].dead)
+            if(_spawn[_loc2_] && !_spawn[_loc2_].dead)
             {
                _loc1_++;
             }
@@ -490,13 +490,13 @@ package
          var _loc1_:int = 0;
          while(_loc1_ < SHIELDS_REALMAX)
          {
-            this._shields[_loc1_].kill();
+            _shields[_loc1_].kill();
             _loc1_++;
          }
          _loc1_ = 0;
-         while(_loc1_ < this._spawn.length)
+         while(_loc1_ < _spawn.length)
          {
-            this._spawn[_loc1_].kill();
+            _spawn[_loc1_].kill();
             _loc1_++;
          }
          Music.playArea3();
@@ -509,23 +509,23 @@ package
       override public function hurt(param1:Number) : void
       {
          var _loc2_:int = 0;
-         if(_hp <= MAX_HP * 0.3 && this._attackMode < 1)
+         if(_hp <= MAX_HP * 0.3 && _attackMode < 1)
          {
             _bossSpeed += 0.5;
             _attackMode = 1;
             _loc2_ = 0;
-            while(_loc2_ < this._spawn.length)
+            while(_loc2_ < _spawn.length)
             {
-               if(!this._spawn[_loc2_].dead)
+               if(!_spawn[_loc2_].dead)
                {
-                  this._spawn[_loc2_].makeBlue();
+                  _spawn[_loc2_].makeBlue();
                }
                _loc2_++;
             }
             SHOT_NUM = 6;
             CLUSTER_TIMEOUT = 4.1;
             SHOT_TIMEOUT = 0.2;
-            this.playAnim(this._lastAnim);
+            playAnim(_lastAnim);
          }
          super.hurt(param1);
       }
