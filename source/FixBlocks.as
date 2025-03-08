@@ -8,10 +8,9 @@ package
       
       public function destroy() : void
       {
-         var _loc1_:String = null;
-         for(_loc1_ in blocks)
+         for(var i:String in blocks)
          {
-            blocks[_loc1_] = null;
+            blocks[i] = null;
          }
          blocks = null;
       }
@@ -28,11 +27,9 @@ package
       
       public function repairAll() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < blocks.length)
+         for (var i:int = 0; i < blocks.length; i++)
          {
-            blocks[_loc1_].repair();
-            _loc1_++;
+            blocks[i].repair();
          }
          blocks = new Array();
       }

@@ -32,23 +32,17 @@ package
          add(_bg);
          fadeIn();
          _spirals = new Array();
-         var _loc1_:int = 0;
-         while(_loc1_ < 6)
+         for (var i:int = 0; i < 6; i++)
          {
-            var _loc3_:int = 0;
-            while(_loc3_ < 6)
+            for (var j:int = 0; j < 6; j++)
             {
-               _spirals.push(new IntroSpiral(82 * _loc3_ + _loc1_ % 2 * 41,56 * _loc1_));
-               _loc3_++;
+               _spirals.push(new IntroSpiral(82 * j + i % 2 * 41,56 * i));
             }
-            _loc1_++;
          }
-         var _loc2_:int = 0;
-         while(_loc2_ < _spirals.length)
+         for (var k:int = 0; k < _spirals.length; k++)
          {
-            _spirals[_loc2_].alpha = _bg.alpha / 7;
-            add(_spirals[_loc2_]);
-            _loc2_++;
+            _spirals[k].alpha = _bg.alpha / 7;
+            add(_spirals[k]);
          }
       }
       
@@ -91,11 +85,9 @@ package
             }
             _bg.alpha = _fade;
          }
-         var _loc1_:int = 0;
-         while(_loc1_ < _spirals.length)
+         for (var i:int = 0; i < _spirals.length; i++)
          {
-            _spirals[_loc1_].alpha = _bg.alpha / 7;
-            _loc1_++;
+            _spirals[i].alpha = _bg.alpha / 7;
          }
          super.update();
       }

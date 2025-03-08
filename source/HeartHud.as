@@ -24,9 +24,9 @@ package
       
       override public function destroy() : void
       {
-         for(var _loc1_:String in _hearts)
+         for(var i:String in _hearts)
          {
-            _hearts[_loc1_] = null;
+            _hearts[i] = null;
          }
          _hearts = null;
          super.destroy();
@@ -35,14 +35,12 @@ package
       public function HeartHud() : void
       {
          _hearts = new Array();
-         var _loc1_:int = 0;
-         while(_loc1_ < HEARTS_MAX)
+         for (var i:int = 0; i < HEARTS_MAX; i++)
          {
-            var _loc2_:int = POS_X + _loc1_ % HEARTS_PER_ROW * HEART_WIDTH;
-            var _loc3_:int = POS_Y + (int)(_loc1_ / HEARTS_PER_ROW) * HEART_HEIGHT;
-            _hearts[_loc1_] = new HeartHudSingle(_loc2_,_loc3_);
-            add(_hearts[_loc1_]);
-            _loc1_++;
+            var _loc2_:int = POS_X + i % HEARTS_PER_ROW * HEART_WIDTH;
+            var _loc3_:int = POS_Y + (int)(i / HEARTS_PER_ROW) * HEART_HEIGHT;
+            _hearts[i] = new HeartHudSingle(_loc2_,_loc3_);
+            add(_hearts[i]);
          }
          setMaxHp(6);
          setCurHp(6);
@@ -61,11 +59,9 @@ package
             _loc3_ *= 4;
             _loc3_ /= param2.hpPerHeart();
          }
-         var _loc4_:int = 0;
-         while(_loc4_ < HEARTS_MAX)
+         for (var i:int = 0; i < HEARTS_MAX; i++)
          {
-            _hearts[_loc4_].visible = _loc4_ < _loc3_ / 4;
-            _loc4_++;
+            _hearts[i].visible = i < _loc3_ / 4;
          }
       }
       
@@ -82,18 +78,16 @@ package
             _loc3_ *= 4;
             _loc3_ /= param2.hpPerHeart();
          }
-         var _loc4_:int = 0;
-         while(_loc4_ < HEARTS_MAX)
+         for (var i:int = 0; i < HEARTS_MAX; i++)
          {
-            if(int(_loc3_ / 4) == _loc4_)
+            if(int(_loc3_ / 4) == i)
             {
-               _hearts[_loc4_].play((_loc3_ % 4).toString());
+               _hearts[i].play((_loc3_ % 4).toString());
             }
             else
             {
-               _hearts[_loc4_].play(_loc4_ < _loc3_ / 4 ? "full" : "empty");
+               _hearts[i].play(i < _loc3_ / 4 ? "full" : "empty");
             }
-            _loc4_++;
          }
          if(_loc3_ <= 0)
          {

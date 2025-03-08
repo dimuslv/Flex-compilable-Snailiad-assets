@@ -125,101 +125,77 @@ package
          add(mapRate);
          mapRate.visible = false;
          _map = new Array();
-         var _loc1_:int = 0;
-         while(_loc1_ < SIZE_Y)
+         for (var i:int = 0; i < SIZE_Y; i++)
          {
-            _map[_loc1_] = new Array();
-            var _loc2_:int = 0;
-            while(_loc2_ < SIZE_X)
+            _map[i] = new Array();
+            for (var j:int = 0; j < SIZE_X; j++)
             {
-               _map[_loc1_][_loc2_] = -1;
-               _loc2_++;
+               _map[i][j] = -1;
             }
-            _loc1_++;
          }
          _known = new Array();
-         _loc1_ = 0;
-         while(_loc1_ < SIZE_Y)
+         for (i = 0; i < SIZE_Y; i++)
          {
-            _known[_loc1_] = new Array();
-            _loc2_ = 0;
-            while(_loc2_ < SIZE_X)
+            _known[i] = new Array();
+            for (j = 0; j < SIZE_X; j++)
             {
-               _known[_loc1_][_loc2_] = false;
-               _loc2_++;
+               _known[i][j] = false;
             }
-            _loc1_++;
          }
          _special = new Array();
-         _loc1_ = 0;
-         while(_loc1_ < SIZE_Y)
+         for (i = 0; i < SIZE_Y; i++)
          {
-            _special[_loc1_] = new Array();
-            _loc2_ = 0;
-            while(_loc2_ < SIZE_X)
+            _special[i] = new Array();
+            for (j = 0; j < SIZE_X; j++)
             {
-               _special[_loc1_][_loc2_] = SPECIAL_NONE;
-               _loc2_++;
+               _special[i][j] = SPECIAL_NONE;
             }
-            _loc1_++;
          }
          _display = new Array();
-         _loc1_ = 0;
-         while(_loc1_ < MAX_MAP_ROWS)
+         for (i = 0; i < MAX_MAP_ROWS; i++)
          {
-            _display[_loc1_] = new Array();
-            _loc2_ = 0;
-            while(_loc2_ < MAX_MAP_COLS)
+            _display[i] = new Array();
+            for (j = 0; j < MAX_MAP_COLS; j++)
             {
                var _loc3_:FlxSprite = new FlxSprite();
                _loc3_.loadGraphic(Art.MiniMapSheet,false,false,TILE_WIDTH,TILE_HEIGHT);
-               _loc3_.x = getXPos() + _loc2_ * TILE_WIDTH;
-               _loc3_.y = getYPos() + _loc1_ * TILE_HEIGHT;
+               _loc3_.x = getXPos() + j * TILE_WIDTH;
+               _loc3_.y = getYPos() + i * TILE_HEIGHT;
                _loc3_.exists = true;
                _loc3_.solid = false;
                _loc3_.scrollFactor.x = _loc3_.scrollFactor.y = 0;
                _loc3_.active = false;
                add(_loc3_);
-               _display[_loc1_][_loc2_] = _loc3_;
-               var _loc4_:int = 0;
-               while(_loc4_ < 240)
+               _display[i][j] = _loc3_;
+               for (var k:int = 0; k < 240; k++)
                {
-                  _loc3_.addAnimation(_loc4_.toString(),[_loc4_]);
+                  _loc3_.addAnimation(k.toString(),[k]);
                   _loc3_.play(BLANK_TILE);
-                  _loc4_++;
                }
-               _loc2_++;
             }
-            _loc1_++;
          }
          _specialDisplay = new Array();
-         _loc1_ = 0;
-         while(_loc1_ < MAX_MAP_ROWS)
+         for (i = 0; i < MAX_MAP_ROWS; i++)
          {
-            _specialDisplay[_loc1_] = new Array();
-            _loc2_ = 0;
-            while(_loc2_ < MAX_MAP_COLS)
+            _specialDisplay[i] = new Array();
+            for (j = 0; j < MAX_MAP_COLS; j++)
             {
                _loc3_ = new FlxSprite();
                _loc3_.loadGraphic(Art.MiniMapSpecialSheet,false,false,TILE_WIDTH,TILE_HEIGHT);
-               _loc3_.x = getXPos() + _loc2_ * TILE_WIDTH;
-               _loc3_.y = getYPos() + _loc1_ * TILE_HEIGHT;
+               _loc3_.x = getXPos() + j * TILE_WIDTH;
+               _loc3_.y = getYPos() + i * TILE_HEIGHT;
                _loc3_.exists = true;
                _loc3_.solid = false;
                _loc3_.scrollFactor.x = _loc3_.scrollFactor.y = 0;
                _loc3_.active = false;
                add(_loc3_);
-               _specialDisplay[_loc1_][_loc2_] = _loc3_;
-               _loc4_ = 0;
-               while(_loc4_ < 5)
+               _specialDisplay[i][j] = _loc3_;
+               for (k = 0; k < 5; k++)
                {
-                  _loc3_.addAnimation(_loc4_.toString(),[_loc4_]);
+                  _loc3_.addAnimation(k.toString(),[k]);
                   _loc3_.play("0");
-                  _loc4_++;
                }
-               _loc2_++;
             }
-            _loc1_++;
          }
          _center = new FlxSprite();
          _center.loadGraphic(Art.MiniMapCenter,true,false,TILE_WIDTH,TILE_HEIGHT);
@@ -327,19 +303,15 @@ package
       {
          var _loc1_:int = getXPos();
          var _loc2_:int = getYPos() + subOfsY + subscreen.panel.y;
-         var _loc3_:int = 0;
-         while(_loc3_ < MAX_MAP_ROWS)
+         for (var i:int = 0; i < MAX_MAP_ROWS; i++)
          {
-            var _loc8_:int = 0;
-            while(_loc8_ < MAX_MAP_COLS)
+            for (var j:int = 0; j < MAX_MAP_COLS; j++)
             {
-               _display[_loc3_][_loc8_].x = _loc1_ + _loc8_ * TILE_WIDTH;
-               _display[_loc3_][_loc8_].y = _loc2_ + _loc3_ * TILE_HEIGHT;
-               _specialDisplay[_loc3_][_loc8_].x = _loc1_ + _loc8_ * TILE_WIDTH;
-               _specialDisplay[_loc3_][_loc8_].y = _loc2_ + _loc3_ * TILE_HEIGHT;
-               _loc8_++;
+               _display[i][j].x = _loc1_ + j * TILE_WIDTH;
+               _display[i][j].y = _loc2_ + i * TILE_HEIGHT;
+               _specialDisplay[i][j].x = _loc1_ + j * TILE_WIDTH;
+               _specialDisplay[i][j].y = _loc2_ + i * TILE_HEIGHT;
             }
-            _loc3_++;
          }
          var _loc4_:int = PlayState.player.x / 16 / ROOM_WIDTH;
          var _loc5_:int = PlayState.player.y / 16 / ROOM_HEIGHT;
@@ -360,21 +332,17 @@ package
          subOfsY = param3;
          var _loc4_:int = getXPos();
          var _loc5_:int = getYPos() + param3;
-         var _loc6_:int = 0;
-         while(_loc6_ < MAX_MAP_ROWS)
+         for (var i:int = 0; i < MAX_MAP_ROWS; i++)
          {
-            var _loc11_:int = 0;
-            while(_loc11_ < MAX_MAP_COLS)
+            for (var j:int = 0; j < MAX_MAP_COLS; j++)
             {
-               _display[_loc6_][_loc11_].visible = _loc6_ < param2 && _loc11_ < param1;
-               _display[_loc6_][_loc11_].x = _loc4_ + _loc11_ * TILE_WIDTH;
-               _display[_loc6_][_loc11_].y = _loc5_ + _loc6_ * TILE_HEIGHT;
-               _specialDisplay[_loc6_][_loc11_].visible = _loc6_ < param2 && _loc11_ < param1;
-               _specialDisplay[_loc6_][_loc11_].x = _loc4_ + _loc11_ * TILE_WIDTH;
-               _specialDisplay[_loc6_][_loc11_].y = _loc5_ + _loc6_ * TILE_HEIGHT;
-               _loc11_++;
+               _display[i][j].visible = i < param2 && j < param1;
+               _display[i][j].x = _loc4_ + j * TILE_WIDTH;
+               _display[i][j].y = _loc5_ + i * TILE_HEIGHT;
+               _specialDisplay[i][j].visible = i < param2 && j < param1;
+               _specialDisplay[i][j].x = _loc4_ + j * TILE_WIDTH;
+               _specialDisplay[i][j].y = _loc5_ + i * TILE_HEIGHT;
             }
-            _loc6_++;
          }
          var _loc7_:int = PlayState.player.x / 16 / ROOM_WIDTH;
          var _loc8_:int = PlayState.player.y / 16 / ROOM_HEIGHT;
@@ -409,24 +377,22 @@ package
          var _loc10_:int = getYPos();
          _center.x = _loc9_ + TILE_WIDTH * _loc5_;
          _center.y = _loc10_ + TILE_HEIGHT * _loc6_ + subOfsY;
-         var _loc11_:int = 0;
-         while(_loc11_ < mapRows)
+         for (var i:int = 0; i < mapRows; i++)
          {
-            var _loc12_:int = 0;
-            while(_loc12_ < mapCols)
+            for (var j:int = 0; j < mapCols; j++)
             {
-               var _loc13_:int = _loc4_ ? _loc12_ : _loc2_ + _loc12_ + _loc7_;
-               var _loc14_:int = _loc4_ ? _loc11_ : _loc3_ + _loc11_ + _loc8_;
+               var _loc13_:int = _loc4_ ? j : _loc2_ + j + _loc7_;
+               var _loc14_:int = _loc4_ ? i : _loc3_ + i + _loc8_;
                if(_loc14_ < 0 || _loc13_ < 0 || _loc14_ >= SIZE_Y || _loc13_ >= SIZE_X || _map[_loc14_][_loc13_] < 0 || !_known[_loc14_][_loc13_])
                {
-                  _display[_loc11_][_loc12_].play(BLANK_TILE);
-                  _specialDisplay[_loc11_][_loc12_].play("0");
+                  _display[i][j].play(BLANK_TILE);
+                  _specialDisplay[i][j].play("0");
                }
                else
                {
-                  _display[_loc11_][_loc12_].play(_map[_loc14_][_loc13_].toString());
-                  _specialDisplay[_loc11_][_loc12_].play(_special[_loc14_][_loc13_].toString());
-                  if(_loc11_ == _loc6_ && _loc12_ == _loc5_)
+                  _display[i][j].play(_map[_loc14_][_loc13_].toString());
+                  _specialDisplay[i][j].play(_special[_loc14_][_loc13_].toString());
+                  if(i == _loc6_ && j == _loc5_)
                   {
                      if(_special[_loc14_][_loc13_] == SPECIAL_NONE)
                      {
@@ -438,9 +404,7 @@ package
                      }
                   }
                }
-               _loc12_++;
             }
-            _loc11_++;
          }
       }
       
@@ -478,11 +442,10 @@ package
       public function saveAll() : void
       {
          var _loc1_:XML = <mapData/>;
-         var _loc2_:int = 0;
-         while(_loc2_ < knownList.length)
+         for (var i:int = 0; i < knownList.length; i++)
          {
-            var _loc3_:int = knownList[_loc2_].x;
-            var _loc4_:int = knownList[_loc2_].y;
+            var _loc3_:int = knownList[i].x;
+            var _loc4_:int = knownList[i].y;
             var _loc5_:int = _loc3_ / 16 / ROOM_WIDTH;
             var _loc6_:int = _loc4_ / 16 / ROOM_HEIGHT;
             var _loc7_:XML = <k/>;
@@ -493,7 +456,6 @@ package
             _loc7_.@k = _map[_loc6_][_loc5_];
             _loc7_.@l = _special[_loc6_][_loc5_];
             _loc1_.appendChild(_loc7_);
-            _loc2_++;
          }
          if(PlayState.saveData.xml.mapData != null)
          {

@@ -608,12 +608,10 @@ package
          {
             _loc1_ = menuOfsY;
          }
-         var _loc2_:int = 0;
-         while(_loc2_ < optionNum)
+         for (var i:int = 0; i < optionNum; i++)
          {
-            optionTextY[_loc2_] = _loc1_ + 20 * _loc2_;
-            optionText[_loc2_].y = optionTextY[_loc2_];
-            _loc2_++;
+            optionTextY[i] = _loc1_ + 20 * i;
+            optionText[i].y = optionTextY[i];
          }
          setOption(curOption,true);
       }
@@ -663,11 +661,9 @@ package
             menuScrollY = 0;
          }
          justScrolled = _loc6_ != menuScrollY;
-         var _loc7_:int = 0;
-         while(_loc7_ < optionNum)
+         for (var i:int = 0; i < optionNum; i++)
          {
-            optionText[_loc7_].y = optionTextY[_loc7_] - menuScrollY;
-            _loc7_++;
+            optionText[i].y = optionTextY[i] - menuScrollY;
          }
          setOption(curOption,true);
       }
@@ -1750,14 +1746,12 @@ package
          justinSnailyElapsed += FlxG.elapsed;
          var _loc1_:Array = [0,2.0022,2.26774,2.44484,2.60571,2.71435,2.85117,3.65991,3.80471,4.02601,4.15476,4.36403,4.55724,5.6];
          var _loc2_:int;
-		 var _loc3_:int = 0;
-         while(_loc3_ < _loc1_.length)
+         for (var i:int = 0; i < _loc1_.length; i++)
          {
-            if(justinSnailyElapsed > _loc1_[_loc3_])
+            if(justinSnailyElapsed > _loc1_[i])
             {
-               _loc2_ = _loc3_;
+               _loc2_ = i;
             }
-            _loc3_++;
          }
          if(FlxG.keys.justPressed("ESCAPE"))
          {
@@ -1840,8 +1834,6 @@ package
       
       override public function update() : void
       {
-         var _loc1_:int = 0;
-         var _loc2_:int = 0;
          if(PlayState.realState != PlayState.STATE_MENU)
          {
             super.update();
@@ -1989,50 +1981,46 @@ package
          if(FlxG.mouse.justPressed())
          {
             lastWasMouse = true;
-            _loc1_ = 0;
-            while(_loc1_ < optionNum)
+            for (var i:int = 0; i < optionNum; i++)
             {
-               if(actions[_loc1_] == null)
+               if(actions[i] == null)
 			   {
 			   }
 			   else
                {
-                  _loc2_ = FlxG.width / 2 - optionTextWidth[_loc1_] / 2 + optionText[_loc1_].x;
-                  if(FlxG.mouse.screenX > _loc2_ && FlxG.mouse.screenX < _loc2_ + optionTextWidth[_loc1_] && FlxG.mouse.screenY > optionText[_loc1_].y && FlxG.mouse.screenY < optionText[_loc1_].y + optionText[_loc1_].height - 2)
+                  var _loc2_:int = FlxG.width / 2 - optionTextWidth[i] / 2 + optionText[i].x;
+                  if(FlxG.mouse.screenX > _loc2_ && FlxG.mouse.screenX < _loc2_ + optionTextWidth[i] && FlxG.mouse.screenY > optionText[i].y && FlxG.mouse.screenY < optionText[i].y + optionText[i].height - 2)
                   {
-                     doOption(_loc1_);
+                     doOption(i);
                      break;
                   }
                }
-               _loc1_++;
             }
          }
          else if(FlxG.mouse.justMoved || lastWasMouse && justScrolled)
          {
             lastWasMouse = true;
-            _loc1_ = 0;
-            while(_loc1_ < optionNum)
+            for (i = 0; i < optionNum; i++)
             {
-               if(actions[_loc1_] == null)
+               if(actions[i] == null)
 			   {
 			   }
 			   else
                {
-                  if(_loc1_ == curOption)
+                  if(i == curOption)
 				  {
 				  }
 				  else
                   {
-                     _loc2_ = FlxG.width / 2 - optionTextWidth[_loc1_] / 2 + optionText[_loc1_].x;
-                     if(FlxG.mouse.screenX > _loc2_ && FlxG.mouse.screenX < _loc2_ + optionTextWidth[_loc1_] && FlxG.mouse.screenY > optionText[_loc1_].y && FlxG.mouse.screenY < optionText[_loc1_].y + optionText[_loc1_].height - 2)
+                     _loc2_ = FlxG.width / 2 - optionTextWidth[i] / 2 + optionText[i].x;
+                     if(FlxG.mouse.screenX > _loc2_ && FlxG.mouse.screenX < _loc2_ + optionTextWidth[i] && FlxG.mouse.screenY > optionText[i].y && FlxG.mouse.screenY < optionText[i].y + optionText[i].height - 2)
                      {
-                        setOption(_loc1_);
+                        setOption(i);
                         Sfx.playMenuBeep1();
                         break;
                      }
                   }
                }
-               _loc1_++;
             }
          }
          if(FlxG.keys.justPressed("Z") || FlxG.keys.justPressed("X") || FlxG.keys.justPressed("J") || FlxG.keys.justPressed("K") || FlxG.keys.justPressed("SPACE") || FlxG.keys.justPressed("ENTER") || curOption == musicVolOption && (FlxG.keys.justPressed("LEFT") || FlxG.keys.justPressed("RIGHT")))
