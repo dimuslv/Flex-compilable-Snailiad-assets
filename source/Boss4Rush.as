@@ -933,12 +933,11 @@ package
       
       override public function destroy() : void
       {
-         var _loc1_:String = null;
          _bulletGroups = null;
          _hasWeapon = null;
-         for(_loc1_ in _shadowBall)
+         for(var i:String in _shadowBall)
          {
-            _shadowBall[_loc1_] = null;
+            _shadowBall[i] = null;
          }
          _shadowBall = null;
          super.destroy();

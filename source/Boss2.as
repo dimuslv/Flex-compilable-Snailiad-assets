@@ -168,10 +168,9 @@ package
       
       override public function destroy() : void
       {
-         var _loc1_:String = null;
-         for(_loc1_ in cannons)
+         for(var i:String in cannons)
          {
-            cannons[_loc1_] = null;
+            cannons[i] = null;
          }
          cannons = null;
          lfoot = null;

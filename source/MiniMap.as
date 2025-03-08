@@ -466,24 +466,19 @@ package
       
       public function loadAll() : void
       {
-         var _loc1_:XML = null;
-         var _loc2_:int = 0;
-         var _loc3_:int = 0;
-         var _loc4_:int = 0;
-         var _loc5_:int = 0;
          knownList = new Array();
          if(!PlayState.saveData.data)
          {
             return;
          }
-         for each(_loc1_ in PlayState.saveData.xml.mapData.k)
+         for each(var i:XML in PlayState.saveData.xml.mapData.k)
          {
-            _loc2_ = _loc1_.@x;
-            _loc3_ = _loc1_.@y;
-            _loc4_ = _loc1_.@i;
-            _loc5_ = _loc1_.@j;
-            _map[_loc5_][_loc4_] = _loc1_.@k;
-            _special[_loc5_][_loc4_] = _loc1_.@l;
+            var _loc2_:int = i.@x;
+            var _loc3_:int = i.@y;
+            var _loc4_:int = i.@i;
+            var _loc5_:int = i.@j;
+            _map[_loc5_][_loc4_] = i.@k;
+            _special[_loc5_][_loc4_] = i.@l;
             knownList.push(new FlxPoint(_loc2_,_loc3_));
             setKnown(_loc2_,_loc3_,true);
          }
