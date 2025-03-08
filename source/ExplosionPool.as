@@ -14,20 +14,18 @@ package
       
       override public function destroy() : void
       {
-         var _loc1_:String = null;
-         var _loc2_:String = null;
-         for(_loc1_ in groups)
+         for(var i:String in groups)
          {
-            groups[_loc1_] = null;
+            groups[i] = null;
          }
          groups = null;
-         for(_loc1_ in explosionLists)
+         for(i in explosionLists)
          {
-            for(_loc2_ in explosionLists[_loc1_])
+            for(var j:String in explosionLists[i])
             {
-               explosionLists[_loc1_][_loc2_] = null;
+               explosionLists[i][j] = null;
             }
-            explosionLists[_loc1_] = null;
+            explosionLists[i] = null;
          }
          explosionLists = null;
          super.destroy();
@@ -35,20 +33,16 @@ package
       
       public function ExplosionPool() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < TYPE_NUM)
+         for (var i:int = 0; i < TYPE_NUM; i++)
          {
-            groups[_loc1_] = new FlxGroup();
-            explosionLists[_loc1_] = new Array();
-            var _loc2_:int = 0;
-            while(_loc2_ < MAX_EXPLOSIONS[_loc1_])
+            groups[i] = new FlxGroup();
+            explosionLists[i] = new Array();
+            for (var j:int = 0; j < MAX_EXPLOSIONS[i]; j++)
             {
-               explosionLists[_loc1_][_loc2_] = makeExplosion(_loc1_);
-               groups[_loc1_].add(explosionLists[_loc1_][_loc2_]);
-               _loc2_++;
+               explosionLists[i][j] = makeExplosion(i);
+               groups[i].add(explosionLists[i][j]);
             }
-            add(groups[_loc1_]);
-            _loc1_++;
+            add(groups[i]);
          }
       }
       
@@ -71,22 +65,19 @@ package
       
       public function boom(param1:int, param2:int, param3:int, param4:int = 0, param5:int = 1) : void
       {
-         var _loc6_:int = 0;
-         while(_loc6_ < param5)
+         for (var i:int = 0; i < param5; i++)
          {
             var _loc7_:Explosion = groups[param3].getFirstAvail();
             if(_loc7_)
             {
                _loc7_.boom(param1 + FlxU.random() * param4 * 2 - param4,param2 + FlxU.random() * param4 * 2 - param4);
             }
-            _loc6_++;
          }
       }
       
       public function boomRadial(param1:int, param2:int, param3:int, param4:int = 0, param5:int = 1) : void
       {
-         var _loc6_:int = 0;
-         while(_loc6_ < param5)
+         for (var i:int = 0; i < param5; i++)
          {
             var _loc7_:Explosion = groups[param3].getFirstAvail();
             if(_loc7_)
@@ -97,7 +88,6 @@ package
                var _loc11_:int = param2 + Math.sin(_loc9_ * Math.PI / 180) * _loc8_;
                _loc7_.boom(param1 + Math.cos(_loc9_) * _loc8_,param2 + Math.sin(_loc9_) * _loc8_);
             }
-            _loc6_++;
          }
       }
       

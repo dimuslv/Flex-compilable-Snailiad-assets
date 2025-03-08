@@ -118,12 +118,10 @@ package
       
       public function makeSunSnail() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < 4)
+         for (var i:int = 0; i < 4; i++)
          {
-            _moonSprite[_loc1_].setTargetAlpha(0);
-            _moonSprite[_loc1_].alpha = 0;
-            _loc1_++;
+            _moonSprite[i].setTargetAlpha(0);
+            _moonSprite[i].alpha = 0;
          }
          FlxG.fade.stop();
          FlxG.flash.start(4294967295,1.4);
@@ -134,7 +132,6 @@ package
       
       public function updateEndingDialogue() : void
       {
-         var _loc1_:int = 0;
          if(!_modeInitialized)
          {
             _modeInitialized = true;
@@ -151,12 +148,10 @@ package
             }
             bg.fadeIn();
             _dialogueMode = 0;
-            _loc1_ = 0;
-            while(_loc1_ < 4)
+            for (var i:int = 0; i < 4; i++)
             {
-               _moonSprite[_loc1_] = new EndingMoonSnail(FlxG.width / 2 + 30,FlxG.height / 2 + 10,_loc1_);
-               add(_moonSprite[_loc1_]);
-               _loc1_++;
+               _moonSprite[i] = new EndingMoonSnail(FlxG.width / 2 + 30,FlxG.height / 2 + 10,i);
+               add(_moonSprite[i]);
             }
          }
          if(_modeElapsed > 0.9 && !_ending1SongPlaying)
@@ -282,13 +277,11 @@ package
       
       public function updateEndingCredits() : void
       {
-         var _loc1_:StarLayer = null;
-         var _loc2_:int = 0;
          if(!_modeInitialized)
          {
             _modeInitialized = true;
             Music.playEnding2();
-            _loc1_ = new StarLayer();
+            var _loc1_:StarLayer = new StarLayer();
             _loc1_.makeStars();
             add(_loc1_);
             if(_sunSnailSprite)
@@ -301,12 +294,10 @@ package
             bg.setTargetRgb(0,0,48);
             FlxG.fade.stop();
             FlxG.flash.start(4278190080,1.4);
-            _loc2_ = 0;
-            while(_loc2_ < 4)
+            for (var i:int = 0; i < 4; i++)
             {
-               remove(_moonSprite[_loc2_]);
-               _moonSprite[_loc2_] = null;
-               _loc2_++;
+               remove(_moonSprite[i]);
+               _moonSprite[i] = null;
             }
             if(_zzz)
             {

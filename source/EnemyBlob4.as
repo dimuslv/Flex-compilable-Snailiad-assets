@@ -58,8 +58,6 @@ package
       
       override public function update() : void
       {
-         var _loc1_:int = 0;
-         var _loc2_:EnemyBulletRotaryPea = null;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
@@ -88,15 +86,13 @@ package
             {
                shotTimeout = SHOT_TIMEOUT;
                Sfx.playShot7();
-               _loc1_ = 0;
-               while(_loc1_ < SHOT_NUM)
+               for (var i:int = 0; i < SHOT_NUM; i++)
                {
-                  _loc2_ = PlayState.enemyBulletPool.getBullet(7) as EnemyBulletRotaryPea;
+                  var _loc2_:EnemyBulletRotaryPea = PlayState.enemyBulletPool.getBullet(7) as EnemyBulletRotaryPea;
                   if(_loc2_)
                   {
-                     _loc2_.shootRotary(x + width / 2,y + height / 2,60,4,Math.PI * 2 / SHOT_NUM * _loc1_);
+                     _loc2_.shootRotary(x + width / 2,y + height / 2,60,4,Math.PI * 2 / SHOT_NUM * i);
                   }
-                  _loc1_++;
                }
             }
          }

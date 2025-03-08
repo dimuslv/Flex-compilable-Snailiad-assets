@@ -172,15 +172,13 @@ package
       {
          var _loc1_:int = 3;
          Sfx.playShot7();
-         var _loc2_:int = 0;
-         while(_loc2_ < _loc1_)
+         for (var i:int = 0; i < _loc1_; i++)
          {
             var _loc3_:EnemyBulletRotaryPea = PlayState.enemyBulletPool.getBullet(7) as EnemyBulletRotaryPea;
             if(_loc3_)
             {
-               _loc3_.shootRotary(x + width / 2,y + height / 2,60,4,Math.PI * 2 / _loc1_ * _loc2_);
+               _loc3_.shootRotary(x + width / 2,y + height / 2,60,4,Math.PI * 2 / _loc1_ * i);
             }
-            _loc2_++;
          }
       }
       

@@ -45,11 +45,9 @@ package
          param1 -= IMG_OFS_X;
          param2 -= IMG_OFS_Y;
          var _loc3_:Array = ["left","left_up","up","right_up","right","right_down","down","left_down"];
-         var _loc4_:int = 0;
-         while(_loc4_ < 8)
+         for (var i:int = 0; i < 8; i++)
          {
-            addAnimation(_loc3_[_loc4_],[_loc4_]);
-            _loc4_++;
+            addAnimation(_loc3_[i],[i]);
          }
          play(_loc3_[0]);
          aimTimeout = x / 38.2 % 0.25;
