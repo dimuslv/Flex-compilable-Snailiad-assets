@@ -888,96 +888,80 @@ package
       
       public function overlapPlayerNpc(param1:FlxObject, param2:FlxObject) : void
       {
-         var _loc3_:Player = null;
-         var _loc4_:Npc = null;
          if(param1 is Player && param2 is Npc)
          {
-            _loc3_ = param1 as Player;
-            _loc4_ = param2 as Npc;
+            var _loc3_:Player = param1 as Player;
+            var _loc4_:Npc = param2 as Npc;
             _loc4_.touch(_loc3_);
          }
       }
       
       public function overlapPlayerItem(param1:FlxObject, param2:FlxObject) : void
       {
-         var _loc3_:Player = null;
-         var _loc4_:Item = null;
          if(param1 is Player && param2 is Item)
          {
-            _loc3_ = param1 as Player;
-            _loc4_ = param2 as Item;
+            var _loc3_:Player = param1 as Player;
+            var _loc4_:Item = param2 as Item;
             _loc4_.touch(_loc3_);
          }
       }
       
       public function overlapBulletEnemies(param1:FlxObject, param2:FlxObject) : void
       {
-         var _loc3_:PlayerBullet = null;
-         var _loc4_:Enemy = null;
          if(param1 is PlayerBullet && param2 is Enemy)
          {
-            _loc3_ = param1 as PlayerBullet;
-            _loc4_ = param2 as Enemy;
+            var _loc3_:PlayerBullet = param1 as PlayerBullet;
+            var _loc4_:Enemy = param2 as Enemy;
             _loc3_.hitEnemy(_loc4_);
          }
       }
       
       public function overlapEnemyBulletPlayer(param1:FlxObject, param2:FlxObject) : void
       {
-         var _loc3_:EnemyBullet = null;
-         var _loc4_:Player = null;
          if(param1 is EnemyBullet && param2 is Player)
          {
-            _loc3_ = param1 as EnemyBullet;
-            _loc4_ = param2 as Player;
+            var _loc3_:EnemyBullet = param1 as EnemyBullet;
+            var _loc4_:Player = param2 as Player;
             _loc3_.hitPlayer(_loc4_);
          }
       }
       
       public function overlapPlayerEnemies(param1:FlxObject, param2:FlxObject) : void
       {
-         var _loc3_:Player = null;
-         var _loc4_:Enemy = null;
          if(param1 is Player && param2 is Enemy)
          {
-            _loc3_ = param1 as Player;
-            _loc4_ = param2 as Enemy;
+            var _loc3_:Player = param1 as Player;
+            var _loc4_:Enemy = param2 as Enemy;
             _loc4_.touch(_loc3_);
          }
       }
       
       public function overlapBulletItems(param1:FlxObject, param2:FlxObject) : void
       {
-         var _loc3_:PlayerBullet = null;
-         var _loc4_:Item = null;
          if(param1 is PlayerBullet && param2 is Item)
          {
-            _loc3_ = param1 as PlayerBullet;
-            _loc4_ = param2 as Item;
+            var _loc3_:PlayerBullet = param1 as PlayerBullet;
+            var _loc4_:Item = param2 as Item;
             _loc3_.hitItem(_loc4_);
          }
       }
       
       public function overlapAiTriggersEnemies(param1:FlxObject, param2:FlxObject) : void
       {
-         var _loc3_:AiTrigger = null;
-         var _loc4_:Enemy = null;
          if(param1 is AiTrigger && param2 is Enemy)
          {
-            _loc3_ = param1 as AiTrigger;
-            _loc4_ = param2 as Enemy;
+            var _loc3_:AiTrigger = param1 as AiTrigger;
+            var _loc4_:Enemy = param2 as Enemy;
             _loc4_.triggerAi(_loc3_.getNumber());
          }
       }
       
       public function overlapAiTriggersSolidItems(param1:FlxObject, param2:FlxObject) : void
       {
-         var _loc3_:AiTrigger = null;
-         var _loc4_:Item = null;
          if(param1 is AiTrigger && param2 is Item)
          {
-            _loc3_ = param1 as AiTrigger;
-            _loc4_ = param2 as Item;
+            var _loc3_:AiTrigger = param1 as AiTrigger;
+            var _loc4_:Item = param2 as Item;
             _loc4_.triggerAi(_loc3_.getNumber());
          }
       }

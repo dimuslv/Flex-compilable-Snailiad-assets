@@ -76,16 +76,14 @@ package
       
       override public function update() : void
       {
-         var _loc1_:int = 0;
-         var _loc2_:String = null;
          _elapsed += FlxG.elapsed;
          super.update();
          if(_active)
          {
-            _loc1_ = _elapsed / (LETTER_DELAY / _speed);
+            var _loc1_:int = _elapsed / (LETTER_DELAY / _speed);
             if(_loc1_ != _oldLetters)
             {
-               _loc2_ = _fullMsg.charAt(_loc1_).toLowerCase();
+               var _loc2_:String = _fullMsg.charAt(_loc1_).toLowerCase();
                if(_loc2_ >= "a" && _loc2_ <= "z")
                {
                   if(_voice > -1)

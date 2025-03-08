@@ -50,8 +50,6 @@ package
       
       override public function update() : void
       {
-         var _loc1_:int = 0;
-         var _loc2_:int = 0;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
@@ -62,7 +60,7 @@ package
             {
                PlayState.player.paralyze(true);
             }
-            _loc1_ = getTimer() - _startTime;
+            var _loc1_:int = getTimer() - _startTime;
             if(_loc1_ > DELAY_VULNERABLE)
             {
                _vulnerable = true;
@@ -83,7 +81,7 @@ package
             }
             if(_loc1_ > DELAY_START_HP_FILL)
             {
-               _loc2_ = _hp * (Number)(_loc1_ - DELAY_START_HP_FILL) / (Number)(DELAY_FINISH_HP_FILL - DELAY_START_HP_FILL);
+               var _loc2_:int = _hp * (Number)(_loc1_ - DELAY_START_HP_FILL) / (Number)(DELAY_FINISH_HP_FILL - DELAY_START_HP_FILL);
                if(_loc2_ < 1)
                {
                   _loc2_ = 1;

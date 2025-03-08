@@ -59,7 +59,6 @@ package
       
       override public function update() : void
       {
-         var _loc1_:int = 0;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
@@ -70,7 +69,7 @@ package
             {
                Sfx.playSnelk();
             }
-            _loc1_ = -100;
+            var _loc1_:int = -100;
             if(!_alwaysRun)
             {
                if(x > PlayState.player.x)

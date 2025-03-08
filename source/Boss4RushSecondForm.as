@@ -354,12 +354,10 @@ package
       
       public function overlapPlayerBulletBoss4Bullet(param1:FlxObject, param2:FlxObject) : void
       {
-         var _loc3_:PlayerBullet = null;
-         var _loc4_:Boss4Bullet = null;
          if(param1 is PlayerBullet && param2 is Boss4Bullet)
          {
-            _loc3_ = param1 as PlayerBullet;
-            _loc4_ = param2 as Boss4Bullet;
+            var _loc3_:PlayerBullet = param1 as PlayerBullet;
+            var _loc4_:Boss4Bullet = param2 as Boss4Bullet;
             _loc4_.hitPlayerBullet(_loc3_);
          }
       }
@@ -391,12 +389,11 @@ package
       
       private function pickStompTarget() : void
       {
-         var _loc1_:int = 0;
          _targetX = x;
          _targetY = y;
          do
          {
-            _loc1_ = getDecision() * 8;
+            var _loc1_:int = getDecision() * 8;
             switch(_loc1_)
             {
                case 0:
@@ -846,12 +843,10 @@ package
       
       public function overlapPlayerBoss4Bullet(param1:FlxObject, param2:FlxObject) : void
       {
-         var _loc3_:Player = null;
-         var _loc4_:Boss4Bullet = null;
          if(param1 is Player && param2 is Boss4Bullet)
          {
-            _loc3_ = param1 as Player;
-            _loc4_ = param2 as Boss4Bullet;
+            var _loc3_:Player = param1 as Player;
+            var _loc4_:Boss4Bullet = param2 as Boss4Bullet;
             _loc4_.hitPlayer(_loc3_);
          }
       }

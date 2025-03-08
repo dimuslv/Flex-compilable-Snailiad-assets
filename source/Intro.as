@@ -91,7 +91,6 @@ package
       
       public function updateIntroStory() : void
       {
-         var _loc1_:String = null;
          if(!_modeInitialized)
          {
             _modeInitialized = true;
@@ -206,7 +205,7 @@ package
                {
                   ++_dialogueMode;
                   _modeElapsed = 0;
-                  _loc1_ = PlayState.introSlugMode ? "SLUGGY SLUG" : "SNAILY SNAIL";
+                  var _loc1_:String = PlayState.introSlugMode ? "SLUGGY SLUG" : "SNAILY SNAIL";
                   _dialogueLayer.start("YOU CAN DO IT, " + _loc1_ + "!!\n" + "        IT\'S UP TO YOU!!  GOOD LUCK!!\n");
                }
                break;

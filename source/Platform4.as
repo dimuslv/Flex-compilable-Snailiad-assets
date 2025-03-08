@@ -49,10 +49,9 @@ package
       
       override public function hitBottom(param1:FlxObject, param2:Number) : void
       {
-         var _loc3_:Player = null;
          if(param1 is Player)
          {
-            _loc3_ = param1 as Player;
+            var _loc3_:Player = param1 as Player;
          }
       }
       
@@ -72,11 +71,6 @@ package
       
       override public function update() : void
       {
-         var _loc1_:int = 0;
-         var _loc2_:int = 0;
-         var _loc3_:int = 0;
-         var _loc4_:int = 0;
-         var _loc5_:int = 0;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
@@ -95,14 +89,14 @@ package
                _vely = -SPEED;
             }
             _posy += _vely;
-            _loc1_ = int(_posy);
-            _loc2_ = int(y);
-            _loc3_ = _loc1_ - _loc2_;
+            var _loc1_:int = int(_posy);
+            var _loc2_:int = int(y);
+            var _loc3_:int = _loc1_ - _loc2_;
             if(_loc2_ != _loc1_)
             {
                if(PlayState.player._gravityDir == Player.GRAV_DOWN)
                {
-                  _loc4_ = _loc2_ - int(PlayState.player.y + PlayState.player.height);
+                  var _loc4_:int = _loc2_ - int(PlayState.player.y + PlayState.player.height);
                   if(Math.abs(_loc4_) < 3 && PlayState.player.x + PlayState.player.width > x && PlayState.player.x < x + width)
                   {
                      if(!PlayState.player.pressedJump())
@@ -126,7 +120,7 @@ package
                }
                else if(PlayState.player._gravityDir == Player.GRAV_LEFT)
                {
-                  _loc5_ = int(x) + width - int(PlayState.player.x);
+                  var _loc5_:int = int(x) + width - int(PlayState.player.x);
                   if(Math.abs(_loc5_) < 3 && PlayState.player.y + PlayState.player.height > y && PlayState.player.y < y + height)
                   {
                      if(!PlayState.player.pressedJump())

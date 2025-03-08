@@ -251,8 +251,7 @@ package
       
       public function checkSaveVars() : void
       {
-         var _loc1_:SaveData = null;
-         _loc1_ = new SaveData();
+         var _loc1_:SaveData = new SaveData();
          _loc1_.loadAll();
          bgColor = 4278194224;
          if(_loc1_.xml.vars && _loc1_.isVarSet("gameTime"))
@@ -329,9 +328,8 @@ package
       
       public function makeClickToPlay() : void
       {
-         var _loc1_:FlxText = null;
          FlxG.mouse.show();
-         _loc1_ = new FlxText(0,FlxG.height / 2,FlxG.width,"CLICK TO PLAY!");
+         var _loc1_:FlxText = new FlxText(0,FlxG.height / 2,FlxG.width,"CLICK TO PLAY!");
          _loc1_.font = Fonts.normal;
          _loc1_.size = 20;
          _loc1_.color = 16777215;
@@ -533,7 +531,7 @@ package
       
       public function resetMenu() : void
       {
-         var _loc1_:SaveData = null;
+         var _loc1_:SaveData;
          FlxG.flash.stop();
          FlxG.fade.stop();
          fading = false;
@@ -587,11 +585,10 @@ package
       
       public function eraseSaveData() : void
       {
-         var _loc1_:SaveData = null;
          FlxG.flash.stop();
          FlxG.fade.stop();
          fading = false;
-         _loc1_ = new SaveData();
+         var _loc1_:SaveData = new SaveData();
          _loc1_.eraseAll();
          hasSave = false;
          hasBossRush = false;
@@ -724,9 +721,7 @@ package
       
       public function reallySetKey(param1:int, param2:String) : void
       {
-         var _loc3_:String = null;
-         var _loc4_:SaveData = null;
-         var _loc5_:XMLList = null;
+         var _loc3_:String;
          switch(param1)
          {
             case KEY_MAP:
@@ -812,11 +807,11 @@ package
          }
          if(_loc3_)
          {
-            _loc4_ = new SaveData();
+            var _loc4_:SaveData = new SaveData();
             _loc4_.loadAll();
             if(_loc4_.isVarSet(_loc3_))
             {
-               _loc5_ = _loc4_.xml.vars.child(_loc3_);
+               var _loc5_:XMLList = _loc4_.xml.vars.child(_loc3_);
                if(_loc5_)
                {
                   delete _loc5_.parent().*[_loc5_.childIndex()];

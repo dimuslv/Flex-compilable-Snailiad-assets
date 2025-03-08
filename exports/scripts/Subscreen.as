@@ -199,10 +199,9 @@ package
       
       private function makeText(param1:int, param2:int, param3:int, param4:String) : void
       {
-         var _loc7_:FlxText = null;
          var _loc5_:int = BASE_X;
          var _loc6_:int = GROUP_Y[param2] + BASE_Y + param3 * LINE_SPACING;
-         _loc7_ = new FlxText(_loc5_,_loc6_,200);
+         var _loc7_:FlxText = new FlxText(_loc5_,_loc6_,200);
          _loc7_.font = Fonts.normal;
          _loc7_.size = 10;
          _loc7_.color = 16777215;

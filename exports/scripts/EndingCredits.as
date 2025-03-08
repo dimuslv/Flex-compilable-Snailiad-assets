@@ -123,7 +123,6 @@ package
       public function addEnemy(param1:int, param2:int, param3:String) : FlxObject
       {
          var _loc4_:EndingEnemy = null;
-         var _loc5_:FlxText = null;
          _loc4_ = new EndingEnemy(param1,this.createY,param2);
          _loc4_.velocity.y = VELOCITY_Y;
          add(_loc4_);
@@ -133,7 +132,7 @@ package
          }
          this.createY += _loc4_.height;
          this.createY += SPACING_Y_MINOR;
-         _loc5_ = new FlxText(-4,this.createY,FlxG.width);
+         var _loc5_:FlxText = new FlxText(-4,this.createY,FlxG.width);
          _loc5_.font = Fonts.normal;
          _loc5_.size = 20;
          _loc5_.color = 16777215;

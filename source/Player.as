@@ -2305,7 +2305,6 @@ package
       
       public function realTeleport() : void
       {
-         var _loc1_:XMLList = null;
          setCurHp(PlayState.player._maxHp.value);
          dead = false;
          solid = true;
@@ -2317,7 +2316,7 @@ package
          }
          else
          {
-            _loc1_ = PlayState.saveData.xml.vars;
+            var _loc1_:XMLList = PlayState.saveData.xml.vars;
             teleportTo(_loc1_.savex,_loc1_.savey);
          }
          clearInterval(teleportInterval);

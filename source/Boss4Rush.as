@@ -281,14 +281,13 @@ package
       
       public function pickMoveTarget() : void
       {
-         var _loc1_:int = 0;
          _moveStartX = x;
          _moveStartY = y;
          _moveEndX = x;
          _moveEndY = y;
          while(Utility.dist(_moveEndX,_moveEndY,x,y) < 60)
          {
-            _loc1_ = getDecision() * 6;
+            var _loc1_:int = getDecision() * 6;
             switch(_loc1_)
             {
                case 0:
@@ -327,14 +326,13 @@ package
       
       public function pickTeleTarget() : void
       {
-         var _loc1_:int = 0;
          _teleStartX = x;
          _teleStartY = y;
          _teleEndX = x;
          _teleEndY = y;
          while(Utility.dist(_teleEndX,_teleEndY,x,y) < 60)
          {
-            _loc1_ = getDecision() * 6;
+            var _loc1_:int = getDecision() * 6;
             switch(_loc1_)
             {
                case 0:
@@ -945,12 +943,10 @@ package
       
       public function overlapPlayerBulletBoss4Bullet(param1:FlxObject, param2:FlxObject) : void
       {
-         var _loc3_:PlayerBullet = null;
-         var _loc4_:Boss4Bullet = null;
          if(param1 is PlayerBullet && param2 is Boss4Bullet)
          {
-            _loc3_ = param1 as PlayerBullet;
-            _loc4_ = param2 as Boss4Bullet;
+            var _loc3_:PlayerBullet = param1 as PlayerBullet;
+            var _loc4_:Boss4Bullet = param2 as Boss4Bullet;
             _loc4_.hitPlayerBullet(_loc3_);
          }
       }
@@ -995,12 +991,10 @@ package
       
       public function overlapPlayerBoss4Bullet(param1:FlxObject, param2:FlxObject) : void
       {
-         var _loc3_:Player = null;
-         var _loc4_:Boss4Bullet = null;
          if(param1 is Player && param2 is Boss4Bullet)
          {
-            _loc3_ = param1 as Player;
-            _loc4_ = param2 as Boss4Bullet;
+            var _loc3_:Player = param1 as Player;
+            var _loc4_:Boss4Bullet = param2 as Boss4Bullet;
             _loc4_.hitPlayer(_loc3_);
          }
       }

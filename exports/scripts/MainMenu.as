@@ -253,8 +253,7 @@ package
       
       public function checkSaveVars() : void
       {
-         var _loc1_:SaveData = null;
-         _loc1_ = new SaveData();
+         var _loc1_:SaveData = new SaveData();
          _loc1_.loadAll();
          this.bgColor = 4278194224;
          if(Boolean(_loc1_.xml.vars) && _loc1_.isVarSet("gameTime"))
@@ -331,9 +330,8 @@ package
       
       public function makeClickToPlay() : void
       {
-         var _loc1_:FlxText = null;
          FlxG.mouse.show();
-         _loc1_ = new FlxText(0,FlxG.height / 2,FlxG.width,"CLICK TO PLAY!");
+         var _loc1_:FlxText = new FlxText(0,FlxG.height / 2,FlxG.width,"CLICK TO PLAY!");
          _loc1_.font = Fonts.normal;
          _loc1_.size = 20;
          _loc1_.color = 16777215;
@@ -589,11 +587,10 @@ package
       
       public function eraseSaveData() : void
       {
-         var _loc1_:SaveData = null;
          FlxG.flash.stop();
          FlxG.fade.stop();
          this.fading = false;
-         _loc1_ = new SaveData();
+         var _loc1_:SaveData = new SaveData();
          _loc1_.eraseAll();
          this.hasSave = false;
          this.hasBossRush = false;

@@ -40,7 +40,6 @@ package
       
       public function setRate(param1:int, param2:Number = 0) : void
       {
-         var _loc3_:SaveData = null;
          _fadeOutStart = FADEOUT_START + param2;
          _fadeOutEnd = FADEOUT_END + param2;
          if(PlayState.bossRush)
@@ -56,7 +55,7 @@ package
             _fadeOutEnd += 6;
             size = 20;
             PlayState.player.hasWonBossRush = true;
-            _loc3_ = PlayState.saveData;
+            var _loc3_:SaveData = PlayState.saveData;
             _loc3_.loadAll();
             if(!_loc3_.isVarTrue("hasWonBossRush"))
             {

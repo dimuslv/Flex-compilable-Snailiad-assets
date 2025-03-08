@@ -250,7 +250,7 @@ package
       
       public function findRoomBounds(param1:int, param2:int) : void
       {
-         var _loc3_:int = 0;
+         var _loc3_:int;
          param1 += 8;
          param2 += 8;
          param1 /= 16;
@@ -952,7 +952,6 @@ package
       
       public function makeEnemy(param1:int, param2:int, param3:int) : void
       {
-         var _loc4_:Enemy = null;
          if(PlayState.player && PlayState.player._insaneMode)
          {
             if(param3 == 2)
@@ -972,6 +971,7 @@ package
                param3 = 12;
             }
          }
+		 var _loc4_:Enemy;
          switch(param3)
          {
             case 0:
@@ -1041,12 +1041,12 @@ package
       
       public function makeBoss(param1:int, param2:int, param3:int) : void
       {
-         var _loc4_:Enemy = null;
          if(PlayState.isBossDead(param3))
          {
             return;
          }
          PlayState.miniMap.setSpecialBoss(param1,param2);
+		 var _loc4_:Enemy;
          switch(param3)
          {
             case 1:
@@ -1071,11 +1071,11 @@ package
       
       public function makeBossRush(param1:int, param2:int, param3:int) : void
       {
-         var _loc4_:Enemy = null;
          if(PlayState.isBossDead(param3))
          {
             return;
          }
+		 var _loc4_:Enemy;
          switch(param3)
          {
             case 1:

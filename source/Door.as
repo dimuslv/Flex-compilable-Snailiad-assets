@@ -183,8 +183,6 @@ package
       
       override public function update() : void
       {
-         var _loc1_:int = 0;
-         var _loc2_:int = 0;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
@@ -205,8 +203,8 @@ package
          }
          if(_waiting)
          {
-            _loc1_ = PlayState.player.x - x;
-            _loc2_ = PlayState.player.y - y;
+            var _loc1_:int = PlayState.player.x - x;
+            var _loc2_:int = PlayState.player.y - y;
             if(_loc1_ * _loc1_ + _loc2_ * _loc2_ > 70 * 70 || PlayState.player.isParalyzed())
             {
                play("close");

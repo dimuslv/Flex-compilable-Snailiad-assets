@@ -57,7 +57,6 @@ package
       
       override public function update() : void
       {
-         var _loc1_:EnemyBullet = null;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
@@ -70,7 +69,7 @@ package
                if(shotTimeout <= 0)
                {
                   shotTimeout = SHOT_TIMEOUT;
-                  _loc1_ = PlayState.enemyBulletPool.getBullet(5);
+                  var _loc1_:EnemyBullet = PlayState.enemyBulletPool.getBullet(5);
                   if(_loc1_)
                   {
                      _loc1_.shoot(x + width / 2,y + height / 2,SHOT_SPEED,0);

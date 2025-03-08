@@ -86,8 +86,8 @@ package
       
       public function moveWindow(param1:Boolean) : void
       {
-         var _loc2_:int = 0;
-         if(PlayState.player.y - PlayState.worldMap.minY < 90)
+         var _loc2_:int;
+		 if(PlayState.player.y - PlayState.worldMap.minY < 90)
          {
             _loc2_ = 160;
          }
@@ -119,8 +119,6 @@ package
       
       override public function update() : void
       {
-         var _loc1_:int = 0;
-         var _loc2_:String = null;
          if(PlayState.realState != PlayState.STATE_GAME)
          {
             return;
@@ -130,10 +128,10 @@ package
          if(_active)
          {
             moveWindow(false);
-            _loc1_ = _elapsed / (LETTER_DELAY / _speed);
+            var _loc1_:int = _elapsed / (LETTER_DELAY / _speed);
             if(_loc1_ != _oldLetters)
             {
-               _loc2_ = _fullMsg.charAt(_loc1_).toLowerCase();
+               var _loc2_:String = _fullMsg.charAt(_loc1_).toLowerCase();
                if(_loc2_ >= "a" && _loc2_ <= "z")
                {
                   Sfx.playDialogueLetter(_voice);
