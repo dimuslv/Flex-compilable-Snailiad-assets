@@ -106,17 +106,14 @@ package
       
       public function enemySolidAt(param1:int, param2:int) : Boolean
       {
-         var _loc3_:int = 0;
          if(PlayState.doors)
          {
-            _loc3_ = 0;
-            while(_loc3_ < PlayState.doors.length)
+            for (var i:int = 0; i < PlayState.doors.length; i++)
             {
-               if(PlayState.doors[_loc3_].solid && param1 > PlayState.doors[_loc3_].x && param1 < PlayState.doors[_loc3_].x + PlayState.doors[_loc3_].width && param2 > PlayState.doors[_loc3_].y && param2 < PlayState.doors[_loc3_].y + PlayState.doors[_loc3_].height)
+               if(PlayState.doors[i].solid && param1 > PlayState.doors[i].x && param1 < PlayState.doors[i].x + PlayState.doors[i].width && param2 > PlayState.doors[i].y && param2 < PlayState.doors[i].y + PlayState.doors[i].height)
                {
                   return true;
                }
-               _loc3_++;
             }
          }
          return bgmap.getTile(int(param1 / 16),int(param2 / 16)) >= FG_OFFSET || spmap.getTile(int(param1 / 16),int(param2 / 16)) == 387 || spmap.getTile(int(param1 / 16),int(param2 / 16)) == 1 || spmap.getTile(int(param1 / 16),int(param2 / 16)) == 396 || spmap.getTile(int(param1 / 16),int(param2 / 16)) == 459;
@@ -124,17 +121,14 @@ package
       
       public function solidAt(param1:int, param2:int) : Boolean
       {
-         var _loc3_:int = 0;
          if(PlayState.doors)
          {
-            _loc3_ = 0;
-            while(_loc3_ < PlayState.doors.length)
+            for (var i:int = 0; i < PlayState.doors.length; i++)
             {
-               if(PlayState.doors[_loc3_].solid && param1 > PlayState.doors[_loc3_].x && param1 < PlayState.doors[_loc3_].x + PlayState.doors[_loc3_].width && param2 > PlayState.doors[_loc3_].y && param2 < PlayState.doors[_loc3_].y + PlayState.doors[_loc3_].height)
+               if(PlayState.doors[i].solid && param1 > PlayState.doors[i].x && param1 < PlayState.doors[i].x + PlayState.doors[i].width && param2 > PlayState.doors[i].y && param2 < PlayState.doors[i].y + PlayState.doors[i].height)
                {
                   return true;
                }
-               _loc3_++;
             }
          }
          return bgmap.getTile(int(param1 / 16),int(param2 / 16)) >= FG_OFFSET;
@@ -311,20 +305,16 @@ package
       
       public function scanMiniMap() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < MiniMap.SIZE_X)
+         for (var X:int = 0; X < MiniMap.SIZE_X; X++)
          {
-            var _loc2_:int = 0;
-            while(_loc2_ < MiniMap.SIZE_Y)
+            for (var Y:int = 0; Y < MiniMap.SIZE_Y; Y++)
             {
-               var _loc3_:int = 0;
-               while(_loc3_ < MiniMap.ROOM_WIDTH)
+               for (var x:int = 0; x < MiniMap.ROOM_WIDTH; x++)
                {
-                  var _loc4_:int = 0;
-                  while(_loc4_ < MiniMap.ROOM_HEIGHT)
+                  for (var y:int = 0; y < MiniMap.ROOM_HEIGHT; y++)
                   {
-                     var _loc5_:int = _loc1_ * MiniMap.ROOM_WIDTH + _loc3_;
-                     var _loc6_:int = _loc2_ * MiniMap.ROOM_HEIGHT + _loc4_;
+                     var _loc5_:int = X * MiniMap.ROOM_WIDTH + x;
+                     var _loc6_:int = Y * MiniMap.ROOM_HEIGHT + y;
                      var _loc7_:uint = spmap.getTile(_loc5_,_loc6_);
                      var _loc8_:int = _loc5_ * 16;
                      var _loc9_:int = _loc6_ * 16;
@@ -341,13 +331,9 @@ package
                      {
                         PlayState.miniMap.setSpecialBoss(_loc8_,_loc9_);
                      }
-                     _loc4_++;
                   }
-                  _loc3_++;
                }
-               _loc2_++;
             }
-            _loc1_++;
          }
       }
       
@@ -358,22 +344,14 @@ package
       
       public function processSpecialTiles() : void
       {
-         var _loc1_:int = 0;
-         var _loc2_:int = 0;
-         var _loc3_:int = 0;
-         var _loc4_:uint = 0;
-         var _loc5_:int = 0;
-         var _loc6_:int = 0;
          if(PlayState.doors)
          {
-            _loc3_ = 0;
-            while(_loc3_ < PlayState.doors.length)
+            for (var i:int = 0; i < PlayState.doors.length; i++)
             {
-               if(PlayState.doors[_loc3_] && PlayState.doors[_loc3_].fixBlocks)
+               if(PlayState.doors[i] && PlayState.doors[i].fixBlocks)
                {
-                  PlayState.doors[_loc3_].fixBlocks.repairAll();
+                  PlayState.doors[i].fixBlocks.repairAll();
                }
-               _loc3_++;
             }
          }
          PlayState.enemyBulletPool.destroyAll();
@@ -409,13 +387,13 @@ package
          fakeMaxX = maxX;
          fakeMinY = minY;
          fakeMaxY = maxY;
-         _loc1_ = tileMinX + 1;
-         while(_loc1_ <= tileMaxX - 1)
+		 var x:int;
+		 var y:int;
+         for (x = tileMinX + 1; x <= tileMaxX - 1; x++)
          {
-            _loc2_ = tileMinY + 1;
-            for(; _loc2_ <= tileMaxY - 1; _loc2_++)
+			for(y = tileMinY + 1; y <= tileMaxY - 1; y++)
             {
-               _loc4_ = spmap.getTile(_loc1_,_loc2_);
+               var _loc4_:uint = spmap.getTile(x,y);
                if(PlayState.player && PlayState.player._insaneMode)
                {
                   if(_loc4_ == 400)
@@ -435,8 +413,8 @@ package
                      _loc4_ = 427;
                   }
                }
-               _loc5_ = _loc1_ * 16;
-               _loc6_ = _loc2_ * 16;
+               var _loc5_:int = x * 16;
+               var _loc6_:int = y * 16;
                if(_loc4_ >= 3 && _loc4_ <= 23)
                {
                   makeEnemy(_loc5_,_loc6_,_loc4_ - 3);
@@ -654,24 +632,24 @@ package
                      if(_loc5_ > PlayState.player.x)
                      {
                         fakeMaxX = _loc5_;
-                        setTileBounds(tileMinX,tileMinY,_loc1_,tileMaxY,false);
+                        setTileBounds(tileMinX,tileMinY,x,tileMaxY,false);
                      }
                      else
                      {
                         fakeMinX = _loc5_;
-                        setTileBounds(_loc1_,tileMinY,tileMaxX,tileMaxY,false);
+                        setTileBounds(x,tileMinY,tileMaxX,tileMaxY,false);
                      }
                      break;
                   case 368:
                      if(_loc6_ > PlayState.player.y)
                      {
                         fakeMaxY = _loc6_;
-                        setTileBounds(tileMinX,tileMinY,tileMaxX,_loc2_,false);
+                        setTileBounds(tileMinX,tileMinY,tileMaxX,y,false);
                      }
                      else
                      {
                         fakeMinY = _loc6_;
-                        setTileBounds(tileMinX,_loc2_,tileMaxX,tileMaxY,false);
+                        setTileBounds(tileMinX,y,tileMaxX,tileMaxY,false);
                      }
                      break;
                   case 373:
@@ -754,7 +732,7 @@ package
                      if(_loc6_ > PlayState.player.y)
                      {
                         fakeMaxY = _loc6_;
-                        setTileBounds(tileMinX,tileMinY,tileMaxX,_loc2_,false);
+                        setTileBounds(tileMinX,tileMinY,tileMaxX,y,false);
                      }
                      break;
                   case 402:
@@ -928,7 +906,6 @@ package
                      break;
                }
             }
-            _loc1_++;
          }
          if(fakeMinX == minX)
          {

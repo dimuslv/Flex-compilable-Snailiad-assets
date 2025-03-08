@@ -34,15 +34,12 @@ package
       
       public function setYOffset(param1:int, param2:Boolean = false) : void
       {
-         var _loc3_:int = 0;
          _targetY = param1 + Y_POS;
          if(param2)
          {
-            _loc3_ = 0;
-            while(_loc3_ < _letters.length)
+            for (var i:int = 0; i < _letters.length; i++)
             {
-               _letters[_loc3_].y = _targetY;
-               _loc3_++;
+               _letters[i].y = _targetY;
             }
          }
       }
@@ -58,28 +55,24 @@ package
          _letters.push(new TitleLetter("I"));
          _letters.push(new TitleLetter("A"));
          _letters.push(new TitleLetter("D"));
-         var _loc2_:int = 0;
-         while(_loc2_ < _letters.length)
+         for (var i:int = 0; i < _letters.length; i++)
          {
-            add(_letters[_loc2_]);
-            _totalWidth += _letters[_loc2_].width;
-            _loc2_++;
+            add(_letters[i]);
+            _totalWidth += _letters[i].width;
          }
          _totalWidth += SPACING * (_letters.length - 1);
          _targetX = (FlxG.width - _totalWidth) / 2;
          var _loc3_:Number = _targetX;
-         _loc2_ = 0;
-         while(_loc2_ < _letters.length)
+         for (i = 0; i < _letters.length; i++)
          {
-            _letters[_loc2_].targetX = _loc3_;
-            _loc3_ += _letters[_loc2_].width;
+            _letters[i].targetX = _loc3_;
+            _loc3_ += _letters[i].width;
             _loc3_ += SPACING;
-            _letters[_loc2_].y = Y_POS;
+            _letters[i].y = Y_POS;
             if(param1)
             {
-               _letters[_loc2_].x = _letters[_loc2_].targetX;
+               _letters[i].x = _letters[i].targetX;
             }
-            _loc2_++;
          }
          setYOffset(0);
          active = true;
@@ -88,26 +81,24 @@ package
       override public function update() : void
       {
          _elapsed += FlxG.elapsed * TIME_SCALE;
-         var _loc1_:int = 0;
-         while(_loc1_ < _letters.length)
+         for (var i:int = 0; i < _letters.length; i++)
          {
-            var _loc2_:Number = _elapsed - LETTER_DELAY * _loc1_ + LETTER_START;
+            var _loc2_:Number = _elapsed - LETTER_DELAY * i + LETTER_START;
             if(_loc2_ < LETTER_START)
             {
-               _letters[_loc1_].visible = false;
+               _letters[i].visible = false;
             }
             else if(_loc2_ < 0)
             {
-               _letters[_loc1_].visible = true;
+               _letters[i].visible = true;
                var _loc3_:Number = -Math.sin(-_loc2_ * Math.PI) * _loc2_ * X_SCALE;
-               _letters[_loc1_].x = _letters[_loc1_].targetX + _loc3_;
+               _letters[i].x = _letters[i].targetX + _loc3_;
             }
             else
             {
-               _letters[_loc1_].x = Utility.integrate(_letters[_loc1_].x,_letters[_loc1_].targetX,4,FlxG.elapsed);
+               _letters[i].x = Utility.integrate(_letters[i].x,_letters[i].targetX,4,FlxG.elapsed);
             }
-            _letters[_loc1_].y = Utility.integrate(_letters[_loc1_].y,_targetY,4,FlxG.elapsed);
-            _loc1_++;
+            _letters[i].y = Utility.integrate(_letters[i].y,_targetY,4,FlxG.elapsed);
          }
          super.update();
       }

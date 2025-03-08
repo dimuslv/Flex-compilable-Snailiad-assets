@@ -17,11 +17,9 @@ package
          width = WIDTH;
          height = HEIGHT;
          var _loc1_:Array = ["up","right_up","right","right_down","down","left_down","left","left_up"];
-         var _loc2_:int = 0;
-         while(_loc2_ < 8)
+         for (var i:int = 0; i < 8; i++)
          {
-            addAnimation(_loc1_[_loc2_],[0 + _loc2_ * 6,1 + _loc2_ * 6,2 + _loc2_ * 6,3 + _loc2_ * 6,4 + _loc2_ * 6,5 + _loc2_ * 6],18,true);
-            _loc2_++;
+            addAnimation(_loc1_[i],[0 + i * 6,1 + i * 6,2 + i * 6,3 + i * 6,4 + i * 6,5 + i * 6],18,true);
          }
       }
       

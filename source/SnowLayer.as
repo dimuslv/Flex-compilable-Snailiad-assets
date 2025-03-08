@@ -10,11 +10,10 @@ package
       
       override public function destroy() : void
       {
-         var _loc1_:String = null;
          super.destroy();
-         for(_loc1_ in snows)
+         for(var i:String in snows)
          {
-            snows[_loc1_] = null;
+            snows[i] = null;
          }
          snows = null;
       }
@@ -29,23 +28,19 @@ package
          {
             return;
          }
-         var _loc1_:int = 0;
-         while(_loc1_ < MAX_SNOWS)
+         for (var i:int = 0; i < MAX_SNOWS; i++)
          {
-            snows[_loc1_].kill();
-            remove(snows[_loc1_],true);
-            _loc1_++;
+            snows[i].kill();
+            remove(snows[i],true);
          }
       }
       
       public function makeSnows() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < MAX_SNOWS)
+         for (var i:int = 0; i < MAX_SNOWS; i++)
          {
-            snows[_loc1_] = new Snow();
-            add(snows[_loc1_]);
-            _loc1_++;
+            snows[i] = new Snow();
+            add(snows[i]);
          }
       }
    }

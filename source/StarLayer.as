@@ -10,11 +10,10 @@ package
       
       override public function destroy() : void
       {
-         var _loc1_:String = null;
          super.destroy();
-         for(_loc1_ in stars)
+         for(var i:String in stars)
          {
-            stars[_loc1_] = null;
+            stars[i] = null;
          }
          stars = null;
       }
@@ -29,23 +28,19 @@ package
          {
             return;
          }
-         var _loc1_:int = 0;
-         while(_loc1_ < MAX_STARS)
+         for (var i:int = 0; i < MAX_STARS; i++)
          {
-            stars[_loc1_].kill();
-            remove(stars[_loc1_],true);
-            _loc1_++;
+            stars[i].kill();
+            remove(stars[i],true);
          }
       }
       
       public function makeStars() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < MAX_STARS)
+         for (var i:int = 0; i < MAX_STARS; i++)
          {
-            stars[_loc1_] = new Star();
-            add(stars[_loc1_]);
-            _loc1_++;
+            stars[i] = new Star();
+            add(stars[i]);
          }
       }
    }

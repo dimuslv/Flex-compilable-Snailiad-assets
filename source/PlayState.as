@@ -268,11 +268,9 @@ package
             saveData = new SaveData();
          }
          bossesKilled = new Array();
-         var _loc1_:int = 0;
-         while(_loc1_ < 5)
+         for (var i:int = 0; i < 5; i++)
          {
-            bossesKilled[_loc1_] = false;
-            _loc1_++;
+            bossesKilled[i] = false;
          }
          This.defaultGroup = new FlxGroup();
          PlayState.saveData.loadAll();

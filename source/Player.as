@@ -716,24 +716,22 @@ package
          setGravityDir(GRAV_DOWN);
          _slugMode = _hardMode;
          loadGraphic(Art.SnailySnail,true,true,SPRITE_WIDTH,SPRITE_HEIGHT);
-         var _loc4_:int = 0;
-         while(_loc4_ < 4)
+         for (var i:int = 0; i < 4; i++)
          {
-            var _loc5_:int = _loc4_ * 20;
+            var _loc5_:int = i * 20;
             if(_slugMode)
             {
                _loc5_ += 4 * 20;
             }
-            addAnimation("snail" + (_loc4_ + 1).toString() + "_floor_right_move",[0 + _loc5_,1 + _loc5_],3,true);
-            addAnimation("snail" + (_loc4_ + 1).toString() + "_floor_right_hide",[3 + _loc5_],9,false);
-            addAnimation("snail" + (_loc4_ + 1).toString() + "_rwall_up_move",[4 + _loc5_,5 + _loc5_],3,true);
-            addAnimation("snail" + (_loc4_ + 1).toString() + "_rwall_up_hide",[7 + _loc5_],9,false);
-            addAnimation("snail" + (_loc4_ + 1).toString() + "_rwall_down_move",[8 + _loc5_,9 + _loc5_],3,true);
-            addAnimation("snail" + (_loc4_ + 1).toString() + "_rwall_down_hide",[11 + _loc5_],9,false);
-            addAnimation("snail" + (_loc4_ + 1).toString() + "_ceil_right_move",[12 + _loc5_,13 + _loc5_],3,true);
-            addAnimation("snail" + (_loc4_ + 1).toString() + "_ceil_right_hide",[15 + _loc5_],9,false);
-            addAnimation("snail" + (_loc4_ + 1).toString() + "_death",[16 + _loc5_,17 + _loc5_,18 + _loc5_,19 + _loc5_],30,true);
-            _loc4_++;
+            addAnimation("snail" + (i + 1).toString() + "_floor_right_move",[0 + _loc5_,1 + _loc5_],3,true);
+            addAnimation("snail" + (i + 1).toString() + "_floor_right_hide",[3 + _loc5_],9,false);
+            addAnimation("snail" + (i + 1).toString() + "_rwall_up_move",[4 + _loc5_,5 + _loc5_],3,true);
+            addAnimation("snail" + (i + 1).toString() + "_rwall_up_hide",[7 + _loc5_],9,false);
+            addAnimation("snail" + (i + 1).toString() + "_rwall_down_move",[8 + _loc5_,9 + _loc5_],3,true);
+            addAnimation("snail" + (i + 1).toString() + "_rwall_down_hide",[11 + _loc5_],9,false);
+            addAnimation("snail" + (i + 1).toString() + "_ceil_right_move",[12 + _loc5_,13 + _loc5_],3,true);
+            addAnimation("snail" + (i + 1).toString() + "_ceil_right_hide",[15 + _loc5_],9,false);
+            addAnimation("snail" + (i + 1).toString() + "_death",[16 + _loc5_,17 + _loc5_,18 + _loc5_,19 + _loc5_],30,true);
          }
          setFaceDir(FACE_FLOOR_RIGHT,true);
          playAnim("floor_right_move");
@@ -779,8 +777,6 @@ package
       
       public function checkInput_handleSlugCheat() : void
       {
-         var _loc1_:int = 0;
-         var _loc2_:int = 0;
          if(!PlayState.bossRush || PlayState.bossRushTimer.started || _slugMode)
          {
             return;
@@ -799,24 +795,22 @@ package
             WEAPON_TIMEOUTS[1] = 0.23;
             WEAPON_TIMEOUTS[2] = 0.13;
             _animations = new Array();
-            _loc1_ = 0;
-            while(_loc1_ < 4)
+            for (var i:int = 0; i < 4; i++)
             {
-               _loc2_ = _loc1_ * 20;
+               var _loc2_:int = i * 20;
                if(_slugMode)
                {
                   _loc2_ += 4 * 20;
                }
-               addAnimation("snail" + (_loc1_ + 1).toString() + "_floor_right_move",[0 + _loc2_,1 + _loc2_],3,true);
-               addAnimation("snail" + (_loc1_ + 1).toString() + "_floor_right_hide",[3 + _loc2_],9,false);
-               addAnimation("snail" + (_loc1_ + 1).toString() + "_rwall_up_move",[4 + _loc2_,5 + _loc2_],3,true);
-               addAnimation("snail" + (_loc1_ + 1).toString() + "_rwall_up_hide",[7 + _loc2_],9,false);
-               addAnimation("snail" + (_loc1_ + 1).toString() + "_rwall_down_move",[8 + _loc2_,9 + _loc2_],3,true);
-               addAnimation("snail" + (_loc1_ + 1).toString() + "_rwall_down_hide",[11 + _loc2_],9,false);
-               addAnimation("snail" + (_loc1_ + 1).toString() + "_ceil_right_move",[12 + _loc2_,13 + _loc2_],3,true);
-               addAnimation("snail" + (_loc1_ + 1).toString() + "_ceil_right_hide",[15 + _loc2_],9,false);
-               addAnimation("snail" + (_loc1_ + 1).toString() + "_death",[16 + _loc2_,17 + _loc2_,18 + _loc2_,19 + _loc2_],30,true);
-               _loc1_++;
+               addAnimation("snail" + (i + 1).toString() + "_floor_right_move",[0 + _loc2_,1 + _loc2_],3,true);
+               addAnimation("snail" + (i + 1).toString() + "_floor_right_hide",[3 + _loc2_],9,false);
+               addAnimation("snail" + (i + 1).toString() + "_rwall_up_move",[4 + _loc2_,5 + _loc2_],3,true);
+               addAnimation("snail" + (i + 1).toString() + "_rwall_up_hide",[7 + _loc2_],9,false);
+               addAnimation("snail" + (i + 1).toString() + "_rwall_down_move",[8 + _loc2_,9 + _loc2_],3,true);
+               addAnimation("snail" + (i + 1).toString() + "_rwall_down_hide",[11 + _loc2_],9,false);
+               addAnimation("snail" + (i + 1).toString() + "_ceil_right_move",[12 + _loc2_,13 + _loc2_],3,true);
+               addAnimation("snail" + (i + 1).toString() + "_ceil_right_hide",[15 + _loc2_],9,false);
+               addAnimation("snail" + (i + 1).toString() + "_death",[16 + _loc2_,17 + _loc2_,18 + _loc2_,19 + _loc2_],30,true);
             }
             playAnim("death");
             setSnailType(_snailType.value);

@@ -8,10 +8,9 @@ package
       
       public function destroy() : void
       {
-         var _loc1_:String = null;
-         for(_loc1_ in blocks)
+         for(var i:String in blocks)
          {
-            blocks[_loc1_] = null;
+            blocks[i] = null;
          }
          blocks = null;
       }
@@ -29,14 +28,12 @@ package
       public function saveAll() : void
       {
          var _loc1_:XML = <uniqueBlocks/>;
-         var _loc2_:int = 0;
-         while(_loc2_ < blocks.length)
+         for (var i:int = 0; i < blocks.length; i++)
          {
             var _loc3_:XML = <b/>;
-            _loc3_.@x = blocks[_loc2_].x;
-            _loc3_.@y = blocks[_loc2_].y;
+            _loc3_.@x = blocks[i].x;
+            _loc3_.@y = blocks[i].y;
             _loc1_.appendChild(_loc3_);
-            _loc2_++;
          }
          if(PlayState.saveData.xml.uniqueBlocks != null)
          {
@@ -47,18 +44,15 @@ package
       
       public function loadAll() : void
       {
-         var _loc1_:XML = null;
-         var _loc2_:int = 0;
-         var _loc3_:int = 0;
          blocks = new Array();
          if(!PlayState.saveData.data)
          {
             return;
          }
-         for each(_loc1_ in PlayState.saveData.xml.uniqueBlocks.b)
+         for each(var i:XML in PlayState.saveData.xml.uniqueBlocks.b)
          {
-            _loc2_ = _loc1_.@x;
-            _loc3_ = _loc1_.@y;
+            var _loc2_:int = i.@x;
+            var _loc3_:int = i.@y;
             blocks.push(new FlxPoint(_loc2_,_loc3_));
             PlayState.worldMap.spmap.setTile(_loc2_,_loc3_,0);
          }

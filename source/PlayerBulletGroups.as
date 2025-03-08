@@ -15,13 +15,13 @@ package
       override public function destroy() : void
       {
          super.destroy();
-         for(var _loc1_:String in groups)
+         for(var i:String in groups)
          {
-            groups[_loc1_] = null;
+            groups[i] = null;
          }
-         for(_loc1_ in bulletLists)
+         for(i in bulletLists)
          {
-            bulletLists[_loc1_] = null;
+            bulletLists[i] = null;
          }
          groups = null;
          bulletLists = null;
@@ -29,35 +29,27 @@ package
       
       public function PlayerBulletGroups() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < MAX_WEAPON)
+         for (var i:int = 0; i < MAX_WEAPON; i++)
          {
-            groups[_loc1_] = new FlxGroup();
-            bulletLists[_loc1_] = new Array();
-            var _loc2_:int = 0;
-            while(_loc2_ < MAX_BULLET[_loc1_])
+            groups[i] = new FlxGroup();
+            bulletLists[i] = new Array();
+            for (var j:int = 0; j < MAX_BULLET[i]; j++)
             {
-               bulletLists[_loc1_][_loc2_] = makeBullet(_loc1_);
-               groups[_loc1_].add(bulletLists[_loc1_][_loc2_]);
-               _loc2_++;
+               bulletLists[i][j] = makeBullet(i);
+               groups[i].add(bulletLists[i][j]);
             }
-            add(groups[_loc1_]);
-            _loc1_++;
+            add(groups[i]);
          }
       }
       
       public function destroyAll() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < MAX_WEAPON)
+         for (var i:int = 0; i < MAX_WEAPON; i++)
          {
-            var _loc2_:int = 0;
-            while(_loc2_ < MAX_BULLET[_loc1_])
+            for (var j:int = 0; j < MAX_BULLET[i]; j++)
             {
-               bulletLists[_loc1_][_loc2_].kill();
-               _loc2_++;
+               bulletLists[i][j].kill();
             }
-            _loc1_++;
          }
       }
       

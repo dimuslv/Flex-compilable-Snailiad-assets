@@ -86,19 +86,15 @@ package
       
       override public function destroy() : void
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < texts.length)
+         for (var i:int = 0; i < texts.length; i++)
          {
-            texts[_loc1_] = null;
-            _loc1_++;
+            texts[i] = null;
          }
          texts = null;
          textY = null;
-         _loc1_ = 0;
-         while(_loc1_ < weaponText.length)
+         for (i = 0; i < weaponText.length; i++)
          {
-            weaponText[_loc1_] = null;
-            _loc1_++;
+            weaponText[i] = null;
          }
          tabText = null;
          weaponText = null;
@@ -180,11 +176,9 @@ package
             makeText(TEXT_GRAVITYSHOCK,GROUP_ABILITY,4,"GRAVITY SHOCK");
          }
          weaponText = new Array();
-         var _loc1_:int = 0;
-         while(_loc1_ < 3)
+         for (var i:int = 0; i < 3; i++)
          {
-            makeWeaponText(_loc1_);
-            _loc1_++;
+            makeWeaponText(i);
          }
          makeTabText();
          makeEscText();
@@ -216,11 +210,9 @@ package
       private function makeWeaponText(param1:int) : void
       {
          var _loc2_:int = WEAPON_BASE_X;
-         var _loc3_:int = 0;
-         while(_loc3_ < param1)
+         for (var i:int = 0; i < param1; i++)
          {
-            _loc2_ += weaponText[_loc3_].realWidth + WEAPON_SPACING;
-            _loc3_++;
+            _loc2_ += weaponText[i].realWidth + WEAPON_SPACING;
          }
          if(param1 == 2)
          {
@@ -307,11 +299,9 @@ package
       {
          panel.y = Utility.integrate(panel.y,targetY,SCROLL_RATE,FlxG.elapsed,1.1);
          bg.alpha = Utility.integrate(bg.alpha,targetBgAlpha,ALPHA_RATE,FlxG.elapsed);
-         var _loc1_:int = 0;
-         while(_loc1_ < texts.length)
+         for (var i:int = 0; i < texts.length; i++)
          {
-            texts[_loc1_].y = panel.y + textY[_loc1_];
-            _loc1_++;
+            texts[i].y = panel.y + textY[i];
          }
          helixSprite.y = Utility.integrate(helixSprite.y,helixSpriteTargetY,SCROLL_RATE,FlxG.elapsed,0.1);
          helixText.y = helixSprite.y + 2;
@@ -328,13 +318,11 @@ package
             return;
          }
          var _loc1_:int = PlayState.player.getCurrentWeapon();
-         var _loc2_:int = 0;
-         while(_loc2_ < weaponText.length)
+         for (var i:int = 0; i < weaponText.length; i++)
          {
-            weaponText[_loc2_].visible = PlayState.player.hasWeapon(_loc2_);
-            weaponText[_loc2_].alpha = _loc1_ == _loc2_ ? 1 : 0.6;
-            weaponText[_loc2_].y = WEAPON_Y + panel.y;
-            _loc2_++;
+            weaponText[i].visible = PlayState.player.hasWeapon(i);
+            weaponText[i].alpha = _loc1_ == i ? 1 : 0.6;
+            weaponText[i].y = WEAPON_Y + panel.y;
          }
       }
       
