@@ -1,7 +1,8 @@
 package
 {
-   import flash.events.*;
-   import flash.net.*;
+   import flash.events.MouseEvent;
+   import flash.net.URLRequest;
+   import flash.net.navigateToURL;
    import org.flixel.*;
    
    public class JayIsGames extends FlxSprite

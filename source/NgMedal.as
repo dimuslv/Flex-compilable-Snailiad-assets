@@ -1,6 +1,6 @@
 package
 {
-   import com.newgrounds.*;
+   import com.newgrounds.API;
    
    public class NgMedal
    {      
