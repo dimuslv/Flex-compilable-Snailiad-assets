@@ -21,7 +21,6 @@ package
 	  
 	  public function AiTrigger() : void
       {
-         super();
          exists = false;
          offset.x = 0;
          offset.y = 0;

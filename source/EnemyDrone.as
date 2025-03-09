@@ -149,10 +149,9 @@ package
       
       public function shoot() : void
       {
-         var _loc1_:EnemyBullet = null;
          if(facing == RIGHT)
          {
-            _loc1_ = PlayState.enemyBulletPool.getBullet(5);
+            var _loc1_:EnemyBullet = PlayState.enemyBulletPool.getBullet(5);
             if(_loc1_)
             {
                _loc1_.shoot(x + width / 2,y + height / 2,SHOT_SPEED,0);
