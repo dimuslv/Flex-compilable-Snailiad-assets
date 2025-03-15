@@ -12,8 +12,8 @@ package
       override protected function getContent() : Object
       {
          return {
-            "incorrectTrigger":"The Zoom effect can not be triggered by a moveEffect trigger.",
-            "incorrectSource":"Source property must be a Class or String."
+            "incorrectSource":"Source property must be a Class or String.",
+            "incorrectTrigger":"The Zoom effect can not be triggered by a moveEffect trigger."
          };
       }
    }
